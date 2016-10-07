@@ -96,4 +96,4 @@ CREATE TABLE NotasDeCredito (
 );
 
 
-INSERT INTO Operaciones (operacion) VALUES ("Suma", "Resta");
+INSERT INTO Operaciones (operacion) VALUES ("Suma"), ("Resta");

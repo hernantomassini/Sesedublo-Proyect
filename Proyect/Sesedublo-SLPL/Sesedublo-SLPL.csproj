@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GlassButton">
-      <HintPath>..\..\..\..\..\Downloads\glassbutton_demo\GlassButton (demo)\GlassButton.dll</HintPath>
+      <HintPath>dll\GlassButton.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />

@@ -9,9 +9,25 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sesedublo_SLPL</RootNamespace>
     <AssemblyName>Sesedublo-SLPL</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <PublishUrl>publicar\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -22,6 +38,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +48,10 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Sesedublo_SLPL.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GlassButton">
@@ -45,10 +66,11 @@
     <Reference Include="MetroFramework.Fonts">
       <HintPath>dll\MetroFramework.Fonts.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -84,11 +106,23 @@
     <Compile Include="Administrar Usuarios\ABM_Usuarios.Designer.cs">
       <DependentUpon>ABM_Usuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administrar Usuarios\Agregar_Cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrar Usuarios\Agregar_Cliente.Designer.cs">
+      <DependentUpon>Agregar_Cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generales\Conexion.cs" />
     <Compile Include="Generales\Enums.cs" />
     <Compile Include="Generales\Funciones.cs" />
     <Compile Include="Generales\Manejador_Formularios.cs" />
     <Compile Include="Generales\Validaciones.cs" />
+    <Compile Include="Historial de Facturas\Ver_Factura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historial de Facturas\Ver_Factura.Designer.cs">
+      <DependentUpon>Ver_Factura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantalla_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,8 +161,14 @@
     <EmbeddedResource Include="Administrar Usuarios\ABM_Usuarios.resx">
       <DependentUpon>ABM_Usuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Administrar Usuarios\Agregar_Cliente.resx">
+      <DependentUpon>Agregar_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Historial de Facturas\Historial_de_Facturas.resx">
       <DependentUpon>Historial_de_Facturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Historial de Facturas\Ver_Factura.resx">
+      <DependentUpon>Ver_Factura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Historial de Operaciones\Historial_de_Operaciones.resx">
       <DependentUpon>Historial_de_Operaciones.cs</DependentUpon>
@@ -144,6 +184,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Revisar Caja\Monto_Caja.resx">
       <DependentUpon>Monto_Caja.cs</DependentUpon>
@@ -161,7 +202,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

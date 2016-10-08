@@ -19,6 +19,11 @@ DROP PROCEDURE IF EXISTS agregarStock;
 DROP PROCEDURE IF EXISTS modificarStock;
 DROP PROCEDURE IF EXISTS borrarStock;
 DROP PROCEDURE IF EXISTS obtenerProducto;
+DROP PROCEDURE IF EXISTS agregarCliente;
+DROP PROCEDURE IF EXISTS modificarCliente;
+DROP PROCEDURE IF EXISTS cargarGrillaClientes;
+DROP PROCEDURE IF EXISTS obtenerCliente;
+DROP PROCEDURE IF EXISTS cargarGrillaFacturas;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -41,6 +46,7 @@ CREATE TABLE Productos (
 CREATE TABLE Clientes (
     id_cliente INT AUTO_INCREMENT,
     nombre VARCHAR(50),
+    apellido VARCHAR(50),
     email VARCHAR(50),
     telefono VARCHAR(20),
     direccion VARCHAR(60),
@@ -157,6 +163,46 @@ SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
 
 	SELECT stockInidividual, stockBultos, cantidadXBulto, nombre, costo, PVUnitario, PVBulto FROM Productos WHERE id_producto = @_id_producto;
     
+END //
+
+CREATE PROCEDURE cargarGrillaClientes (IN _nombre VARCHAR(255), _apellido VARCHAR(50), _direccion VARCHAR(255))
+BEGIN
+
+	SELECT c.id_cliente, c.nombre AS Nombre, c.apellido AS Apellido, c.email AS Mail, c.telefono AS Teléfono, c.direccion AS Dirección FROM Clientes c
+	WHERE ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+	AND ((c.apellido LIKE CONCAT("%", _apellido, "%") COLLATE utf8_general_ci ) OR (_apellido IS NULL OR _apellido = ""))
+	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""));
+END //
+
+CREATE PROCEDURE agregarCliente (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _mail VARCHAR(255),
+							   _direccion VARCHAR(50), _telefono VARCHAR(60))
+BEGIN
+
+    INSERT INTO Clientes (nombre, apellido, email, telefono, direccion) VALUES (_nombre, _apellido, _mail, _telefono, _direccion);
+    
+END //
+
+CREATE PROCEDURE modificarCliente (IN _id_cliente INT, _nombre VARCHAR(255), _apellido VARCHAR(255), _mail VARCHAR(255),
+										_direccion VARCHAR(50), _telefono VARCHAR(60))
+BEGIN
+    UPDATE Clientes SET nombre = _nombre, email = _mail, telefono = _telefono, apellido = _apellido, direccion = _direccion WHERE id_cliente = _id_cliente;
+END //
+
+CREATE PROCEDURE obtenerCliente (IN _id_cliente INT) 
+BEGIN
+
+	SELECT nombre, apellido, email, telefono, direccion FROM Clientes WHERE id_cliente = _id_cliente;
+END //
+
+CREATE PROCEDURE cargarGrillaFacturas (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _descripcion VARCHAR(50), _direccion VARCHAR(255))
+BEGIN
+	SELECT f.id_factura, c.nombre AS Nombre, c.apellido AS Apellido, c.direccion AS Dirección, p.precio AS Precio FROM Facturas f
+    INNER JOIN Pedidos p ON p.id_pedido = f.pedido
+    INNER JOIN Clientes c ON c.id_cliente = p.comprador
+	WHERE ((f.descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
+	AND ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+	AND ((c.apellido LIKE CONCAT("%", _apellido, "%") COLLATE utf8_general_ci ) OR (_apellido IS NULL OR _apellido = ""))
+	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""));
 END //
 
 DELIMITER ;

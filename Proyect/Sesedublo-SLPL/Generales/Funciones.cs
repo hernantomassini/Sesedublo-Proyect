@@ -45,7 +45,7 @@ namespace Sesedublo_SLPL
 
         public static void imprimirMensajeDeAviso(string descripcionAviso, MetroForm form)
         {
-            MetroMessageBox.Show(form, descripcionAviso, "Informe", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Information);
+            MetroMessageBox.Show(form, descripcionAviso, "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public static void limpiarDGV(DataGridView dgv)

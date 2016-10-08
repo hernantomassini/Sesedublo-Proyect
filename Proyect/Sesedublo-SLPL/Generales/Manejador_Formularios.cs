@@ -86,6 +86,20 @@ namespace Sesedublo_SLPL.Generales
             }
         }
 
+        private static Ver_Factura Ver_Factura_Form;
+        public static Ver_Factura Ver_Factura
+        {
+            get
+            {
+                if (Ver_Factura_Form == null)
+                {
+                    Ver_Factura_Form = new Ver_Factura();
+                }
+                //Historial_de_Facturas_Form.getData();
+                return Ver_Factura_Form;
+            }
+        }
+
         private static Historial_de_Operaciones Historial_de_Operaciones_Form;
         public static Historial_de_Operaciones Historial_de_Operaciones
         {
@@ -124,6 +138,19 @@ namespace Sesedublo_SLPL.Generales
                     AddProducto_Form = new AddProducto();
                 }
                 return AddProducto_Form;
+            }
+        }
+
+        private static Agregar_Cliente Agregar_Cliente_Form;
+        public static Agregar_Cliente Agregar_Cliente
+        {
+            get
+            {
+                if (Agregar_Cliente_Form == null)
+                {
+                    Agregar_Cliente_Form = new Agregar_Cliente();
+                }
+                return Agregar_Cliente_Form;
             }
         }
     }

@@ -73,5 +73,10 @@ namespace Sesedublo_SLPL.Revisar_Cajans
             Manejador_Formularios.ModifyCash.Show();
             Close();
         }
+
+        private void splitContainer1_Panel1_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+        {
+
+        }
     }
 }

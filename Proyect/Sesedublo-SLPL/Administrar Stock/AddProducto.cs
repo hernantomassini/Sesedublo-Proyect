@@ -1,4 +1,5 @@
 ﻿using Enums;
+using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
 using System.ComponentModel;
@@ -46,7 +47,20 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         private void cargarDatos()
         {
-            Funciones.tirarException();
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerProducto", Conexion.generarArgumentos("_id_stock"), id_stock);
+
+            reader.Read();
+
+            CantidadIndividual.Text = reader.GetString(0);
+            CantidadBultos.Text = reader.GetString(1);
+            UnidadesXBulto.Text = reader.GetString(2);
+            Nombre.Text = reader.GetString(3);
+            Costo.Text = reader.GetString(4);
+            PVunitario.Text = reader.GetString(5);
+            PVBulto.Text = reader.GetString(6);
+
+            reader.Close();
+            Conexion.closeConnection();
         }
 
         private void Clean()

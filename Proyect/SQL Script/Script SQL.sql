@@ -18,6 +18,7 @@ DROP PROCEDURE IF EXISTS obtenerStock;
 DROP PROCEDURE IF EXISTS agregarStock;
 DROP PROCEDURE IF EXISTS modificarStock;
 DROP PROCEDURE IF EXISTS borrarStock;
+DROP PROCEDURE IF EXISTS obtenerProducto;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -147,6 +148,15 @@ SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
 	DELETE FROM Stock WHERE id_stock = _id_stock;
 	DELETE FROM Productos WHERE id_producto = @_id_producto;
 
+END //
+
+CREATE PROCEDURE obtenerProducto (IN _id_stock INT) 
+BEGIN
+
+SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
+
+	SELECT stockInidividual, stockBultos, cantidadXBulto, nombre, costo, PVUnitario, PVBulto FROM Productos WHERE id_producto = @_id_producto;
+    
 END //
 
 DELIMITER ;

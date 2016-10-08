@@ -28,94 +28,124 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.GoToPedidos = new System.Windows.Forms.Button();
-            this.GoToStock = new System.Windows.Forms.Button();
-            this.GoToUsuarios = new System.Windows.Forms.Button();
-            this.GoToHistorialFacturas = new System.Windows.Forms.Button();
-            this.GoToHistorialOperaciones = new System.Windows.Forms.Button();
-            this.GoToRevisarCaja = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pantalla_Principal));
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.metroTile2 = new MetroFramework.Controls.MetroTile();
+            this.metroTile3 = new MetroFramework.Controls.MetroTile();
+            this.metroTile4 = new MetroFramework.Controls.MetroTile();
+            this.metroTile5 = new MetroFramework.Controls.MetroTile();
+            this.metroTile6 = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
             // 
-            // GoToPedidos
+            // metroTile1
             // 
-            this.GoToPedidos.Location = new System.Drawing.Point(130, 78);
-            this.GoToPedidos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.GoToPedidos.Name = "GoToPedidos";
-            this.GoToPedidos.Size = new System.Drawing.Size(135, 52);
-            this.GoToPedidos.TabIndex = 0;
-            this.GoToPedidos.Text = "Administrar Pedidos";
-            this.GoToPedidos.UseVisualStyleBackColor = true;
-            this.GoToPedidos.Click += new System.EventHandler(this.GoToPedidos_Click);
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.metroTile1.ForeColor = System.Drawing.Color.White;
+            this.metroTile1.Location = new System.Drawing.Point(148, 77);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(115, 85);
+            this.metroTile1.TabIndex = 6;
+            this.metroTile1.Text = "Stock";
+            this.metroTile1.UseCustomBackColor = true;
+            this.metroTile1.UseCustomForeColor = true;
+            this.metroTile1.UseSelectable = true;
+            this.metroTile1.Click += new System.EventHandler(this.GoToStock_Click);
             // 
-            // GoToStock
+            // metroTile2
             // 
-            this.GoToStock.Location = new System.Drawing.Point(130, 137);
-            this.GoToStock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.GoToStock.Name = "GoToStock";
-            this.GoToStock.Size = new System.Drawing.Size(135, 43);
-            this.GoToStock.TabIndex = 1;
-            this.GoToStock.Text = "Administrar Stock";
-            this.GoToStock.UseVisualStyleBackColor = true;
-            this.GoToStock.Click += new System.EventHandler(this.GoToStock_Click);
+            this.metroTile2.ActiveControl = null;
+            this.metroTile2.BackColor = System.Drawing.Color.Orange;
+            this.metroTile2.ForeColor = System.Drawing.Color.White;
+            this.metroTile2.Location = new System.Drawing.Point(148, 168);
+            this.metroTile2.Name = "metroTile2";
+            this.metroTile2.Size = new System.Drawing.Size(115, 85);
+            this.metroTile2.TabIndex = 7;
+            this.metroTile2.Text = "Operaciones";
+            this.metroTile2.UseCustomBackColor = true;
+            this.metroTile2.UseCustomForeColor = true;
+            this.metroTile2.UseSelectable = true;
+            this.metroTile2.Click += new System.EventHandler(this.GoToHistorialOperaciones_Click);
             // 
-            // GoToUsuarios
+            // metroTile3
             // 
-            this.GoToUsuarios.Location = new System.Drawing.Point(130, 188);
-            this.GoToUsuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.GoToUsuarios.Name = "GoToUsuarios";
-            this.GoToUsuarios.Size = new System.Drawing.Size(135, 47);
-            this.GoToUsuarios.TabIndex = 2;
-            this.GoToUsuarios.Text = "Administrar Usuarios";
-            this.GoToUsuarios.UseVisualStyleBackColor = true;
-            this.GoToUsuarios.Click += new System.EventHandler(this.GoToUsuarios_Click);
+            this.metroTile3.ActiveControl = null;
+            this.metroTile3.BackColor = System.Drawing.Color.Teal;
+            this.metroTile3.ForeColor = System.Drawing.Color.White;
+            this.metroTile3.Location = new System.Drawing.Point(27, 77);
+            this.metroTile3.Name = "metroTile3";
+            this.metroTile3.Size = new System.Drawing.Size(115, 85);
+            this.metroTile3.TabIndex = 8;
+            this.metroTile3.Text = "Pedidos";
+            this.metroTile3.UseCustomBackColor = true;
+            this.metroTile3.UseCustomForeColor = true;
+            this.metroTile3.UseSelectable = true;
+            this.metroTile3.Click += new System.EventHandler(this.GoToPedidos_Click);
             // 
-            // GoToHistorialFacturas
+            // metroTile4
             // 
-            this.GoToHistorialFacturas.Location = new System.Drawing.Point(130, 242);
-            this.GoToHistorialFacturas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.GoToHistorialFacturas.Name = "GoToHistorialFacturas";
-            this.GoToHistorialFacturas.Size = new System.Drawing.Size(135, 48);
-            this.GoToHistorialFacturas.TabIndex = 3;
-            this.GoToHistorialFacturas.Text = "Ver historial de facturas";
-            this.GoToHistorialFacturas.UseVisualStyleBackColor = true;
-            this.GoToHistorialFacturas.Click += new System.EventHandler(this.GoToHistorialFacturas_Click);
+            this.metroTile4.ActiveControl = null;
+            this.metroTile4.BackColor = System.Drawing.Color.Crimson;
+            this.metroTile4.ForeColor = System.Drawing.Color.White;
+            this.metroTile4.Location = new System.Drawing.Point(27, 168);
+            this.metroTile4.Name = "metroTile4";
+            this.metroTile4.Size = new System.Drawing.Size(115, 85);
+            this.metroTile4.TabIndex = 9;
+            this.metroTile4.Text = "Facturas";
+            this.metroTile4.UseCustomBackColor = true;
+            this.metroTile4.UseCustomForeColor = true;
+            this.metroTile4.UseSelectable = true;
+            this.metroTile4.Click += new System.EventHandler(this.GoToHistorialFacturas_Click);
             // 
-            // GoToHistorialOperaciones
+            // metroTile5
             // 
-            this.GoToHistorialOperaciones.Location = new System.Drawing.Point(130, 297);
-            this.GoToHistorialOperaciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.GoToHistorialOperaciones.Name = "GoToHistorialOperaciones";
-            this.GoToHistorialOperaciones.Size = new System.Drawing.Size(135, 46);
-            this.GoToHistorialOperaciones.TabIndex = 4;
-            this.GoToHistorialOperaciones.Text = "Ver historial de operaciones";
-            this.GoToHistorialOperaciones.UseVisualStyleBackColor = true;
-            this.GoToHistorialOperaciones.Click += new System.EventHandler(this.GoToHistorialOperaciones_Click);
+            this.metroTile5.ActiveControl = null;
+            this.metroTile5.BackColor = System.Drawing.Color.Brown;
+            this.metroTile5.ForeColor = System.Drawing.Color.White;
+            this.metroTile5.Location = new System.Drawing.Point(27, 259);
+            this.metroTile5.Name = "metroTile5";
+            this.metroTile5.Size = new System.Drawing.Size(115, 85);
+            this.metroTile5.TabIndex = 10;
+            this.metroTile5.Text = "Cajas";
+            this.metroTile5.UseCustomBackColor = true;
+            this.metroTile5.UseCustomForeColor = true;
+            this.metroTile5.UseSelectable = true;
+            this.metroTile5.Click += new System.EventHandler(this.GoToRevisarCaja_Click);
             // 
-            // GoToRevisarCaja
+            // metroTile6
             // 
-            this.GoToRevisarCaja.Location = new System.Drawing.Point(130, 350);
-            this.GoToRevisarCaja.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.GoToRevisarCaja.Name = "GoToRevisarCaja";
-            this.GoToRevisarCaja.Size = new System.Drawing.Size(135, 44);
-            this.GoToRevisarCaja.TabIndex = 5;
-            this.GoToRevisarCaja.Text = "Revisar caja";
-            this.GoToRevisarCaja.UseVisualStyleBackColor = true;
-            this.GoToRevisarCaja.Click += new System.EventHandler(this.GoToRevisarCaja_Click);
+            this.metroTile6.ActiveControl = null;
+            this.metroTile6.BackColor = System.Drawing.Color.MidnightBlue;
+            this.metroTile6.ForeColor = System.Drawing.Color.White;
+            this.metroTile6.Location = new System.Drawing.Point(269, 77);
+            this.metroTile6.Name = "metroTile6";
+            this.metroTile6.Size = new System.Drawing.Size(115, 85);
+            this.metroTile6.TabIndex = 11;
+            this.metroTile6.Text = "Clientes";
+            this.metroTile6.UseCustomBackColor = true;
+            this.metroTile6.UseCustomForeColor = true;
+            this.metroTile6.UseSelectable = true;
+            this.metroTile6.Click += new System.EventHandler(this.GoToUsuarios_Click);
             // 
             // Pantalla_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(418, 484);
-            this.Controls.Add(this.GoToRevisarCaja);
-            this.Controls.Add(this.GoToHistorialOperaciones);
-            this.Controls.Add(this.GoToHistorialFacturas);
-            this.Controls.Add(this.GoToUsuarios);
-            this.Controls.Add(this.GoToStock);
-            this.Controls.Add(this.GoToPedidos);
+            this.BackImage = ((System.Drawing.Image)(resources.GetObject("$this.BackImage")));
+            this.BackImagePadding = new System.Windows.Forms.Padding(50);
+            this.BackLocation = MetroFramework.Forms.BackLocation.BottomLeft;
+            this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
+            this.ClientSize = new System.Drawing.Size(535, 391);
+            this.Controls.Add(this.metroTile6);
+            this.Controls.Add(this.metroTile5);
+            this.Controls.Add(this.metroTile4);
+            this.Controls.Add(this.metroTile3);
+            this.Controls.Add(this.metroTile2);
+            this.Controls.Add(this.metroTile1);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Pantalla_Principal";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
+            this.Style = MetroFramework.MetroColorStyle.Default;
             this.Text = "Menú Principal";
             this.Load += new System.EventHandler(this.Pantalla_Principal_Load);
             this.ResumeLayout(false);
@@ -124,12 +154,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Button GoToPedidos;
-        private System.Windows.Forms.Button GoToStock;
-        private System.Windows.Forms.Button GoToUsuarios;
-        private System.Windows.Forms.Button GoToHistorialFacturas;
-        private System.Windows.Forms.Button GoToHistorialOperaciones;
-        private System.Windows.Forms.Button GoToRevisarCaja;
+        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile metroTile2;
+        private MetroFramework.Controls.MetroTile metroTile3;
+        private MetroFramework.Controls.MetroTile metroTile4;
+        private MetroFramework.Controls.MetroTile metroTile5;
+        private MetroFramework.Controls.MetroTile metroTile6;
     }
 }
 

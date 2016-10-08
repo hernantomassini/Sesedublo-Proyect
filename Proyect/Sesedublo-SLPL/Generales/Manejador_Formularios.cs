@@ -5,6 +5,7 @@ using Sesedublo_SLPL.Revisar_Cajans;
 using Sesedublo_SLPL.Historial_de_Operacionesns;
 using Sesedublo_SLPL.Historial_de_Facturasns;
 using Sesedublo_SLPL.Administrar_Stock;
+using Sesedublo_SLPL.Revisar_Caja;
 
 namespace Sesedublo_SLPL.Generales
 {
@@ -123,7 +124,7 @@ namespace Sesedublo_SLPL.Generales
                 {
                     Monto_Caja_Form = new Monto_Caja();
                 }
-               // Monto_Caja_Form.getData();
+                Monto_Caja_Form.updatearLabels();
                 return Monto_Caja_Form;
             }
         }
@@ -141,6 +142,7 @@ namespace Sesedublo_SLPL.Generales
             }
         }
 
+<<<<<<< HEAD
         private static Agregar_Cliente Agregar_Cliente_Form;
         public static Agregar_Cliente Agregar_Cliente
         {
@@ -151,6 +153,18 @@ namespace Sesedublo_SLPL.Generales
                     Agregar_Cliente_Form = new Agregar_Cliente();
                 }
                 return Agregar_Cliente_Form;
+=======
+        private static ModifyCash ModifyCash_Form;
+        public static ModifyCash ModifyCash
+        {
+            get
+            {
+                if (ModifyCash_Form == null)
+                {
+                    ModifyCash_Form = new ModifyCash();
+                }
+                return ModifyCash_Form;
+>>>>>>> a4e195b79e5737306eef56bbf1f25023c729648e
             }
         }
     }

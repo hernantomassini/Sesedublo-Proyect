@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sesedublo_SLPL.Generales;
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -37,6 +38,36 @@ namespace Sesedublo_SLPL
         {
             Application.Exit();
             e.Cancel = true;
+        }
+
+        private void GoToPedidos_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.ABM_Pedidos.Show();
+        }
+
+        private void GoToStock_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.ABM_Stock.Show();
+        }
+
+        private void GoToUsuarios_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.ABM_Usuarios.Show();
+        }
+
+        private void GoToHistorialFacturas_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.Historial_de_Facturas.Show();
+        }
+
+        private void GoToHistorialOperaciones_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.Historial_de_Operaciones.Show();
+        }
+
+        private void GoToRevisarCaja_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.Monto_Caja.Show();
         }
     }
 }

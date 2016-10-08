@@ -142,7 +142,6 @@ namespace Sesedublo_SLPL.Generales
             }
         }
 
-<<<<<<< HEAD
         private static Agregar_Cliente Agregar_Cliente_Form;
         public static Agregar_Cliente Agregar_Cliente
         {
@@ -153,7 +152,8 @@ namespace Sesedublo_SLPL.Generales
                     Agregar_Cliente_Form = new Agregar_Cliente();
                 }
                 return Agregar_Cliente_Form;
-=======
+            }
+        }
         private static ModifyCash ModifyCash_Form;
         public static ModifyCash ModifyCash
         {
@@ -164,7 +164,6 @@ namespace Sesedublo_SLPL.Generales
                     ModifyCash_Form = new ModifyCash();
                 }
                 return ModifyCash_Form;
->>>>>>> a4e195b79e5737306eef56bbf1f25023c729648e
             }
         }
     }

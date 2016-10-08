@@ -201,24 +201,28 @@
             // titleAceptar
             // 
             this.titleAceptar.ActiveControl = null;
+            this.titleAceptar.BackColor = System.Drawing.Color.Green;
             this.titleAceptar.Location = new System.Drawing.Point(23, 311);
             this.titleAceptar.Name = "titleAceptar";
             this.titleAceptar.Size = new System.Drawing.Size(82, 41);
             this.titleAceptar.TabIndex = 8;
             this.titleAceptar.Text = "Aceptar";
             this.titleAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.titleAceptar.UseCustomBackColor = true;
             this.titleAceptar.UseSelectable = true;
             this.titleAceptar.Click += new System.EventHandler(this.titleAceptar_Click);
             // 
             // titleCancelar
             // 
             this.titleCancelar.ActiveControl = null;
+            this.titleCancelar.BackColor = System.Drawing.Color.DarkRed;
             this.titleCancelar.Location = new System.Drawing.Point(140, 311);
             this.titleCancelar.Name = "titleCancelar";
             this.titleCancelar.Size = new System.Drawing.Size(83, 41);
             this.titleCancelar.TabIndex = 9;
             this.titleCancelar.Text = "Cancelar";
             this.titleCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.titleCancelar.UseCustomBackColor = true;
             this.titleCancelar.UseSelectable = true;
             this.titleCancelar.Click += new System.EventHandler(this.titleCancelar_Click);
             // 

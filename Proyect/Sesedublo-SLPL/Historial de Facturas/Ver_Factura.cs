@@ -69,5 +69,5 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             printButton.Visible = true;
         }
     }
-    }
+    
 }

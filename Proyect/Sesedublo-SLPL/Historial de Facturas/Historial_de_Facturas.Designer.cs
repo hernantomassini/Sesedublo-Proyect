@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Historial_de_Facturas));
             this.dgvFacturas = new MetroFramework.Controls.MetroGrid();
             this.direccion = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -50,7 +51,7 @@
             this.dgvFacturas.AllowUserToAddRows = false;
             this.dgvFacturas.AllowUserToDeleteRows = false;
             this.dgvFacturas.AllowUserToResizeRows = false;
-            this.dgvFacturas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgvFacturas.BackgroundColor = System.Drawing.Color.Silver;
             this.dgvFacturas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvFacturas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvFacturas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -91,6 +92,7 @@
             this.dgvFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFacturas.Size = new System.Drawing.Size(655, 323);
             this.dgvFacturas.TabIndex = 0;
+            this.dgvFacturas.UseCustomBackColor = true;
             // 
             // direccion
             // 
@@ -252,31 +254,39 @@
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
+            this.metroTile1.BackColor = System.Drawing.Color.LightSeaGreen;
             this.metroTile1.Location = new System.Drawing.Point(24, 541);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(83, 35);
             this.metroTile1.TabIndex = 20;
             this.metroTile1.Text = "Atrás";
             this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile1.UseCustomBackColor = true;
             this.metroTile1.UseSelectable = true;
             this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
             // titleDetalleFactura
             // 
             this.titleDetalleFactura.ActiveControl = null;
+            this.titleDetalleFactura.BackColor = System.Drawing.Color.YellowGreen;
             this.titleDetalleFactura.Location = new System.Drawing.Point(575, 541);
             this.titleDetalleFactura.Name = "titleDetalleFactura";
             this.titleDetalleFactura.Size = new System.Drawing.Size(104, 35);
             this.titleDetalleFactura.TabIndex = 21;
             this.titleDetalleFactura.Text = "Ver Factura";
             this.titleDetalleFactura.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.titleDetalleFactura.UseCustomBackColor = true;
             this.titleDetalleFactura.UseSelectable = true;
             this.titleDetalleFactura.Click += new System.EventHandler(this.titleDetalleFactura_Click);
             // 
             // Historial_de_Facturas
             // 
+            this.ApplyImageInvert = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackImage = ((System.Drawing.Image)(resources.GetObject("$this.BackImage")));
+            this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(702, 596);
             this.Controls.Add(this.titleDetalleFactura);
             this.Controls.Add(this.metroTile1);
@@ -291,6 +301,7 @@
             this.Controls.Add(this.dgvFacturas);
             this.Name = "Historial_de_Facturas";
             this.Text = "Facturas";
+            this.TransparencyKey = System.Drawing.Color.LightSkyBlue;
             this.Load += new System.EventHandler(this.Historial_de_Facturas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
             this.ResumeLayout(false);

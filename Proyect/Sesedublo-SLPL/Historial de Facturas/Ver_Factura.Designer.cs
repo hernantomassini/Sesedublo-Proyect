@@ -66,7 +66,7 @@
             this.oriOdup = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.botonImprimir = new MetroFramework.Controls.MetroTile();
+            this.printButton = new MetroFramework.Controls.MetroTile();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -90,7 +90,7 @@
             this.panel1.Controls.Add(this.label24);
             this.panel1.Location = new System.Drawing.Point(23, 63);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(814, 260);
+            this.panel1.Size = new System.Drawing.Size(814, 216);
             this.panel1.TabIndex = 15;
             // 
             // panel4
@@ -446,24 +446,26 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "PRODUCCIONES GRAFICAS S.A.";
             // 
-            // botonImprimir
+            // printButton
             // 
-            this.botonImprimir.ActiveControl = null;
-            this.botonImprimir.Location = new System.Drawing.Point(23, 774);
-            this.botonImprimir.Name = "botonImprimir";
-            this.botonImprimir.Size = new System.Drawing.Size(119, 44);
-            this.botonImprimir.TabIndex = 28;
-            this.botonImprimir.Text = "Imprimir";
-            this.botonImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.botonImprimir.UseSelectable = true;
-            this.botonImprimir.Click += new System.EventHandler(this.printButton_Click);
+            this.printButton.ActiveControl = null;
+            this.printButton.BackColor = System.Drawing.Color.Blue;
+            this.printButton.Location = new System.Drawing.Point(23, 774);
+            this.printButton.Name = "printButton";
+            this.printButton.Size = new System.Drawing.Size(119, 44);
+            this.printButton.TabIndex = 28;
+            this.printButton.Text = "Imprimir";
+            this.printButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.printButton.UseCustomBackColor = true;
+            this.printButton.UseSelectable = true;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
             // Ver_Factura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 829);
-            this.Controls.Add(this.botonImprimir);
+            this.Controls.Add(this.printButton);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.dataGridView1);
@@ -526,6 +528,6 @@
         private System.Windows.Forms.Label fechaActualImp;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label algoRaro;
-        private MetroFramework.Controls.MetroTile botonImprimir;
+        private MetroFramework.Controls.MetroTile printButton;
     }
 }

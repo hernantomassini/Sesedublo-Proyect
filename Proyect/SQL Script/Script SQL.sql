@@ -208,7 +208,6 @@ BEGIN
 	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""));
 END //
 
-DELIMITER ;
 CREATE PROCEDURE agregarEfectivo (IN _montoASumar INT) 
 BEGIN
 

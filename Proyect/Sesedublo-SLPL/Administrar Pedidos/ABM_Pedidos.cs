@@ -24,5 +24,29 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             this.Hide();
             e.Cancel = true;
         }
+
+        private void AtrasTile_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void EliminarPedidoTile_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void modificarPedidoTile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AgregarPedidoTile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FacturarPedidoTile_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

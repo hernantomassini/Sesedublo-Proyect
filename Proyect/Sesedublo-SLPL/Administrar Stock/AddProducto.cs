@@ -67,12 +67,12 @@ namespace Sesedublo_SLPL.Administrar_Stock
         {
             if(flag == accionesABM.Crear)
             {
-                Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), Convert.ToInt32(Cantidad.Text), Convert.ToDecimal(Costo.Text), Nombre.Text, Convert.ToDecimal(PVunitario), Convert.ToDecimal(PVBulto));
+                Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), Convert.ToInt32(Cantidad.Text), Convert.ToDecimal(Costo.Text), Nombre.Text, Convert.ToDecimal(PVunitario.Text), Convert.ToDecimal(PVBulto.Text));
                 Conexion.closeConnection();
             }
             else
             {
-                Conexion.executeProcedure("modificarStock", Conexion.generarArgumentos("_id_stock", "_cantidad", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), id_stock, Convert.ToInt32(Cantidad.Text), Convert.ToDecimal(Costo.Text), Nombre.Text, Convert.ToDecimal(PVunitario), Convert.ToDecimal(PVBulto));
+                Conexion.executeProcedure("modificarStock", Conexion.generarArgumentos("_id_stock", "_cantidad", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), id_stock, Convert.ToInt32(Cantidad.Text), Convert.ToDecimal(Costo.Text), Nombre.Text, Convert.ToDecimal(PVunitario.Text), Convert.ToDecimal(PVBulto.Text));
                 Conexion.closeConnection();
             }
         }

@@ -15,6 +15,13 @@ namespace Sesedublo_SLPL.Historial_de_Operacionesns
         public Historial_de_Operaciones()
         {
             InitializeComponent();
+            this.Closing += new CancelEventHandler(Avoid_Closing);
+        }
+
+        void Avoid_Closing(object sender, CancelEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
         }
 
         private void Historial_de_Operaciones_Load(object sender, EventArgs e)

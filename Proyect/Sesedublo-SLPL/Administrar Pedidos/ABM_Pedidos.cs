@@ -15,6 +15,13 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         public ABM_Pedidos()
         {
             InitializeComponent();
+            this.Closing += new CancelEventHandler(Avoid_Closing);
+        }
+
+        void Avoid_Closing(object sender, CancelEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
         }
     }
 }

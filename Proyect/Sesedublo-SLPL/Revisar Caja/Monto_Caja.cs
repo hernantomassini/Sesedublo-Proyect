@@ -15,6 +15,13 @@ namespace Sesedublo_SLPL.Revisar_Cajans
         public Monto_Caja()
         {
             InitializeComponent();
+            this.Closing += new CancelEventHandler(Avoid_Closing);
+        }
+
+        void Avoid_Closing(object sender, CancelEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
         }
 
         private void Monto_Caja_Load(object sender, EventArgs e)

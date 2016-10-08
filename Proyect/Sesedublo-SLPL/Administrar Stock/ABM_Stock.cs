@@ -15,6 +15,13 @@ namespace Sesedublo_SLPL.Administrar_Productos
         public ABM_Stock()
         {
             InitializeComponent();
+            this.Closing += new CancelEventHandler(Avoid_Closing);
+        }
+
+        void Avoid_Closing(object sender, CancelEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
         }
     }
 }

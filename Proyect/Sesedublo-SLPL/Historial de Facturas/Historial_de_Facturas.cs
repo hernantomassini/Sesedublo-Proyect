@@ -15,11 +15,18 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
         public Historial_de_Facturas()
         {
             InitializeComponent();
+            this.Closing += new CancelEventHandler(Avoid_Closing);
         }
 
         private void Historial_de_Facturas_Load(object sender, EventArgs e)
         {
 
+        }
+
+        void Avoid_Closing(object sender, CancelEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
         }
     }
 }

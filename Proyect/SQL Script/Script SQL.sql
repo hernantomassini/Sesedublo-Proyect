@@ -168,7 +168,6 @@ SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
     
 END //
 
-<<<<<<< HEAD
 CREATE PROCEDURE cargarGrillaClientes (IN _nombre VARCHAR(255), _apellido VARCHAR(50), _direccion VARCHAR(255))
 BEGIN
 

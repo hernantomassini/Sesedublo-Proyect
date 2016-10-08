@@ -1,4 +1,5 @@
 ﻿using Enums;
+using MetroFramework.Forms;
 using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
@@ -7,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Administrar_Stock
 {
-    public partial class AddProducto : Form
+    public partial class AddProducto : MetroForm
     {
         accionesABM flag = accionesABM.Crear;
         int id_stock = -1;

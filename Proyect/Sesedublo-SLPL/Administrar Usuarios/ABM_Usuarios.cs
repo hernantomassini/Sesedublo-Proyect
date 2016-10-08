@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Administrar_Usuarios
 {
-    public partial class ABM_Usuarios : Form
+    public partial class ABM_Usuarios : MetroForm
     {
         public ABM_Usuarios()
         {

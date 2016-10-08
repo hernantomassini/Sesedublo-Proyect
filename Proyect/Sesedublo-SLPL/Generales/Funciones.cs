@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MetroFramework;
+using MetroFramework.Forms;
+using MySql.Data.MySqlClient;
 using System;
 using System.Configuration;
 using System.Windows.Forms;
@@ -31,19 +33,19 @@ namespace Sesedublo_SLPL
             return ConfigurationManager.AppSettings["DB"];
         }
 
-        public static DialogResult imprimirMensajeDeAlerta(string descripcionAlerta)
+        public static DialogResult imprimirMensajeDeAlerta(string descripcionAlerta, MetroForm form)
         {
-            return (MessageBox.Show(descripcionAlerta, "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning));
+            return (MetroMessageBox.Show(form,descripcionAlerta, "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning));
         }
 
-        public static void imprimirMensajeDeError(string descripcionError)
+        public static void imprimirMensajeDeError(string descripcionError, MetroForm form)
         {
-            MessageBox.Show(descripcionError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MetroMessageBox.Show(form,descripcionError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public static void imprimirMensajeDeAviso(string descripcionAviso)
+        public static void imprimirMensajeDeAviso(string descripcionAviso, MetroForm form)
         {
-            MessageBox.Show(descripcionAviso, "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MetroMessageBox.Show(form, descripcionAviso, "Informe", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Information);
         }
 
         public static void limpiarDGV(DataGridView dgv)

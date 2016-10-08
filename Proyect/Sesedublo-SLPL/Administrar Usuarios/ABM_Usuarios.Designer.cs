@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // ABM_Usuarios
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "ABM_Usuarios";
+            this.ClientSize = new System.Drawing.Size(300, 300);
+            this.Name = "ABM_Usuarios";
+            this.Text = "Clientes";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

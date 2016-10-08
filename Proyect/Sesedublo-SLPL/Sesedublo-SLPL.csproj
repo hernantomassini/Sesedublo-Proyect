@@ -36,7 +36,16 @@
     <Reference Include="GlassButton">
       <HintPath>dll\GlassButton.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MetroFramework">
+      <HintPath>dll\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design">
+      <HintPath>dll\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts">
+      <HintPath>dll\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -106,11 +115,17 @@
     <Compile Include="Revisar Caja\Monto_Caja.Designer.cs">
       <DependentUpon>Monto_Caja.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Administrar Pedidos\ABM_Pedidos.resx">
+      <DependentUpon>ABM_Pedidos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrar Stock\ABM_Stock.resx">
       <DependentUpon>ABM_Stock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrar Stock\AddProducto.resx">
       <DependentUpon>AddProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrar Usuarios\ABM_Usuarios.resx">
+      <DependentUpon>ABM_Usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Historial de Facturas\Historial_de_Facturas.resx">
       <DependentUpon>Historial_de_Facturas.cs</DependentUpon>

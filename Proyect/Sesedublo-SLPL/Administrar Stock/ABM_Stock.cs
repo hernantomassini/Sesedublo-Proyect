@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MetroFramework.Forms;
+using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
 using System.ComponentModel;
@@ -6,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Administrar_Productos
 {
-    public partial class ABM_Stock : Form
+    public partial class ABM_Stock : MetroForm
     {
         public ABM_Stock()
         {
@@ -31,7 +32,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
         {
             DataGridViewRow filaDgv = StockDGV.CurrentRow;
 
-            if (!Validaciones.validarFilaMarcada(filaDgv))
+            if (!Validaciones.validarFilaMarcada(filaDgv,this))
             {
                 return;
             }
@@ -46,12 +47,12 @@ namespace Sesedublo_SLPL.Administrar_Productos
         {
             DataGridViewRow filaDgv = StockDGV.CurrentRow;
 
-            if (!Validaciones.validarFilaMarcada(filaDgv))
+            if (!Validaciones.validarFilaMarcada(filaDgv,this))
             {
                 return;
             }
 
-            if (Funciones.imprimirMensajeDeAlerta("¿Estás seguro de borrar este producto? Esta acción no se podrá deshacer.") == DialogResult.Cancel)
+            if (Funciones.imprimirMensajeDeAlerta("¿Estás seguro de borrar este producto? Esta acción no se podrá deshacer.", this) == DialogResult.Cancel)
             {
                 return;
             }

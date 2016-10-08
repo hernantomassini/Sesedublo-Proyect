@@ -1,11 +1,12 @@
-﻿using Sesedublo_SLPL.Generales;
+﻿using MetroFramework.Forms;
+using Sesedublo_SLPL.Generales;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Sesedublo_SLPL
 {
-    public partial class Pantalla_Principal : Form
+    public partial class Pantalla_Principal : MetroForm
     {
         const int WM_SYSCOMMAND = 0x0112;
         const int SC_CLOSE = 0xF060;
@@ -25,7 +26,7 @@ namespace Sesedublo_SLPL
         {
             if ((m.Msg == WM_SYSCOMMAND) && (m.WParam == (IntPtr)SC_CLOSE))
             {
-                if (Funciones.imprimirMensajeDeAlerta("¿Realmente desea salir? Esta acción finalizará el programa") == DialogResult.Cancel)
+                if (Funciones.imprimirMensajeDeAlerta("¿Realmente desea salir? Esta acción finalizará el programa",this) == DialogResult.Cancel)
                 {
                     return;
                 }
@@ -69,5 +70,6 @@ namespace Sesedublo_SLPL
         {
             Manejador_Formularios.Monto_Caja.Show();
         }
+
     }
 }

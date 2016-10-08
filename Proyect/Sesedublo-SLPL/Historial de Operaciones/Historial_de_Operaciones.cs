@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Historial_de_Operacionesns
 {
-    public partial class Historial_de_Operaciones : Form
+    public partial class Historial_de_Operaciones : MetroForm
     {
         public Historial_de_Operaciones()
         {

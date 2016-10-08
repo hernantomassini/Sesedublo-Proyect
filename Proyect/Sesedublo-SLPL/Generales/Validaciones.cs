@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework.Forms;
+using System;
 using System.Text;
 using System.Windows.Forms;
 
@@ -18,11 +19,11 @@ namespace Sesedublo_SLPL.Generales
             return true;
         }
 
-        public static bool validarFilaMarcada(DataGridViewRow filaDgv)
+        public static bool validarFilaMarcada(DataGridViewRow filaDgv, MetroForm form)
         {
             if (filaDgv == null)
             {
-                Funciones.imprimirMensajeDeError("No hay ninguna fila seleccionada.");
+                Funciones.imprimirMensajeDeError("No hay ninguna fila seleccionada.",form);
                 return false;
             }
             return true;

@@ -1,4 +1,4 @@
-﻿namespace Sesedublo_SLPL.Revisar_Caja
+﻿namespace Sesedublo_SLPL.Revisar_Cajans
 {
     partial class Monto_Caja
     {
@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Monto_Caja
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Name = "Monto_Caja";
             this.Text = "Monto_Caja";
+            this.Load += new System.EventHandler(this.Monto_Caja_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

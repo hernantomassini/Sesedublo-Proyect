@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Administrar_Productos
 {
-    public partial class ABM_Productos : Form
+    public partial class ABM_Stock : Form
     {
-        public ABM_Productos()
+        public ABM_Stock()
         {
             InitializeComponent();
         }

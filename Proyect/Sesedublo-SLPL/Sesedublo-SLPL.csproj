@@ -36,7 +36,7 @@
     <Reference Include="GlassButton">
       <HintPath>dll\GlassButton.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -57,11 +57,11 @@
     <Compile Include="Administrar Pedidos\ABM_Pedidos.Designer.cs">
       <DependentUpon>ABM_Pedidos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Administrar Productos\ABM_Productos.cs">
+    <Compile Include="Administrar Stock\ABM_Stock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administrar Productos\ABM_Productos.Designer.cs">
-      <DependentUpon>ABM_Productos.cs</DependentUpon>
+    <Compile Include="Administrar Stock\ABM_Stock.Designer.cs">
+      <DependentUpon>ABM_Stock.cs</DependentUpon>
     </Compile>
     <Compile Include="Administrar Usuarios\ABM_Usuarios.cs">
       <SubType>Form</SubType>
@@ -100,6 +100,12 @@
     <Compile Include="Revisar Caja\Monto_Caja.Designer.cs">
       <DependentUpon>Monto_Caja.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Historial de Facturas\Historial_de_Facturas.resx">
+      <DependentUpon>Historial_de_Facturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Historial de Operaciones\Historial_de_Operaciones.resx">
+      <DependentUpon>Historial_de_Operaciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -109,6 +115,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Revisar Caja\Monto_Caja.resx">
+      <DependentUpon>Monto_Caja.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

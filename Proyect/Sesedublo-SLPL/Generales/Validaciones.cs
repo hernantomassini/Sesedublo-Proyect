@@ -1,10 +1,8 @@
-﻿using MySql.Data.MySqlClient;
-using System;
-using System.Data.SqlClient;
+﻿using System;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Proyecto_Honda.Generales
+namespace Sesedublo_SLPL.Generales
 {
     public class Validaciones
     {

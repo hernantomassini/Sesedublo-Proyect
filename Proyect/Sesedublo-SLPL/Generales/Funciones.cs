@@ -3,7 +3,7 @@ using System;
 using System.Configuration;
 using System.Windows.Forms;
 
-namespace Proyecto_Honda
+namespace Sesedublo_SLPL
 {
     class Funciones
     {

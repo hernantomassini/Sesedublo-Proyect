@@ -1,6 +1,6 @@
 ﻿namespace Sesedublo_SLPL.Administrar_Productos
 {
-    partial class ABM_Productos
+    partial class ABM_Stock
     {
         /// <summary>
         /// Required designer variable.

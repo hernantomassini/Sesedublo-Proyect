@@ -1,14 +1,11 @@
-﻿
-
-using Sesedublo_SLPL;
-using Sesedublo_SLPL.Administrar_Pedidos;
+﻿using Sesedublo_SLPL.Administrar_Pedidos;
 using Sesedublo_SLPL.Administrar_Productos;
 using Sesedublo_SLPL.Administrar_Usuarios;
-using Sesedublo_SLPL.Historial_de_Facturas;
-using Sesedublo_SLPL.Historial_de_Operaciones;
-using Sesedublo_SLPL.Revisar_Caja;
+using Sesedublo_SLPL.Revisar_Cajans;
+using Sesedublo_SLPL.Historial_de_Operacionesns;
+using Sesedublo_SLPL.Historial_de_Facturasns;
 
-namespace Proyecto_Honda.Generales
+namespace Sesedublo_SLPL.Generales
 {
     public class Manejador_Formularios
     {
@@ -60,17 +57,17 @@ namespace Proyecto_Honda.Generales
             }
         }
 
-        private static ABM_Productos ABM_Productos_Form;
-        public static ABM_Productos ABM_Productos
+        private static ABM_Stock ABM_Stock_Form;
+        public static ABM_Stock ABM_Stock
         {
             get
             {
-                if (ABM_Productos_Form == null)
+                if (ABM_Stock_Form == null)
                 {
-                    ABM_Productos_Form = new ABM_Productos();
+                    ABM_Stock_Form = new ABM_Stock();
                 }
-                //ABM_Usuarios_Form.getData();
-                return ABM_Productos_Form;
+                //ABM_Stock_Form.getData();
+                return ABM_Stock_Form;
             }
         }
 

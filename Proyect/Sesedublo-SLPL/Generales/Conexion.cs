@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 
-namespace Proyecto_Honda
+namespace Sesedublo_SLPL
 {
     sealed class Conexion
     {

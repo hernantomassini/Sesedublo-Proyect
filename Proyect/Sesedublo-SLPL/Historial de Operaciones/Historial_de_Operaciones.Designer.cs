@@ -1,4 +1,4 @@
-﻿namespace Sesedublo_SLPL.Historial_de_Operaciones
+﻿namespace Sesedublo_SLPL.Historial_de_Operacionesns
 {
     partial class Historial_de_Operaciones
     {
@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Historial_de_Operaciones
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Name = "Historial_de_Operaciones";
             this.Text = "Historial_de_Operaciones";
+            this.Load += new System.EventHandler(this.Historial_de_Operaciones_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

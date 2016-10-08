@@ -152,14 +152,4 @@ SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
 
 END //
 
-CREATE PROCEDURE obtenerStock (IN _id_stock INT) 
-BEGIN
-
-SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
-
-	DELETE FROM Stock WHERE id_stock = _id_stock;
-	DELETE FROM Productos WHERE id_producto = @_id_producto;
-
-END //
-
 DELIMITER ;

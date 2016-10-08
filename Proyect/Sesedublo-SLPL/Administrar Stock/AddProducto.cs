@@ -51,7 +51,9 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         private void Clean()
         {
-            Cantidad.Clear();
+            CantidadIndividual.Clear();
+            CantidadBultos.Clear();
+            UnidadesXBulto.SelectedIndex = 0;
             Nombre.Clear();
             Costo.Clear();
             PVunitario.Clear();
@@ -67,14 +69,16 @@ namespace Sesedublo_SLPL.Administrar_Stock
         {
             if(flag == accionesABM.Crear)
             {
-                Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), Convert.ToInt32(Cantidad.Text), Convert.ToDecimal(Costo.Text), Nombre.Text, Convert.ToDecimal(PVunitario.Text), Convert.ToDecimal(PVBulto.Text));
+                Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_stockInidividual", "_stockBultos", "_cantidadXBulto", "_costo" , "_nombre", "_PVUnitario", "_PVBulto"), Convert.ToInt32(CantidadIndividual.Text), Convert.ToInt32(CantidadBultos.Text), Convert.ToInt32(UnidadesXBulto.Text), Convert.ToDecimal(Costo.Text), Nombre.Text, Convert.ToDecimal(PVunitario.Text), Convert.ToDecimal(PVBulto.Text));
                 Conexion.closeConnection();
             }
             else
             {
-                Conexion.executeProcedure("modificarStock", Conexion.generarArgumentos("_id_stock", "_cantidad", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), id_stock, Convert.ToInt32(Cantidad.Text), Convert.ToDecimal(Costo.Text), Nombre.Text, Convert.ToDecimal(PVunitario.Text), Convert.ToDecimal(PVBulto.Text));
+                Conexion.executeProcedure("modificarStock", Conexion.generarArgumentos("_id_stock", "_stockInidividual", "_stockBultos", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), id_stock, Convert.ToInt32(CantidadIndividual.Text), Convert.ToInt32(CantidadBultos.Text), Convert.ToInt32(UnidadesXBulto.Text), Convert.ToDecimal(Costo.Text), Nombre.Text, Convert.ToDecimal(PVunitario.Text), Convert.ToDecimal(PVBulto.Text));
                 Conexion.closeConnection();
             }
+
+            Close();
         }
     }
 }

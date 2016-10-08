@@ -27,7 +27,9 @@ CREATE TABLE Caja (
 
 CREATE TABLE Productos (
     id_producto INT AUTO_INCREMENT,
-    cantidad INT,
+    stockInidividual INT,
+    stockBultos INT,
+    cantidadXBulto INT,
     costo DECIMAL(7 , 2 ),
     nombre VARCHAR(50),
     PVUnitario DECIMAL(7 , 2 ),
@@ -85,24 +87,18 @@ CREATE TABLE Facturas (
 
 CREATE TABLE Operaciones (
     id_operacion INT AUTO_INCREMENT,
-    operacion VARCHAR(30),
+    operacion VARCHAR(200),
     PRIMARY KEY (id_operacion)
 );
 
 CREATE TABLE NotasDeCredito (
     id_NotaDeCredito INT AUTO_INCREMENT,
     factura INT,
-    operacion INT,
     importe DECIMAL(7 , 5 ),
     PRIMARY KEY (id_NotaDeCredito),
-    FOREIGN KEY (operacion)
-        REFERENCES Operaciones (id_operacion),
     FOREIGN KEY (factura)
         REFERENCES Facturas (id_factura)
 );
-
-
-INSERT INTO Operaciones (operacion) VALUES ("Suma"), ("Resta");
 
 #Store Procedures
 DELIMITER //
@@ -110,30 +106,31 @@ DELIMITER //
 CREATE PROCEDURE obtenerStock () 
 BEGIN
 
-SELECT s.id_stock, p.cantidad, p.nombre, p.costo, p.PVUnitario, p.PVBulto 
-FROM Stock s INNER JOIN Productos p 
-ON p.id_producto = s.producto;
+	SELECT s.id_stock, p.stockInidividual, p.stockBultos, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto 
+	FROM Stock s INNER JOIN Productos p 
+	ON p.id_producto = s.producto;
 
 END //
 
-
-CREATE PROCEDURE agregarStock (IN _cantidad INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
+CREATE PROCEDURE agregarStock (IN _stockInidividual INT, IN _stockBultos INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
 BEGIN
 
-	INSERT INTO Productos (cantidad, costo, nombre, PVUnitario, PVBulto) VALUES (_cantidad, _costo, _nombre, _PVUnitario, _PVBulto);
+	INSERT INTO Productos (stockInidividual, stockBultos, cantidadXBulto, costo, nombre, PVUnitario, PVBulto) VALUES (_stockInidividual, _stockBultos, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto);
     SET @_id_producto = LAST_INSERT_ID();
     INSERT INTO Stock (producto) VALUES (@_id_producto);
     
 
 END //
 
-CREATE PROCEDURE modificarStock (IN _id_stock INT, IN _cantidad INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
+CREATE PROCEDURE modificarStock (IN _id_stock INT, IN _stockInidividual INT, IN _stockBultos INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
 BEGIN
 
 SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
 
 	UPDATE Productos SET 
-    cantidad = _cantidad,
+    stockInidividual = _stockInidividual,
+    stockBultos = _stockBultos,
+    cantidadXBulto = _cantidadXBulto,
     costo = _costo,
     nombre = _nombre,
     PVUnitario = _PVUnitario,

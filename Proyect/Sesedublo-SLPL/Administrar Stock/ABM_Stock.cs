@@ -12,6 +12,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
         {
             InitializeComponent();
             this.Closing += new CancelEventHandler(Avoid_Closing);
+            cargarDGV();
         }
 
         void Avoid_Closing(object sender, CancelEventArgs e)
@@ -50,7 +51,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
                 return;
             }
 
-            if (Funciones.imprimirMensajeDeAlerta("¿Está segura de borrar este producto? Esta acción no se podrá deshacer.") == DialogResult.Cancel)
+            if (Funciones.imprimirMensajeDeAlerta("¿Estás seguro de borrar este producto? Esta acción no se podrá deshacer.") == DialogResult.Cancel)
             {
                 return;
             }
@@ -65,13 +66,13 @@ namespace Sesedublo_SLPL.Administrar_Productos
 
         public void cargarDGV()
         {
+            Funciones.limpiarDGV(StockDGV);
             MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerStock", Conexion.generarArgumentos());
 
             while(reader.Read())
-            {
-                reader.Close();
-                Conexion.closeConnection();
-                return;
+            {   
+                //ID Stock 0 - Cant. individual 1 - Cant. Bultos 2 - Cant. X Bulto 3 - Nombre 4 - Costo 5 - PVU 6 - PVB 7
+                StockDGV.Rows.Add(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetString(4), reader.GetDecimal(5), reader.GetDecimal(6), reader.GetDecimal(7));
             }
 
             reader.Close();
@@ -81,6 +82,11 @@ namespace Sesedublo_SLPL.Administrar_Productos
         private void AtrasButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void ABM_Stock_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

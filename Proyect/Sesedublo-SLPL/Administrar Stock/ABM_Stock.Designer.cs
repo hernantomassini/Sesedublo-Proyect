@@ -34,7 +34,9 @@
             this.EliminarProductoStockBtn = new System.Windows.Forms.Button();
             this.StockDGV = new System.Windows.Forms.DataGridView();
             this.id_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cindividual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantXBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PVUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,7 +46,7 @@
             // 
             // AtrasButton
             // 
-            this.AtrasButton.Location = new System.Drawing.Point(12, 292);
+            this.AtrasButton.Location = new System.Drawing.Point(12, 281);
             this.AtrasButton.Name = "AtrasButton";
             this.AtrasButton.Size = new System.Drawing.Size(75, 35);
             this.AtrasButton.TabIndex = 0;
@@ -54,7 +56,7 @@
             // 
             // AgregarProductoStockBtn
             // 
-            this.AgregarProductoStockBtn.Location = new System.Drawing.Point(487, 292);
+            this.AgregarProductoStockBtn.Location = new System.Drawing.Point(680, 281);
             this.AgregarProductoStockBtn.Name = "AgregarProductoStockBtn";
             this.AgregarProductoStockBtn.Size = new System.Drawing.Size(103, 35);
             this.AgregarProductoStockBtn.TabIndex = 1;
@@ -64,7 +66,7 @@
             // 
             // modificarProductoStockBtn
             // 
-            this.modificarProductoStockBtn.Location = new System.Drawing.Point(409, 292);
+            this.modificarProductoStockBtn.Location = new System.Drawing.Point(602, 281);
             this.modificarProductoStockBtn.Name = "modificarProductoStockBtn";
             this.modificarProductoStockBtn.Size = new System.Drawing.Size(72, 35);
             this.modificarProductoStockBtn.TabIndex = 2;
@@ -74,7 +76,7 @@
             // 
             // EliminarProductoStockBtn
             // 
-            this.EliminarProductoStockBtn.Location = new System.Drawing.Point(305, 292);
+            this.EliminarProductoStockBtn.Location = new System.Drawing.Point(498, 281);
             this.EliminarProductoStockBtn.Name = "EliminarProductoStockBtn";
             this.EliminarProductoStockBtn.Size = new System.Drawing.Size(98, 35);
             this.EliminarProductoStockBtn.TabIndex = 3;
@@ -89,7 +91,9 @@
             this.StockDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.StockDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_stock,
-            this.cantidad,
+            this.Cindividual,
+            this.CBulto,
+            this.CantXBulto,
             this.Producto,
             this.Costo,
             this.PVUnitario,
@@ -100,7 +104,7 @@
             this.StockDGV.ReadOnly = true;
             this.StockDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.StockDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.StockDGV.Size = new System.Drawing.Size(578, 263);
+            this.StockDGV.Size = new System.Drawing.Size(771, 263);
             this.StockDGV.TabIndex = 4;
             // 
             // id_stock
@@ -113,14 +117,32 @@
             this.id_stock.Visible = false;
             this.id_stock.Width = 74;
             // 
-            // cantidad
+            // Cindividual
             // 
-            this.cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.Name = "cantidad";
-            this.cantidad.ReadOnly = true;
-            this.cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cantidad.Width = 74;
+            this.Cindividual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Cindividual.HeaderText = "Cant. individual";
+            this.Cindividual.Name = "Cindividual";
+            this.Cindividual.ReadOnly = true;
+            this.Cindividual.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Cindividual.Width = 96;
+            // 
+            // CBulto
+            // 
+            this.CBulto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.CBulto.HeaderText = "Cant. Bultos";
+            this.CBulto.Name = "CBulto";
+            this.CBulto.ReadOnly = true;
+            this.CBulto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CBulto.Width = 82;
+            // 
+            // CantXBulto
+            // 
+            this.CantXBulto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.CantXBulto.HeaderText = "Cant. Por Bulto";
+            this.CantXBulto.Name = "CantXBulto";
+            this.CantXBulto.ReadOnly = true;
+            this.CantXBulto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CantXBulto.Width = 95;
             // 
             // Producto
             // 
@@ -162,7 +184,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(602, 339);
+            this.ClientSize = new System.Drawing.Size(795, 329);
             this.Controls.Add(this.StockDGV);
             this.Controls.Add(this.EliminarProductoStockBtn);
             this.Controls.Add(this.modificarProductoStockBtn);
@@ -170,6 +192,7 @@
             this.Controls.Add(this.AtrasButton);
             this.Name = "ABM_Stock";
             this.Text = "ABM_Productos";
+            this.Load += new System.EventHandler(this.ABM_Stock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.StockDGV)).EndInit();
             this.ResumeLayout(false);
 
@@ -183,7 +206,9 @@
         private System.Windows.Forms.Button EliminarProductoStockBtn;
         private System.Windows.Forms.DataGridView StockDGV;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_stock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cindividual;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CBulto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantXBulto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
         private System.Windows.Forms.DataGridViewTextBoxColumn PVUnitario;

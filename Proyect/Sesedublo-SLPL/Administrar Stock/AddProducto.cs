@@ -31,7 +31,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         }
 
-        internal void AgregarProducto()
+        private void AgregarProducto()
         {
             throw new NotImplementedException();
         }

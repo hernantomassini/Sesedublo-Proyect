@@ -5,6 +5,7 @@ using Sesedublo_SLPL.Revisar_Cajans;
 using Sesedublo_SLPL.Historial_de_Operacionesns;
 using Sesedublo_SLPL.Historial_de_Facturasns;
 using Sesedublo_SLPL.Administrar_Stock;
+using Sesedublo_SLPL.Revisar_Caja;
 
 namespace Sesedublo_SLPL.Generales
 {
@@ -109,7 +110,7 @@ namespace Sesedublo_SLPL.Generales
                 {
                     Monto_Caja_Form = new Monto_Caja();
                 }
-               // Monto_Caja_Form.getData();
+                Monto_Caja_Form.updatearLabels();
                 return Monto_Caja_Form;
             }
         }
@@ -124,6 +125,19 @@ namespace Sesedublo_SLPL.Generales
                     AddProducto_Form = new AddProducto();
                 }
                 return AddProducto_Form;
+            }
+        }
+
+        private static ModifyCash ModifyCash_Form;
+        public static ModifyCash ModifyCash
+        {
+            get
+            {
+                if (ModifyCash_Form == null)
+                {
+                    ModifyCash_Form = new ModifyCash();
+                }
+                return ModifyCash_Form;
             }
         }
     }

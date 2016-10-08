@@ -19,6 +19,10 @@ DROP PROCEDURE IF EXISTS agregarStock;
 DROP PROCEDURE IF EXISTS modificarStock;
 DROP PROCEDURE IF EXISTS borrarStock;
 DROP PROCEDURE IF EXISTS obtenerProducto;
+DROP PROCEDURE IF EXISTS agregarEfectivo;
+DROP PROCEDURE IF EXISTS restarEfectivo;
+DROP PROCEDURE IF EXISTS obtenerMontoEnEfectivo;
+DROP PROCEDURE IF EXISTS obtenerMontoEnProductos;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -26,9 +30,11 @@ CREATE TABLE Caja (
     PRIMARY KEY (id_caja)
 );
 
+INSERT INTO Caja (efectivoActual) VALUES (0);
+
 CREATE TABLE Productos (
     id_producto INT AUTO_INCREMENT,
-	cantidad INT,
+    cantidad INT,
     cantidadXBulto INT,
     costo DECIMAL(7 , 2 ),
     nombre VARCHAR(50),
@@ -156,4 +162,37 @@ SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
     
 END //
 
-DELIMITER ;
+CREATE PROCEDURE agregarEfectivo (IN _montoASumar INT) 
+BEGIN
+
+SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
+
+    UPDATE Caja SET efectivoActual = (@_efectivo + _montoASumar) WHERE id_caja=1;
+
+END //
+
+CREATE PROCEDURE restarEfectivo (IN _montoARestar INT) 
+BEGIN
+
+SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
+
+    UPDATE Caja SET efectivoActual = (@_efectivo - _montoARestar) WHERE id_caja=1;
+
+END //
+
+CREATE PROCEDURE obtenerMontoEnEfectivo () 
+BEGIN
+
+	SELECT efectivoActual FROM Caja WHERE id_caja = 1;
+
+END //
+
+CREATE PROCEDURE obtenerMontoEnProductos () 
+BEGIN
+
+		SELECT SUM(p.costo) FROM Stock s INNER JOIN Productos p
+        ON p.id_producto = s.producto;
+
+END //
+
+DELIMITER ;	

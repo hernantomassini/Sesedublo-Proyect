@@ -145,6 +145,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.StockDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.StockDGV.Size = new System.Drawing.Size(705, 324);
             this.StockDGV.TabIndex = 4;
+            this.StockDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StockDGV_CellContentClick);
             // 
             // id_stock
             // 
@@ -154,7 +155,6 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.id_stock.ReadOnly = true;
             this.id_stock.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.id_stock.Visible = false;
-            this.id_stock.Width = 77;
             // 
             // Cantidad
             // 

@@ -109,6 +109,12 @@
     </Compile>
     <Compile Include="Generales\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Revisar Caja\ModifyCash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Revisar Caja\ModifyCash.Designer.cs">
+      <DependentUpon>ModifyCash.cs</DependentUpon>
+    </Compile>
     <Compile Include="Revisar Caja\Monto_Caja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Revisar Caja\ModifyCash.resx">
+      <DependentUpon>ModifyCash.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Revisar Caja\Monto_Caja.resx">
       <DependentUpon>Monto_Caja.cs</DependentUpon>
     </EmbeddedResource>

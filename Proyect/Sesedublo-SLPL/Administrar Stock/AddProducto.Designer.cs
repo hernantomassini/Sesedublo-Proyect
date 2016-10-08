@@ -33,7 +33,7 @@
             this.PVunitario = new System.Windows.Forms.TextBox();
             this.PVBulto = new System.Windows.Forms.TextBox();
             this.AtrasBtn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.AgregarProductoBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,14 +60,14 @@
             // 
             // PVunitario
             // 
-            this.PVunitario.Location = new System.Drawing.Point(128, 139);
+            this.PVunitario.Location = new System.Drawing.Point(128, 113);
             this.PVunitario.Name = "PVunitario";
             this.PVunitario.Size = new System.Drawing.Size(100, 20);
             this.PVunitario.TabIndex = 2;
             // 
             // PVBulto
             // 
-            this.PVBulto.Location = new System.Drawing.Point(128, 113);
+            this.PVBulto.Location = new System.Drawing.Point(128, 139);
             this.PVBulto.Name = "PVBulto";
             this.PVBulto.Size = new System.Drawing.Size(100, 20);
             this.PVBulto.TabIndex = 3;
@@ -82,14 +82,15 @@
             this.AtrasBtn.UseVisualStyleBackColor = true;
             this.AtrasBtn.Click += new System.EventHandler(this.AtrasBtn_Click);
             // 
-            // button2
+            // AgregarProductoBtn
             // 
-            this.button2.Location = new System.Drawing.Point(174, 177);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 28);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.AgregarProductoBtn.Location = new System.Drawing.Point(174, 177);
+            this.AgregarProductoBtn.Name = "AgregarProductoBtn";
+            this.AgregarProductoBtn.Size = new System.Drawing.Size(75, 28);
+            this.AgregarProductoBtn.TabIndex = 5;
+            this.AgregarProductoBtn.Text = "Aceptar";
+            this.AgregarProductoBtn.UseVisualStyleBackColor = true;
+            this.AgregarProductoBtn.Click += new System.EventHandler(this.AgregarProductoBtn_Click);
             // 
             // label1
             // 
@@ -155,7 +156,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.AgregarProductoBtn);
             this.Controls.Add(this.AtrasBtn);
             this.Controls.Add(this.PVBulto);
             this.Controls.Add(this.PVunitario);
@@ -176,7 +177,7 @@
         private System.Windows.Forms.TextBox PVunitario;
         private System.Windows.Forms.TextBox PVBulto;
         private System.Windows.Forms.Button AtrasBtn;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button AgregarProductoBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

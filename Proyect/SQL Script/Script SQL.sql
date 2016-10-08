@@ -13,6 +13,12 @@ DROP TABLE IF EXISTS Clientes;
 DROP TABLE IF EXISTS Productos;
 DROP TABLE IF EXISTS Caja;
 
+#DROP PROCEDURES:
+DROP PROCEDURE IF EXISTS obtenerStock;
+DROP PROCEDURE IF EXISTS agregarStock;
+DROP PROCEDURE IF EXISTS modificarStock;
+DROP PROCEDURE IF EXISTS borrarStock;
+
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
     efectivoActual DECIMAL(20 , 2 ),
@@ -97,3 +103,63 @@ CREATE TABLE NotasDeCredito (
 
 
 INSERT INTO Operaciones (operacion) VALUES ("Suma"), ("Resta");
+
+#Store Procedures
+DELIMITER //
+
+CREATE PROCEDURE obtenerStock () 
+BEGIN
+
+SELECT s.id_stock, p.cantidad, p.nombre, p.costo, p.PVUnitario, p.PVBulto 
+FROM Stock s INNER JOIN Productos p 
+ON p.id_producto = s.producto;
+
+END //
+
+
+CREATE PROCEDURE agregarStock (IN _cantidad INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
+BEGIN
+
+	INSERT INTO Productos (cantidad, costo, nombre, PVUnitario, PVBulto) VALUES (_cantidad, _costo, _nombre, _PVUnitario, _PVBulto);
+    SET @_id_producto = LAST_INSERT_ID();
+    INSERT INTO Stock (producto) VALUES (@_id_producto);
+    
+
+END //
+
+CREATE PROCEDURE modificarStock (IN _id_stock INT, IN _cantidad INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
+BEGIN
+
+SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
+
+	UPDATE Productos SET 
+    cantidad = _cantidad,
+    costo = _costo,
+    nombre = _nombre,
+    PVUnitario = _PVUnitario,
+    PVBulto = _PVBulto
+    WHERE id_producto = @_id_producto;
+
+END //
+
+CREATE PROCEDURE borrarStock (IN _id_stock INT) 
+BEGIN
+
+SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
+
+	DELETE FROM Stock WHERE id_stock = _id_stock;
+	DELETE FROM Productos WHERE id_producto = @_id_producto;
+
+END //
+
+CREATE PROCEDURE obtenerStock (IN _id_stock INT) 
+BEGIN
+
+SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
+
+	DELETE FROM Stock WHERE id_stock = _id_stock;
+	DELETE FROM Productos WHERE id_producto = @_id_producto;
+
+END //
+
+DELIMITER ;

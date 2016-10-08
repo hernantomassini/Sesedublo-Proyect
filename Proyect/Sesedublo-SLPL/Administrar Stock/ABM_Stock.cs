@@ -1,4 +1,5 @@
-﻿using Sesedublo_SLPL.Generales;
+﻿using MySql.Data.MySqlClient;
+using Sesedublo_SLPL.Generales;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -59,12 +60,22 @@ namespace Sesedublo_SLPL.Administrar_Productos
             Conexion.executeProcedure("borrarStock", Conexion.generarArgumentos("_id_stock"), id_stock);
             Conexion.closeConnection();
 
-            this.cargarDGV();
+            cargarDGV();
         }
 
-        private void cargarDGV()
+        public void cargarDGV()
         {
-            throw new NotImplementedException();
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerStock", Conexion.generarArgumentos());
+
+            while(reader.Read())
+            {
+                reader.Close();
+                Conexion.closeConnection();
+                return;
+            }
+
+            reader.Close();
+            Conexion.closeConnection();
         }
 
         private void AtrasButton_Click(object sender, EventArgs e)

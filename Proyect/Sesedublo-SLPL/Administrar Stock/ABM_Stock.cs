@@ -69,11 +69,20 @@ namespace Sesedublo_SLPL.Administrar_Productos
         {
             Funciones.limpiarDGV(StockDGV);
             MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerStock", Conexion.generarArgumentos());
+            string cantidad;
+            int cantXBulto;
 
             while(reader.Read())
-            {   
-                //ID Stock 0 - Cant. individual 1 - Cant. Bultos 2 - Cant. X Bulto 3 - Nombre 4 - Costo 5 - PVU 6 - PVB 7
-                StockDGV.Rows.Add(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetString(4), reader.GetDecimal(5), reader.GetDecimal(6), reader.GetDecimal(7));
+            {
+                cantXBulto = reader.GetInt32(2);
+
+                if (cantXBulto == 0)
+                    cantidad = reader.GetString(1);
+                else
+                    cantidad = reader.GetString(1) + " bultos de " + cantXBulto;
+
+                //ID Stock 0 - Cantidad 1 - Nombre 3 - Costo 4 - PVU 5 - PVB 6
+                StockDGV.Rows.Add(reader.GetInt32(0), cantidad, reader.GetString(3), reader.GetDecimal(4), reader.GetDecimal(5), reader.GetDecimal(6));
             }
 
             reader.Close();

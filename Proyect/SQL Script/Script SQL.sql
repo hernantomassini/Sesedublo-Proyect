@@ -28,8 +28,7 @@ CREATE TABLE Caja (
 
 CREATE TABLE Productos (
     id_producto INT AUTO_INCREMENT,
-    stockInidividual INT,
-    stockBultos INT,
+	cantidad INT,
     cantidadXBulto INT,
     costo DECIMAL(7 , 2 ),
     nombre VARCHAR(50),
@@ -107,30 +106,28 @@ DELIMITER //
 CREATE PROCEDURE obtenerStock () 
 BEGIN
 
-	SELECT s.id_stock, p.stockInidividual, p.stockBultos, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto 
+	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto 
 	FROM Stock s INNER JOIN Productos p 
 	ON p.id_producto = s.producto;
 
 END //
 
-CREATE PROCEDURE agregarStock (IN _stockInidividual INT, IN _stockBultos INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
+CREATE PROCEDURE agregarStock (IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
 BEGIN
 
-	INSERT INTO Productos (stockInidividual, stockBultos, cantidadXBulto, costo, nombre, PVUnitario, PVBulto) VALUES (_stockInidividual, _stockBultos, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto);
+	INSERT INTO Productos (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto) VALUES (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto);
     SET @_id_producto = LAST_INSERT_ID();
     INSERT INTO Stock (producto) VALUES (@_id_producto);
     
-
 END //
 
-CREATE PROCEDURE modificarStock (IN _id_stock INT, IN _stockInidividual INT, IN _stockBultos INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
+CREATE PROCEDURE modificarStock (IN _id_stock INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
 BEGIN
 
 SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
 
 	UPDATE Productos SET 
-    stockInidividual = _stockInidividual,
-    stockBultos = _stockBultos,
+	cantidad = _cantidad,
     cantidadXBulto = _cantidadXBulto,
     costo = _costo,
     nombre = _nombre,
@@ -155,7 +152,7 @@ BEGIN
 
 SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
 
-	SELECT stockInidividual, stockBultos, cantidadXBulto, nombre, costo, PVUnitario, PVBulto FROM Productos WHERE id_producto = @_id_producto;
+	SELECT cantidad, cantidadXBulto, nombre, costo, PVUnitario, PVBulto FROM Productos WHERE id_producto = @_id_producto;
     
 END //
 

@@ -63,6 +63,12 @@
     <Compile Include="Administrar Stock\ABM_Stock.Designer.cs">
       <DependentUpon>ABM_Stock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administrar Stock\AddProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrar Stock\AddProducto.Designer.cs">
+      <DependentUpon>AddProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrar Usuarios\ABM_Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,12 @@
     <Compile Include="Revisar Caja\Monto_Caja.Designer.cs">
       <DependentUpon>Monto_Caja.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Administrar Stock\ABM_Stock.resx">
+      <DependentUpon>ABM_Stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrar Stock\AddProducto.resx">
+      <DependentUpon>AddProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Historial de Facturas\Historial_de_Facturas.resx">
       <DependentUpon>Historial_de_Facturas.cs</DependentUpon>
     </EmbeddedResource>

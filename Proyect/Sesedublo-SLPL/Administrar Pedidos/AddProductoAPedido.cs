@@ -1,5 +1,6 @@
 ﻿using System;
 using MetroFramework.Forms;
+using System.ComponentModel;
 
 namespace Sesedublo_SLPL.Administrar_Pedidos
 {

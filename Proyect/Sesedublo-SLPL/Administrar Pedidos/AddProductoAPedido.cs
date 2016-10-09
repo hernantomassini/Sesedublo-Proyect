@@ -1,6 +1,7 @@
 ﻿using System;
 using MetroFramework.Forms;
 using System.ComponentModel;
+using MySql.Data.MySqlClient;
 
 namespace Sesedublo_SLPL.Administrar_Pedidos
 {
@@ -31,6 +32,36 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         private void AceptarTile_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void cargarDGV()
+        {
+            Funciones.limpiarDGV(ProductosDGV);
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerStock", Conexion.generarArgumentos());
+            string cantidad;
+            int cantXBulto;
+            decimal precio;
+
+            while (reader.Read())
+            {
+                cantXBulto = reader.GetInt32(2);
+
+                if (cantXBulto == 0)
+                { 
+                    cantidad = reader.GetString(1);
+                    precio = reader.GetDecimal();
+                }
+                else
+                {
+                    cantidad = reader.GetString(1) + " bultos de " + cantXBulto + " unidades";
+                }
+
+                //ID Stock 0 - Cantidad 1 - Nombre 3 - Costo 4 - PVU 5 - PVB 6
+                 ProductosDGV.Rows.Add(reader.GetInt32(0), cantidad, reader.GetString(3), precio);
+            }
+
+            reader.Close();
+            Conexion.closeConnection();
         }
     }
 }

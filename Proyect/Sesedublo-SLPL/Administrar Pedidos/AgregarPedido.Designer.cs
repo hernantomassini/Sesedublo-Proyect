@@ -38,6 +38,10 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.ItemsDGV = new MetroFramework.Controls.MetroGrid();
+            this.IDProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AtrasTile = new MetroFramework.Controls.MetroTile();
             this.AceptarTile = new MetroFramework.Controls.MetroTile();
             this.direccion = new MetroFramework.Controls.MetroTextBox();
@@ -47,6 +51,7 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.AgregarProductoTile = new MetroFramework.Controls.MetroTile();
+            this.BorrarProductoTile = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.ClienteDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDGV)).BeginInit();
             this.SuspendLayout();
@@ -137,6 +142,11 @@
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ItemsDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.ItemsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ItemsDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDProducto,
+            this.CantidadProducto,
+            this.NombreProducto,
+            this.PrecioProducto});
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -166,6 +176,42 @@
             this.ItemsDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ItemsDGV.Size = new System.Drawing.Size(983, 168);
             this.ItemsDGV.TabIndex = 4;
+            // 
+            // IDProducto
+            // 
+            this.IDProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.IDProducto.HeaderText = "IDProducto";
+            this.IDProducto.Name = "IDProducto";
+            this.IDProducto.ReadOnly = true;
+            this.IDProducto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.IDProducto.Visible = false;
+            // 
+            // CantidadProducto
+            // 
+            this.CantidadProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.CantidadProducto.HeaderText = "Cantidad";
+            this.CantidadProducto.Name = "CantidadProducto";
+            this.CantidadProducto.ReadOnly = true;
+            this.CantidadProducto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CantidadProducto.Width = 82;
+            // 
+            // NombreProducto
+            // 
+            this.NombreProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.NombreProducto.HeaderText = "Nombre";
+            this.NombreProducto.Name = "NombreProducto";
+            this.NombreProducto.ReadOnly = true;
+            this.NombreProducto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.NombreProducto.Width = 78;
+            // 
+            // PrecioProducto
+            // 
+            this.PrecioProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.PrecioProducto.HeaderText = "Precio";
+            this.PrecioProducto.Name = "PrecioProducto";
+            this.PrecioProducto.ReadOnly = true;
+            this.PrecioProducto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.PrecioProducto.Width = 67;
             // 
             // AtrasTile
             // 
@@ -331,11 +377,23 @@
             this.AgregarProductoTile.UseSelectable = true;
             this.AgregarProductoTile.Click += new System.EventHandler(this.AgregarProductoTile_Click);
             // 
+            // BorrarProductoTile
+            // 
+            this.BorrarProductoTile.ActiveControl = null;
+            this.BorrarProductoTile.Location = new System.Drawing.Point(649, 506);
+            this.BorrarProductoTile.Name = "BorrarProductoTile";
+            this.BorrarProductoTile.Size = new System.Drawing.Size(124, 43);
+            this.BorrarProductoTile.TabIndex = 18;
+            this.BorrarProductoTile.Text = "Borrar producto";
+            this.BorrarProductoTile.UseSelectable = true;
+            this.BorrarProductoTile.Click += new System.EventHandler(this.BorrarProductoTile_Click);
+            // 
             // AgregarPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 572);
+            this.Controls.Add(this.BorrarProductoTile);
             this.Controls.Add(this.AgregarProductoTile);
             this.Controls.Add(this.direccion);
             this.Controls.Add(this.metroLabel4);
@@ -374,5 +432,10 @@
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroTile AgregarProductoTile;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioProducto;
+        private MetroFramework.Controls.MetroTile BorrarProductoTile;
     }
 }

@@ -29,6 +29,7 @@ DROP PROCEDURE IF EXISTS restarEfectivo;
 DROP PROCEDURE IF EXISTS obtenerMontoEnEfectivo;
 DROP PROCEDURE IF EXISTS obtenerMontoEnProductos;
 DROP PROCEDURE IF EXISTS obtenerPedidos;
+DROP PROCEDURE IF EXISTS borrarPedido;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -251,6 +252,13 @@ BEGIN
         INNER JOIN Items i ON p.id_pedido = i.pedido
         INNER JOIN Productos pr ON i.producto = pr.id_producto
 		WHERE f.pedido IS NULL;
+
+END //
+
+CREATE PROCEDURE borrarPedido (IN _id_pedido INT)
+BEGIN
+
+	DELETE FROM Pedidos WHERE id_pedido = _id_pedido;
 
 END //
 

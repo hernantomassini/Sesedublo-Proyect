@@ -22,5 +22,15 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
 
         }
+
+        private void AtrasTile_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void AceptarTile_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

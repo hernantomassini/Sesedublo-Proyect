@@ -4,6 +4,8 @@ using System.ComponentModel;
 using MySql.Data.MySqlClient;
 using System.Data;
 using Enums;
+using Sesedublo_SLPL.Generales;
+using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Administrar_Pedidos
 {
@@ -84,7 +86,26 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         private void AgregarProductoTile_Click(object sender, EventArgs e)
         {
+            Manejador_Formularios.AddProductoAPedido.Show();
+            Close();
+        }
 
+        private void BorrarProductoTile_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow filaDgv = ItemsDGV.CurrentRow;
+
+            if (!Validaciones.validarFilaMarcada(filaDgv, this))
+            {
+                return;
+            }
+
+            if (Funciones.imprimirMensajeDeAlerta("¿Estás seguro de borrar este producto? Esta acción no se podrá deshacer.", this) == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            //TODO - PROBAR.
+            ItemsDGV.Rows.Remove(filaDgv);
         }
     }
 }

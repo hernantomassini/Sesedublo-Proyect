@@ -97,9 +97,9 @@
             // titleModificarCliente
             // 
             this.titleModificarCliente.ActiveControl = null;
-            this.titleModificarCliente.Location = new System.Drawing.Point(528, 422);
+            this.titleModificarCliente.Location = new System.Drawing.Point(527, 422);
             this.titleModificarCliente.Name = "titleModificarCliente";
-            this.titleModificarCliente.Size = new System.Drawing.Size(152, 44);
+            this.titleModificarCliente.Size = new System.Drawing.Size(153, 44);
             this.titleModificarCliente.TabIndex = 1;
             this.titleModificarCliente.Text = "Modificar Cliente";
             this.titleModificarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -132,7 +132,7 @@
             // 
             this.titleEliminarCliente.ActiveControl = null;
             this.titleEliminarCliente.BackColor = System.Drawing.Color.IndianRed;
-            this.titleEliminarCliente.Location = new System.Drawing.Point(384, 422);
+            this.titleEliminarCliente.Location = new System.Drawing.Point(383, 422);
             this.titleEliminarCliente.Name = "titleEliminarCliente";
             this.titleEliminarCliente.Size = new System.Drawing.Size(138, 44);
             this.titleEliminarCliente.TabIndex = 3;
@@ -222,7 +222,7 @@
             // 
             // 
             this.apellido.CustomButton.Image = null;
-            this.apellido.CustomButton.Location = new System.Drawing.Point(96, 1);
+            this.apellido.CustomButton.Location = new System.Drawing.Point(85, 1);
             this.apellido.CustomButton.Name = "";
             this.apellido.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.apellido.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -242,7 +242,7 @@
             this.apellido.SelectionLength = 0;
             this.apellido.SelectionStart = 0;
             this.apellido.ShortcutsEnabled = true;
-            this.apellido.Size = new System.Drawing.Size(118, 23);
+            this.apellido.Size = new System.Drawing.Size(107, 23);
             this.apellido.TabIndex = 8;
             this.apellido.UseSelectable = true;
             this.apellido.WaterMark = "Buscar";
@@ -297,7 +297,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(857, 504);
+            this.ClientSize = new System.Drawing.Size(847, 481);
             this.Controls.Add(this.direccion);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.apellido);
@@ -309,10 +309,11 @@
             this.Controls.Add(this.titleAgregarCliente);
             this.Controls.Add(this.titleModificarCliente);
             this.Controls.Add(this.dgvClientes);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ABM_Usuarios";
             this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Text = "Clientes";
+            this.Load += new System.EventHandler(this.ABM_Usuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

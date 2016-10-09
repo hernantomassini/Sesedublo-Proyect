@@ -28,6 +28,7 @@ DROP PROCEDURE IF EXISTS agregarEfectivo;
 DROP PROCEDURE IF EXISTS restarEfectivo;
 DROP PROCEDURE IF EXISTS obtenerMontoEnEfectivo;
 DROP PROCEDURE IF EXISTS obtenerMontoEnProductos;
+DROP PROCEDURE IF EXISTS obtenerPedidos;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -238,6 +239,18 @@ BEGIN
 
 		SELECT SUM(p.costo) FROM Stock s INNER JOIN Productos p
         ON p.id_producto = s.producto;
+
+END //
+
+CREATE PROCEDURE obtenerPedidos () 
+BEGIN
+	
+        SELECT p.id_pedido, c.nombre, c.apellido, p.pagadoHastaElMomento, p.precio, group_concat(pr.nombre)  FROM Pedidos p 
+        LEFT OUTER JOIN Facturas f ON p.id_pedido = f.pedido
+        INNER JOIN Clientes c ON p.comprador = c.id_cliente
+        INNER JOIN Items i ON p.id_pedido = i.pedido
+        INNER JOIN Productos pr ON i.producto = pr.id_producto
+		WHERE f.pedido IS NULL;
 
 END //
 

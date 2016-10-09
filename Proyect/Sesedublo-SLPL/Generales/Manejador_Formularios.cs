@@ -154,6 +154,7 @@ namespace Sesedublo_SLPL.Generales
                 return Agregar_Cliente_Form;
             }
         }
+
         private static ModifyCash ModifyCash_Form;
         public static ModifyCash ModifyCash
         {
@@ -166,5 +167,32 @@ namespace Sesedublo_SLPL.Generales
                 return ModifyCash_Form;
             }
         }
+
+        private static AgregarPedido AgregarPedido_Form;
+        public static AgregarPedido AgregarPedido
+        {
+            get
+            {
+                if (AgregarPedido_Form == null)
+                {
+                    AgregarPedido_Form = new AgregarPedido();
+                }
+                return AgregarPedido_Form;
+            }
+        }
+
+        private static AddProductoAPedido AddProductoAPedido_Form;
+        public static AddProductoAPedido AddProductoAPedido
+        {
+            get
+            {
+                if (AddProductoAPedido_Form == null)
+                {
+                    AddProductoAPedido_Form = new AddProductoAPedido();
+                }
+                return AddProductoAPedido_Form;
+            }
+        }
+
     }
 }

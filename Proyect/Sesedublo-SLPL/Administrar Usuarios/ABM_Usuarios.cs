@@ -113,14 +113,14 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
             Conexion.closeConnection();
         }
 
-        private void ABMUsuarios_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void BotonAtras_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void ABM_Usuarios_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

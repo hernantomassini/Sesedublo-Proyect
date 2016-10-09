@@ -80,8 +80,8 @@
             this.PedidosDGV.EnableHeadersVisualStyles = false;
             this.PedidosDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.PedidosDGV.GridColor = System.Drawing.Color.White;
-            this.PedidosDGV.Location = new System.Drawing.Point(17, 51);
-            this.PedidosDGV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PedidosDGV.Location = new System.Drawing.Point(29, 62);
+            this.PedidosDGV.Margin = new System.Windows.Forms.Padding(2);
             this.PedidosDGV.MultiSelect = false;
             this.PedidosDGV.Name = "PedidosDGV";
             this.PedidosDGV.ReadOnly = true;
@@ -148,8 +148,8 @@
             // AtrasTile
             // 
             this.AtrasTile.ActiveControl = null;
-            this.AtrasTile.Location = new System.Drawing.Point(17, 306);
-            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AtrasTile.Location = new System.Drawing.Point(29, 317);
+            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2);
             this.AtrasTile.Name = "AtrasTile";
             this.AtrasTile.Size = new System.Drawing.Size(69, 35);
             this.AtrasTile.TabIndex = 1;
@@ -161,8 +161,8 @@
             // AgregarPedidoTile
             // 
             this.AgregarPedidoTile.ActiveControl = null;
-            this.AgregarPedidoTile.Location = new System.Drawing.Point(281, 353);
-            this.AgregarPedidoTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AgregarPedidoTile.Location = new System.Drawing.Point(293, 364);
+            this.AgregarPedidoTile.Margin = new System.Windows.Forms.Padding(2);
             this.AgregarPedidoTile.Name = "AgregarPedidoTile";
             this.AgregarPedidoTile.Size = new System.Drawing.Size(139, 43);
             this.AgregarPedidoTile.TabIndex = 2;
@@ -174,8 +174,8 @@
             // modificarPedidoTile
             // 
             this.modificarPedidoTile.ActiveControl = null;
-            this.modificarPedidoTile.Location = new System.Drawing.Point(146, 353);
-            this.modificarPedidoTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.modificarPedidoTile.Location = new System.Drawing.Point(158, 364);
+            this.modificarPedidoTile.Margin = new System.Windows.Forms.Padding(2);
             this.modificarPedidoTile.Name = "modificarPedidoTile";
             this.modificarPedidoTile.Size = new System.Drawing.Size(131, 43);
             this.modificarPedidoTile.TabIndex = 3;
@@ -187,8 +187,8 @@
             // EliminarPedidoTile
             // 
             this.EliminarPedidoTile.ActiveControl = null;
-            this.EliminarPedidoTile.Location = new System.Drawing.Point(281, 304);
-            this.EliminarPedidoTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.EliminarPedidoTile.Location = new System.Drawing.Point(293, 315);
+            this.EliminarPedidoTile.Margin = new System.Windows.Forms.Padding(2);
             this.EliminarPedidoTile.Name = "EliminarPedidoTile";
             this.EliminarPedidoTile.Size = new System.Drawing.Size(139, 45);
             this.EliminarPedidoTile.TabIndex = 4;
@@ -200,8 +200,8 @@
             // FacturarPedidoTile
             // 
             this.FacturarPedidoTile.ActiveControl = null;
-            this.FacturarPedidoTile.Location = new System.Drawing.Point(146, 304);
-            this.FacturarPedidoTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FacturarPedidoTile.Location = new System.Drawing.Point(158, 315);
+            this.FacturarPedidoTile.Margin = new System.Windows.Forms.Padding(2);
             this.FacturarPedidoTile.Name = "FacturarPedidoTile";
             this.FacturarPedidoTile.Size = new System.Drawing.Size(131, 45);
             this.FacturarPedidoTile.TabIndex = 5;
@@ -214,16 +214,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 407);
+            this.ClientSize = new System.Drawing.Size(461, 417);
             this.Controls.Add(this.FacturarPedidoTile);
             this.Controls.Add(this.EliminarPedidoTile);
             this.Controls.Add(this.modificarPedidoTile);
             this.Controls.Add(this.AgregarPedidoTile);
             this.Controls.Add(this.AtrasTile);
             this.Controls.Add(this.PedidosDGV);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ABM_Pedidos";
-            this.Padding = new System.Windows.Forms.Padding(15, 49, 15, 16);
+            this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Text = "Pedidos";
             this.Load += new System.EventHandler(this.ABM_Pedidos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PedidosDGV)).EndInit();

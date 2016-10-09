@@ -109,6 +109,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
                 UnidadesXBulto.Visible = false;
                 PVunitario.Enabled = true;
                 PVBulto.Enabled = false;
+                PVBulto.Text = "0";
             }
             else
             {
@@ -116,6 +117,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
                 UnidadesXBulto.Visible = true;
                 PVunitario.Enabled = false;
                 PVBulto.Enabled = true;
+                PVunitario.Text = "0";
             }
         }
 

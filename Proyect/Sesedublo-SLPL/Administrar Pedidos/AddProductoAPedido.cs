@@ -49,11 +49,12 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 if (cantXBulto == 0)
                 { 
                     cantidad = reader.GetString(1);
-                    precio = reader.GetDecimal();
+                    precio = reader.GetDecimal(2);
                 }
                 else
                 {
                     cantidad = reader.GetString(1) + " bultos de " + cantXBulto + " unidades";
+                    precio = reader.GetDecimal(2);
                 }
 
                 //ID Stock 0 - Cantidad 1 - Nombre 3 - Costo 4 - PVU 5 - PVB 6

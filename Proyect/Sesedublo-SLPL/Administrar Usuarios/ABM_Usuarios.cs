@@ -72,6 +72,11 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
                 return;
             }
 
+            if (Funciones.imprimirMensajeDeAlerta("¿Estás seguro de borrar a este Cliente? Esta acción no se podrá deshacer.", this) == DialogResult.Cancel)
+            {
+                return;
+            }
+
             int id_cliente = Convert.ToInt32(dgvClientes.SelectedCells[0].Value);
 
             string query = " DELETE FROM Clientes where id_cliente=" + id_cliente;

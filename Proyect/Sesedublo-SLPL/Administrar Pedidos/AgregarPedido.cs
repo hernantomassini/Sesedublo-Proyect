@@ -86,6 +86,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         private void AgregarProductoTile_Click(object sender, EventArgs e)
         {
+            Manejador_Formularios.AddProductoAPedido.cargarDGV();
             Manejador_Formularios.AddProductoAPedido.Show();
             Close();
         }

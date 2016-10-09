@@ -15,6 +15,7 @@ namespace Sesedublo_SLPL
         {
             InitializeComponent();
             this.Closing += new CancelEventHandler(Principal_Closing);
+            timer1.Enabled = true;
         }
 
         private void Pantalla_Principal_Load(object sender, EventArgs e)
@@ -69,6 +70,12 @@ namespace Sesedublo_SLPL
         private void GoToRevisarCaja_Click(object sender, EventArgs e)
         {
             Manejador_Formularios.Monto_Caja.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label1.Text = DateTime.Now.ToShortDateString();
+            label2.Text = DateTime.Now.ToString("hh:mm:ss");
         }
 
     }

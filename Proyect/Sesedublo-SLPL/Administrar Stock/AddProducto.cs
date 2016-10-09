@@ -107,11 +107,15 @@ namespace Sesedublo_SLPL.Administrar_Stock
             {
                 label7.Visible = false;
                 UnidadesXBulto.Visible = false;
+                PVunitario.Enabled = true;
+                PVBulto.Enabled = false;
             }
             else
             {
                 label7.Visible = true;
                 UnidadesXBulto.Visible = true;
+                PVunitario.Enabled = false;
+                PVBulto.Enabled = true;
             }
         }
 

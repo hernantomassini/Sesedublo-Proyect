@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Usuarios));
             this.dgvClientes = new MetroFramework.Controls.MetroGrid();
             this.titleModificarCliente = new MetroFramework.Controls.MetroTile();
             this.titleAgregarCliente = new MetroFramework.Controls.MetroTile();
@@ -96,13 +97,17 @@
             // titleModificarCliente
             // 
             this.titleModificarCliente.ActiveControl = null;
-            this.titleModificarCliente.Location = new System.Drawing.Point(542, 422);
+            this.titleModificarCliente.Location = new System.Drawing.Point(528, 422);
             this.titleModificarCliente.Name = "titleModificarCliente";
-            this.titleModificarCliente.Size = new System.Drawing.Size(138, 44);
+            this.titleModificarCliente.Size = new System.Drawing.Size(152, 44);
             this.titleModificarCliente.TabIndex = 1;
             this.titleModificarCliente.Text = "Modificar Cliente";
             this.titleModificarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.titleModificarCliente.TileImage = ((System.Drawing.Image)(resources.GetObject("titleModificarCliente.TileImage")));
+            this.titleModificarCliente.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.titleModificarCliente.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.titleModificarCliente.UseSelectable = true;
+            this.titleModificarCliente.UseTileImage = true;
             this.titleModificarCliente.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // titleAgregarCliente
@@ -115,22 +120,30 @@
             this.titleAgregarCliente.TabIndex = 2;
             this.titleAgregarCliente.Text = "Agregar Cliente";
             this.titleAgregarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.titleAgregarCliente.TileImage = ((System.Drawing.Image)(resources.GetObject("titleAgregarCliente.TileImage")));
+            this.titleAgregarCliente.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.titleAgregarCliente.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.titleAgregarCliente.UseCustomBackColor = true;
             this.titleAgregarCliente.UseSelectable = true;
+            this.titleAgregarCliente.UseTileImage = true;
             this.titleAgregarCliente.Click += new System.EventHandler(this.titleAgregarCliente_Click);
             // 
             // titleEliminarCliente
             // 
             this.titleEliminarCliente.ActiveControl = null;
             this.titleEliminarCliente.BackColor = System.Drawing.Color.IndianRed;
-            this.titleEliminarCliente.Location = new System.Drawing.Point(398, 422);
+            this.titleEliminarCliente.Location = new System.Drawing.Point(384, 422);
             this.titleEliminarCliente.Name = "titleEliminarCliente";
             this.titleEliminarCliente.Size = new System.Drawing.Size(138, 44);
             this.titleEliminarCliente.TabIndex = 3;
             this.titleEliminarCliente.Text = "Eliminar Cliente";
             this.titleEliminarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.titleEliminarCliente.TileImage = ((System.Drawing.Image)(resources.GetObject("titleEliminarCliente.TileImage")));
+            this.titleEliminarCliente.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.titleEliminarCliente.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.titleEliminarCliente.UseCustomBackColor = true;
             this.titleEliminarCliente.UseSelectable = true;
+            this.titleEliminarCliente.UseTileImage = true;
             this.titleEliminarCliente.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // titleAtras
@@ -143,8 +156,12 @@
             this.titleAtras.TabIndex = 4;
             this.titleAtras.Text = "Atrás";
             this.titleAtras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.titleAtras.TileImage = ((System.Drawing.Image)(resources.GetObject("titleAtras.TileImage")));
+            this.titleAtras.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.titleAtras.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.titleAtras.UseCustomBackColor = true;
             this.titleAtras.UseSelectable = true;
+            this.titleAtras.UseTileImage = true;
             this.titleAtras.Click += new System.EventHandler(this.BotonAtras_Click);
             // 
             // metroLabel1
@@ -179,6 +196,8 @@
             this.nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.nombre.CustomButton.UseSelectable = true;
             this.nombre.CustomButton.Visible = false;
+            this.nombre.DisplayIcon = true;
+            this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
             this.nombre.Lines = new string[0];
             this.nombre.Location = new System.Drawing.Point(92, 72);
             this.nombre.MaxLength = 32767;
@@ -192,6 +211,7 @@
             this.nombre.Size = new System.Drawing.Size(101, 23);
             this.nombre.TabIndex = 7;
             this.nombre.UseSelectable = true;
+            this.nombre.WaterMark = "Buscar";
             this.nombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.nombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.nombre.TextChanged += new System.EventHandler(this.nombre_TextChanged);
@@ -202,7 +222,7 @@
             // 
             // 
             this.apellido.CustomButton.Image = null;
-            this.apellido.CustomButton.Location = new System.Drawing.Point(85, 1);
+            this.apellido.CustomButton.Location = new System.Drawing.Point(96, 1);
             this.apellido.CustomButton.Name = "";
             this.apellido.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.apellido.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -210,6 +230,8 @@
             this.apellido.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.apellido.CustomButton.UseSelectable = true;
             this.apellido.CustomButton.Visible = false;
+            this.apellido.DisplayIcon = true;
+            this.apellido.Icon = ((System.Drawing.Image)(resources.GetObject("apellido.Icon")));
             this.apellido.Lines = new string[0];
             this.apellido.Location = new System.Drawing.Point(274, 72);
             this.apellido.MaxLength = 32767;
@@ -220,9 +242,10 @@
             this.apellido.SelectionLength = 0;
             this.apellido.SelectionStart = 0;
             this.apellido.ShortcutsEnabled = true;
-            this.apellido.Size = new System.Drawing.Size(107, 23);
+            this.apellido.Size = new System.Drawing.Size(118, 23);
             this.apellido.TabIndex = 8;
             this.apellido.UseSelectable = true;
+            this.apellido.WaterMark = "Buscar";
             this.apellido.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.apellido.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.apellido.TextChanged += new System.EventHandler(this.apellido_TextChanged);
@@ -241,6 +264,8 @@
             this.direccion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.direccion.CustomButton.UseSelectable = true;
             this.direccion.CustomButton.Visible = false;
+            this.direccion.DisplayIcon = true;
+            this.direccion.Icon = ((System.Drawing.Image)(resources.GetObject("direccion.Icon")));
             this.direccion.Lines = new string[0];
             this.direccion.Location = new System.Drawing.Point(467, 72);
             this.direccion.MaxLength = 32767;
@@ -254,6 +279,7 @@
             this.direccion.Size = new System.Drawing.Size(107, 23);
             this.direccion.TabIndex = 10;
             this.direccion.UseSelectable = true;
+            this.direccion.WaterMark = "Buscar";
             this.direccion.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.direccion.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.direccion.TextChanged += new System.EventHandler(this.direccion_TextChanged);

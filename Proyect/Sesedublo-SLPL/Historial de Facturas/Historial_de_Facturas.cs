@@ -43,7 +43,8 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             }
 
             int idFactura = Convert.ToInt32(dgvFacturas.SelectedCells[0].Value);
-            Manejador_Formularios.Ver_Factura.meterId(idFactura);
+            int idCliente = Convert.ToInt32(dgvFacturas.SelectedCells[0].Value);
+            Manejador_Formularios.Ver_Factura.meterId(idFactura, idCliente);
             Manejador_Formularios.Ver_Factura.Show();
             this.Hide();
         }
@@ -71,6 +72,7 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             da.Fill(tablaDeUsuarios);
             dgvFacturas.DataSource = tablaDeUsuarios.DefaultView;
             dgvFacturas.Columns[0].Visible = false;
+            dgvFacturas.Columns[1].Visible = false;
 
             Conexion.closeConnection();
         }

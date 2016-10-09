@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Agregar_Cliente));
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -36,16 +37,22 @@
             this.Apellido = new MetroFramework.Controls.MetroTextBox();
             this.Mail = new MetroFramework.Controls.MetroTextBox();
             this.Direccion = new MetroFramework.Controls.MetroTextBox();
-            this.titleAceptar = new MetroFramework.Controls.MetroTile();
             this.titleCancelar = new MetroFramework.Controls.MetroTile();
             this.Telefono = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.Localidad = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.CUIT = new MetroFramework.Controls.MetroTextBox();
+            this.cuitLabl = new MetroFramework.Controls.MetroLabel();
+            this.RazonSocial = new MetroFramework.Controls.MetroTextBox();
+            this.razonLbl = new MetroFramework.Controls.MetroLabel();
+            this.titleAceptar = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(23, 93);
+            this.metroLabel1.Location = new System.Drawing.Point(23, 72);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(59, 19);
             this.metroLabel1.TabIndex = 0;
@@ -54,7 +61,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(23, 133);
+            this.metroLabel2.Location = new System.Drawing.Point(23, 102);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(58, 19);
             this.metroLabel2.TabIndex = 1;
@@ -63,7 +70,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(23, 181);
+            this.metroLabel3.Location = new System.Drawing.Point(23, 131);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(34, 19);
             this.metroLabel3.TabIndex = 2;
@@ -72,7 +79,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(23, 226);
+            this.metroLabel4.Location = new System.Drawing.Point(23, 162);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(63, 19);
             this.metroLabel4.TabIndex = 3;
@@ -93,7 +100,7 @@
             this.Nombre.CustomButton.UseSelectable = true;
             this.Nombre.CustomButton.Visible = false;
             this.Nombre.Lines = new string[0];
-            this.Nombre.Location = new System.Drawing.Point(110, 93);
+            this.Nombre.Location = new System.Drawing.Point(110, 72);
             this.Nombre.MaxLength = 32767;
             this.Nombre.Name = "Nombre";
             this.Nombre.PasswordChar = '\0';
@@ -123,7 +130,7 @@
             this.Apellido.CustomButton.UseSelectable = true;
             this.Apellido.CustomButton.Visible = false;
             this.Apellido.Lines = new string[0];
-            this.Apellido.Location = new System.Drawing.Point(110, 133);
+            this.Apellido.Location = new System.Drawing.Point(110, 102);
             this.Apellido.MaxLength = 32767;
             this.Apellido.Name = "Apellido";
             this.Apellido.PasswordChar = '\0';
@@ -153,7 +160,7 @@
             this.Mail.CustomButton.UseSelectable = true;
             this.Mail.CustomButton.Visible = false;
             this.Mail.Lines = new string[0];
-            this.Mail.Location = new System.Drawing.Point(110, 181);
+            this.Mail.Location = new System.Drawing.Point(110, 131);
             this.Mail.MaxLength = 32767;
             this.Mail.Name = "Mail";
             this.Mail.PasswordChar = '\0';
@@ -183,7 +190,7 @@
             this.Direccion.CustomButton.UseSelectable = true;
             this.Direccion.CustomButton.Visible = false;
             this.Direccion.Lines = new string[0];
-            this.Direccion.Location = new System.Drawing.Point(110, 226);
+            this.Direccion.Location = new System.Drawing.Point(110, 162);
             this.Direccion.MaxLength = 32767;
             this.Direccion.Name = "Direccion";
             this.Direccion.PasswordChar = '\0';
@@ -198,32 +205,22 @@
             this.Direccion.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.Direccion.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // titleAceptar
-            // 
-            this.titleAceptar.ActiveControl = null;
-            this.titleAceptar.BackColor = System.Drawing.Color.Green;
-            this.titleAceptar.Location = new System.Drawing.Point(23, 311);
-            this.titleAceptar.Name = "titleAceptar";
-            this.titleAceptar.Size = new System.Drawing.Size(82, 41);
-            this.titleAceptar.TabIndex = 8;
-            this.titleAceptar.Text = "Aceptar";
-            this.titleAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.titleAceptar.UseCustomBackColor = true;
-            this.titleAceptar.UseSelectable = true;
-            this.titleAceptar.Click += new System.EventHandler(this.titleAceptar_Click);
-            // 
             // titleCancelar
             // 
             this.titleCancelar.ActiveControl = null;
             this.titleCancelar.BackColor = System.Drawing.Color.DarkRed;
-            this.titleCancelar.Location = new System.Drawing.Point(140, 311);
+            this.titleCancelar.Location = new System.Drawing.Point(23, 322);
             this.titleCancelar.Name = "titleCancelar";
-            this.titleCancelar.Size = new System.Drawing.Size(83, 41);
-            this.titleCancelar.TabIndex = 9;
+            this.titleCancelar.Size = new System.Drawing.Size(102, 41);
+            this.titleCancelar.TabIndex = 13;
             this.titleCancelar.Text = "Cancelar";
             this.titleCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.titleCancelar.TileImage = ((System.Drawing.Image)(resources.GetObject("titleCancelar.TileImage")));
+            this.titleCancelar.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.titleCancelar.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.titleCancelar.UseCustomBackColor = true;
             this.titleCancelar.UseSelectable = true;
+            this.titleCancelar.UseTileImage = true;
             this.titleCancelar.Click += new System.EventHandler(this.titleCancelar_Click);
             // 
             // Telefono
@@ -241,7 +238,7 @@
             this.Telefono.CustomButton.UseSelectable = true;
             this.Telefono.CustomButton.Visible = false;
             this.Telefono.Lines = new string[0];
-            this.Telefono.Location = new System.Drawing.Point(110, 270);
+            this.Telefono.Location = new System.Drawing.Point(110, 192);
             this.Telefono.MaxLength = 32767;
             this.Telefono.Name = "Telefono";
             this.Telefono.PasswordChar = '\0';
@@ -251,7 +248,7 @@
             this.Telefono.SelectionStart = 0;
             this.Telefono.ShortcutsEnabled = true;
             this.Telefono.Size = new System.Drawing.Size(113, 23);
-            this.Telefono.TabIndex = 11;
+            this.Telefono.TabIndex = 8;
             this.Telefono.UseSelectable = true;
             this.Telefono.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.Telefono.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -259,17 +256,158 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(23, 270);
+            this.metroLabel5.Location = new System.Drawing.Point(23, 192);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(58, 19);
             this.metroLabel5.TabIndex = 10;
             this.metroLabel5.Text = "Teléfono";
             // 
+            // Localidad
+            // 
+            // 
+            // 
+            // 
+            this.Localidad.CustomButton.Image = null;
+            this.Localidad.CustomButton.Location = new System.Drawing.Point(91, 1);
+            this.Localidad.CustomButton.Name = "";
+            this.Localidad.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.Localidad.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Localidad.CustomButton.TabIndex = 1;
+            this.Localidad.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Localidad.CustomButton.UseSelectable = true;
+            this.Localidad.CustomButton.Visible = false;
+            this.Localidad.Lines = new string[0];
+            this.Localidad.Location = new System.Drawing.Point(110, 221);
+            this.Localidad.MaxLength = 32767;
+            this.Localidad.Name = "Localidad";
+            this.Localidad.PasswordChar = '\0';
+            this.Localidad.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Localidad.SelectedText = "";
+            this.Localidad.SelectionLength = 0;
+            this.Localidad.SelectionStart = 0;
+            this.Localidad.ShortcutsEnabled = true;
+            this.Localidad.Size = new System.Drawing.Size(113, 23);
+            this.Localidad.TabIndex = 9;
+            this.Localidad.UseSelectable = true;
+            this.Localidad.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Localidad.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.Location = new System.Drawing.Point(23, 221);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(65, 19);
+            this.metroLabel6.TabIndex = 12;
+            this.metroLabel6.Text = "Localidad";
+            // 
+            // CUIT
+            // 
+            // 
+            // 
+            // 
+            this.CUIT.CustomButton.Image = null;
+            this.CUIT.CustomButton.Location = new System.Drawing.Point(91, 1);
+            this.CUIT.CustomButton.Name = "";
+            this.CUIT.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.CUIT.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.CUIT.CustomButton.TabIndex = 1;
+            this.CUIT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.CUIT.CustomButton.UseSelectable = true;
+            this.CUIT.CustomButton.Visible = false;
+            this.CUIT.Lines = new string[0];
+            this.CUIT.Location = new System.Drawing.Point(110, 249);
+            this.CUIT.MaxLength = 32767;
+            this.CUIT.Name = "CUIT";
+            this.CUIT.PasswordChar = '\0';
+            this.CUIT.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.CUIT.SelectedText = "";
+            this.CUIT.SelectionLength = 0;
+            this.CUIT.SelectionStart = 0;
+            this.CUIT.ShortcutsEnabled = true;
+            this.CUIT.Size = new System.Drawing.Size(113, 23);
+            this.CUIT.TabIndex = 10;
+            this.CUIT.UseSelectable = true;
+            this.CUIT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.CUIT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // cuitLabl
+            // 
+            this.cuitLabl.AutoSize = true;
+            this.cuitLabl.Location = new System.Drawing.Point(23, 249);
+            this.cuitLabl.Name = "cuitLabl";
+            this.cuitLabl.Size = new System.Drawing.Size(37, 19);
+            this.cuitLabl.TabIndex = 14;
+            this.cuitLabl.Text = "CUIT";
+            // 
+            // RazonSocial
+            // 
+            // 
+            // 
+            // 
+            this.RazonSocial.CustomButton.Image = null;
+            this.RazonSocial.CustomButton.Location = new System.Drawing.Point(91, 1);
+            this.RazonSocial.CustomButton.Name = "";
+            this.RazonSocial.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.RazonSocial.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.RazonSocial.CustomButton.TabIndex = 1;
+            this.RazonSocial.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.RazonSocial.CustomButton.UseSelectable = true;
+            this.RazonSocial.CustomButton.Visible = false;
+            this.RazonSocial.Lines = new string[0];
+            this.RazonSocial.Location = new System.Drawing.Point(110, 280);
+            this.RazonSocial.MaxLength = 32767;
+            this.RazonSocial.Name = "RazonSocial";
+            this.RazonSocial.PasswordChar = '\0';
+            this.RazonSocial.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.RazonSocial.SelectedText = "";
+            this.RazonSocial.SelectionLength = 0;
+            this.RazonSocial.SelectionStart = 0;
+            this.RazonSocial.ShortcutsEnabled = true;
+            this.RazonSocial.Size = new System.Drawing.Size(113, 23);
+            this.RazonSocial.TabIndex = 11;
+            this.RazonSocial.UseSelectable = true;
+            this.RazonSocial.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.RazonSocial.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // razonLbl
+            // 
+            this.razonLbl.AutoSize = true;
+            this.razonLbl.Location = new System.Drawing.Point(23, 280);
+            this.razonLbl.Name = "razonLbl";
+            this.razonLbl.Size = new System.Drawing.Size(83, 19);
+            this.razonLbl.TabIndex = 16;
+            this.razonLbl.Text = "Razón Social";
+            // 
+            // titleAceptar
+            // 
+            this.titleAceptar.ActiveControl = null;
+            this.titleAceptar.BackColor = System.Drawing.Color.Green;
+            this.titleAceptar.Location = new System.Drawing.Point(141, 322);
+            this.titleAceptar.Name = "titleAceptar";
+            this.titleAceptar.Size = new System.Drawing.Size(99, 41);
+            this.titleAceptar.TabIndex = 12;
+            this.titleAceptar.Text = "Aceptar";
+            this.titleAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.titleAceptar.TileImage = ((System.Drawing.Image)(resources.GetObject("titleAceptar.TileImage")));
+            this.titleAceptar.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.titleAceptar.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.titleAceptar.UseCustomBackColor = true;
+            this.titleAceptar.UseSelectable = true;
+            this.titleAceptar.UseTileImage = true;
+            this.titleAceptar.Click += new System.EventHandler(this.titleAceptar_Click);
+            // 
             // Agregar_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 375);
+            this.ClientSize = new System.Drawing.Size(263, 389);
+            this.Controls.Add(this.RazonSocial);
+            this.Controls.Add(this.razonLbl);
+            this.Controls.Add(this.CUIT);
+            this.Controls.Add(this.cuitLabl);
+            this.Controls.Add(this.Localidad);
+            this.Controls.Add(this.metroLabel6);
             this.Controls.Add(this.Telefono);
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.titleCancelar);
@@ -303,5 +441,11 @@
         private MetroFramework.Controls.MetroTile titleCancelar;
         private MetroFramework.Controls.MetroTextBox Telefono;
         private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroTextBox Localidad;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroTextBox CUIT;
+        private MetroFramework.Controls.MetroLabel cuitLabl;
+        private MetroFramework.Controls.MetroTextBox RazonSocial;
+        private MetroFramework.Controls.MetroLabel razonLbl;
     }
 }

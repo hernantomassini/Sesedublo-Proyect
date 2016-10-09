@@ -36,12 +36,14 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
         public void agregarCliente()
         {
             Clean();
+            this.Text = "Nuevo Cliente";
             flag = accionesABM.Crear;
         }
 
         public void modificarCliente(int id_clie)
         {
             Clean();
+            this.Text = "Modificar Cliente";
             flag = accionesABM.Modificar;
             this.id_cliente = id_clie;
             llenarDatos();
@@ -58,6 +60,9 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
             Mail.Text = reader.GetString(2);
             Telefono.Text = reader.GetString(3);
             Direccion.Text = reader.GetString(4);
+            Localidad.Text = reader.GetString(5);
+            CUIT.Text = reader.GetString(6);
+            RazonSocial.Text = reader.GetString(7);
 
             reader.Close();
             Conexion.closeConnection();
@@ -70,6 +75,9 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
             Telefono.Clear();
             Direccion.Clear();
             Mail.Clear();
+            Localidad.Clear();
+            CUIT.Clear();
+            RazonSocial.Clear();
         }
 
         private void titleCancelar_Click(object sender, EventArgs e)
@@ -81,12 +89,12 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
         {
             if (flag == accionesABM.Crear)
             {
-                Conexion.executeProcedure("agregarCliente", Conexion.generarArgumentos("_nombre","_apellido","_mail","_direccion","_telefono"), Nombre.Text, Apellido.Text, Mail.Text, Direccion.Text, Telefono.Text);
+                Conexion.executeProcedure("agregarCliente", Conexion.generarArgumentos("_nombre","_apellido","_mail","_direccion","_telefono", "_localidad", "_cuit", "_razonSocial"), Nombre.Text, Apellido.Text, Mail.Text, Direccion.Text, Telefono.Text, Localidad.Text, CUIT.Text, RazonSocial.Text);
                 Conexion.closeConnection();
             }
             else
             {
-                Conexion.executeProcedure("modificarCliente", Conexion.generarArgumentos("_id_cliente","_nombre", "_apellido", "_mail", "_direccion", "_telefono"),id_cliente ,Nombre.Text, Apellido.Text, Mail.Text, Direccion.Text, Telefono.Text);
+                Conexion.executeProcedure("modificarCliente", Conexion.generarArgumentos("_id_cliente","_nombre", "_apellido", "_mail", "_direccion", "_telefono", "_localidad", "_cuit", "_razonSocial"), id_cliente, Nombre.Text, Apellido.Text, Mail.Text, Direccion.Text, Telefono.Text, Localidad.Text, CUIT.Text, RazonSocial.Text);
                 Conexion.closeConnection();
             }
 

@@ -55,6 +55,9 @@ CREATE TABLE Clientes (
     email VARCHAR(50),
     telefono VARCHAR(20),
     direccion VARCHAR(60),
+    localidad VARCHAR(60),
+    cuit VARCHAR(60),
+    razonSocial VARCHAR(60),
     PRIMARY KEY (id_cliente)
 );
 
@@ -164,37 +167,44 @@ BEGIN
 
 SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
 
-	SELECT cantidad, cantidadXBulto, nombre, costo, PVUnitario, PVBulto FROM Productos WHERE id_producto = @_id_producto;
+	SELECT 
+    cantidad, cantidadXBulto, nombre, costo, PVUnitario, PVBulto
+FROM
+    Productos
+WHERE
+    id_producto = @_id_producto;
     
 END //
 
 CREATE PROCEDURE cargarGrillaClientes (IN _nombre VARCHAR(255), _apellido VARCHAR(50), _direccion VARCHAR(255))
 BEGIN
 
-	SELECT c.id_cliente, c.nombre AS Nombre, c.apellido AS Apellido, c.email AS Mail, c.telefono AS Teléfono, c.direccion AS Dirección FROM Clientes c
+	SELECT c.id_cliente, c.nombre AS Nombre, c.apellido AS Apellido, c.email AS Mail, c.telefono AS Teléfono, c.direccion AS Dirección, c.localidad AS Localidad, c.cuit as CUIT, c.razonSocial AS Razon_Social FROM Clientes c
 	WHERE ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
 	AND ((c.apellido LIKE CONCAT("%", _apellido, "%") COLLATE utf8_general_ci ) OR (_apellido IS NULL OR _apellido = ""))
 	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""));
 END //
 
 CREATE PROCEDURE agregarCliente (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _mail VARCHAR(255),
-							   _direccion VARCHAR(50), _telefono VARCHAR(60))
+							   _direccion VARCHAR(50), _telefono VARCHAR(60), _localidad VARCHAR(60),
+                               _cuit VARCHAR(60), _razonSocial VARCHAR(60))
 BEGIN
 
-    INSERT INTO Clientes (nombre, apellido, email, telefono, direccion) VALUES (_nombre, _apellido, _mail, _telefono, _direccion);
+    INSERT INTO Clientes (nombre, apellido, email, telefono, direccion, localidad, cuit, razonSocial) VALUES (_nombre, _apellido, _mail, _telefono, _direccion, _localidad, _cuit, _razonSocial);
     
 END //
 
 CREATE PROCEDURE modificarCliente (IN _id_cliente INT, _nombre VARCHAR(255), _apellido VARCHAR(255), _mail VARCHAR(255),
-										_direccion VARCHAR(50), _telefono VARCHAR(60))
+										_direccion VARCHAR(50), _telefono VARCHAR(60), _localidad VARCHAR(60),
+                               _cuit VARCHAR(60), _razonSocial VARCHAR(60))
 BEGIN
-    UPDATE Clientes SET nombre = _nombre, email = _mail, telefono = _telefono, apellido = _apellido, direccion = _direccion WHERE id_cliente = _id_cliente;
+    UPDATE Clientes SET nombre = _nombre, email = _mail, telefono = _telefono, apellido = _apellido, direccion = _direccion, localidad = _localidad, cuit = _cuit, razonSocial = _razonSocial WHERE id_cliente = _id_cliente ;
 END //
 
 CREATE PROCEDURE obtenerCliente (IN _id_cliente INT) 
 BEGIN
 
-	SELECT nombre, apellido, email, telefono, direccion FROM Clientes WHERE id_cliente = _id_cliente;
+	SELECT nombre, apellido, email, telefono, direccion, localidad, cuit, razonSocial FROM Clientes WHERE id_cliente = _id_cliente;
 END //
 
 CREATE PROCEDURE cargarGrillaFacturas (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _descripcion VARCHAR(50), _direccion VARCHAR(255))
@@ -208,7 +218,6 @@ BEGIN
 	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""));
 END //
 
-DELIMITER ;
 CREATE PROCEDURE agregarEfectivo (IN _montoASumar INT) 
 BEGIN
 

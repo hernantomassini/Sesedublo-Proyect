@@ -223,6 +223,1275 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Magnifier-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\01 Access.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\01 Excel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\01 Infopath.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\01 Outlook.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\01 Picture Manager.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\01 Powerpoint.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\01 Publisher.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\01 Word.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\2Access.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\2Excel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\2FrontPage.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\2MapPoint.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\2office.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\2Outlook.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\2PowerPoint.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\2Project.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\2Publisher.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\2Visio.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\2Word.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\about.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\access_2003_01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\access_2003_2_01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\add.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\add2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\add-favorite.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\add-file.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\add-folder.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\add-note.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\add-printer.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\add-star.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\add-user.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\adim.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\afrontpage.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\alert.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\alert2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\annexed.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\app_chart.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\app_large_icons.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\app_options.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\app_preferences.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\applications.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\apply.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\apps.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\aqua_access.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\aqua_excel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\aqua_frpage.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\aqua_mappoint.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\aqua_outlook2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\aqua_ppoint.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\aqua_project.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\aqua_publisher.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\aqua_visio.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\aqua_word.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\back.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\back-.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\back1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\back2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\back-2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\back-3.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\ball_green.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\ball_red.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\ball_yellow.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\banner.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\basket.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\book.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\bookmarck.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\bookmarck2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\box.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\bt_ff.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\bt_pause.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\bt_play.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\bt_rev.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\bt_skip_bk.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\bt_skip_sw.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\bt_stop.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\burn.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\cal.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\cal2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\calculator.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\calculator2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\calendar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\camera.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\cancel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\cascade.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\cash-register.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\cc.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\cd.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\cd1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\cd2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\cel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\chart.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\chat.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\chat2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\clock.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\computer.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\conference.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\configure.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\contacts.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\copy.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\copy1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\copy2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\creditcard.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\cut.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\cut1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\cut2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\data.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\db.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\db1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\db2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\db4.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\db5.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\db6.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\db7.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\dbedit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\dbs.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\ddb8.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\delete.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\delete2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\delete-user.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\display.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\display2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\dollar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\down.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\down-.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\down1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\down2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\download.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\draw.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\draw-tools.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\edit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\edit2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\edit-tool.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\email.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\email2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\email-attachment.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\email-error.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\engine.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\error.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\euro.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\excel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\excel_2003_01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\excel_2003_2_01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\excel_doc_rainbow.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\excel_doc_unicolor.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\excel_rainbow2003.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\excel_shiny.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\excel1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\excel55.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\excelFtypeOil.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\excelOi1l.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\excelOil.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\explorer.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\export.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\fast-forward.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\favorite.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\favorits.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\favorits_add.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\favorits1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\fax.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\file.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\file_apply.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\file_del.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\file_document.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\file_edit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\file_exclude.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\file_find.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\file_lock.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\file_new.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\file_temp.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\file_web.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\file-lock.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\find.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\find-at-disc.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\find-file.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\first.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\first-page.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\Folder.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\folder_downloads.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\folder_find.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\folder_new.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\folder_open.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\folder1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\folder2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\folder-open.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\forward.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\forward2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\frontpage_2003_2_01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\frontpage_rainbow2003.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\frontpageFtypeOil.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\ftp.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\full-basket.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\game.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\globeentourage.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\globeexcel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\globepowerpoint.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\globeword.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\go.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\gohome.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\grayentourage.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\grayexcel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\graypowerpoint.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\grayword.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\group.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\hardware.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\hd.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\hd_web.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\hd2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\hd-as.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\help.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\help1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\help2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\history.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\history1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\history2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\home.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\home2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\html.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\image.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\image2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\import.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\inbox.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\info.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\info2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\infopath_2003_2_01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\insert.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\install.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\installer.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\key.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\last.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\last-page.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\list.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\lock.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\lock2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\mail.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\misc1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\misc2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\misc3.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\misc4.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\monitor.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\mycomputer.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\mycomputer2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\network.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\new window.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\new.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\new1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\next.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\next-.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\next-2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\note.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\note2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\notice.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\objects.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\ok.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\ok2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\one_note_2003_02.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\one_note_2003_2_01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\open2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\Organizational Unit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\organize.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\outlook.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\outlook_1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\outlook_2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\outlook_3.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\outlook_2003_02.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\outlook_2003_2_01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\outlook1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\paste.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\paste1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\paste2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\pause.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\phone.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\phones.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\pictures.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\pictures2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\play.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\police.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\powerpoint.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\powerpoint_2003_02.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\powerpoint_2003_2_01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\powerpoint1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\powerpointFtypeOil.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\powerpointOi1l.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\powerpointOil.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\preferences.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\previous.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\price.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\print.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\print_preview.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\print2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\printer.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\print-preview.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\project_2003_2_01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\project_2003_2_010.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\publisher.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\publisher_2003_2_01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\publisher_2003_2_010.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\qtimeFtypeOil.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\record.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\redo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\refresh.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\refresh2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\reload.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\remove.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\remove1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\remove2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\remove-file.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\remove-folder.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\remove-note.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\reward.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\sale.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\save.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\save1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\save2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\saveas.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\save-as.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\saveas1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\saveas2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\saveas21.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\savecopy.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\savecopy2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\save-new.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\search.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\search2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\secury.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\select-color.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\settings.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\shop_cart.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\shop_cart2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\signal.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\silverentourage.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\silverexcel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\silverofficex.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\silverpowerpoint.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\silverword.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\sitemap.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\smiley.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\smille.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\software-update.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\softwarte-install.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\sound off.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\sound.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\sound2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\sound-off.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\star.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\star2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\startup.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\statistics.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\statistics2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\statistics4.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\statistics22.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\stop.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\stop2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\stop-error.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\suport-F-offline.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\suport-F-online.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\suport-M-offline.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\suport-M-online.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\support.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\table.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\themeentourage.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\themeexcel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\themeoffice.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\themepowerpoint.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\themeword.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\tile horizontally.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\tile vertically.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\toolbox.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\trash.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\undo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\uninstall.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\unlock.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\unlock2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\up.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\up-.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\up1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\up2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\upload.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\user.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\user2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\user3.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\user-add.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\user-offline.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\user-online.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\user-remove.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\users.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\users1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\view.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\view-save.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\visio_2003_01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\visio_2003_2_01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\web.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\web_app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\web_downloads.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\web_find.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\web_uploads.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\web1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\web-dir.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\web-search.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\web-update.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\window.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\windows.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\wizard.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\word.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\word_2003_01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\word_2003_2_01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\word_doc_rainbow.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\word_doc_unicolor.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\word_rainbow2003.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\word_shiny.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\word_x.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\word1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\word3.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\Word55.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\wordFtypeOil.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\wordOi1l.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\wordOil.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\WordPad-summer.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\zoom-.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\zoom_in.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\zoom_out.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconos\zoom+.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

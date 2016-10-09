@@ -48,9 +48,13 @@
             this.metroTile1.Size = new System.Drawing.Size(257, 86);
             this.metroTile1.TabIndex = 6;
             this.metroTile1.Text = "Stock";
+            this.metroTile1.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile1.TileImage")));
+            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile1.UseCustomBackColor = true;
             this.metroTile1.UseCustomForeColor = true;
             this.metroTile1.UseSelectable = true;
+            this.metroTile1.UseTileImage = true;
             this.metroTile1.Click += new System.EventHandler(this.GoToStock_Click);
             // 
             // metroTile2
@@ -64,9 +68,13 @@
             this.metroTile2.Size = new System.Drawing.Size(287, 80);
             this.metroTile2.TabIndex = 7;
             this.metroTile2.Text = "Operaciones";
+            this.metroTile2.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile2.TileImage")));
+            this.metroTile2.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile2.UseCustomBackColor = true;
             this.metroTile2.UseCustomForeColor = true;
             this.metroTile2.UseSelectable = true;
+            this.metroTile2.UseTileImage = true;
             this.metroTile2.Click += new System.EventHandler(this.GoToHistorialOperaciones_Click);
             // 
             // metroTile3
@@ -80,9 +88,13 @@
             this.metroTile3.Size = new System.Drawing.Size(105, 80);
             this.metroTile3.TabIndex = 8;
             this.metroTile3.Text = "Pedidos";
+            this.metroTile3.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile3.TileImage")));
+            this.metroTile3.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile3.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile3.UseCustomBackColor = true;
             this.metroTile3.UseCustomForeColor = true;
             this.metroTile3.UseSelectable = true;
+            this.metroTile3.UseTileImage = true;
             this.metroTile3.Click += new System.EventHandler(this.GoToPedidos_Click);
             // 
             // metroTile4
@@ -96,9 +108,13 @@
             this.metroTile4.Size = new System.Drawing.Size(135, 86);
             this.metroTile4.TabIndex = 9;
             this.metroTile4.Text = "Facturas";
+            this.metroTile4.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile4.TileImage")));
+            this.metroTile4.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.metroTile4.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile4.UseCustomBackColor = true;
             this.metroTile4.UseCustomForeColor = true;
             this.metroTile4.UseSelectable = true;
+            this.metroTile4.UseTileImage = true;
             this.metroTile4.Click += new System.EventHandler(this.GoToHistorialFacturas_Click);
             // 
             // metroTile5
@@ -112,9 +128,11 @@
             this.metroTile5.Size = new System.Drawing.Size(105, 76);
             this.metroTile5.TabIndex = 10;
             this.metroTile5.Text = "Caja";
-            this.metroTile5.UseCustomBackColor = true;
-            this.metroTile5.UseCustomForeColor = true;
+            this.metroTile5.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile5.TileImage")));
+            this.metroTile5.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile5.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile5.UseSelectable = true;
+            this.metroTile5.UseTileImage = true;
             this.metroTile5.Click += new System.EventHandler(this.GoToRevisarCaja_Click);
             // 
             // metroTile6
@@ -128,9 +146,13 @@
             this.metroTile6.Size = new System.Drawing.Size(287, 76);
             this.metroTile6.TabIndex = 11;
             this.metroTile6.Text = "Clientes";
+            this.metroTile6.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile6.TileImage")));
+            this.metroTile6.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile6.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile6.UseCustomBackColor = true;
             this.metroTile6.UseCustomForeColor = true;
             this.metroTile6.UseSelectable = true;
+            this.metroTile6.UseTileImage = true;
             this.metroTile6.Click += new System.EventHandler(this.GoToUsuarios_Click);
             // 
             // Pantalla_Principal
@@ -141,7 +163,7 @@
             this.BackImagePadding = new System.Windows.Forms.Padding(50);
             this.BackLocation = MetroFramework.Forms.BackLocation.BottomLeft;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(443, 341);
+            this.ClientSize = new System.Drawing.Size(445, 344);
             this.Controls.Add(this.metroTile6);
             this.Controls.Add(this.metroTile5);
             this.Controls.Add(this.metroTile4);

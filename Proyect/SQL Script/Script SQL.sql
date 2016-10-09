@@ -28,8 +28,12 @@ DROP PROCEDURE IF EXISTS agregarEfectivo;
 DROP PROCEDURE IF EXISTS restarEfectivo;
 DROP PROCEDURE IF EXISTS obtenerMontoEnEfectivo;
 DROP PROCEDURE IF EXISTS obtenerMontoEnProductos;
+<<<<<<< HEAD
+DROP PROCEDURE IF EXISTS cargarGrillaOperaciones;
+=======
 DROP PROCEDURE IF EXISTS obtenerPedidos;
 DROP PROCEDURE IF EXISTS borrarPedido;
+>>>>>>> cbd94599164dbb07ed227916f97256e9ee3d1933
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -57,6 +61,9 @@ CREATE TABLE Clientes (
     email VARCHAR(50),
     telefono VARCHAR(20),
     direccion VARCHAR(60),
+    localidad VARCHAR(60),
+    cuit VARCHAR(60),
+    razonSocial VARCHAR(60),
     PRIMARY KEY (id_cliente)
 );
 
@@ -102,6 +109,7 @@ CREATE TABLE Facturas (
 CREATE TABLE Operaciones (
     id_operacion INT AUTO_INCREMENT,
     operacion VARCHAR(200),
+    descripcion VARCHAR(60),
     PRIMARY KEY (id_operacion)
 );
 
@@ -166,42 +174,49 @@ BEGIN
 
 SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
 
-	SELECT cantidad, cantidadXBulto, nombre, costo, PVUnitario, PVBulto FROM Productos WHERE id_producto = @_id_producto;
+	SELECT 
+    cantidad, cantidadXBulto, nombre, costo, PVUnitario, PVBulto
+FROM
+    Productos
+WHERE
+    id_producto = @_id_producto;
     
 END //
 
 CREATE PROCEDURE cargarGrillaClientes (IN _nombre VARCHAR(255), _apellido VARCHAR(50), _direccion VARCHAR(255))
 BEGIN
 
-	SELECT c.id_cliente, c.nombre AS Nombre, c.apellido AS Apellido, c.email AS Mail, c.telefono AS Teléfono, c.direccion AS Dirección FROM Clientes c
+	SELECT c.id_cliente, c.nombre AS Nombre, c.apellido AS Apellido, c.email AS Mail, c.telefono AS Teléfono, c.direccion AS Dirección, c.localidad AS Localidad, c.cuit as CUIT, c.razonSocial AS Razon_Social FROM Clientes c
 	WHERE ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
 	AND ((c.apellido LIKE CONCAT("%", _apellido, "%") COLLATE utf8_general_ci ) OR (_apellido IS NULL OR _apellido = ""))
 	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""));
 END //
 
 CREATE PROCEDURE agregarCliente (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _mail VARCHAR(255),
-							   _direccion VARCHAR(50), _telefono VARCHAR(60))
+							   _direccion VARCHAR(50), _telefono VARCHAR(60), _localidad VARCHAR(60),
+                               _cuit VARCHAR(60), _razonSocial VARCHAR(60))
 BEGIN
 
-    INSERT INTO Clientes (nombre, apellido, email, telefono, direccion) VALUES (_nombre, _apellido, _mail, _telefono, _direccion);
+    INSERT INTO Clientes (nombre, apellido, email, telefono, direccion, localidad, cuit, razonSocial) VALUES (_nombre, _apellido, _mail, _telefono, _direccion, _localidad, _cuit, _razonSocial);
     
 END //
 
 CREATE PROCEDURE modificarCliente (IN _id_cliente INT, _nombre VARCHAR(255), _apellido VARCHAR(255), _mail VARCHAR(255),
-										_direccion VARCHAR(50), _telefono VARCHAR(60))
+										_direccion VARCHAR(50), _telefono VARCHAR(60), _localidad VARCHAR(60),
+                               _cuit VARCHAR(60), _razonSocial VARCHAR(60))
 BEGIN
-    UPDATE Clientes SET nombre = _nombre, email = _mail, telefono = _telefono, apellido = _apellido, direccion = _direccion WHERE id_cliente = _id_cliente;
+    UPDATE Clientes SET nombre = _nombre, email = _mail, telefono = _telefono, apellido = _apellido, direccion = _direccion, localidad = _localidad, cuit = _cuit, razonSocial = _razonSocial WHERE id_cliente = _id_cliente ;
 END //
 
 CREATE PROCEDURE obtenerCliente (IN _id_cliente INT) 
 BEGIN
 
-	SELECT nombre, apellido, email, telefono, direccion FROM Clientes WHERE id_cliente = _id_cliente;
+	SELECT nombre, apellido, email, telefono, direccion, localidad, cuit, razonSocial FROM Clientes WHERE id_cliente = _id_cliente;
 END //
 
 CREATE PROCEDURE cargarGrillaFacturas (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _descripcion VARCHAR(50), _direccion VARCHAR(255))
 BEGIN
-	SELECT f.id_factura, c.nombre AS Nombre, c.apellido AS Apellido, c.direccion AS Dirección, p.precio AS Precio FROM Facturas f
+	SELECT f.id_factura, c.id_cliente, c.nombre AS Nombre, c.apellido AS Apellido, c.direccion AS Dirección, p.precio AS Precio FROM Facturas f
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Clientes c ON c.id_cliente = p.comprador
 	WHERE ((f.descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
@@ -210,22 +225,28 @@ BEGIN
 	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""));
 END //
 
+<<<<<<< HEAD
+CREATE PROCEDURE agregarEfectivo (IN _montoASumar INT, descripcion VARCHAR(60)) 
+=======
 CREATE PROCEDURE agregarEfectivo (IN _montoASumar INT) 
+>>>>>>> cbd94599164dbb07ed227916f97256e9ee3d1933
 BEGIN
 
 SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
 
     UPDATE Caja SET efectivoActual = (@_efectivo + _montoASumar) WHERE id_caja=1;
+    INSERT INTO Operaciones (operacion, descripcion) VALUES ("Efectivo entrante", descripcion);
 
 END //
 
-CREATE PROCEDURE restarEfectivo (IN _montoARestar INT) 
+CREATE PROCEDURE restarEfectivo (IN _montoARestar INT, descripcion VARCHAR(60)) 
 BEGIN
 
-SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
+	SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
 
     UPDATE Caja SET efectivoActual = (@_efectivo - _montoARestar) WHERE id_caja=1;
-
+    INSERT INTO Operaciones (operacion, descripcion) VALUES ("Efectivo saliente", descripcion);
+    
 END //
 
 CREATE PROCEDURE obtenerMontoEnEfectivo () 
@@ -243,6 +264,16 @@ BEGIN
 
 END //
 
+<<<<<<< HEAD
+CREATE PROCEDURE cargarGrillaOperaciones (IN  _operacion VARCHAR(255), _descripcion VARCHAR(50))
+BEGIN
+	SELECT operacion AS Operación, descripcion AS Descripción FROM Operaciones
+	WHERE ((descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
+	AND ((operacion LIKE CONCAT("%", _operacion, "%") COLLATE utf8_general_ci ) OR (_operacion IS NULL OR _operacion = ""));
+END //
+
+DELIMITER ;	
+=======
 CREATE PROCEDURE obtenerPedidos () 
 BEGIN
 	
@@ -263,3 +294,4 @@ BEGIN
 END //
 
 DELIMITER ;	
+>>>>>>> cbd94599164dbb07ed227916f97256e9ee3d1933

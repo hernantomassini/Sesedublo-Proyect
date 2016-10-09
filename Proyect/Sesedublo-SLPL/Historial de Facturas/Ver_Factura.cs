@@ -1,4 +1,5 @@
 ﻿using MetroFramework.Forms;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
     public partial class Ver_Factura : MetroForm
     {
         int id_factura;
+        int id_cliente;
         private PrintDocument printDocument1 = new PrintDocument();
 
         public Ver_Factura()
@@ -22,11 +24,39 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
             this.Controls.Add(printButton);
             InitializeComponent();
+
+            facturaID.Text = "FACTURA N° 00001-" + Convert.ToString(id_factura);
+            direccionLea.Text = "Elpidio Gonzales 9510";
+            CPLea.Text = "C1416EFP CABA";
+            TelLea.Text = "Tel/Fax 4639-5712";
+            fechaAct.Text = "FECHA: " + Convert.ToString(DateTime.Now);
+            tipoFactura.Text = "A";
+            CUITLea.Text = "CUIT: 30-70850524-9";
+            ingresosBrutos.Text = "INGRESOS BRUTOS: 901-070815-6";
+            inicioActividad.Text = "INICIO ACTIVIDAD: 01-10-2003";
+
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerCliente", Conexion.generarArgumentos("_id_cliente"), id_cliente);
+
+            reader.Read();
+
+            direccionVen.Text = "DIRECCIÓN: " + reader.GetString(4);
+            localidadCl.Text = "LOCALIDAD: " + reader.GetString(5);
+            cuitV.Text = "CUIT: " + reader.GetString(6);
+            RazonSocialComp.Text = "RAZÓN SOCIAL: " + reader.GetString(7);
+            id_usuarioCompr.Text = "Cod. vendedor: " + id_cliente;
+
+            reader.Close();
+
+            fechaActualImp.Text = Convert.ToString(DateTime.Now);
+            fechaVencimiento.Text = Convert.ToString(DateTime.Now.AddDays(29));
+            Conexion.closeConnection();
+            
         }
 
-        internal void meterId(int idFactura)
+        internal void meterId(int idFactura, int idCliente)
         {
             id_factura = idFactura;
+            id_cliente = idCliente;
         }
 
            [System.Runtime.InteropServices.DllImport("gdi32.dll")]
@@ -60,12 +90,24 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
         private void printButton_Click(System.Object sender,
         System.EventArgs e)
         {
+
+            oriOdup.Text = "ORIGINAL";
+
             printButton.Visible = false;
             CaptureScreen();
             PrintPreviewDialog printPreviewDialog1;
             printPreviewDialog1 = new PrintPreviewDialog();
             printPreviewDialog1.Document = printDocument1;
             printPreviewDialog1.Show();
+
+            oriOdup.Text = "DUPLICADO";
+
+            CaptureScreen();
+            PrintPreviewDialog printPreviewDialog2;
+            printPreviewDialog2 = new PrintPreviewDialog();
+            printPreviewDialog2.Document = printDocument1;
+            printPreviewDialog2.Show();
+
             printButton.Visible = true;
         }
     }

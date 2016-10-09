@@ -27,13 +27,13 @@ namespace Sesedublo_SLPL.Revisar_Caja
 
         private void agregarEfectivo()
         {
-            Conexion.executeProcedure("agregarEfectivo", Conexion.generarArgumentos("_montoASumar"), Convert.ToDecimal(Cantidad.Text));
+            Conexion.executeProcedure("agregarEfectivo", Conexion.generarArgumentos("_montoASumar", "_descripcion"), Convert.ToDecimal(Cantidad.Text), descripcion.Text);
             Conexion.closeConnection();
         }
 
         private void restarEfectivo()
         {
-            Conexion.executeProcedure("restarEfectivo", Conexion.generarArgumentos("_montoARestar"), Convert.ToDecimal(Cantidad.Text));
+            Conexion.executeProcedure("restarEfectivo", Conexion.generarArgumentos("_montoARestar", "_descripcion"), Convert.ToDecimal(Cantidad.Text), descripcion.Text);
             Conexion.closeConnection();
         }
 

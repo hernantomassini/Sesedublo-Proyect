@@ -28,6 +28,7 @@ DROP PROCEDURE IF EXISTS agregarEfectivo;
 DROP PROCEDURE IF EXISTS restarEfectivo;
 DROP PROCEDURE IF EXISTS obtenerMontoEnEfectivo;
 DROP PROCEDURE IF EXISTS obtenerMontoEnProductos;
+DROP PROCEDURE IF EXISTS cargarGrillaOperaciones;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -103,6 +104,7 @@ CREATE TABLE Facturas (
 CREATE TABLE Operaciones (
     id_operacion INT AUTO_INCREMENT,
     operacion VARCHAR(200),
+    descripcion VARCHAR(60),
     PRIMARY KEY (id_operacion)
 );
 
@@ -209,7 +211,7 @@ END //
 
 CREATE PROCEDURE cargarGrillaFacturas (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _descripcion VARCHAR(50), _direccion VARCHAR(255))
 BEGIN
-	SELECT f.id_factura, c.nombre AS Nombre, c.apellido AS Apellido, c.direccion AS Dirección, p.precio AS Precio FROM Facturas f
+	SELECT f.id_factura, c.id_cliente, c.nombre AS Nombre, c.apellido AS Apellido, c.direccion AS Dirección, p.precio AS Precio FROM Facturas f
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Clientes c ON c.id_cliente = p.comprador
 	WHERE ((f.descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
@@ -218,22 +220,24 @@ BEGIN
 	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""));
 END //
 
-CREATE PROCEDURE agregarEfectivo (IN _montoASumar INT) 
+CREATE PROCEDURE agregarEfectivo (IN _montoASumar INT, descripcion VARCHAR(60)) 
 BEGIN
 
 SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
 
     UPDATE Caja SET efectivoActual = (@_efectivo + _montoASumar) WHERE id_caja=1;
+    INSERT INTO Operaciones (operacion, descripcion) VALUES ("Efectivo entrante", descripcion);
 
 END //
 
-CREATE PROCEDURE restarEfectivo (IN _montoARestar INT) 
+CREATE PROCEDURE restarEfectivo (IN _montoARestar INT, descripcion VARCHAR(60)) 
 BEGIN
 
-SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
+	SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
 
     UPDATE Caja SET efectivoActual = (@_efectivo - _montoARestar) WHERE id_caja=1;
-
+    INSERT INTO Operaciones (operacion, descripcion) VALUES ("Efectivo saliente", descripcion);
+    
 END //
 
 CREATE PROCEDURE obtenerMontoEnEfectivo () 
@@ -249,6 +253,13 @@ BEGIN
 		SELECT SUM(p.costo) FROM Stock s INNER JOIN Productos p
         ON p.id_producto = s.producto;
 
+END //
+
+CREATE PROCEDURE cargarGrillaOperaciones (IN  _operacion VARCHAR(255), _descripcion VARCHAR(50))
+BEGIN
+	SELECT operacion AS Operación, descripcion AS Descripción FROM Operaciones
+	WHERE ((descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
+	AND ((operacion LIKE CONCAT("%", _operacion, "%") COLLATE utf8_general_ci ) OR (_operacion IS NULL OR _operacion = ""));
 END //
 
 DELIMITER ;	

@@ -28,12 +28,9 @@ DROP PROCEDURE IF EXISTS agregarEfectivo;
 DROP PROCEDURE IF EXISTS restarEfectivo;
 DROP PROCEDURE IF EXISTS obtenerMontoEnEfectivo;
 DROP PROCEDURE IF EXISTS obtenerMontoEnProductos;
-<<<<<<< HEAD
-DROP PROCEDURE IF EXISTS cargarGrillaOperaciones;
-=======
+DROP PROCEDURE IF EXISTS cargarGrillaDeOperaciones;
 DROP PROCEDURE IF EXISTS obtenerPedidos;
 DROP PROCEDURE IF EXISTS borrarPedido;
->>>>>>> cbd94599164dbb07ed227916f97256e9ee3d1933
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -99,7 +96,7 @@ CREATE TABLE Items (
 CREATE TABLE Facturas (
     id_factura INT AUTO_INCREMENT,
     fecha DATETIME,
-    descripcion VARCHAR(1000),
+    descripcion VARCHAR(60),
     pedido INT,
     PRIMARY KEY (id_factura),
     FOREIGN KEY (pedido)
@@ -225,11 +222,7 @@ BEGIN
 	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""));
 END //
 
-<<<<<<< HEAD
 CREATE PROCEDURE agregarEfectivo (IN _montoASumar INT, descripcion VARCHAR(60)) 
-=======
-CREATE PROCEDURE agregarEfectivo (IN _montoASumar INT) 
->>>>>>> cbd94599164dbb07ed227916f97256e9ee3d1933
 BEGIN
 
 SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
@@ -264,16 +257,14 @@ BEGIN
 
 END //
 
-<<<<<<< HEAD
-CREATE PROCEDURE cargarGrillaOperaciones (IN  _operacion VARCHAR(255), _descripcion VARCHAR(50))
+
+CREATE PROCEDURE cargarGrillaDeOperaciones (IN  _operacion VARCHAR(255), _descripcion VARCHAR(50))
 BEGIN
 	SELECT operacion AS Operación, descripcion AS Descripción FROM Operaciones
 	WHERE ((descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
 	AND ((operacion LIKE CONCAT("%", _operacion, "%") COLLATE utf8_general_ci ) OR (_operacion IS NULL OR _operacion = ""));
 END //
 
-DELIMITER ;	
-=======
 CREATE PROCEDURE obtenerPedidos () 
 BEGIN
 	
@@ -294,4 +285,3 @@ BEGIN
 END //
 
 DELIMITER ;	
->>>>>>> cbd94599164dbb07ed227916f97256e9ee3d1933

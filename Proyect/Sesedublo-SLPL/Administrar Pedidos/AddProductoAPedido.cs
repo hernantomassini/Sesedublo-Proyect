@@ -31,6 +31,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         public void crearPedido(int id_cliente)
         {
             this.id_cliente = id_cliente;
+            productosAVender.Clear();
             sumatoriaMoney = 0;
             updateLabelMoney();
             Clean();

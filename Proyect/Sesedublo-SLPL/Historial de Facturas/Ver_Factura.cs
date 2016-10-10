@@ -1,14 +1,8 @@
-﻿using MetroFramework.Forms;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Historial_de_Facturasns
@@ -24,8 +18,8 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
             this.Controls.Add(printButton);
             InitializeComponent();
+            this.Closing += new CancelEventHandler(Avoid_Closing);
 
-            facturaID.Text = "FACTURA N° 00001-" + Convert.ToString(id_factura);
             direccionLea.Text = "Elpidio Gonzales 9510";
             CPLea.Text = "C1416EFP CABA";
             TelLea.Text = "Tel/Fax 4639-5712";
@@ -33,17 +27,20 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             tipoFactura.Text = "A";
             CUITLea.Text = "CUIT: 30-70850524-9";
             ingresosBrutos.Text = "INGRESOS BRUTOS: 901-070815-6";
-            inicioActividad.Text = "INICIO ACTIVIDAD: 01-10-2003";
-            id_cliente = 1;
+            inicioActividad.Text = "INICIO ACTIVIDAD: 01-10-2003";            
+        }
+
+        private void getData()
+        {
             MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerCliente", Conexion.generarArgumentos("_id_cliente"), id_cliente);
 
             reader.Read();
             if (reader.HasRows)
             {
-                if (!reader[4].Equals(DBNull.Value) || reader.GetString(4) != "") { direccionVen.Text = "DIRECCIÓN: " + reader.GetString(4); } else { direccionVen.Text = ""; };
-                if (!reader[5].Equals(DBNull.Value) || reader.GetString(5) != "") { localidadCl.Text = "LOCALIDAD: " + reader.GetString(5); } else { localidadCl.Text = ""; };
-                if (!reader[6].Equals(DBNull.Value) || reader.GetString(6) != "") { cuitV.Text = "CUIT: " + reader.GetString(6); } else { cuitV.Text = ""; };
-                if (!reader[7].Equals(DBNull.Value) || reader.GetString(7) != "") { RazonSocialComp.Text = "RAZÓN SOCIAL: " + reader.GetString(7); } else { RazonSocialComp.Text = ""; };
+                if (reader.GetString(4) != "") { direccionVen.Text = "DIRECCIÓN: " + reader.GetString(4); } else { direccionVen.Text = ""; };
+                if (reader.GetString(5) != "") { localidadCl.Text = "LOCALIDAD: " + reader.GetString(5); } else { localidadCl.Text = ""; };
+                if (reader.GetString(6) != "") { cuitV.Text = "CUIT: " + reader.GetString(6); } else { cuitV.Text = ""; };
+                if (reader.GetString(7) != "") { RazonSocialComp.Text = "RAZÓN SOCIAL: " + reader.GetString(7); } else { RazonSocialComp.Text = ""; };
                 id_usuarioCompr.Text = "Cod. vendedor: " + id_cliente;
             }
             reader.Close();
@@ -51,13 +48,22 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             fechaActualImp.Text = Convert.ToString(DateTime.Now);
             fechaVencimiento.Text = Convert.ToString(DateTime.Now.AddDays(29));
             Conexion.closeConnection();
-            
+        }
+
+
+        void Avoid_Closing(object sender, CancelEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
         }
 
         public void meterId(int idFactura, int idCliente)
         {
             id_factura = idFactura;
             id_cliente = idCliente;
+
+            getData();
+            facturaID.Text = "FACTURA N° 00001-" + Convert.ToString(id_factura);
         }
 
            [System.Runtime.InteropServices.DllImport("gdi32.dll")]

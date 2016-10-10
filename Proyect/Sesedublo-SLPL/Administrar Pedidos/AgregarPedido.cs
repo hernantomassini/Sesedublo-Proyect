@@ -73,6 +73,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         public void Clean()
         {
+
             nombre.Clear();
             apellido.Clear();
             direccion.Clear();

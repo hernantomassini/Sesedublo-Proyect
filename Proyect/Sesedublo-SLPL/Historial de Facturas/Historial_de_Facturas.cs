@@ -10,6 +10,8 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
 {
     public partial class Historial_de_Facturas : MetroForm
     {
+
+        Validaciones val = new Validaciones();
         public Historial_de_Facturas()
         {
             InitializeComponent();
@@ -71,5 +73,16 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
 
             Conexion.closeConnection();
         }
+
+        private void nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNombre(e);
+        }
+
+        private void apellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNombre(e);
+        }
+        
     }
 }

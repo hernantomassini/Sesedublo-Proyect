@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Historial_de_Facturas));
             this.dgvFacturas = new MetroFramework.Controls.MetroGrid();
             this.direccion = new MetroFramework.Controls.MetroTextBox();
@@ -55,42 +55,43 @@
             this.dgvFacturas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvFacturas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvFacturas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFacturas.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFacturas.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvFacturas.EnableHeadersVisualStyles = false;
             this.dgvFacturas.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvFacturas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvFacturas.Location = new System.Drawing.Point(24, 212);
+            this.dgvFacturas.Location = new System.Drawing.Point(32, 261);
+            this.dgvFacturas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvFacturas.MultiSelect = false;
             this.dgvFacturas.Name = "dgvFacturas";
             this.dgvFacturas.ReadOnly = true;
             this.dgvFacturas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFacturas.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacturas.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvFacturas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFacturas.Size = new System.Drawing.Size(655, 323);
+            this.dgvFacturas.Size = new System.Drawing.Size(873, 398);
             this.dgvFacturas.TabIndex = 0;
             this.dgvFacturas.UseCustomBackColor = true;
             // 
@@ -100,9 +101,10 @@
             // 
             // 
             this.direccion.CustomButton.Image = null;
-            this.direccion.CustomButton.Location = new System.Drawing.Point(117, 1);
+            this.direccion.CustomButton.Location = new System.Drawing.Point(159, 2);
+            this.direccion.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.direccion.CustomButton.Name = "";
-            this.direccion.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.direccion.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.direccion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.direccion.CustomButton.TabIndex = 1;
             this.direccion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -111,16 +113,18 @@
             this.direccion.DisplayIcon = true;
             this.direccion.Icon = ((System.Drawing.Image)(resources.GetObject("direccion.Icon")));
             this.direccion.Lines = new string[0];
-            this.direccion.Location = new System.Drawing.Point(105, 166);
+            this.direccion.Location = new System.Drawing.Point(140, 204);
+            this.direccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.direccion.MaxLength = 32767;
             this.direccion.Name = "direccion";
             this.direccion.PasswordChar = '\0';
+            this.direccion.PromptText = "Buscar";
             this.direccion.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.direccion.SelectedText = "";
             this.direccion.SelectionLength = 0;
             this.direccion.SelectionStart = 0;
             this.direccion.ShortcutsEnabled = true;
-            this.direccion.Size = new System.Drawing.Size(139, 23);
+            this.direccion.Size = new System.Drawing.Size(185, 28);
             this.direccion.TabIndex = 16;
             this.direccion.UseSelectable = true;
             this.direccion.WaterMark = "Buscar";
@@ -130,9 +134,10 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(24, 170);
+            this.metroLabel3.Location = new System.Drawing.Point(32, 209);
+            this.metroLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(66, 19);
+            this.metroLabel3.Size = new System.Drawing.Size(71, 20);
             this.metroLabel3.TabIndex = 15;
             this.metroLabel3.Text = "Dirección:";
             // 
@@ -142,9 +147,10 @@
             // 
             // 
             this.apellido.CustomButton.Image = null;
-            this.apellido.CustomButton.Location = new System.Drawing.Point(117, 1);
+            this.apellido.CustomButton.Location = new System.Drawing.Point(159, 2);
+            this.apellido.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.apellido.CustomButton.Name = "";
-            this.apellido.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.apellido.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.apellido.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.apellido.CustomButton.TabIndex = 1;
             this.apellido.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -153,21 +159,24 @@
             this.apellido.DisplayIcon = true;
             this.apellido.Icon = ((System.Drawing.Image)(resources.GetObject("apellido.Icon")));
             this.apellido.Lines = new string[0];
-            this.apellido.Location = new System.Drawing.Point(104, 98);
+            this.apellido.Location = new System.Drawing.Point(139, 121);
+            this.apellido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.apellido.MaxLength = 32767;
             this.apellido.Name = "apellido";
             this.apellido.PasswordChar = '\0';
+            this.apellido.PromptText = "Buscar";
             this.apellido.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.apellido.SelectedText = "";
             this.apellido.SelectionLength = 0;
             this.apellido.SelectionStart = 0;
             this.apellido.ShortcutsEnabled = true;
-            this.apellido.Size = new System.Drawing.Size(139, 23);
+            this.apellido.Size = new System.Drawing.Size(185, 28);
             this.apellido.TabIndex = 14;
             this.apellido.UseSelectable = true;
             this.apellido.WaterMark = "Buscar";
             this.apellido.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.apellido.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.apellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.apellido_KeyPress);
             // 
             // nombre
             // 
@@ -175,9 +184,10 @@
             // 
             // 
             this.nombre.CustomButton.Image = null;
-            this.nombre.CustomButton.Location = new System.Drawing.Point(117, 1);
+            this.nombre.CustomButton.Location = new System.Drawing.Point(159, 2);
+            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nombre.CustomButton.Name = "";
-            this.nombre.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.nombre.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.nombre.CustomButton.TabIndex = 1;
             this.nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -186,37 +196,42 @@
             this.nombre.DisplayIcon = true;
             this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
             this.nombre.Lines = new string[0];
-            this.nombre.Location = new System.Drawing.Point(105, 66);
+            this.nombre.Location = new System.Drawing.Point(140, 81);
+            this.nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nombre.MaxLength = 32767;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
+            this.nombre.PromptText = "Buscar";
             this.nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.nombre.SelectedText = "";
             this.nombre.SelectionLength = 0;
             this.nombre.SelectionStart = 0;
             this.nombre.ShortcutsEnabled = true;
-            this.nombre.Size = new System.Drawing.Size(139, 23);
+            this.nombre.Size = new System.Drawing.Size(185, 28);
             this.nombre.TabIndex = 13;
             this.nombre.UseSelectable = true;
             this.nombre.WaterMark = "Buscar";
             this.nombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.nombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nombre_KeyPress);
             // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(24, 102);
+            this.metroLabel2.Location = new System.Drawing.Point(32, 126);
+            this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(61, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(62, 20);
             this.metroLabel2.TabIndex = 12;
             this.metroLabel2.Text = "Apellido:";
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(24, 70);
+            this.metroLabel1.Location = new System.Drawing.Point(32, 86);
+            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(62, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(64, 20);
             this.metroLabel1.Style = MetroFramework.MetroColorStyle.Black;
             this.metroLabel1.TabIndex = 11;
             this.metroLabel1.Text = "Nombre:";
@@ -227,9 +242,10 @@
             // 
             // 
             this.descripcion.CustomButton.Image = null;
-            this.descripcion.CustomButton.Location = new System.Drawing.Point(117, 1);
+            this.descripcion.CustomButton.Location = new System.Drawing.Point(159, 2);
+            this.descripcion.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.descripcion.CustomButton.Name = "";
-            this.descripcion.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.descripcion.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.descripcion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.descripcion.CustomButton.TabIndex = 1;
             this.descripcion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -238,16 +254,18 @@
             this.descripcion.DisplayIcon = true;
             this.descripcion.Icon = ((System.Drawing.Image)(resources.GetObject("descripcion.Icon")));
             this.descripcion.Lines = new string[0];
-            this.descripcion.Location = new System.Drawing.Point(105, 133);
+            this.descripcion.Location = new System.Drawing.Point(140, 164);
+            this.descripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.descripcion.MaxLength = 32767;
             this.descripcion.Name = "descripcion";
             this.descripcion.PasswordChar = '\0';
+            this.descripcion.PromptText = "Buscar";
             this.descripcion.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.descripcion.SelectedText = "";
             this.descripcion.SelectionLength = 0;
             this.descripcion.SelectionStart = 0;
             this.descripcion.ShortcutsEnabled = true;
-            this.descripcion.Size = new System.Drawing.Size(139, 23);
+            this.descripcion.Size = new System.Drawing.Size(185, 28);
             this.descripcion.TabIndex = 19;
             this.descripcion.UseSelectable = true;
             this.descripcion.WaterMark = "Buscar";
@@ -257,9 +275,10 @@
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(20, 133);
+            this.metroLabel6.Location = new System.Drawing.Point(27, 164);
+            this.metroLabel6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(79, 19);
+            this.metroLabel6.Size = new System.Drawing.Size(85, 20);
             this.metroLabel6.TabIndex = 17;
             this.metroLabel6.Text = "Descripción:";
             // 
@@ -267,9 +286,10 @@
             // 
             this.metroTile1.ActiveControl = null;
             this.metroTile1.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.metroTile1.Location = new System.Drawing.Point(24, 551);
+            this.metroTile1.Location = new System.Drawing.Point(32, 678);
+            this.metroTile1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(83, 44);
+            this.metroTile1.Size = new System.Drawing.Size(111, 54);
             this.metroTile1.TabIndex = 20;
             this.metroTile1.Text = "Atrás";
             this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -286,9 +306,10 @@
             this.titleDetalleFactura.ActiveControl = null;
             this.titleDetalleFactura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.titleDetalleFactura.BackColor = System.Drawing.Color.YellowGreen;
-            this.titleDetalleFactura.Location = new System.Drawing.Point(561, 551);
+            this.titleDetalleFactura.Location = new System.Drawing.Point(748, 678);
+            this.titleDetalleFactura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titleDetalleFactura.Name = "titleDetalleFactura";
-            this.titleDetalleFactura.Size = new System.Drawing.Size(118, 44);
+            this.titleDetalleFactura.Size = new System.Drawing.Size(157, 54);
             this.titleDetalleFactura.TabIndex = 21;
             this.titleDetalleFactura.Text = "Ver Factura";
             this.titleDetalleFactura.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -303,12 +324,10 @@
             // Historial_de_Facturas
             // 
             this.ApplyImageInvert = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackImage = ((System.Drawing.Image)(resources.GetObject("$this.BackImage")));
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(702, 616);
+            this.ClientSize = new System.Drawing.Size(936, 758);
             this.Controls.Add(this.dgvFacturas);
             this.Controls.Add(this.titleDetalleFactura);
             this.Controls.Add(this.metroTile1);
@@ -320,7 +339,9 @@
             this.Controls.Add(this.nombre);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Historial_de_Facturas";
+            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Facturas";
             this.TransparencyKey = System.Drawing.Color.LightSkyBlue;
             this.Load += new System.EventHandler(this.Historial_de_Facturas_Load);

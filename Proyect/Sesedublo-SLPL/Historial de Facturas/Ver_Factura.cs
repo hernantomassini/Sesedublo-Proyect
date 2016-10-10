@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Historial_de_Facturasns
 {
-    public partial class Ver_Factura : MetroForm
+    public partial class Ver_Factura : Form
     {
         int id_factura;
         int id_cliente;

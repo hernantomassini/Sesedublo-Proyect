@@ -9,6 +9,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
 {
     public partial class ABM_Stock : MetroForm
     {
+        Validaciones val = new Validaciones();
         public ABM_Stock()
         {
             InitializeComponent();
@@ -107,6 +108,11 @@ namespace Sesedublo_SLPL.Administrar_Productos
         private void ABM_Stock_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNombre(e);
         }
     }
 }

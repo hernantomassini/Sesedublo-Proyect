@@ -119,6 +119,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
         {
             if(individualRadio.Checked)
             {
+                CostoLabel.Text = "Costo por unidad:";
                 CantidadLbl.Text = "Cantidad de unidades:";
                 PrecioLabel.Text = "Precio por unidad:";
                 UnidadesXBultoLbl.Visible = false;
@@ -126,6 +127,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
             }
             else
             {
+                CostoLabel.Text = "Costo por bulto:";
                 CantidadLbl.Text = "Cantidad de bultos:";
                 PrecioLabel.Text = "Precio por bulto:";
                 UnidadesXBultoLbl.Visible = true;

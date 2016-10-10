@@ -31,6 +31,8 @@ DROP PROCEDURE IF EXISTS obtenerMontoEnProductos;
 DROP PROCEDURE IF EXISTS cargarGrillaDeOperaciones;
 DROP PROCEDURE IF EXISTS obtenerPedidos;
 DROP PROCEDURE IF EXISTS borrarPedido;
+DROP PROCEDURE IF EXISTS crearPedido;
+DROP PROCEDURE IF EXISTS agregarItemAPedido;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -86,6 +88,7 @@ CREATE TABLE Items (
     id_item INT AUTO_INCREMENT,
     producto INT,
     pedido INT,
+    cantidadProductos INT,
     PRIMARY KEY (id_item),
     FOREIGN KEY (producto)
         REFERENCES Productos (id_producto),
@@ -253,11 +256,10 @@ END //
 CREATE PROCEDURE obtenerMontoEnProductos () 
 BEGIN
 
-		SELECT SUM(p.costo) FROM Stock s INNER JOIN Productos p
-        ON p.id_producto = s.producto;
+	SELECT SUM(p.costo * p.) FROM Stock s INNER JOIN Productos p
+	ON p.id_producto = s.producto;
 
 END //
-
 
 CREATE PROCEDURE cargarGrillaDeOperaciones (IN  _operacion VARCHAR(255), _descripcion VARCHAR(50))
 BEGIN
@@ -282,4 +284,27 @@ BEGIN
 	DELETE FROM Pedidos WHERE id_pedido = _id_pedido;
 
 END //
-DELIMITER ;	
+
+CREATE PROCEDURE crearPedido (IN _id_comprador INT, IN _pagadoHastaElMomento DECIMAL(7,2), IN _precio DECIMAL(7,2))
+BEGIN
+
+	SET @_nombreComprador = (SELECT CONCAT(nombre, ", " ,apellido) FROM Clientes WHERE id_cliente = _id_comprador);
+    SET @_descripcion = CONCAT("El cliente ", @_nombreComprador, " realizó un pedido y dejo pago ", _pagadoHastaElMomento, "$.");
+	CALL agregarEfectivo(_pagadoHastaElMomento, @_descripcion);
+
+	INSERT INTO Pedidos (comprador, pagadoHastaElMomento, precio) VALUES (_id_comprador, _pagadoHastaElMomento, _precio);
+	SELECT LAST_INSERT_ID();
+END //
+
+CREATE PROCEDURE agregarItemAPedido (IN _id_pedido INT, IN _id_producto INT, IN _cantidad INT)
+BEGIN
+
+SET @_nuevaCantidad = (SELECT cantidad WHERE id_producto = _id_producto) - _cantidad;
+
+	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = _id_producto;
+	INSERT INTO Items (producto, pedido, cantidadProductos) VALUES (_id_producto, _id_pedido, _cantidad);
+
+    
+END //
+
+DELIMITER ;

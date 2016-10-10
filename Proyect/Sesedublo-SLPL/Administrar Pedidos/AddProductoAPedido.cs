@@ -41,7 +41,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         private void updateLabelMoney()
         {
             MontoACobrarLabel.Text = "El valor del pedido es de " + sumatoriaMoney;
-            cantidadAPagar.Text = Convert.ToString(sumatoriaMoney);
+            montoAPagarDelPedido.Text = Convert.ToString(sumatoriaMoney);
         }
 
         private void Clean()
@@ -62,7 +62,21 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
-            Funciones.tirarException();
+            //Crear pedido y actualizar Caja:
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("crearPedido", Conexion.generarArgumentos("_id_comprador", "_pagadoHastaElMomento", "_precio"), id_cliente, Convert.ToDecimal(cantidadPagada.Text), Convert.ToDecimal(montoAPagarDelPedido.Text));
+            reader.Read();
+
+            int id_pedido = reader.GetInt32(0);
+
+            reader.Close();
+            Conexion.closeConnection();
+
+            //Agregar productos al pedido y disminuir stock de todos los productos involucrados:
+            foreach (var registro in productosAVender)
+            {
+                Conexion.executeProcedure("agregarItemAPedido", Conexion.generarArgumentos("_id_pedido", "_id_producto", "_cantidad"), id_pedido, registro.Key, registro.Value);
+                Conexion.closeConnection();
+            }
         }
 
         public void cargarDGV()
@@ -212,15 +226,27 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return false;
             }
 
-            if (cantidadAPagar.Text == "")
+            if (montoAPagarDelPedido.Text == "")
             {
                 Funciones.imprimirMensajeDeError("Debe ingresar cuando deberá pagar el cliente.", this);
                 return false;
             }
 
-            if (Convert.ToDecimal(cantidadAPagar.Text) < 0)
+            if (Convert.ToDecimal(montoAPagarDelPedido.Text) < 0)
             {
                 Funciones.imprimirMensajeDeError("La cantidad que deberá pagar el cliente no puede ser negativa.", this);
+                return false;
+            }
+
+            if(cantidadPagada.Text == "")
+            {
+                Funciones.imprimirMensajeDeError("Debe ingresar la cantidad que deja paga el cliente. (Puede ser 0)", this);
+                return false;
+            }
+
+            if (Convert.ToDecimal(cantidadPagada.Text) < 0)
+            {
+                Funciones.imprimirMensajeDeError("La cantidad que deja paga el cliente no puede ser negativa.", this);
                 return false;
             }
 

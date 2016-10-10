@@ -3,7 +3,6 @@ using MetroFramework.Forms;
 using System.ComponentModel;
 using MySql.Data.MySqlClient;
 using System.Data;
-using Enums;
 using Sesedublo_SLPL.Generales;
 using System.Windows.Forms;
 
@@ -22,6 +21,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
             this.Hide();
             e.Cancel = true;
+            Manejador_Formularios.ABM_Pedidos.Show();
         }
 
         private void AtrasTile_Click(object sender, EventArgs e)
@@ -68,7 +68,19 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
             Manejador_Formularios.AddProductoAPedido.crearPedido(id_cliente);
             Manejador_Formularios.AddProductoAPedido.Show();
-            Close();
+            Hide();
+        }
+
+        public void Clean()
+        {
+            nombre.Clear();
+            apellido.Clear();
+            direccion.Clear();
+        }
+
+        private void AgregarPedido_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

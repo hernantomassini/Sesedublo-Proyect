@@ -52,6 +52,7 @@ namespace Sesedublo_SLPL
         private void GoToStock_Click(object sender, EventArgs e)
         {
             Manejador_Formularios.ABM_Stock.cargarDGV();
+            Manejador_Formularios.ABM_Stock.Clean();
             Manejador_Formularios.ABM_Stock.Show();
         }
 

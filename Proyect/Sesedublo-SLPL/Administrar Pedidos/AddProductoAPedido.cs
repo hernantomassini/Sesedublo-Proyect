@@ -57,9 +57,8 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         private void FinalizarTile_Click(object sender, EventArgs e)
         {
-            if (ItemsDGV.Rows.Count == 0)
+            if(!validarFinalizar())
             {
-                Funciones.imprimirMensajeDeError("Debe ingresar algún producto que el cliente quiera comprar.", this);
                 return;
             }
 
@@ -200,6 +199,29 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             if (cantidad > cantidadEnStock)
             {
                 Funciones.imprimirMensajeDeAviso("Se está superando el stock que se encuentra registrado en el programa.", this);
+            }
+
+            return true;
+        }
+
+        private bool validarFinalizar()
+        {
+            if (ItemsDGV.Rows.Count == 0)
+            {
+                Funciones.imprimirMensajeDeError("Debe ingresar algún producto que el cliente quiera comprar.", this);
+                return false;
+            }
+
+            if (cantidadAPagar.Text == "")
+            {
+                Funciones.imprimirMensajeDeError("Debe ingresar cuando deberá pagar el cliente.", this);
+                return false;
+            }
+
+            if (Convert.ToDecimal(cantidadAPagar.Text) < 0)
+            {
+                Funciones.imprimirMensajeDeError("La cantidad que deberá pagar el cliente no puede ser negativa.", this);
+                return false;
             }
 
             return true;

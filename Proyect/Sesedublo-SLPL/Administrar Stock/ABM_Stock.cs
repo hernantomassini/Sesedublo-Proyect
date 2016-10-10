@@ -47,7 +47,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
         {
             DataGridViewRow filaDgv = StockDGV.CurrentRow;
 
-            if (!Validaciones.validarFilaMarcada(filaDgv,this))
+            if (!Validaciones.validarFilaMarcada(filaDgv, this))
             {
                 return;
             }
@@ -97,6 +97,11 @@ namespace Sesedublo_SLPL.Administrar_Productos
         private void AtrasButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        public void Clean()
+        {
+            nombre.Clear();
         }
 
         private void ABM_Stock_Load(object sender, EventArgs e)

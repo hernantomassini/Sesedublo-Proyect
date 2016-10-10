@@ -193,5 +193,18 @@ namespace Sesedublo_SLPL.Generales
                 return AddProductoAPedido_Form;
             }
         }
+
+        private static GenerarFactura GenerarFactura_Form;
+        public static GenerarFactura GenerarFactura
+        {
+            get
+            {
+                if (GenerarFactura_Form == null)
+                {
+                    GenerarFactura_Form = new GenerarFactura();
+                }
+                return GenerarFactura_Form;
+            }
+        }
     }
 }

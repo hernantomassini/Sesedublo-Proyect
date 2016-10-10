@@ -100,6 +100,12 @@
     <Compile Include="Administrar Pedidos\AgregarPedido.Designer.cs">
       <DependentUpon>AgregarPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administrar Pedidos\GenerarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrar Pedidos\GenerarFactura.Designer.cs">
+      <DependentUpon>GenerarFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrar Stock\ABM_Stock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administrar Pedidos\AgregarPedido.resx">
       <DependentUpon>AgregarPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrar Pedidos\GenerarFactura.resx">
+      <DependentUpon>GenerarFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrar Stock\ABM_Stock.resx">
       <DependentUpon>ABM_Stock.cs</DependentUpon>

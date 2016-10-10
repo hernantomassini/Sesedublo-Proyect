@@ -63,7 +63,23 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         private void FacturarPedidoTile_Click(object sender, EventArgs e)
         {
+            DataGridViewRow filaDgv = PedidosDGV.CurrentRow;
 
+            if (!Validaciones.validarFilaMarcada(filaDgv, this))
+            {
+                return;
+            }
+
+            if (Funciones.imprimirMensajeDeAlerta("¿Estás seguro de generar la factura? Esto significará que el pedido ya fue pago y se eliminará de esta tabla.", this) == DialogResult.Cancel)
+            {
+                return;
+            }
+
+
+            int id_pedido = Convert.ToInt32(filaDgv.Cells[0].Value);
+
+            Manejador_Formularios.GenerarFactura.crearFactura(id_pedido);
+            Manejador_Formularios.GenerarFactura.Show();
         }
 
         private void ABM_Pedidos_Load(object sender, EventArgs e)

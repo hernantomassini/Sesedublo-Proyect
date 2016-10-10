@@ -33,6 +33,7 @@ DROP PROCEDURE IF EXISTS obtenerPedidos;
 DROP PROCEDURE IF EXISTS borrarPedido;
 DROP PROCEDURE IF EXISTS crearPedido;
 DROP PROCEDURE IF EXISTS agregarItemAPedido;
+DROP PROCEDURE IF EXISTS generarFactura;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -99,7 +100,7 @@ CREATE TABLE Items (
 CREATE TABLE Facturas (
     id_factura INT AUTO_INCREMENT,
     fecha DATETIME,
-    descripcion VARCHAR(60),
+    tipoDeFactura VARCHAR(60),
     pedido INT,
     PRIMARY KEY (id_factura),
     FOREIGN KEY (pedido)
@@ -218,10 +219,10 @@ END //
 
 CREATE PROCEDURE cargarGrillaFacturas (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _descripcion VARCHAR(50), _direccion VARCHAR(255))
 BEGIN
-	SELECT f.id_factura, c.id_cliente, c.nombre AS Nombre, c.apellido AS Apellido, c.direccion AS Dirección, p.precio AS Precio FROM Facturas f
+	SELECT f.id_factura, c.id_cliente, c.nombre AS Nombre, c.apellido AS Apellido, f.tipoDeFactura AS 'Tipo de factura', c.direccion AS Dirección, p.precio AS Precio FROM Facturas f
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Clientes c ON c.id_cliente = p.comprador
-	WHERE ((f.descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
+	WHERE ((f.tipoDeFactura LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
 	AND ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
 	AND ((c.apellido LIKE CONCAT("%", _apellido, "%") COLLATE utf8_general_ci ) OR (_apellido IS NULL OR _apellido = ""))
 	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""));
@@ -271,7 +272,7 @@ END //
 
 CREATE PROCEDURE obtenerPedidos () 
 BEGIN
-        SELECT p.id_pedido, CONCAT(c.nombre, " ,", c.apellido), p.pagadoHastaElMomento, p.precio - p.pagadoHastaElMomento, group_concat(pr.nombre) FROM Pedidos p 
+        SELECT p.id_pedido, CONCAT(c.nombre, " ", c.apellido), p.pagadoHastaElMomento, p.precio - p.pagadoHastaElMomento, group_concat(pr.nombre) FROM Pedidos p 
         LEFT JOIN Facturas f ON p.id_pedido = f.pedido
         INNER JOIN Clientes c ON p.comprador = c.id_cliente
         INNER JOIN Items i ON p.id_pedido = i.pedido
@@ -290,12 +291,9 @@ END //
 CREATE PROCEDURE crearPedido (IN _id_comprador INT, IN _pagadoHastaElMomento DECIMAL(7,2), IN _precio DECIMAL(7,2))
 BEGIN
 
-	#SET @_nombreComprador = (SELECT CONCAT(nombre, ", " ,apellido) FROM Clientes WHERE id_cliente = _id_comprador);
-    #SET @_descripcion = CONCAT("El cliente ", @_nombreComprador, " realizó un pedido y dejo pago ", _pagadoHastaElMomento, "$.");
-	CALL agregarEfectivo(_pagadoHastaElMomento, "El pibe agrego guita locococoococo");
-
 	INSERT INTO Pedidos (comprador, pagadoHastaElMomento, precio) VALUES (_id_comprador, _pagadoHastaElMomento, _precio);
 	SELECT LAST_INSERT_ID();
+    
 END //
 
 CREATE PROCEDURE agregarItemAPedido (IN _id_pedido INT, IN _id_producto INT, IN _cantidad INT)
@@ -306,6 +304,13 @@ SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = _id_pr
 	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = _id_producto;
 	INSERT INTO Items (producto, pedido, cantidadProductos) VALUES (_id_producto, _id_pedido, _cantidad);
 
+    
+END //
+
+CREATE PROCEDURE generarFactura (IN _id_pedido INT, IN _tipoFactura VARCHAR(60))
+BEGIN
+
+	INSERT INTO Facturas (fecha, tipoDeFactura, pedido) VALUES (CURTIME(), _tipoFactura, _id_pedido);
     
 END //
 

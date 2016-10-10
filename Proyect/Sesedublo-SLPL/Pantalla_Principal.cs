@@ -44,31 +44,38 @@ namespace Sesedublo_SLPL
 
         private void GoToPedidos_Click(object sender, EventArgs e)
         {
+
+            //Manejador_Formularios.ABM_Pedidos.getData();
             Manejador_Formularios.ABM_Pedidos.Show();
         }
 
         private void GoToStock_Click(object sender, EventArgs e)
         {
+            Manejador_Formularios.ABM_Stock.cargarDGV();
             Manejador_Formularios.ABM_Stock.Show();
         }
 
         private void GoToUsuarios_Click(object sender, EventArgs e)
         {
+            Manejador_Formularios.ABM_Usuarios.getData();
             Manejador_Formularios.ABM_Usuarios.Show();
         }
 
         private void GoToHistorialFacturas_Click(object sender, EventArgs e)
         {
+            Manejador_Formularios.Historial_de_Facturas.getData();
             Manejador_Formularios.Historial_de_Facturas.Show();
         }
 
         private void GoToHistorialOperaciones_Click(object sender, EventArgs e)
         {
+            Manejador_Formularios.Historial_de_Operaciones.getData();
             Manejador_Formularios.Historial_de_Operaciones.Show();
         }
 
         private void GoToRevisarCaja_Click(object sender, EventArgs e)
         {
+            Manejador_Formularios.Monto_Caja.updatearLabels();
             Manejador_Formularios.Monto_Caja.Show();
         }
 

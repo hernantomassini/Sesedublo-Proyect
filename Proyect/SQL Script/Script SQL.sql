@@ -222,7 +222,7 @@ BEGIN
 	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""));
 END //
 
-CREATE PROCEDURE agregarEfectivo (IN _montoASumar INT, descripcion VARCHAR(60)) 
+CREATE PROCEDURE agregarEfectivo (IN _montoASumar INT, _descripcion VARCHAR(60)) 
 BEGIN
 
 SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
@@ -232,7 +232,7 @@ SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
 
 END //
 
-CREATE PROCEDURE restarEfectivo (IN _montoARestar INT, descripcion VARCHAR(60)) 
+CREATE PROCEDURE restarEfectivo (IN _montoARestar INT, _descripcion VARCHAR(60)) 
 BEGIN
 
 	SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
@@ -267,14 +267,12 @@ END //
 
 CREATE PROCEDURE obtenerPedidos () 
 BEGIN
-	
         SELECT p.id_pedido, c.nombre, c.apellido, p.pagadoHastaElMomento, p.precio, group_concat(pr.nombre)  FROM Pedidos p 
         LEFT OUTER JOIN Facturas f ON p.id_pedido = f.pedido
         INNER JOIN Clientes c ON p.comprador = c.id_cliente
         INNER JOIN Items i ON p.id_pedido = i.pedido
         INNER JOIN Productos pr ON i.producto = pr.id_producto
 		WHERE f.pedido IS NULL;
-
 END //
 
 CREATE PROCEDURE borrarPedido (IN _id_pedido INT)

@@ -47,5 +47,15 @@ namespace Sesedublo_SLPL.Historial_de_Operacionesns
         {
             this.Hide();
         }
+
+        private void operacion_TextChanged(object sender, EventArgs e)
+        {
+            this.getData();
+        }
+
+        private void descripcion_TextChanged(object sender, EventArgs e)
+        {
+            this.getData();
+        }
     }
 }

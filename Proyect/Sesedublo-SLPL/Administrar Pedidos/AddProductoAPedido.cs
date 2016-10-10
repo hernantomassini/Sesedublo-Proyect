@@ -38,6 +38,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
             Funciones.limpiarDGV(ProductosDGV);
             MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerStock", Conexion.generarArgumentos());
+
             string cantidad;
             int cantXBulto;
             decimal precio;
@@ -48,16 +49,18 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
                 if (cantXBulto == 0)
                 { 
+                    //Significa que el producto es individual!
                     cantidad = reader.GetString(1);
-                    precio = reader.GetDecimal(2);
+                    precio = reader.GetDecimal(5);
                 }
                 else
                 {
+                    //El producto es un Bulto!
                     cantidad = reader.GetString(1) + " bultos de " + cantXBulto + " unidades";
-                    precio = reader.GetDecimal(2);
+                    precio = reader.GetDecimal(6);
                 }
 
-                //ID Stock 0 - Cantidad 1 - Nombre 3 - Costo 4 - PVU 5 - PVB 6
+                 //ID Stock 0 - Nombre 3
                  ProductosDGV.Rows.Add(reader.GetInt32(0), cantidad, reader.GetString(3), precio);
             }
 

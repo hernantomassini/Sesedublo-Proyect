@@ -18,7 +18,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
             InitializeComponent();
             this.Closing += new CancelEventHandler(Avoid_Closing);
-            cargarDGVS();
+            cargarDGVUsuarios();
         }
 
         void Avoid_Closing(object sender, CancelEventArgs e)
@@ -44,12 +44,17 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         private void nombre_TextChanged(object sender, EventArgs e)
         {
-            this.cargarDGVUsuarios();
+            cargarDGVUsuarios();
         }
 
         private void apellido_TextChanged(object sender, EventArgs e)
         {
-            this.cargarDGVUsuarios();
+            cargarDGVUsuarios();
+        }
+
+        private void direccion_TextChanged(object sender, EventArgs e)
+        {
+            cargarDGVUsuarios();
         }
 
         public void crearPedido()
@@ -57,14 +62,9 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             flag = accionesABM.Crear;
         }
 
-        private void direccion_TextChanged(object sender, EventArgs e)
+        public void modificarPedido()
         {
-            this.cargarDGVUsuarios();
-        }
-
-        public void cargarDGVS()
-        {
-            cargarDGVUsuarios();
+            flag = accionesABM.Modificar;
             cargarDGVStock();
         }
 
@@ -79,9 +79,12 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             Conexion.closeConnection();
         }
 
+        /// <summary>
+        /// Solo se usaría para el modificar!
+        /// </summary>
         private void cargarDGVStock()
         {
-
+            Funciones.tirarException();
         }
 
         private void AgregarProductoTile_Click(object sender, EventArgs e)
@@ -105,7 +108,6 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
-            //TODO - PROBAR.
             ItemsDGV.Rows.Remove(filaDgv);
         }
     }

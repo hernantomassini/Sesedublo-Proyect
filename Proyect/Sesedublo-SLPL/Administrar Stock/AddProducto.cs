@@ -61,8 +61,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
             Cantidad.Text = reader.GetString(0);
             UnidadesXBulto.Text = cantXBulto.ToString();
             Costo.Text = reader.GetString(3);
-            PVunitario.Text = reader.GetString(4);
-            PVBulto.Text = reader.GetString(5);
+            Precio.Text = reader.GetString(4);
 
             reader.Close();
             Conexion.closeConnection();
@@ -76,8 +75,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
             UnidadesXBulto.SelectedIndex = 0;
             Nombre.Clear();
             Costo.Clear();
-            PVunitario.Clear();
-            PVBulto.Clear();
+            Precio.Clear();
         }
 
         private void AtrasBtn_Click(object sender, EventArgs e)
@@ -88,14 +86,24 @@ namespace Sesedublo_SLPL.Administrar_Stock
         private void AgregarProductoBtn_Click(object sender, EventArgs e)
         {
             int cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
+            decimal precioPorUnidad = Convert.ToDecimal(Precio.Text);
+            decimal precioPorBulto = precioPorUnidad;
 
             if (individualRadio.Checked)
+            { 
                 cantXBulto = 0;
+                precioPorBulto = 0;
+            }
+            else
+            {
+                precioPorUnidad = decimal.Round(precioPorBulto / cantXBulto, 2);
+            }
+                
 
             if (flag == accionesABM.Crear)            
-                Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo" , "_nombre", "_PVUnitario", "_PVBulto"), Convert.ToInt32(Cantidad.Text), cantXBulto, Convert.ToDecimal(Costo.Text), Nombre.Text, Convert.ToDecimal(PVunitario.Text), Convert.ToDecimal(PVBulto.Text));
+                Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo" , "_nombre", "_PVUnitario", "_PVBulto"), Convert.ToInt32(Cantidad.Text), cantXBulto, Convert.ToDecimal(Costo.Text), Nombre.Text, precioPorUnidad, precioPorBulto);
             else
-                Conexion.executeProcedure("modificarStock", Conexion.generarArgumentos("_id_stock", "_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), id_stock, Convert.ToInt32(Cantidad.Text), cantXBulto, Convert.ToDecimal(Costo.Text), Nombre.Text, Convert.ToDecimal(PVunitario.Text), Convert.ToDecimal(PVBulto.Text));
+                Conexion.executeProcedure("modificarStock", Conexion.generarArgumentos("_id_stock", "_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), id_stock, Convert.ToInt32(Cantidad.Text), cantXBulto, Convert.ToDecimal(Costo.Text), Nombre.Text, precioPorUnidad, precioPorBulto);
 
             Conexion.closeConnection();
             Close();
@@ -105,49 +113,18 @@ namespace Sesedublo_SLPL.Administrar_Stock
         {
             if(individualRadio.Checked)
             {
-                label7.Visible = false;
+                CantidadLbl.Text = "Cantidad de unidades:";
+                PrecioLabel.Text = "Precio por unidad:";
+                UnidadesXBultoLbl.Visible = false;
                 UnidadesXBulto.Visible = false;
-                PVunitario.Enabled = true;
-                PVBulto.Enabled = false;
-                PVBulto.Text = "0";
             }
             else
             {
-                label7.Visible = true;
+                CantidadLbl.Text = "Cantidad de bultos:";
+                PrecioLabel.Text = "Precio por bulto:";
+                UnidadesXBultoLbl.Visible = true;
                 UnidadesXBulto.Visible = true;
-                PVunitario.Enabled = false;
-                PVBulto.Enabled = true;
-                PVunitario.Text = "0";
             }
-        }
-
-        private void UnidadesXBulto_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            updatePrecioUnitario();
-        }
-
-        private void PVBulto_TextChanged(object sender, EventArgs e)
-        {
-            updatePrecioUnitario();
-        }
-
-        private void updatePrecioUnitario()
-        {
-            decimal PrecioBulto;
-            int unidadesPorBulto;
-
-            if (PVBulto.Text == "")
-                PrecioBulto = 0;
-            else
-                PrecioBulto = Convert.ToDecimal(PVBulto.Text);
-
-            if (UnidadesXBulto.Text == "")
-                unidadesPorBulto = 1;
-            else
-                unidadesPorBulto = Convert.ToInt32(UnidadesXBulto.Text);
-
-            decimal resultado = decimal.Round(PrecioBulto / unidadesPorBulto, 2);
-            PVunitario.Text = resultado.ToString();
         }
     }
 }

@@ -104,10 +104,10 @@
             // 
             // 
             this.descripcion.CustomButton.Image = null;
-            this.descripcion.CustomButton.Location = new System.Drawing.Point(125, 1);
-            this.descripcion.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.descripcion.CustomButton.Location = new System.Drawing.Point(94, 1);
+            this.descripcion.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.descripcion.CustomButton.Name = "";
-            this.descripcion.CustomButton.Size = new System.Drawing.Size(113, 105);
+            this.descripcion.CustomButton.Size = new System.Drawing.Size(85, 85);
             this.descripcion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.descripcion.CustomButton.TabIndex = 1;
             this.descripcion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -115,8 +115,8 @@
             this.descripcion.CustomButton.Visible = false;
             this.descripcion.Lines = new string[0];
             this.descripcion.Location = new System.Drawing.Point(104, 153);
-            this.descripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.descripcion.MaxLength = 32767;
+            this.descripcion.Margin = new System.Windows.Forms.Padding(4);
+            this.descripcion.MaxLength = 60;
             this.descripcion.Multiline = true;
             this.descripcion.Name = "descripcion";
             this.descripcion.PasswordChar = '\0';
@@ -127,7 +127,7 @@
             this.descripcion.SelectionStart = 0;
             this.descripcion.ShortcutsEnabled = true;
             this.descripcion.Size = new System.Drawing.Size(180, 87);
-            this.descripcion.TabIndex = 7;
+            this.descripcion.TabIndex = 2;
             this.descripcion.UseSelectable = true;
             this.descripcion.WaterMark = "Ingrese el motivo";
             this.descripcion.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -140,10 +140,10 @@
             // 
             // 
             this.Cantidad.CustomButton.Image = null;
-            this.Cantidad.CustomButton.Location = new System.Drawing.Point(205, 2);
-            this.Cantidad.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Cantidad.CustomButton.Location = new System.Drawing.Point(154, 2);
+            this.Cantidad.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.Cantidad.CustomButton.Name = "";
-            this.Cantidad.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.Cantidad.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.Cantidad.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.Cantidad.CustomButton.TabIndex = 1;
             this.Cantidad.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -151,8 +151,8 @@
             this.Cantidad.CustomButton.Visible = false;
             this.Cantidad.Lines = new string[0];
             this.Cantidad.Location = new System.Drawing.Point(104, 117);
-            this.Cantidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Cantidad.MaxLength = 32767;
+            this.Cantidad.Margin = new System.Windows.Forms.Padding(4);
+            this.Cantidad.MaxLength = 20;
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.PasswordChar = '\0';
             this.Cantidad.PromptText = "Ingrese el monto";
@@ -162,7 +162,7 @@
             this.Cantidad.SelectionStart = 0;
             this.Cantidad.ShortcutsEnabled = true;
             this.Cantidad.Size = new System.Drawing.Size(180, 28);
-            this.Cantidad.TabIndex = 8;
+            this.Cantidad.TabIndex = 1;
             this.Cantidad.UseSelectable = true;
             this.Cantidad.WaterMark = "Ingrese el monto";
             this.Cantidad.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));

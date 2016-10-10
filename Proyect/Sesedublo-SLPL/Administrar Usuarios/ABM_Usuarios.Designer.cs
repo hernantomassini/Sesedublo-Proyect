@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Usuarios));
             this.dgvClientes = new MetroFramework.Controls.MetroGrid();
             this.titleModificarCliente = new MetroFramework.Controls.MetroTile();
@@ -55,40 +55,40 @@
             this.dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvClientes.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvClientes.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvClientes.EnableHeadersVisualStyles = false;
             this.dgvClientes.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvClientes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvClientes.Location = new System.Drawing.Point(36, 127);
-            this.dgvClientes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvClientes.Margin = new System.Windows.Forms.Padding(4);
             this.dgvClientes.MultiSelect = false;
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.ReadOnly = true;
             this.dgvClientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvClientes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClientes.Size = new System.Drawing.Size(1063, 374);
@@ -99,10 +99,10 @@
             // 
             this.titleModificarCliente.ActiveControl = null;
             this.titleModificarCliente.Location = new System.Drawing.Point(703, 519);
-            this.titleModificarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleModificarCliente.Margin = new System.Windows.Forms.Padding(4);
             this.titleModificarCliente.Name = "titleModificarCliente";
             this.titleModificarCliente.Size = new System.Drawing.Size(204, 54);
-            this.titleModificarCliente.TabIndex = 1;
+            this.titleModificarCliente.TabIndex = 5;
             this.titleModificarCliente.Text = "Modificar Cliente";
             this.titleModificarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleModificarCliente.TileImage = ((System.Drawing.Image)(resources.GetObject("titleModificarCliente.TileImage")));
@@ -117,10 +117,10 @@
             this.titleAgregarCliente.ActiveControl = null;
             this.titleAgregarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.titleAgregarCliente.Location = new System.Drawing.Point(915, 519);
-            this.titleAgregarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleAgregarCliente.Margin = new System.Windows.Forms.Padding(4);
             this.titleAgregarCliente.Name = "titleAgregarCliente";
             this.titleAgregarCliente.Size = new System.Drawing.Size(184, 54);
-            this.titleAgregarCliente.TabIndex = 2;
+            this.titleAgregarCliente.TabIndex = 6;
             this.titleAgregarCliente.Text = "Agregar Cliente";
             this.titleAgregarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleAgregarCliente.TileImage = ((System.Drawing.Image)(resources.GetObject("titleAgregarCliente.TileImage")));
@@ -136,10 +136,10 @@
             this.titleEliminarCliente.ActiveControl = null;
             this.titleEliminarCliente.BackColor = System.Drawing.Color.IndianRed;
             this.titleEliminarCliente.Location = new System.Drawing.Point(511, 519);
-            this.titleEliminarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleEliminarCliente.Margin = new System.Windows.Forms.Padding(4);
             this.titleEliminarCliente.Name = "titleEliminarCliente";
             this.titleEliminarCliente.Size = new System.Drawing.Size(184, 54);
-            this.titleEliminarCliente.TabIndex = 3;
+            this.titleEliminarCliente.TabIndex = 4;
             this.titleEliminarCliente.Text = "Eliminar Cliente";
             this.titleEliminarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleEliminarCliente.TileImage = ((System.Drawing.Image)(resources.GetObject("titleEliminarCliente.TileImage")));
@@ -155,10 +155,10 @@
             this.titleAtras.ActiveControl = null;
             this.titleAtras.BackColor = System.Drawing.Color.CadetBlue;
             this.titleAtras.Location = new System.Drawing.Point(36, 519);
-            this.titleAtras.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleAtras.Margin = new System.Windows.Forms.Padding(4);
             this.titleAtras.Name = "titleAtras";
             this.titleAtras.Size = new System.Drawing.Size(100, 54);
-            this.titleAtras.TabIndex = 4;
+            this.titleAtras.TabIndex = 7;
             this.titleAtras.Text = "Atrás";
             this.titleAtras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleAtras.TileImage = ((System.Drawing.Image)(resources.GetObject("titleAtras.TileImage")));
@@ -195,8 +195,8 @@
             // 
             // 
             this.nombre.CustomButton.Image = null;
-            this.nombre.CustomButton.Location = new System.Drawing.Point(109, 2);
-            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nombre.CustomButton.Location = new System.Drawing.Point(143, 2);
+            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.nombre.CustomButton.Name = "";
             this.nombre.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -207,9 +207,9 @@
             this.nombre.DisplayIcon = true;
             this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
             this.nombre.Lines = new string[0];
-            this.nombre.Location = new System.Drawing.Point(123, 89);
-            this.nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.nombre.MaxLength = 32767;
+            this.nombre.Location = new System.Drawing.Point(103, 86);
+            this.nombre.Margin = new System.Windows.Forms.Padding(4);
+            this.nombre.MaxLength = 60;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
             this.nombre.PromptText = "Buscar";
@@ -218,8 +218,8 @@
             this.nombre.SelectionLength = 0;
             this.nombre.SelectionStart = 0;
             this.nombre.ShortcutsEnabled = true;
-            this.nombre.Size = new System.Drawing.Size(135, 28);
-            this.nombre.TabIndex = 7;
+            this.nombre.Size = new System.Drawing.Size(169, 28);
+            this.nombre.TabIndex = 1;
             this.nombre.UseSelectable = true;
             this.nombre.WaterMark = "Buscar";
             this.nombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -233,8 +233,8 @@
             // 
             // 
             this.apellido.CustomButton.Image = null;
-            this.apellido.CustomButton.Location = new System.Drawing.Point(117, 2);
-            this.apellido.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.apellido.CustomButton.Location = new System.Drawing.Point(153, 2);
+            this.apellido.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.apellido.CustomButton.Name = "";
             this.apellido.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.apellido.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -245,9 +245,9 @@
             this.apellido.DisplayIcon = true;
             this.apellido.Icon = ((System.Drawing.Image)(resources.GetObject("apellido.Icon")));
             this.apellido.Lines = new string[0];
-            this.apellido.Location = new System.Drawing.Point(365, 89);
-            this.apellido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.apellido.MaxLength = 32767;
+            this.apellido.Location = new System.Drawing.Point(344, 85);
+            this.apellido.Margin = new System.Windows.Forms.Padding(4);
+            this.apellido.MaxLength = 60;
             this.apellido.Name = "apellido";
             this.apellido.PasswordChar = '\0';
             this.apellido.PromptText = "Buscar";
@@ -256,8 +256,8 @@
             this.apellido.SelectionLength = 0;
             this.apellido.SelectionStart = 0;
             this.apellido.ShortcutsEnabled = true;
-            this.apellido.Size = new System.Drawing.Size(143, 28);
-            this.apellido.TabIndex = 8;
+            this.apellido.Size = new System.Drawing.Size(179, 28);
+            this.apellido.TabIndex = 2;
             this.apellido.UseSelectable = true;
             this.apellido.WaterMark = "Buscar";
             this.apellido.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -271,8 +271,8 @@
             // 
             // 
             this.direccion.CustomButton.Image = null;
-            this.direccion.CustomButton.Location = new System.Drawing.Point(117, 2);
-            this.direccion.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.direccion.CustomButton.Location = new System.Drawing.Point(168, 2);
+            this.direccion.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.direccion.CustomButton.Name = "";
             this.direccion.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.direccion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -283,9 +283,9 @@
             this.direccion.DisplayIcon = true;
             this.direccion.Icon = ((System.Drawing.Image)(resources.GetObject("direccion.Icon")));
             this.direccion.Lines = new string[0];
-            this.direccion.Location = new System.Drawing.Point(623, 89);
-            this.direccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.direccion.MaxLength = 32767;
+            this.direccion.Location = new System.Drawing.Point(605, 85);
+            this.direccion.Margin = new System.Windows.Forms.Padding(4);
+            this.direccion.MaxLength = 100;
             this.direccion.Name = "direccion";
             this.direccion.PasswordChar = '\0';
             this.direccion.PromptText = "Buscar";
@@ -294,8 +294,8 @@
             this.direccion.SelectionLength = 0;
             this.direccion.SelectionStart = 0;
             this.direccion.ShortcutsEnabled = true;
-            this.direccion.Size = new System.Drawing.Size(143, 28);
-            this.direccion.TabIndex = 10;
+            this.direccion.Size = new System.Drawing.Size(194, 28);
+            this.direccion.TabIndex = 3;
             this.direccion.UseSelectable = true;
             this.direccion.WaterMark = "Buscar";
             this.direccion.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));

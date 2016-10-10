@@ -48,7 +48,7 @@
             // Cantidad
             // 
             this.Cantidad.Location = new System.Drawing.Point(181, 222);
-            this.Cantidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Cantidad.Margin = new System.Windows.Forms.Padding(4);
             this.Cantidad.MaxLength = 5;
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.Size = new System.Drawing.Size(132, 22);
@@ -58,7 +58,7 @@
             // Nombre
             // 
             this.Nombre.Location = new System.Drawing.Point(183, 87);
-            this.Nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Nombre.Margin = new System.Windows.Forms.Padding(4);
             this.Nombre.MaxLength = 100;
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(132, 22);
@@ -68,7 +68,8 @@
             // Precio
             // 
             this.Precio.Location = new System.Drawing.Point(181, 254);
-            this.Precio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Precio.Margin = new System.Windows.Forms.Padding(4);
+            this.Precio.MaxLength = 10;
             this.Precio.Name = "Precio";
             this.Precio.Size = new System.Drawing.Size(132, 22);
             this.Precio.TabIndex = 6;
@@ -117,7 +118,7 @@
             // Costo
             // 
             this.Costo.Location = new System.Drawing.Point(183, 119);
-            this.Costo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Costo.Margin = new System.Windows.Forms.Padding(4);
             this.Costo.MaxLength = 12;
             this.Costo.Name = "Costo";
             this.Costo.Size = new System.Drawing.Size(132, 22);
@@ -142,7 +143,7 @@
             "12",
             "24"});
             this.UnidadesXBulto.Location = new System.Drawing.Point(181, 286);
-            this.UnidadesXBulto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UnidadesXBulto.Margin = new System.Windows.Forms.Padding(4);
             this.UnidadesXBulto.Name = "UnidadesXBulto";
             this.UnidadesXBulto.Size = new System.Drawing.Size(132, 24);
             this.UnidadesXBulto.TabIndex = 7;
@@ -175,7 +176,7 @@
             this.titleCancelar.ActiveControl = null;
             this.titleCancelar.BackColor = System.Drawing.Color.DarkRed;
             this.titleCancelar.Location = new System.Drawing.Point(31, 345);
-            this.titleCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.titleCancelar.Name = "titleCancelar";
             this.titleCancelar.Size = new System.Drawing.Size(136, 50);
             this.titleCancelar.TabIndex = 9;
@@ -194,7 +195,7 @@
             this.titleAceptar.ActiveControl = null;
             this.titleAceptar.BackColor = System.Drawing.Color.Green;
             this.titleAceptar.Location = new System.Drawing.Point(188, 345);
-            this.titleAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.titleAceptar.Name = "titleAceptar";
             this.titleAceptar.Size = new System.Drawing.Size(132, 50);
             this.titleAceptar.TabIndex = 8;
@@ -227,7 +228,7 @@
             this.Controls.Add(this.Precio);
             this.Controls.Add(this.Nombre);
             this.Controls.Add(this.Cantidad);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddProducto";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Agregar Producto";

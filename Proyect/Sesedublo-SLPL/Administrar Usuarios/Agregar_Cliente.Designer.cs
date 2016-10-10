@@ -107,7 +107,7 @@
             this.Nombre.Lines = new string[0];
             this.Nombre.Location = new System.Drawing.Point(147, 89);
             this.Nombre.Margin = new System.Windows.Forms.Padding(4);
-            this.Nombre.MaxLength = 32767;
+            this.Nombre.MaxLength = 60;
             this.Nombre.Name = "Nombre";
             this.Nombre.PasswordChar = '\0';
             this.Nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -116,7 +116,7 @@
             this.Nombre.SelectionStart = 0;
             this.Nombre.ShortcutsEnabled = true;
             this.Nombre.Size = new System.Drawing.Size(151, 28);
-            this.Nombre.TabIndex = 4;
+            this.Nombre.TabIndex = 1;
             this.Nombre.UseSelectable = true;
             this.Nombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.Nombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -140,7 +140,7 @@
             this.Apellido.Lines = new string[0];
             this.Apellido.Location = new System.Drawing.Point(147, 126);
             this.Apellido.Margin = new System.Windows.Forms.Padding(4);
-            this.Apellido.MaxLength = 32767;
+            this.Apellido.MaxLength = 60;
             this.Apellido.Name = "Apellido";
             this.Apellido.PasswordChar = '\0';
             this.Apellido.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -149,7 +149,7 @@
             this.Apellido.SelectionStart = 0;
             this.Apellido.ShortcutsEnabled = true;
             this.Apellido.Size = new System.Drawing.Size(151, 28);
-            this.Apellido.TabIndex = 5;
+            this.Apellido.TabIndex = 2;
             this.Apellido.UseSelectable = true;
             this.Apellido.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.Apellido.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -173,7 +173,7 @@
             this.Mail.Lines = new string[0];
             this.Mail.Location = new System.Drawing.Point(147, 161);
             this.Mail.Margin = new System.Windows.Forms.Padding(4);
-            this.Mail.MaxLength = 32767;
+            this.Mail.MaxLength = 80;
             this.Mail.Name = "Mail";
             this.Mail.PasswordChar = '\0';
             this.Mail.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -182,7 +182,7 @@
             this.Mail.SelectionStart = 0;
             this.Mail.ShortcutsEnabled = true;
             this.Mail.Size = new System.Drawing.Size(151, 28);
-            this.Mail.TabIndex = 6;
+            this.Mail.TabIndex = 3;
             this.Mail.UseSelectable = true;
             this.Mail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.Mail.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -206,7 +206,7 @@
             this.Direccion.Lines = new string[0];
             this.Direccion.Location = new System.Drawing.Point(147, 199);
             this.Direccion.Margin = new System.Windows.Forms.Padding(4);
-            this.Direccion.MaxLength = 32767;
+            this.Direccion.MaxLength = 60;
             this.Direccion.Name = "Direccion";
             this.Direccion.PasswordChar = '\0';
             this.Direccion.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -215,7 +215,7 @@
             this.Direccion.SelectionStart = 0;
             this.Direccion.ShortcutsEnabled = true;
             this.Direccion.Size = new System.Drawing.Size(151, 28);
-            this.Direccion.TabIndex = 7;
+            this.Direccion.TabIndex = 4;
             this.Direccion.UseSelectable = true;
             this.Direccion.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.Direccion.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -228,7 +228,7 @@
             this.titleCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.titleCancelar.Name = "titleCancelar";
             this.titleCancelar.Size = new System.Drawing.Size(136, 50);
-            this.titleCancelar.TabIndex = 13;
+            this.titleCancelar.TabIndex = 10;
             this.titleCancelar.Text = "Cancelar";
             this.titleCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleCancelar.TileImage = ((System.Drawing.Image)(resources.GetObject("titleCancelar.TileImage")));
@@ -257,7 +257,7 @@
             this.Telefono.Lines = new string[0];
             this.Telefono.Location = new System.Drawing.Point(147, 236);
             this.Telefono.Margin = new System.Windows.Forms.Padding(4);
-            this.Telefono.MaxLength = 32767;
+            this.Telefono.MaxLength = 15;
             this.Telefono.Name = "Telefono";
             this.Telefono.PasswordChar = '\0';
             this.Telefono.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -266,7 +266,7 @@
             this.Telefono.SelectionStart = 0;
             this.Telefono.ShortcutsEnabled = true;
             this.Telefono.Size = new System.Drawing.Size(151, 28);
-            this.Telefono.TabIndex = 8;
+            this.Telefono.TabIndex = 5;
             this.Telefono.UseSelectable = true;
             this.Telefono.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.Telefono.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -300,7 +300,7 @@
             this.Localidad.Lines = new string[0];
             this.Localidad.Location = new System.Drawing.Point(147, 272);
             this.Localidad.Margin = new System.Windows.Forms.Padding(4);
-            this.Localidad.MaxLength = 32767;
+            this.Localidad.MaxLength = 60;
             this.Localidad.Name = "Localidad";
             this.Localidad.PasswordChar = '\0';
             this.Localidad.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -309,7 +309,7 @@
             this.Localidad.SelectionStart = 0;
             this.Localidad.ShortcutsEnabled = true;
             this.Localidad.Size = new System.Drawing.Size(151, 28);
-            this.Localidad.TabIndex = 9;
+            this.Localidad.TabIndex = 6;
             this.Localidad.UseSelectable = true;
             this.Localidad.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.Localidad.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -343,7 +343,7 @@
             this.CUIT.Lines = new string[0];
             this.CUIT.Location = new System.Drawing.Point(147, 306);
             this.CUIT.Margin = new System.Windows.Forms.Padding(4);
-            this.CUIT.MaxLength = 32767;
+            this.CUIT.MaxLength = 24;
             this.CUIT.Name = "CUIT";
             this.CUIT.PasswordChar = '\0';
             this.CUIT.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -352,7 +352,7 @@
             this.CUIT.SelectionStart = 0;
             this.CUIT.ShortcutsEnabled = true;
             this.CUIT.Size = new System.Drawing.Size(151, 28);
-            this.CUIT.TabIndex = 10;
+            this.CUIT.TabIndex = 7;
             this.CUIT.UseSelectable = true;
             this.CUIT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.CUIT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -386,7 +386,7 @@
             this.RazonSocial.Lines = new string[0];
             this.RazonSocial.Location = new System.Drawing.Point(147, 345);
             this.RazonSocial.Margin = new System.Windows.Forms.Padding(4);
-            this.RazonSocial.MaxLength = 32767;
+            this.RazonSocial.MaxLength = 50;
             this.RazonSocial.Name = "RazonSocial";
             this.RazonSocial.PasswordChar = '\0';
             this.RazonSocial.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -395,7 +395,7 @@
             this.RazonSocial.SelectionStart = 0;
             this.RazonSocial.ShortcutsEnabled = true;
             this.RazonSocial.Size = new System.Drawing.Size(151, 28);
-            this.RazonSocial.TabIndex = 11;
+            this.RazonSocial.TabIndex = 8;
             this.RazonSocial.UseSelectable = true;
             this.RazonSocial.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.RazonSocial.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -419,7 +419,7 @@
             this.titleAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.titleAceptar.Name = "titleAceptar";
             this.titleAceptar.Size = new System.Drawing.Size(132, 50);
-            this.titleAceptar.TabIndex = 12;
+            this.titleAceptar.TabIndex = 9;
             this.titleAceptar.Text = "Aceptar";
             this.titleAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleAceptar.TileImage = ((System.Drawing.Image)(resources.GetObject("titleAceptar.TileImage")));

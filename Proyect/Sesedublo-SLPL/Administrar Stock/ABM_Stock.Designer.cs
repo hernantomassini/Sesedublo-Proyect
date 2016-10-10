@@ -45,8 +45,8 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.titleEliminarCliente = new MetroFramework.Controls.MetroTile();
             this.titleAgregarCliente = new MetroFramework.Controls.MetroTile();
             this.titleModificarCliente = new MetroFramework.Controls.MetroTile();
-            this.Nombre = new System.Windows.Forms.TextBox();
-            this.NombreLabel = new MetroFramework.Controls.MetroLabel();
+            this.nombre = new MetroFramework.Controls.MetroTextBox();
+            this.nombreLabel = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.StockDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -229,31 +229,57 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.titleModificarCliente.UseTileImage = true;
             this.titleModificarCliente.Click += new System.EventHandler(this.modificarProductoStockBtn_Click);
             // 
-            // Nombre
+            // nombre
             // 
-            this.Nombre.Location = new System.Drawing.Point(90, 77);
-            this.Nombre.MaxLength = 100;
-            this.Nombre.Name = "Nombre";
-            this.Nombre.Size = new System.Drawing.Size(100, 20);
-            this.Nombre.TabIndex = 9;
             // 
-            // NombreLabel
             // 
-            this.NombreLabel.AutoSize = true;
-            this.NombreLabel.Location = new System.Drawing.Point(23, 78);
-            this.NombreLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.NombreLabel.Name = "NombreLabel";
-            this.NombreLabel.Size = new System.Drawing.Size(62, 19);
-            this.NombreLabel.TabIndex = 10;
-            this.NombreLabel.Text = "Nombre:";
+            // 
+            this.nombre.CustomButton.Image = null;
+            this.nombre.CustomButton.Location = new System.Drawing.Point(92, 1);
+            this.nombre.CustomButton.Name = "";
+            this.nombre.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.nombre.CustomButton.TabIndex = 1;
+            this.nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.nombre.CustomButton.UseSelectable = true;
+            this.nombre.CustomButton.Visible = false;
+            this.nombre.DisplayIcon = true;
+            this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
+            this.nombre.Lines = new string[0];
+            this.nombre.Location = new System.Drawing.Point(90, 81);
+            this.nombre.MaxLength = 32767;
+            this.nombre.Name = "nombre";
+            this.nombre.PasswordChar = '\0';
+            this.nombre.PromptText = "Buscar";
+            this.nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.nombre.SelectedText = "";
+            this.nombre.SelectionLength = 0;
+            this.nombre.SelectionStart = 0;
+            this.nombre.ShortcutsEnabled = true;
+            this.nombre.Size = new System.Drawing.Size(114, 23);
+            this.nombre.TabIndex = 12;
+            this.nombre.UseSelectable = true;
+            this.nombre.WaterMark = "Buscar";
+            this.nombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.nombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.nombre.TextChanged += new System.EventHandler(this.nombre_TextChanged);
+            // 
+            // nombreLabel
+            // 
+            this.nombreLabel.AutoSize = true;
+            this.nombreLabel.Location = new System.Drawing.Point(22, 81);
+            this.nombreLabel.Name = "nombreLabel";
+            this.nombreLabel.Size = new System.Drawing.Size(62, 19);
+            this.nombreLabel.TabIndex = 11;
+            this.nombreLabel.Text = "Nombre:";
             // 
             // ABM_Stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 434);
-            this.Controls.Add(this.NombreLabel);
-            this.Controls.Add(this.Nombre);
+            this.Controls.Add(this.nombre);
+            this.Controls.Add(this.nombreLabel);
             this.Controls.Add(this.titleAtras);
             this.Controls.Add(this.titleEliminarCliente);
             this.Controls.Add(this.titleAgregarCliente);
@@ -281,7 +307,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
         private MetroTile titleEliminarCliente;
         private MetroTile titleAgregarCliente;
         private MetroTile titleModificarCliente;
-        private System.Windows.Forms.TextBox Nombre;
-        private MetroLabel NombreLabel;
+        private MetroTextBox nombre;
+        private MetroLabel nombreLabel;
     }
 }

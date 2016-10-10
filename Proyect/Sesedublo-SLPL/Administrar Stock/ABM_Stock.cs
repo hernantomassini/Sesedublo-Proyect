@@ -68,7 +68,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
         public void cargarDGV()
         {
             Funciones.limpiarDGV(StockDGV);
-            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerStock", Conexion.generarArgumentos());
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerStock", Conexion.generarArgumentos("_nombre"), nombre.Text);
             string cantidad;
             int cantXBulto;
 
@@ -87,6 +87,11 @@ namespace Sesedublo_SLPL.Administrar_Productos
 
             reader.Close();
             Conexion.closeConnection();
+        }
+
+        private void nombre_TextChanged(object sender, EventArgs e)
+        {
+            this.cargarDGV();
         }
 
         private void AtrasButton_Click(object sender, EventArgs e)

@@ -122,12 +122,13 @@ CREATE TABLE NotasDeCredito (
 #Store Procedures
 DELIMITER //
 
-CREATE PROCEDURE obtenerStock () 
+CREATE PROCEDURE obtenerStock (IN _nombre VARCHAR(50)) 
 BEGIN
 
 	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto 
 	FROM Stock s INNER JOIN Productos p 
-	ON p.id_producto = s.producto;
+	ON p.id_producto = s.producto
+	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""));
 
 END //
 

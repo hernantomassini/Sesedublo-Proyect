@@ -51,7 +51,7 @@
             this.Cantidad.MaxLength = 5;
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.Size = new System.Drawing.Size(100, 20);
-            this.Cantidad.TabIndex = 0;
+            this.Cantidad.TabIndex = 5;
             // 
             // Nombre
             // 
@@ -66,7 +66,7 @@
             this.Precio.Location = new System.Drawing.Point(136, 206);
             this.Precio.Name = "Precio";
             this.Precio.Size = new System.Drawing.Size(100, 20);
-            this.Precio.TabIndex = 2;
+            this.Precio.TabIndex = 6;
             // 
             // CantidadLbl
             // 
@@ -110,7 +110,7 @@
             this.Costo.MaxLength = 12;
             this.Costo.Name = "Costo";
             this.Costo.Size = new System.Drawing.Size(100, 20);
-            this.Costo.TabIndex = 11;
+            this.Costo.TabIndex = 2;
             // 
             // UnidadesXBultoLbl
             // 
@@ -131,7 +131,7 @@
             this.UnidadesXBulto.Location = new System.Drawing.Point(136, 232);
             this.UnidadesXBulto.Name = "UnidadesXBulto";
             this.UnidadesXBulto.Size = new System.Drawing.Size(100, 21);
-            this.UnidadesXBulto.TabIndex = 15;
+            this.UnidadesXBulto.TabIndex = 7;
             // 
             // individualRadio
             // 
@@ -140,7 +140,7 @@
             this.individualRadio.Margin = new System.Windows.Forms.Padding(2);
             this.individualRadio.Name = "individualRadio";
             this.individualRadio.Size = new System.Drawing.Size(75, 15);
-            this.individualRadio.TabIndex = 16;
+            this.individualRadio.TabIndex = 3;
             this.individualRadio.Text = "Individual";
             this.individualRadio.UseSelectable = true;
             this.individualRadio.CheckedChanged += new System.EventHandler(this.individualRadio_CheckedChanged);
@@ -152,7 +152,7 @@
             this.bultoRadio.Margin = new System.Windows.Forms.Padding(2);
             this.bultoRadio.Name = "bultoRadio";
             this.bultoRadio.Size = new System.Drawing.Size(51, 15);
-            this.bultoRadio.TabIndex = 17;
+            this.bultoRadio.TabIndex = 4;
             this.bultoRadio.Text = "Bulto";
             this.bultoRadio.UseSelectable = true;
             // 
@@ -163,7 +163,7 @@
             this.titleCancelar.Location = new System.Drawing.Point(23, 280);
             this.titleCancelar.Name = "titleCancelar";
             this.titleCancelar.Size = new System.Drawing.Size(102, 41);
-            this.titleCancelar.TabIndex = 19;
+            this.titleCancelar.TabIndex = 9;
             this.titleCancelar.Text = "Cancelar";
             this.titleCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleCancelar.TileImage = ((System.Drawing.Image)(resources.GetObject("titleCancelar.TileImage")));
@@ -181,7 +181,7 @@
             this.titleAceptar.Location = new System.Drawing.Point(141, 280);
             this.titleAceptar.Name = "titleAceptar";
             this.titleAceptar.Size = new System.Drawing.Size(99, 41);
-            this.titleAceptar.TabIndex = 18;
+            this.titleAceptar.TabIndex = 8;
             this.titleAceptar.Text = "Aceptar";
             this.titleAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleAceptar.TileImage = ((System.Drawing.Image)(resources.GetObject("titleAceptar.TileImage")));

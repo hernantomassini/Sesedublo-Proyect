@@ -256,7 +256,7 @@ END //
 CREATE PROCEDURE obtenerMontoEnProductos () 
 BEGIN
 
-	SELECT SUM(p.costo * p.) FROM Stock s INNER JOIN Productos p
+	SELECT SUM(p.costo * p.cantidad) FROM Stock s INNER JOIN Productos p
 	ON p.id_producto = s.producto;
 
 END //

@@ -47,7 +47,7 @@
             // 
             // Cantidad
             // 
-            this.Cantidad.Location = new System.Drawing.Point(181, 222);
+            this.Cantidad.Location = new System.Drawing.Point(181, 180);
             this.Cantidad.Margin = new System.Windows.Forms.Padding(4);
             this.Cantidad.MaxLength = 5;
             this.Cantidad.Name = "Cantidad";
@@ -55,7 +55,7 @@
             this.Cantidad.TabIndex = 5;
             // 
             // Nombre
-            //
+            // 
             this.Nombre.Location = new System.Drawing.Point(183, 87);
             this.Nombre.Margin = new System.Windows.Forms.Padding(4);
             this.Nombre.MaxLength = 100;
@@ -64,8 +64,8 @@
             this.Nombre.TabIndex = 1;
             // 
             // Precio
-            //
-            this.Precio.Location = new System.Drawing.Point(181, 254);
+            // 
+            this.Precio.Location = new System.Drawing.Point(181, 206);
             this.Precio.Margin = new System.Windows.Forms.Padding(4);
             this.Precio.MaxLength = 10;
             this.Precio.Name = "Precio";
@@ -110,7 +110,7 @@
             // 
             // Costo
             // 
-            this.Costo.Location = new System.Drawing.Point(183, 119);
+            this.Costo.Location = new System.Drawing.Point(181, 154);
             this.Costo.Margin = new System.Windows.Forms.Padding(4);
             this.Costo.MaxLength = 12;
             this.Costo.Name = "Costo";
@@ -133,7 +133,7 @@
             "8",
             "12",
             "24"});
-            this.UnidadesXBulto.Location = new System.Drawing.Point(181, 286);
+            this.UnidadesXBulto.Location = new System.Drawing.Point(181, 232);
             this.UnidadesXBulto.Margin = new System.Windows.Forms.Padding(4);
             this.UnidadesXBulto.Name = "UnidadesXBulto";
             this.UnidadesXBulto.Size = new System.Drawing.Size(100, 21);
@@ -142,7 +142,7 @@
             // individualRadio
             // 
             this.individualRadio.AutoSize = true;
-            this.individualRadio.Location = new System.Drawing.Point(46, 116);
+            this.individualRadio.Location = new System.Drawing.Point(77, 116);
             this.individualRadio.Margin = new System.Windows.Forms.Padding(2);
             this.individualRadio.Name = "individualRadio";
             this.individualRadio.Size = new System.Drawing.Size(75, 15);
@@ -154,7 +154,7 @@
             // bultoRadio
             // 
             this.bultoRadio.AutoSize = true;
-            this.bultoRadio.Location = new System.Drawing.Point(136, 116);
+            this.bultoRadio.Location = new System.Drawing.Point(166, 116);
             this.bultoRadio.Margin = new System.Windows.Forms.Padding(2);
             this.bultoRadio.Name = "bultoRadio";
             this.bultoRadio.Size = new System.Drawing.Size(51, 15);
@@ -166,7 +166,7 @@
             // 
             this.titleCancelar.ActiveControl = null;
             this.titleCancelar.BackColor = System.Drawing.Color.DarkRed;
-            this.titleCancelar.Location = new System.Drawing.Point(31, 345);
+            this.titleCancelar.Location = new System.Drawing.Point(27, 313);
             this.titleCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.titleCancelar.Name = "titleCancelar";
             this.titleCancelar.Size = new System.Drawing.Size(102, 41);
@@ -185,7 +185,7 @@
             // 
             this.titleAceptar.ActiveControl = null;
             this.titleAceptar.BackColor = System.Drawing.Color.Green;
-            this.titleAceptar.Location = new System.Drawing.Point(188, 345);
+            this.titleAceptar.Location = new System.Drawing.Point(184, 313);
             this.titleAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.titleAceptar.Name = "titleAceptar";
             this.titleAceptar.Size = new System.Drawing.Size(99, 41);
@@ -204,7 +204,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(276, 344);
+            this.ClientSize = new System.Drawing.Size(328, 387);
             this.Controls.Add(this.titleCancelar);
             this.Controls.Add(this.titleAceptar);
             this.Controls.Add(this.bultoRadio);

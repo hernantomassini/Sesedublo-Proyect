@@ -35,7 +35,7 @@
             this.CantidadLbl = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.PrecioLabel = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.CostoLabel = new System.Windows.Forms.Label();
             this.Costo = new System.Windows.Forms.TextBox();
             this.UnidadesXBultoLbl = new System.Windows.Forms.Label();
             this.UnidadesXBulto = new System.Windows.Forms.ComboBox();
@@ -55,7 +55,7 @@
             // 
             // Nombre
             // 
-            this.Nombre.Location = new System.Drawing.Point(137, 71);
+            this.Nombre.Location = new System.Drawing.Point(138, 82);
             this.Nombre.MaxLength = 100;
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(100, 20);
@@ -80,7 +80,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 71);
+            this.label2.Location = new System.Drawing.Point(20, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 13);
             this.label2.TabIndex = 7;
@@ -95,18 +95,18 @@
             this.PrecioLabel.TabIndex = 8;
             this.PrecioLabel.Text = "Precio:";
             // 
-            // label5
+            // CostoLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 100);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Costo total:";
+            this.CostoLabel.AutoSize = true;
+            this.CostoLabel.Location = new System.Drawing.Point(23, 157);
+            this.CostoLabel.Name = "CostoLabel";
+            this.CostoLabel.Size = new System.Drawing.Size(37, 13);
+            this.CostoLabel.TabIndex = 10;
+            this.CostoLabel.Text = "Costo:";
             // 
             // Costo
             // 
-            this.Costo.Location = new System.Drawing.Point(137, 97);
+            this.Costo.Location = new System.Drawing.Point(136, 154);
             this.Costo.MaxLength = 12;
             this.Costo.Name = "Costo";
             this.Costo.Size = new System.Drawing.Size(100, 20);
@@ -136,7 +136,7 @@
             // individualRadio
             // 
             this.individualRadio.AutoSize = true;
-            this.individualRadio.Location = new System.Drawing.Point(57, 132);
+            this.individualRadio.Location = new System.Drawing.Point(46, 116);
             this.individualRadio.Margin = new System.Windows.Forms.Padding(2);
             this.individualRadio.Name = "individualRadio";
             this.individualRadio.Size = new System.Drawing.Size(75, 15);
@@ -148,7 +148,7 @@
             // bultoRadio
             // 
             this.bultoRadio.AutoSize = true;
-            this.bultoRadio.Location = new System.Drawing.Point(136, 132);
+            this.bultoRadio.Location = new System.Drawing.Point(136, 116);
             this.bultoRadio.Margin = new System.Windows.Forms.Padding(2);
             this.bultoRadio.Name = "bultoRadio";
             this.bultoRadio.Size = new System.Drawing.Size(51, 15);
@@ -204,7 +204,7 @@
             this.Controls.Add(this.UnidadesXBulto);
             this.Controls.Add(this.UnidadesXBultoLbl);
             this.Controls.Add(this.Costo);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.CostoLabel);
             this.Controls.Add(this.PrecioLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.CantidadLbl);
@@ -227,7 +227,7 @@
         private System.Windows.Forms.Label CantidadLbl;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label PrecioLabel;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label CostoLabel;
         private System.Windows.Forms.TextBox Costo;
         private System.Windows.Forms.Label UnidadesXBultoLbl;
         private System.Windows.Forms.ComboBox UnidadesXBulto;

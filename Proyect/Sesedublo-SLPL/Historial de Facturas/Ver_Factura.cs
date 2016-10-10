@@ -39,10 +39,10 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
 
             reader.Read();
 
-            direccionVen.Text = "DIRECCIÓN: " + reader.GetString(4);
-            localidadCl.Text = "LOCALIDAD: " + reader.GetString(5);
-            cuitV.Text = "CUIT: " + reader.GetString(6);
-            RazonSocialComp.Text = "RAZÓN SOCIAL: " + reader.GetString(7);
+            if (!reader[4].Equals(DBNull.Value)) { direccionVen.Text = "DIRECCIÓN: " + reader.GetString(4); } else { direccionVen.Text = ""; };
+            if (!reader[5].Equals(DBNull.Value)) { localidadCl.Text = "LOCALIDAD: " + reader.GetString(5); } else { localidadCl.Text = ""; } ;
+            if (!reader[6].Equals(DBNull.Value)) { cuitV.Text = "CUIT: " + reader.GetString(6); } else { cuitV.Text = ""; };
+            if (!reader[7].Equals(DBNull.Value)) { RazonSocialComp.Text = "RAZÓN SOCIAL: " + reader.GetString(7); } else { RazonSocialComp.Text = ""; } ;
             id_usuarioCompr.Text = "Cod. vendedor: " + id_cliente;
 
             reader.Close();

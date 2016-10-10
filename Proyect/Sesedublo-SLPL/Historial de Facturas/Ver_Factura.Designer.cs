@@ -91,7 +91,7 @@
             this.panel1.Controls.Add(this.facturaID);
             this.panel1.Controls.Add(this.label24);
             this.panel1.Location = new System.Drawing.Point(31, 78);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1085, 266);
             this.panel1.TabIndex = 15;
@@ -100,7 +100,7 @@
             // 
             this.panel4.Controls.Add(this.tipoFactura);
             this.panel4.Location = new System.Drawing.Point(413, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(139, 78);
             this.panel4.TabIndex = 30;
@@ -280,7 +280,7 @@
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 12;
             this.metroPanel1.Location = new System.Drawing.Point(31, 337);
-            this.metroPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(1085, 222);
             this.metroPanel1.TabIndex = 24;
@@ -291,16 +291,18 @@
             // panel2
             // 
             this.panel2.Location = new System.Drawing.Point(0, 213);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1032, 30);
             this.panel2.TabIndex = 25;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.GridColor = System.Drawing.Color.White;
             this.dataGridView1.Location = new System.Drawing.Point(31, 500);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1085, 175);
             this.dataGridView1.TabIndex = 25;
@@ -316,7 +318,7 @@
             this.panel3.Controls.Add(this.IVA);
             this.panel3.Controls.Add(this.sub);
             this.panel3.Location = new System.Drawing.Point(31, 665);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1085, 193);
             this.panel3.TabIndex = 26;
@@ -412,7 +414,7 @@
             this.panel5.Controls.Add(this.label4);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Location = new System.Drawing.Point(31, 800);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1085, 132);
             this.panel5.TabIndex = 27;
@@ -502,7 +504,7 @@
             this.printButton.ActiveControl = null;
             this.printButton.BackColor = System.Drawing.Color.SteelBlue;
             this.printButton.Location = new System.Drawing.Point(31, 956);
-            this.printButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.printButton.Margin = new System.Windows.Forms.Padding(4);
             this.printButton.Name = "printButton";
             this.printButton.Size = new System.Drawing.Size(150, 60);
             this.printButton.TabIndex = 28;
@@ -527,7 +529,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Ver_Factura";
             this.Text = "Factura Detalle";
             this.panel1.ResumeLayout(false);

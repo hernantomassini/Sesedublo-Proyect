@@ -110,6 +110,7 @@ CREATE TABLE Operaciones (
     id_operacion INT AUTO_INCREMENT,
     operacion VARCHAR(200),
     descripcion VARCHAR(200),
+    monto INT,
     PRIMARY KEY (id_operacion)
 );
 

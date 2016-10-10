@@ -11,6 +11,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
     {
         accionesABM flag = accionesABM.Crear;
         int id_stock = -1;
+        Validaciones val = new Validaciones();
 
         public AddProducto()
         {
@@ -130,6 +131,26 @@ namespace Sesedublo_SLPL.Administrar_Stock
                 UnidadesXBultoLbl.Visible = true;
                 UnidadesXBulto.Visible = true;
             }
+        }
+
+        private void Nombre_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            val.ingresarNombre(e);
+        }
+
+        private void Costo_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            val.ingresarNumeroDecimal(e);
+        }
+
+        private void Cantidad_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            val.ingresarNumero(e);
+        }
+
+        private void Precio_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            val.ingresarNumero(e);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MetroFramework.Forms;
 using MySql.Data.MySqlClient;
+using Sesedublo_SLPL.Generales;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,6 +57,13 @@ namespace Sesedublo_SLPL.Historial_de_Operacionesns
         private void descripcion_TextChanged(object sender, EventArgs e)
         {
             this.getData();
+        }
+
+
+        Validaciones val = new Validaciones();
+        private void operacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNombre(e);
         }
     }
 }

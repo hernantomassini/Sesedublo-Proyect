@@ -86,7 +86,8 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.StockDGV.EnableHeadersVisualStyles = false;
             this.StockDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.StockDGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.StockDGV.Location = new System.Drawing.Point(22, 113);
+            this.StockDGV.Location = new System.Drawing.Point(29, 139);
+            this.StockDGV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.StockDGV.MultiSelect = false;
             this.StockDGV.Name = "StockDGV";
             this.StockDGV.ReadOnly = true;
@@ -101,7 +102,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.StockDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.StockDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.StockDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.StockDGV.Size = new System.Drawing.Size(562, 248);
+            this.StockDGV.Size = new System.Drawing.Size(749, 305);
             this.StockDGV.TabIndex = 4;
             // 
             // id_stock
@@ -120,7 +121,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.ReadOnly = true;
             this.Cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Cantidad.Width = 77;
+            this.Cantidad.Width = 82;
             // 
             // Producto
             // 
@@ -129,7 +130,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.Producto.Name = "Producto";
             this.Producto.ReadOnly = true;
             this.Producto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Producto.Width = 77;
+            this.Producto.Width = 83;
             // 
             // Costo
             // 
@@ -138,7 +139,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.Costo.Name = "Costo";
             this.Costo.ReadOnly = true;
             this.Costo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Costo.Width = 60;
+            this.Costo.Width = 65;
             // 
             // PVUnitario
             // 
@@ -147,7 +148,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.PVUnitario.Name = "PVUnitario";
             this.PVUnitario.ReadOnly = true;
             this.PVUnitario.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PVUnitario.Width = 102;
+            this.PVUnitario.Width = 108;
             // 
             // PVBulto
             // 
@@ -156,15 +157,16 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.PVBulto.Name = "PVBulto";
             this.PVBulto.ReadOnly = true;
             this.PVBulto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PVBulto.Width = 121;
+            this.PVBulto.Width = 127;
             // 
             // titleAtras
             // 
             this.titleAtras.ActiveControl = null;
             this.titleAtras.BackColor = System.Drawing.Color.CadetBlue;
-            this.titleAtras.Location = new System.Drawing.Point(23, 367);
+            this.titleAtras.Location = new System.Drawing.Point(31, 452);
+            this.titleAtras.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titleAtras.Name = "titleAtras";
-            this.titleAtras.Size = new System.Drawing.Size(75, 44);
+            this.titleAtras.Size = new System.Drawing.Size(100, 54);
             this.titleAtras.TabIndex = 8;
             this.titleAtras.Text = "Atrás";
             this.titleAtras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -180,9 +182,10 @@ namespace Sesedublo_SLPL.Administrar_Productos
             // 
             this.titleEliminarCliente.ActiveControl = null;
             this.titleEliminarCliente.BackColor = System.Drawing.Color.IndianRed;
-            this.titleEliminarCliente.Location = new System.Drawing.Point(144, 367);
+            this.titleEliminarCliente.Location = new System.Drawing.Point(192, 452);
+            this.titleEliminarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titleEliminarCliente.Name = "titleEliminarCliente";
-            this.titleEliminarCliente.Size = new System.Drawing.Size(138, 44);
+            this.titleEliminarCliente.Size = new System.Drawing.Size(184, 54);
             this.titleEliminarCliente.TabIndex = 7;
             this.titleEliminarCliente.Text = "Eliminar Stock";
             this.titleEliminarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -198,9 +201,10 @@ namespace Sesedublo_SLPL.Administrar_Productos
             // 
             this.titleAgregarCliente.ActiveControl = null;
             this.titleAgregarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.titleAgregarCliente.Location = new System.Drawing.Point(446, 367);
+            this.titleAgregarCliente.Location = new System.Drawing.Point(595, 452);
+            this.titleAgregarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titleAgregarCliente.Name = "titleAgregarCliente";
-            this.titleAgregarCliente.Size = new System.Drawing.Size(138, 44);
+            this.titleAgregarCliente.Size = new System.Drawing.Size(184, 54);
             this.titleAgregarCliente.TabIndex = 6;
             this.titleAgregarCliente.Text = "Agregar Stock";
             this.titleAgregarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -215,9 +219,10 @@ namespace Sesedublo_SLPL.Administrar_Productos
             // titleModificarCliente
             // 
             this.titleModificarCliente.ActiveControl = null;
-            this.titleModificarCliente.Location = new System.Drawing.Point(288, 367);
+            this.titleModificarCliente.Location = new System.Drawing.Point(384, 452);
+            this.titleModificarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titleModificarCliente.Name = "titleModificarCliente";
-            this.titleModificarCliente.Size = new System.Drawing.Size(152, 44);
+            this.titleModificarCliente.Size = new System.Drawing.Size(203, 54);
             this.titleModificarCliente.TabIndex = 5;
             this.titleModificarCliente.Text = "Modificar Stock";
             this.titleModificarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -234,9 +239,10 @@ namespace Sesedublo_SLPL.Administrar_Productos
             // 
             // 
             this.nombre.CustomButton.Image = null;
-            this.nombre.CustomButton.Location = new System.Drawing.Point(92, 1);
+            this.nombre.CustomButton.Location = new System.Drawing.Point(126, 2);
+            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nombre.CustomButton.Name = "";
-            this.nombre.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.nombre.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.nombre.CustomButton.TabIndex = 1;
             this.nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -245,37 +251,41 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.nombre.DisplayIcon = true;
             this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
             this.nombre.Lines = new string[0];
-            this.nombre.Location = new System.Drawing.Point(90, 81);
+            this.nombre.Location = new System.Drawing.Point(120, 100);
+            this.nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nombre.MaxLength = 32767;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
+            this.nombre.PromptText = "Buscar";
             this.nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.nombre.SelectedText = "";
             this.nombre.SelectionLength = 0;
             this.nombre.SelectionStart = 0;
             this.nombre.ShortcutsEnabled = true;
-            this.nombre.Size = new System.Drawing.Size(114, 23);
+            this.nombre.Size = new System.Drawing.Size(152, 28);
             this.nombre.TabIndex = 12;
             this.nombre.UseSelectable = true;
             this.nombre.WaterMark = "Buscar";
             this.nombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.nombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.nombre.TextChanged += new System.EventHandler(this.nombre_TextChanged);
+            this.nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nombre_KeyPress);
             // 
             // nombreLabel
             // 
             this.nombreLabel.AutoSize = true;
-            this.nombreLabel.Location = new System.Drawing.Point(22, 81);
+            this.nombreLabel.Location = new System.Drawing.Point(29, 100);
+            this.nombreLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.nombreLabel.Name = "nombreLabel";
-            this.nombreLabel.Size = new System.Drawing.Size(62, 19);
+            this.nombreLabel.Size = new System.Drawing.Size(64, 20);
             this.nombreLabel.TabIndex = 11;
             this.nombreLabel.Text = "Nombre:";
             // 
             // ABM_Stock
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 434);
+            this.ClientSize = new System.Drawing.Size(832, 534);
             this.Controls.Add(this.nombre);
             this.Controls.Add(this.nombreLabel);
             this.Controls.Add(this.titleAtras);
@@ -283,7 +293,9 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.Controls.Add(this.titleAgregarCliente);
             this.Controls.Add(this.titleModificarCliente);
             this.Controls.Add(this.StockDGV);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ABM_Stock";
+            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Stock";
             this.Load += new System.EventHandler(this.ABM_Stock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.StockDGV)).EndInit();

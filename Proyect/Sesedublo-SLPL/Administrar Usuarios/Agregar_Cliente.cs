@@ -18,6 +18,7 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
     {
         accionesABM flag = accionesABM.Crear;
         int id_cliente = -1;
+        Validaciones val = new Validaciones();
 
         public Agregar_Cliente()
         {
@@ -99,6 +100,41 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
             }
 
             Close();
+        }
+
+        private void Nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNombre(e);
+        }
+
+        private void Apellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNombre(e);
+        }
+
+        private void Mail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarMail(e);
+        }
+
+        private void Telefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNumero(e);
+        }
+
+        private void Localidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNombre(e);
+        }
+
+        private void CUIT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNumeroConRaya(e);
+        }
+
+        private void RazonSocial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNombre(e);
         }
     }
 }

@@ -7,6 +7,8 @@ namespace Sesedublo_SLPL.Revisar_Caja
 {
     public partial class ModifyCash : MetroForm
     {
+
+        Validaciones val = new Validaciones();
         public ModifyCash()
         {
             InitializeComponent();
@@ -56,6 +58,16 @@ namespace Sesedublo_SLPL.Revisar_Caja
         {
             Cantidad.Clear();
             descripcion.Clear();
+        }
+
+        private void Cantidad_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            val.ingresarNumeroDecimal(e);
+        }
+
+        private void descripcion_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            val.ingresarNombre(e);
         }
     }
 }

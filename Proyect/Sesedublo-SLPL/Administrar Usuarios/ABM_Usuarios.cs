@@ -16,6 +16,8 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
 {
     public partial class ABM_Usuarios : MetroForm
     {
+
+        Validaciones val = new Validaciones();
         public ABM_Usuarios()
         {
             InitializeComponent();
@@ -33,7 +35,6 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
         {
             Manejador_Formularios.Agregar_Cliente.agregarCliente();
             Manejador_Formularios.Agregar_Cliente.Show();
-            this.Hide();
         }
 
         private bool validarFilaMarcada(DataGridViewRow filaMarcada, MetroForm form)
@@ -60,7 +61,6 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
             int idCliente = Convert.ToInt32(dgvClientes.SelectedCells[0].Value);
             Manejador_Formularios.Agregar_Cliente.modificarCliente(idCliente);
             Manejador_Formularios.Agregar_Cliente.Show();
-            this.Hide();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -126,6 +126,16 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
         private void ABM_Usuarios_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNombre(e);
+        }
+
+        private void apellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNombre(e);
         }
     }
 }

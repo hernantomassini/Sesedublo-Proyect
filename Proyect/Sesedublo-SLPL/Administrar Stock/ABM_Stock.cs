@@ -77,7 +77,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
                 cantXBulto = reader.GetInt32(2);
 
                 if (cantXBulto == 0)
-                    cantidad = reader.GetString(1);
+                    cantidad = reader.GetString(1) + " unidades";
                 else
                     cantidad = reader.GetString(1) + " bultos de " + cantXBulto + " unidades";
 

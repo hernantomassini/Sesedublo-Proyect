@@ -53,15 +53,20 @@ namespace Sesedublo_SLPL.Administrar_Stock
             int cantXBulto = reader.GetInt32(1);
 
             if (cantXBulto == 0)
+            { 
                 individualRadio.Checked = true;
+                Precio.Text = reader.GetString(4);
+            }
             else
+            {
                 bultoRadio.Checked = true;
+                Precio.Text = reader.GetString(5);
+            }
 
             Nombre.Text = reader.GetString(2);
             Cantidad.Text = reader.GetString(0);
             UnidadesXBulto.Text = cantXBulto.ToString();
             Costo.Text = reader.GetString(3);
-            Precio.Text = reader.GetString(4);
 
             reader.Close();
             Conexion.closeConnection();

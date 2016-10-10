@@ -41,7 +41,7 @@
             // 
             this.AceptarTIle.ActiveControl = null;
             this.AceptarTIle.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.AceptarTIle.Location = new System.Drawing.Point(169, 159);
+            this.AceptarTIle.Location = new System.Drawing.Point(158, 200);
             this.AceptarTIle.Margin = new System.Windows.Forms.Padding(2);
             this.AceptarTIle.Name = "AceptarTIle";
             this.AceptarTIle.Size = new System.Drawing.Size(94, 44);
@@ -60,7 +60,7 @@
             // 
             this.AtrasTile.ActiveControl = null;
             this.AtrasTile.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.AtrasTile.Location = new System.Drawing.Point(42, 159);
+            this.AtrasTile.Location = new System.Drawing.Point(42, 200);
             this.AtrasTile.Margin = new System.Windows.Forms.Padding(2);
             this.AtrasTile.Name = "AtrasTile";
             this.AtrasTile.Size = new System.Drawing.Size(93, 44);
@@ -104,9 +104,9 @@
             // 
             // 
             this.descripcion.CustomButton.Image = null;
-            this.descripcion.CustomButton.Location = new System.Drawing.Point(113, 1);
+            this.descripcion.CustomButton.Location = new System.Drawing.Point(81, 1);
             this.descripcion.CustomButton.Name = "";
-            this.descripcion.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.descripcion.CustomButton.Size = new System.Drawing.Size(53, 53);
             this.descripcion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.descripcion.CustomButton.TabIndex = 1;
             this.descripcion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -115,14 +115,16 @@
             this.descripcion.Lines = new string[0];
             this.descripcion.Location = new System.Drawing.Point(78, 124);
             this.descripcion.MaxLength = 32767;
+            this.descripcion.Multiline = true;
             this.descripcion.Name = "descripcion";
             this.descripcion.PasswordChar = '\0';
+            this.descripcion.PromptText = "Ingrese el motivo";
             this.descripcion.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.descripcion.SelectedText = "";
             this.descripcion.SelectionLength = 0;
             this.descripcion.SelectionStart = 0;
             this.descripcion.ShortcutsEnabled = true;
-            this.descripcion.Size = new System.Drawing.Size(135, 23);
+            this.descripcion.Size = new System.Drawing.Size(135, 71);
             this.descripcion.TabIndex = 7;
             this.descripcion.UseSelectable = true;
             this.descripcion.WaterMark = "Ingrese el motivo";
@@ -148,6 +150,7 @@
             this.Cantidad.MaxLength = 32767;
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.PasswordChar = '\0';
+            this.Cantidad.PromptText = "Ingrese el monto";
             this.Cantidad.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Cantidad.SelectedText = "";
             this.Cantidad.SelectionLength = 0;
@@ -164,7 +167,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 239);
+            this.ClientSize = new System.Drawing.Size(299, 284);
             this.Controls.Add(this.Cantidad);
             this.Controls.Add(this.descripcion);
             this.Controls.Add(this.Restar);

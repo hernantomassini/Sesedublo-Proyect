@@ -55,6 +55,7 @@ namespace Sesedublo_SLPL.Revisar_Caja
         public void Clean()
         {
             Cantidad.Clear();
+            descripcion.Clear();
         }
     }
 }

@@ -228,7 +228,7 @@ BEGIN
 SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
 
     UPDATE Caja SET efectivoActual = (@_efectivo + _montoASumar) WHERE id_caja=1;
-    INSERT INTO Operaciones (operacion, descripcion) VALUES ("Efectivo entrante", descripcion);
+    INSERT INTO Operaciones (operacion, descripcion) VALUES ("Efectivo entrante", _descripcion);
 
 END //
 
@@ -238,7 +238,7 @@ BEGIN
 	SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
 
     UPDATE Caja SET efectivoActual = (@_efectivo - _montoARestar) WHERE id_caja=1;
-    INSERT INTO Operaciones (operacion, descripcion) VALUES ("Efectivo saliente", descripcion);
+    INSERT INTO Operaciones (operacion, descripcion) VALUES ("Efectivo saliente", _descripcion);
     
 END //
 
@@ -281,5 +281,4 @@ BEGIN
 	DELETE FROM Pedidos WHERE id_pedido = _id_pedido;
 
 END //
-
 DELIMITER ;	

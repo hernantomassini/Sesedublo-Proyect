@@ -118,7 +118,6 @@
             this.descripcion.Multiline = true;
             this.descripcion.Name = "descripcion";
             this.descripcion.PasswordChar = '\0';
-            this.descripcion.PromptText = "Ingrese el motivo";
             this.descripcion.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.descripcion.SelectedText = "";
             this.descripcion.SelectionLength = 0;
@@ -150,7 +149,6 @@
             this.Cantidad.MaxLength = 32767;
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.PasswordChar = '\0';
-            this.Cantidad.PromptText = "Ingrese el monto";
             this.Cantidad.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Cantidad.SelectedText = "";
             this.Cantidad.SelectionLength = 0;

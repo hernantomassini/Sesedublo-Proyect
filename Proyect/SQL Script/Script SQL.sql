@@ -270,12 +270,13 @@ END //
 
 CREATE PROCEDURE obtenerPedidos () 
 BEGIN
-        SELECT p.id_pedido, c.nombre, c.apellido, p.pagadoHastaElMomento, p.precio, group_concat(pr.nombre)  FROM Pedidos p 
-        LEFT OUTER JOIN Facturas f ON p.id_pedido = f.pedido
+        SELECT p.id_pedido, CONCAT(c.nombre, " ,", c.apellido), p.pagadoHastaElMomento, p.precio - p.pagadoHastaElMomento, group_concat(pr.nombre) FROM Pedidos p 
+        LEFT JOIN Facturas f ON p.id_pedido = f.pedido
         INNER JOIN Clientes c ON p.comprador = c.id_cliente
         INNER JOIN Items i ON p.id_pedido = i.pedido
         INNER JOIN Productos pr ON i.producto = pr.id_producto
-		WHERE f.pedido IS NULL;
+		WHERE f.pedido IS NULL
+        GROUP BY p.id_pedido;
 END //
 
 CREATE PROCEDURE borrarPedido (IN _id_pedido INT)
@@ -290,7 +291,7 @@ BEGIN
 
 	#SET @_nombreComprador = (SELECT CONCAT(nombre, ", " ,apellido) FROM Clientes WHERE id_cliente = _id_comprador);
     #SET @_descripcion = CONCAT("El cliente ", @_nombreComprador, " realizó un pedido y dejo pago ", _pagadoHastaElMomento, "$.");
-	#CALL agregarEfectivo(_pagadoHastaElMomento, @_descripcion);
+	CALL agregarEfectivo(_pagadoHastaElMomento, "El pibe agrego guita locococoococo");
 
 	INSERT INTO Pedidos (comprador, pagadoHastaElMomento, precio) VALUES (_id_comprador, _pagadoHastaElMomento, _precio);
 	SELECT LAST_INSERT_ID();

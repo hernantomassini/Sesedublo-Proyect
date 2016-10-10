@@ -80,6 +80,10 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             }
 
             Funciones.imprimirMensajeDeAviso("Se realizó el pedido correctamente", this);
+
+            Manejador_Formularios.ABM_Pedidos.cargarDGV();
+            Manejador_Formularios.ABM_Pedidos.Show();
+
             Close();
         }
 

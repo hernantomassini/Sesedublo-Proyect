@@ -13,6 +13,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
             InitializeComponent();
             this.Closing += new CancelEventHandler(Avoid_Closing);
+            cargarDGV();
         }
 
         void Avoid_Closing(object sender, CancelEventArgs e)
@@ -77,8 +78,8 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             
             while (reader.Read())
             {
-                //ID Stock 0 - Cantidad 1 - Nombre 3 - Costo 4 - PVU 5 - PVB 6
-                PedidosDGV.Rows.Add();
+                //ID Stock 0 - Nombre 1 - Costo 2 - Debe 3 - Lista strings 4
+                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetDecimal(3), reader.GetString(4));
             }
 
             reader.Close();

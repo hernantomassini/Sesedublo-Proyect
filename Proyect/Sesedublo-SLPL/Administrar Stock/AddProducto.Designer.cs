@@ -166,7 +166,7 @@
             // 
             this.titleCancelar.ActiveControl = null;
             this.titleCancelar.BackColor = System.Drawing.Color.DarkRed;
-            this.titleCancelar.Location = new System.Drawing.Point(27, 313);
+            this.titleCancelar.Location = new System.Drawing.Point(26, 289);
             this.titleCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.titleCancelar.Name = "titleCancelar";
             this.titleCancelar.Size = new System.Drawing.Size(102, 41);
@@ -185,7 +185,7 @@
             // 
             this.titleAceptar.ActiveControl = null;
             this.titleAceptar.BackColor = System.Drawing.Color.Green;
-            this.titleAceptar.Location = new System.Drawing.Point(184, 313);
+            this.titleAceptar.Location = new System.Drawing.Point(184, 289);
             this.titleAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.titleAceptar.Name = "titleAceptar";
             this.titleAceptar.Size = new System.Drawing.Size(99, 41);
@@ -204,7 +204,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 387);
+            this.ClientSize = new System.Drawing.Size(307, 344);
             this.Controls.Add(this.titleCancelar);
             this.Controls.Add(this.titleAceptar);
             this.Controls.Add(this.bultoRadio);

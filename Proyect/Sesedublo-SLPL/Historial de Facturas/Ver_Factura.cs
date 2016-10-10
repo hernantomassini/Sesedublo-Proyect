@@ -34,17 +34,18 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             CUITLea.Text = "CUIT: 30-70850524-9";
             ingresosBrutos.Text = "INGRESOS BRUTOS: 901-070815-6";
             inicioActividad.Text = "INICIO ACTIVIDAD: 01-10-2003";
-
+            id_cliente = 1;
             MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerCliente", Conexion.generarArgumentos("_id_cliente"), id_cliente);
 
             reader.Read();
-
-            if (!reader[4].Equals(DBNull.Value)) { direccionVen.Text = "DIRECCIÓN: " + reader.GetString(4); } else { direccionVen.Text = ""; };
-            if (!reader[5].Equals(DBNull.Value)) { localidadCl.Text = "LOCALIDAD: " + reader.GetString(5); } else { localidadCl.Text = ""; } ;
-            if (!reader[6].Equals(DBNull.Value)) { cuitV.Text = "CUIT: " + reader.GetString(6); } else { cuitV.Text = ""; };
-            if (!reader[7].Equals(DBNull.Value)) { RazonSocialComp.Text = "RAZÓN SOCIAL: " + reader.GetString(7); } else { RazonSocialComp.Text = ""; } ;
-            id_usuarioCompr.Text = "Cod. vendedor: " + id_cliente;
-
+            if (reader.HasRows)
+            {
+                if (!reader[4].Equals(DBNull.Value) || reader.GetString(4) != "") { direccionVen.Text = "DIRECCIÓN: " + reader.GetString(4); } else { direccionVen.Text = ""; };
+                if (!reader[5].Equals(DBNull.Value) || reader.GetString(5) != "") { localidadCl.Text = "LOCALIDAD: " + reader.GetString(5); } else { localidadCl.Text = ""; };
+                if (!reader[6].Equals(DBNull.Value) || reader.GetString(6) != "") { cuitV.Text = "CUIT: " + reader.GetString(6); } else { cuitV.Text = ""; };
+                if (!reader[7].Equals(DBNull.Value) || reader.GetString(7) != "") { RazonSocialComp.Text = "RAZÓN SOCIAL: " + reader.GetString(7); } else { RazonSocialComp.Text = ""; };
+                id_usuarioCompr.Text = "Cod. vendedor: " + id_cliente;
+            }
             reader.Close();
 
             fechaActualImp.Text = Convert.ToString(DateTime.Now);
@@ -53,7 +54,7 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             
         }
 
-        internal void meterId(int idFactura, int idCliente)
+        public void meterId(int idFactura, int idCliente)
         {
             id_factura = idFactura;
             id_cliente = idCliente;

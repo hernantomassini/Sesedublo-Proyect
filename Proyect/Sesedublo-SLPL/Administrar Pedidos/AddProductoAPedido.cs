@@ -50,8 +50,9 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             Cantidad.Clear();
         }
 
-        private void CancelarTile_Click(object sender, EventArgs e)
+        private void AtrasTile_Click(object sender, EventArgs e)
         {
+            Manejador_Formularios.AgregarPedido.Show();
             Close();
         }
 
@@ -77,6 +78,9 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 Conexion.executeProcedure("agregarItemAPedido", Conexion.generarArgumentos("_id_pedido", "_id_producto", "_cantidad"), id_pedido, registro.Key, registro.Value);
                 Conexion.closeConnection();
             }
+
+            Funciones.imprimirMensajeDeAviso("Se realizó el pedido correctamente", this);
+            Close();
         }
 
         public void cargarDGV()

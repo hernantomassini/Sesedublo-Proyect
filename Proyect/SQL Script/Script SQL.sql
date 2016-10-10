@@ -109,7 +109,7 @@ CREATE TABLE Facturas (
 CREATE TABLE Operaciones (
     id_operacion INT AUTO_INCREMENT,
     operacion VARCHAR(200),
-    descripcion VARCHAR(60),
+    descripcion VARCHAR(200),
     PRIMARY KEY (id_operacion)
 );
 
@@ -288,9 +288,9 @@ END //
 CREATE PROCEDURE crearPedido (IN _id_comprador INT, IN _pagadoHastaElMomento DECIMAL(7,2), IN _precio DECIMAL(7,2))
 BEGIN
 
-	SET @_nombreComprador = (SELECT CONCAT(nombre, ", " ,apellido) FROM Clientes WHERE id_cliente = _id_comprador);
-    SET @_descripcion = CONCAT("El cliente ", @_nombreComprador, " realizó un pedido y dejo pago ", _pagadoHastaElMomento, "$.");
-	CALL agregarEfectivo(_pagadoHastaElMomento, @_descripcion);
+	#SET @_nombreComprador = (SELECT CONCAT(nombre, ", " ,apellido) FROM Clientes WHERE id_cliente = _id_comprador);
+    #SET @_descripcion = CONCAT("El cliente ", @_nombreComprador, " realizó un pedido y dejo pago ", _pagadoHastaElMomento, "$.");
+	#CALL agregarEfectivo(_pagadoHastaElMomento, @_descripcion);
 
 	INSERT INTO Pedidos (comprador, pagadoHastaElMomento, precio) VALUES (_id_comprador, _pagadoHastaElMomento, _precio);
 	SELECT LAST_INSERT_ID();
@@ -299,7 +299,7 @@ END //
 CREATE PROCEDURE agregarItemAPedido (IN _id_pedido INT, IN _id_producto INT, IN _cantidad INT)
 BEGIN
 
-SET @_nuevaCantidad = (SELECT cantidad WHERE id_producto = _id_producto) - _cantidad;
+SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = _id_producto) - _cantidad;
 
 	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = _id_producto;
 	INSERT INTO Items (producto, pedido, cantidadProductos) VALUES (_id_producto, _id_pedido, _cantidad);

@@ -37,11 +37,6 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             Close();
         }
 
-        private void AceptarTile_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void nombre_TextChanged(object sender, EventArgs e)
         {
             cargarDGVUsuarios();
@@ -87,28 +82,11 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             Funciones.tirarException();
         }
 
-        private void AgregarProductoTile_Click(object sender, EventArgs e)
+        private void SiguienteTile_Click(object sender, EventArgs e)
         {
             Manejador_Formularios.AddProductoAPedido.cargarDGV();
             Manejador_Formularios.AddProductoAPedido.Show();
             Close();
-        }
-
-        private void BorrarProductoTile_Click(object sender, EventArgs e)
-        {
-            DataGridViewRow filaDgv = ItemsDGV.CurrentRow;
-
-            if (!Validaciones.validarFilaMarcada(filaDgv, this))
-            {
-                return;
-            }
-
-            if (Funciones.imprimirMensajeDeAlerta("¿Estás seguro de borrar este producto? Esta acción no se podrá deshacer.", this) == DialogResult.Cancel)
-            {
-                return;
-            }
-
-            ItemsDGV.Rows.Remove(filaDgv);
         }
     }
 }

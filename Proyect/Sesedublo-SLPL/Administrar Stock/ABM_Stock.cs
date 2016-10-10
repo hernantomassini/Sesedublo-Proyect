@@ -103,10 +103,5 @@ namespace Sesedublo_SLPL.Administrar_Productos
         {
 
         }
-
-        private void StockDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

@@ -11,9 +11,6 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 {
     public partial class AgregarPedido : MetroForm
     {
-        accionesABM flag = accionesABM.Crear;
-        int id_pedido = -1;
-
         public AgregarPedido()
         {
             InitializeComponent();
@@ -25,11 +22,6 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
             this.Hide();
             e.Cancel = true;
-        }
-
-        private void AgregarPedido_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void AtrasTile_Click(object sender, EventArgs e)
@@ -52,17 +44,6 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             cargarDGVUsuarios();
         }
 
-        public void crearPedido()
-        {
-            flag = accionesABM.Crear;
-        }
-
-        public void modificarPedido()
-        {
-            flag = accionesABM.Modificar;
-            cargarDGVStock();
-        }
-
         private void cargarDGVUsuarios()
         {
             MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("cargarGrillaClientes", Conexion.generarArgumentos("_nombre", "_apellido", "_direccion"), nombre.Text, apellido.Text, direccion.Text);
@@ -74,17 +55,18 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             Conexion.closeConnection();
         }
 
-        /// <summary>
-        /// Solo se usaría para el modificar!
-        /// </summary>
-        private void cargarDGVStock()
-        {
-            Funciones.tirarException();
-        }
-
         private void SiguienteTile_Click(object sender, EventArgs e)
         {
-            Manejador_Formularios.AddProductoAPedido.cargarDGV();
+            DataGridViewRow filaDgv = ClienteDGV.CurrentRow;
+
+            if (!Validaciones.validarFilaMarcada(filaDgv, this))
+            {
+                return;
+            }
+
+            int id_cliente = Convert.ToInt32(filaDgv.Cells[0].Value);
+
+            Manejador_Formularios.AddProductoAPedido.crearPedido(id_cliente);
             Manejador_Formularios.AddProductoAPedido.Show();
             Close();
         }

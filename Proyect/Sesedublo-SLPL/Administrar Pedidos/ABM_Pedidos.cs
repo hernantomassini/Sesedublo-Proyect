@@ -55,7 +55,6 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         private void AgregarPedidoTile_Click(object sender, EventArgs e)
         {
-            Manejador_Formularios.AgregarPedido.crearPedido();
             Manejador_Formularios.AgregarPedido.Show();
 
             Close();

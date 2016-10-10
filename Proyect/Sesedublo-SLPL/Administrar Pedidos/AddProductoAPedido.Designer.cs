@@ -41,10 +41,10 @@
             this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CancelarTile = new MetroFramework.Controls.MetroTile();
-            this.nombre = new MetroFramework.Controls.MetroTextBox();
+            this.Nombre = new MetroFramework.Controls.MetroTextBox();
             this.nombreLabel = new MetroFramework.Controls.MetroLabel();
             this.AgregarTile = new MetroFramework.Controls.MetroTile();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.Cantidad = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.BorrarTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
@@ -54,6 +54,9 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FinalizarTile = new MetroFramework.Controls.MetroTile();
+            this.MontoACobrarLabel = new MetroFramework.Controls.MetroLabel();
+            this.cantidadAPagar = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ProductosDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDGV)).BeginInit();
             this.SuspendLayout();
@@ -149,7 +152,7 @@
             // CancelarTile
             // 
             this.CancelarTile.ActiveControl = null;
-            this.CancelarTile.Location = new System.Drawing.Point(17, 548);
+            this.CancelarTile.Location = new System.Drawing.Point(18, 528);
             this.CancelarTile.Margin = new System.Windows.Forms.Padding(2);
             this.CancelarTile.Name = "CancelarTile";
             this.CancelarTile.Size = new System.Drawing.Size(84, 44);
@@ -159,39 +162,40 @@
             this.CancelarTile.UseSelectable = true;
             this.CancelarTile.Click += new System.EventHandler(this.CancelarTile_Click);
             // 
-            // nombre
+            // Nombre
             // 
             // 
             // 
             // 
-            this.nombre.CustomButton.Image = null;
-            this.nombre.CustomButton.Location = new System.Drawing.Point(92, 1);
-            this.nombre.CustomButton.Name = "";
-            this.nombre.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.nombre.CustomButton.TabIndex = 1;
-            this.nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.nombre.CustomButton.UseSelectable = true;
-            this.nombre.CustomButton.Visible = false;
-            this.nombre.DisplayIcon = true;
-            this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
-            this.nombre.Lines = new string[0];
-            this.nombre.Location = new System.Drawing.Point(85, 85);
-            this.nombre.MaxLength = 32767;
-            this.nombre.Name = "nombre";
-            this.nombre.PasswordChar = '\0';
-            this.nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.nombre.SelectedText = "";
-            this.nombre.SelectionLength = 0;
-            this.nombre.SelectionStart = 0;
-            this.nombre.ShortcutsEnabled = true;
-            this.nombre.Size = new System.Drawing.Size(114, 23);
-            this.nombre.TabIndex = 14;
-            this.nombre.UseSelectable = true;
-            this.nombre.WaterMark = "Buscar";
-            this.nombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.nombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.nombre.TextChanged += new System.EventHandler(this.nombre_TextChanged);
+            this.Nombre.CustomButton.Image = null;
+            this.Nombre.CustomButton.Location = new System.Drawing.Point(92, 1);
+            this.Nombre.CustomButton.Name = "";
+            this.Nombre.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.Nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Nombre.CustomButton.TabIndex = 1;
+            this.Nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Nombre.CustomButton.UseSelectable = true;
+            this.Nombre.CustomButton.Visible = false;
+            this.Nombre.DisplayIcon = true;
+            this.Nombre.Icon = ((System.Drawing.Image)(resources.GetObject("Nombre.Icon")));
+            this.Nombre.Lines = new string[0];
+            this.Nombre.Location = new System.Drawing.Point(85, 85);
+            this.Nombre.MaxLength = 32767;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.PasswordChar = '\0';
+            this.Nombre.PromptText = "Buscar";
+            this.Nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Nombre.SelectedText = "";
+            this.Nombre.SelectionLength = 0;
+            this.Nombre.SelectionStart = 0;
+            this.Nombre.ShortcutsEnabled = true;
+            this.Nombre.Size = new System.Drawing.Size(114, 23);
+            this.Nombre.TabIndex = 14;
+            this.Nombre.UseSelectable = true;
+            this.Nombre.WaterMark = "Buscar";
+            this.Nombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Nombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.Nombre.TextChanged += new System.EventHandler(this.nombre_TextChanged);
             // 
             // nombreLabel
             // 
@@ -215,42 +219,43 @@
             this.AgregarTile.UseSelectable = true;
             this.AgregarTile.Click += new System.EventHandler(this.AgregarTile_Click);
             // 
-            // metroTextBox1
+            // Cantidad
             // 
             // 
             // 
             // 
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(92, 1);
-            this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.DisplayIcon = true;
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(88, 286);
-            this.metroTextBox1.MaxLength = 5;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(114, 23);
-            this.metroTextBox1.TabIndex = 17;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMark = "Cantidad";
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.Cantidad.CustomButton.Image = null;
+            this.Cantidad.CustomButton.Location = new System.Drawing.Point(92, 1);
+            this.Cantidad.CustomButton.Name = "";
+            this.Cantidad.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.Cantidad.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Cantidad.CustomButton.TabIndex = 1;
+            this.Cantidad.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Cantidad.CustomButton.UseSelectable = true;
+            this.Cantidad.CustomButton.Visible = false;
+            this.Cantidad.DisplayIcon = true;
+            this.Cantidad.Lines = new string[0];
+            this.Cantidad.Location = new System.Drawing.Point(89, 286);
+            this.Cantidad.MaxLength = 5;
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.PasswordChar = '\0';
+            this.Cantidad.PromptText = "Cantidad";
+            this.Cantidad.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Cantidad.SelectedText = "";
+            this.Cantidad.SelectionLength = 0;
+            this.Cantidad.SelectionStart = 0;
+            this.Cantidad.ShortcutsEnabled = true;
+            this.Cantidad.Size = new System.Drawing.Size(114, 23);
+            this.Cantidad.TabIndex = 17;
+            this.Cantidad.UseSelectable = true;
+            this.Cantidad.WaterMark = "Cantidad";
+            this.Cantidad.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Cantidad.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(17, 290);
+            this.metroLabel1.Location = new System.Drawing.Point(18, 290);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(65, 19);
             this.metroLabel1.TabIndex = 16;
@@ -259,7 +264,7 @@
             // BorrarTile
             // 
             this.BorrarTile.ActiveControl = null;
-            this.BorrarTile.Location = new System.Drawing.Point(436, 286);
+            this.BorrarTile.Location = new System.Drawing.Point(524, 528);
             this.BorrarTile.Margin = new System.Windows.Forms.Padding(2);
             this.BorrarTile.Name = "BorrarTile";
             this.BorrarTile.Size = new System.Drawing.Size(84, 44);
@@ -272,11 +277,11 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(17, 359);
+            this.metroLabel2.Location = new System.Drawing.Point(17, 339);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(79, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(135, 19);
             this.metroLabel2.TabIndex = 20;
-            this.metroLabel2.Text = "Vista previa:";
+            this.metroLabel2.Text = "Carrito de productos:";
             // 
             // ItemsDGV
             // 
@@ -312,7 +317,7 @@
             this.ItemsDGV.EnableHeadersVisualStyles = false;
             this.ItemsDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.ItemsDGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ItemsDGV.Location = new System.Drawing.Point(17, 380);
+            this.ItemsDGV.Location = new System.Drawing.Point(17, 360);
             this.ItemsDGV.Margin = new System.Windows.Forms.Padding(2);
             this.ItemsDGV.MultiSelect = false;
             this.ItemsDGV.Name = "ItemsDGV";
@@ -369,7 +374,7 @@
             // FinalizarTile
             // 
             this.FinalizarTile.ActiveControl = null;
-            this.FinalizarTile.Location = new System.Drawing.Point(524, 548);
+            this.FinalizarTile.Location = new System.Drawing.Point(524, 616);
             this.FinalizarTile.Margin = new System.Windows.Forms.Padding(2);
             this.FinalizarTile.Name = "FinalizarTile";
             this.FinalizarTile.Size = new System.Drawing.Size(84, 44);
@@ -379,19 +384,73 @@
             this.FinalizarTile.UseSelectable = true;
             this.FinalizarTile.Click += new System.EventHandler(this.FinalizarTile_Click);
             // 
+            // MontoACobrarLabel
+            // 
+            this.MontoACobrarLabel.AutoSize = true;
+            this.MontoACobrarLabel.Location = new System.Drawing.Point(18, 609);
+            this.MontoACobrarLabel.Name = "MontoACobrarLabel";
+            this.MontoACobrarLabel.Size = new System.Drawing.Size(130, 19);
+            this.MontoACobrarLabel.TabIndex = 22;
+            this.MontoACobrarLabel.Text = "MontoACobrarLabel";
+            // 
+            // cantidadAPagar
+            // 
+            // 
+            // 
+            // 
+            this.cantidadAPagar.CustomButton.Image = null;
+            this.cantidadAPagar.CustomButton.Location = new System.Drawing.Point(92, 1);
+            this.cantidadAPagar.CustomButton.Name = "";
+            this.cantidadAPagar.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.cantidadAPagar.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.cantidadAPagar.CustomButton.TabIndex = 1;
+            this.cantidadAPagar.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.cantidadAPagar.CustomButton.UseSelectable = true;
+            this.cantidadAPagar.CustomButton.Visible = false;
+            this.cantidadAPagar.DisplayIcon = true;
+            this.cantidadAPagar.Lines = new string[0];
+            this.cantidadAPagar.Location = new System.Drawing.Point(202, 629);
+            this.cantidadAPagar.MaxLength = 5;
+            this.cantidadAPagar.Name = "cantidadAPagar";
+            this.cantidadAPagar.PasswordChar = '\0';
+            this.cantidadAPagar.PromptText = "Cantidad";
+            this.cantidadAPagar.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.cantidadAPagar.SelectedText = "";
+            this.cantidadAPagar.SelectionLength = 0;
+            this.cantidadAPagar.SelectionStart = 0;
+            this.cantidadAPagar.ShortcutsEnabled = true;
+            this.cantidadAPagar.Size = new System.Drawing.Size(114, 23);
+            this.cantidadAPagar.TabIndex = 25;
+            this.cantidadAPagar.UseSelectable = true;
+            this.cantidadAPagar.WaterMark = "Cantidad";
+            this.cantidadAPagar.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.cantidadAPagar.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(18, 631);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(178, 19);
+            this.metroLabel4.TabIndex = 24;
+            this.metroLabel4.Text = "Monto que el cliente pagará:";
+            // 
             // AddProductoAPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(641, 609);
+            this.ClientSize = new System.Drawing.Size(641, 678);
+            this.Controls.Add(this.cantidadAPagar);
+            this.Controls.Add(this.metroLabel4);
+            this.Controls.Add(this.MontoACobrarLabel);
             this.Controls.Add(this.FinalizarTile);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.ItemsDGV);
             this.Controls.Add(this.BorrarTile);
-            this.Controls.Add(this.metroTextBox1);
+            this.Controls.Add(this.Cantidad);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.AgregarTile);
-            this.Controls.Add(this.nombre);
+            this.Controls.Add(this.Nombre);
             this.Controls.Add(this.nombreLabel);
             this.Controls.Add(this.CancelarTile);
             this.Controls.Add(this.ProductosDGV);
@@ -399,6 +458,7 @@
             this.Name = "AddProductoAPedido";
             this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Text = "Agregar Productos";
+            this.Load += new System.EventHandler(this.AddProductoAPedido_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ProductosDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDGV)).EndInit();
             this.ResumeLayout(false);
@@ -414,10 +474,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CantidadProductos;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioProducto;
-        private MetroFramework.Controls.MetroTextBox nombre;
+        private MetroFramework.Controls.MetroTextBox Nombre;
         private MetroFramework.Controls.MetroLabel nombreLabel;
         private MetroFramework.Controls.MetroTile AgregarTile;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
+        private MetroFramework.Controls.MetroTextBox Cantidad;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTile BorrarTile;
         private MetroFramework.Controls.MetroLabel metroLabel2;
@@ -427,5 +487,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private MetroFramework.Controls.MetroTile FinalizarTile;
+        private MetroFramework.Controls.MetroLabel MontoACobrarLabel;
+        private MetroFramework.Controls.MetroTextBox cantidadAPagar;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
     }
 }

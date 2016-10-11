@@ -114,9 +114,9 @@ CREATE TABLE Facturas (
         REFERENCES Pedidos (id_pedido)
 );
 
-CREATE TABLE ListaDeProductos(
-	id_listPro INT AUTO_INCREMENT,
-	descripcion VARCHAR(60),
+CREATE TABLE ListaDeProductos (
+    id_listPro INT AUTO_INCREMENT,
+    descripcion VARCHAR(60),
     PRIMARY KEY (id_ListPro)
 );
 
@@ -344,13 +344,12 @@ BEGIN
 
 END //
 
-CREATE PROCEDURE updatearStock (IN _id_stock INT, IN _cantidad INT)
+CREATE PROCEDURE updatearStock (IN _id_producto INT, IN _cantidad INT)
 BEGIN
 
-SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
-SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = @_id_producto) + _cantidad;
+SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = _id_producto) + _cantidad;
 
-	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = @_id_producto;
+	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = _id_producto;
     
 END //
 

@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
@@ -91,9 +92,16 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
                     ivaCalculado.Visible = false;
                 }
 
-                totalT.Text = "TOTAL " + Convert.ToString(iva + Convert.ToDouble(reader.GetDecimal(1)));
+                totalT.Text = "TOTAL " + Convert.ToString(Convert.ToDecimal(iva) + reader.GetDecimal(1));
             }
             reader.Close();
+            Conexion.closeConnection();
+
+            MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("obtenerItemsDeFactura", Conexion.generarArgumentos("_id_factura"), id_factura);
+            DataTable tablaDeFacturas = new DataTable("Factura");
+            da.Fill(tablaDeFacturas);
+            dgvVerFactura.DataSource = tablaDeFacturas.DefaultView;
+
             Conexion.closeConnection();
 
             facturaID.Text = "FACTURA N° 00001-" + Convert.ToString(id_factura);

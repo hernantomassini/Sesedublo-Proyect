@@ -42,6 +42,10 @@ DROP PROCEDURE IF EXISTS obtenerInfoItems;
 
 =======
 DROP PROCEDURE IF EXISTS obtenerFactura;
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
+DROP PROCEDURE IF EXISTS obtenerItemsDeFactura;
 >>>>>>> origin/master
 
 CREATE TABLE Caja (
@@ -116,6 +120,12 @@ CREATE TABLE Facturas (
         REFERENCES Pedidos (id_pedido)
 );
 
+CREATE TABLE ListaDeProductos(
+	id_listPro INT AUTO_INCREMENT
+	descripcion VARCHAR(60),
+    PRIMARY KEY (id_ListPro)
+);
+
 CREATE TABLE Operaciones (
     id_operacion INT AUTO_INCREMENT,
     operacion VARCHAR(200),
@@ -132,6 +142,7 @@ CREATE TABLE NotasDeCredito (
     FOREIGN KEY (factura)
         REFERENCES Facturas (id_factura)
 );
+
 
 #Store Procedures
 DELIMITER //
@@ -321,6 +332,8 @@ BEGIN
 
 	INSERT INTO Facturas (fecha, tipoDeFactura, pedido) VALUES (CURTIME(), _tipoFactura, _id_pedido);
     
+    
+    
 END //
 
 <<<<<<< HEAD
@@ -367,10 +380,28 @@ END //
 
 CREATE PROCEDURE obtenerItemsDeFactura(IN _id_factura INT)
 BEGIN
-	SELECT * FROM Facturas f
+	SELECT pr.nombre AS Nombre, i.cantidadProductos AS 'Cantidad Total',
+		   IF(PVBulto = 0, PVUnitario, PVBulto / cantidadXBulto) AS 'Precio Unitario',
+           IF(PVBulto = 0, '-', PVBulto / cantidadXBulto) AS 'Precio Bulto',
+		   IF(PVBulto = 0, PVUnitario * cantidadProductos, PVBulto * cantidadProductos) AS 'Precio Total'
+	FROM Facturas f
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Items i ON i.pedido = p.id_pedido
     INNER JOIN Productos pr ON pr.id_producto = i.producto
+<<<<<<< HEAD
+    WHERE f.id_factura = _id_factura
+    GROUP BY i.id_item;
+END //
+DELIMITER ;
+    
+    
+=======
 END
+<<<<<<< HEAD
 >>>>>>> origin/master
 DELIMITER ;
+=======
+
+DELIMITER ;
+>>>>>>> 7a59070cf3ca395f0545618c0b78a5dccab3f2dd
+>>>>>>> origin/master

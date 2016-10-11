@@ -10,8 +10,11 @@ DROP TABLE IF EXISTS Items;
 DROP TABLE IF EXISTS Pedidos;
 DROP TABLE IF EXISTS Stock;
 DROP TABLE IF EXISTS Clientes;
-DROP TABLE IF EXISTS Productos;
+
 DROP TABLE IF EXISTS Caja;
+DROP TABLE IF EXISTS Individuales;
+DROP TABLE IF EXISTS Bultos;
+DROP TABLE IF EXISTS Productos;
 DROP TABLE IF EXISTS ListaDeProductos;
 
 #DROP PROCEDURES:
@@ -51,16 +54,43 @@ CREATE TABLE Caja (
 
 INSERT INTO Caja (efectivoActual) VALUES (0);
 
+CREATE TABLE ListaDeProductos (
+    id_listPro INT AUTO_INCREMENT,
+    descripcion VARCHAR(100),
+    PRIMARY KEY (id_ListPro)
+);
+
 CREATE TABLE Productos (
     id_producto INT AUTO_INCREMENT,
+    id_listaDeProductos INT,
+    PRIMARY KEY (id_producto),
+    FOREIGN KEY (id_listaDeProductos)
+        REFERENCES ListaDeProductos (id_listPro)
+);
+
+CREATE TABLE Individuales (
+    id_pindividual INT AUTO_INCREMENT,
+    id_producto INT,
+    cantidad INT,
+    costo DECIMAL(7 , 2 ),
+    precio DECIMAL(7 , 2 ),
+    PRIMARY KEY (id_pindividual),
+    FOREIGN KEY (id_producto)
+        REFERENCES Productos (id_producto)
+);
+
+CREATE TABLE Bultos (
+    id_bulto INT AUTO_INCREMENT,
+    id_producto INT,
     cantidad INT,
     cantidadXBulto INT,
     costo DECIMAL(7 , 2 ),
-    nombre VARCHAR(50),
-    PVUnitario DECIMAL(7 , 2 ),
-    PVBulto DECIMAL(7 , 2 ),
-    PRIMARY KEY (id_producto)
+    precio DECIMAL(7 , 2 ),
+    PRIMARY KEY (id_bulto),
+    FOREIGN KEY (id_producto)
+        REFERENCES Productos (id_producto)
 );
+
 
 CREATE TABLE Clientes (
     id_cliente INT AUTO_INCREMENT,
@@ -114,12 +144,6 @@ CREATE TABLE Facturas (
     PRIMARY KEY (id_factura),
     FOREIGN KEY (pedido)
         REFERENCES Pedidos (id_pedido)
-);
-
-CREATE TABLE ListaDeProductos (
-    id_listPro INT AUTO_INCREMENT,
-    descripcion VARCHAR(100),
-    PRIMARY KEY (id_ListPro)
 );
 
 CREATE TABLE Operaciones (

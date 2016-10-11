@@ -78,6 +78,7 @@ CREATE TABLE Clientes (
 CREATE TABLE Stock (
     id_stock INT AUTO_INCREMENT,
     producto INT,
+    deleted INT DEFAULT 0,
     PRIMARY KEY (id_stock),
     FOREIGN KEY (producto)
         REFERENCES Productos (id_producto)
@@ -571,7 +572,8 @@ BEGIN
 	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto 
 	FROM Stock s INNER JOIN Productos p 
 	ON p.id_producto = s.producto
-	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""));
+	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+    AND s.deleted = 0;
 
 END //
 
@@ -603,10 +605,7 @@ END //
 CREATE PROCEDURE borrarStock (IN _id_stock INT) 
 BEGIN
 
-SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
-
-	DELETE FROM Stock WHERE id_stock = _id_stock;
-	DELETE FROM Productos WHERE id_producto = @_id_producto;
+	UPDATE Stock SET deleted = 1 WHERE id_stock = _id_stock;
 
 END //
 

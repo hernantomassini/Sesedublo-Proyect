@@ -116,6 +116,7 @@
             this.ProductosDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ProductosDGV.Size = new System.Drawing.Size(591, 168);
             this.ProductosDGV.TabIndex = 0;
+            this.ProductosDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductosDGV_CellClick);
             // 
             // IDStock
             // 

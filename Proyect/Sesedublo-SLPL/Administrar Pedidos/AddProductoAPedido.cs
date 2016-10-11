@@ -108,6 +108,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 Conexion.closeConnection();
 
                 sumatoriaMoney += precio;
+                updateLabelMoney();
             }
         }
 
@@ -361,6 +362,11 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
             Manejador_Formularios.AgregarPedido.Show();
             Close();
+        }
+
+        private void ProductosDGV_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        {
+            Cantidad.Focus();
         }
 
         private void AddProductoAPedido_Load(object sender, EventArgs e)

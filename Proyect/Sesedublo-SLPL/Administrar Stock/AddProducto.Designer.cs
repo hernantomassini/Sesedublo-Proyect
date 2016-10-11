@@ -34,10 +34,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Cantidad = new System.Windows.Forms.TextBox();
             this.Nombre = new System.Windows.Forms.TextBox();
-            this.Precio = new System.Windows.Forms.TextBox();
+            this.Utilidad = new System.Windows.Forms.TextBox();
             this.CantidadLbl = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.PrecioLabel = new System.Windows.Forms.Label();
+            this.UtilidadLabel = new System.Windows.Forms.Label();
             this.CostoLabel = new System.Windows.Forms.Label();
             this.Costo = new System.Windows.Forms.TextBox();
             this.UnidadesXBultoLbl = new System.Windows.Forms.Label();
@@ -72,14 +72,14 @@
             this.Nombre.Size = new System.Drawing.Size(192, 20);
             this.Nombre.TabIndex = 1;
             // 
-            // Precio
+            // Utilidad
             // 
-            this.Precio.Location = new System.Drawing.Point(181, 206);
-            this.Precio.Margin = new System.Windows.Forms.Padding(4);
-            this.Precio.MaxLength = 10;
-            this.Precio.Name = "Precio";
-            this.Precio.Size = new System.Drawing.Size(100, 20);
-            this.Precio.TabIndex = 6;
+            this.Utilidad.Location = new System.Drawing.Point(181, 206);
+            this.Utilidad.Margin = new System.Windows.Forms.Padding(4);
+            this.Utilidad.MaxLength = 10;
+            this.Utilidad.Name = "Utilidad";
+            this.Utilidad.Size = new System.Drawing.Size(100, 20);
+            this.Utilidad.TabIndex = 6;
             // 
             // CantidadLbl
             // 
@@ -99,14 +99,14 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Nombre del producto:";
             // 
-            // PrecioLabel
+            // UtilidadLabel
             // 
-            this.PrecioLabel.AutoSize = true;
-            this.PrecioLabel.Location = new System.Drawing.Point(23, 209);
-            this.PrecioLabel.Name = "PrecioLabel";
-            this.PrecioLabel.Size = new System.Drawing.Size(40, 13);
-            this.PrecioLabel.TabIndex = 8;
-            this.PrecioLabel.Text = "Precio:";
+            this.UtilidadLabel.AutoSize = true;
+            this.UtilidadLabel.Location = new System.Drawing.Point(23, 209);
+            this.UtilidadLabel.Name = "UtilidadLabel";
+            this.UtilidadLabel.Size = new System.Drawing.Size(98, 13);
+            this.UtilidadLabel.TabIndex = 8;
+            this.UtilidadLabel.Text = "Utilidad por unidad:";
             // 
             // CostoLabel
             // 
@@ -327,10 +327,10 @@
             this.Controls.Add(this.UnidadesXBultoLbl);
             this.Controls.Add(this.Costo);
             this.Controls.Add(this.CostoLabel);
-            this.Controls.Add(this.PrecioLabel);
+            this.Controls.Add(this.UtilidadLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.CantidadLbl);
-            this.Controls.Add(this.Precio);
+            this.Controls.Add(this.Utilidad);
             this.Controls.Add(this.Nombre);
             this.Controls.Add(this.Cantidad);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -347,10 +347,10 @@
 
         private System.Windows.Forms.TextBox Cantidad;
         private System.Windows.Forms.TextBox Nombre;
-        private System.Windows.Forms.TextBox Precio;
+        private System.Windows.Forms.TextBox Utilidad;
         private System.Windows.Forms.Label CantidadLbl;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label PrecioLabel;
+        private System.Windows.Forms.Label UtilidadLabel;
         private System.Windows.Forms.Label CostoLabel;
         private System.Windows.Forms.TextBox Costo;
         private System.Windows.Forms.Label UnidadesXBultoLbl;

@@ -54,22 +54,27 @@ namespace Sesedublo_SLPL.Administrar_Stock
             reader.Read();
 
             int cantXBulto = reader.GetInt32(1);
+            decimal costo = Convert.ToDecimal(reader.GetDecimal(3));
 
             if (cantXBulto == 0)
             { 
+                //Individual
                 individualRadio.Checked = true;
-                Precio.Text = reader.GetString(4);
+                decimal PVUnitario = reader.GetDecimal(4);
+                Utilidad.Text = Convert.ToString(PVUnitario - costo);
             }
             else
             {
+                //Bulto
                 bultoRadio.Checked = true;
-                Precio.Text = reader.GetString(5);
+                decimal PVBulto = reader.GetDecimal(5);
+                Utilidad.Text = Convert.ToString(Decimal.Round((PVBulto - costo) / cantXBulto, 2));
             }
 
             Nombre.Text = reader.GetString(2);
             Cantidad.Text = reader.GetString(0);
-            UnidadesXBulto.Text = cantXBulto.ToString();
-            Costo.Text = reader.GetString(3);
+            UnidadesXBulto.Text = Convert.ToString(cantXBulto);
+            Costo.Text = Convert.ToString(costo);
 
             reader.Close();
             Conexion.closeConnection();
@@ -95,7 +100,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
             UnidadesXBulto.SelectedIndex = 0;
             Nombre.Clear();
             Costo.Clear();
-            Precio.Clear();
+            Utilidad.Clear();
         }
 
         private void AtrasBtn_Click(object sender, EventArgs e)
@@ -106,24 +111,28 @@ namespace Sesedublo_SLPL.Administrar_Stock
         private void AgregarProductoBtn_Click(object sender, EventArgs e)
         {
             int cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
-            decimal precioPorUnidad = Convert.ToDecimal(Precio.Text);
+            decimal costo = Convert.ToDecimal(Costo.Text);
+            decimal utilidad = Convert.ToDecimal(Utilidad.Text);
+
+            decimal precioPorUnidad = costo + utilidad;
             decimal precioPorBulto = precioPorUnidad;
 
             if (individualRadio.Checked)
-            { 
+            {
                 cantXBulto = 0;
                 precioPorBulto = 0;
             }
             else
             {
+                precioPorBulto = costo + cantXBulto*utilidad;
                 precioPorUnidad = decimal.Round(precioPorBulto / cantXBulto, 2);
             }
                 
 
             if (flag == accionesABM.Crear)            
-                Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo" , "_nombre", "_PVUnitario", "_PVBulto"), Convert.ToInt32(Cantidad.Text), cantXBulto, Convert.ToDecimal(Costo.Text), Nombre.Text, precioPorUnidad, precioPorBulto);
+                Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo" , "_nombre", "_PVUnitario", "_PVBulto"), Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto);
             else
-                Conexion.executeProcedure("modificarStock", Conexion.generarArgumentos("_id_stock", "_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), id_stock, Convert.ToInt32(Cantidad.Text), cantXBulto, Convert.ToDecimal(Costo.Text), Nombre.Text, precioPorUnidad, precioPorBulto);
+                Conexion.executeProcedure("modificarStock", Conexion.generarArgumentos("_id_stock", "_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), id_stock, Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto);
 
             Conexion.closeConnection();
             Close();
@@ -135,7 +144,6 @@ namespace Sesedublo_SLPL.Administrar_Stock
             {
                 CostoLabel.Text = "Costo por unidad:";
                 CantidadLbl.Text = "Cantidad de unidades:";
-                PrecioLabel.Text = "Precio por unidad:";
                 UnidadesXBultoLbl.Visible = false;
                 UnidadesXBulto.Visible = false;
             }
@@ -143,7 +151,6 @@ namespace Sesedublo_SLPL.Administrar_Stock
             {
                 CostoLabel.Text = "Costo por bulto:";
                 CantidadLbl.Text = "Cantidad de bultos:";
-                PrecioLabel.Text = "Precio por bulto:";
                 UnidadesXBultoLbl.Visible = true;
                 UnidadesXBulto.Visible = true;
             }

@@ -13,10 +13,11 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
         int id_factura;
         int id_cliente;
         private PrintDocument printDocument1 = new PrintDocument();
+        private PrintDocument printDocument2 = new PrintDocument();
 
         public Ver_Factura()
         {
-            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+
             this.Controls.Add(printButton);
             InitializeComponent();
             this.Closing += new CancelEventHandler(Avoid_Closing);
@@ -24,14 +25,17 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             direccionLea.Text = "Elpidio Gonzales 9510";
             CPLea.Text = "C1416EFP CABA";
             TelLea.Text = "Tel/Fax 4639-5712";
-            fechaAct.Text = "FECHA: " + Convert.ToString(DateTime.Now);
             CUITLea.Text = "CUIT: 30-70850524-9";
             ingresosBrutos.Text = "INGRESOS BRUTOS: 901-070815-6";
-            inicioActividad.Text = "INICIO ACTIVIDAD: 01-10-2003";            
+            inicioActividad.Text = "INICIO ACTIVIDAD: 01-10-2003";
+            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+            oriOdup.Text = "DUPLICADO";
+            printDocument2.PrintPage += new PrintPageEventHandler(printDocument2_PrintPage);
         }
 
         private void getData()
         {
+            fechaAct.Text = "FECHA: " + DateTime.Now.ToShortDateString();
             MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerCliente", Conexion.generarArgumentos("_id_cliente"), id_cliente);
 
             reader.Read();
@@ -45,8 +49,8 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             }
             reader.Close();
 
-            fechaActualImp.Text = Convert.ToString(DateTime.Now);
-            fechaVencimiento.Text = Convert.ToString(DateTime.Now.AddDays(29));
+            fechaActualImp.Text = DateTime.Now.ToShortDateString();
+            fechaVencimiento.Text = DateTime.Now.AddDays(29).ToShortDateString();
             Conexion.closeConnection();
         }
 
@@ -73,7 +77,7 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
                 {
                     if (reader.GetString(1) != "") { subTotal.Text = Convert.ToString(reader.GetDecimal(1)); };
                     if (reader.GetString(1) != "") { subTotalPrec.Text = Convert.ToString(reader.GetDecimal(1)); }
-                    ivaCalculado.Text = Convert.ToString(iva);
+                    ivaCalculado.Text = Convert.ToString(iva) + ",00";
 
                     sub.Visible = true;
                     subTotal.Visible = true;
@@ -93,6 +97,8 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
                 }
 
                 totalT.Text = "TOTAL " + Convert.ToString(Convert.ToDecimal(iva) + reader.GetDecimal(1));
+
+                oriOdup.Text = "ORIGINAL";
             }
             reader.Close();
             Conexion.closeConnection();
@@ -135,11 +141,16 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             e.Graphics.DrawImage(memoryImage, 0, 0);
         }
 
+        private void printDocument2_PrintPage(System.Object
+sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(memoryImage, 0, 0);
+        }
+
         private void printButton_Click(System.Object sender,
         System.EventArgs e)
         {
 
-            oriOdup.Text = "ORIGINAL";
 
             printButton.Visible = false;
             CaptureScreen();
@@ -148,12 +159,10 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             printPreviewDialog1.Document = printDocument1;
             printPreviewDialog1.Show();
 
-            oriOdup.Text = "DUPLICADO";
-
             CaptureScreen();
             PrintPreviewDialog printPreviewDialog2;
             printPreviewDialog2 = new PrintPreviewDialog();
-            printPreviewDialog2.Document = printDocument1;
+            printPreviewDialog2.Document = printDocument2;
             printPreviewDialog2.Show();
 
             printButton.Visible = true;

@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS Stock;
 DROP TABLE IF EXISTS Clientes;
 DROP TABLE IF EXISTS Productos;
 DROP TABLE IF EXISTS Caja;
+DROP TABLE IF EXISTS ListaDeProductos;
 
 #DROP PROCEDURES:
 DROP PROCEDURE IF EXISTS obtenerStock;
@@ -34,19 +35,12 @@ DROP PROCEDURE IF EXISTS borrarPedido;
 DROP PROCEDURE IF EXISTS crearPedido;
 DROP PROCEDURE IF EXISTS agregarItemAPedido;
 DROP PROCEDURE IF EXISTS generarFactura;
-<<<<<<< HEAD
 DROP PROCEDURE IF EXISTS obtenerDatosDeUnPedido;
 DROP PROCEDURE IF EXISTS obtenerItems;
 DROP PROCEDURE IF EXISTS updatearStock;
 DROP PROCEDURE IF EXISTS obtenerInfoItems;
-
-=======
 DROP PROCEDURE IF EXISTS obtenerFactura;
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
 DROP PROCEDURE IF EXISTS obtenerItemsDeFactura;
->>>>>>> origin/master
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -121,7 +115,7 @@ CREATE TABLE Facturas (
 );
 
 CREATE TABLE ListaDeProductos(
-	id_listPro INT AUTO_INCREMENT
+	id_listPro INT AUTO_INCREMENT,
 	descripcion VARCHAR(60),
     PRIMARY KEY (id_ListPro)
 );
@@ -336,7 +330,6 @@ BEGIN
     
 END //
 
-<<<<<<< HEAD
 CREATE PROCEDURE obtenerDatosDeUnPedido (IN _id_pedido INT)
 BEGIN
 
@@ -370,7 +363,6 @@ BEGIN
 
 END //
 
-=======
 CREATE PROCEDURE obtenerFactura(IN _id_factura INT)
 BEGIN
 	SELECT f.tipoDeFactura, p.precio FROM Facturas f
@@ -388,20 +380,7 @@ BEGIN
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Items i ON i.pedido = p.id_pedido
     INNER JOIN Productos pr ON pr.id_producto = i.producto
-<<<<<<< HEAD
     WHERE f.id_factura = _id_factura
     GROUP BY i.id_item;
 END //
 DELIMITER ;
-    
-    
-=======
-END
-<<<<<<< HEAD
->>>>>>> origin/master
-DELIMITER ;
-=======
-
-DELIMITER ;
->>>>>>> 7a59070cf3ca395f0545618c0b78a5dccab3f2dd
->>>>>>> origin/master

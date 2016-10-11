@@ -66,49 +66,49 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             reader.Close();
             Conexion.closeConnection();
 
-            reader = Conexion.executeProcedureWithReader("obtenerItems", Conexion.generarArgumentos("_id_pedido"), id_pedido);
+            //reader = Conexion.executeProcedureWithReader("obtenerItems", Conexion.generarArgumentos("_id_pedido"), id_pedido);
 
-            while (reader.Read())
-            {
-                productosAVender.Add(reader.GetInt32(0), reader.GetInt32(1));
-            }
+            //while (reader.Read())
+            //{
+            //    productosAVender.Add(reader.GetInt32(0), reader.GetInt32(1));
+            //}
 
-            reader.Close();
-            Conexion.closeConnection();
+            //reader.Close();
+            //Conexion.closeConnection();
 
-            foreach (var registro in productosAVender)
-            {
-                reader = Conexion.executeProcedureWithReader("obtenerInfoItems", Conexion.generarArgumentos("_id_producto"), registro.Key);
-                reader.Read();
+            //foreach (var registro in productosAVender)
+            //{
+            //    reader = Conexion.executeProcedureWithReader("obtenerInfoItems", Conexion.generarArgumentos("_id_producto"), registro.Key);
+            //    reader.Read();
 
-                int cantidad = registro.Value;
-                int cantXBulto = reader.GetInt32(4);
-                decimal precio;
-                string precioString;
+            //    int cantidad = registro.Value;
+            //    int cantXBulto = reader.GetInt32(4);
+            //    decimal precio;
+            //    string precioString;
 
-                if(cantXBulto == 0)
-                {
-                    //individuales
-                    precio = reader.GetDecimal(2) * cantidad;
-                    precioString = cantidad + " unidades";
+            //    if(cantXBulto == 0)
+            //    {
+            //        //individuales
+            //        precio = reader.GetDecimal(2) * cantidad;
+            //        precioString = cantidad + " unidades";
 
-                }
-                else
-                {
-                    //Bulto
-                    precio = reader.GetDecimal(3) * cantidad;
-                    precioString = cantidad + " bultos de " + cantXBulto + " unidades";
-                }
+            //    }
+            //    else
+            //    {
+            //        //Bulto
+            //        precio = reader.GetDecimal(3) * cantidad;
+            //        precioString = cantidad + " bultos de " + cantXBulto + " unidades";
+            //    }
 
 
-                //IDStock - Cantidad - Nombre - Precio
-                ItemsDGV.Rows.Add(reader.GetInt32(0), precioString, reader.GetString(1), precio);
+            //    //IDStock - Cantidad - Nombre - Precio
+            //    ItemsDGV.Rows.Add(reader.GetInt32(0), precioString, reader.GetString(1), precio);
 
-                reader.Close();
-                Conexion.closeConnection();
+            //    reader.Close();
+            //    Conexion.closeConnection();
 
-                sumatoriaMoney += precio;
-            }
+            //    sumatoriaMoney += precio;
+            //}
         }
 
         private void FinalizarTile_Click(object sender, EventArgs e)

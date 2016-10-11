@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ver_Factura));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -91,7 +94,7 @@
             this.panel1.Controls.Add(this.direccionLea);
             this.panel1.Controls.Add(this.facturaID);
             this.panel1.Controls.Add(this.label24);
-            this.panel1.Location = new System.Drawing.Point(10, 75);
+            this.panel1.Location = new System.Drawing.Point(10, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(753, 216);
             this.panel1.TabIndex = 15;
@@ -265,9 +268,9 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(10, 285);
+            this.metroPanel1.Location = new System.Drawing.Point(10, 234);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(753, 180);
+            this.metroPanel1.Size = new System.Drawing.Size(753, 137);
             this.metroPanel1.TabIndex = 24;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
@@ -283,12 +286,42 @@
             // 
             // dgvVerFactura
             // 
+            this.dgvVerFactura.AllowUserToAddRows = false;
+            this.dgvVerFactura.AllowUserToDeleteRows = false;
+            this.dgvVerFactura.AllowUserToOrderColumns = true;
+            this.dgvVerFactura.AllowUserToResizeColumns = false;
+            this.dgvVerFactura.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVerFactura.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvVerFactura.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVerFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVerFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVerFactura.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvVerFactura.GridColor = System.Drawing.Color.White;
-            this.dgvVerFactura.Location = new System.Drawing.Point(10, 418);
+            this.dgvVerFactura.Location = new System.Drawing.Point(10, 377);
             this.dgvVerFactura.Name = "dgvVerFactura";
-            this.dgvVerFactura.Size = new System.Drawing.Size(752, 142);
+            this.dgvVerFactura.ReadOnly = true;
+            this.dgvVerFactura.Size = new System.Drawing.Size(753, 143);
             this.dgvVerFactura.TabIndex = 25;
             // 
             // panel3
@@ -302,7 +335,7 @@
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.IVA);
             this.panel3.Controls.Add(this.sub);
-            this.panel3.Location = new System.Drawing.Point(10, 552);
+            this.panel3.Location = new System.Drawing.Point(10, 526);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(753, 157);
             this.panel3.TabIndex = 26;
@@ -390,7 +423,7 @@
             this.panel5.Controls.Add(this.oriOdup);
             this.panel5.Controls.Add(this.label4);
             this.panel5.Controls.Add(this.label3);
-            this.panel5.Location = new System.Drawing.Point(10, 661);
+            this.panel5.Location = new System.Drawing.Point(10, 689);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(753, 107);
             this.panel5.TabIndex = 27;
@@ -471,9 +504,9 @@
             // 
             this.printButton.ActiveControl = null;
             this.printButton.BackColor = System.Drawing.Color.SteelBlue;
-            this.printButton.Location = new System.Drawing.Point(23, 777);
+            this.printButton.Location = new System.Drawing.Point(12, 811);
             this.printButton.Name = "printButton";
-            this.printButton.Size = new System.Drawing.Size(112, 49);
+            this.printButton.Size = new System.Drawing.Size(153, 49);
             this.printButton.TabIndex = 28;
             this.printButton.Text = "Imprimir";
             this.printButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -490,7 +523,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(853, 760);
+            this.ClientSize = new System.Drawing.Size(853, 872);
             this.Controls.Add(this.printButton);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);

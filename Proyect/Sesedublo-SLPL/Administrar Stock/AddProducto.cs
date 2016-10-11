@@ -5,7 +5,6 @@ using Sesedublo_SLPL.Generales;
 using System;
 using System.ComponentModel;
 using System.Data;
-using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Administrar_Stock
 {
@@ -87,8 +86,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
             DataTable tablaDeUsuarios = new DataTable("Clientes");
             da.Fill(tablaDeUsuarios);
             dgvProductos.DataSource = tablaDeUsuarios.DefaultView;
-            dgvProductos.Columns[1].Width = 200;
-            dgvProductos.Columns[0].Visible = false;
+            dgvProductos.Columns[0].Width = 200;
 
             Conexion.closeConnection();
         }
@@ -112,15 +110,6 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         private void AgregarProductoBtn_Click(object sender, EventArgs e)
         {
-            DataGridViewRow filaDgv = dgvProductos.CurrentRow;
-
-            if (!Validaciones.validarFilaMarcada(filaDgv, this))
-            {
-                return;
-            }
-
-            int id_producto = Convert.ToInt32(filaDgv.Cells[0].Value);
-
             int cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
             decimal costo = Convert.ToDecimal(Costo.Text);
             decimal utilidad = Convert.ToDecimal(Utilidad.Text);
@@ -140,16 +129,10 @@ namespace Sesedublo_SLPL.Administrar_Stock
             }
                 
 
-            if (flag == accionesABM.Crear)   
-                if(individualRadio.Checked)         
-                    Conexion.executeProcedure("agregarPindividual", Conexion.generarArgumentos("_id_producto", "_cantidad", "_costo", "_precio"), id_producto, Convert.ToInt32(Cantidad.Text), costo, precioPorUnidad);
-                else
-                    Conexion.executeProcedure("agregarBulto", Conexion.generarArgumentos("_id_producto", "_cantidad", "_cantidadXBulto", "_costo", "_precio"), id_producto, Convert.ToInt32(Cantidad.Text), cantXBulto, costo, precioPorBulto);
+            if (flag == accionesABM.Crear)            
+                Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo" , "_nombre", "_PVUnitario", "_PVBulto"), Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto);
             else
-                if (individualRadio.Checked)
-                    Conexion.executeProcedure("modificarPindividual", Conexion.generarArgumentos("_id_producto", "_cantidad", "_costo", "_precio"), id_producto, Convert.ToInt32(Cantidad.Text), costo, precioPorUnidad);
-                else
-                    Conexion.executeProcedure("modificarBulto", Conexion.generarArgumentos("_id_producto", "_cantidad", "_cantidadXBulto", "_costo", "_precio"), id_producto, Convert.ToInt32(Cantidad.Text), cantXBulto, costo, precioPorBulto);
+                Conexion.executeProcedure("modificarStock", Conexion.generarArgumentos("_id_stock", "_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), id_stock, Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto);
 
             Conexion.closeConnection();
             Close();
@@ -197,12 +180,12 @@ namespace Sesedublo_SLPL.Administrar_Stock
         {
             this.getProductos();
             if(dgvProductos.Rows.Count == 1)
-                Nombre.Text = this.dgvProductos.CurrentRow.Cells[1].Value.ToString();
+                Nombre.Text = this.dgvProductos.CurrentRow.Cells[0].Value.ToString();
         }
 
         private void dgvProductos_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
-            Nombre.Text = this.dgvProductos.CurrentRow.Cells[1].Value.ToString();
+            Nombre.Text = this.dgvProductos.CurrentRow.Cells[0].Value.ToString();
         }
     }
 }

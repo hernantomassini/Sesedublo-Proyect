@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS Items;
 DROP TABLE IF EXISTS Pedidos;
 DROP TABLE IF EXISTS Stock;
 DROP TABLE IF EXISTS Clientes;
+
 DROP TABLE IF EXISTS Caja;
 DROP TABLE IF EXISTS Individuales;
 DROP TABLE IF EXISTS Bultos;
@@ -44,10 +45,6 @@ DROP PROCEDURE IF EXISTS obtenerInfoItems;
 DROP PROCEDURE IF EXISTS obtenerFactura;
 DROP PROCEDURE IF EXISTS obtenerItemsDeFactura;
 DROP PROCEDURE IF EXISTS obtenerLista;
-DROP PROCEDURE IF EXISTS agregarPindividual;
-DROP PROCEDURE IF EXISTS agregarBulto;
-DROP PROCEDURE IF EXISTS modificarPindividual;
-DROP PROCEDURE IF EXISTS modificarBulto;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -57,10 +54,18 @@ CREATE TABLE Caja (
 
 INSERT INTO Caja (efectivoActual) VALUES (0);
 
+CREATE TABLE ListaDeProductos (
+    id_listPro INT AUTO_INCREMENT,
+    descripcion VARCHAR(100),
+    PRIMARY KEY (id_ListPro)
+);
+
 CREATE TABLE Productos (
     id_producto INT AUTO_INCREMENT,
-    nombre VARCHAR(100),
-    PRIMARY KEY (id_producto)
+    id_listaDeProductos INT,
+    PRIMARY KEY (id_producto),
+    FOREIGN KEY (id_listaDeProductos)
+        REFERENCES ListaDeProductos (id_listPro)
 );
 
 CREATE TABLE Individuales (
@@ -86,6 +91,7 @@ CREATE TABLE Bultos (
         REFERENCES Productos (id_producto)
 );
 
+
 CREATE TABLE Clientes (
     id_cliente INT AUTO_INCREMENT,
     nombre VARCHAR(50),
@@ -97,6 +103,15 @@ CREATE TABLE Clientes (
     cuit VARCHAR(60),
     razonSocial VARCHAR(60),
     PRIMARY KEY (id_cliente)
+);
+
+CREATE TABLE Stock (
+    id_stock INT AUTO_INCREMENT,
+    producto INT,
+    deleted INT DEFAULT 0,
+    PRIMARY KEY (id_stock),
+    FOREIGN KEY (producto)
+        REFERENCES Productos (id_producto)
 );
 
 CREATE TABLE Pedidos (
@@ -150,7 +165,7 @@ CREATE TABLE NotasDeCredito (
 
 
 
-INSERT INTO Productos (nombre) VALUES ("100 PIPPERS"),
+INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 											 ("ABSENTA GREEN SPIRIT"),
 											 ("ABSOLUT APEACH X 750"),
 											 ("ABSOLUT APPLE 750"),
@@ -577,61 +592,16 @@ DELIMITER //
 
 CREATE PROCEDURE obtenerStock (IN _nombre VARCHAR(50)) 
 BEGIN
-    
-	CREATE TEMPORARY TABLE temp (
-		id_individual_o_bulto INT,
-        cantidad INT,
-        cantidadXBulto INT DEFAULT 0,
-        nombre VARCHAR(100),
-        costo DECIMAL(7,2),
-        precio DECIMAL(7,2)
-    );
-    
-    INSERT INTO temp (id_individual_o_bulto, cantidad, nombre, costo, precio) 
-    SELECT i.id_pindividual, i.cantidad, pr.nombre, i.costo, i.precio FROM Individuales i
-    INNER JOIN Productos pr ON i.id_producto = pr.id_producto
-	WHERE ((pr.nombre LIKE CONCAT("%", "", "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""));
-    
-    INSERT INTO temp (id_individual_o_bulto, cantidad, cantidadXBulto, nombre, costo, precio)
-    SELECT b.id_bulto, b.cantidad, b.cantidadXBulto, pr.nombre, b.costo, b.precio FROM Bultos b
-    INNER JOIN Productos pr ON b.id_producto = pr.id_producto
-	WHERE ((pr.nombre LIKE CONCAT("%", "", "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""));
-    
-    SELECT * FROM temp;
-    DROP TABLE temp;
+
+	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto 
+	FROM Stock s INNER JOIN Productos p 
+	ON p.id_producto = s.producto
+	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+    AND s.deleted = 0;
 
 END //
 
-CREATE PROCEDURE agregarPindividual (IN _id_producto INT, IN _cantidad INT, IN _costo DECIMAL(7,2), IN _precio DECIMAL(7,2)) 
-BEGIN
-
-SET @_cantidadVieja = (SELECT cantidad FROM Individuales WHERE id_producto = _id_producto);
-
-	IF(@_cantidadVieja is null) THEN
-		INSERT INTO Individuales (id_producto, cantidad, costo, precio) VALUES (_id_producto, _cantidad, _costo, _precio);
-	ELSE 
-		UPDATE Individuales SET cantidad = _cantidad + @_cantidadVieja, costo = _costo, precio = _precio;
-	END IF;
-    
-END //
-
-CREATE PROCEDURE agregarBulto (IN _id_producto INT, _cantidad INT, _cantidadXBulto INT, _costo DECIMAL(7,2), _precio DECIMAL(7,2)) 
-BEGIN
-
-SET @_cantidadVieja = (SELECT cantidad FROM Bultos WHERE id_producto = _id_producto AND cantidadXBulto = _cantidadXBulto);
-
-	IF(@_cantidadVieja is null) THEN
-		INSERT INTO Bultos (id_producto, cantidad, cantidadXBulto, costo, precio) VALUES (_id_producto, _cantidad, _cantidadXBulto, _costo, _precio);
-	ELSE 
-		IF(SELECT _cantidadXBulto IN (SELECT cantidadXBulto FROM Bultos WHERE id_producto = _id_producto)) THEN
-			UPDATE Bultos SET cantidad = _cantidad + @_cantidadVieja, costo = _costo, precio = _precio WHERE id_producto = _id_producto AND cantidadXBulto = _cantidadXBulto;
-		ELSE
-			INSERT INTO Bultos (id_producto, cantidad, cantidadXBulto, costo, precio) VALUES (_id_producto, _cantidad, _cantidadXBulto, _costo, _precio);
-		END IF;
-	END IF;
-END //
-
-CREATE PROCEDURE modificarPindividual (IN _id_producto INT, IN _cantidad INT, IN _costo DECIMAL(7,2), IN _precio DECIMAL(7,2))
+CREATE PROCEDURE agregarStock (IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
 BEGIN
 
 	INSERT INTO Productos (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto) VALUES (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto);
@@ -640,16 +610,21 @@ BEGIN
     
 END //
 
-CREATE PROCEDURE modificarBulto (IN _id_producto INT, IN _cantidad INT, IN _costo DECIMAL(7,2), IN _precio DECIMAL(7,2)) 
+CREATE PROCEDURE modificarStock (IN _id_stock INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
 BEGIN
 
-	INSERT INTO Productos (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto) VALUES (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto);
-    SET @_id_producto = LAST_INSERT_ID();
-    INSERT INTO Stock (producto) VALUES (@_id_producto);
-    
-END //
+SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
 
-#LARA
+	UPDATE Productos SET 
+	cantidad = _cantidad,
+    cantidadXBulto = _cantidadXBulto,
+    costo = _costo,
+    nombre = _nombre,
+    PVUnitario = _PVUnitario,
+    PVBulto = _PVBulto
+    WHERE id_producto = @_id_producto;
+
+END //
 
 CREATE PROCEDURE borrarStock (IN _id_stock INT) 
 BEGIN
@@ -661,10 +636,10 @@ END //
 CREATE PROCEDURE obtenerProducto (IN _id_stock INT) 
 BEGIN
 
-SET @_id_producto = (SELECT producto FROM Productos WHERE id_producto = _id_producto);
+SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
 
 	SELECT 
-    cantidad, cantidadXBulto, pr.nombre, costo, precio
+    cantidad, cantidadXBulto, nombre, costo, PVUnitario, PVBulto
 FROM
     Productos
 WHERE
@@ -855,10 +830,9 @@ BEGIN
     GROUP BY i.id_item;
 END //
 
-CREATE PROCEDURE obtenerLista(IN _nombre VARCHAR(100))
+CREATE PROCEDURE obtenerLista(IN _nombre VARCHAR(60))
 BEGIN
-	SELECT id_producto, nombre AS Descripción FROM Productos
-	WHERE ((nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""));
+	SELECT descripcion AS Descripción FROM ListaDeProductos
+	WHERE ((descripcion LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""));
 END //
-
 DELIMITER ;

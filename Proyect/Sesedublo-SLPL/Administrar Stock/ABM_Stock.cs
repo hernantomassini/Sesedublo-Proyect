@@ -33,28 +33,15 @@ namespace Sesedublo_SLPL.Administrar_Productos
         {
             DataGridViewRow filaDgv = StockDGV.CurrentRow;
 
-            if (!Validaciones.validarFilaMarcada(filaDgv, this))
+            if (!Validaciones.validarFilaMarcada(filaDgv,this))
             {
                 return;
             }
 
-            int id = Convert.ToInt32(filaDgv.Cells[0].Value);
+            int id_stock = Convert.ToInt32(filaDgv.Cells[0].Value);
 
-            string cantidadString = Convert.ToString(filaDgv.Cells[2].Value);
-            int init = cantidadString.IndexOf(" ");
-            int fin = init + 1;
-            fin = cantidadString.IndexOf(" ", fin);
-
-            if (cantidadString.Substring(init, fin) == "bulto")
-            {
-                Manejador_Formularios.AddProducto.ModificarBulto(id);
-                Manejador_Formularios.AddProducto.Show();
-            }
-            else
-            { 
-                Manejador_Formularios.AddProducto.ModificarIndividual(id);
-                Manejador_Formularios.AddProducto.Show();
-            }
+            Manejador_Formularios.AddProducto.ModificarProducto(id_stock);
+            Manejador_Formularios.AddProducto.Show();
         }
 
         private void EliminarProductoStockBtn_Click(object sender, EventArgs e)
@@ -95,8 +82,8 @@ namespace Sesedublo_SLPL.Administrar_Productos
                 else
                     cantidad = reader.GetString(1) + " bultos de " + cantXBulto + " unidades";
 
-                //ID Producto 0 - Cantidad 1 - Nombre 3 - Costo 4 - PV 5
-                StockDGV.Rows.Add(reader.GetInt32(0), cantidad, reader.GetString(3), reader.GetDecimal(4), reader.GetDecimal(5));
+                //ID Stock 0 - Cantidad 1 - Nombre 3 - Costo 4 - PVU 5 - PVB 6
+                StockDGV.Rows.Add(reader.GetInt32(0), cantidad, reader.GetString(3), reader.GetDecimal(4), reader.GetDecimal(5), reader.GetDecimal(6));
             }
 
             reader.Close();

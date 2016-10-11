@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddProducto));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Cantidad = new System.Windows.Forms.TextBox();
             this.Nombre = new System.Windows.Forms.TextBox();
             this.Precio = new System.Windows.Forms.TextBox();
@@ -47,7 +47,7 @@
             this.titleCancelar = new MetroFramework.Controls.MetroTile();
             this.titleAceptar = new MetroFramework.Controls.MetroTile();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.buscarProducto = new MetroFramework.Controls.MetroTextBox();
             this.nombreLabel = new MetroFramework.Controls.MetroLabel();
             this.dgvProductos = new MetroFramework.Controls.MetroGrid();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
@@ -218,40 +218,40 @@
             this.metroLabel1.TabIndex = 16;
             this.metroLabel1.Text = "Lista de Productos";
             // 
-            // metroTextBox1
+            // buscarProducto
             // 
             // 
             // 
             // 
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(92, 1);
-            this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.DisplayIcon = true;
-            this.metroTextBox1.Icon = ((System.Drawing.Image)(resources.GetObject("metroTextBox1.Icon")));
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(545, 27);
-            this.metroTextBox1.MaxLength = 70;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.PromptText = "Buscar";
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(114, 23);
-            this.metroTextBox1.TabIndex = 18;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMark = "Buscar";
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.metroTextBox1.TextChanged += new System.EventHandler(this.metroTextBox1_TextChanged);
+            this.buscarProducto.CustomButton.Image = null;
+            this.buscarProducto.CustomButton.Location = new System.Drawing.Point(92, 1);
+            this.buscarProducto.CustomButton.Name = "";
+            this.buscarProducto.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.buscarProducto.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.buscarProducto.CustomButton.TabIndex = 1;
+            this.buscarProducto.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.buscarProducto.CustomButton.UseSelectable = true;
+            this.buscarProducto.CustomButton.Visible = false;
+            this.buscarProducto.DisplayIcon = true;
+            this.buscarProducto.Icon = ((System.Drawing.Image)(resources.GetObject("buscarProducto.Icon")));
+            this.buscarProducto.Lines = new string[0];
+            this.buscarProducto.Location = new System.Drawing.Point(545, 27);
+            this.buscarProducto.MaxLength = 70;
+            this.buscarProducto.Name = "buscarProducto";
+            this.buscarProducto.PasswordChar = '\0';
+            this.buscarProducto.PromptText = "Buscar";
+            this.buscarProducto.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.buscarProducto.SelectedText = "";
+            this.buscarProducto.SelectionLength = 0;
+            this.buscarProducto.SelectionStart = 0;
+            this.buscarProducto.ShortcutsEnabled = true;
+            this.buscarProducto.Size = new System.Drawing.Size(114, 23);
+            this.buscarProducto.TabIndex = 18;
+            this.buscarProducto.UseSelectable = true;
+            this.buscarProducto.WaterMark = "Buscar";
+            this.buscarProducto.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.buscarProducto.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.buscarProducto.TextChanged += new System.EventHandler(this.buscadorProducto_TextChanged);
             // 
             // nombreLabel
             // 
@@ -271,23 +271,23 @@
             this.dgvProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductos.EnableHeadersVisualStyles = false;
             this.dgvProductos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -296,20 +296,19 @@
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.ReadOnly = true;
             this.dgvProductos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductos.Size = new System.Drawing.Size(363, 266);
             this.dgvProductos.TabIndex = 19;
             this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
-            this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
             // 
             // AddProducto
             // 
@@ -317,7 +316,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(722, 344);
             this.Controls.Add(this.dgvProductos);
-            this.Controls.Add(this.metroTextBox1);
+            this.Controls.Add(this.buscarProducto);
             this.Controls.Add(this.nombreLabel);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.titleCancelar);
@@ -361,7 +360,7 @@
         private MetroFramework.Controls.MetroTile titleCancelar;
         private MetroFramework.Controls.MetroTile titleAceptar;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
+        private MetroFramework.Controls.MetroTextBox buscarProducto;
         private MetroFramework.Controls.MetroLabel nombreLabel;
         private MetroFramework.Controls.MetroGrid dgvProductos;
     }

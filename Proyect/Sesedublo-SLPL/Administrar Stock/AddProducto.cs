@@ -77,7 +77,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         public void getProductos()
         {
-            MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("obtenerLista", Conexion.generarArgumentos("_nombre"), metroTextBox1.Text);
+            MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("obtenerLista", Conexion.generarArgumentos("_nombre"), buscarProducto.Text);
             DataTable tablaDeUsuarios = new DataTable("Clientes");
             da.Fill(tablaDeUsuarios);
             dgvProductos.DataSource = tablaDeUsuarios.DefaultView;
@@ -90,6 +90,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
         {
             individualRadio.Checked = true;
 
+            buscarProducto.Clear();
             Cantidad.Clear();
             UnidadesXBulto.SelectedIndex = 0;
             Nombre.Clear();
@@ -168,14 +169,11 @@ namespace Sesedublo_SLPL.Administrar_Stock
             val.ingresarNumero(e);
         }
 
-        private void metroTextBox1_TextChanged(object sender, EventArgs e)
+        private void buscadorProducto_TextChanged(object sender, EventArgs e)
         {
             this.getProductos();
-        }
-
-        private void dgvProductos_CellContentClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
-        {
-            Nombre.Text = this.dgvProductos.CurrentRow.Cells[0].Value.ToString();
+            if(dgvProductos.Rows.Count == 1)
+                Nombre.Text = this.dgvProductos.CurrentRow.Cells[0].Value.ToString();
         }
 
         private void dgvProductos_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)

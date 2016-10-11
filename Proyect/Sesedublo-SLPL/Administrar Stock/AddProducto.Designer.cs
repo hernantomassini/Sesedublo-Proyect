@@ -139,7 +139,7 @@
             // 
             this.UnidadesXBulto.FormattingEnabled = true;
             this.UnidadesXBulto.Items.AddRange(new object[] {
-            "8",
+            "6",
             "12",
             "24"});
             this.UnidadesXBulto.Location = new System.Drawing.Point(181, 232);

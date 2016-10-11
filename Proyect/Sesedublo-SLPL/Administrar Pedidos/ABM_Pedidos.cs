@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -43,26 +44,27 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
             int id_pedido = Convert.ToInt32(filaDgv.Cells[0].Value);
 
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerItems", Conexion.generarArgumentos("_id_pedido"), id_pedido);
+            Dictionary<int, int> stockAReincorporar = new Dictionary<int, int>();
+
+            while (reader.Read())
+            {
+                stockAReincorporar.Add(reader.GetInt32(0), reader.GetInt32(1));
+            }
+
+            reader.Close();
+            Conexion.closeConnection();
+
+            foreach (var registro in stockAReincorporar)
+            {
+                Conexion.executeProcedure("updatearStock", Conexion.generarArgumentos("_id_producto", "_cantidad"), registro.Key, registro.Value);
+                Conexion.closeConnection();
+            }
+
             Conexion.executeProcedure("borrarPedido", Conexion.generarArgumentos("_id_pedido"), id_pedido);
             Conexion.closeConnection();
 
             cargarDGV();
-        }
-
-        private void modificarPedidoTile_Click(object sender, EventArgs e)
-        {
-            DataGridViewRow filaDgv = PedidosDGV.CurrentRow;
-
-            if (!Validaciones.validarFilaMarcada(filaDgv, this))
-            {
-                return;
-            }
-
-            int id_pedido = Convert.ToInt32(filaDgv.Cells[0].Value);
-
-            Manejador_Formularios.AddProductoAPedido.modificarPedido(id_pedido);
-            Manejador_Formularios.AddProductoAPedido.Show();
-            Close();
         }
 
         private void AgregarPedidoTile_Click(object sender, EventArgs e)

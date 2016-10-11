@@ -34,6 +34,11 @@ DROP PROCEDURE IF EXISTS borrarPedido;
 DROP PROCEDURE IF EXISTS crearPedido;
 DROP PROCEDURE IF EXISTS agregarItemAPedido;
 DROP PROCEDURE IF EXISTS generarFactura;
+DROP PROCEDURE IF EXISTS obtenerDatosDeUnPedido;
+DROP PROCEDURE IF EXISTS obtenerItems;
+DROP PROCEDURE IF EXISTS updatearStock;
+DROP PROCEDURE IF EXISTS obtenerInfoItems;
+
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -284,6 +289,7 @@ END //
 CREATE PROCEDURE borrarPedido (IN _id_pedido INT)
 BEGIN
 
+	DELETE FROM Items WHERE pedido = _id_pedido;
 	DELETE FROM Pedidos WHERE id_pedido = _id_pedido;
 
 END //
@@ -304,7 +310,6 @@ SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = _id_pr
 	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = _id_producto;
 	INSERT INTO Items (producto, pedido, cantidadProductos) VALUES (_id_producto, _id_pedido, _cantidad);
 
-    
 END //
 
 CREATE PROCEDURE generarFactura (IN _id_pedido INT, IN _tipoFactura VARCHAR(60))
@@ -312,6 +317,39 @@ BEGIN
 
 	INSERT INTO Facturas (fecha, tipoDeFactura, pedido) VALUES (CURTIME(), _tipoFactura, _id_pedido);
     
+END //
+
+CREATE PROCEDURE obtenerDatosDeUnPedido (IN _id_pedido INT)
+BEGIN
+
+	SELECT pagadoHastaElMomento, precio, comprador FROM Pedidos WHERE id_pedido = _id_pedido;
+    
+END //
+
+CREATE PROCEDURE obtenerItems (IN _id_pedido INT)
+BEGIN
+
+	SELECT producto, cantidadProductos FROM Items WHERE pedido = _id_pedido;
+
+END //
+
+CREATE PROCEDURE updatearStock (IN _id_stock INT, IN _cantidad INT)
+BEGIN
+
+SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
+SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = @_id_producto) + _cantidad;
+
+	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = @_id_producto;
+    
+END //
+
+CREATE PROCEDURE obtenerInfoItems (IN _id_producto INT)
+BEGIN
+
+	SELECT s.id_stock, p.nombre, p.PVUnitario, p.PVBulto, p.cantidadXBulto FROM Stock s
+    INNER JOIN Productos p ON s.producto = p.id_producto
+    WHERE s.producto = _id_producto;
+
 END //
 
 DELIMITER ;

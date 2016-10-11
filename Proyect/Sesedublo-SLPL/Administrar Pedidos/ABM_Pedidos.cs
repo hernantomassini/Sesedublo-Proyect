@@ -51,7 +51,18 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         private void modificarPedidoTile_Click(object sender, EventArgs e)
         {
+            DataGridViewRow filaDgv = PedidosDGV.CurrentRow;
 
+            if (!Validaciones.validarFilaMarcada(filaDgv, this))
+            {
+                return;
+            }
+
+            int id_pedido = Convert.ToInt32(filaDgv.Cells[0].Value);
+
+            Manejador_Formularios.AddProductoAPedido.modificarPedido(id_pedido);
+            Manejador_Formularios.AddProductoAPedido.Show();
+            Close();
         }
 
         private void AgregarPedidoTile_Click(object sender, EventArgs e)

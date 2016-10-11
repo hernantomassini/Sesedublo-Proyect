@@ -13,6 +13,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
     {
         Dictionary<int, int> productosAVender = new Dictionary<int, int>();
         accionesABM flag = accionesABM.Crear;
+        int id_pedido = -1;
         int id_cliente = -1;
         decimal sumatoriaMoney = 0;
 
@@ -31,7 +32,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         public void crearPedido(int id_cliente)
         {
             this.id_cliente = id_cliente;
-            productosAVender.Clear();
+            this.id_pedido = -1;
             sumatoriaMoney = 0;
             updateLabelMoney();
             Clean();
@@ -39,22 +40,75 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             flag = accionesABM.Crear;
         }
 
-        private void updateLabelMoney()
+        public void modificarPedido(int id_pedido)
         {
-            MontoACobrarLabel.Text = "El valor del pedido es de " + sumatoriaMoney;
-            montoAPagarDelPedido.Text = Convert.ToString(sumatoriaMoney);
+            this.id_cliente = -1;
+            this.id_pedido = id_pedido;
+            sumatoriaMoney = 0;
+            updateLabelMoney();
+            Clean();
+            flag = accionesABM.Modificar;
+            CargarItems();
+            cargarDGV();
         }
 
-        private void Clean()
+        private void CargarItems()
         {
-            Nombre.Clear();
-            Cantidad.Clear();
-        }
+            MySqlDataReader reader;
 
-        private void AtrasTile_Click(object sender, EventArgs e)
-        {
-            Manejador_Formularios.AgregarPedido.Show();
-            Close();
+            reader = Conexion.executeProcedureWithReader("obtenerDatosDeUnPedido", Conexion.generarArgumentos("_id_pedido"), id_pedido);
+            reader.Read();
+
+            cantidadPagada.Text = reader.GetString(0);
+            montoAPagarDelPedido.Text = reader.GetString(1);
+            this.id_cliente = reader.GetInt32(2);
+
+            reader.Close();
+            Conexion.closeConnection();
+
+            reader = Conexion.executeProcedureWithReader("obtenerItems", Conexion.generarArgumentos("_id_pedido"), id_pedido);
+
+            while (reader.Read())
+            {
+                productosAVender.Add(reader.GetInt32(0), reader.GetInt32(1));
+            }
+
+            reader.Close();
+            Conexion.closeConnection();
+
+            foreach (var registro in productosAVender)
+            {
+                reader = Conexion.executeProcedureWithReader("obtenerInfoItems", Conexion.generarArgumentos("_id_producto"), registro.Key);
+                reader.Read();
+
+                int cantidad = registro.Value;
+                int cantXBulto = reader.GetInt32(4);
+                decimal precio;
+                string precioString;
+
+                if(cantXBulto == 0)
+                {
+                    //individuales
+                    precio = reader.GetDecimal(2) * cantidad;
+                    precioString = cantidad + " unidades";
+
+                }
+                else
+                {
+                    //Bulto
+                    precio = reader.GetDecimal(3) * cantidad;
+                    precioString = cantidad + " bultos de " + cantXBulto + " unidades";
+                }
+
+
+                //IDStock - Cantidad - Nombre - Precio
+                ItemsDGV.Rows.Add(reader.GetInt32(0), precioString, reader.GetString(1), precio);
+
+                reader.Close();
+                Conexion.closeConnection();
+
+                sumatoriaMoney += precio;
+            }
         }
 
         private void FinalizarTile_Click(object sender, EventArgs e)
@@ -64,8 +118,25 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
+            MySqlDataReader reader;
+
+            if (flag == accionesABM.Modificar)
+            {
+                foreach (DataGridViewRow row in ItemsDGV.Rows)
+                {
+                    int id_stock = Convert.ToInt32(row.Cells[0].Value);
+                    int cantidad = obtenerCantidadEnInt(Convert.ToString(row.Cells[1].Value));
+
+                    Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_id_stock", "_cantidad"), id_stock, cantidad);
+                    Conexion.closeConnection();
+                }
+
+                Conexion.executeProcedure("borrarPedido", Conexion.generarArgumentos("_id_pedido"), this.id_pedido);
+                Conexion.closeConnection();
+            }
+
             //Crear pedido y actualizar Caja:
-            MySqlDataReader reader = Conexion.executeProcedureWithReader("crearPedido", Conexion.generarArgumentos("_id_comprador", "_pagadoHastaElMomento", "_precio"), id_cliente, Convert.ToDecimal(cantidadPagada.Text), Convert.ToDecimal(montoAPagarDelPedido.Text));
+            reader = Conexion.executeProcedureWithReader("crearPedido", Conexion.generarArgumentos("_id_comprador", "_pagadoHastaElMomento", "_precio"), id_cliente, Convert.ToDecimal(cantidadPagada.Text), Convert.ToDecimal(montoAPagarDelPedido.Text));
             reader.Read();
 
             int id_pedido = reader.GetInt32(0);
@@ -85,6 +156,10 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             Manejador_Formularios.ABM_Pedidos.cargarDGV();
             Manejador_Formularios.ABM_Pedidos.Show();
 
+
+            this.id_pedido = -1;
+            this.id_cliente = -1;
+            flag = accionesABM.Crear;
             Close();
         }
 
@@ -260,6 +335,32 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             }
 
             return true;
+        }
+
+        private void montoAPagarDelPedido_TextChanged(object sender, EventArgs e)
+        {
+            if(flag == accionesABM.Crear)
+                cantidadPagada.Text = montoAPagarDelPedido.Text;
+        }
+
+        private void updateLabelMoney()
+        {
+            MontoACobrarLabel.Text = "El valor del pedido es de " + sumatoriaMoney;
+            montoAPagarDelPedido.Text = Convert.ToString(sumatoriaMoney);
+        }
+
+        private void Clean()
+        {
+            Nombre.Clear();
+            Cantidad.Clear();
+            productosAVender.Clear();
+            ItemsDGV.Rows.Clear();
+        }
+
+        private void AtrasTile_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.AgregarPedido.Show();
+            Close();
         }
 
         private void AddProductoAPedido_Load(object sender, EventArgs e)

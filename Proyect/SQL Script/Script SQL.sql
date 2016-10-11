@@ -10,11 +10,8 @@ DROP TABLE IF EXISTS Items;
 DROP TABLE IF EXISTS Pedidos;
 DROP TABLE IF EXISTS Stock;
 DROP TABLE IF EXISTS Clientes;
-
-DROP TABLE IF EXISTS Caja;
-DROP TABLE IF EXISTS Individuales;
-DROP TABLE IF EXISTS Bultos;
 DROP TABLE IF EXISTS Productos;
+DROP TABLE IF EXISTS Caja;
 DROP TABLE IF EXISTS ListaDeProductos;
 
 #DROP PROCEDURES:
@@ -54,43 +51,16 @@ CREATE TABLE Caja (
 
 INSERT INTO Caja (efectivoActual) VALUES (0);
 
-CREATE TABLE ListaDeProductos (
-    id_listPro INT AUTO_INCREMENT,
-    descripcion VARCHAR(100),
-    PRIMARY KEY (id_ListPro)
-);
-
 CREATE TABLE Productos (
     id_producto INT AUTO_INCREMENT,
-    id_listaDeProductos INT,
-    PRIMARY KEY (id_producto),
-    FOREIGN KEY (id_listaDeProductos)
-        REFERENCES ListaDeProductos (id_listPro)
-);
-
-CREATE TABLE Individuales (
-    id_pindividual INT AUTO_INCREMENT,
-    id_producto INT,
-    cantidad INT,
-    costo DECIMAL(7 , 2 ),
-    precio DECIMAL(7 , 2 ),
-    PRIMARY KEY (id_pindividual),
-    FOREIGN KEY (id_producto)
-        REFERENCES Productos (id_producto)
-);
-
-CREATE TABLE Bultos (
-    id_bulto INT AUTO_INCREMENT,
-    id_producto INT,
     cantidad INT,
     cantidadXBulto INT,
     costo DECIMAL(7 , 2 ),
-    precio DECIMAL(7 , 2 ),
-    PRIMARY KEY (id_bulto),
-    FOREIGN KEY (id_producto)
-        REFERENCES Productos (id_producto)
+    nombre VARCHAR(100),
+    PVUnitario DECIMAL(7 , 2 ),
+    PVBulto DECIMAL(7 , 2 ),
+    PRIMARY KEY (id_producto)
 );
-
 
 CREATE TABLE Clientes (
     id_cliente INT AUTO_INCREMENT,
@@ -144,6 +114,12 @@ CREATE TABLE Facturas (
     PRIMARY KEY (id_factura),
     FOREIGN KEY (pedido)
         REFERENCES Pedidos (id_pedido)
+);
+
+CREATE TABLE ListaDeProductos (
+    id_listPro INT AUTO_INCREMENT,
+    descripcion VARCHAR(100),
+    PRIMARY KEY (id_ListPro)
 );
 
 CREATE TABLE Operaciones (
@@ -596,7 +572,7 @@ BEGIN
 	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto 
 	FROM Stock s INNER JOIN Productos p 
 	ON p.id_producto = s.producto
-	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+	WHERE ((p.nombre LIKE CONCAT("%", "", "%") COLLATE utf8_general_ci ) OR ("" IS NULL OR "" = ""))
     AND s.deleted = 0;
 
 END //
@@ -604,10 +580,25 @@ END //
 CREATE PROCEDURE agregarStock (IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
 BEGIN
 
-	INSERT INTO Productos (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto) VALUES (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto);
-    SET @_id_producto = LAST_INSERT_ID();
-    INSERT INTO Stock (producto) VALUES (@_id_producto);
-    
+SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AND cantidadXBulto = _cantidadXBulto AND cantidadXBulto != 0);
+	IF(@_id_producto IS NULL) THEN
+		SET @_otro_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AND cantidadXBulto = 0);
+		IF(@_otro_id_producto IS NOT NULL AND _cantidadXBulto = 0) THEN
+			#Es un producto individual existente.
+            SET @_cantidadVieja = (SELECT cantidad FROM Productos WHERE id_producto = @_otro_id_producto);
+			UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, costo = _costo, PVUnitario = PVUnitario WHERE id_producto = @_otro_id_producto ;
+		ELSE
+			#Es un producto nuevo.
+			INSERT INTO Productos (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto) VALUES (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto);
+			SET @_id_producto = LAST_INSERT_ID();
+			INSERT INTO Stock (producto) VALUES (@_id_producto);
+        END IF;
+    ELSE
+		#Es un Bulto con un _cantidadXBulto ya existente
+		SET @_cantidadVieja = (SELECT cantidad FROM Productos WHERE id_producto = @_id_producto);
+		UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, costo = _costo, PVBulto = _PVBulto WHERE id_producto = @_id_producto;
+    END IF;
+
 END //
 
 CREATE PROCEDURE modificarStock (IN _id_stock INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 

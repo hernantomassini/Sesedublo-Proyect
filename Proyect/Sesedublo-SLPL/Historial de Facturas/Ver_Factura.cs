@@ -24,7 +24,6 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             CPLea.Text = "C1416EFP CABA";
             TelLea.Text = "Tel/Fax 4639-5712";
             fechaAct.Text = "FECHA: " + Convert.ToString(DateTime.Now);
-            tipoFactura.Text = "A";
             CUITLea.Text = "CUIT: 30-70850524-9";
             ingresosBrutos.Text = "INGRESOS BRUTOS: 901-070815-6";
             inicioActividad.Text = "INICIO ACTIVIDAD: 01-10-2003";            
@@ -61,8 +60,42 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
         {
             id_factura = idFactura;
             id_cliente = idCliente;
-
             getData();
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerFactura", Conexion.generarArgumentos("_id_factura"), id_factura);
+
+            reader.Read();
+            if (reader.HasRows)
+            {
+                if (reader.GetString(0) != "") { tipoFactura.Text = reader.GetString(0); };
+                double iva = Convert.ToDouble(reader.GetDecimal(1)) * 0.21;
+                if (tipoFactura.Text.Equals("Factura A"))
+                {
+                    if (reader.GetString(1) != "") { subTotal.Text = Convert.ToString(reader.GetDecimal(1)); };
+                    if (reader.GetString(1) != "") { subTotalPrec.Text = Convert.ToString(reader.GetDecimal(1)); }
+                    ivaCalculado.Text = Convert.ToString(iva);
+
+                    sub.Visible = true;
+                    subTotal.Visible = true;
+                    subTotalPrec.Visible = true;
+                    IVA.Visible = true;
+                    ivaCalculado.Visible = true;
+                    label2.Visible = true;
+                }
+                else
+                {
+                    label2.Visible = false;
+                    sub.Visible = false;
+                    subTotal.Visible = false;
+                    subTotalPrec.Visible = false;
+                    IVA.Visible = false;
+                    ivaCalculado.Visible = false;
+                }
+
+                totalT.Text = "TOTAL " + Convert.ToString(iva + Convert.ToDouble(reader.GetDecimal(1)));
+            }
+            reader.Close();
+            Conexion.closeConnection();
+
             facturaID.Text = "FACTURA N° 00001-" + Convert.ToString(id_factura);
         }
 

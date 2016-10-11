@@ -5,14 +5,12 @@ using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Sesedublo_SLPL.Generales;
-using Enums;
 
 namespace Sesedublo_SLPL.Administrar_Pedidos
 {
     public partial class AddProductoAPedido : MetroForm
     {
         Dictionary<int, int> productosAVender = new Dictionary<int, int>();
-        accionesABM flag = accionesABM.Crear;
         int id_cliente = -1;
         decimal sumatoriaMoney = 0;
 
@@ -31,30 +29,10 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         public void crearPedido(int id_cliente)
         {
             this.id_cliente = id_cliente;
-            productosAVender.Clear();
             sumatoriaMoney = 0;
             updateLabelMoney();
             Clean();
             cargarDGV();
-            flag = accionesABM.Crear;
-        }
-
-        private void updateLabelMoney()
-        {
-            MontoACobrarLabel.Text = "El valor del pedido es de " + sumatoriaMoney;
-            montoAPagarDelPedido.Text = Convert.ToString(sumatoriaMoney);
-        }
-
-        private void Clean()
-        {
-            Nombre.Clear();
-            Cantidad.Clear();
-        }
-
-        private void AtrasTile_Click(object sender, EventArgs e)
-        {
-            Manejador_Formularios.AgregarPedido.Show();
-            Close();
         }
 
         private void FinalizarTile_Click(object sender, EventArgs e)
@@ -64,8 +42,10 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
+            MySqlDataReader reader;
+
             //Crear pedido y actualizar Caja:
-            MySqlDataReader reader = Conexion.executeProcedureWithReader("crearPedido", Conexion.generarArgumentos("_id_comprador", "_pagadoHastaElMomento", "_precio"), id_cliente, Convert.ToDecimal(cantidadPagada.Text), Convert.ToDecimal(montoAPagarDelPedido.Text));
+            reader = Conexion.executeProcedureWithReader("crearPedido", Conexion.generarArgumentos("_id_comprador", "_pagadoHastaElMomento", "_precio"), id_cliente, Convert.ToDecimal(cantidadPagada.Text), Convert.ToDecimal(montoAPagarDelPedido.Text));
             reader.Read();
 
             int id_pedido = reader.GetInt32(0);
@@ -85,6 +65,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             Manejador_Formularios.ABM_Pedidos.cargarDGV();
             Manejador_Formularios.ABM_Pedidos.Show();
 
+            this.id_cliente = -1;
             Close();
         }
 
@@ -260,6 +241,31 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             }
 
             return true;
+        }
+
+        private void montoAPagarDelPedido_TextChanged(object sender, EventArgs e)
+        {
+            cantidadPagada.Text = montoAPagarDelPedido.Text;
+        }
+
+        private void updateLabelMoney()
+        {
+            MontoACobrarLabel.Text = "El valor del pedido es de " + sumatoriaMoney;
+            montoAPagarDelPedido.Text = Convert.ToString(sumatoriaMoney);
+        }
+
+        private void Clean()
+        {
+            Nombre.Clear();
+            Cantidad.Clear();
+            productosAVender.Clear();
+            ItemsDGV.Rows.Clear();
+        }
+
+        private void AtrasTile_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.AgregarPedido.Show();
+            Close();
         }
 
         private void AddProductoAPedido_Load(object sender, EventArgs e)

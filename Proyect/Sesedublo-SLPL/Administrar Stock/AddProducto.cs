@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
 using System.ComponentModel;
+using System.Data;
 
 namespace Sesedublo_SLPL.Administrar_Stock
 {
@@ -16,6 +17,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
         public AddProducto()
         {
             InitializeComponent();
+            this.getProductos();
             this.Closing += new CancelEventHandler(Avoid_Closing);
         }
 
@@ -70,6 +72,17 @@ namespace Sesedublo_SLPL.Administrar_Stock
             Costo.Text = reader.GetString(3);
 
             reader.Close();
+            Conexion.closeConnection();
+        }
+
+        public void getProductos()
+        {
+            MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("obtenerLista", Conexion.generarArgumentos("_nombre"), metroTextBox1.Text);
+            DataTable tablaDeUsuarios = new DataTable("Clientes");
+            da.Fill(tablaDeUsuarios);
+            dgvProductos.DataSource = tablaDeUsuarios.DefaultView;
+            dgvProductos.Columns[0].Width = 200;
+
             Conexion.closeConnection();
         }
 
@@ -153,6 +166,21 @@ namespace Sesedublo_SLPL.Administrar_Stock
         private void Precio_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             val.ingresarNumero(e);
+        }
+
+        private void metroTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            this.getProductos();
+        }
+
+        private void dgvProductos_CellContentClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        {
+            Nombre.Text = this.dgvProductos.CurrentRow.Cells[0].Value.ToString();
+        }
+
+        private void dgvProductos_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        {
+            Nombre.Text = this.dgvProductos.CurrentRow.Cells[0].Value.ToString();
         }
     }
 }

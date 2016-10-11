@@ -49,7 +49,7 @@
             this.direccionVen = new System.Windows.Forms.Label();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvVerFactura = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.ivaCalculado = new System.Windows.Forms.Label();
             this.totalT = new System.Windows.Forms.Label();
@@ -72,7 +72,7 @@
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.metroPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVerFactura)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
@@ -91,20 +91,18 @@
             this.panel1.Controls.Add(this.direccionLea);
             this.panel1.Controls.Add(this.facturaID);
             this.panel1.Controls.Add(this.label24);
-            this.panel1.Location = new System.Drawing.Point(13, 92);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(10, 75);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1003, 265);
+            this.panel1.Size = new System.Drawing.Size(753, 216);
             this.panel1.TabIndex = 15;
             // 
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.tipoFactura);
-            this.panel4.Location = new System.Drawing.Point(413, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Location = new System.Drawing.Point(310, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(138, 77);
+            this.panel4.Size = new System.Drawing.Size(104, 63);
             this.panel4.TabIndex = 30;
             // 
             // tipoFactura
@@ -112,90 +110,81 @@
             this.tipoFactura.AutoSize = true;
             this.tipoFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.tipoFactura.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.tipoFactura.Location = new System.Drawing.Point(20, 22);
-            this.tipoFactura.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.tipoFactura.Location = new System.Drawing.Point(15, 18);
             this.tipoFactura.Name = "tipoFactura";
-            this.tipoFactura.Size = new System.Drawing.Size(64, 25);
+            this.tipoFactura.Size = new System.Drawing.Size(51, 20);
             this.tipoFactura.TabIndex = 31;
             this.tipoFactura.Text = "label5";
             // 
             // inicioActividad
             // 
             this.inicioActividad.AutoSize = true;
-            this.inicioActividad.Location = new System.Drawing.Point(606, 166);
-            this.inicioActividad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.inicioActividad.Location = new System.Drawing.Point(454, 135);
             this.inicioActividad.Name = "inicioActividad";
-            this.inicioActividad.Size = new System.Drawing.Size(46, 17);
+            this.inicioActividad.Size = new System.Drawing.Size(35, 13);
             this.inicioActividad.TabIndex = 29;
             this.inicioActividad.Text = "label9";
             // 
             // ingresosBrutos
             // 
             this.ingresosBrutos.AutoSize = true;
-            this.ingresosBrutos.Location = new System.Drawing.Point(606, 139);
-            this.ingresosBrutos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ingresosBrutos.Location = new System.Drawing.Point(454, 113);
             this.ingresosBrutos.Name = "ingresosBrutos";
-            this.ingresosBrutos.Size = new System.Drawing.Size(46, 17);
+            this.ingresosBrutos.Size = new System.Drawing.Size(35, 13);
             this.ingresosBrutos.TabIndex = 28;
             this.ingresosBrutos.Text = "label8";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(25, 166);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Location = new System.Drawing.Point(19, 135);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(212, 17);
+            this.label17.Size = new System.Drawing.Size(167, 13);
             this.label17.TabIndex = 27;
             this.label17.Text = "IVA RESPONSABLE INSCRIPTO";
             // 
             // CUITLea
             // 
             this.CUITLea.AutoSize = true;
-            this.CUITLea.Location = new System.Drawing.Point(606, 111);
-            this.CUITLea.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CUITLea.Location = new System.Drawing.Point(454, 90);
             this.CUITLea.Name = "CUITLea";
-            this.CUITLea.Size = new System.Drawing.Size(46, 17);
+            this.CUITLea.Size = new System.Drawing.Size(35, 13);
             this.CUITLea.TabIndex = 26;
             this.CUITLea.Text = "label6";
             // 
             // fechaAct
             // 
             this.fechaAct.AutoSize = true;
-            this.fechaAct.Location = new System.Drawing.Point(606, 82);
-            this.fechaAct.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.fechaAct.Location = new System.Drawing.Point(454, 67);
             this.fechaAct.Name = "fechaAct";
-            this.fechaAct.Size = new System.Drawing.Size(46, 17);
+            this.fechaAct.Size = new System.Drawing.Size(35, 13);
             this.fechaAct.TabIndex = 25;
             this.fechaAct.Text = "label5";
             // 
             // TelLea
             // 
             this.TelLea.AutoSize = true;
-            this.TelLea.Location = new System.Drawing.Point(25, 139);
-            this.TelLea.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.TelLea.Location = new System.Drawing.Point(19, 113);
             this.TelLea.Name = "TelLea";
-            this.TelLea.Size = new System.Drawing.Size(46, 17);
+            this.TelLea.Size = new System.Drawing.Size(35, 13);
             this.TelLea.TabIndex = 24;
             this.TelLea.Text = "label4";
             // 
             // CPLea
             // 
             this.CPLea.AutoSize = true;
-            this.CPLea.Location = new System.Drawing.Point(25, 111);
-            this.CPLea.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CPLea.Location = new System.Drawing.Point(19, 90);
             this.CPLea.Name = "CPLea";
-            this.CPLea.Size = new System.Drawing.Size(46, 17);
+            this.CPLea.Size = new System.Drawing.Size(35, 13);
             this.CPLea.TabIndex = 23;
             this.CPLea.Text = "label3";
             // 
             // direccionLea
             // 
             this.direccionLea.AutoSize = true;
-            this.direccionLea.Location = new System.Drawing.Point(25, 82);
-            this.direccionLea.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.direccionLea.Location = new System.Drawing.Point(19, 67);
             this.direccionLea.Name = "direccionLea";
-            this.direccionLea.Size = new System.Drawing.Size(46, 17);
+            this.direccionLea.Size = new System.Drawing.Size(35, 13);
             this.direccionLea.TabIndex = 22;
             this.direccionLea.Text = "label2";
             // 
@@ -203,10 +192,9 @@
             // 
             this.facturaID.AutoSize = true;
             this.facturaID.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.facturaID.Location = new System.Drawing.Point(602, 23);
-            this.facturaID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.facturaID.Location = new System.Drawing.Point(452, 19);
             this.facturaID.Name = "facturaID";
-            this.facturaID.Size = new System.Drawing.Size(234, 39);
+            this.facturaID.Size = new System.Drawing.Size(187, 31);
             this.facturaID.TabIndex = 21;
             this.facturaID.Text = "FACTURA_ID";
             // 
@@ -214,60 +202,54 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label24.Location = new System.Drawing.Point(21, 23);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Location = new System.Drawing.Point(16, 19);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(300, 39);
+            this.label24.Size = new System.Drawing.Size(239, 31);
             this.label24.TabIndex = 20;
             this.label24.Text = "SESEDUBLO S.A.";
             // 
             // localidadCl
             // 
             this.localidadCl.AutoSize = true;
-            this.localidadCl.Location = new System.Drawing.Point(628, 123);
-            this.localidadCl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.localidadCl.Location = new System.Drawing.Point(471, 100);
             this.localidadCl.Name = "localidadCl";
-            this.localidadCl.Size = new System.Drawing.Size(54, 17);
+            this.localidadCl.Size = new System.Drawing.Size(41, 13);
             this.localidadCl.TabIndex = 23;
             this.localidadCl.Text = "label10";
             // 
             // RazonSocialComp
             // 
             this.RazonSocialComp.AutoSize = true;
-            this.RazonSocialComp.Location = new System.Drawing.Point(25, 107);
-            this.RazonSocialComp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.RazonSocialComp.Location = new System.Drawing.Point(19, 87);
             this.RazonSocialComp.Name = "RazonSocialComp";
-            this.RazonSocialComp.Size = new System.Drawing.Size(54, 17);
+            this.RazonSocialComp.Size = new System.Drawing.Size(41, 13);
             this.RazonSocialComp.TabIndex = 22;
             this.RazonSocialComp.Text = "label10";
             // 
             // id_usuarioCompr
             // 
             this.id_usuarioCompr.AutoSize = true;
-            this.id_usuarioCompr.Location = new System.Drawing.Point(25, 55);
-            this.id_usuarioCompr.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.id_usuarioCompr.Location = new System.Drawing.Point(19, 45);
             this.id_usuarioCompr.Name = "id_usuarioCompr";
-            this.id_usuarioCompr.Size = new System.Drawing.Size(54, 17);
+            this.id_usuarioCompr.Size = new System.Drawing.Size(41, 13);
             this.id_usuarioCompr.TabIndex = 21;
             this.id_usuarioCompr.Text = "label10";
             // 
             // cuitV
             // 
             this.cuitV.AutoSize = true;
-            this.cuitV.Location = new System.Drawing.Point(628, 10);
-            this.cuitV.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.cuitV.Location = new System.Drawing.Point(471, 8);
             this.cuitV.Name = "cuitV";
-            this.cuitV.Size = new System.Drawing.Size(54, 17);
+            this.cuitV.Size = new System.Drawing.Size(41, 13);
             this.cuitV.TabIndex = 20;
             this.cuitV.Text = "label10";
             // 
             // direccionVen
             // 
             this.direccionVen.AutoSize = true;
-            this.direccionVen.Location = new System.Drawing.Point(25, 10);
-            this.direccionVen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.direccionVen.Location = new System.Drawing.Point(19, 8);
             this.direccionVen.Name = "direccionVen";
-            this.direccionVen.Size = new System.Drawing.Size(54, 17);
+            this.direccionVen.Size = new System.Drawing.Size(41, 13);
             this.direccionVen.TabIndex = 19;
             this.direccionVen.Text = "label10";
             // 
@@ -282,35 +264,32 @@
             this.metroPanel1.Controls.Add(this.cuitV);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 12;
-            this.metroPanel1.Location = new System.Drawing.Point(13, 351);
-            this.metroPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(10, 285);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(1003, 221);
+            this.metroPanel1.Size = new System.Drawing.Size(753, 180);
             this.metroPanel1.TabIndex = 24;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 13;
+            this.metroPanel1.VerticalScrollbarSize = 10;
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Location = new System.Drawing.Point(0, 213);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(0, 173);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1031, 29);
+            this.panel2.Size = new System.Drawing.Size(774, 24);
             this.panel2.TabIndex = 25;
             // 
-            // dataGridView1
+            // dgvVerFactura
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.GridColor = System.Drawing.Color.White;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 514);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1003, 175);
-            this.dataGridView1.TabIndex = 25;
+            this.dgvVerFactura.BackgroundColor = System.Drawing.Color.White;
+            this.dgvVerFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVerFactura.GridColor = System.Drawing.Color.White;
+            this.dgvVerFactura.Location = new System.Drawing.Point(10, 418);
+            this.dgvVerFactura.Name = "dgvVerFactura";
+            this.dgvVerFactura.Size = new System.Drawing.Size(752, 142);
+            this.dgvVerFactura.TabIndex = 25;
             // 
             // panel3
             // 
@@ -323,89 +302,80 @@
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.IVA);
             this.panel3.Controls.Add(this.sub);
-            this.panel3.Location = new System.Drawing.Point(13, 679);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Location = new System.Drawing.Point(10, 552);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1003, 193);
+            this.panel3.Size = new System.Drawing.Size(753, 157);
             this.panel3.TabIndex = 26;
             // 
             // ivaCalculado
             // 
             this.ivaCalculado.AutoSize = true;
-            this.ivaCalculado.Location = new System.Drawing.Point(217, 47);
-            this.ivaCalculado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ivaCalculado.Location = new System.Drawing.Point(163, 38);
             this.ivaCalculado.Name = "ivaCalculado";
-            this.ivaCalculado.Size = new System.Drawing.Size(46, 17);
+            this.ivaCalculado.Size = new System.Drawing.Size(35, 13);
             this.ivaCalculado.TabIndex = 7;
             this.ivaCalculado.Text = "label3";
             // 
             // totalT
             // 
             this.totalT.AutoSize = true;
-            this.totalT.Location = new System.Drawing.Point(673, 47);
-            this.totalT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.totalT.Location = new System.Drawing.Point(505, 38);
             this.totalT.Name = "totalT";
-            this.totalT.Size = new System.Drawing.Size(46, 17);
+            this.totalT.Size = new System.Drawing.Size(35, 13);
             this.totalT.TabIndex = 6;
             this.totalT.Text = "label3";
             // 
             // subTotalPrec
             // 
             this.subTotalPrec.AutoSize = true;
-            this.subTotalPrec.Location = new System.Drawing.Point(217, 14);
-            this.subTotalPrec.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.subTotalPrec.Location = new System.Drawing.Point(163, 11);
             this.subTotalPrec.Name = "subTotalPrec";
-            this.subTotalPrec.Size = new System.Drawing.Size(46, 17);
+            this.subTotalPrec.Size = new System.Drawing.Size(35, 13);
             this.subTotalPrec.TabIndex = 5;
             this.subTotalPrec.Text = "label3";
             // 
             // vendedorLea
             // 
             this.vendedorLea.AutoSize = true;
-            this.vendedorLea.Location = new System.Drawing.Point(29, 97);
-            this.vendedorLea.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.vendedorLea.Location = new System.Drawing.Point(22, 79);
             this.vendedorLea.Name = "vendedorLea";
-            this.vendedorLea.Size = new System.Drawing.Size(251, 17);
+            this.vendedorLea.Size = new System.Drawing.Size(193, 13);
             this.vendedorLea.TabIndex = 4;
             this.vendedorLea.Text = "Vendedor       LEANDRO DILONARDO";
             // 
             // subTotal
             // 
             this.subTotal.AutoSize = true;
-            this.subTotal.Location = new System.Drawing.Point(132, 14);
-            this.subTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.subTotal.Location = new System.Drawing.Point(99, 11);
             this.subTotal.Name = "subTotal";
-            this.subTotal.Size = new System.Drawing.Size(46, 17);
+            this.subTotal.Size = new System.Drawing.Size(35, 13);
             this.subTotal.TabIndex = 3;
             this.subTotal.Text = "label3";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(125, 47);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(94, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 17);
+            this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "(21.00)";
             // 
             // IVA
             // 
             this.IVA.AutoSize = true;
-            this.IVA.Location = new System.Drawing.Point(29, 47);
-            this.IVA.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.IVA.Location = new System.Drawing.Point(22, 38);
             this.IVA.Name = "IVA";
-            this.IVA.Size = new System.Drawing.Size(29, 17);
+            this.IVA.Size = new System.Drawing.Size(24, 13);
             this.IVA.TabIndex = 1;
             this.IVA.Text = "IVA";
             // 
             // sub
             // 
             this.sub.AutoSize = true;
-            this.sub.Location = new System.Drawing.Point(29, 14);
-            this.sub.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.sub.Location = new System.Drawing.Point(22, 11);
             this.sub.Name = "sub";
-            this.sub.Size = new System.Drawing.Size(82, 17);
+            this.sub.Size = new System.Drawing.Size(64, 13);
             this.sub.TabIndex = 0;
             this.sub.Text = "SUBTOTAL";
             // 
@@ -420,89 +390,80 @@
             this.panel5.Controls.Add(this.oriOdup);
             this.panel5.Controls.Add(this.label4);
             this.panel5.Controls.Add(this.label3);
-            this.panel5.Location = new System.Drawing.Point(13, 814);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Location = new System.Drawing.Point(10, 661);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1003, 131);
+            this.panel5.Size = new System.Drawing.Size(753, 107);
             this.panel5.TabIndex = 27;
             // 
             // algoRaro
             // 
             this.algoRaro.AutoSize = true;
-            this.algoRaro.Location = new System.Drawing.Point(642, 73);
-            this.algoRaro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.algoRaro.Location = new System.Drawing.Point(482, 59);
             this.algoRaro.Name = "algoRaro";
-            this.algoRaro.Size = new System.Drawing.Size(329, 17);
+            this.algoRaro.Size = new System.Drawing.Size(245, 13);
             this.algoRaro.TabIndex = 10;
             this.algoRaro.Text = "Numerados del 0001-00015001 al 0001-00025000";
             // 
             // fechaVencimiento
             // 
             this.fechaVencimiento.AutoSize = true;
-            this.fechaVencimiento.Location = new System.Drawing.Point(642, 41);
-            this.fechaVencimiento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.fechaVencimiento.Location = new System.Drawing.Point(482, 33);
             this.fechaVencimiento.Name = "fechaVencimiento";
-            this.fechaVencimiento.Size = new System.Drawing.Size(77, 17);
+            this.fechaVencimiento.Size = new System.Drawing.Size(59, 13);
             this.fechaVencimiento.TabIndex = 9;
             this.fechaVencimiento.Text = "labelFecha";
             // 
             // fechaActualImp
             // 
             this.fechaActualImp.AutoSize = true;
-            this.fechaActualImp.Location = new System.Drawing.Point(642, 12);
-            this.fechaActualImp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.fechaActualImp.Location = new System.Drawing.Point(482, 10);
             this.fechaActualImp.Name = "fechaActualImp";
-            this.fechaActualImp.Size = new System.Drawing.Size(77, 17);
+            this.fechaActualImp.Size = new System.Drawing.Size(59, 13);
             this.fechaActualImp.TabIndex = 8;
             this.fechaActualImp.Text = "labelFecha";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(473, 73);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(355, 59);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 17);
+            this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 7;
             this.label6.Text = "47580";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(187, 73);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(140, 59);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(149, 17);
+            this.label5.Size = new System.Drawing.Size(113, 13);
             this.label5.TabIndex = 3;
             this.label5.Text = "CAJ 41015108829289";
             // 
             // oriOdup
             // 
             this.oriOdup.AutoSize = true;
-            this.oriOdup.Location = new System.Drawing.Point(68, 73);
-            this.oriOdup.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.oriOdup.Location = new System.Drawing.Point(51, 59);
             this.oriOdup.Name = "oriOdup";
-            this.oriOdup.Size = new System.Drawing.Size(46, 17);
+            this.oriOdup.Size = new System.Drawing.Size(35, 13);
             this.oriOdup.TabIndex = 2;
             this.oriOdup.Text = "label5";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 41);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(22, 33);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(258, 17);
+            this.label4.Size = new System.Drawing.Size(198, 13);
             this.label4.TabIndex = 1;
             this.label4.Text = "CUIT 30-68718622-9   H.M.  8697/2000";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 12);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(22, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(220, 17);
+            this.label3.Size = new System.Drawing.Size(172, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "PRODUCCIONES GRAFICAS S.A.";
             // 
@@ -510,10 +471,9 @@
             // 
             this.printButton.ActiveControl = null;
             this.printButton.BackColor = System.Drawing.Color.SteelBlue;
-            this.printButton.Location = new System.Drawing.Point(31, 956);
-            this.printButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.printButton.Location = new System.Drawing.Point(23, 777);
             this.printButton.Name = "printButton";
-            this.printButton.Size = new System.Drawing.Size(149, 60);
+            this.printButton.Size = new System.Drawing.Size(112, 49);
             this.printButton.TabIndex = 28;
             this.printButton.Text = "Imprimir";
             this.printButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -526,18 +486,17 @@
             // 
             // Ver_Factura
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1114, 936);
+            this.ClientSize = new System.Drawing.Size(853, 760);
             this.Controls.Add(this.printButton);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvVerFactura);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Ver_Factura";
             this.Text = "Factura Detalle";
             this.panel1.ResumeLayout(false);
@@ -546,7 +505,7 @@
             this.panel4.PerformLayout();
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVerFactura)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -575,7 +534,7 @@
         private System.Windows.Forms.Label direccionVen;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvVerFactura;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label subTotal;
         private System.Windows.Forms.Label label2;

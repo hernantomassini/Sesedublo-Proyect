@@ -140,7 +140,7 @@ CREATE TABLE NotasDeCredito (
 
 
 
-INSERT ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
+INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 											 ("ABSENTA GREEN SPIRIT"),
 											 ("ABSOLUT APEACH X 750"),
 											 ("ABSOLUT APPLE 750"),

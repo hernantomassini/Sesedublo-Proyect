@@ -34,11 +34,15 @@ DROP PROCEDURE IF EXISTS borrarPedido;
 DROP PROCEDURE IF EXISTS crearPedido;
 DROP PROCEDURE IF EXISTS agregarItemAPedido;
 DROP PROCEDURE IF EXISTS generarFactura;
+<<<<<<< HEAD
 DROP PROCEDURE IF EXISTS obtenerDatosDeUnPedido;
 DROP PROCEDURE IF EXISTS obtenerItems;
 DROP PROCEDURE IF EXISTS updatearStock;
 DROP PROCEDURE IF EXISTS obtenerInfoItems;
 
+=======
+DROP PROCEDURE IF EXISTS obtenerFactura;
+>>>>>>> origin/master
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -319,6 +323,7 @@ BEGIN
     
 END //
 
+<<<<<<< HEAD
 CREATE PROCEDURE obtenerDatosDeUnPedido (IN _id_pedido INT)
 BEGIN
 
@@ -352,4 +357,20 @@ BEGIN
 
 END //
 
+=======
+CREATE PROCEDURE obtenerFactura(IN _id_factura INT)
+BEGIN
+	SELECT f.tipoDeFactura, p.precio FROM Facturas f
+    INNER JOIN Pedidos p ON p.id_pedido = f.pedido
+    WHERE f.id_factura = _id_factura; 
+END //
+
+CREATE PROCEDURE obtenerItemsDeFactura(IN _id_factura INT)
+BEGIN
+	SELECT * FROM Facturas f
+    INNER JOIN Pedidos p ON p.id_pedido = f.pedido
+    INNER JOIN Items i ON i.pedido = p.id_pedido
+    INNER JOIN Productos pr ON pr.id_producto = i.producto
+END
+>>>>>>> origin/master
 DELIMITER ;

@@ -56,7 +56,7 @@ CREATE TABLE Productos (
     cantidad INT,
     cantidadXBulto INT,
     costo DECIMAL(7 , 2 ),
-    nombre VARCHAR(50),
+    nombre VARCHAR(100),
     PVUnitario DECIMAL(7 , 2 ),
     PVBulto DECIMAL(7 , 2 ),
     PRIMARY KEY (id_producto)
@@ -572,7 +572,7 @@ BEGIN
 	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto 
 	FROM Stock s INNER JOIN Productos p 
 	ON p.id_producto = s.producto
-	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+	WHERE ((p.nombre LIKE CONCAT("%", "", "%") COLLATE utf8_general_ci ) OR ("" IS NULL OR "" = ""))
     AND s.deleted = 0;
 
 END //
@@ -580,10 +580,25 @@ END //
 CREATE PROCEDURE agregarStock (IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
 BEGIN
 
-	INSERT INTO Productos (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto) VALUES (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto);
-    SET @_id_producto = LAST_INSERT_ID();
-    INSERT INTO Stock (producto) VALUES (@_id_producto);
-    
+SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AND cantidadXBulto = _cantidadXBulto AND cantidadXBulto != 0);
+	IF(@_id_producto IS NULL) THEN
+		SET @_otro_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AND cantidadXBulto = 0);
+		IF(@_otro_id_producto IS NOT NULL AND _cantidadXBulto = 0) THEN
+			#Es un producto individual existente.
+            SET @_cantidadVieja = (SELECT cantidad FROM Productos WHERE id_producto = @_otro_id_producto);
+			UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, costo = _costo, PVUnitario = PVUnitario WHERE id_producto = @_otro_id_producto ;
+		ELSE
+			#Es un producto nuevo.
+			INSERT INTO Productos (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto) VALUES (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto);
+			SET @_id_producto = LAST_INSERT_ID();
+			INSERT INTO Stock (producto) VALUES (@_id_producto);
+        END IF;
+    ELSE
+		#Es un Bulto con un _cantidadXBulto ya existente
+		SET @_cantidadVieja = (SELECT cantidad FROM Productos WHERE id_producto = @_id_producto);
+		UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, costo = _costo, PVBulto = _PVBulto WHERE id_producto = @_id_producto;
+    END IF;
+
 END //
 
 CREATE PROCEDURE modificarStock (IN _id_stock INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 

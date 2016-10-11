@@ -115,15 +115,9 @@ CREATE TABLE Facturas (
         REFERENCES Pedidos (id_pedido)
 );
 
-<<<<<<< HEAD
-CREATE TABLE ListaDeProductos(
-	id_listPro INT AUTO_INCREMENT,
-	descripcion VARCHAR(100),
-=======
 CREATE TABLE ListaDeProductos (
     id_listPro INT AUTO_INCREMENT,
-    descripcion VARCHAR(60),
->>>>>>> 2b6301d849d0cb55d92b82e60c177dc3b0abb520
+    descripcion VARCHAR(100),
     PRIMARY KEY (id_ListPro)
 );
 

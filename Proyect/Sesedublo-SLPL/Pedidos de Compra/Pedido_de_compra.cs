@@ -22,5 +22,10 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         {
 
         }
+
+        private void modificarPedidoTile_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -57,7 +57,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
             foreach (var registro in stockAReincorporar)
             {
-                Conexion.executeProcedure("updatearStock", Conexion.generarArgumentos("_id_producto", "_cantidad"), registro.Key, registro.Value);
+                Conexion.executeProcedure("updatearStock", Conexion.generarArgumentos("_id_stock", "_cantidad"), registro.Key, registro.Value);
                 Conexion.closeConnection();
             }
 

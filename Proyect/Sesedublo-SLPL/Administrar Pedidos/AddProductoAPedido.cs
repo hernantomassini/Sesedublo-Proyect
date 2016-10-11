@@ -12,6 +12,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
     public partial class AddProductoAPedido : MetroForm
     {
         Dictionary<int, int> productosAVender = new Dictionary<int, int>();
+        Dictionary<int, int> productosARestockear = new Dictionary<int, int>();
         accionesABM flag = accionesABM.Crear;
         int id_pedido = -1;
         int id_cliente = -1;
@@ -71,6 +72,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             while (reader.Read())
             {
                 productosAVender.Add(reader.GetInt32(0), reader.GetInt32(1));
+                productosARestockear.Add(reader.GetInt32(0), reader.GetInt32(1));
             }
 
             reader.Close();
@@ -123,12 +125,12 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
             if (flag == accionesABM.Modificar)
             {
-                foreach (DataGridViewRow row in ItemsDGV.Rows)
+                foreach (var registro in productosARestockear)
                 {
-                    int id_stock = Convert.ToInt32(row.Cells[0].Value);
-                    int cantidad = obtenerCantidadEnInt(Convert.ToString(row.Cells[1].Value));
+                    int id_stock = registro.Key;
+                    int cantidad = registro.Value;
 
-                    Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_id_stock", "_cantidad"), id_stock, cantidad);
+                    Conexion.executeProcedure("updatearStock", Conexion.generarArgumentos("_id_stock", "_cantidad"), id_stock, cantidad);
                     Conexion.closeConnection();
                 }
 
@@ -264,10 +266,14 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         private int obtenerCantidadReal(int id_stock, int cantEnDB)
         {
+
             if (productosAVender.ContainsKey(id_stock))
-                return cantEnDB - productosAVender[id_stock];
-            else
-                return cantEnDB;
+                if (flag == accionesABM.Modificar && productosARestockear.ContainsKey(id_stock))
+                    return cantEnDB - productosAVender[id_stock] + productosARestockear[id_stock];
+                else
+                    return cantEnDB - productosAVender[id_stock];
+
+            return cantEnDB;
         }
 
         private int obtenerCantidadEnInt(string cantidad)
@@ -355,12 +361,15 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             Nombre.Clear();
             Cantidad.Clear();
             productosAVender.Clear();
+            productosARestockear.Clear();
             ItemsDGV.Rows.Clear();
         }
 
         private void AtrasTile_Click(object sender, EventArgs e)
         {
-            Manejador_Formularios.AgregarPedido.Show();
+            if(flag == accionesABM.Crear)
+                Manejador_Formularios.AgregarPedido.Show();
+
             Close();
         }
 

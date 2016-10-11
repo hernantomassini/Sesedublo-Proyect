@@ -806,16 +806,19 @@ END //
 CREATE PROCEDURE obtenerItems (IN _id_pedido INT)
 BEGIN
 
-	SELECT producto, cantidadProductos FROM Items WHERE pedido = _id_pedido;
+	SELECT s.id_stock, cantidadProductos FROM Items i
+    INNER JOIN Stock s ON i.producto = s.producto 
+    WHERE pedido = _id_pedido;
 
 END //
 
-CREATE PROCEDURE updatearStock (IN _id_producto INT, IN _cantidad INT)
+CREATE PROCEDURE updatearStock (IN _id_stock INT, IN _cantidad INT)
 BEGIN
 
-SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = _id_producto) + _cantidad;
+SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
+SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = @_id_producto) + _cantidad;
 
-	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = _id_producto;
+	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = @_id_producto;
     
 END //
 

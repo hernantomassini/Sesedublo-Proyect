@@ -34,11 +34,15 @@ DROP PROCEDURE IF EXISTS borrarPedido;
 DROP PROCEDURE IF EXISTS crearPedido;
 DROP PROCEDURE IF EXISTS agregarItemAPedido;
 DROP PROCEDURE IF EXISTS generarFactura;
+<<<<<<< HEAD
 DROP PROCEDURE IF EXISTS obtenerDatosDeUnPedido;
 DROP PROCEDURE IF EXISTS obtenerItems;
 DROP PROCEDURE IF EXISTS updatearStock;
 DROP PROCEDURE IF EXISTS obtenerInfoItems;
+
+=======
 DROP PROCEDURE IF EXISTS obtenerFactura;
+>>>>>>> origin/master
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -319,6 +323,14 @@ BEGIN
     
 END //
 
+<<<<<<< HEAD
+CREATE PROCEDURE obtenerDatosDeUnPedido (IN _id_pedido INT)
+BEGIN
+
+	SELECT pagadoHastaElMomento, precio, comprador FROM Pedidos WHERE id_pedido = _id_pedido;
+    
+END //
+
 CREATE PROCEDURE obtenerItems (IN _id_pedido INT)
 BEGIN
 
@@ -326,15 +338,26 @@ BEGIN
 
 END //
 
-CREATE PROCEDURE updatearStock (IN _id_producto INT, IN _cantidad INT)
+CREATE PROCEDURE updatearStock (IN _id_stock INT, IN _cantidad INT)
 BEGIN
 
-SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = _id_producto) + _cantidad;
+SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
+SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = @_id_producto) + _cantidad;
 
-	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = _id_producto;
+	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = @_id_producto;
     
 END //
 
+CREATE PROCEDURE obtenerInfoItems (IN _id_producto INT)
+BEGIN
+
+	SELECT s.id_stock, p.nombre, p.PVUnitario, p.PVBulto, p.cantidadXBulto FROM Stock s
+    INNER JOIN Productos p ON s.producto = p.id_producto
+    WHERE s.producto = _id_producto;
+
+END //
+
+=======
 CREATE PROCEDURE obtenerFactura(IN _id_factura INT)
 BEGIN
 	SELECT f.tipoDeFactura, p.precio FROM Facturas f
@@ -349,5 +372,5 @@ BEGIN
     INNER JOIN Items i ON i.pedido = p.id_pedido
     INNER JOIN Productos pr ON pr.id_producto = i.producto
 END
-
+>>>>>>> origin/master
 DELIMITER ;

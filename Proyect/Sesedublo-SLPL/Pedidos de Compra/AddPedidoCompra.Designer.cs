@@ -57,6 +57,12 @@
             this.agregarBtn = new MetroFramework.Controls.MetroTile();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.eliminarBtn = new MetroFramework.Controls.MetroTile();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Utilidad = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
@@ -204,6 +210,7 @@
             this.titleAceptar.UseCustomBackColor = true;
             this.titleAceptar.UseSelectable = true;
             this.titleAceptar.UseTileImage = true;
+            this.titleAceptar.Click += new System.EventHandler(this.titleAceptar_Click);
             // 
             // bultoRadio
             // 
@@ -235,7 +242,7 @@
             "6",
             "12",
             "24"});
-            this.UnidadesXBulto.Location = new System.Drawing.Point(731, 179);
+            this.UnidadesXBulto.Location = new System.Drawing.Point(617, 179);
             this.UnidadesXBulto.Margin = new System.Windows.Forms.Padding(5);
             this.UnidadesXBulto.Name = "UnidadesXBulto";
             this.UnidadesXBulto.Size = new System.Drawing.Size(132, 24);
@@ -244,7 +251,7 @@
             // UnidadesXBultoLbl
             // 
             this.UnidadesXBultoLbl.AutoSize = true;
-            this.UnidadesXBultoLbl.Location = new System.Drawing.Point(521, 182);
+            this.UnidadesXBultoLbl.Location = new System.Drawing.Point(465, 182);
             this.UnidadesXBultoLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.UnidadesXBultoLbl.Name = "UnidadesXBultoLbl";
             this.UnidadesXBultoLbl.Size = new System.Drawing.Size(130, 17);
@@ -253,7 +260,7 @@
             // 
             // Costo
             // 
-            this.Costo.Location = new System.Drawing.Point(731, 77);
+            this.Costo.Location = new System.Drawing.Point(617, 77);
             this.Costo.Margin = new System.Windows.Forms.Padding(5);
             this.Costo.MaxLength = 12;
             this.Costo.Name = "Costo";
@@ -264,7 +271,7 @@
             // CostoLabel
             // 
             this.CostoLabel.AutoSize = true;
-            this.CostoLabel.Location = new System.Drawing.Point(521, 80);
+            this.CostoLabel.Location = new System.Drawing.Point(465, 80);
             this.CostoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CostoLabel.Name = "CostoLabel";
             this.CostoLabel.Size = new System.Drawing.Size(48, 17);
@@ -274,7 +281,7 @@
             // PrecioLabel
             // 
             this.PrecioLabel.AutoSize = true;
-            this.PrecioLabel.Location = new System.Drawing.Point(521, 150);
+            this.PrecioLabel.Location = new System.Drawing.Point(465, 150);
             this.PrecioLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PrecioLabel.Name = "PrecioLabel";
             this.PrecioLabel.Size = new System.Drawing.Size(52, 17);
@@ -294,7 +301,7 @@
             // CantidadLbl
             // 
             this.CantidadLbl.AutoSize = true;
-            this.CantidadLbl.Location = new System.Drawing.Point(521, 112);
+            this.CantidadLbl.Location = new System.Drawing.Point(465, 112);
             this.CantidadLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CantidadLbl.Name = "CantidadLbl";
             this.CantidadLbl.Size = new System.Drawing.Size(68, 17);
@@ -303,7 +310,7 @@
             // 
             // Precio
             // 
-            this.Precio.Location = new System.Drawing.Point(731, 147);
+            this.Precio.Location = new System.Drawing.Point(617, 147);
             this.Precio.Margin = new System.Windows.Forms.Padding(5);
             this.Precio.MaxLength = 10;
             this.Precio.Name = "Precio";
@@ -324,7 +331,7 @@
             // 
             // Cantidad
             // 
-            this.Cantidad.Location = new System.Drawing.Point(731, 109);
+            this.Cantidad.Location = new System.Drawing.Point(617, 109);
             this.Cantidad.Margin = new System.Windows.Forms.Padding(5);
             this.Cantidad.MaxLength = 5;
             this.Cantidad.Name = "Cantidad";
@@ -350,6 +357,11 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPedido.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Name,
+            this.Cost,
+            this.Price,
+            this.Cant});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -414,11 +426,56 @@
             this.eliminarBtn.UseSelectable = true;
             this.eliminarBtn.Click += new System.EventHandler(this.eliminarBtn_Click);
             // 
+            // Name
+            // 
+            this.Name.HeaderText = "Nombre";
+            this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
+            // 
+            // Cost
+            // 
+            this.Cost.HeaderText = "Costo";
+            this.Cost.Name = "Cost";
+            this.Cost.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Precio";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // Cant
+            // 
+            this.Cant.HeaderText = "Cantidad";
+            this.Cant.Name = "Cant";
+            this.Cant.ReadOnly = true;
+            // 
+            // Utilidad
+            // 
+            this.Utilidad.Location = new System.Drawing.Point(885, 77);
+            this.Utilidad.Margin = new System.Windows.Forms.Padding(5);
+            this.Utilidad.MaxLength = 12;
+            this.Utilidad.Name = "Utilidad";
+            this.Utilidad.Size = new System.Drawing.Size(132, 22);
+            this.Utilidad.TabIndex = 42;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(774, 78);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 17);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "Utilidad:";
+            // 
             // AddPedidoCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1079, 670);
+            this.Controls.Add(this.Utilidad);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.eliminarBtn);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.agregarBtn);
@@ -441,8 +498,9 @@
             this.Controls.Add(this.Precio);
             this.Controls.Add(this.Nombre);
             this.Controls.Add(this.Cantidad);
-            this.Name = "AddPedidoCompra";
             this.Text = "AddPedidoCompra";
+
+
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).EndInit();
             this.ResumeLayout(false);
@@ -474,5 +532,11 @@
         private MetroFramework.Controls.MetroTile agregarBtn;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroTile eliminarBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cant;
+        private System.Windows.Forms.TextBox Utilidad;
+        private System.Windows.Forms.Label label1;
     }
 }

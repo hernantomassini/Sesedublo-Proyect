@@ -10,9 +10,12 @@ DROP TABLE IF EXISTS Items;
 DROP TABLE IF EXISTS Pedidos;
 DROP TABLE IF EXISTS Stock;
 DROP TABLE IF EXISTS Clientes;
-DROP TABLE IF EXISTS Productos;
 DROP TABLE IF EXISTS Caja;
 DROP TABLE IF EXISTS ListaDeProductos;
+DROP TABLE IF EXISTS ItemsDeLea;
+DROP TABLE IF EXISTS PedidosDeLea;
+
+
 
 #DROP PROCEDURES:
 DROP PROCEDURE IF EXISTS obtenerStock;
@@ -42,6 +45,7 @@ DROP PROCEDURE IF EXISTS obtenerInfoItems;
 DROP PROCEDURE IF EXISTS obtenerFactura;
 DROP PROCEDURE IF EXISTS obtenerItemsDeFactura;
 DROP PROCEDURE IF EXISTS obtenerLista;
+DROP PROCEDURE IF EXISTS generarPedido;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -60,6 +64,23 @@ CREATE TABLE Productos (
     PVUnitario DECIMAL(7 , 2 ),
     PVBulto DECIMAL(7 , 2 ),
     PRIMARY KEY (id_producto)
+);
+
+CREATE TABLE PedidosDeLea (
+    id_pedido INT AUTO_INCREMENT,
+    PRIMARY KEY (id_pedido)
+);
+
+CREATE TABLE ItemsDeLea (
+	id_item INT AUTO_INCREMENT,
+    id_pedido INT,
+    id_producto INT,
+    cantidadDeProductos INT,
+	PRIMARY KEY (id_item),
+	FOREIGN KEY (id_pedido)
+        REFERENCES PedidosDeLea (id_pedido),
+	FOREIGN KEY (id_producto)
+        REFERENCES Productos (id_producto)
 );
 
 CREATE TABLE Clientes (
@@ -766,6 +787,13 @@ BEGIN
     
     
     
+END //
+
+CREATE PROCEDURE generarPedidoDeLea (OUT _id_pedido INT)
+BEGIN
+	INSERT INTO PedidosDeLea () VALUES ();
+	SET _id_pedido = (SELECT LAST_INSERT_ID());
+    RETURN _id_pedido;
 END //
 
 CREATE PROCEDURE obtenerDatosDeUnPedido (IN _id_pedido INT)

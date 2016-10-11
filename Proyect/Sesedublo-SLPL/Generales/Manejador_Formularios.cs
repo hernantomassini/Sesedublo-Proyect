@@ -6,6 +6,7 @@ using Sesedublo_SLPL.Historial_de_Operacionesns;
 using Sesedublo_SLPL.Historial_de_Facturasns;
 using Sesedublo_SLPL.Administrar_Stock;
 using Sesedublo_SLPL.Revisar_Caja;
+using Sesedublo_SLPL.Pedidos_de_Compra;
 
 namespace Sesedublo_SLPL.Generales
 {
@@ -193,6 +194,33 @@ namespace Sesedublo_SLPL.Generales
                 return AddProductoAPedido_Form;
             }
         }
+
+        private static AddPedidoCompra AddPedidoCompra_Form;
+        public static AddPedidoCompra AddPedidoCompra
+        {
+            get
+            {
+                if (AddPedidoCompra_Form == null)
+                {
+                    AddPedidoCompra_Form = new AddPedidoCompra();
+                }
+                return AddPedidoCompra_Form;
+            }
+        }
+
+        private static Pedido_de_compra Pedido_de_compra_Form;
+        public static Pedido_de_compra Pedido_de_compra
+        {
+            get
+            {
+                if (Pedido_de_compra_Form == null)
+                {
+                    Pedido_de_compra_Form = new Pedido_de_compra();
+                }
+                return Pedido_de_compra_Form;
+            }
+        }
+
 
         private static GenerarFactura GenerarFactura_Form;
         public static GenerarFactura GenerarFactura

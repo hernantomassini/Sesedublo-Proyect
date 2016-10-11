@@ -1,4 +1,5 @@
 ﻿using MetroFramework.Forms;
+using Sesedublo_SLPL.Generales;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void AgregarPedidoTile_Click(object sender, EventArgs e)
         {
-
+            Manejador_Formularios.AddPedidoCompra.Show();
         }
 
         private void modificarPedidoTile_Click(object sender, EventArgs e)

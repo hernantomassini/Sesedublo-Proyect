@@ -11,10 +11,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 {
     public partial class AddPedidoCompra : MetroForm
     {
-
         accionesABM flag = accionesABM.Crear;
-        int id_stock = -1;
-        int id_pedido = 0;
         Validaciones val = new Validaciones();
 
         public AddPedidoCompra()
@@ -55,32 +52,22 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void agregarBtn_Click(object sender, EventArgs e)
         {
-            decimal precioPorUnidad;
-            string cantidad;
+            decimal utilidad = Convert.ToDecimal(Utilidad.Text);
+            decimal costo = Convert.ToDecimal(Costo.Text);
+
             int cantXBulto = 0;
-            int precioPorBulto;
-            int utilidad = Convert.ToInt32(Utilidad.Text);
-            int costo = Convert.ToInt32(Costo.Text);
+            decimal precio = costo + utilidad;
 
-            if (individualRadio.Checked)
-            {
-                cantXBulto = 0;
-                precioPorBulto = 0;
-            }
-            else
-            {
-                 cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
-                 precioPorBulto = costo + cantXBulto * utilidad;
-                 precioPorUnidad = decimal.Round(precioPorBulto / cantXBulto, 2);
-            }
+            string cantidad = Cantidad.Text + " unidades";
 
-            if (cantXBulto == 0)
-                cantidad = Cantidad.Text + " unidades";           
-            else
+            if (!individualRadio.Checked)
+            {
+                cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
+                precio = costo + cantXBulto * utilidad;
                 cantidad = Cantidad.Text + " bultos de " + cantXBulto + " unidades";
+            }
 
-
-            dgvPedido.Rows.Add(cantXBulto, Nombre.Text, Costo.Text, Convert.ToString(costo + utilidad), cantidad);
+            dgvPedido.Rows.Add(cantXBulto, Nombre.Text, Costo.Text, precio, cantidad);
         }
 
         private void eliminarBtn_Click(object sender, EventArgs e)

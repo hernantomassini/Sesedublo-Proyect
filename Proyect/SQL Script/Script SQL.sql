@@ -14,8 +14,7 @@ DROP TABLE IF EXISTS Caja;
 DROP TABLE IF EXISTS ListaDeProductos;
 DROP TABLE IF EXISTS ItemsDeLea;
 DROP TABLE IF EXISTS PedidosDeLea;
-
-
+DROP TABLE IF EXISTS Productos;
 
 #DROP PROCEDURES:
 DROP PROCEDURE IF EXISTS obtenerStock;
@@ -46,6 +45,9 @@ DROP PROCEDURE IF EXISTS obtenerFactura;
 DROP PROCEDURE IF EXISTS obtenerItemsDeFactura;
 DROP PROCEDURE IF EXISTS obtenerLista;
 DROP PROCEDURE IF EXISTS generarPedido;
+DROP PROCEDURE IF EXISTS crearPedidoDeLea;
+DROP PROCEDURE IF EXISTS ItemsDeLea;
+
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -72,14 +74,14 @@ CREATE TABLE PedidosDeLea (
 );
 
 CREATE TABLE ItemsDeLea (
-	id_item INT AUTO_INCREMENT,
+    id_item INT AUTO_INCREMENT,
     id_pedido INT,
     id_producto INT,
     cantidadDeProductos INT,
-	PRIMARY KEY (id_item),
-	FOREIGN KEY (id_pedido)
+    PRIMARY KEY (id_item),
+    FOREIGN KEY (id_pedido)
         REFERENCES PedidosDeLea (id_pedido),
-	FOREIGN KEY (id_producto)
+    FOREIGN KEY (id_producto)
         REFERENCES Productos (id_producto)
 );
 
@@ -598,7 +600,7 @@ BEGIN
 
 END //
 
-CREATE PROCEDURE agregarStock (IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
+CREATE PROCEDURE agregarStock (IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
 BEGIN
 
 SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AND cantidadXBulto = _cantidadXBulto AND cantidadXBulto != 0);
@@ -785,15 +787,6 @@ BEGIN
 
 	INSERT INTO Facturas (fecha, tipoDeFactura, pedido) VALUES (CURTIME(), _tipoFactura, _id_pedido);
     
-    
-    
-END //
-
-CREATE PROCEDURE generarPedidoDeLea (OUT _id_pedido INT)
-BEGIN
-	INSERT INTO PedidosDeLea () VALUES ();
-	SET _id_pedido = (SELECT LAST_INSERT_ID());
-    RETURN _id_pedido;
 END //
 
 CREATE PROCEDURE obtenerDatosDeUnPedido (IN _id_pedido INT)
@@ -831,14 +824,14 @@ BEGIN
 
 END //
 
-CREATE PROCEDURE obtenerFactura(IN _id_factura INT)
+CREATE PROCEDURE obtenerFactura (IN _id_factura INT)
 BEGIN
 	SELECT f.tipoDeFactura, p.precio FROM Facturas f
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     WHERE f.id_factura = _id_factura; 
 END //
 
-CREATE PROCEDURE obtenerItemsDeFactura(IN _id_factura INT)
+CREATE PROCEDURE obtenerItemsDeFactura (IN _id_factura INT)
 BEGIN
 	SELECT pr.nombre AS Nombre, i.cantidadProductos AS 'Cantidad Total',
 		   IF(PVBulto = 0, PVUnitario, PVBulto / cantidadXBulto) AS 'Precio Unitario',
@@ -852,9 +845,28 @@ BEGIN
     GROUP BY i.id_item;
 END //
 
-CREATE PROCEDURE obtenerLista(IN _nombre VARCHAR(60))
+CREATE PROCEDURE obtenerLista (IN _nombre VARCHAR(60))
 BEGIN
 	SELECT descripcion AS Descripción FROM ListaDeProductos
 	WHERE ((descripcion LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""));
 END //
+
+CREATE PROCEDURE crearPedidoDeLea ()
+BEGIN
+
+	INSERT INTO PedidosDeLea () VALUES ();
+	SELECT LAST_INSERT_ID();
+
+END //
+
+CREATE PROCEDURE crearItemDeLea (IN _id_pedidoLea INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL (7,2))
+BEGIN
+    
+	CALL agregarStock (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto); 
+    SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre);
+    
+    INSERT INTO ItemsDeLea (id_pedido, id_producto, cantidadDeProductos) VALUES (_id_pedidoLea, @_id_producto, _cantidad);
+
+END //
+
 DELIMITER ;

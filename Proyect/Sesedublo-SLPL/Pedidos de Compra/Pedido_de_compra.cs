@@ -1,14 +1,7 @@
 ﻿using MetroFramework.Forms;
 using Sesedublo_SLPL.Generales;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Pedidos_de_Compra
 {
@@ -17,16 +10,34 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         public Pedido_de_compra()
         {
             InitializeComponent();
+            this.Closing += new CancelEventHandler(Avoid_Closing);
+        }
+
+        void Avoid_Closing(object sender, CancelEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
         }
 
         private void AgregarPedidoTile_Click(object sender, EventArgs e)
         {
+            Manejador_Formularios.AddPedidoCompra.Clean();
             Manejador_Formularios.AddPedidoCompra.Show();
         }
 
         private void modificarPedidoTile_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Pedido_de_compra_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AtrasTile_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

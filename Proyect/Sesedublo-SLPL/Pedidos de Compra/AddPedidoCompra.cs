@@ -3,13 +3,8 @@ using MetroFramework.Forms;
 using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Pedidos_de_Compra
@@ -28,12 +23,23 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             this.getProductos();
             this.Closing += new CancelEventHandler(Avoid_Closing);
         }
+
         void Avoid_Closing(object sender, CancelEventArgs e)
         {
             this.Hide();
             e.Cancel = true;
-            Manejador_Formularios.ABM_Stock.cargarDGV();
-            Manejador_Formularios.ABM_Stock.Show();
+        }
+
+        public void Clean()
+        {
+            individualRadio.Checked = true;
+            Nombre.Clear();
+            Costo.Clear();
+            Cantidad.Clear();
+            Precio.Clear();
+            UnidadesXBulto.Text = "";
+            Utilidad.Clear();
+
         }
 
         public void getProductos()
@@ -50,8 +56,8 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         private void agregarBtn_Click(object sender, EventArgs e)
         {
             decimal precioPorUnidad;
-            String cantidad;
-            int cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
+            string cantidad;
+            int cantXBulto = 0;
             int precioPorBulto;
             int utilidad = Convert.ToInt32(Utilidad.Text);
             int costo = Convert.ToInt32(Costo.Text);
@@ -63,26 +69,32 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             }
             else
             {
-                  precioPorBulto = costo + cantXBulto * utilidad;
+                 cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
+                 precioPorBulto = costo + cantXBulto * utilidad;
                  precioPorUnidad = decimal.Round(precioPorBulto / cantXBulto, 2);
             }
 
             if (cantXBulto == 0)
-            {
-                cantidad = Cantidad.Text + " unidades";
-                dgvPedido.Rows.Add(Nombre.Text, Costo.Text, Convert.ToString(costo + utilidad), cantidad);
-            }
+                cantidad = Cantidad.Text + " unidades";           
             else
-            {
                 cantidad = Cantidad.Text + " bultos de " + cantXBulto + " unidades";
-                dgvPedido.Rows.Add(Nombre.Text, Costo.Text, Convert.ToString(costo + utilidad), cantidad.ToString());
-            }
+
+
+            dgvPedido.Rows.Add(cantXBulto, Nombre.Text, Costo.Text, Convert.ToString(costo + utilidad), cantidad);
         }
 
         private void eliminarBtn_Click(object sender, EventArgs e)
         {
+            DataGridViewRow filaDgv = dgvPedido.CurrentRow;
 
+            if (!Validaciones.validarFilaMarcada(filaDgv, this))
+            {
+                return;
+            }
+
+            dgvPedido.Rows.Remove(filaDgv);
         }
+
         private void cargarDatos()
         {
             //MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerProducto", Conexion.generarArgumentos("_id_stock"), id_stock);
@@ -169,32 +181,74 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void titleAceptar_Click(object sender, EventArgs e)
         {
-            int cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
-            decimal costo = Convert.ToDecimal(Costo.Text);
-            decimal utilidad = Convert.ToDecimal(Utilidad.Text);
-
-            decimal precioPorUnidad = costo + utilidad;
-            decimal precioPorBulto = precioPorUnidad;
-
-            if (individualRadio.Checked)
+            if (dgvPedido.Rows.Count == 0)
             {
-                cantXBulto = 0;
-                precioPorBulto = 0;
+                Funciones.imprimirMensajeDeError("Debe ingresar al menos un producto.", this);
+                return;
+            }
+
+            MySqlDataReader reader;
+            int cantXBulto;
+            string nombre;
+            decimal costo;
+            int cantidad;
+            decimal PVUnitario;
+            decimal PVBulto;
+
+            if (flag == accionesABM.Crear) {
+
+                reader = Conexion.executeProcedureWithReader("crearPedidoDeLea", Conexion.generarArgumentos());
+                reader.Read();
+
+                int id_pedidoDeLea = reader.GetInt32(0);
+
+                reader.Close();
+                Conexion.closeConnection();
+
+                foreach (DataGridViewRow row in dgvPedido.Rows)
+                {
+                    cantXBulto = Convert.ToInt32(row.Cells[0].Value);
+                    nombre = Convert.ToString(row.Cells[1].Value);
+                    costo = Convert.ToDecimal(row.Cells[2].Value);
+                    cantidad = obtenerCantidadEnInt(Convert.ToString(row.Cells[4].Value));
+
+                    if(cantXBulto == 0)
+                    {
+                        PVUnitario = Convert.ToDecimal(row.Cells[3].Value);
+                        PVBulto = 0;
+                    }
+                    else
+                    {
+                        PVBulto = Convert.ToDecimal(row.Cells[3].Value);
+                        PVUnitario = Decimal.Round(PVBulto / cantXBulto, 2);
+                    }
+
+                    Conexion.executeProcedure("crearItemDeLea", Conexion.generarArgumentos("_id_pedidoLea", "_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), id_pedidoDeLea, cantidad, cantXBulto, costo, nombre, PVUnitario, PVBulto);
+                    Conexion.closeConnection();
+                }
             }
             else
             {
-                precioPorBulto = costo + cantXBulto * utilidad;
-                precioPorUnidad = decimal.Round(precioPorBulto / cantXBulto, 2);
+                Funciones.tirarException();
             }
 
-
-            if (flag == accionesABM.Crear)
-                Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto);
-            else
-                Conexion.executeProcedure("modificarStock", Conexion.generarArgumentos("_id_stock", "_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), id_stock, Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto);
-
-            Conexion.closeConnection();
             Close();
+        }
+
+        private void titleCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private int obtenerCantidadEnInt(string cantidad)
+        {
+            int large = cantidad.IndexOf(" ");
+            return Convert.ToInt32(cantidad.Substring(0, large));
+        }
+
+        private void AddPedidoCompra_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

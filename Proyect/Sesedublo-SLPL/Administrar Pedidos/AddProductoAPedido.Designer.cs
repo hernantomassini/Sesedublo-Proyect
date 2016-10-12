@@ -191,7 +191,6 @@
             this.Nombre.MaxLength = 32767;
             this.Nombre.Name = "Nombre";
             this.Nombre.PasswordChar = '\0';
-            this.Nombre.PromptText = "Buscar";
             this.Nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Nombre.SelectedText = "";
             this.Nombre.SelectionLength = 0;
@@ -253,7 +252,6 @@
             this.Cantidad.MaxLength = 5;
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.PasswordChar = '\0';
-            this.Cantidad.PromptText = "Cantidad";
             this.Cantidad.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Cantidad.SelectedText = "";
             this.Cantidad.SelectionLength = 0;
@@ -438,7 +436,6 @@
             this.montoAPagarDelPedido.MaxLength = 5;
             this.montoAPagarDelPedido.Name = "montoAPagarDelPedido";
             this.montoAPagarDelPedido.PasswordChar = '\0';
-            this.montoAPagarDelPedido.PromptText = "Cantidad";
             this.montoAPagarDelPedido.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.montoAPagarDelPedido.SelectedText = "";
             this.montoAPagarDelPedido.SelectionLength = 0;
@@ -482,7 +479,6 @@
             this.cantidadPagada.MaxLength = 5;
             this.cantidadPagada.Name = "cantidadPagada";
             this.cantidadPagada.PasswordChar = '\0';
-            this.cantidadPagada.PromptText = "Cantidad";
             this.cantidadPagada.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.cantidadPagada.SelectedText = "";
             this.cantidadPagada.SelectionLength = 0;

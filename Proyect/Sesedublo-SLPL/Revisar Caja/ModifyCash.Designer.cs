@@ -118,8 +118,6 @@
             this.Motivo.Multiline = true;
             this.Motivo.Name = "Motivo";
             this.Motivo.PasswordChar = '\0';
-            this.Motivo.PromptText = "Ingrese el motivo";
-            this.Motivo.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Motivo.SelectedText = "";
             this.Motivo.SelectionLength = 0;
             this.Motivo.SelectionStart = 0;
@@ -151,7 +149,6 @@
             this.Monto.MaxLength = 20;
             this.Monto.Name = "Monto";
             this.Monto.PasswordChar = '\0';
-            this.Monto.PromptText = "Ingrese el monto";
             this.Monto.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Monto.SelectedText = "";
             this.Monto.SelectionLength = 0;

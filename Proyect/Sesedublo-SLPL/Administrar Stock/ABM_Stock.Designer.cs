@@ -215,7 +215,6 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.nombre.MaxLength = 70;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
-            this.nombre.PromptText = "Buscar";
             this.nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.nombre.SelectedText = "";
             this.nombre.SelectionLength = 0;

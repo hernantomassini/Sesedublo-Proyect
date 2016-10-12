@@ -141,7 +141,8 @@ namespace Sesedublo_SLPL.Administrar_Stock
                 }
                 else
                 {
-                    precioPorBulto = costo + cantXBulto * utilidad;
+
+                    precioPorBulto = Convert.ToDecimal(Precio.Text);
                     precioPorUnidad = decimal.Round(precioPorBulto / cantXBulto, 2);
                 }
 
@@ -209,6 +210,53 @@ namespace Sesedublo_SLPL.Administrar_Stock
         private void nuevoProducto_Click(object sender, EventArgs e)
         {
             Manejador_Formularios.NuevoProducto.Show();
+        }
+
+        private void Utilidad_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(Costo.Text))
+            {
+                if (!String.IsNullOrEmpty(Utilidad.Text))
+                {
+                    Precio.Text = Convert.ToString(Convert.ToDecimal(Utilidad.Text));
+                }
+            }
+            else
+            {
+                if (!String.IsNullOrEmpty(Utilidad.Text))
+                {
+                    Precio.Text = Convert.ToString(Convert.ToDecimal(Utilidad.Text) + Convert.ToDecimal(Costo.Text));
+
+                    if (!individualRadio.Checked)
+                    {
+                        Precio.Text = Convert.ToString(Convert.ToDecimal(Costo.Text) + Convert.ToDecimal(Utilidad.Text) * Convert.ToDecimal(UnidadesXBulto.Text));
+                    }
+                }
+            } 
+        }
+
+        private void Costo_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(Utilidad.Text))
+            {
+                if (!String.IsNullOrEmpty(Costo.Text))
+                {
+                    Precio.Text = Convert.ToString(Convert.ToDecimal(Costo.Text));
+                }
+            }
+            else
+            {
+                if (!String.IsNullOrEmpty(Costo.Text))
+                {
+                    Precio.Text = Convert.ToString(Convert.ToDecimal(Utilidad.Text) + Convert.ToDecimal(Costo.Text));
+
+                    if (!individualRadio.Checked)
+                    {
+                        Precio.Text = Convert.ToString(Convert.ToDecimal(Costo.Text) + Convert.ToDecimal(Utilidad.Text) * Convert.ToDecimal(UnidadesXBulto.Text));
+                    }
+                    
+                }
+            } 
         }
     }
 }

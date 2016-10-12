@@ -64,6 +64,8 @@ namespace Sesedublo_SLPL.Revisar_Caja
                 else
                     restarEfectivo();
 
+                Monto.Clear();
+                Motivo.Clear();
                 Close();
             }
         }
@@ -72,6 +74,7 @@ namespace Sesedublo_SLPL.Revisar_Caja
         {
             Monto.Clear();
             Motivo.Clear();
+            Sumar.Checked = true;
         }
 
         private void Cantidad_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)

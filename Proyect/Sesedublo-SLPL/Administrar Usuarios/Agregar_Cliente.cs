@@ -111,7 +111,6 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
                     Conexion.executeProcedure("modificarCliente", Conexion.generarArgumentos("_id_cliente", "_nombre", "_apellido", "_mail", "_direccion", "_telefono", "_localidad", "_cuit", "_razonSocial"), id_cliente, Nombre.Text, Apellido.Text, Mail.Text, Direccion.Text, Telefono.Text, Localidad.Text, CUIT.Text, RazonSocial.Text);
                     Conexion.closeConnection();
                 }
-
                 Close();
             }
         }

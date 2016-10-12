@@ -1,4 +1,5 @@
 ﻿using MetroFramework.Forms;
+using Sesedublo_SLPL.Generales;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,8 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 {
     public partial class NuevoProducto : MetroForm
     {
+        Validaciones val = new Validaciones();
+        StringBuilder st = new StringBuilder();
         public NuevoProducto()
         {
             InitializeComponent();
@@ -31,9 +34,20 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void titleAceptar_Click(object sender, EventArgs e)
         {
-            Conexion.executeProcedure("agregarNuevoProducto", Conexion.generarArgumentos("_nombre"),buscarProducto.Text);
-            Conexion.closeConnection();
-            this.Hide();
+            val.validarNoVacio(Nombre, st);
+
+            if (st.Length > 0)
+            {
+                Funciones.imprimirMensajeDeError(st.ToString(), this);
+                st = new StringBuilder();
+            }
+            else
+            {
+                Conexion.executeProcedure("agregarNuevoProducto", Conexion.generarArgumentos("_nombre"), Nombre.Text);
+                Conexion.closeConnection();
+                Nombre.Clear();
+                this.Hide();
+            }
         }
     }
 }

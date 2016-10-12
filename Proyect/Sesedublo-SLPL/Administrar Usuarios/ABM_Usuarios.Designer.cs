@@ -203,7 +203,6 @@
             this.nombre.MaxLength = 60;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
-            this.nombre.PromptText = "Buscar";
             this.nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.nombre.SelectedText = "";
             this.nombre.SelectionLength = 0;
@@ -239,9 +238,6 @@
             this.apellido.MaxLength = 60;
             this.apellido.Name = "apellido";
             this.apellido.PasswordChar = '\0';
-            this.apellido.PromptText = "Buscar";
-            this.apellido.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.apellido.SelectedText = "";
             this.apellido.SelectionLength = 0;
             this.apellido.SelectionStart = 0;
             this.apellido.ShortcutsEnabled = true;
@@ -275,7 +271,6 @@
             this.direccion.MaxLength = 100;
             this.direccion.Name = "direccion";
             this.direccion.PasswordChar = '\0';
-            this.direccion.PromptText = "Buscar";
             this.direccion.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.direccion.SelectedText = "";
             this.direccion.SelectionLength = 0;

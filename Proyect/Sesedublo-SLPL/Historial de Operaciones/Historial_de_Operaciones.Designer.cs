@@ -131,7 +131,6 @@
             this.descripcion.MaxLength = 60;
             this.descripcion.Name = "descripcion";
             this.descripcion.PasswordChar = '\0';
-            this.descripcion.PromptText = "Buscar";
             this.descripcion.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.descripcion.SelectedText = "";
             this.descripcion.SelectionLength = 0;
@@ -178,7 +177,6 @@
             this.operacion.MaxLength = 60;
             this.operacion.Name = "operacion";
             this.operacion.PasswordChar = '\0';
-            this.operacion.PromptText = "Buscar";
             this.operacion.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.operacion.SelectedText = "";
             this.operacion.SelectionLength = 0;

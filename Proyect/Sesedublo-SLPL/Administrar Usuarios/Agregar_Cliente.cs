@@ -19,6 +19,7 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
         accionesABM flag = accionesABM.Crear;
         int id_cliente = -1;
         Validaciones val = new Validaciones();
+        StringBuilder st = new StringBuilder();
 
         public Agregar_Cliente()
         {
@@ -87,19 +88,32 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
 
         private void titleAceptar_Click(object sender, EventArgs e)
         {
-            if (flag == accionesABM.Crear)
+            
+           val.validarNoVacio(Nombre,st);
+            val.validarNoVacio(Direccion, st);
+            val.validarNoVacio(Telefono, st);
+
+            if (st.Length > 0)
             {
-                Conexion.executeProcedure("agregarCliente", Conexion.generarArgumentos("_nombre","_apellido","_mail","_direccion","_telefono", "_localidad", "_cuit", "_razonSocial"), Nombre.Text, Apellido.Text, Mail.Text, Direccion.Text, Telefono.Text, Localidad.Text, CUIT.Text, RazonSocial.Text);
-                Conexion.closeConnection();
-                Manejador_Formularios.AgregarPedido.cargarDGVUsuarios();
+                Funciones.imprimirMensajeDeError(st.ToString(), this);
+                st = new StringBuilder();
             }
             else
             {
-                Conexion.executeProcedure("modificarCliente", Conexion.generarArgumentos("_id_cliente","_nombre", "_apellido", "_mail", "_direccion", "_telefono", "_localidad", "_cuit", "_razonSocial"), id_cliente, Nombre.Text, Apellido.Text, Mail.Text, Direccion.Text, Telefono.Text, Localidad.Text, CUIT.Text, RazonSocial.Text);
-                Conexion.closeConnection();
-            }
+                if (flag == accionesABM.Crear)
+                {
+                    Conexion.executeProcedure("agregarCliente", Conexion.generarArgumentos("_nombre", "_apellido", "_mail", "_direccion", "_telefono", "_localidad", "_cuit", "_razonSocial"), Nombre.Text, Apellido.Text, Mail.Text, Direccion.Text, Telefono.Text, Localidad.Text, CUIT.Text, RazonSocial.Text);
+                    Conexion.closeConnection();
+                    Manejador_Formularios.AgregarPedido.cargarDGVUsuarios();
+                }
+                else
+                {
+                    Conexion.executeProcedure("modificarCliente", Conexion.generarArgumentos("_id_cliente", "_nombre", "_apellido", "_mail", "_direccion", "_telefono", "_localidad", "_cuit", "_razonSocial"), id_cliente, Nombre.Text, Apellido.Text, Mail.Text, Direccion.Text, Telefono.Text, Localidad.Text, CUIT.Text, RazonSocial.Text);
+                    Conexion.closeConnection();
+                }
 
-            Close();
+                Close();
+            }
         }
 
         private void Nombre_KeyPress(object sender, KeyPressEventArgs e)

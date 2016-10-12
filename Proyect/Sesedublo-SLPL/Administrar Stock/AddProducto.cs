@@ -5,6 +5,7 @@ using Sesedublo_SLPL.Generales;
 using System;
 using System.ComponentModel;
 using System.Data;
+using System.Text;
 
 namespace Sesedublo_SLPL.Administrar_Stock
 {
@@ -13,6 +14,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
         accionesABM flag = accionesABM.Crear;
         int id_stock = -1;
         Validaciones val = new Validaciones();
+        StringBuilder st = new StringBuilder();
 
         public AddProducto()
         {
@@ -111,37 +113,47 @@ namespace Sesedublo_SLPL.Administrar_Stock
         private void AgregarProductoBtn_Click(object sender, EventArgs e)
         {
 
-            if (String.IsNullOrEmpty(Nombre.Text))
+            val.validarNoVacio(Nombre,st);
+            val.validarNoVacio(Costo, st);
+            val.validarNoVacio(Utilidad, st);
+            val.validarNoVacio(Cantidad, st);
+            val.validarNoVacio(UnidadesXBulto, st);
+
+            if (st.Length > 0)
             {
-                Funciones.imprimirMensajeDeError("Debe elegir algún nombre de producto para agregarlo", this);
-            }
-
-            int cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
-            decimal costo = Convert.ToDecimal(Costo.Text);
-            decimal utilidad = Convert.ToDecimal(Utilidad.Text);
-
-            decimal precioPorUnidad = costo + utilidad;
-            decimal precioPorBulto = precioPorUnidad;
-
-            if (individualRadio.Checked)
-            {
-                cantXBulto = 0;
-                precioPorBulto = 0;
+                Funciones.imprimirMensajeDeError(st.ToString(), this);
+                st = new StringBuilder();
             }
             else
             {
-                precioPorBulto = costo + cantXBulto*utilidad;
-                precioPorUnidad = decimal.Round(precioPorBulto / cantXBulto, 2);
+
+                int cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
+                decimal costo = Convert.ToDecimal(Costo.Text);
+                decimal utilidad = Convert.ToDecimal(Utilidad.Text);
+
+                decimal precioPorUnidad = costo + utilidad;
+                decimal precioPorBulto = precioPorUnidad;
+
+                if (individualRadio.Checked)
+                {
+                    cantXBulto = 0;
+                    precioPorBulto = 0;
+                }
+                else
+                {
+                    precioPorBulto = costo + cantXBulto * utilidad;
+                    precioPorUnidad = decimal.Round(precioPorBulto / cantXBulto, 2);
+                }
+
+
+                if (flag == accionesABM.Crear)
+                    Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto);
+                else
+                    Conexion.executeProcedure("modificarStock", Conexion.generarArgumentos("_id_stock", "_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), id_stock, Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto);
+
+                Conexion.closeConnection();
+                Close();
             }
-                
-
-            if (flag == accionesABM.Crear)            
-                Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo" , "_nombre", "_PVUnitario", "_PVBulto"), Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto);
-            else
-                Conexion.executeProcedure("modificarStock", Conexion.generarArgumentos("_id_stock", "_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), id_stock, Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto);
-
-            Conexion.closeConnection();
-            Close();
         }
 
         private void individualRadio_CheckedChanged(object sender, EventArgs e)

@@ -33,18 +33,18 @@
             this.AtrasTile = new MetroFramework.Controls.MetroTile();
             this.Sumar = new MetroFramework.Controls.MetroRadioButton();
             this.Restar = new MetroFramework.Controls.MetroRadioButton();
-            this.descripcion = new MetroFramework.Controls.MetroTextBox();
-            this.Cantidad = new MetroFramework.Controls.MetroTextBox();
+            this.Motivo = new MetroFramework.Controls.MetroTextBox();
+            this.Monto = new MetroFramework.Controls.MetroTextBox();
             this.SuspendLayout();
             // 
             // AceptarTIle
             // 
             this.AceptarTIle.ActiveControl = null;
             this.AceptarTIle.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.AceptarTIle.Location = new System.Drawing.Point(211, 246);
-            this.AceptarTIle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AceptarTIle.Location = new System.Drawing.Point(158, 200);
+            this.AceptarTIle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AceptarTIle.Name = "AceptarTIle";
-            this.AceptarTIle.Size = new System.Drawing.Size(125, 54);
+            this.AceptarTIle.Size = new System.Drawing.Size(94, 44);
             this.AceptarTIle.TabIndex = 3;
             this.AceptarTIle.Text = "Aceptar";
             this.AceptarTIle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -60,10 +60,10 @@
             // 
             this.AtrasTile.ActiveControl = null;
             this.AtrasTile.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.AtrasTile.Location = new System.Drawing.Point(56, 246);
-            this.AtrasTile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AtrasTile.Location = new System.Drawing.Point(42, 200);
+            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AtrasTile.Name = "AtrasTile";
-            this.AtrasTile.Size = new System.Drawing.Size(124, 54);
+            this.AtrasTile.Size = new System.Drawing.Size(93, 44);
             this.AtrasTile.TabIndex = 4;
             this.AtrasTile.Text = "Atras";
             this.AtrasTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -79,10 +79,10 @@
             // Sumar
             // 
             this.Sumar.AutoSize = true;
-            this.Sumar.Location = new System.Drawing.Point(104, 92);
-            this.Sumar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Sumar.Location = new System.Drawing.Point(78, 75);
+            this.Sumar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Sumar.Name = "Sumar";
-            this.Sumar.Size = new System.Drawing.Size(61, 17);
+            this.Sumar.Size = new System.Drawing.Size(57, 15);
             this.Sumar.TabIndex = 5;
             this.Sumar.Text = "Sumar";
             this.Sumar.UseSelectable = true;
@@ -90,99 +90,95 @@
             // Restar
             // 
             this.Restar.AutoSize = true;
-            this.Restar.Location = new System.Drawing.Point(211, 92);
-            this.Restar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Restar.Location = new System.Drawing.Point(158, 75);
+            this.Restar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Restar.Name = "Restar";
-            this.Restar.Size = new System.Drawing.Size(61, 17);
+            this.Restar.Size = new System.Drawing.Size(55, 15);
             this.Restar.TabIndex = 6;
             this.Restar.Text = "Restar";
             this.Restar.UseSelectable = true;
             // 
-            // descripcion
+            // Motivo
             // 
             // 
             // 
             // 
-            this.descripcion.CustomButton.Image = null;
-            this.descripcion.CustomButton.Location = new System.Drawing.Point(94, 1);
-            this.descripcion.CustomButton.Margin = new System.Windows.Forms.Padding(4);
-            this.descripcion.CustomButton.Name = "";
-            this.descripcion.CustomButton.Size = new System.Drawing.Size(85, 85);
-            this.descripcion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.descripcion.CustomButton.TabIndex = 1;
-            this.descripcion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.descripcion.CustomButton.UseSelectable = true;
-            this.descripcion.CustomButton.Visible = false;
-            this.descripcion.Lines = new string[0];
-            this.descripcion.Location = new System.Drawing.Point(104, 153);
-            this.descripcion.Margin = new System.Windows.Forms.Padding(4);
-            this.descripcion.MaxLength = 60;
-            this.descripcion.Multiline = true;
-            this.descripcion.Name = "descripcion";
-            this.descripcion.PasswordChar = '\0';
-            this.descripcion.PromptText = "Ingrese el motivo";
-            this.descripcion.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.descripcion.SelectedText = "";
-            this.descripcion.SelectionLength = 0;
-            this.descripcion.SelectionStart = 0;
-            this.descripcion.ShortcutsEnabled = true;
-            this.descripcion.Size = new System.Drawing.Size(180, 87);
-            this.descripcion.TabIndex = 2;
-            this.descripcion.UseSelectable = true;
-            this.descripcion.WaterMark = "Ingrese el motivo";
-            this.descripcion.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.descripcion.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.descripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.descripcion_KeyPress);
+            this.Motivo.CustomButton.Image = null;
+            this.Motivo.CustomButton.Location = new System.Drawing.Point(49, 1);
+            this.Motivo.CustomButton.Name = "";
+            this.Motivo.CustomButton.Size = new System.Drawing.Size(52, 56);
+            this.Motivo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Motivo.CustomButton.TabIndex = 1;
+            this.Motivo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Motivo.CustomButton.UseSelectable = true;
+            this.Motivo.CustomButton.Visible = false;
+            this.Motivo.Lines = new string[0];
+            this.Motivo.Location = new System.Drawing.Point(78, 124);
+            this.Motivo.MaxLength = 60;
+            this.Motivo.Multiline = true;
+            this.Motivo.Name = "Motivo";
+            this.Motivo.PasswordChar = '\0';
+            this.Motivo.PromptText = "Ingrese el motivo";
+            this.Motivo.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Motivo.SelectedText = "";
+            this.Motivo.SelectionLength = 0;
+            this.Motivo.SelectionStart = 0;
+            this.Motivo.ShortcutsEnabled = true;
+            this.Motivo.Size = new System.Drawing.Size(135, 71);
+            this.Motivo.TabIndex = 2;
+            this.Motivo.UseSelectable = true;
+            this.Motivo.WaterMark = "Ingrese el motivo";
+            this.Motivo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Motivo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.Motivo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.descripcion_KeyPress);
             // 
-            // Cantidad
+            // Monto
             // 
             // 
             // 
             // 
-            this.Cantidad.CustomButton.Image = null;
-            this.Cantidad.CustomButton.Location = new System.Drawing.Point(154, 2);
-            this.Cantidad.CustomButton.Margin = new System.Windows.Forms.Padding(4);
-            this.Cantidad.CustomButton.Name = "";
-            this.Cantidad.CustomButton.Size = new System.Drawing.Size(23, 23);
-            this.Cantidad.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.Cantidad.CustomButton.TabIndex = 1;
-            this.Cantidad.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.Cantidad.CustomButton.UseSelectable = true;
-            this.Cantidad.CustomButton.Visible = false;
-            this.Cantidad.Lines = new string[0];
-            this.Cantidad.Location = new System.Drawing.Point(104, 117);
-            this.Cantidad.Margin = new System.Windows.Forms.Padding(4);
-            this.Cantidad.MaxLength = 20;
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.PasswordChar = '\0';
-            this.Cantidad.PromptText = "Ingrese el monto";
-            this.Cantidad.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.Cantidad.SelectedText = "";
-            this.Cantidad.SelectionLength = 0;
-            this.Cantidad.SelectionStart = 0;
-            this.Cantidad.ShortcutsEnabled = true;
-            this.Cantidad.Size = new System.Drawing.Size(180, 28);
-            this.Cantidad.TabIndex = 1;
-            this.Cantidad.UseSelectable = true;
-            this.Cantidad.WaterMark = "Ingrese el monto";
-            this.Cantidad.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.Cantidad.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.Cantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cantidad_KeyPress);
+            this.Monto.CustomButton.Image = null;
+            this.Monto.CustomButton.Location = new System.Drawing.Point(85, 1);
+            this.Monto.CustomButton.Name = "";
+            this.Monto.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.Monto.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Monto.CustomButton.TabIndex = 1;
+            this.Monto.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Monto.CustomButton.UseSelectable = true;
+            this.Monto.CustomButton.Visible = false;
+            this.Monto.Lines = new string[0];
+            this.Monto.Location = new System.Drawing.Point(78, 95);
+            this.Monto.MaxLength = 20;
+            this.Monto.Name = "Monto";
+            this.Monto.PasswordChar = '\0';
+            this.Monto.PromptText = "Ingrese el monto";
+            this.Monto.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Monto.SelectedText = "";
+            this.Monto.SelectionLength = 0;
+            this.Monto.SelectionStart = 0;
+            this.Monto.ShortcutsEnabled = true;
+            this.Monto.Size = new System.Drawing.Size(135, 23);
+            this.Monto.TabIndex = 1;
+            this.Monto.UseSelectable = true;
+            this.Monto.WaterMark = "Ingrese el monto";
+            this.Monto.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Monto.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.Monto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cantidad_KeyPress);
             // 
             // ModifyCash
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(399, 350);
-            this.Controls.Add(this.Cantidad);
-            this.Controls.Add(this.descripcion);
+            this.ClientSize = new System.Drawing.Size(299, 284);
+            this.Controls.Add(this.Monto);
+            this.Controls.Add(this.Motivo);
             this.Controls.Add(this.Restar);
             this.Controls.Add(this.Sumar);
             this.Controls.Add(this.AtrasTile);
             this.Controls.Add(this.AceptarTIle);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ModifyCash";
-            this.Padding = new System.Windows.Forms.Padding(20, 74, 20, 20);
+            this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Text = "Modificar Caja";
             this.Load += new System.EventHandler(this.ModifyCash_Load);
             this.ResumeLayout(false);
@@ -196,7 +192,7 @@
         private MetroFramework.Controls.MetroTile AtrasTile;
         private MetroFramework.Controls.MetroRadioButton Sumar;
         private MetroFramework.Controls.MetroRadioButton Restar;
-        private MetroFramework.Controls.MetroTextBox descripcion;
-        private MetroFramework.Controls.MetroTextBox Cantidad;
+        private MetroFramework.Controls.MetroTextBox Motivo;
+        private MetroFramework.Controls.MetroTextBox Monto;
     }
 }

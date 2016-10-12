@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Pedidos_de_Compra
@@ -16,6 +17,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         accionesABM flag = accionesABM.Crear;
         Validaciones val = new Validaciones();
         int id_pedidoLea = -1;
+        StringBuilder st = new StringBuilder();
 
         public AddPedidoCompra()
         {
@@ -61,28 +63,38 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void agregarBtn_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(Nombre.Text))
+            val.validarNoVacio(Nombre,st);
+            val.validarNoVacio(Costo, st);
+            val.validarNoVacio(Utilidad, st);
+            val.validarNoVacio(Cantidad, st);
+            val.validarNoVacio(UnidadesXBulto, st);
+
+            if (st.Length > 0)
             {
-                Funciones.imprimirMensajeDeError("Debe elegir algún nombre de producto para agregarlo",this);
+                Funciones.imprimirMensajeDeError(st.ToString(), this);
+                st = new StringBuilder();
             }
-
-            
-            decimal utilidad = Convert.ToDecimal(Utilidad.Text);
-            decimal costo = Convert.ToDecimal(Costo.Text);
-
-            int cantXBulto = 0;
-            decimal precio = costo + utilidad;
-
-            string cantidad = Cantidad.Text + " unidades";
-
-            if (!individualRadio.Checked)
+            else
             {
-                cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
-                precio = costo + cantXBulto * utilidad;
-                cantidad = Cantidad.Text + " bultos de " + cantXBulto + " unidades";
-            }
 
-            dgvPedido.Rows.Add(cantXBulto, Nombre.Text, Costo.Text, precio, cantidad);
+
+                decimal utilidad = Convert.ToDecimal(Utilidad.Text);
+                decimal costo = Convert.ToDecimal(Costo.Text);
+
+                int cantXBulto = 0;
+                decimal precio = costo + utilidad;
+
+                string cantidad = Cantidad.Text + " unidades";
+
+                if (!individualRadio.Checked)
+                {
+                    cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
+                    precio = costo + cantXBulto * utilidad;
+                    cantidad = Cantidad.Text + " bultos de " + cantXBulto + " unidades";
+                }
+
+                dgvPedido.Rows.Add(cantXBulto, Nombre.Text, Costo.Text, precio, cantidad);
+            }
         }
 
         private void eliminarBtn_Click(object sender, EventArgs e)

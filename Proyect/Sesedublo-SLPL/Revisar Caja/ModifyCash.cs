@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using MetroFramework.Forms;
 using Sesedublo_SLPL.Generales;
+using System.Text;
 
 namespace Sesedublo_SLPL.Revisar_Caja
 {
@@ -9,6 +10,8 @@ namespace Sesedublo_SLPL.Revisar_Caja
     {
 
         Validaciones val = new Validaciones();
+        StringBuilder st = new StringBuilder();
+
         public ModifyCash()
         {
             InitializeComponent();
@@ -29,13 +32,13 @@ namespace Sesedublo_SLPL.Revisar_Caja
 
         private void agregarEfectivo()
         {
-            Conexion.executeProcedure("agregarEfectivo", Conexion.generarArgumentos("_montoASumar", "_descripcion"), Convert.ToDecimal(Cantidad.Text), descripcion.Text);
+            Conexion.executeProcedure("agregarEfectivo", Conexion.generarArgumentos("_montoASumar", "_descripcion"), Convert.ToDecimal(Monto.Text), Motivo.Text);
             Conexion.closeConnection();
         }
 
         private void restarEfectivo()
         {
-            Conexion.executeProcedure("restarEfectivo", Conexion.generarArgumentos("_montoARestar", "_descripcion"), Convert.ToDecimal(Cantidad.Text), descripcion.Text);
+            Conexion.executeProcedure("restarEfectivo", Conexion.generarArgumentos("_montoARestar", "_descripcion"), Convert.ToDecimal(Monto.Text), Motivo.Text);
             Conexion.closeConnection();
         }
 
@@ -46,18 +49,29 @@ namespace Sesedublo_SLPL.Revisar_Caja
 
         private void AceptarTIle_Click(object sender, EventArgs e)
         {
-            if (Sumar.Checked)
-                agregarEfectivo();
-            else
-                restarEfectivo();
+            val.validarNoVacio(Monto,st);
+            val.validarNoVacio(Motivo, st);
 
-            Close();
+            if (st.Length > 0)
+            {
+                Funciones.imprimirMensajeDeError(st.ToString(), this);
+                st = new StringBuilder();
+            }
+            else
+            {
+                if (Sumar.Checked)
+                    agregarEfectivo();
+                else
+                    restarEfectivo();
+
+                Close();
+            }
         }
 
         public void Clean()
         {
-            Cantidad.Clear();
-            descripcion.Clear();
+            Monto.Clear();
+            Motivo.Clear();
         }
 
         private void Cantidad_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)

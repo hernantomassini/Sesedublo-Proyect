@@ -88,7 +88,7 @@ namespace Sesedublo_SLPL
 
         private void metroTile7_Click(object sender, EventArgs e)
         {
-            //Manejador_Formularios.Pedido_de_compra.getData();
+            Manejador_Formularios.Pedido_de_compra.cargarDGV();
             Manejador_Formularios.Pedido_de_compra.Show();
         }
     }

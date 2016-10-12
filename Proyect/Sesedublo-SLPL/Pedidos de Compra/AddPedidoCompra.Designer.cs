@@ -64,6 +64,7 @@
             this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
@@ -123,7 +124,7 @@
             // 
             // 
             this.buscarProducto.CustomButton.Image = null;
-            this.buscarProducto.CustomButton.Location = new System.Drawing.Point(69, 1);
+            this.buscarProducto.CustomButton.Location = new System.Drawing.Point(82, 1);
             this.buscarProducto.CustomButton.Name = "";
             this.buscarProducto.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.buscarProducto.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -134,7 +135,7 @@
             this.buscarProducto.DisplayIcon = true;
             this.buscarProducto.Icon = ((System.Drawing.Image)(resources.GetObject("buscarProducto.Icon")));
             this.buscarProducto.Lines = new string[0];
-            this.buscarProducto.Location = new System.Drawing.Point(257, 182);
+            this.buscarProducto.Location = new System.Drawing.Point(244, 182);
             this.buscarProducto.MaxLength = 70;
             this.buscarProducto.Name = "buscarProducto";
             this.buscarProducto.PasswordChar = '\0';
@@ -144,7 +145,7 @@
             this.buscarProducto.SelectionLength = 0;
             this.buscarProducto.SelectionStart = 0;
             this.buscarProducto.ShortcutsEnabled = true;
-            this.buscarProducto.Size = new System.Drawing.Size(91, 23);
+            this.buscarProducto.Size = new System.Drawing.Size(104, 23);
             this.buscarProducto.TabIndex = 36;
             this.buscarProducto.UseSelectable = true;
             this.buscarProducto.WaterMark = "Buscar";
@@ -155,7 +156,7 @@
             // nombreLabel
             // 
             this.nombreLabel.AutoSize = true;
-            this.nombreLabel.Location = new System.Drawing.Point(189, 184);
+            this.nombreLabel.Location = new System.Drawing.Point(176, 182);
             this.nombreLabel.Name = "nombreLabel";
             this.nombreLabel.Size = new System.Drawing.Size(62, 19);
             this.nombreLabel.TabIndex = 35;
@@ -243,6 +244,7 @@
             this.UnidadesXBulto.Name = "UnidadesXBulto";
             this.UnidadesXBulto.Size = new System.Drawing.Size(100, 21);
             this.UnidadesXBulto.TabIndex = 28;
+            this.UnidadesXBulto.TextChanged += new System.EventHandler(this.utilidad_TextChanged);
             // 
             // UnidadesXBultoLbl
             // 
@@ -261,6 +263,7 @@
             this.Costo.Name = "Costo";
             this.Costo.Size = new System.Drawing.Size(100, 20);
             this.Costo.TabIndex = 21;
+            this.Costo.TextChanged += new System.EventHandler(this.utilidad_TextChanged);
             this.Costo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Costo_KeyPress);
             // 
             // CostoLabel
@@ -334,7 +337,8 @@
             this.NombreDGV,
             this.Cost,
             this.Price,
-            this.Cant});
+            this.Cant,
+            this.IDProducto});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -401,17 +405,18 @@
             // 
             // Utilidad
             // 
-            this.Utilidad.Location = new System.Drawing.Point(664, 63);
+            this.Utilidad.Location = new System.Drawing.Point(463, 117);
             this.Utilidad.Margin = new System.Windows.Forms.Padding(4);
             this.Utilidad.MaxLength = 12;
             this.Utilidad.Name = "Utilidad";
             this.Utilidad.Size = new System.Drawing.Size(100, 20);
             this.Utilidad.TabIndex = 42;
+            this.Utilidad.TextChanged += new System.EventHandler(this.utilidad_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(585, 66);
+            this.label1.Location = new System.Drawing.Point(349, 120);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 43;
@@ -420,7 +425,7 @@
             // PrecioLabel
             // 
             this.PrecioLabel.AutoSize = true;
-            this.PrecioLabel.Location = new System.Drawing.Point(349, 122);
+            this.PrecioLabel.Location = new System.Drawing.Point(581, 65);
             this.PrecioLabel.Name = "PrecioLabel";
             this.PrecioLabel.Size = new System.Drawing.Size(40, 13);
             this.PrecioLabel.TabIndex = 29;
@@ -428,7 +433,7 @@
             // 
             // Precio
             // 
-            this.Precio.Location = new System.Drawing.Point(463, 119);
+            this.Precio.Location = new System.Drawing.Point(681, 61);
             this.Precio.Margin = new System.Windows.Forms.Padding(4);
             this.Precio.MaxLength = 10;
             this.Precio.Name = "Precio";
@@ -476,6 +481,14 @@
             this.Cant.Name = "Cant";
             this.Cant.ReadOnly = true;
             this.Cant.Width = 77;
+            // 
+            // IDProducto
+            // 
+            this.IDProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.IDProducto.HeaderText = "IDProducto";
+            this.IDProducto.Name = "IDProducto";
+            this.IDProducto.ReadOnly = true;
+            this.IDProducto.Width = 88;
             // 
             // AddPedidoCompra
             // 
@@ -549,5 +562,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cost;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDProducto;
     }
 }

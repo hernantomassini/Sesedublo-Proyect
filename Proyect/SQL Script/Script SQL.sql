@@ -47,7 +47,11 @@ DROP PROCEDURE IF EXISTS obtenerLista;
 DROP PROCEDURE IF EXISTS generarPedido;
 DROP PROCEDURE IF EXISTS crearPedidoDeLea;
 DROP PROCEDURE IF EXISTS ItemsDeLea;
-
+DROP PROCEDURE IF EXISTS crearItemDeLea;
+DROP PROCEDURE IF EXISTS obtenerItemsDeLea;
+DROP PROCEDURE IF EXISTS cargarPedidoCompras;
+DROP PROCEDURE IF EXISTS restaurarStockLea;
+DROP PROCEDURE IF EXISTS borrarPedidoDeLea;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -866,6 +870,42 @@ BEGIN
     SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre);
     
     INSERT INTO ItemsDeLea (id_pedido, id_producto, cantidadDeProductos) VALUES (_id_pedidoLea, @_id_producto, _cantidad);
+
+END //
+
+CREATE PROCEDURE obtenerItemsDeLea (IN _id_pedidoLea INT)
+BEGIN
+
+	SELECT p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto, iLea.cantidadDeProductos, p.id_producto FROM ItemsDeLea iLea
+    INNER JOIN Productos p ON iLea.id_producto = p.id_producto
+    WHERE id_pedido = _id_pedidoLea;
+
+END //
+
+CREATE PROCEDURE cargarPedidoCompras ()
+BEGIN
+
+	SELECT p.id_pedido ,group_concat(pr.nombre) FROM PedidosDeLea p 
+    INNER JOIN ItemsDeLea i ON p.id_pedido = i.id_pedido
+    INNER JOIN Productos pr ON pr.id_producto = i.id_producto
+    GROUP BY p.id_pedido;
+
+END //
+
+CREATE PROCEDURE restaurarStockLea (IN _id_producto INT, IN _cantidad INT)
+BEGIN
+
+SET @_cantidadVieja = (SELECT cantidad FROM Productos WHERE id_producto = _id_producto);
+
+	UPDATE Productos SET cantidad = (@_cantidadVieja - _cantidad) WHERE id_producto = _id_producto;
+
+END //
+
+CREATE PROCEDURE borrarPedidoDeLea (IN _id_pedidoLea INT)
+BEGIN
+
+	DELETE FROM ItemsDeLea WHERE id_pedido = _id_pedidoLea;
+    DELETE FROM PedidosDeLea WHERE id_pedido = _id_pedidoLea;
 
 END //
 

@@ -3,6 +3,7 @@ using MetroFramework.Forms;
 using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
@@ -11,8 +12,10 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 {
     public partial class AddPedidoCompra : MetroForm
     {
+        Dictionary<int, int> stockAEliminar = new Dictionary<int, int>();
         accionesABM flag = accionesABM.Crear;
         Validaciones val = new Validaciones();
+        int id_pedidoLea = -1;
 
         public AddPedidoCompra()
         {
@@ -25,6 +28,9 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         {
             this.Hide();
             e.Cancel = true;
+
+            Manejador_Formularios.Pedido_de_compra.cargarDGV();
+            Manejador_Formularios.Pedido_de_compra.Show();
         }
 
         public void Clean()
@@ -36,6 +42,9 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             Precio.Clear();
             UnidadesXBulto.Text = "";
             Utilidad.Clear();
+            UnidadesXBulto.SelectedIndex = 0;
+            dgvPedido.Rows.Clear();
+            stockAEliminar.Clear();
 
         }
 
@@ -84,38 +93,45 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void cargarDatos()
         {
-            //MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerProducto", Conexion.generarArgumentos("_id_stock"), id_stock);
-            //reader.Read();
+            Funciones.limpiarDGV(dgvPedido);
 
-            //int cantXBulto = reader.GetInt32(1);
-            //decimal costo = Convert.ToDecimal(reader.GetDecimal(3));
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerItemsDeLea", Conexion.generarArgumentos("_id_pedidoLea"), id_pedidoLea);
+            int cantXBulto;
+            decimal precio;
+            string cantidadString;
+            int cantidad;
 
-            //if (cantXBulto == 0)
-            //{
-            //    //Individual
-            //    individualRadio.Checked = true;
-            //    decimal PVUnitario = reader.GetDecimal(4);
-            //    Utilidad.Text = Convert.ToString(PVUnitario - costo);
-            //}
-            //else
-            //{
-            //    //Bulto
-            //    bultoRadio.Checked = true;
-            //    decimal PVBulto = reader.GetDecimal(5);
-            //    Utilidad.Text = Convert.ToString(Decimal.Round((PVBulto - costo) / cantXBulto, 2));
-            //}
+            while (reader.Read())
+            {   
+                cantXBulto = reader.GetInt32(0);
+                cantidad = reader.GetInt32(5);
 
-            //Nombre.Text = reader.GetString(2);
-            //Cantidad.Text = reader.GetString(0);
-            //UnidadesXBulto.Text = Convert.ToString(cantXBulto);
-            //Costo.Text = Convert.ToString(costo);
+                if (cantXBulto == 0)
+                {
+                    //Individual
 
-            //reader.Close();
-            //Conexion.closeConnection();
+                    precio = reader.GetDecimal(3);
+                    cantidadString = cantidad + " unidades";
+                }
+                else
+                {
+                    //Bulto
+                    precio = reader.GetDecimal(4);
+                    cantidadString = cantidad + " bultos de " + cantXBulto + " unidades";
+                }
+
+                dgvPedido.Rows.Add(cantXBulto, reader.GetString(1), reader.GetDecimal(2), precio, cantidadString);
+                stockAEliminar.Add(reader.GetInt32(6), cantidad);
+            }
+
+            reader.Close();
+            Conexion.closeConnection();
         }
 
         private void individualRadio_CheckedChanged(object sender, EventArgs e)
         {
+            updatePrecio();
+
             if (individualRadio.Checked)
             {
                 CostoLabel.Text = "Costo por unidad:";
@@ -175,51 +191,79 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             }
 
             MySqlDataReader reader;
-            int cantXBulto;
-            string nombre;
-            decimal costo;
+
             int cantidad;
-            decimal PVUnitario;
-            decimal PVBulto;
 
-            if (flag == accionesABM.Crear) {
-
-                reader = Conexion.executeProcedureWithReader("crearPedidoDeLea", Conexion.generarArgumentos());
-                reader.Read();
-
-                int id_pedidoDeLea = reader.GetInt32(0);
-
-                reader.Close();
-                Conexion.closeConnection();
-
-                foreach (DataGridViewRow row in dgvPedido.Rows)
+            if (flag == accionesABM.Modificar)
+            {
+                foreach (var registro in stockAEliminar) 
                 {
-                    cantXBulto = Convert.ToInt32(row.Cells[0].Value);
-                    nombre = Convert.ToString(row.Cells[1].Value);
-                    costo = Convert.ToDecimal(row.Cells[2].Value);
-                    cantidad = obtenerCantidadEnInt(Convert.ToString(row.Cells[4].Value));
+                    int id_producto = registro.Key;
+                    cantidad = registro.Value;
 
-                    if(cantXBulto == 0)
-                    {
-                        PVUnitario = Convert.ToDecimal(row.Cells[3].Value);
-                        PVBulto = 0;
-                    }
-                    else
-                    {
-                        PVBulto = Convert.ToDecimal(row.Cells[3].Value);
-                        PVUnitario = Decimal.Round(PVBulto / cantXBulto, 2);
-                    }
-
-                    Conexion.executeProcedure("crearItemDeLea", Conexion.generarArgumentos("_id_pedidoLea", "_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), id_pedidoDeLea, cantidad, cantXBulto, costo, nombre, PVUnitario, PVBulto);
+                    Conexion.executeProcedure("restaurarStockLea", Conexion.generarArgumentos("_id_producto", "_cantidad"), id_producto, cantidad);
                     Conexion.closeConnection();
                 }
-            }
-            else
-            {
-                Funciones.tirarException();
+
+                Conexion.executeProcedure("borrarPedidoDeLea", Conexion.generarArgumentos("_id_pedidoLea"), id_pedidoLea);
+                Conexion.closeConnection();
             }
 
+            string nombre;
+            decimal costo;
+            decimal PVUnitario;
+            decimal PVBulto;
+            int cantXBulto;
+
+            reader = Conexion.executeProcedureWithReader("crearPedidoDeLea", Conexion.generarArgumentos());
+            reader.Read();
+
+            int id_pedidoDeLea = reader.GetInt32(0);
+
+            reader.Close();
+            Conexion.closeConnection();
+
+            foreach (DataGridViewRow row in dgvPedido.Rows)
+            {
+                cantXBulto = Convert.ToInt32(row.Cells[0].Value);
+                nombre = Convert.ToString(row.Cells[1].Value);
+                costo = Convert.ToDecimal(row.Cells[2].Value);
+                cantidad = obtenerCantidadEnInt(Convert.ToString(row.Cells[4].Value));
+
+                if(cantXBulto == 0)
+                {
+                    PVUnitario = Convert.ToDecimal(row.Cells[3].Value);
+                    PVBulto = 0;
+                }
+                else
+                {
+                    PVBulto = Convert.ToDecimal(row.Cells[3].Value);
+                    PVUnitario = Decimal.Round(PVBulto / cantXBulto, 2);
+                }
+
+                Conexion.executeProcedure("crearItemDeLea", Conexion.generarArgumentos("_id_pedidoLea", "_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), id_pedidoDeLea, cantidad, cantXBulto, costo, nombre, PVUnitario, PVBulto);
+                Conexion.closeConnection();
+            }
+            
             Close();
+        }
+
+        public void CrearPedido()
+        {
+            Clean();
+            flag = accionesABM.Crear;
+            Text = "Agregar pedido de compra";
+        }
+
+
+        public void modificarPedido(int id_pedidoLea)
+        {
+            this.id_pedidoLea = id_pedidoLea;
+
+            Clean();
+            flag = accionesABM.Modificar;
+            cargarDatos();
+            Text = "Modificar pedido de compra";
         }
 
         private void titleCancelar_Click(object sender, EventArgs e)
@@ -231,6 +275,35 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         {
             int large = cantidad.IndexOf(" ");
             return Convert.ToInt32(cantidad.Substring(0, large));
+        }
+
+        private void utilidad_TextChanged(object sender, EventArgs e)
+        {
+            updatePrecio();
+        }
+
+        private void updatePrecio()
+        {
+            decimal utilidad = 0;
+            decimal costo = 0;
+            int unidadesXBulto = 0;
+            decimal resultado;
+
+            if (Utilidad.Text != "")
+                utilidad = Convert.ToDecimal(Utilidad.Text);
+
+            if (Costo.Text != "")
+                costo = Convert.ToDecimal(Costo.Text);
+
+            if (UnidadesXBulto.Text != "")
+                unidadesXBulto = Convert.ToInt32(UnidadesXBulto.Text);
+
+            if (individualRadio.Checked)
+                resultado = decimal.Round(costo + utilidad, 2);
+            else
+                resultado = decimal.Round(costo + utilidad * unidadesXBulto, 2);
+
+            Precio.Text = Convert.ToString(resultado);
         }
 
         private void AddPedidoCompra_Load(object sender, EventArgs e)

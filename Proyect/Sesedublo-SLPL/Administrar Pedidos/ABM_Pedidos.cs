@@ -37,6 +37,12 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
+            if (Convert.ToInt32(filaDgv.Cells[5].Value) == 1)
+            {
+                Funciones.imprimirMensajeDeError("No puede eliminar un pedido ya facturado, que no fue del todo cobrado", this);
+                return;
+            }
+
             if (Funciones.imprimirMensajeDeAlerta("¿Estás seguro de borrar este pedido? Esta acción no se podrá deshacer.", this) == DialogResult.Cancel)
             {   
                 return;
@@ -76,6 +82,12 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
+            if(Convert.ToInt32(filaDgv.Cells[5].Value) == 1)
+            {
+                Funciones.imprimirMensajeDeError("No puede modificar un pedido que ya ha sido facturado, sólo modificar su monto del debe", this);
+                return;
+            }
+
             int id_pedido = Convert.ToInt32(filaDgv.Cells[0].Value);
 
             Manejador_Formularios.AddProductoAPedido.modificarPedido(id_pedido);
@@ -96,6 +108,12 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
             if (!Validaciones.validarFilaMarcada(filaDgv, this))
             {
+                return;
+            }
+
+            if (Convert.ToInt32(filaDgv.Cells[5].Value) == 1)
+            {
+                Funciones.imprimirMensajeDeError("La siguiente factura ya ha sido facturada", this);
                 return;
             }
 
@@ -123,10 +141,11 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             
             while (reader.Read())
             {
-                //ID Stock 0 - Nombre 1 - Costo 2 - Debe 3 - Lista strings 4
-                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetDecimal(3), reader.GetString(4));
+                //ID Stock 0 - Nombre 1 - Costo 2 - Debe 3 - Lista strings 4 - facturada 5
+                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetDecimal(3), reader.GetString(4), reader.GetInt32(5));
             }
 
+            PedidosDGV.Columns[5].Visible = false;
             reader.Close();
             Conexion.closeConnection();
         }

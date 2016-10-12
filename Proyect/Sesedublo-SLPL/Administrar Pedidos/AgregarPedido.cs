@@ -96,5 +96,11 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
             val.ingresarNombre(e);
         }
+
+        private void metroLink1_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.Agregar_Cliente.agregarCliente();
+            Manejador_Formularios.Agregar_Cliente.Show();
+        }
     }
 }

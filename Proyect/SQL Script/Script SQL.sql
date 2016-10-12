@@ -878,7 +878,7 @@ END //
 CREATE PROCEDURE obtenerItemsDeLea (IN _id_pedidoLea INT)
 BEGIN
 
-	SELECT p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto, iLea.cantidadDeProductos, p.id_producto FROM ItemsDeLea iLea
+	SELECT p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto, iLea.cantidadDeProductos FROM ItemsDeLea iLea
     INNER JOIN Productos p ON iLea.id_producto = p.id_producto
     WHERE id_pedido = _id_pedidoLea;
 

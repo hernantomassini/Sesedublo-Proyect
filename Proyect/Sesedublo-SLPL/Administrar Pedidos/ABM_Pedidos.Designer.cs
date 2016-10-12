@@ -31,17 +31,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Pedidos));
             this.PedidosDGV = new MetroFramework.Controls.MetroGrid();
-            this.AtrasTile = new MetroFramework.Controls.MetroTile();
-            this.AgregarPedidoTile = new MetroFramework.Controls.MetroTile();
-            this.modificarPedidoTile = new MetroFramework.Controls.MetroTile();
-            this.EliminarPedidoTile = new MetroFramework.Controls.MetroTile();
-            this.FacturarPedidoTile = new MetroFramework.Controls.MetroTile();
             this.IDPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comprador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pagado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Debe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Productos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AtrasTile = new MetroFramework.Controls.MetroTile();
+            this.AgregarPedidoTile = new MetroFramework.Controls.MetroTile();
+            this.modificarPedidoTile = new MetroFramework.Controls.MetroTile();
+            this.EliminarPedidoTile = new MetroFramework.Controls.MetroTile();
+            this.FacturarPedidoTile = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.PedidosDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,8 +82,8 @@
             this.PedidosDGV.EnableHeadersVisualStyles = false;
             this.PedidosDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.PedidosDGV.GridColor = System.Drawing.Color.White;
-            this.PedidosDGV.Location = new System.Drawing.Point(29, 62);
-            this.PedidosDGV.Margin = new System.Windows.Forms.Padding(2);
+            this.PedidosDGV.Location = new System.Drawing.Point(39, 76);
+            this.PedidosDGV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PedidosDGV.MultiSelect = false;
             this.PedidosDGV.Name = "PedidosDGV";
             this.PedidosDGV.ReadOnly = true;
@@ -98,73 +99,8 @@
             this.PedidosDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.PedidosDGV.RowTemplate.Height = 24;
             this.PedidosDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PedidosDGV.Size = new System.Drawing.Size(730, 249);
+            this.PedidosDGV.Size = new System.Drawing.Size(973, 306);
             this.PedidosDGV.TabIndex = 0;
-            // 
-            // AtrasTile
-            // 
-            this.AtrasTile.ActiveControl = null;
-            this.AtrasTile.Location = new System.Drawing.Point(29, 317);
-            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2);
-            this.AtrasTile.Name = "AtrasTile";
-            this.AtrasTile.Size = new System.Drawing.Size(69, 41);
-            this.AtrasTile.TabIndex = 1;
-            this.AtrasTile.Text = "Atras";
-            this.AtrasTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AtrasTile.UseSelectable = true;
-            this.AtrasTile.Click += new System.EventHandler(this.AtrasTile_Click);
-            // 
-            // AgregarPedidoTile
-            // 
-            this.AgregarPedidoTile.ActiveControl = null;
-            this.AgregarPedidoTile.Location = new System.Drawing.Point(620, 315);
-            this.AgregarPedidoTile.Margin = new System.Windows.Forms.Padding(2);
-            this.AgregarPedidoTile.Name = "AgregarPedidoTile";
-            this.AgregarPedidoTile.Size = new System.Drawing.Size(139, 43);
-            this.AgregarPedidoTile.TabIndex = 2;
-            this.AgregarPedidoTile.Text = "Agregar pedido";
-            this.AgregarPedidoTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AgregarPedidoTile.UseSelectable = true;
-            this.AgregarPedidoTile.Click += new System.EventHandler(this.AgregarPedidoTile_Click);
-            // 
-            // modificarPedidoTile
-            // 
-            this.modificarPedidoTile.ActiveControl = null;
-            this.modificarPedidoTile.Location = new System.Drawing.Point(485, 315);
-            this.modificarPedidoTile.Margin = new System.Windows.Forms.Padding(2);
-            this.modificarPedidoTile.Name = "modificarPedidoTile";
-            this.modificarPedidoTile.Size = new System.Drawing.Size(131, 43);
-            this.modificarPedidoTile.TabIndex = 3;
-            this.modificarPedidoTile.Text = "Modificar pedido";
-            this.modificarPedidoTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.modificarPedidoTile.UseSelectable = true;
-            this.modificarPedidoTile.Click += new System.EventHandler(this.modificarPedidoTile_Click);
-            // 
-            // EliminarPedidoTile
-            // 
-            this.EliminarPedidoTile.ActiveControl = null;
-            this.EliminarPedidoTile.Location = new System.Drawing.Point(342, 315);
-            this.EliminarPedidoTile.Margin = new System.Windows.Forms.Padding(2);
-            this.EliminarPedidoTile.Name = "EliminarPedidoTile";
-            this.EliminarPedidoTile.Size = new System.Drawing.Size(139, 43);
-            this.EliminarPedidoTile.TabIndex = 4;
-            this.EliminarPedidoTile.Text = "Eliminar pedido";
-            this.EliminarPedidoTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.EliminarPedidoTile.UseSelectable = true;
-            this.EliminarPedidoTile.Click += new System.EventHandler(this.EliminarPedidoTile_Click);
-            // 
-            // FacturarPedidoTile
-            // 
-            this.FacturarPedidoTile.ActiveControl = null;
-            this.FacturarPedidoTile.Location = new System.Drawing.Point(207, 315);
-            this.FacturarPedidoTile.Margin = new System.Windows.Forms.Padding(2);
-            this.FacturarPedidoTile.Name = "FacturarPedidoTile";
-            this.FacturarPedidoTile.Size = new System.Drawing.Size(131, 43);
-            this.FacturarPedidoTile.TabIndex = 5;
-            this.FacturarPedidoTile.Text = "Facturar pedido";
-            this.FacturarPedidoTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.FacturarPedidoTile.UseSelectable = true;
-            this.FacturarPedidoTile.Click += new System.EventHandler(this.FacturarPedidoTile_Click);
             // 
             // IDPedido
             // 
@@ -174,7 +110,6 @@
             this.IDPedido.ReadOnly = true;
             this.IDPedido.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.IDPedido.Visible = false;
-            this.IDPedido.Width = 77;
             // 
             // Comprador
             // 
@@ -183,7 +118,7 @@
             this.Comprador.Name = "Comprador";
             this.Comprador.ReadOnly = true;
             this.Comprador.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Comprador.Width = 88;
+            this.Comprador.Width = 95;
             // 
             // Pagado
             // 
@@ -192,7 +127,7 @@
             this.Pagado.Name = "Pagado";
             this.Pagado.ReadOnly = true;
             this.Pagado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Pagado.Width = 69;
+            this.Pagado.Width = 74;
             // 
             // Debe
             // 
@@ -200,7 +135,7 @@
             this.Debe.HeaderText = "Debe";
             this.Debe.Name = "Debe";
             this.Debe.ReadOnly = true;
-            this.Debe.Width = 57;
+            this.Debe.Width = 61;
             // 
             // Productos
             // 
@@ -209,22 +144,113 @@
             this.Productos.Name = "Productos";
             this.Productos.ReadOnly = true;
             this.Productos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Productos.Width = 82;
+            this.Productos.Width = 88;
+            // 
+            // AtrasTile
+            // 
+            this.AtrasTile.ActiveControl = null;
+            this.AtrasTile.BackColor = System.Drawing.Color.Teal;
+            this.AtrasTile.Location = new System.Drawing.Point(39, 390);
+            this.AtrasTile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AtrasTile.Name = "AtrasTile";
+            this.AtrasTile.Size = new System.Drawing.Size(110, 50);
+            this.AtrasTile.TabIndex = 1;
+            this.AtrasTile.Text = "Atras";
+            this.AtrasTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AtrasTile.TileImage = ((System.Drawing.Image)(resources.GetObject("AtrasTile.TileImage")));
+            this.AtrasTile.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AtrasTile.UseCustomBackColor = true;
+            this.AtrasTile.UseSelectable = true;
+            this.AtrasTile.UseStyleColors = true;
+            this.AtrasTile.UseTileImage = true;
+            this.AtrasTile.Click += new System.EventHandler(this.AtrasTile_Click);
+            // 
+            // AgregarPedidoTile
+            // 
+            this.AgregarPedidoTile.ActiveControl = null;
+            this.AgregarPedidoTile.BackColor = System.Drawing.Color.Purple;
+            this.AgregarPedidoTile.Location = new System.Drawing.Point(827, 388);
+            this.AgregarPedidoTile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AgregarPedidoTile.Name = "AgregarPedidoTile";
+            this.AgregarPedidoTile.Size = new System.Drawing.Size(185, 53);
+            this.AgregarPedidoTile.TabIndex = 2;
+            this.AgregarPedidoTile.Text = "Agregar pedido";
+            this.AgregarPedidoTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AgregarPedidoTile.TileImage = ((System.Drawing.Image)(resources.GetObject("AgregarPedidoTile.TileImage")));
+            this.AgregarPedidoTile.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AgregarPedidoTile.UseCustomBackColor = true;
+            this.AgregarPedidoTile.UseSelectable = true;
+            this.AgregarPedidoTile.UseTileImage = true;
+            this.AgregarPedidoTile.Click += new System.EventHandler(this.AgregarPedidoTile_Click);
+            // 
+            // modificarPedidoTile
+            // 
+            this.modificarPedidoTile.ActiveControl = null;
+            this.modificarPedidoTile.BackColor = System.Drawing.Color.Green;
+            this.modificarPedidoTile.Location = new System.Drawing.Point(647, 388);
+            this.modificarPedidoTile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.modificarPedidoTile.Name = "modificarPedidoTile";
+            this.modificarPedidoTile.Size = new System.Drawing.Size(175, 53);
+            this.modificarPedidoTile.TabIndex = 3;
+            this.modificarPedidoTile.Text = "Modificar pedido";
+            this.modificarPedidoTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.modificarPedidoTile.TileImage = ((System.Drawing.Image)(resources.GetObject("modificarPedidoTile.TileImage")));
+            this.modificarPedidoTile.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.modificarPedidoTile.UseCustomBackColor = true;
+            this.modificarPedidoTile.UseSelectable = true;
+            this.modificarPedidoTile.UseTileImage = true;
+            this.modificarPedidoTile.Click += new System.EventHandler(this.modificarPedidoTile_Click);
+            // 
+            // EliminarPedidoTile
+            // 
+            this.EliminarPedidoTile.ActiveControl = null;
+            this.EliminarPedidoTile.BackColor = System.Drawing.Color.DodgerBlue;
+            this.EliminarPedidoTile.Location = new System.Drawing.Point(456, 388);
+            this.EliminarPedidoTile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.EliminarPedidoTile.Name = "EliminarPedidoTile";
+            this.EliminarPedidoTile.Size = new System.Drawing.Size(185, 53);
+            this.EliminarPedidoTile.TabIndex = 4;
+            this.EliminarPedidoTile.Text = "Eliminar pedido";
+            this.EliminarPedidoTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EliminarPedidoTile.TileImage = ((System.Drawing.Image)(resources.GetObject("EliminarPedidoTile.TileImage")));
+            this.EliminarPedidoTile.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.EliminarPedidoTile.UseCustomBackColor = true;
+            this.EliminarPedidoTile.UseSelectable = true;
+            this.EliminarPedidoTile.UseTileImage = true;
+            this.EliminarPedidoTile.Click += new System.EventHandler(this.EliminarPedidoTile_Click);
+            // 
+            // FacturarPedidoTile
+            // 
+            this.FacturarPedidoTile.ActiveControl = null;
+            this.FacturarPedidoTile.BackColor = System.Drawing.Color.RoyalBlue;
+            this.FacturarPedidoTile.Location = new System.Drawing.Point(276, 388);
+            this.FacturarPedidoTile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FacturarPedidoTile.Name = "FacturarPedidoTile";
+            this.FacturarPedidoTile.Size = new System.Drawing.Size(175, 53);
+            this.FacturarPedidoTile.TabIndex = 5;
+            this.FacturarPedidoTile.Text = "Facturar pedido";
+            this.FacturarPedidoTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.FacturarPedidoTile.TileImage = ((System.Drawing.Image)(resources.GetObject("FacturarPedidoTile.TileImage")));
+            this.FacturarPedidoTile.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.FacturarPedidoTile.UseCustomBackColor = true;
+            this.FacturarPedidoTile.UseSelectable = true;
+            this.FacturarPedidoTile.UseTileImage = true;
+            this.FacturarPedidoTile.Click += new System.EventHandler(this.FacturarPedidoTile_Click);
             // 
             // ABM_Pedidos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 384);
+            this.ClientSize = new System.Drawing.Size(1035, 473);
             this.Controls.Add(this.FacturarPedidoTile);
             this.Controls.Add(this.EliminarPedidoTile);
             this.Controls.Add(this.modificarPedidoTile);
             this.Controls.Add(this.AgregarPedidoTile);
             this.Controls.Add(this.AtrasTile);
             this.Controls.Add(this.PedidosDGV);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ABM_Pedidos";
-            this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
+            this.Padding = new System.Windows.Forms.Padding(20, 74, 20, 20);
             this.Text = "Pedidos";
             this.Load += new System.EventHandler(this.ABM_Pedidos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PedidosDGV)).EndInit();

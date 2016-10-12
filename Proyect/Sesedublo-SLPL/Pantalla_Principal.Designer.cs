@@ -167,24 +167,24 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 13F);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(397, 28);
+            this.label1.Location = new System.Drawing.Point(579, 209);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 30);
+            this.label1.Size = new System.Drawing.Size(81, 35);
             this.label1.TabIndex = 12;
             this.label1.Text = "label1";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 13F);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 40F);
             this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(280, 28);
+            this.label2.Location = new System.Drawing.Point(615, 93);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 30);
+            this.label2.Size = new System.Drawing.Size(214, 89);
             this.label2.TabIndex = 13;
             this.label2.Text = "label2";
             // 
@@ -193,12 +193,12 @@
             this.metroTile7.ActiveControl = null;
             this.metroTile7.BackColor = System.Drawing.Color.Teal;
             this.metroTile7.ForeColor = System.Drawing.Color.White;
-            this.metroTile7.Location = new System.Drawing.Point(564, 290);
+            this.metroTile7.Location = new System.Drawing.Point(564, 272);
             this.metroTile7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.metroTile7.Name = "metroTile7";
-            this.metroTile7.Size = new System.Drawing.Size(140, 94);
+            this.metroTile7.Size = new System.Drawing.Size(302, 112);
             this.metroTile7.TabIndex = 14;
-            this.metroTile7.Text = "Pedidos";
+            this.metroTile7.Text = "Pedidos de Compra";
             this.metroTile7.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile7.TileImage")));
             this.metroTile7.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroTile7.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
@@ -212,7 +212,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackImage = ((System.Drawing.Image)(resources.GetObject("$this.BackImage")));
             this.BackImagePadding = new System.Windows.Forms.Padding(50);
             this.BackLocation = MetroFramework.Forms.BackLocation.BottomLeft;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
@@ -226,7 +225,7 @@
             this.Controls.Add(this.metroTile3);
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.metroTile1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Pantalla_Principal";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Style = MetroFramework.MetroColorStyle.Default;

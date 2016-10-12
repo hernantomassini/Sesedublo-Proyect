@@ -82,8 +82,8 @@ namespace Sesedublo_SLPL
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            label1.Text = DateTime.Now.ToShortDateString();
-            label2.Text = DateTime.Now.ToString("hh:mm:ss");
+            label1.Text = DateTime.Now.ToString("dddd dd MMMM, yyyy");
+            label2.Text = DateTime.Now.ToString("H:mm");
         }
 
         private void metroTile7_Click(object sender, EventArgs e)

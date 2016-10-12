@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerarFactura));
             this.AceptarTile = new MetroFramework.Controls.MetroTile();
             this.AtrasTile = new MetroFramework.Controls.MetroTile();
             this.tipoDeFactura = new MetroFramework.Controls.MetroComboBox();
@@ -36,50 +37,64 @@
             // AceptarTile
             // 
             this.AceptarTile.ActiveControl = null;
-            this.AceptarTile.Location = new System.Drawing.Point(120, 123);
-            this.AceptarTile.Margin = new System.Windows.Forms.Padding(2);
+            this.AceptarTile.BackColor = System.Drawing.Color.Violet;
+            this.AceptarTile.Location = new System.Drawing.Point(160, 151);
+            this.AceptarTile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AceptarTile.Name = "AceptarTile";
-            this.AceptarTile.Size = new System.Drawing.Size(78, 43);
+            this.AceptarTile.Size = new System.Drawing.Size(104, 53);
             this.AceptarTile.TabIndex = 3;
             this.AceptarTile.Text = "Aceptar";
             this.AceptarTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AceptarTile.TileImage = ((System.Drawing.Image)(resources.GetObject("AceptarTile.TileImage")));
+            this.AceptarTile.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AceptarTile.UseCustomBackColor = true;
             this.AceptarTile.UseSelectable = true;
+            this.AceptarTile.UseTileImage = true;
             this.AceptarTile.Click += new System.EventHandler(this.AceptarTile_Click);
             // 
             // AtrasTile
             // 
             this.AtrasTile.ActiveControl = null;
-            this.AtrasTile.Location = new System.Drawing.Point(23, 123);
+            this.AtrasTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.AtrasTile.Location = new System.Drawing.Point(31, 151);
+            this.AtrasTile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AtrasTile.Name = "AtrasTile";
-            this.AtrasTile.Size = new System.Drawing.Size(79, 42);
+            this.AtrasTile.Size = new System.Drawing.Size(105, 52);
             this.AtrasTile.TabIndex = 4;
             this.AtrasTile.Text = "Atras";
             this.AtrasTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AtrasTile.TileImage = ((System.Drawing.Image)(resources.GetObject("AtrasTile.TileImage")));
+            this.AtrasTile.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AtrasTile.UseCustomBackColor = true;
             this.AtrasTile.UseSelectable = true;
+            this.AtrasTile.UseTileImage = true;
             this.AtrasTile.Click += new System.EventHandler(this.AtrasTile_Click);
             // 
             // tipoDeFactura
             // 
             this.tipoDeFactura.FormattingEnabled = true;
-            this.tipoDeFactura.ItemHeight = 23;
+            this.tipoDeFactura.ItemHeight = 24;
             this.tipoDeFactura.Items.AddRange(new object[] {
             "Factura A",
             "Remito"});
-            this.tipoDeFactura.Location = new System.Drawing.Point(53, 75);
+            this.tipoDeFactura.Location = new System.Drawing.Point(71, 92);
+            this.tipoDeFactura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tipoDeFactura.Name = "tipoDeFactura";
-            this.tipoDeFactura.Size = new System.Drawing.Size(121, 29);
+            this.tipoDeFactura.Size = new System.Drawing.Size(160, 30);
             this.tipoDeFactura.TabIndex = 5;
             this.tipoDeFactura.UseSelectable = true;
             // 
             // GenerarFactura
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(232, 194);
+            this.ClientSize = new System.Drawing.Size(309, 239);
             this.Controls.Add(this.tipoDeFactura);
             this.Controls.Add(this.AtrasTile);
             this.Controls.Add(this.AceptarTile);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "GenerarFactura";
+            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Generar Factura";
             this.Load += new System.EventHandler(this.GenerarFactura_Load);
             this.ResumeLayout(false);

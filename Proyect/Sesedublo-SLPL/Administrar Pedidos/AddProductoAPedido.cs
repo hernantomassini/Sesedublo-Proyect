@@ -382,5 +382,22 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
 
         }
+
+
+        Validaciones val = new Validaciones();
+        private void Nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNombre(e);
+        }
+
+        private void Cantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNumero(e);
+        }
+
+        private void montoAPagarDelPedido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNumeroDecimal(e);
+        }
     }
 }

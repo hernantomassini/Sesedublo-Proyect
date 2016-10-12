@@ -83,5 +83,18 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
 
         }
+
+
+        Validaciones val = new Validaciones();
+
+        private void nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNombre(e);
+        }
+
+        private void apellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNombre(e);
+        }
     }
 }

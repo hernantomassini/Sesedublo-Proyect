@@ -52,6 +52,7 @@ DROP PROCEDURE IF EXISTS obtenerItemsDeLea;
 DROP PROCEDURE IF EXISTS cargarPedidoCompras;
 DROP PROCEDURE IF EXISTS restaurarStockLea;
 DROP PROCEDURE IF EXISTS borrarPedidoDeLea;
+DROP PROCEDURE IF EXISTS agregarNuevoProducto;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -117,6 +118,7 @@ CREATE TABLE Pedidos (
     pagadoHastaElMomento DECIMAL(7 , 2 ),
     precio DECIMAL(7 , 2 ),
     facturada INT DEFAULT 0,
+    deleted INT DEFAULT 0,
     PRIMARY KEY (id_pedido),
     FOREIGN KEY (comprador)
         REFERENCES Clientes (id_cliente)
@@ -597,7 +599,7 @@ DELIMITER //
 CREATE PROCEDURE obtenerStock (IN _nombre VARCHAR(50)) 
 BEGIN
 
-	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto 
+	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto
 	FROM Stock s INNER JOIN Productos p 
 	ON p.id_producto = s.producto
 	WHERE ((p.nombre LIKE CONCAT("%", "", "%") COLLATE utf8_general_ci ) OR ("" IS NULL OR "" = ""))
@@ -614,7 +616,7 @@ SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AN
 		IF(@_otro_id_producto IS NOT NULL AND _cantidadXBulto = 0) THEN
 			#Es un producto individual existente.
             SET @_cantidadVieja = (SELECT cantidad FROM Productos WHERE id_producto = @_otro_id_producto);
-			UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, costo = _costo, PVUnitario = PVUnitario WHERE id_producto = @_otro_id_producto ;
+			UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, costo = _costo, PVUnitario = _PVUnitario WHERE id_producto = @_otro_id_producto ;
 		ELSE
 			#Es un producto nuevo.
 			INSERT INTO Productos (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto) VALUES (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto);
@@ -757,17 +759,22 @@ BEGIN
         INNER JOIN Clientes c ON p.comprador = c.id_cliente
         INNER JOIN Items i ON p.id_pedido = i.pedido
         INNER JOIN Productos pr ON i.producto = pr.id_producto
-        WHERE p.facturada = 0 OR (p.precio - p.pagadoHastaElMomento) > 0
+        WHERE (p.facturada = 0 OR (p.precio - p.pagadoHastaElMomento) > 0) AND p.deleted = 0
         GROUP BY p.id_pedido;
 END //
 
 CREATE PROCEDURE borrarPedido (IN _id_pedido INT)
 BEGIN
 
-	DELETE FROM Items WHERE pedido = _id_pedido;
-	DELETE FROM Pedidos WHERE id_pedido = _id_pedido;
+	UPDATE Pedidos SET deleted = 1 WHERE id_pedido = _id_pedido;
 
 END //
+
+CREATE PROCEDURE agregarNuevoProducto(IN _nombre VARCHAR(60))
+BEGIN
+	INSERT INTO ListaDeProductos(descripcion) VALUES (_nombre);
+END //
+
 
 CREATE PROCEDURE crearPedido (IN _id_comprador INT, IN _pagadoHastaElMomento DECIMAL(7,2), IN _precio DECIMAL(7,2))
 BEGIN
@@ -878,7 +885,7 @@ END //
 CREATE PROCEDURE obtenerItemsDeLea (IN _id_pedidoLea INT)
 BEGIN
 
-	SELECT p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto, iLea.cantidadDeProductos FROM ItemsDeLea iLea
+	SELECT p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto, iLea.cantidadDeProductos, p.id_producto FROM ItemsDeLea iLea
     INNER JOIN Productos p ON iLea.id_producto = p.id_producto
     WHERE id_pedido = _id_pedidoLea;
 

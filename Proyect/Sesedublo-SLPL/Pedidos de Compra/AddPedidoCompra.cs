@@ -61,6 +61,12 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void agregarBtn_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(Nombre.Text))
+            {
+                Funciones.imprimirMensajeDeError("Debe elegir algún nombre de producto para agregarlo",this);
+            }
+
+            
             decimal utilidad = Convert.ToDecimal(Utilidad.Text);
             decimal costo = Convert.ToDecimal(Costo.Text);
 
@@ -309,6 +315,11 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         private void AddPedidoCompra_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void nuevoProducto_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.NuevoProducto.Show();
         }
     }
 }

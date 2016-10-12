@@ -31,7 +31,6 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
             this.Hide();
             e.Cancel = true;
             Manejador_Formularios.ABM_Usuarios.getData();
-            Manejador_Formularios.ABM_Usuarios.Show();
         }
 
         public void agregarCliente()
@@ -92,6 +91,7 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
             {
                 Conexion.executeProcedure("agregarCliente", Conexion.generarArgumentos("_nombre","_apellido","_mail","_direccion","_telefono", "_localidad", "_cuit", "_razonSocial"), Nombre.Text, Apellido.Text, Mail.Text, Direccion.Text, Telefono.Text, Localidad.Text, CUIT.Text, RazonSocial.Text);
                 Conexion.closeConnection();
+                Manejador_Formularios.AgregarPedido.cargarDGVUsuarios();
             }
             else
             {

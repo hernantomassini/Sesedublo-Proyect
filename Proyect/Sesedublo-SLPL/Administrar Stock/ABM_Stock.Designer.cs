@@ -30,9 +30,9 @@ namespace Sesedublo_SLPL.Administrar_Productos
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Stock));
             this.StockDGV = new MetroFramework.Controls.MetroGrid();
             this.id_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,11 +42,10 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.PVUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PVBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleAtras = new MetroFramework.Controls.MetroTile();
-            this.titleEliminarCliente = new MetroFramework.Controls.MetroTile();
             this.titleAgregarCliente = new MetroFramework.Controls.MetroTile();
-            this.titleModificarCliente = new MetroFramework.Controls.MetroTile();
             this.nombre = new MetroFramework.Controls.MetroTextBox();
             this.nombreLabel = new MetroFramework.Controls.MetroLabel();
+            this.stockOPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.StockDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,14 +58,14 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.StockDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.StockDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.StockDGV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.StockDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.StockDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.StockDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.StockDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_stock,
@@ -74,35 +73,35 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.Producto,
             this.Costo,
             this.PVUnitario,
-            this.PVBulto});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.StockDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            this.PVBulto,
+            this.stockOPedido});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.StockDGV.DefaultCellStyle = dataGridViewCellStyle5;
             this.StockDGV.EnableHeadersVisualStyles = false;
             this.StockDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.StockDGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.StockDGV.Location = new System.Drawing.Point(29, 139);
-            this.StockDGV.Margin = new System.Windows.Forms.Padding(4);
+            this.StockDGV.Location = new System.Drawing.Point(22, 113);
             this.StockDGV.MultiSelect = false;
             this.StockDGV.Name = "StockDGV";
             this.StockDGV.ReadOnly = true;
             this.StockDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.StockDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.StockDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.StockDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.StockDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.StockDGV.Size = new System.Drawing.Size(749, 305);
+            this.StockDGV.Size = new System.Drawing.Size(562, 248);
             this.StockDGV.TabIndex = 4;
             // 
             // id_stock
@@ -121,7 +120,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.ReadOnly = true;
             this.Cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Cantidad.Width = 82;
+            this.Cantidad.Width = 77;
             // 
             // Producto
             // 
@@ -130,7 +129,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.Producto.Name = "Producto";
             this.Producto.ReadOnly = true;
             this.Producto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Producto.Width = 83;
+            this.Producto.Width = 77;
             // 
             // Costo
             // 
@@ -139,7 +138,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.Costo.Name = "Costo";
             this.Costo.ReadOnly = true;
             this.Costo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Costo.Width = 65;
+            this.Costo.Width = 60;
             // 
             // PVUnitario
             // 
@@ -148,7 +147,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.PVUnitario.Name = "PVUnitario";
             this.PVUnitario.ReadOnly = true;
             this.PVUnitario.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PVUnitario.Width = 108;
+            this.PVUnitario.Width = 102;
             // 
             // PVBulto
             // 
@@ -157,16 +156,15 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.PVBulto.Name = "PVBulto";
             this.PVBulto.ReadOnly = true;
             this.PVBulto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PVBulto.Width = 127;
+            this.PVBulto.Width = 121;
             // 
             // titleAtras
             // 
             this.titleAtras.ActiveControl = null;
             this.titleAtras.BackColor = System.Drawing.Color.CadetBlue;
-            this.titleAtras.Location = new System.Drawing.Point(31, 452);
-            this.titleAtras.Margin = new System.Windows.Forms.Padding(4);
+            this.titleAtras.Location = new System.Drawing.Point(23, 367);
             this.titleAtras.Name = "titleAtras";
-            this.titleAtras.Size = new System.Drawing.Size(100, 54);
+            this.titleAtras.Size = new System.Drawing.Size(75, 44);
             this.titleAtras.TabIndex = 8;
             this.titleAtras.Text = "Atrás";
             this.titleAtras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -178,33 +176,13 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.titleAtras.UseTileImage = true;
             this.titleAtras.Click += new System.EventHandler(this.AtrasButton_Click);
             // 
-            // titleEliminarCliente
-            // 
-            this.titleEliminarCliente.ActiveControl = null;
-            this.titleEliminarCliente.BackColor = System.Drawing.Color.IndianRed;
-            this.titleEliminarCliente.Location = new System.Drawing.Point(192, 452);
-            this.titleEliminarCliente.Margin = new System.Windows.Forms.Padding(4);
-            this.titleEliminarCliente.Name = "titleEliminarCliente";
-            this.titleEliminarCliente.Size = new System.Drawing.Size(184, 54);
-            this.titleEliminarCliente.TabIndex = 7;
-            this.titleEliminarCliente.Text = "Eliminar Stock";
-            this.titleEliminarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.titleEliminarCliente.TileImage = ((System.Drawing.Image)(resources.GetObject("titleEliminarCliente.TileImage")));
-            this.titleEliminarCliente.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.titleEliminarCliente.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.titleEliminarCliente.UseCustomBackColor = true;
-            this.titleEliminarCliente.UseSelectable = true;
-            this.titleEliminarCliente.UseTileImage = true;
-            this.titleEliminarCliente.Click += new System.EventHandler(this.EliminarProductoStockBtn_Click);
-            // 
             // titleAgregarCliente
             // 
             this.titleAgregarCliente.ActiveControl = null;
             this.titleAgregarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.titleAgregarCliente.Location = new System.Drawing.Point(595, 452);
-            this.titleAgregarCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.titleAgregarCliente.Location = new System.Drawing.Point(446, 367);
             this.titleAgregarCliente.Name = "titleAgregarCliente";
-            this.titleAgregarCliente.Size = new System.Drawing.Size(184, 54);
+            this.titleAgregarCliente.Size = new System.Drawing.Size(138, 44);
             this.titleAgregarCliente.TabIndex = 6;
             this.titleAgregarCliente.Text = "Agregar Stock";
             this.titleAgregarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -216,33 +194,15 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.titleAgregarCliente.UseTileImage = true;
             this.titleAgregarCliente.Click += new System.EventHandler(this.AgregarProductoStockBtn_Click);
             // 
-            // titleModificarCliente
-            // 
-            this.titleModificarCliente.ActiveControl = null;
-            this.titleModificarCliente.Location = new System.Drawing.Point(384, 452);
-            this.titleModificarCliente.Margin = new System.Windows.Forms.Padding(4);
-            this.titleModificarCliente.Name = "titleModificarCliente";
-            this.titleModificarCliente.Size = new System.Drawing.Size(203, 54);
-            this.titleModificarCliente.TabIndex = 5;
-            this.titleModificarCliente.Text = "Modificar Stock";
-            this.titleModificarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.titleModificarCliente.TileImage = ((System.Drawing.Image)(resources.GetObject("titleModificarCliente.TileImage")));
-            this.titleModificarCliente.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.titleModificarCliente.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.titleModificarCliente.UseSelectable = true;
-            this.titleModificarCliente.UseTileImage = true;
-            this.titleModificarCliente.Click += new System.EventHandler(this.modificarProductoStockBtn_Click);
-            // 
             // nombre
             // 
             // 
             // 
             // 
             this.nombre.CustomButton.Image = null;
-            this.nombre.CustomButton.Location = new System.Drawing.Point(126, 2);
-            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4);
+            this.nombre.CustomButton.Location = new System.Drawing.Point(92, 1);
             this.nombre.CustomButton.Name = "";
-            this.nombre.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.nombre.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.nombre.CustomButton.TabIndex = 1;
             this.nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -251,8 +211,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.nombre.DisplayIcon = true;
             this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
             this.nombre.Lines = new string[0];
-            this.nombre.Location = new System.Drawing.Point(120, 100);
-            this.nombre.Margin = new System.Windows.Forms.Padding(4);
+            this.nombre.Location = new System.Drawing.Point(90, 81);
             this.nombre.MaxLength = 70;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
@@ -262,7 +221,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.nombre.SelectionLength = 0;
             this.nombre.SelectionStart = 0;
             this.nombre.ShortcutsEnabled = true;
-            this.nombre.Size = new System.Drawing.Size(152, 28);
+            this.nombre.Size = new System.Drawing.Size(114, 23);
             this.nombre.TabIndex = 12;
             this.nombre.UseSelectable = true;
             this.nombre.WaterMark = "Buscar";
@@ -274,28 +233,30 @@ namespace Sesedublo_SLPL.Administrar_Productos
             // nombreLabel
             // 
             this.nombreLabel.AutoSize = true;
-            this.nombreLabel.Location = new System.Drawing.Point(29, 100);
-            this.nombreLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.nombreLabel.Location = new System.Drawing.Point(22, 81);
             this.nombreLabel.Name = "nombreLabel";
-            this.nombreLabel.Size = new System.Drawing.Size(64, 20);
+            this.nombreLabel.Size = new System.Drawing.Size(62, 19);
             this.nombreLabel.TabIndex = 11;
             this.nombreLabel.Text = "Nombre:";
             // 
+            // stockOPedido
+            // 
+            this.stockOPedido.HeaderText = "Tipo";
+            this.stockOPedido.Name = "stockOPedido";
+            this.stockOPedido.ReadOnly = true;
+            this.stockOPedido.Visible = false;
+            // 
             // ABM_Stock
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 534);
+            this.ClientSize = new System.Drawing.Size(624, 434);
             this.Controls.Add(this.nombre);
             this.Controls.Add(this.nombreLabel);
             this.Controls.Add(this.titleAtras);
-            this.Controls.Add(this.titleEliminarCliente);
             this.Controls.Add(this.titleAgregarCliente);
-            this.Controls.Add(this.titleModificarCliente);
             this.Controls.Add(this.StockDGV);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ABM_Stock";
-            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Stock";
             this.Load += new System.EventHandler(this.ABM_Stock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.StockDGV)).EndInit();
@@ -314,10 +275,9 @@ namespace Sesedublo_SLPL.Administrar_Productos
         private System.Windows.Forms.DataGridViewTextBoxColumn PVUnitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn PVBulto;
         private MetroTile titleAtras;
-        private MetroTile titleEliminarCliente;
         private MetroTile titleAgregarCliente;
-        private MetroTile titleModificarCliente;
         private MetroTextBox nombre;
         private MetroLabel nombreLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stockOPedido;
     }
 }

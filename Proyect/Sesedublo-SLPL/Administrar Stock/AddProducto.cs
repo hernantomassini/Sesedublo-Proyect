@@ -110,6 +110,12 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         private void AgregarProductoBtn_Click(object sender, EventArgs e)
         {
+
+            if (String.IsNullOrEmpty(Nombre.Text))
+            {
+                Funciones.imprimirMensajeDeError("Debe elegir algún nombre de producto para agregarlo", this);
+            }
+
             int cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
             decimal costo = Convert.ToDecimal(Costo.Text);
             decimal utilidad = Convert.ToDecimal(Utilidad.Text);
@@ -186,6 +192,11 @@ namespace Sesedublo_SLPL.Administrar_Stock
         private void dgvProductos_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
             Nombre.Text = this.dgvProductos.CurrentRow.Cells[0].Value.ToString();
+        }
+
+        private void nuevoProducto_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.NuevoProducto.Show();
         }
     }
 }

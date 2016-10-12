@@ -32,6 +32,20 @@ namespace Sesedublo_SLPL.Generales
             }
         }
 
+        private static NuevoProducto NuevoProducto_Form;
+        public static NuevoProducto NuevoProducto
+        {
+            get
+            {
+                if (NuevoProducto_Form == null)
+                {
+                    NuevoProducto_Form = new NuevoProducto();
+                }
+
+                return NuevoProducto_Form;
+            }
+        }
+
         private static ABM_Pedidos ABM_Pedidos_Form;
         public static ABM_Pedidos ABM_Pedidos
         {

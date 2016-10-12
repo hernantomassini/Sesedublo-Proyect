@@ -44,7 +44,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             cargarDGVUsuarios();
         }
 
-        private void cargarDGVUsuarios()
+        public void cargarDGVUsuarios()
         {
             MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("cargarGrillaClientes", Conexion.generarArgumentos("_nombre", "_apellido", "_direccion"), nombre.Text, apellido.Text, direccion.Text);
             DataTable tablaDeUsuarios = new DataTable("Clientes");

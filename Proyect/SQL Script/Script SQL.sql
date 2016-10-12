@@ -116,6 +116,7 @@ CREATE TABLE Pedidos (
     comprador INT,
     pagadoHastaElMomento DECIMAL(7 , 2 ),
     precio DECIMAL(7 , 2 ),
+    facturada INT DEFAULT 0,
     PRIMARY KEY (id_pedido),
     FOREIGN KEY (comprador)
         REFERENCES Clientes (id_cliente)
@@ -751,12 +752,12 @@ END //
 
 CREATE PROCEDURE obtenerPedidos () 
 BEGIN
-        SELECT p.id_pedido, CONCAT(c.nombre, " ", c.apellido), p.pagadoHastaElMomento, p.precio - p.pagadoHastaElMomento, group_concat(pr.nombre) FROM Pedidos p 
+        SELECT p.id_pedido, CONCAT(c.nombre, " ", c.apellido), p.pagadoHastaElMomento, p.precio - p.pagadoHastaElMomento, group_concat(pr.nombre), p.facturada FROM Pedidos p 
         LEFT JOIN Facturas f ON p.id_pedido = f.pedido
         INNER JOIN Clientes c ON p.comprador = c.id_cliente
         INNER JOIN Items i ON p.id_pedido = i.pedido
         INNER JOIN Productos pr ON i.producto = pr.id_producto
-		WHERE f.pedido IS NULL
+        WHERE p.facturada = 0 OR (p.precio - p.pagadoHastaElMomento) > 0
         GROUP BY p.id_pedido;
 END //
 
@@ -790,7 +791,8 @@ CREATE PROCEDURE generarFactura (IN _id_pedido INT, IN _tipoFactura VARCHAR(60))
 BEGIN
 
 	INSERT INTO Facturas (fecha, tipoDeFactura, pedido) VALUES (CURTIME(), _tipoFactura, _id_pedido);
-    
+    INSERT INTO Operaciones (operacion, descripcion, monto) VALUES ("Generación de factura", "Factura Creada" , 0); 
+    UPDATE Pedidos SET facturada = 1 WHERE _id_pedido = id_pedido;
 END //
 
 CREATE PROCEDURE obtenerDatosDeUnPedido (IN _id_pedido INT)

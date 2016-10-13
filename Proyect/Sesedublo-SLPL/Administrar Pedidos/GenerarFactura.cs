@@ -42,7 +42,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             Conexion.executeProcedure("generarFactura", Conexion.generarArgumentos("_id_pedido", "_tipoFactura"), id_pedido, tipoDeFactura.Text);
             Conexion.closeConnection();
 
-            Funciones.imprimirMensajeDeAviso("La factura se generó correctamente.", this);
+            //Funciones.imprimirMensajeDeAviso("La factura se generó correctamente.", this);
             Close();
 
             Manejador_Formularios.ABM_Pedidos.cargarDGV();

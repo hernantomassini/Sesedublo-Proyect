@@ -117,14 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="Facturada.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="AtrasTile.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAAAyhJREFUWEftlIlL1EEcxf2bvFLx7jC6RELT1NJEzTXFq631Xq9UzDOP9QLtEBFD
+        cQAAEnEB89x6jgAAAyhJREFUWEftlIlL1EEcxf2bvFLx7jC6RELT1NJEzTXFq631Xq9UzDOP9QLtEBFD
         JMUOCYOg8mzxWtfV3XUzMyXLBJXgtW9yRQhst2Ml8MFjd+b3m3mf+f5mxuZQh/pdeT+zBb3TtK4YnDkc
         dDAADL2jzkSjrsj6AAysmMlA21IdaufyrAvAsCqNHC3vyoVZBasBiJVrskTZmw3FwqUzMusAMKRsLg21
         ejkU+hw0LOShyZAv/vPZfvZ6aifs+dgeHn0OcO9xtAyYk5TMSVGhlaFGly6sWMhCgyHbCCHfNdvs5/Nq
@@ -144,7 +141,7 @@
   <data name="AgregarPedidoTile.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAABFNJREFUWEftlvtTlFUYx/lb+qFmmnKGphqD5So3iQEZLgIRcXFRzA0kRKyAkNjG
+        cQAAEnEB89x6jgAABFNJREFUWEftlvtTlFUYx/lb+qFmmnKGphqD5So3iQEZLgIRcXFRzA0kRKyAkNjG
         ZCLGIIxAQiRwWGIXl4gWBHQBcReWy8pF5CboChuschfk2/sceN+hnJWZ4v2hGc/MZ973nPOc83zOOe+e
         WZuX5X9V4m964mx3DDINUmQZjkJuiBPI7DqGdH0sjjR5YDt878uJG564/liNW0tN6F3rwN0NA8Y37zAG
         17vQvapFVKO7eALHWzwEAcNqGwae6pjE8LoB/Wu3oFtuxYcNbuIJHG3eEtAuNLBkJEGJie4VLRMLqxdR
@@ -169,7 +166,7 @@
   <data name="modificarPedidoTile.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAABHJJREFUWEftlm1MlWUYx0+cTcvFyrHMXG9uzDJ7MVvOYg7KtZpJZZpb68VFzQ+2
+        cQAAEnEB89x6jgAABHJJREFUWEftlm1MlWUYx0+cTcvFyrHMXG9uzDJ7MVvOYg7KtZpJZZpb68VFzQ+2
         NKuZmWtrTUoFKWGGiMuhhEiZcBA5dKDDy/EIBwmOj4CCohxQjhwh3skD/ftf9/MA60sbh0N98dquPYeH
         +75///t6uZ/bdMP+D3MXrMWJQ0tg/Dn5Vle8BWUHo2DZHoqcbSbk7rhJuS35vskTUZ4VjbyddyI71sTn
         7TiZ/gKqsmNwLG7KqAgZYwwPnh2Lu1kBCpPDFbC5Mhm9rU6gxwMMduBs4WYlSgQYU4Jjp20fjO7MY1+P
@@ -194,7 +191,7 @@
   <data name="EliminarPedidoTile.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAABX9JREFUWEfVl21QVFUYx/dTTjPWBxtnwlGGHJ3GakZl1EYbLZ10NFOGyhmm0iId
+        cQAAEnEB89x6jgAABX9JREFUWEfVl21QVFUYx/dTTjPWBxtnwlGGHJ3GakZl1EYbLZ10NFOGyhmm0iId
         pReaxsneJl8j3BQLIwwMkNAUTU0BZd1FWBZE5MWQFlgXgUVdwg0kwVEGa/+d5zn33l2WuxuWXzwz/7l3
         d885v//znOeee9Zw37Xqw3EoSVsA0/YpOGGciJPGSayilDk4kxODRksClK73rpVlv4T8hHABmYrqw1Fo
         LFmJttoP4W74HB2ODbhc9zGc5e+griAGtozZKEh8DObkmf/fSMW+GAZX5S5Cp3ML7vT/CCBX6JiiI4p8
@@ -224,7 +221,7 @@
   <data name="FacturarPedidoTile.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAABRdJREFUWEftVltTk1cU5Xf4D3p56TjTmT71uTN96CN1ZDrUyiiKoFMQLArUKiAp
+        cQAAEnEB89x6jgAABRdJREFUWEftVltTk1cU5Xf4D3p56TjTmT71uTN96CN1ZDrUyiiKoFMQLArUKiAp
         qOXmKCqgUQPYmhIQkhYBI+EWkIRwC4QASciFXEkgcln99k6+IClQi/ahM66ZPTnnm+SstdfeZ39JeI//
         DR4MBHBT40et2o+b3Uuo73Li1z4X2kfc6DZ4Ef3af4MSpQsKvR+DM8tMpjcHMWBe5mfKUR9e6JfwSGVB
         ReP0uxdC5GPWVYgIhjew6F5BeGOT9yurYQxPuKCe9aLbFIDkzgiau+bfXghZTEGE8QgJ5DbvGmYsy5z9

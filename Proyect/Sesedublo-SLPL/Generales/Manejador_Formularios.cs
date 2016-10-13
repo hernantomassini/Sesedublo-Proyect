@@ -248,5 +248,18 @@ namespace Sesedublo_SLPL.Generales
                 return GenerarFactura_Form;
             }
         }
+
+        private static ActualizarPago ActualizarPago_Form;
+        public static ActualizarPago ActualizarPago
+        {
+            get
+            {
+                if (ActualizarPago_Form == null)
+                {
+                    ActualizarPago_Form = new ActualizarPago();
+                }
+                return ActualizarPago_Form;
+            }
+        }
     }
 }

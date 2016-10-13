@@ -53,6 +53,8 @@ DROP PROCEDURE IF EXISTS cargarPedidoCompras;
 DROP PROCEDURE IF EXISTS restaurarStockLea;
 DROP PROCEDURE IF EXISTS borrarPedidoDeLea;
 DROP PROCEDURE IF EXISTS agregarNuevoProducto;
+DROP PROCEDURE IF EXISTS cargarDatosActualizarPago;
+DROP PROCEDURE IF EXISTS actualizarPago;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -155,6 +157,7 @@ CREATE TABLE ListaDeProductos (
 
 CREATE TABLE Operaciones (
     id_operacion INT AUTO_INCREMENT,
+    fecha DATETIME,
     operacion VARCHAR(200),
     descripcion VARCHAR(200),
     monto INT,
@@ -717,7 +720,7 @@ BEGIN
 SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
 
     UPDATE Caja SET efectivoActual = (@_efectivo + _montoASumar) WHERE id_caja=1;
-    INSERT INTO Operaciones (operacion, descripcion) VALUES ("Efectivo entrante", _descripcion);
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (CURDATE(), "Efectivo entrante", _descripcion);
 
 END //
 
@@ -727,7 +730,7 @@ BEGIN
 	SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
 
     UPDATE Caja SET efectivoActual = (@_efectivo - _montoARestar) WHERE id_caja=1;
-    INSERT INTO Operaciones (operacion, descripcion) VALUES ("Efectivo saliente", _descripcion);
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (CURDATE(), "Efectivo saliente", _descripcion);
     
 END //
 
@@ -750,7 +753,8 @@ CREATE PROCEDURE cargarGrillaDeOperaciones (IN  _operacion VARCHAR(255), _descri
 BEGIN
 	SELECT operacion AS Operación, descripcion AS Descripción FROM Operaciones
 	WHERE ((descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
-	AND ((operacion LIKE CONCAT("%", _operacion, "%") COLLATE utf8_general_ci ) OR (_operacion IS NULL OR _operacion = ""));
+	AND ((operacion LIKE CONCAT("%", _operacion, "%") COLLATE utf8_general_ci ) OR (_operacion IS NULL OR _operacion = ""))
+    ORDER BY fecha;
 END //
 
 CREATE PROCEDURE obtenerPedidos () 
@@ -936,5 +940,20 @@ WHERE
     id_pedido = _id_pedidoLea;
 
 END //
+
+CREATE PROCEDURE cargarDatosActualizarPago (IN _id_pedido INT)
+BEGIN
+
+	SELECT precio, pagadoHastaElMomento FROM Pedidos WHERE id_pedido = _id_pedido;
+
+END //
+
+CREATE PROCEDURE actualizarPago (IN _id_pedido INT, IN _total_a_pagar DECIMAL(7,2), IN _cantidad_paga DECIMAL(7,2))
+BEGIN
+
+	UPDATE Pedidos SET precio = _total_a_pagar, pagadoHastaElMomento = _cantidad_paga WHERE id_pedido = _id_pedido;
+
+END //
+
 
 DELIMITER ;

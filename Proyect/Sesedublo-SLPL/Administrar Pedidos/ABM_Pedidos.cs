@@ -149,5 +149,21 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             reader.Close();
             Conexion.closeConnection();
         }
+
+        private void ActualizarPagoTile_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow filaDgv = PedidosDGV.CurrentRow;
+
+            if (!Validaciones.validarFilaMarcada(filaDgv, this))
+            {
+                return;
+            }
+
+            int id_pedido = Convert.ToInt32(filaDgv.Cells[0].Value);
+
+            Manejador_Formularios.ActualizarPago.cargarDatos(id_pedido);
+            Manejador_Formularios.ActualizarPago.Show();
+
+        }
     }
 }

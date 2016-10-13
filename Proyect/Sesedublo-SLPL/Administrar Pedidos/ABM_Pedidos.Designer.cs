@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Pedidos));
             this.PedidosDGV = new MetroFramework.Controls.MetroGrid();
             this.IDPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +44,7 @@
             this.modificarPedidoTile = new MetroFramework.Controls.MetroTile();
             this.EliminarPedidoTile = new MetroFramework.Controls.MetroTile();
             this.FacturarPedidoTile = new MetroFramework.Controls.MetroTile();
+            this.ActualizarPagoTile = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.PedidosDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,14 +58,14 @@
             this.PedidosDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PedidosDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.PedidosDGV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PedidosDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PedidosDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.PedidosDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PedidosDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDPedido,
@@ -73,31 +74,31 @@
             this.Debe,
             this.Productos,
             this.Facturada});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PedidosDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PedidosDGV.DefaultCellStyle = dataGridViewCellStyle5;
             this.PedidosDGV.EnableHeadersVisualStyles = false;
             this.PedidosDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.PedidosDGV.GridColor = System.Drawing.Color.White;
             this.PedidosDGV.Location = new System.Drawing.Point(29, 62);
-            this.PedidosDGV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PedidosDGV.Margin = new System.Windows.Forms.Padding(2);
             this.PedidosDGV.MultiSelect = false;
             this.PedidosDGV.Name = "PedidosDGV";
             this.PedidosDGV.ReadOnly = true;
             this.PedidosDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PedidosDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PedidosDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.PedidosDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.PedidosDGV.RowTemplate.Height = 24;
             this.PedidosDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -160,7 +161,7 @@
             this.AtrasTile.ActiveControl = null;
             this.AtrasTile.BackColor = System.Drawing.Color.Teal;
             this.AtrasTile.Location = new System.Drawing.Point(29, 317);
-            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2);
             this.AtrasTile.Name = "AtrasTile";
             this.AtrasTile.Size = new System.Drawing.Size(82, 41);
             this.AtrasTile.TabIndex = 1;
@@ -179,7 +180,7 @@
             this.AgregarPedidoTile.ActiveControl = null;
             this.AgregarPedidoTile.BackColor = System.Drawing.Color.Purple;
             this.AgregarPedidoTile.Location = new System.Drawing.Point(620, 315);
-            this.AgregarPedidoTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AgregarPedidoTile.Margin = new System.Windows.Forms.Padding(2);
             this.AgregarPedidoTile.Name = "AgregarPedidoTile";
             this.AgregarPedidoTile.Size = new System.Drawing.Size(139, 43);
             this.AgregarPedidoTile.TabIndex = 2;
@@ -197,7 +198,7 @@
             this.modificarPedidoTile.ActiveControl = null;
             this.modificarPedidoTile.BackColor = System.Drawing.Color.Green;
             this.modificarPedidoTile.Location = new System.Drawing.Point(471, 315);
-            this.modificarPedidoTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.modificarPedidoTile.Margin = new System.Windows.Forms.Padding(2);
             this.modificarPedidoTile.Name = "modificarPedidoTile";
             this.modificarPedidoTile.Size = new System.Drawing.Size(145, 43);
             this.modificarPedidoTile.TabIndex = 3;
@@ -215,7 +216,7 @@
             this.EliminarPedidoTile.ActiveControl = null;
             this.EliminarPedidoTile.BackColor = System.Drawing.Color.DodgerBlue;
             this.EliminarPedidoTile.Location = new System.Drawing.Point(322, 315);
-            this.EliminarPedidoTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.EliminarPedidoTile.Margin = new System.Windows.Forms.Padding(2);
             this.EliminarPedidoTile.Name = "EliminarPedidoTile";
             this.EliminarPedidoTile.Size = new System.Drawing.Size(145, 43);
             this.EliminarPedidoTile.TabIndex = 4;
@@ -233,7 +234,7 @@
             this.FacturarPedidoTile.ActiveControl = null;
             this.FacturarPedidoTile.BackColor = System.Drawing.Color.RoyalBlue;
             this.FacturarPedidoTile.Location = new System.Drawing.Point(179, 315);
-            this.FacturarPedidoTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FacturarPedidoTile.Margin = new System.Windows.Forms.Padding(2);
             this.FacturarPedidoTile.Name = "FacturarPedidoTile";
             this.FacturarPedidoTile.Size = new System.Drawing.Size(139, 43);
             this.FacturarPedidoTile.TabIndex = 5;
@@ -246,18 +247,31 @@
             this.FacturarPedidoTile.UseTileImage = true;
             this.FacturarPedidoTile.Click += new System.EventHandler(this.FacturarPedidoTile_Click);
             // 
+            // ActualizarPagoTile
+            // 
+            this.ActualizarPagoTile.ActiveControl = null;
+            this.ActualizarPagoTile.Location = new System.Drawing.Point(620, 363);
+            this.ActualizarPagoTile.Name = "ActualizarPagoTile";
+            this.ActualizarPagoTile.Size = new System.Drawing.Size(138, 43);
+            this.ActualizarPagoTile.TabIndex = 6;
+            this.ActualizarPagoTile.Text = "Actualizar pago";
+            this.ActualizarPagoTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ActualizarPagoTile.UseSelectable = true;
+            this.ActualizarPagoTile.Click += new System.EventHandler(this.ActualizarPagoTile_Click);
+            // 
             // ABM_Pedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 384);
+            this.ClientSize = new System.Drawing.Size(776, 416);
+            this.Controls.Add(this.ActualizarPagoTile);
             this.Controls.Add(this.FacturarPedidoTile);
             this.Controls.Add(this.EliminarPedidoTile);
             this.Controls.Add(this.modificarPedidoTile);
             this.Controls.Add(this.AgregarPedidoTile);
             this.Controls.Add(this.AtrasTile);
             this.Controls.Add(this.PedidosDGV);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ABM_Pedidos";
             this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Text = "Pedidos";
@@ -281,5 +295,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Debe;
         private System.Windows.Forms.DataGridViewTextBoxColumn Productos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Facturada;
+        private MetroFramework.Controls.MetroTile ActualizarPagoTile;
     }
 }

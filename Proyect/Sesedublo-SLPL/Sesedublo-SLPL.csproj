@@ -141,6 +141,18 @@
     <Compile Include="Generales\Funciones.cs" />
     <Compile Include="Generales\Manejador_Formularios.cs" />
     <Compile Include="Generales\Validaciones.cs" />
+    <Compile Include="Historial de Facturas\AddNotaDeCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historial de Facturas\AddNotaDeCredito.Designer.cs">
+      <DependentUpon>AddNotaDeCredito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Historial de Facturas\VerRegistroFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historial de Facturas\VerRegistroFactura.Designer.cs">
+      <DependentUpon>VerRegistroFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Historial de Facturas\Ver_Factura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,8 +236,14 @@
     <EmbeddedResource Include="Administrar Usuarios\Agregar_Cliente.resx">
       <DependentUpon>Agregar_Cliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Historial de Facturas\AddNotaDeCredito.resx">
+      <DependentUpon>AddNotaDeCredito.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Historial de Facturas\Historial_de_Facturas.resx">
       <DependentUpon>Historial_de_Facturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Historial de Facturas\VerRegistroFactura.resx">
+      <DependentUpon>VerRegistroFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Historial de Facturas\Ver_Factura.resx">
       <DependentUpon>Ver_Factura.cs</DependentUpon>

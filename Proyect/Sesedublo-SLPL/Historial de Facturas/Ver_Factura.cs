@@ -167,6 +167,11 @@ sender, System.Drawing.Printing.PrintPageEventArgs e)
 
             printButton.Visible = true;
         }
+
+        private void Ver_Factura_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     
 }

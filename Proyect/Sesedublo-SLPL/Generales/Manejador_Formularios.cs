@@ -261,5 +261,31 @@ namespace Sesedublo_SLPL.Generales
                 return ActualizarPago_Form;
             }
         }
+
+        private static AddNotaDeCredito AddNotaDeCredito_Form;
+        public static AddNotaDeCredito AddNotaDeCredito
+        {
+            get
+            {
+                if (AddNotaDeCredito_Form == null)
+                {
+                    AddNotaDeCredito_Form = new AddNotaDeCredito();
+                }
+                return AddNotaDeCredito_Form;
+            }
+        }
+
+        private static VerRegistroFactura VerRegistroFactura_Form;
+        public static VerRegistroFactura VerRegistroFactura
+        {
+            get
+            {
+                if (VerRegistroFactura_Form == null)
+                {
+                    VerRegistroFactura_Form = new VerRegistroFactura();
+                }
+                return VerRegistroFactura_Form;
+            }
+        }
     }
 }

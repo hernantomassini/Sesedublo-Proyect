@@ -83,6 +83,35 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
         {
             val.ingresarNombre(e);
         }
-        
+
+        private void RegistroTile_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow filaDgv = dgvFacturas.CurrentRow;
+
+            if (!Validaciones.validarFilaMarcada(filaDgv, this))
+            {
+                return;
+            }
+
+            int id_factura = Convert.ToInt32(filaDgv.Cells[0].Value);
+
+            Manejador_Formularios.VerRegistroFactura.cargarRegistro(id_factura);
+            Manejador_Formularios.VerRegistroFactura.Show();
+        }
+
+        private void AddNotaCreditoTile_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow filaDgv = dgvFacturas.CurrentRow;
+
+            if (!Validaciones.validarFilaMarcada(filaDgv, this))
+            {
+                return;
+            }
+
+            int id_factura = Convert.ToInt32(filaDgv.Cells[0].Value);
+
+            Manejador_Formularios.AddNotaDeCredito.agregarNotaCredito(id_factura);
+            Manejador_Formularios.AddNotaDeCredito.Show();
+        }
     }
 }

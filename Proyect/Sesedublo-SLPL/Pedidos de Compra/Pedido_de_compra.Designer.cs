@@ -39,6 +39,7 @@
             this.IDPedidoLea = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Productos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PedidosDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,7 +120,8 @@
             this.PedidosDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDPedidoLea,
             this.Fecha,
-            this.Productos});
+            this.Productos,
+            this.Costo});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -176,6 +178,14 @@
             this.Productos.ReadOnly = true;
             this.Productos.Width = 130;
             // 
+            // Costo
+            // 
+            this.Costo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Costo.HeaderText = "Costo";
+            this.Costo.Name = "Costo";
+            this.Costo.ReadOnly = true;
+            this.Costo.Width = 60;
+            // 
             // Pedido_de_compra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -201,5 +211,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IDPedidoLea;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Productos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
     }
 }

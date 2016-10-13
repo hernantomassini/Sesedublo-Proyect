@@ -18,6 +18,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         Validaciones val = new Validaciones();
         int id_pedidoLea = -1;
         StringBuilder st = new StringBuilder();
+        decimal costo = 0;
 
         public AddPedidoCompra()
         {
@@ -50,6 +51,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             UnidadesXBulto.SelectedIndex = 0;
             dgvPedido.Rows.Clear();
             stockAEliminar.Clear();
+            costo = 0;
 
             if (dgvProductos.Rows.Count != 0)
                 Nombre.Text = this.dgvProductos.Rows[0].Cells[0].Value.ToString();
@@ -84,8 +86,6 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             }
             else
             {
-
-
                 decimal utilidad = Convert.ToDecimal(Utilidad.Text);
                 decimal costo = Convert.ToDecimal(Costo.Text);
 
@@ -101,7 +101,8 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                     cantidad = Cantidad.Text + " bultos de " + cantXBulto + " unidades";
                 }
 
-                dgvPedido.Rows.Add(cantXBulto, Nombre.Text, Costo.Text, precio, cantidad);
+                dgvPedido.Rows.Add(cantXBulto, Nombre.Text, costo, precio, cantidad);
+                this.costo = this.costo + costo * Convert.ToInt32(Cantidad.Text);
             }
         }
 
@@ -114,6 +115,10 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 return;
             }
 
+            decimal costoDeleteado = Convert.ToDecimal(filaDgv.Cells[2].Value);
+            int cantidadDeleteada = obtenerCantidadEnInt(Convert.ToString(filaDgv.Cells[4].Value));
+
+            this.costo = this.costo - costoDeleteado * cantidadDeleteada;
             dgvPedido.Rows.Remove(filaDgv);
         }
 
@@ -121,14 +126,26 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         {
             Funciones.limpiarDGV(dgvPedido);
 
-            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerItemsDeLea", Conexion.generarArgumentos("_id_pedidoLea"), id_pedidoLea);
+            string query = "SELECT costo FROM PedidosDeLea WHERE id_pedido = " + id_pedidoLea;
+
+            MySqlDataReader reader = Conexion.ejecutarQuery(query);
+
+            reader.Read();
+            this.costo = reader.GetDecimal(0);
+
+            reader.Close();
+            Conexion.closeConnection();
+
+            reader = Conexion.executeProcedureWithReader("obtenerItemsDeLea", Conexion.generarArgumentos("_id_pedidoLea"), id_pedidoLea);
+
+
             int cantXBulto;
             decimal precio;
             string cantidadString;
             int cantidad;
 
             while (reader.Read())
-            {   
+            {
                 cantXBulto = reader.GetInt32(0);
                 cantidad = reader.GetInt32(5);
 
@@ -173,6 +190,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 PrecioLabel.Text = "Precio por bulto:";
                 UnidadesXBultoLbl.Visible = true;
                 UnidadesXBulto.Visible = true;
+                UnidadesXBulto.SelectedIndex = 0;
             }
         }
 
@@ -241,7 +259,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             decimal PVBulto;
             int cantXBulto;
 
-            reader = Conexion.executeProcedureWithReader("crearPedidoDeLea", Conexion.generarArgumentos());
+            reader = Conexion.executeProcedureWithReader("crearPedidoDeLea", Conexion.generarArgumentos("_costo"), this.costo);
             reader.Read();
 
             int id_pedidoDeLea = reader.GetInt32(0);

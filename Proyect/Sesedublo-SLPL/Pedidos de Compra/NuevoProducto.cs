@@ -19,7 +19,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void titleCancelar_Click(object sender, EventArgs e)
         {
-            this.Closing += new CancelEventHandler(Avoid_Closing);
+            Close();
         }
 
         void Avoid_Closing(object sender, CancelEventArgs e)

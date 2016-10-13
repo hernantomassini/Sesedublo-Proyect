@@ -76,6 +76,7 @@ CREATE TABLE Productos (
 CREATE TABLE PedidosDeLea (
     id_pedido INT AUTO_INCREMENT,
     fecha DATETIME,
+    costo DECIMAL(7 , 2 ),
     PRIMARY KEY (id_pedido)
 );
 
@@ -711,7 +712,7 @@ BEGIN
 	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""));
 END //
 
-CREATE PROCEDURE agregarEfectivo (IN _montoASumar INT, _descripcion VARCHAR(60)) 
+CREATE PROCEDURE agregarEfectivo (IN _montoASumar INT, _descripcion VARCHAR(200)) 
 BEGIN
 
 SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
@@ -721,7 +722,7 @@ SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
 
 END //
 
-CREATE PROCEDURE restarEfectivo (IN _montoARestar INT, _descripcion VARCHAR(60)) 
+CREATE PROCEDURE restarEfectivo (IN _montoARestar INT, _descripcion VARCHAR(200)) 
 BEGIN
 
 	SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
@@ -865,11 +866,12 @@ BEGIN
     ORDER BY descripcion;
 END //
 
-CREATE PROCEDURE crearPedidoDeLea ()
+CREATE PROCEDURE crearPedidoDeLea (IN _costo DECIMAL(7,2))
 BEGIN
 
-	INSERT INTO PedidosDeLea (fecha) VALUES (CURTIME());
+	INSERT INTO PedidosDeLea (fecha, costo) VALUES (CURTIME(), _costo);
 	SELECT LAST_INSERT_ID();
+    CALL restarEfectivo (_costo , CONCAT("Se realizo una pedido de compra por el valor de ", _costo, "$, en el día ", CURDATE(), "."));
 
 END //
 
@@ -877,8 +879,8 @@ CREATE PROCEDURE crearItemDeLea (IN _id_pedidoLea INT, IN _cantidad INT, IN _can
 BEGIN
     
 	CALL agregarStock (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto); 
-    SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre);
-    
+    SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AND cantidadXBulto = _cantidadXBulto);
+
     INSERT INTO ItemsDeLea (id_pedido, id_producto, cantidadDeProductos) VALUES (_id_pedidoLea, @_id_producto, _cantidad);
 
 END //
@@ -888,14 +890,15 @@ BEGIN
 
 	SELECT p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto, iLea.cantidadDeProductos, p.id_producto FROM ItemsDeLea iLea
     INNER JOIN Productos p ON iLea.id_producto = p.id_producto
-    WHERE id_pedido = _id_pedidoLea;
+    INNER JOIN PedidosDeLea pdl ON pdl.id_pedido = iLea.id_pedido
+    WHERE pdl.id_pedido = _id_pedidoLea;
 
 END //
 
 CREATE PROCEDURE cargarPedidoCompras ()
 BEGIN
 
-	SELECT p.id_pedido, p.fecha, group_concat(pr.nombre) FROM PedidosDeLea p 
+	SELECT p.id_pedido, p.fecha, group_concat(pr.nombre), p.costo FROM PedidosDeLea p 
     INNER JOIN ItemsDeLea i ON p.id_pedido = i.id_pedido
     INNER JOIN Productos pr ON pr.id_producto = i.id_producto
     GROUP BY p.id_pedido;
@@ -913,6 +916,11 @@ END //
 
 CREATE PROCEDURE borrarPedidoDeLea (IN _id_pedidoLea INT)
 BEGIN
+
+SET @_fecha = (SELECT fecha FROM PedidosDeLea WHERE id_pedido = _id_pedidoLea);
+SET @_costoARestaurar = (SELECT costo FROM PedidosDeLea WHERE id_pedido = _id_pedidoLea);
+
+	CALL agregarEfectivo (@_costoARestaurar, CONCAT("Manejo interno del programa. Se esta modificando un pedido de compra cuya fecha es ", @_fecha, "."));
 
 	DELETE FROM ItemsDeLea WHERE id_pedido = _id_pedidoLea;
     DELETE FROM PedidosDeLea WHERE id_pedido = _id_pedidoLea;

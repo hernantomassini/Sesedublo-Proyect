@@ -28,7 +28,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
             while (reader.Read())
             {
-                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetDateTime(1).ToShortDateString(), reader.GetString(2));
+                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetDateTime(1).ToShortDateString(), reader.GetString(2), reader.GetDecimal(3));
             }
 
             reader.Close();

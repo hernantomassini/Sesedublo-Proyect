@@ -1,14 +1,9 @@
 ﻿using MetroFramework.Forms;
+using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Pedidos_de_Compra
 {
@@ -19,6 +14,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         public NuevoProducto()
         {
             InitializeComponent();
+            this.Closing += new CancelEventHandler(Avoid_Closing);
         }
 
         private void titleCancelar_Click(object sender, EventArgs e)
@@ -40,14 +36,35 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             {
                 Funciones.imprimirMensajeDeError(st.ToString(), this);
                 st = new StringBuilder();
+                return;
             }
-            else
+
+            string query = "SELECT 1 FROM ListaDeProductos WHERE descripcion = '" + Nombre.Text + "'";
+
+            MySqlDataReader reader = Conexion.ejecutarQuery(query);
+
+            if(reader.HasRows)
             {
-                Conexion.executeProcedure("agregarNuevoProducto", Conexion.generarArgumentos("_nombre"), Nombre.Text);
+                Funciones.imprimirMensajeDeError("El producto que se quiere ingresar ya existe.", this);
                 Conexion.closeConnection();
-                Nombre.Clear();
-                this.Hide();
+                reader.Close();
+                return;
             }
+
+            Conexion.closeConnection();
+            reader.Close();
+
+            Conexion.executeProcedure("agregarNuevoProducto", Conexion.generarArgumentos("_nombre"), Nombre.Text);
+            Conexion.closeConnection();
+            Nombre.Clear();
+            Manejador_Formularios.AddPedidoCompra.getProductos();
+            this.Hide();
+
+        }
+
+        private void NuevoProducto_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

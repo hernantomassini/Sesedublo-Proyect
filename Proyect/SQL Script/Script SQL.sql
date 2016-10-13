@@ -776,7 +776,6 @@ BEGIN
 	INSERT INTO ListaDeProductos(descripcion) VALUES (_nombre);
 END //
 
-
 CREATE PROCEDURE crearPedido (IN _id_comprador INT, IN _pagadoHastaElMomento DECIMAL(7,2), IN _precio DECIMAL(7,2))
 BEGIN
 
@@ -862,7 +861,8 @@ END //
 CREATE PROCEDURE obtenerLista (IN _nombre VARCHAR(60))
 BEGIN
 	SELECT descripcion AS Descripción FROM ListaDeProductos
-	WHERE ((descripcion LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""));
+	WHERE ((descripcion LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+    ORDER BY descripcion;
 END //
 
 CREATE PROCEDURE crearPedidoDeLea ()

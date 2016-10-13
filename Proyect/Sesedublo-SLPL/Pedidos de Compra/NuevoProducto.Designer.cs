@@ -93,6 +93,7 @@
             this.Nombre.MaxLength = 70;
             this.Nombre.Name = "Nombre";
             this.Nombre.PasswordChar = '\0';
+            this.Nombre.PromptText = "Ingrese el nombre";
             this.Nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Nombre.SelectedText = "";
             this.Nombre.SelectionLength = 0;
@@ -125,6 +126,7 @@
             this.Controls.Add(this.titleAceptar);
             this.Name = "NuevoProducto";
             this.Text = "Nuevo Producto";
+            this.Load += new System.EventHandler(this.NuevoProducto_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

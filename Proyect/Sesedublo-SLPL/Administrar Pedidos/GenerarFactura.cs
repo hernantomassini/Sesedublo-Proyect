@@ -42,6 +42,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             Conexion.executeProcedure("generarFactura", Conexion.generarArgumentos("_id_pedido", "_tipoFactura"), id_pedido, tipoDeFactura.Text);
             Conexion.closeConnection();
 
+            //Si se descomenta esta línea, va a aparecer la ventana transparente random!
             //Funciones.imprimirMensajeDeAviso("La factura se generó correctamente.", this);
             Close();
 

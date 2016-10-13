@@ -54,5 +54,18 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
             Close();
         }
+
+
+        Validaciones val = new Validaciones();
+
+        private void cantidadAPagar_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            val.ingresarNumeroDecimal(e);
+        }
+
+        private void cantidadPagada_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            val.ingresarNumeroDecimal(e);
+        }
     }
 }

@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActualizarPago));
             this.cantidadAPagar = new MetroFramework.Controls.MetroTextBox();
             this.cantidadPagada = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.CancelarTile = new MetroFramework.Controls.MetroTile();
-            this.AceptarTile = new MetroFramework.Controls.MetroTile();
+            this.titleCancelar = new MetroFramework.Controls.MetroTile();
+            this.titleAceptar = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
             // 
             // cantidadAPagar
@@ -65,6 +66,7 @@
             this.cantidadAPagar.UseSelectable = true;
             this.cantidadAPagar.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.cantidadAPagar.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.cantidadAPagar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cantidadAPagar_KeyPress);
             // 
             // cantidadPagada
             // 
@@ -95,13 +97,14 @@
             this.cantidadPagada.UseSelectable = true;
             this.cantidadPagada.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.cantidadPagada.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.cantidadPagada.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cantidadPagada_KeyPress);
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.Location = new System.Drawing.Point(55, 114);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(115, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(116, 19);
             this.metroLabel1.TabIndex = 2;
             this.metroLabel1.Text = "Cantidad a pagar:";
             // 
@@ -114,43 +117,55 @@
             this.metroLabel2.TabIndex = 3;
             this.metroLabel2.Text = "Cantidad pagada:";
             // 
-            // CancelarTile
+            // titleCancelar
             // 
-            this.CancelarTile.ActiveControl = null;
-            this.CancelarTile.Location = new System.Drawing.Point(24, 253);
-            this.CancelarTile.Name = "CancelarTile";
-            this.CancelarTile.Size = new System.Drawing.Size(98, 40);
-            this.CancelarTile.TabIndex = 4;
-            this.CancelarTile.Text = "Cancelar";
-            this.CancelarTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CancelarTile.UseSelectable = true;
-            this.CancelarTile.Click += new System.EventHandler(this.CancelarTile_Click);
+            this.titleCancelar.ActiveControl = null;
+            this.titleCancelar.BackColor = System.Drawing.Color.DarkRed;
+            this.titleCancelar.Location = new System.Drawing.Point(55, 208);
+            this.titleCancelar.Name = "titleCancelar";
+            this.titleCancelar.Size = new System.Drawing.Size(102, 41);
+            this.titleCancelar.TabIndex = 12;
+            this.titleCancelar.Text = "Cancelar";
+            this.titleCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.titleCancelar.TileImage = ((System.Drawing.Image)(resources.GetObject("titleCancelar.TileImage")));
+            this.titleCancelar.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.titleCancelar.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.titleCancelar.UseCustomBackColor = true;
+            this.titleCancelar.UseSelectable = true;
+            this.titleCancelar.UseTileImage = true;
+            this.titleCancelar.Click += new System.EventHandler(this.CancelarTile_Click);
             // 
-            // AceptarTile
+            // titleAceptar
             // 
-            this.AceptarTile.ActiveControl = null;
-            this.AceptarTile.Location = new System.Drawing.Point(283, 253);
-            this.AceptarTile.Name = "AceptarTile";
-            this.AceptarTile.Size = new System.Drawing.Size(98, 40);
-            this.AceptarTile.TabIndex = 5;
-            this.AceptarTile.Text = "Aceptar";
-            this.AceptarTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AceptarTile.UseSelectable = true;
-            this.AceptarTile.Click += new System.EventHandler(this.AceptarTile_Click);
+            this.titleAceptar.ActiveControl = null;
+            this.titleAceptar.BackColor = System.Drawing.Color.Green;
+            this.titleAceptar.Location = new System.Drawing.Point(173, 208);
+            this.titleAceptar.Name = "titleAceptar";
+            this.titleAceptar.Size = new System.Drawing.Size(99, 41);
+            this.titleAceptar.TabIndex = 11;
+            this.titleAceptar.Text = "Aceptar";
+            this.titleAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.titleAceptar.TileImage = ((System.Drawing.Image)(resources.GetObject("titleAceptar.TileImage")));
+            this.titleAceptar.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.titleAceptar.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.titleAceptar.UseCustomBackColor = true;
+            this.titleAceptar.UseSelectable = true;
+            this.titleAceptar.UseTileImage = true;
+            this.titleAceptar.Click += new System.EventHandler(this.AceptarTile_Click);
             // 
             // ActualizarPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 316);
-            this.Controls.Add(this.AceptarTile);
-            this.Controls.Add(this.CancelarTile);
+            this.ClientSize = new System.Drawing.Size(339, 282);
+            this.Controls.Add(this.titleCancelar);
+            this.Controls.Add(this.titleAceptar);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.cantidadPagada);
             this.Controls.Add(this.cantidadAPagar);
             this.Name = "ActualizarPago";
-            this.Text = "ActualizarPago";
+            this.Text = "Actualizar Pago";
             this.Load += new System.EventHandler(this.ActualizarPago_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -163,7 +178,7 @@
         private MetroFramework.Controls.MetroTextBox cantidadPagada;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroTile CancelarTile;
-        private MetroFramework.Controls.MetroTile AceptarTile;
+        private MetroFramework.Controls.MetroTile titleCancelar;
+        private MetroFramework.Controls.MetroTile titleAceptar;
     }
 }

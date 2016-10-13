@@ -44,9 +44,9 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
             //Si se descomenta esta línea, va a aparecer la ventana transparente random!
             //Funciones.imprimirMensajeDeAviso("La factura se generó correctamente.", this);
+            Manejador_Formularios.ABM_Pedidos.cargarDGV();
             Close();
 
-            Manejador_Formularios.ABM_Pedidos.cargarDGV();
         }
 
         private void AtrasTile_Click(object sender, EventArgs e)

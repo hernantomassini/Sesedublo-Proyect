@@ -1,11 +1,14 @@
 ﻿using MetroFramework.Forms;
+using MySql.Data.MySqlClient;
 using System;
 using System.ComponentModel;
+using System.Data;
 
 namespace Sesedublo_SLPL.Historial_de_Facturasns
 {
     public partial class VerRegistroFactura : MetroForm
     {
+        int id_factura = -1;
         public VerRegistroFactura()
         {
             InitializeComponent();
@@ -23,9 +26,18 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
 
         }
 
-        public void cargarRegistro(int id_factura)
+        public void cargarRegistro(int _id_factura)
         {
             //TODO - Cargar DGV con los datos de las notas de credito valor - motivo
+            this.id_factura = _id_factura;
+
+            MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("cargarNotasDeCredito", Conexion.generarArgumentos("_id_factura"), id_factura);
+            DataTable tablaDeNotasDeCredito = new DataTable("NotasDeCredito");
+            da.Fill(tablaDeNotasDeCredito);
+            registrosDGV.DataSource = tablaDeNotasDeCredito.DefaultView;
+            registrosDGV.Columns[0].Visible = false;
+            Conexion.closeConnection();
+
         }
 
         private void CerrarTile_Click(object sender, EventArgs e)

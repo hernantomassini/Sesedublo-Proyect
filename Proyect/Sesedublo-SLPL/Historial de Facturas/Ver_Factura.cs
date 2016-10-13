@@ -49,8 +49,8 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             }
             reader.Close();
 
-            fechaActualImp.Text = DateTime.Now.ToShortDateString();
-            fechaVencimiento.Text = DateTime.Now.AddDays(29).ToShortDateString();
+            fechaActualImp.Text = "FECHA DE IMPRESIÓN: " + DateTime.Now.ToShortDateString();
+            fechaVencimiento.Text = "FECHA DE VENCIMIENTO: " + DateTime.Now.AddDays(29).ToShortDateString();
             Conexion.closeConnection();
         }
 
@@ -73,11 +73,11 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             {
                 if (reader.GetString(0) != "") { tipoFactura.Text = reader.GetString(0); };
                 double iva = Convert.ToDouble(reader.GetDecimal(1)) * 0.21;
-                if (tipoFactura.Text.Equals("Factura A"))
+                if (tipoFactura.Text.Equals("A"))
                 {
                     if (reader.GetString(1) != "") { subTotal.Text = Convert.ToString(reader.GetDecimal(1)); };
                     if (reader.GetString(1) != "") { subTotalPrec.Text = Convert.ToString(reader.GetDecimal(1)); }
-                    ivaCalculado.Text = Convert.ToString(iva) + ",00";
+                    ivaCalculado.Text = Convert.ToString(iva);
 
                     sub.Visible = true;
                     subTotal.Visible = true;
@@ -108,6 +108,9 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             da.Fill(tablaDeFacturas);
             dgvVerFactura.DataSource = tablaDeFacturas.DefaultView;
 
+            dgvVerFactura.Columns[1].Width = 130;
+            dgvVerFactura.Columns[3].Width = 130;
+            dgvVerFactura.Columns[2].Width = 130;
             Conexion.closeConnection();
 
             facturaID.Text = "FACTURA N° 00001-" + Convert.ToString(id_factura);

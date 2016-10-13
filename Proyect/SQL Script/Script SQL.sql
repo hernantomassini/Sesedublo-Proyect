@@ -55,6 +55,8 @@ DROP PROCEDURE IF EXISTS borrarPedidoDeLea;
 DROP PROCEDURE IF EXISTS agregarNuevoProducto;
 DROP PROCEDURE IF EXISTS cargarDatosActualizarPago;
 DROP PROCEDURE IF EXISTS actualizarPago;
+DROP PROCEDURE IF EXISTS agregarNotaDeCredito;
+DROP PROCEDURE IF EXISTS cargarNotasDeCredito;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -160,7 +162,6 @@ CREATE TABLE Operaciones (
     fecha DATETIME,
     operacion VARCHAR(200),
     descripcion VARCHAR(200),
-    monto INT,
     PRIMARY KEY (id_operacion)
 );
 
@@ -168,6 +169,8 @@ CREATE TABLE NotasDeCredito (
     id_NotaDeCredito INT AUTO_INCREMENT,
     factura INT,
     importe DECIMAL(7 , 5 ),
+    motivo VARCHAR(50),
+    fecha DATETIME,
     PRIMARY KEY (id_NotaDeCredito),
     FOREIGN KEY (factura)
         REFERENCES Facturas (id_factura)
@@ -720,7 +723,7 @@ BEGIN
 SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
 
     UPDATE Caja SET efectivoActual = (@_efectivo + _montoASumar) WHERE id_caja=1;
-    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Efectivo entrante", _descripcion);
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Efectivo entrante", CONCAT(_descripcion, " por el valor de $ ", _montoASumar));
 
 END //
 
@@ -730,8 +733,7 @@ BEGIN
 	SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
 
     UPDATE Caja SET efectivoActual = (@_efectivo - _montoARestar) WHERE id_caja=1;
-    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Efectivo saliente", _descripcion);
-    
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Efectivo saliente", CONCAT(_descripcion, " por el valor de $ ", _montoARestar));
 END //
 
 CREATE PROCEDURE obtenerMontoEnEfectivo () 
@@ -751,7 +753,7 @@ END //
 
 CREATE PROCEDURE cargarGrillaDeOperaciones (IN  _operacion VARCHAR(255), _descripcion VARCHAR(50))
 BEGIN
-	SELECT operacion AS Operación, descripcion AS Descripción FROM Operaciones
+	SELECT fecha AS Fecha, operacion AS Operación, descripcion AS Descripción FROM Operaciones
 	WHERE ((descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
 	AND ((operacion LIKE CONCAT("%", _operacion, "%") COLLATE utf8_general_ci ) OR (_operacion IS NULL OR _operacion = ""))
     ORDER BY fecha;
@@ -788,7 +790,7 @@ END //
 CREATE PROCEDURE crearPedido (IN _id_comprador INT, IN _pagadoHastaElMomento DECIMAL(7,2), IN _precio DECIMAL(7,2))
 BEGIN
 
-	CALL agregarEfectivo(_pagadoHastaElMomento, CONCAT("Se creo un pedido en la fecha ", CURDATE(), ". El cliente pagó ", _pagadoHastaElMomento, "$."));
+	CALL agregarEfectivo(_pagadoHastaElMomento, "El cliente pagó ");
 
 	INSERT INTO Pedidos (comprador, pagadoHastaElMomento, precio) VALUES (_id_comprador, _pagadoHastaElMomento, _precio);
 	SELECT LAST_INSERT_ID();
@@ -809,7 +811,7 @@ CREATE PROCEDURE generarFactura (IN _id_pedido INT, IN _tipoFactura VARCHAR(60))
 BEGIN
 
 	INSERT INTO Facturas (fecha, tipoDeFactura, pedido) VALUES (CURTIME(), _tipoFactura, _id_pedido);
-    INSERT INTO Operaciones (operacion, descripcion, monto) VALUES ("Generación de factura", "Factura Creada" , 0); 
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Generación de factura", "Factura Creada"); 
     UPDATE Pedidos SET facturada = 1 WHERE _id_pedido = id_pedido;
 END //
 
@@ -857,9 +859,18 @@ END //
 
 CREATE PROCEDURE obtenerItemsDeFactura (IN _id_factura INT)
 BEGIN
-	SELECT pr.nombre AS Nombre, i.cantidadProductos AS 'Cantidad Total',
+
+	CREATE TEMPORARY TABLE ItemsDeFac(
+		nombre VARCHAR(50),
+        cantidadPr INT DEFAULT 0,
+        precioUnitario DECIMAL(18,2) DEFAULT 0,
+        precioBulto DECIMAL(18,2) DEFAULT 0,
+        precioTotal DECIMAL(18,2) DEFAULT 0
+	);
+	
+	INSERT INTO ItemsDeFac SELECT pr.nombre AS Nombre, i.cantidadProductos AS 'Cantidad Total',
 		   IF(PVBulto = 0, PVUnitario, PVBulto / cantidadXBulto) AS 'Precio Unitario',
-           IF(PVBulto = 0, '-', PVBulto / cantidadXBulto) AS 'Precio Bulto',
+           IF(PVBulto = 0, 0, PVBulto / cantidadXBulto) AS 'Precio Bulto',
 		   IF(PVBulto = 0, PVUnitario * cantidadProductos, PVBulto * cantidadProductos) AS 'Precio Total'
 	FROM Facturas f
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
@@ -867,6 +878,25 @@ BEGIN
     INNER JOIN Productos pr ON pr.id_producto = i.producto
     WHERE f.id_factura = _id_factura
     GROUP BY i.id_item;
+    
+    
+    INSERT INTO ItemsDeFac(nombre,precioTotal) 
+    SELECT "Nota de credito", importe FROM NotasDeCredito
+    WHERE factura = _id_factura;
+    
+	SELECT 
+    nombre AS 'Descripción',
+    IF(cantidadPr = 0, '-', cantidadPr) AS 'Cantidad Total',
+    IF(precioUnitario = 0,
+        '-',
+        precioUnitario) AS 'Precio Unitario',
+    IF(precioBulto = 0, '-', precioBulto) AS 'Precio Bulto',
+    precioTotal AS 'Precio Total'
+FROM
+    ItemsDeFac;
+    
+    DROP TABLE ItemsDeFac;
+    
 END //
 
 CREATE PROCEDURE obtenerLista (IN _nombre VARCHAR(60))
@@ -881,7 +911,7 @@ BEGIN
 
 	INSERT INTO PedidosDeLea (fecha, costo) VALUES (NOW(), _costo);
 	SELECT LAST_INSERT_ID();
-    CALL restarEfectivo (_costo , CONCAT("Se realizo una pedido de compra por el valor de ", _costo, "$, en el día ", CURDATE(), "."));
+    CALL restarEfectivo (_costo , CONCAT("Se realizo una pedido de compra por el valor de "));
 
 END //
 
@@ -960,5 +990,18 @@ SET @_efectivoNuevo = (_cantidad_paga - @_cantidadPagadaVieja);
 	
 END //
 
+CREATE PROCEDURE agregarNotaDeCredito (IN _id_factura INT, _cantidad DECIMAL(7 , 2), _motivo VARCHAR(50))
+BEGIN
+	INSERT INTO NotasDeCredito (factura, importe, motivo, fecha) VALUES (_id_factura, _cantidad, _motivo, NOW());
+	
+END //
+
+CREATE PROCEDURE cargarNotasDeCredito(IN _id_factura INT)
+BEGIN
+
+	SELECT fecha AS Fecha, importe AS Importe, motivo AS Motivo FROM NotasDeCredito
+    WHERE factura = _id_factura;
+	
+END //
 
 DELIMITER ;

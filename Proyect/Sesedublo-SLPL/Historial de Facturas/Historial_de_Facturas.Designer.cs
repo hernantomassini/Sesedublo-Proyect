@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Historial_de_Facturas));
             this.dgvFacturas = new MetroFramework.Controls.MetroGrid();
             this.direccion = new MetroFramework.Controls.MetroTextBox();
@@ -57,23 +57,23 @@
             this.dgvFacturas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvFacturas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvFacturas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFacturas.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFacturas.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFacturas.EnableHeadersVisualStyles = false;
             this.dgvFacturas.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvFacturas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -82,14 +82,14 @@
             this.dgvFacturas.Name = "dgvFacturas";
             this.dgvFacturas.ReadOnly = true;
             this.dgvFacturas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFacturas.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacturas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvFacturas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFacturas.Size = new System.Drawing.Size(655, 323);
@@ -98,6 +98,7 @@
             // 
             // direccion
             // 
+            this.direccion.BackColor = System.Drawing.Color.Lavender;
             // 
             // 
             // 
@@ -113,7 +114,7 @@
             this.direccion.DisplayIcon = true;
             this.direccion.Icon = ((System.Drawing.Image)(resources.GetObject("direccion.Icon")));
             this.direccion.Lines = new string[0];
-            this.direccion.Location = new System.Drawing.Point(105, 165);
+            this.direccion.Location = new System.Drawing.Point(132, 163);
             this.direccion.MaxLength = 60;
             this.direccion.Name = "direccion";
             this.direccion.PasswordChar = '\0';
@@ -125,6 +126,8 @@
             this.direccion.ShortcutsEnabled = true;
             this.direccion.Size = new System.Drawing.Size(139, 23);
             this.direccion.TabIndex = 4;
+            this.direccion.UseCustomBackColor = true;
+            this.direccion.UseCustomForeColor = true;
             this.direccion.UseSelectable = true;
             this.direccion.WaterMark = "Buscar";
             this.direccion.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -133,14 +136,19 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(24, 170);
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel3.ForeColor = System.Drawing.Color.White;
+            this.metroLabel3.Location = new System.Drawing.Point(26, 165);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(66, 19);
+            this.metroLabel3.Size = new System.Drawing.Size(68, 19);
             this.metroLabel3.TabIndex = 15;
             this.metroLabel3.Text = "Dirección:";
+            this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel3.UseCustomForeColor = true;
             // 
             // apellido
             // 
+            this.apellido.BackColor = System.Drawing.Color.Lavender;
             // 
             // 
             // 
@@ -156,7 +164,7 @@
             this.apellido.DisplayIcon = true;
             this.apellido.Icon = ((System.Drawing.Image)(resources.GetObject("apellido.Icon")));
             this.apellido.Lines = new string[0];
-            this.apellido.Location = new System.Drawing.Point(104, 98);
+            this.apellido.Location = new System.Drawing.Point(131, 96);
             this.apellido.MaxLength = 50;
             this.apellido.Name = "apellido";
             this.apellido.PasswordChar = '\0';
@@ -168,6 +176,8 @@
             this.apellido.ShortcutsEnabled = true;
             this.apellido.Size = new System.Drawing.Size(139, 23);
             this.apellido.TabIndex = 2;
+            this.apellido.UseCustomBackColor = true;
+            this.apellido.UseCustomForeColor = true;
             this.apellido.UseSelectable = true;
             this.apellido.WaterMark = "Buscar";
             this.apellido.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -176,6 +186,7 @@
             // 
             // nombre
             // 
+            this.nombre.BackColor = System.Drawing.Color.Lavender;
             // 
             // 
             // 
@@ -191,7 +202,7 @@
             this.nombre.DisplayIcon = true;
             this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
             this.nombre.Lines = new string[0];
-            this.nombre.Location = new System.Drawing.Point(105, 65);
+            this.nombre.Location = new System.Drawing.Point(132, 63);
             this.nombre.MaxLength = 60;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
@@ -203,6 +214,8 @@
             this.nombre.ShortcutsEnabled = true;
             this.nombre.Size = new System.Drawing.Size(139, 23);
             this.nombre.TabIndex = 1;
+            this.nombre.UseCustomBackColor = true;
+            this.nombre.UseCustomForeColor = true;
             this.nombre.UseSelectable = true;
             this.nombre.WaterMark = "Buscar";
             this.nombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -212,24 +225,33 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(24, 102);
+            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel2.ForeColor = System.Drawing.Color.White;
+            this.metroLabel2.Location = new System.Drawing.Point(25, 100);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(61, 19);
             this.metroLabel2.TabIndex = 12;
             this.metroLabel2.Text = "Apellido:";
+            this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel2.UseCustomForeColor = true;
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(24, 70);
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel1.ForeColor = System.Drawing.Color.White;
+            this.metroLabel1.Location = new System.Drawing.Point(26, 68);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(62, 19);
             this.metroLabel1.Style = MetroFramework.MetroColorStyle.Black;
             this.metroLabel1.TabIndex = 11;
             this.metroLabel1.Text = "Nombre:";
+            this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel1.UseCustomForeColor = true;
             // 
             // descripcion
             // 
+            this.descripcion.BackColor = System.Drawing.Color.Lavender;
             // 
             // 
             // 
@@ -245,7 +267,7 @@
             this.descripcion.DisplayIcon = true;
             this.descripcion.Icon = ((System.Drawing.Image)(resources.GetObject("descripcion.Icon")));
             this.descripcion.Lines = new string[0];
-            this.descripcion.Location = new System.Drawing.Point(105, 132);
+            this.descripcion.Location = new System.Drawing.Point(132, 130);
             this.descripcion.MaxLength = 60;
             this.descripcion.Name = "descripcion";
             this.descripcion.PasswordChar = '\0';
@@ -257,6 +279,8 @@
             this.descripcion.ShortcutsEnabled = true;
             this.descripcion.Size = new System.Drawing.Size(139, 23);
             this.descripcion.TabIndex = 3;
+            this.descripcion.UseCustomBackColor = true;
+            this.descripcion.UseCustomForeColor = true;
             this.descripcion.UseSelectable = true;
             this.descripcion.WaterMark = "Buscar";
             this.descripcion.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -265,11 +289,15 @@
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
+            this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.metroLabel6.Location = new System.Drawing.Point(24, 133);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(79, 19);
+            this.metroLabel6.Size = new System.Drawing.Size(82, 19);
             this.metroLabel6.TabIndex = 17;
             this.metroLabel6.Text = "Descripción:";
+            this.metroLabel6.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel6.UseCustomForeColor = true;
             // 
             // metroTile1
             // 
@@ -311,25 +339,37 @@
             // RegistroTile
             // 
             this.RegistroTile.ActiveControl = null;
-            this.RegistroTile.Location = new System.Drawing.Point(270, 551);
+            this.RegistroTile.BackColor = System.Drawing.Color.SkyBlue;
+            this.RegistroTile.Location = new System.Drawing.Point(202, 551);
             this.RegistroTile.Name = "RegistroTile";
-            this.RegistroTile.Size = new System.Drawing.Size(113, 44);
+            this.RegistroTile.Size = new System.Drawing.Size(168, 44);
             this.RegistroTile.TabIndex = 18;
-            this.RegistroTile.Text = "Ver historial";
+            this.RegistroTile.Text = "Ver historial de NC";
             this.RegistroTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.RegistroTile.TileImage = ((System.Drawing.Image)(resources.GetObject("RegistroTile.TileImage")));
+            this.RegistroTile.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.RegistroTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.RegistroTile.UseCustomBackColor = true;
             this.RegistroTile.UseSelectable = true;
+            this.RegistroTile.UseTileImage = true;
             this.RegistroTile.Click += new System.EventHandler(this.RegistroTile_Click);
             // 
             // AddNotaCreditoTile
             // 
             this.AddNotaCreditoTile.ActiveControl = null;
-            this.AddNotaCreditoTile.Location = new System.Drawing.Point(389, 551);
+            this.AddNotaCreditoTile.BackColor = System.Drawing.Color.Teal;
+            this.AddNotaCreditoTile.Location = new System.Drawing.Point(376, 551);
             this.AddNotaCreditoTile.Name = "AddNotaCreditoTile";
-            this.AddNotaCreditoTile.Size = new System.Drawing.Size(170, 44);
+            this.AddNotaCreditoTile.Size = new System.Drawing.Size(183, 44);
             this.AddNotaCreditoTile.TabIndex = 19;
-            this.AddNotaCreditoTile.Text = "Agregar nota de credito";
+            this.AddNotaCreditoTile.Text = "Agregar Nota de Cred.";
             this.AddNotaCreditoTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AddNotaCreditoTile.TileImage = ((System.Drawing.Image)(resources.GetObject("AddNotaCreditoTile.TileImage")));
+            this.AddNotaCreditoTile.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddNotaCreditoTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.AddNotaCreditoTile.UseCustomBackColor = true;
             this.AddNotaCreditoTile.UseSelectable = true;
+            this.AddNotaCreditoTile.UseTileImage = true;
             this.AddNotaCreditoTile.Click += new System.EventHandler(this.AddNotaCreditoTile_Click);
             // 
             // Historial_de_Facturas
@@ -354,6 +394,7 @@
             this.Controls.Add(this.metroLabel1);
             this.Name = "Historial_de_Facturas";
             this.Text = "Facturas";
+            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.TransparencyKey = System.Drawing.Color.LightSkyBlue;
             this.Load += new System.EventHandler(this.Historial_de_Facturas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();

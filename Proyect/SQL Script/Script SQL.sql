@@ -770,7 +770,7 @@ BEGIN
 SET @_montoARemover = (SELECT pagadoHastaElMomento FROM Pedidos WHERE id_pedido = _id_pedido);
 
 	CALL restarEfectivo (@_montoARemover, "Manejo interno del programa - se esta modificando un pedido.");
-	#UPDATE Pedidos SET deleted = 1 WHERE id_pedido = _id_pedido;
+
 	DELETE FROM Items WHERE pedido = _id_pedido;
 	DELETE FROM Pedidos WHERE id_pedido = _id_pedido;
 

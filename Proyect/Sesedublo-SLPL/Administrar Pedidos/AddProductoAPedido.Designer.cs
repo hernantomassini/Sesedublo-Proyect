@@ -98,7 +98,7 @@
             this.ProductosDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.ProductosDGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ProductosDGV.Location = new System.Drawing.Point(17, 113);
-            this.ProductosDGV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ProductosDGV.Margin = new System.Windows.Forms.Padding(2);
             this.ProductosDGV.MultiSelect = false;
             this.ProductosDGV.Name = "ProductosDGV";
             this.ProductosDGV.ReadOnly = true;
@@ -157,7 +157,7 @@
             this.AtrasTile.ActiveControl = null;
             this.AtrasTile.BackColor = System.Drawing.Color.Teal;
             this.AtrasTile.Location = new System.Drawing.Point(18, 528);
-            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2);
             this.AtrasTile.Name = "AtrasTile";
             this.AtrasTile.Size = new System.Drawing.Size(84, 44);
             this.AtrasTile.TabIndex = 2;
@@ -191,6 +191,7 @@
             this.Nombre.MaxLength = 32767;
             this.Nombre.Name = "Nombre";
             this.Nombre.PasswordChar = '\0';
+            this.Nombre.PromptText = "Buscar";
             this.Nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Nombre.SelectedText = "";
             this.Nombre.SelectionLength = 0;
@@ -219,7 +220,7 @@
             this.AgregarTile.ActiveControl = null;
             this.AgregarTile.BackColor = System.Drawing.Color.DarkBlue;
             this.AgregarTile.Location = new System.Drawing.Point(509, 286);
-            this.AgregarTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AgregarTile.Margin = new System.Windows.Forms.Padding(2);
             this.AgregarTile.Name = "AgregarTile";
             this.AgregarTile.Size = new System.Drawing.Size(99, 44);
             this.AgregarTile.TabIndex = 15;
@@ -238,9 +239,9 @@
             // 
             // 
             this.Cantidad.CustomButton.Image = null;
-            this.Cantidad.CustomButton.Location = new System.Drawing.Point(69, 1);
+            this.Cantidad.CustomButton.Location = new System.Drawing.Point(92, 1);
             this.Cantidad.CustomButton.Name = "";
-            this.Cantidad.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.Cantidad.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.Cantidad.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.Cantidad.CustomButton.TabIndex = 1;
             this.Cantidad.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -252,6 +253,7 @@
             this.Cantidad.MaxLength = 5;
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.PasswordChar = '\0';
+            this.Cantidad.PromptText = "Cantidad";
             this.Cantidad.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Cantidad.SelectedText = "";
             this.Cantidad.SelectionLength = 0;
@@ -279,7 +281,7 @@
             this.BorrarTile.ActiveControl = null;
             this.BorrarTile.BackColor = System.Drawing.Color.OrangeRed;
             this.BorrarTile.Location = new System.Drawing.Point(524, 528);
-            this.BorrarTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BorrarTile.Margin = new System.Windows.Forms.Padding(2);
             this.BorrarTile.Name = "BorrarTile";
             this.BorrarTile.Size = new System.Drawing.Size(84, 44);
             this.BorrarTile.TabIndex = 18;
@@ -336,7 +338,7 @@
             this.ItemsDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.ItemsDGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ItemsDGV.Location = new System.Drawing.Point(17, 360);
-            this.ItemsDGV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ItemsDGV.Margin = new System.Windows.Forms.Padding(2);
             this.ItemsDGV.MultiSelect = false;
             this.ItemsDGV.Name = "ItemsDGV";
             this.ItemsDGV.ReadOnly = true;
@@ -394,7 +396,7 @@
             this.FinalizarTile.ActiveControl = null;
             this.FinalizarTile.BackColor = System.Drawing.Color.BlueViolet;
             this.FinalizarTile.Location = new System.Drawing.Point(509, 616);
-            this.FinalizarTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FinalizarTile.Margin = new System.Windows.Forms.Padding(2);
             this.FinalizarTile.Name = "FinalizarTile";
             this.FinalizarTile.Size = new System.Drawing.Size(99, 44);
             this.FinalizarTile.TabIndex = 21;
@@ -422,9 +424,9 @@
             // 
             // 
             this.montoAPagarDelPedido.CustomButton.Image = null;
-            this.montoAPagarDelPedido.CustomButton.Location = new System.Drawing.Point(69, 1);
+            this.montoAPagarDelPedido.CustomButton.Location = new System.Drawing.Point(92, 1);
             this.montoAPagarDelPedido.CustomButton.Name = "";
-            this.montoAPagarDelPedido.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.montoAPagarDelPedido.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.montoAPagarDelPedido.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.montoAPagarDelPedido.CustomButton.TabIndex = 1;
             this.montoAPagarDelPedido.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -436,6 +438,7 @@
             this.montoAPagarDelPedido.MaxLength = 5;
             this.montoAPagarDelPedido.Name = "montoAPagarDelPedido";
             this.montoAPagarDelPedido.PasswordChar = '\0';
+            this.montoAPagarDelPedido.PromptText = "Cantidad";
             this.montoAPagarDelPedido.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.montoAPagarDelPedido.SelectedText = "";
             this.montoAPagarDelPedido.SelectionLength = 0;
@@ -465,9 +468,9 @@
             // 
             // 
             this.cantidadPagada.CustomButton.Image = null;
-            this.cantidadPagada.CustomButton.Location = new System.Drawing.Point(69, 1);
+            this.cantidadPagada.CustomButton.Location = new System.Drawing.Point(92, 1);
             this.cantidadPagada.CustomButton.Name = "";
-            this.cantidadPagada.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.cantidadPagada.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.cantidadPagada.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.cantidadPagada.CustomButton.TabIndex = 1;
             this.cantidadPagada.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -479,6 +482,7 @@
             this.cantidadPagada.MaxLength = 5;
             this.cantidadPagada.Name = "cantidadPagada";
             this.cantidadPagada.PasswordChar = '\0';
+            this.cantidadPagada.PromptText = "Cantidad";
             this.cantidadPagada.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.cantidadPagada.SelectedText = "";
             this.cantidadPagada.SelectionLength = 0;
@@ -522,7 +526,7 @@
             this.Controls.Add(this.nombreLabel);
             this.Controls.Add(this.AtrasTile);
             this.Controls.Add(this.ProductosDGV);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddProductoAPedido";
             this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Text = "Agregar Productos";

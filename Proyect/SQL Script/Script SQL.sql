@@ -120,7 +120,6 @@ CREATE TABLE Pedidos (
     pagadoHastaElMomento DECIMAL(7 , 2 ),
     precio DECIMAL(7 , 2 ),
     facturada INT DEFAULT 0,
-    deleted INT DEFAULT 0,
     PRIMARY KEY (id_pedido),
     FOREIGN KEY (comprador)
         REFERENCES Clientes (id_cliente)
@@ -761,14 +760,19 @@ BEGIN
         INNER JOIN Clientes c ON p.comprador = c.id_cliente
         INNER JOIN Items i ON p.id_pedido = i.pedido
         INNER JOIN Productos pr ON i.producto = pr.id_producto
-        WHERE (p.facturada = 0 OR (p.precio - p.pagadoHastaElMomento) > 0) AND p.deleted = 0
+        WHERE (p.facturada = 0 OR (p.precio - p.pagadoHastaElMomento) > 0)
         GROUP BY p.id_pedido;
 END //
 
 CREATE PROCEDURE borrarPedido (IN _id_pedido INT)
 BEGIN
 
-	UPDATE Pedidos SET deleted = 1 WHERE id_pedido = _id_pedido;
+SET @_montoARemover = (SELECT pagadoHastaElMomento FROM Pedidos WHERE id_pedido = _id_pedido);
+
+	CALL restarEfectivo (@_montoARemover, "Manejo interno del programa - se esta modificando un pedido.");
+	#UPDATE Pedidos SET deleted = 1 WHERE id_pedido = _id_pedido;
+	DELETE FROM Items WHERE pedido = _id_pedido;
+	DELETE FROM Pedidos WHERE id_pedido = _id_pedido;
 
 END //
 
@@ -779,6 +783,8 @@ END //
 
 CREATE PROCEDURE crearPedido (IN _id_comprador INT, IN _pagadoHastaElMomento DECIMAL(7,2), IN _precio DECIMAL(7,2))
 BEGIN
+
+	CALL agregarEfectivo(_pagadoHastaElMomento, CONCAT("Se creo un pedido en la fecha ", CURDATE(), ". El cliente pagó ", _pagadoHastaElMomento, "$."));
 
 	INSERT INTO Pedidos (comprador, pagadoHastaElMomento, precio) VALUES (_id_comprador, _pagadoHastaElMomento, _precio);
 	SELECT LAST_INSERT_ID();
@@ -922,8 +928,12 @@ SET @_costoARestaurar = (SELECT costo FROM PedidosDeLea WHERE id_pedido = _id_pe
 
 	CALL agregarEfectivo (@_costoARestaurar, CONCAT("Manejo interno del programa. Se esta modificando un pedido de compra cuya fecha es ", @_fecha, "."));
 
-	DELETE FROM ItemsDeLea WHERE id_pedido = _id_pedidoLea;
-    DELETE FROM PedidosDeLea WHERE id_pedido = _id_pedidoLea;
+	DELETE FROM ItemsDeLea 
+WHERE
+    id_pedido = _id_pedidoLea;
+DELETE FROM PedidosDeLea 
+WHERE
+    id_pedido = _id_pedidoLea;
 
 END //
 

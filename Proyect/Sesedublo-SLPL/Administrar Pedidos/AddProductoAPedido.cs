@@ -346,8 +346,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         private void montoAPagarDelPedido_TextChanged(object sender, EventArgs e)
         {
-            if(flag == accionesABM.Crear)
-                cantidadPagada.Text = montoAPagarDelPedido.Text;
+
         }
 
         private void updateLabelMoney()
@@ -363,6 +362,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             productosAVender.Clear();
             productosARestockear.Clear();
             ItemsDGV.Rows.Clear();
+            cantidadPagada.Clear();
         }
 
         private void AtrasTile_Click(object sender, EventArgs e)

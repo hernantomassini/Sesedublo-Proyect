@@ -720,7 +720,7 @@ BEGIN
 SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
 
     UPDATE Caja SET efectivoActual = (@_efectivo + _montoASumar) WHERE id_caja=1;
-    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (CURDATE(), "Efectivo entrante", _descripcion);
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Efectivo entrante", _descripcion);
 
 END //
 
@@ -730,7 +730,7 @@ BEGIN
 	SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
 
     UPDATE Caja SET efectivoActual = (@_efectivo - _montoARestar) WHERE id_caja=1;
-    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (CURDATE(), "Efectivo saliente", _descripcion);
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Efectivo saliente", _descripcion);
     
 END //
 
@@ -879,7 +879,7 @@ END //
 CREATE PROCEDURE crearPedidoDeLea (IN _costo DECIMAL(7,2))
 BEGIN
 
-	INSERT INTO PedidosDeLea (fecha, costo) VALUES (CURTIME(), _costo);
+	INSERT INTO PedidosDeLea (fecha, costo) VALUES (NOW(), _costo);
 	SELECT LAST_INSERT_ID();
     CALL restarEfectivo (_costo , CONCAT("Se realizo una pedido de compra por el valor de ", _costo, "$, en el día ", CURDATE(), "."));
 
@@ -951,8 +951,13 @@ END //
 CREATE PROCEDURE actualizarPago (IN _id_pedido INT, IN _total_a_pagar DECIMAL(7,2), IN _cantidad_paga DECIMAL(7,2))
 BEGIN
 
-	UPDATE Pedidos SET precio = _total_a_pagar, pagadoHastaElMomento = _cantidad_paga WHERE id_pedido = _id_pedido;
+SET @_cantidadPagadaVieja = (SELECT pagadoHastaElMomento FROM Pedidos WHERE id_pedido = _id_pedido);
+SET @_efectivoNuevo = (_cantidad_paga - @_cantidadPagadaVieja);
 
+
+	UPDATE Pedidos SET precio = _total_a_pagar, pagadoHastaElMomento = _cantidad_paga WHERE id_pedido = _id_pedido;
+	CALL agregarEfectivo(@_efectivoNuevo, CONCAT("Un cliente pagó ", @_efectivoNuevo, " $ que debía de un pedido en la fecha ", CURDATE(), "."));
+	
 END //
 
 

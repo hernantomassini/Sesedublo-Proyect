@@ -75,6 +75,7 @@ CREATE TABLE Productos (
 
 CREATE TABLE PedidosDeLea (
     id_pedido INT AUTO_INCREMENT,
+    fecha DATETIME,
     PRIMARY KEY (id_pedido)
 );
 
@@ -867,7 +868,7 @@ END //
 CREATE PROCEDURE crearPedidoDeLea ()
 BEGIN
 
-	INSERT INTO PedidosDeLea () VALUES ();
+	INSERT INTO PedidosDeLea (fecha) VALUES (CURTIME());
 	SELECT LAST_INSERT_ID();
 
 END //
@@ -894,7 +895,7 @@ END //
 CREATE PROCEDURE cargarPedidoCompras ()
 BEGIN
 
-	SELECT p.id_pedido ,group_concat(pr.nombre) FROM PedidosDeLea p 
+	SELECT p.id_pedido, p.fecha, group_concat(pr.nombre) FROM PedidosDeLea p 
     INNER JOIN ItemsDeLea i ON p.id_pedido = i.id_pedido
     INNER JOIN Productos pr ON pr.id_producto = i.id_producto
     GROUP BY p.id_pedido;

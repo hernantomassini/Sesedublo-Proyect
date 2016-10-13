@@ -29,7 +29,7 @@ namespace Sesedublo_SLPL.Generales
             return true;
         }
 
-        public void ingresarNumeroDecimal(System.Windows.Forms.KeyPressEventArgs e)
+        public void ingresarNumeroDecimal(KeyPressEventArgs e)
         {
             {
                 String Aceptados = "," + Convert.ToChar(8);
@@ -45,7 +45,7 @@ namespace Sesedublo_SLPL.Generales
             }
         }
 
-        public void ingresarMail(System.Windows.Forms.KeyPressEventArgs e)
+        public void ingresarMail(KeyPressEventArgs e)
         {
             {
                 String Aceptados = "_.,@-" + Convert.ToChar(8);
@@ -61,7 +61,7 @@ namespace Sesedublo_SLPL.Generales
             }
         }
 
-        public void ingresarNumero(System.Windows.Forms.KeyPressEventArgs e)
+        public void ingresarNumero(KeyPressEventArgs e)
         {
             {
                 if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back)
@@ -76,7 +76,7 @@ namespace Sesedublo_SLPL.Generales
         }
 
 
-        public void ingresarNumeroConRaya(System.Windows.Forms.KeyPressEventArgs e)
+        public void ingresarNumeroConRaya(KeyPressEventArgs e)
         {
             {
                 String Aceptados = "-" + Convert.ToChar(8);

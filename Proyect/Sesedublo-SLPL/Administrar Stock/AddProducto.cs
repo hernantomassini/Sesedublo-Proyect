@@ -20,6 +20,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
         {
             InitializeComponent();
             this.getProductos();
+            Nombre.Text = dgvProductos.Rows[0].Cells[0].Value.ToString();
             this.Closing += new CancelEventHandler(Avoid_Closing);
         }
 
@@ -36,10 +37,12 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         }
 
+
         public void AgregarProducto()
         {
             Clean();
             flag = accionesABM.Crear;
+            Nombre.Text = dgvProductos.Rows[0].Cells[0].Value.ToString();
         }
 
         public void ModificarProducto(int id_stock)
@@ -117,7 +120,9 @@ namespace Sesedublo_SLPL.Administrar_Stock
             val.validarNoVacio(Costo, st);
             val.validarNoVacio(Utilidad, st);
             val.validarNoVacio(Cantidad, st);
-            val.validarNoVacio(UnidadesXBulto, st);
+
+            if (bultoRadio.Checked)
+                val.validarNoVacio(UnidadesXBulto, st);
 
             if (st.Length > 0)
             {

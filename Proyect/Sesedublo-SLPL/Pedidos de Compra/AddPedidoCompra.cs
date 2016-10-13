@@ -23,6 +23,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         {
             InitializeComponent();
             this.getProductos();
+            Nombre.Text = dgvProductos.Rows[0].Cells[0].Value.ToString();
             this.Closing += new CancelEventHandler(Avoid_Closing);
         }
 
@@ -38,6 +39,8 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         public void Clean()
         {
             individualRadio.Checked = true;
+
+            buscarProducto.Clear();
             Nombre.Clear();
             Costo.Clear();
             Cantidad.Clear();
@@ -47,6 +50,9 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             UnidadesXBulto.SelectedIndex = 0;
             dgvPedido.Rows.Clear();
             stockAEliminar.Clear();
+
+            if (dgvProductos.Rows.Count != 0)
+                Nombre.Text = this.dgvProductos.Rows[0].Cells[0].Value.ToString();
 
         }
 
@@ -67,7 +73,9 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             val.validarNoVacio(Costo, st);
             val.validarNoVacio(Utilidad, st);
             val.validarNoVacio(Cantidad, st);
-            val.validarNoVacio(UnidadesXBulto, st);
+
+            if(bultoRadio.Checked)
+                val.validarNoVacio(UnidadesXBulto, st);
 
             if (st.Length > 0)
             {
@@ -168,22 +176,22 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             }
         }
 
-        private void Nombre_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        private void Nombre_KeyPress(object sender, KeyPressEventArgs e)
         {
             val.ingresarNombre(e);
         }
 
-        private void Costo_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        private void Costo_KeyPress(object sender, KeyPressEventArgs e)
         {
             val.ingresarNumeroDecimal(e);
         }
 
-        private void Cantidad_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        private void Cantidad_KeyPress(object sender, KeyPressEventArgs e)
         {
             val.ingresarNumero(e);
         }
 
-        private void Precio_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        private void Precio_KeyPress(object sender, KeyPressEventArgs e)
         {
             val.ingresarNumero(e);
         }
@@ -195,7 +203,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 Nombre.Text = this.dgvProductos.CurrentRow.Cells[0].Value.ToString();
         }
 
-        private void dgvProductos_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Nombre.Text = this.dgvProductos.CurrentRow.Cells[0].Value.ToString();
         }

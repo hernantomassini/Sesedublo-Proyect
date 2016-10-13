@@ -37,6 +37,7 @@
             this.AtrasTile = new MetroFramework.Controls.MetroTile();
             this.PedidosDGV = new MetroFramework.Controls.MetroGrid();
             this.IDPedidoLea = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Productos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PedidosDGV)).BeginInit();
             this.SuspendLayout();
@@ -117,6 +118,7 @@
             this.PedidosDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PedidosDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDPedidoLea,
+            this.Fecha,
             this.Productos});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -156,6 +158,15 @@
             this.IDPedidoLea.Name = "IDPedidoLea";
             this.IDPedidoLea.ReadOnly = true;
             this.IDPedidoLea.Visible = false;
+            this.IDPedidoLea.Width = 94;
+            // 
+            // Fecha
+            // 
+            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 60;
             // 
             // Productos
             // 
@@ -188,6 +199,7 @@
         private MetroFramework.Controls.MetroTile AtrasTile;
         private MetroFramework.Controls.MetroGrid PedidosDGV;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDPedidoLea;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Productos;
     }
 }

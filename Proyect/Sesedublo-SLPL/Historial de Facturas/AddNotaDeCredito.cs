@@ -45,6 +45,8 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
 
             Nombre.Text = dgvVerFactura.Rows[0].Cells[1].Value.ToString();
             dgvVerFactura.Columns[0].Visible = false;
+            Cantidad.Clear();
+            Motivo.Clear();
             Conexion.closeConnection();
         }
 
@@ -66,10 +68,21 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             }
             else
             {
+                int cantidad = Convert.ToInt32(Cantidad.Text);
+                if( cantidad > Convert.ToInt32(this.dgvVerFactura.CurrentRow.Cells[2].Value) ){
+                Funciones.imprimirMensajeDeError("No se puede realizar una nota de credito mayor a los items que posee sin nota de credito", this);
+                return;
+                }
                 decimal monto = 0;
-                //if(){
-                //    Convert.ToDecimal(Cantidad.Text) * Convert.ToDecimal(this.dgvVerFactura.CurrentRow.Cells[0].Value)
-                //}
+                decimal precioBultovich = Convert.ToDecimal(this.dgvVerFactura.CurrentRow.Cells[4].Value);
+                if (precioBultovich > 0)
+                {
+                    monto = Convert.ToDecimal(Cantidad.Text) * precioBultovich;
+                }
+                else
+                {
+                    monto = Convert.ToDecimal(Cantidad.Text) * Convert.ToDecimal(this.dgvVerFactura.CurrentRow.Cells[3].Value);
+                }
                 Conexion.executeProcedure("agregarNotaDeCredito", Conexion.generarArgumentos("_id_factura", "_cantidad", "_motivo"), id_factura, monto, Motivo.Text);
                  Conexion.closeConnection();
                  Manejador_Formularios.VerRegistroFactura.cargarRegistro(id_factura);

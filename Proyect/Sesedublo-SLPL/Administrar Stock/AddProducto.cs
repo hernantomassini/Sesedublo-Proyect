@@ -146,7 +146,6 @@ namespace Sesedublo_SLPL.Administrar_Stock
                 }
                 else
                 {
-
                     precioPorBulto = Convert.ToDecimal(Precio.Text);
                     precioPorUnidad = decimal.Round(precioPorBulto / cantXBulto, 2);
                 }

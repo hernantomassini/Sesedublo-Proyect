@@ -54,6 +54,9 @@
     <StartupObject>Sesedublo_SLPL.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BarcodeLib">
+      <HintPath>..\packages\BarcodeLib.1.0.0.22\lib\net20\BarcodeLib.dll</HintPath>
+    </Reference>
     <Reference Include="GlassButton">
       <HintPath>dll\GlassButton.dll</HintPath>
     </Reference>
@@ -66,7 +69,7 @@
     <Reference Include="MetroFramework.Fonts">
       <HintPath>dll\MetroFramework.Fonts.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -279,6 +282,7 @@
     <EmbeddedResource Include="Revisar Caja\Monto_Caja.resx">
       <DependentUpon>Monto_Caja.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -83,13 +83,13 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
                 {
                     monto = Convert.ToDecimal(Cantidad.Text) * Convert.ToDecimal(this.dgvVerFactura.CurrentRow.Cells[3].Value);
                 }
-                Conexion.executeProcedure("agregarNotaDeCredito", Conexion.generarArgumentos("_id_factura", "_cantidad", "_motivo"), id_factura, monto, Motivo.Text);
+                Conexion.executeProcedure("agregarNotaDeCredito", Conexion.generarArgumentos("_id_factura", "_cantidad", "_motivo"), id_factura,decimal.Round(monto, 2), Motivo.Text);
                  Conexion.closeConnection();
                  Manejador_Formularios.VerRegistroFactura.cargarRegistro(id_factura);
                 
                 int id_producto = Convert.ToInt32(this.dgvVerFactura.CurrentRow.Cells[0].Value);
 
-                 Conexion.executeProcedure("agregarCantidad", Conexion.generarArgumentos("_id_producto", "_cantidad", "_id_factura"), id_producto, Convert.ToDecimal(Cantidad.Text), id_factura);
+                 Conexion.executeProcedure("agregarCantidad", Conexion.generarArgumentos("_id_producto", "_cantidad", "_id_factura"), id_producto, Convert.ToInt32(Cantidad.Text), id_factura);
                  Conexion.closeConnection();
                  this.Close();
             }

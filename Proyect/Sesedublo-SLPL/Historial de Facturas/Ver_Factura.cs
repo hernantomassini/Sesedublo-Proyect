@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
+using BarcodeLib;
 
 namespace Sesedublo_SLPL.Historial_de_Facturasns
 {
@@ -36,6 +37,9 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
 
         private void getData()
         {
+            BarcodeLib.Barcode Codigo = new BarcodeLib.Barcode();
+            Codigo.IncludeLabel = true;
+            panel7.BackgroundImage = Codigo.Encode(BarcodeLib.TYPE.CODE128, "2503242523", Color.Black, Color.White, 131, 51);
             fechaAct.Text = "FECHA: " + DateTime.Now.ToShortDateString();
             MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerCliente", Conexion.generarArgumentos("_id_cliente"), id_cliente);
 
@@ -110,6 +114,8 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             da.Fill(tablaDeFacturas);
             dgvVerFactura.DataSource = tablaDeFacturas.DefaultView;
 
+
+            dgvVerFactura.Columns[0].Width = 130;
             dgvVerFactura.Columns[1].Width = 130;
             dgvVerFactura.Columns[3].Width = 130;
             dgvVerFactura.Columns[2].Width = 130;

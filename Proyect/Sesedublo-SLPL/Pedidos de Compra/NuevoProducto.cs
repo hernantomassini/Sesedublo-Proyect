@@ -58,6 +58,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             Conexion.closeConnection();
             Nombre.Clear();
             Manejador_Formularios.AddPedidoCompra.getProductos();
+            Manejador_Formularios.AddProducto.getProductos();
             this.Hide();
 
         }

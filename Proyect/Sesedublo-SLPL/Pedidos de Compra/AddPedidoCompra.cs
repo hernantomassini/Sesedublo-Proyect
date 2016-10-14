@@ -402,5 +402,12 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             else
                 filaDgv.Cells[3].Value = utilidad + costo;
         }
+
+        private void metroLink1_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.ABM_Stock.cargarDGV();
+            Manejador_Formularios.ABM_Stock.Clean();
+            Manejador_Formularios.ABM_Stock.Show();
+        }
     }
 }

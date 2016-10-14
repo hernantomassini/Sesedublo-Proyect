@@ -479,7 +479,7 @@
             this.cantidadPagada.DisplayIcon = true;
             this.cantidadPagada.Lines = new string[0];
             this.cantidadPagada.Location = new System.Drawing.Point(270, 636);
-            this.cantidadPagada.MaxLength = 5;
+            this.cantidadPagada.MaxLength = 90;
             this.cantidadPagada.Name = "cantidadPagada";
             this.cantidadPagada.PasswordChar = '\0';
             this.cantidadPagada.PromptText = "Cantidad";

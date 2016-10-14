@@ -72,17 +72,17 @@ CREATE TABLE Productos (
     id_producto INT AUTO_INCREMENT,
     cantidad INT,
     cantidadXBulto INT,
-    costo DECIMAL(7 , 2 ),
+    costo DECIMAL(10 , 2 ),
     nombre VARCHAR(100),
-    PVUnitario DECIMAL(7 , 2 ),
-    PVBulto DECIMAL(7 , 2 ),
+    PVUnitario DECIMAL(10 , 2 ),
+    PVBulto DECIMAL(10 , 2 ),
     PRIMARY KEY (id_producto)
 );
 
 CREATE TABLE PedidosDeLea (
     id_pedido INT AUTO_INCREMENT,
     fecha DATETIME,
-    costo DECIMAL(7 , 2 ),
+    costo DECIMAL(10 , 2 ),
     PRIMARY KEY (id_pedido)
 );
 
@@ -123,8 +123,8 @@ CREATE TABLE Stock (
 CREATE TABLE Pedidos (
     id_pedido INT AUTO_INCREMENT,
     comprador INT,
-    pagadoHastaElMomento DECIMAL(7 , 2 ),
-    precio DECIMAL(7 , 2 ),
+    pagadoHastaElMomento DECIMAL(10 , 2 ),
+    precio DECIMAL(10 , 2 ),
     facturada INT DEFAULT 0,
     PRIMARY KEY (id_pedido),
     FOREIGN KEY (comprador)
@@ -171,7 +171,7 @@ CREATE TABLE Operaciones (
 CREATE TABLE NotasDeCredito (
     id_NotaDeCredito INT AUTO_INCREMENT,
     factura INT,
-    importe DECIMAL(7 , 2 ),
+    importe DECIMAL(10 , 2 ),
     motivo VARCHAR(50),
     fecha DATETIME,
     PRIMARY KEY (id_NotaDeCredito),
@@ -617,7 +617,7 @@ BEGIN
 
 END //
 
-CREATE PROCEDURE agregarStock (IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
+CREATE PROCEDURE agregarStock (IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL(10,2)) 
 BEGIN
 
 SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AND cantidadXBulto = _cantidadXBulto AND cantidadXBulto != 0);
@@ -636,12 +636,12 @@ SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AN
     ELSE
 		#Es un Bulto con un _cantidadXBulto ya existente
 		SET @_cantidadVieja = (SELECT cantidad FROM Productos WHERE id_producto = @_id_producto);
-		UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, costo = _costo, PVBulto = _PVBulto WHERE id_producto = @_id_producto;
+		UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, costo = _costo, PVBulto = _PVBulto, PVUnitario = _PVUnitario WHERE id_producto = @_id_producto;
     END IF;
 
 END //
 
-CREATE PROCEDURE modificarStock (IN _id_stock INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL(7,2)) 
+CREATE PROCEDURE modificarStock (IN _id_stock INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL(10,2)) 
 BEGIN
 
 SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
@@ -790,7 +790,7 @@ BEGIN
 	INSERT INTO ListaDeProductos(descripcion) VALUES (_nombre);
 END //
 
-CREATE PROCEDURE crearPedido (IN _id_comprador INT, IN _pagadoHastaElMomento DECIMAL(7,2), IN _precio DECIMAL(7,2))
+CREATE PROCEDURE crearPedido (IN _id_comprador INT, IN _pagadoHastaElMomento DECIMAL(10,2), IN _precio DECIMAL(10,2))
 BEGIN
 
 	CALL agregarEfectivo(_pagadoHastaElMomento, "El cliente pagó ");
@@ -806,7 +806,7 @@ BEGIN
 SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = _id_producto) - _cantidad;
 
 	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = _id_producto;
-	INSERT INTO Items (producto, pedido, cantidadProductos, cantidaDeProductosEdit) VALUES (_id_producto, _id_pedido, _cantidad, _cantidad);
+	INSERT INTO Items (producto, pedido, cantidadProductos, cantidadProductosEdit) VALUES (_id_producto, _id_pedido, _cantidad, _cantidad);
 
 END //
 
@@ -873,8 +873,8 @@ BEGIN
 	
 	INSERT INTO ItemsDeFac SELECT pr.nombre AS Nombre, i.cantidadProductos AS 'Cantidad Total',
 		   IF(PVBulto = 0, PVUnitario, Round(PVBulto / cantidadXBulto, 2)) AS 'Precio Unitario',
-           IF(PVBulto = 0, 0, Round(PVBulto * cantidadXBulto, 2)) AS 'Precio Bulto',
-		   IF(PVBulto = 0, Round(PVUnitario * cantidadProductos, 2), Round(PVBulto * cantidadProductos, 2)) AS 'Precio Total'
+           IF(PVBulto = 0, 0, Round(PVUnitario * cantidadXBulto, 2)) AS 'Precio Bulto',
+		   IF(PVBulto = 0, Round(PVUnitario * i.cantidadProductos, 2), Round(PVBulto * i.cantidadProductos, 2)) AS 'Precio Total'
 	FROM Facturas f
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Items i ON i.pedido = p.id_pedido
@@ -904,9 +904,9 @@ END //
 
 CREATE PROCEDURE obtenerItemsDeFacturaSinNC (IN _id_factura INT)
 BEGIN
-SELECT pr.id_producto, pr.nombre AS Nombre, i.cantidaDeProductosEdit AS 'Cantidad Total',
+SELECT pr.id_producto, pr.nombre AS Nombre, i.cantidadProductosEdit AS 'Cantidad Total',
 		   IF(PVBulto = 0, PVUnitario, Round(PVBulto / cantidadXBulto, 2)) AS 'Precio Unitario',
-           IF(PVBulto = 0, 0, Round(PVBulto * cantidadXBulto, 2)) AS 'Precio Bulto',
+           IF(PVBulto = 0, 0, Round(PVUnitario * cantidadXBulto, 2)) AS 'Precio Bulto',
 		   IF(PVBulto = 0, Round(PVUnitario * cantidadProductos,2), Round(PVBulto * cantidadProductos,2)) AS 'Precio Total'
 	FROM Facturas f
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
@@ -925,16 +925,16 @@ SET
 WHERE
     id_producto = _id_producto;
     
-	SET @_cantidadDePrEdit = ( SELECT cantidadProductosEdit FROM Items INNER JOIN Pedidos p ON i.pedido = p.id_pedido
+	SET @_cantidadDePrEdit = ( SELECT i.cantidadProductosEdit FROM Items i INNER JOIN Pedidos p ON i.pedido = p.id_pedido
 																 INNER JOIN Facturas f ON p.id_pedido = f.pedido 
 																 INNER JOIN Productos pr ON pr.id_producto = i.producto
                                                                  WHERE f.id_factura = _id_factura AND pr.id_producto = _id_producto);
     
-    UPDATE Items 
+    UPDATE Items i
     INNER JOIN Pedidos p ON i.pedido = p.id_pedido
     INNER JOIN Facturas f ON p.id_pedido = f.pedido 
     INNER JOIN Productos pr ON pr.id_producto = i.producto
-    SET cantidadProductosEdit = @_cantidadDePrEdit - cantidad
+    SET i.cantidadProductosEdit = @_cantidadDePrEdit - cantidad
     WHERE f.id_factura = _id_factura AND pr.id_producto = _id_producto;
     
 END//
@@ -946,7 +946,7 @@ BEGIN
     ORDER BY descripcion;
 END //
 
-CREATE PROCEDURE crearPedidoDeLea (IN _costo DECIMAL(7,2))
+CREATE PROCEDURE crearPedidoDeLea (IN _costo DECIMAL(10,2))
 BEGIN
 
 	INSERT INTO PedidosDeLea (fecha, costo) VALUES (NOW(), _costo);
@@ -955,7 +955,7 @@ BEGIN
 
 END //
 
-CREATE PROCEDURE crearItemDeLea (IN _id_pedidoLea INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(7,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(7,2), IN _PVBulto DECIMAL (7,2))
+CREATE PROCEDURE crearItemDeLea (IN _id_pedidoLea INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL (10,2))
 BEGIN
     
 	CALL agregarStock (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto); 
@@ -1018,7 +1018,7 @@ BEGIN
 
 END //
 
-CREATE PROCEDURE actualizarPago (IN _id_pedido INT, IN _total_a_pagar DECIMAL(7,2), IN _cantidad_paga DECIMAL(7,2))
+CREATE PROCEDURE actualizarPago (IN _id_pedido INT, IN _total_a_pagar DECIMAL(10,2), IN _cantidad_paga DECIMAL(10,2))
 BEGIN
 
 SET @_cantidadPagadaVieja = (SELECT pagadoHastaElMomento FROM Pedidos WHERE id_pedido = _id_pedido);
@@ -1030,7 +1030,7 @@ SET @_efectivoNuevo = (_cantidad_paga - @_cantidadPagadaVieja);
 	
 END //
 
-CREATE PROCEDURE agregarNotaDeCredito (IN _id_factura INT, _cantidad DECIMAL(7 , 2), _motivo VARCHAR(50))
+CREATE PROCEDURE agregarNotaDeCredito (IN _id_factura INT, _cantidad DECIMAL(10 , 2), _motivo VARCHAR(50))
 BEGIN
 	INSERT INTO NotasDeCredito (factura, importe, motivo, fecha) VALUES (_id_factura, _cantidad, _motivo, NOW());
 	

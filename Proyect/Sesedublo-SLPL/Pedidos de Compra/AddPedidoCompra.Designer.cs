@@ -65,6 +65,8 @@
             this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UtilidadProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.esBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
@@ -338,7 +340,9 @@
             this.NombreDGV,
             this.Cost,
             this.Price,
-            this.Cant});
+            this.Cant,
+            this.UtilidadProducto,
+            this.esBulto});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -366,6 +370,7 @@
             this.dgvPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPedido.Size = new System.Drawing.Size(640, 266);
             this.dgvPedido.TabIndex = 38;
+            this.dgvPedido.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellValueChanged);
             // 
             // agregarBtn
             // 
@@ -391,7 +396,7 @@
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.Location = new System.Drawing.Point(15, 319);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(101, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(102, 19);
             this.metroLabel2.TabIndex = 40;
             this.metroLabel2.Text = "Lista del Pedido";
             // 
@@ -509,6 +514,22 @@
             this.Cant.Name = "Cant";
             this.Cant.Width = 77;
             // 
+            // UtilidadProducto
+            // 
+            this.UtilidadProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.UtilidadProducto.HeaderText = "Utilidad";
+            this.UtilidadProducto.Name = "UtilidadProducto";
+            this.UtilidadProducto.Width = 71;
+            // 
+            // esBulto
+            // 
+            this.esBulto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.esBulto.HeaderText = "esBulto";
+            this.esBulto.Name = "esBulto";
+            this.esBulto.ReadOnly = true;
+            this.esBulto.Visible = false;
+            this.esBulto.Width = 69;
+            // 
             // AddPedidoCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -583,5 +604,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cost;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UtilidadProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn esBulto;
     }
 }

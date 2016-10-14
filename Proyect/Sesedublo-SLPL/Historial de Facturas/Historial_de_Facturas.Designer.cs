@@ -306,7 +306,7 @@
             this.metroTile1.Location = new System.Drawing.Point(24, 551);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(79, 44);
-            this.metroTile1.TabIndex = 6;
+            this.metroTile1.TabIndex = 8;
             this.metroTile1.Text = "Atrás";
             this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.metroTile1.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile1.TileImage")));
@@ -343,7 +343,7 @@
             this.RegistroTile.Location = new System.Drawing.Point(202, 551);
             this.RegistroTile.Name = "RegistroTile";
             this.RegistroTile.Size = new System.Drawing.Size(168, 44);
-            this.RegistroTile.TabIndex = 18;
+            this.RegistroTile.TabIndex = 7;
             this.RegistroTile.Text = "Ver historial de NC";
             this.RegistroTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.RegistroTile.TileImage = ((System.Drawing.Image)(resources.GetObject("RegistroTile.TileImage")));
@@ -361,7 +361,7 @@
             this.AddNotaCreditoTile.Location = new System.Drawing.Point(376, 551);
             this.AddNotaCreditoTile.Name = "AddNotaCreditoTile";
             this.AddNotaCreditoTile.Size = new System.Drawing.Size(183, 44);
-            this.AddNotaCreditoTile.TabIndex = 19;
+            this.AddNotaCreditoTile.TabIndex = 6;
             this.AddNotaCreditoTile.Text = "Agregar Nota de Cred.";
             this.AddNotaCreditoTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AddNotaCreditoTile.TileImage = ((System.Drawing.Image)(resources.GetObject("AddNotaCreditoTile.TileImage")));

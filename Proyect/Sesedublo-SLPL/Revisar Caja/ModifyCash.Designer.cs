@@ -42,10 +42,10 @@
             this.AceptarTIle.ActiveControl = null;
             this.AceptarTIle.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.AceptarTIle.Location = new System.Drawing.Point(158, 200);
-            this.AceptarTIle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AceptarTIle.Margin = new System.Windows.Forms.Padding(2);
             this.AceptarTIle.Name = "AceptarTIle";
             this.AceptarTIle.Size = new System.Drawing.Size(94, 44);
-            this.AceptarTIle.TabIndex = 3;
+            this.AceptarTIle.TabIndex = 5;
             this.AceptarTIle.Text = "Aceptar";
             this.AceptarTIle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AceptarTIle.TileImage = ((System.Drawing.Image)(resources.GetObject("AceptarTIle.TileImage")));
@@ -61,10 +61,10 @@
             this.AtrasTile.ActiveControl = null;
             this.AtrasTile.BackColor = System.Drawing.Color.MediumTurquoise;
             this.AtrasTile.Location = new System.Drawing.Point(42, 200);
-            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2);
             this.AtrasTile.Name = "AtrasTile";
             this.AtrasTile.Size = new System.Drawing.Size(93, 44);
-            this.AtrasTile.TabIndex = 4;
+            this.AtrasTile.TabIndex = 6;
             this.AtrasTile.Text = "Atras";
             this.AtrasTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AtrasTile.TileImage = ((System.Drawing.Image)(resources.GetObject("AtrasTile.TileImage")));
@@ -80,10 +80,10 @@
             // 
             this.Sumar.AutoSize = true;
             this.Sumar.Location = new System.Drawing.Point(78, 75);
-            this.Sumar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Sumar.Margin = new System.Windows.Forms.Padding(2);
             this.Sumar.Name = "Sumar";
             this.Sumar.Size = new System.Drawing.Size(57, 15);
-            this.Sumar.TabIndex = 5;
+            this.Sumar.TabIndex = 1;
             this.Sumar.Text = "Sumar";
             this.Sumar.UseSelectable = true;
             // 
@@ -91,10 +91,10 @@
             // 
             this.Restar.AutoSize = true;
             this.Restar.Location = new System.Drawing.Point(158, 75);
-            this.Restar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Restar.Margin = new System.Windows.Forms.Padding(2);
             this.Restar.Name = "Restar";
             this.Restar.Size = new System.Drawing.Size(55, 15);
-            this.Restar.TabIndex = 6;
+            this.Restar.TabIndex = 2;
             this.Restar.Text = "Restar";
             this.Restar.UseSelectable = true;
             // 
@@ -104,9 +104,9 @@
             // 
             // 
             this.Motivo.CustomButton.Image = null;
-            this.Motivo.CustomButton.Location = new System.Drawing.Point(49, 1);
+            this.Motivo.CustomButton.Location = new System.Drawing.Point(65, 1);
             this.Motivo.CustomButton.Name = "";
-            this.Motivo.CustomButton.Size = new System.Drawing.Size(52, 56);
+            this.Motivo.CustomButton.Size = new System.Drawing.Size(69, 69);
             this.Motivo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.Motivo.CustomButton.TabIndex = 1;
             this.Motivo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -118,12 +118,14 @@
             this.Motivo.Multiline = true;
             this.Motivo.Name = "Motivo";
             this.Motivo.PasswordChar = '\0';
+            this.Motivo.PromptText = "Ingrese el motivo";
+            this.Motivo.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Motivo.SelectedText = "";
             this.Motivo.SelectionLength = 0;
             this.Motivo.SelectionStart = 0;
             this.Motivo.ShortcutsEnabled = true;
             this.Motivo.Size = new System.Drawing.Size(135, 71);
-            this.Motivo.TabIndex = 2;
+            this.Motivo.TabIndex = 4;
             this.Motivo.UseSelectable = true;
             this.Motivo.WaterMark = "Ingrese el motivo";
             this.Motivo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -136,9 +138,9 @@
             // 
             // 
             this.Monto.CustomButton.Image = null;
-            this.Monto.CustomButton.Location = new System.Drawing.Point(85, 1);
+            this.Monto.CustomButton.Location = new System.Drawing.Point(113, 1);
             this.Monto.CustomButton.Name = "";
-            this.Monto.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.Monto.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.Monto.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.Monto.CustomButton.TabIndex = 1;
             this.Monto.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -149,13 +151,14 @@
             this.Monto.MaxLength = 20;
             this.Monto.Name = "Monto";
             this.Monto.PasswordChar = '\0';
+            this.Monto.PromptText = "Ingrese el monto";
             this.Monto.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Monto.SelectedText = "";
             this.Monto.SelectionLength = 0;
             this.Monto.SelectionStart = 0;
             this.Monto.ShortcutsEnabled = true;
             this.Monto.Size = new System.Drawing.Size(135, 23);
-            this.Monto.TabIndex = 1;
+            this.Monto.TabIndex = 3;
             this.Monto.UseSelectable = true;
             this.Monto.WaterMark = "Ingrese el monto";
             this.Monto.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -173,7 +176,7 @@
             this.Controls.Add(this.Sumar);
             this.Controls.Add(this.AtrasTile);
             this.Controls.Add(this.AceptarTIle);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ModifyCash";
             this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Text = "Modificar Caja";

@@ -37,6 +37,7 @@
             this.dgvVerFactura = new MetroFramework.Controls.MetroGrid();
             this.titleCancelar = new MetroFramework.Controls.MetroTile();
             this.titleAceptar = new MetroFramework.Controls.MetroTile();
+            this.Nombre = new MetroFramework.Controls.MetroTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVerFactura)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +56,7 @@
             this.Cantidad.CustomButton.UseSelectable = true;
             this.Cantidad.CustomButton.Visible = false;
             this.Cantidad.Lines = new string[0];
-            this.Cantidad.Location = new System.Drawing.Point(23, 63);
+            this.Cantidad.Location = new System.Drawing.Point(23, 93);
             this.Cantidad.MaxLength = 32767;
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.PasswordChar = '\0';
@@ -66,7 +67,7 @@
             this.Cantidad.SelectionStart = 0;
             this.Cantidad.ShortcutsEnabled = true;
             this.Cantidad.Size = new System.Drawing.Size(194, 23);
-            this.Cantidad.TabIndex = 0;
+            this.Cantidad.TabIndex = 2;
             this.Cantidad.UseSelectable = true;
             this.Cantidad.WaterMark = "Cantidad";
             this.Cantidad.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -87,7 +88,7 @@
             this.Motivo.CustomButton.UseSelectable = true;
             this.Motivo.CustomButton.Visible = false;
             this.Motivo.Lines = new string[0];
-            this.Motivo.Location = new System.Drawing.Point(23, 92);
+            this.Motivo.Location = new System.Drawing.Point(23, 122);
             this.Motivo.MaxLength = 32767;
             this.Motivo.Multiline = true;
             this.Motivo.Name = "Motivo";
@@ -99,7 +100,7 @@
             this.Motivo.SelectionStart = 0;
             this.Motivo.ShortcutsEnabled = true;
             this.Motivo.Size = new System.Drawing.Size(194, 118);
-            this.Motivo.TabIndex = 1;
+            this.Motivo.TabIndex = 3;
             this.Motivo.UseSelectable = true;
             this.Motivo.WaterMark = "Motivo";
             this.Motivo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -149,17 +150,19 @@
             this.dgvVerFactura.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvVerFactura.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvVerFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVerFactura.Size = new System.Drawing.Size(483, 147);
+            this.dgvVerFactura.Size = new System.Drawing.Size(483, 177);
             this.dgvVerFactura.TabIndex = 4;
+            this.dgvVerFactura.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVerFactura_CellClick);
+            this.dgvVerFactura.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVerFactura_CellContentClick);
             // 
             // titleCancelar
             // 
             this.titleCancelar.ActiveControl = null;
             this.titleCancelar.BackColor = System.Drawing.Color.DarkRed;
-            this.titleCancelar.Location = new System.Drawing.Point(497, 222);
+            this.titleCancelar.Location = new System.Drawing.Point(497, 255);
             this.titleCancelar.Name = "titleCancelar";
             this.titleCancelar.Size = new System.Drawing.Size(102, 41);
-            this.titleCancelar.TabIndex = 12;
+            this.titleCancelar.TabIndex = 5;
             this.titleCancelar.Text = "Cancelar";
             this.titleCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleCancelar.TileImage = ((System.Drawing.Image)(resources.GetObject("titleCancelar.TileImage")));
@@ -174,10 +177,10 @@
             // 
             this.titleAceptar.ActiveControl = null;
             this.titleAceptar.BackColor = System.Drawing.Color.Green;
-            this.titleAceptar.Location = new System.Drawing.Point(615, 222);
+            this.titleAceptar.Location = new System.Drawing.Point(615, 255);
             this.titleAceptar.Name = "titleAceptar";
             this.titleAceptar.Size = new System.Drawing.Size(99, 41);
-            this.titleAceptar.TabIndex = 11;
+            this.titleAceptar.TabIndex = 4;
             this.titleAceptar.Text = "Aceptar";
             this.titleAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleAceptar.TileImage = ((System.Drawing.Image)(resources.GetObject("titleAceptar.TileImage")));
@@ -188,11 +191,45 @@
             this.titleAceptar.UseTileImage = true;
             this.titleAceptar.Click += new System.EventHandler(this.titleAceptar_Click);
             // 
+            // Nombre
+            // 
+            // 
+            // 
+            // 
+            this.Nombre.CustomButton.Image = null;
+            this.Nombre.CustomButton.Location = new System.Drawing.Point(172, 1);
+            this.Nombre.CustomButton.Name = "";
+            this.Nombre.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.Nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Nombre.CustomButton.TabIndex = 1;
+            this.Nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Nombre.CustomButton.UseSelectable = true;
+            this.Nombre.CustomButton.Visible = false;
+            this.Nombre.Enabled = false;
+            this.Nombre.Lines = new string[0];
+            this.Nombre.Location = new System.Drawing.Point(23, 63);
+            this.Nombre.MaxLength = 32767;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.PasswordChar = '\0';
+            this.Nombre.PromptText = "Seleccione un producto";
+            this.Nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Nombre.SelectedText = "";
+            this.Nombre.SelectionLength = 0;
+            this.Nombre.SelectionStart = 0;
+            this.Nombre.ShortcutsEnabled = true;
+            this.Nombre.Size = new System.Drawing.Size(194, 23);
+            this.Nombre.TabIndex = 1;
+            this.Nombre.UseSelectable = true;
+            this.Nombre.WaterMark = "Seleccione un producto";
+            this.Nombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Nombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // AddNotaDeCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(738, 286);
+            this.ClientSize = new System.Drawing.Size(731, 314);
+            this.Controls.Add(this.Nombre);
             this.Controls.Add(this.titleCancelar);
             this.Controls.Add(this.titleAceptar);
             this.Controls.Add(this.dgvVerFactura);
@@ -213,5 +250,6 @@
         private MetroFramework.Controls.MetroGrid dgvVerFactura;
         private MetroFramework.Controls.MetroTile titleCancelar;
         private MetroFramework.Controls.MetroTile titleAceptar;
+        private MetroFramework.Controls.MetroTextBox Nombre;
     }
 }

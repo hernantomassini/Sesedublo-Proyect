@@ -117,7 +117,7 @@
             this.titleAgregarCliente.Location = new System.Drawing.Point(686, 422);
             this.titleAgregarCliente.Name = "titleAgregarCliente";
             this.titleAgregarCliente.Size = new System.Drawing.Size(138, 44);
-            this.titleAgregarCliente.TabIndex = 6;
+            this.titleAgregarCliente.TabIndex = 4;
             this.titleAgregarCliente.Text = "Agregar Cliente";
             this.titleAgregarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleAgregarCliente.TileImage = ((System.Drawing.Image)(resources.GetObject("titleAgregarCliente.TileImage")));
@@ -135,7 +135,7 @@
             this.titleEliminarCliente.Location = new System.Drawing.Point(383, 422);
             this.titleEliminarCliente.Name = "titleEliminarCliente";
             this.titleEliminarCliente.Size = new System.Drawing.Size(138, 44);
-            this.titleEliminarCliente.TabIndex = 4;
+            this.titleEliminarCliente.TabIndex = 6;
             this.titleEliminarCliente.Text = "Eliminar Cliente";
             this.titleEliminarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleEliminarCliente.TileImage = ((System.Drawing.Image)(resources.GetObject("titleEliminarCliente.TileImage")));
@@ -203,6 +203,7 @@
             this.nombre.MaxLength = 60;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
+            this.nombre.PromptText = "Buscar";
             this.nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.nombre.SelectedText = "";
             this.nombre.SelectionLength = 0;
@@ -238,6 +239,9 @@
             this.apellido.MaxLength = 60;
             this.apellido.Name = "apellido";
             this.apellido.PasswordChar = '\0';
+            this.apellido.PromptText = "Buscar";
+            this.apellido.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.apellido.SelectedText = "";
             this.apellido.SelectionLength = 0;
             this.apellido.SelectionStart = 0;
             this.apellido.ShortcutsEnabled = true;
@@ -271,6 +275,7 @@
             this.direccion.MaxLength = 100;
             this.direccion.Name = "direccion";
             this.direccion.PasswordChar = '\0';
+            this.direccion.PromptText = "Buscar";
             this.direccion.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.direccion.SelectedText = "";
             this.direccion.SelectionLength = 0;
@@ -309,7 +314,7 @@
             this.Controls.Add(this.titleAgregarCliente);
             this.Controls.Add(this.titleModificarCliente);
             this.Controls.Add(this.dgvClientes);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ABM_Usuarios";
             this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Text = "Clientes";

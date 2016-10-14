@@ -35,10 +35,6 @@ namespace Sesedublo_SLPL.Administrar_Productos
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Stock));
             this.StockDGV = new MetroFramework.Controls.MetroGrid();
-            this.titleAtras = new MetroFramework.Controls.MetroTile();
-            this.titleAgregarCliente = new MetroFramework.Controls.MetroTile();
-            this.nombre = new MetroFramework.Controls.MetroTextBox();
-            this.nombreLabel = new MetroFramework.Controls.MetroLabel();
             this.id_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +42,10 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.PVUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PVBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stockOPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleAtras = new MetroFramework.Controls.MetroTile();
+            this.titleAgregarCliente = new MetroFramework.Controls.MetroTile();
+            this.nombre = new MetroFramework.Controls.MetroTextBox();
+            this.nombreLabel = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.StockDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,87 +103,6 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.StockDGV.Size = new System.Drawing.Size(562, 248);
             this.StockDGV.TabIndex = 4;
             // 
-            // titleAtras
-            // 
-            this.titleAtras.ActiveControl = null;
-            this.titleAtras.BackColor = System.Drawing.Color.CadetBlue;
-            this.titleAtras.Location = new System.Drawing.Point(23, 367);
-            this.titleAtras.Name = "titleAtras";
-            this.titleAtras.Size = new System.Drawing.Size(75, 44);
-            this.titleAtras.TabIndex = 8;
-            this.titleAtras.Text = "Atrás";
-            this.titleAtras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.titleAtras.TileImage = ((System.Drawing.Image)(resources.GetObject("titleAtras.TileImage")));
-            this.titleAtras.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.titleAtras.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.titleAtras.UseCustomBackColor = true;
-            this.titleAtras.UseSelectable = true;
-            this.titleAtras.UseTileImage = true;
-            this.titleAtras.Click += new System.EventHandler(this.AtrasButton_Click);
-            // 
-            // titleAgregarCliente
-            // 
-            this.titleAgregarCliente.ActiveControl = null;
-            this.titleAgregarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.titleAgregarCliente.Location = new System.Drawing.Point(446, 367);
-            this.titleAgregarCliente.Name = "titleAgregarCliente";
-            this.titleAgregarCliente.Size = new System.Drawing.Size(138, 44);
-            this.titleAgregarCliente.TabIndex = 6;
-            this.titleAgregarCliente.Text = "Agregar Stock";
-            this.titleAgregarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.titleAgregarCliente.TileImage = ((System.Drawing.Image)(resources.GetObject("titleAgregarCliente.TileImage")));
-            this.titleAgregarCliente.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.titleAgregarCliente.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.titleAgregarCliente.UseCustomBackColor = true;
-            this.titleAgregarCliente.UseSelectable = true;
-            this.titleAgregarCliente.UseTileImage = true;
-            this.titleAgregarCliente.Click += new System.EventHandler(this.AgregarProductoStockBtn_Click);
-            // 
-            // nombre
-            // 
-            // 
-            // 
-            // 
-            this.nombre.CustomButton.Image = null;
-            this.nombre.CustomButton.Location = new System.Drawing.Point(92, 1);
-            this.nombre.CustomButton.Name = "";
-            this.nombre.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.nombre.CustomButton.TabIndex = 1;
-            this.nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.nombre.CustomButton.UseSelectable = true;
-            this.nombre.CustomButton.Visible = false;
-            this.nombre.DisplayIcon = true;
-            this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
-            this.nombre.Lines = new string[0];
-            this.nombre.Location = new System.Drawing.Point(90, 81);
-            this.nombre.MaxLength = 70;
-            this.nombre.Name = "nombre";
-            this.nombre.PasswordChar = '\0';
-            this.nombre.PromptText = "Buscar";
-            this.nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.nombre.SelectedText = "";
-            this.nombre.SelectionLength = 0;
-            this.nombre.SelectionStart = 0;
-            this.nombre.ShortcutsEnabled = true;
-            this.nombre.Size = new System.Drawing.Size(114, 23);
-            this.nombre.TabIndex = 12;
-            this.nombre.UseSelectable = true;
-            this.nombre.WaterMark = "Buscar";
-            this.nombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.nombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.nombre.TextChanged += new System.EventHandler(this.nombre_TextChanged);
-            this.nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nombre_KeyPress);
-            // 
-            // nombreLabel
-            // 
-            this.nombreLabel.AutoSize = true;
-            this.nombreLabel.Location = new System.Drawing.Point(22, 81);
-            this.nombreLabel.Name = "nombreLabel";
-            this.nombreLabel.Size = new System.Drawing.Size(62, 19);
-            this.nombreLabel.TabIndex = 11;
-            this.nombreLabel.Text = "Nombre:";
-            // 
             // id_stock
             // 
             this.id_stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -191,7 +110,6 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.id_stock.Name = "id_stock";
             this.id_stock.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.id_stock.Visible = false;
-            this.id_stock.Width = 72;
             // 
             // Cantidad
             // 
@@ -239,6 +157,87 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.stockOPedido.HeaderText = "Tipo";
             this.stockOPedido.Name = "stockOPedido";
             this.stockOPedido.Visible = false;
+            // 
+            // titleAtras
+            // 
+            this.titleAtras.ActiveControl = null;
+            this.titleAtras.BackColor = System.Drawing.Color.CadetBlue;
+            this.titleAtras.Location = new System.Drawing.Point(23, 367);
+            this.titleAtras.Name = "titleAtras";
+            this.titleAtras.Size = new System.Drawing.Size(75, 44);
+            this.titleAtras.TabIndex = 3;
+            this.titleAtras.Text = "Atrás";
+            this.titleAtras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.titleAtras.TileImage = ((System.Drawing.Image)(resources.GetObject("titleAtras.TileImage")));
+            this.titleAtras.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.titleAtras.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.titleAtras.UseCustomBackColor = true;
+            this.titleAtras.UseSelectable = true;
+            this.titleAtras.UseTileImage = true;
+            this.titleAtras.Click += new System.EventHandler(this.AtrasButton_Click);
+            // 
+            // titleAgregarCliente
+            // 
+            this.titleAgregarCliente.ActiveControl = null;
+            this.titleAgregarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.titleAgregarCliente.Location = new System.Drawing.Point(446, 367);
+            this.titleAgregarCliente.Name = "titleAgregarCliente";
+            this.titleAgregarCliente.Size = new System.Drawing.Size(138, 44);
+            this.titleAgregarCliente.TabIndex = 2;
+            this.titleAgregarCliente.Text = "Agregar Stock";
+            this.titleAgregarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.titleAgregarCliente.TileImage = ((System.Drawing.Image)(resources.GetObject("titleAgregarCliente.TileImage")));
+            this.titleAgregarCliente.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.titleAgregarCliente.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.titleAgregarCliente.UseCustomBackColor = true;
+            this.titleAgregarCliente.UseSelectable = true;
+            this.titleAgregarCliente.UseTileImage = true;
+            this.titleAgregarCliente.Click += new System.EventHandler(this.AgregarProductoStockBtn_Click);
+            // 
+            // nombre
+            // 
+            // 
+            // 
+            // 
+            this.nombre.CustomButton.Image = null;
+            this.nombre.CustomButton.Location = new System.Drawing.Point(92, 1);
+            this.nombre.CustomButton.Name = "";
+            this.nombre.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.nombre.CustomButton.TabIndex = 1;
+            this.nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.nombre.CustomButton.UseSelectable = true;
+            this.nombre.CustomButton.Visible = false;
+            this.nombre.DisplayIcon = true;
+            this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
+            this.nombre.Lines = new string[0];
+            this.nombre.Location = new System.Drawing.Point(90, 81);
+            this.nombre.MaxLength = 70;
+            this.nombre.Name = "nombre";
+            this.nombre.PasswordChar = '\0';
+            this.nombre.PromptText = "Buscar";
+            this.nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.nombre.SelectedText = "";
+            this.nombre.SelectionLength = 0;
+            this.nombre.SelectionStart = 0;
+            this.nombre.ShortcutsEnabled = true;
+            this.nombre.Size = new System.Drawing.Size(114, 23);
+            this.nombre.TabIndex = 1;
+            this.nombre.UseSelectable = true;
+            this.nombre.WaterMark = "Buscar";
+            this.nombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.nombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.nombre.TextChanged += new System.EventHandler(this.nombre_TextChanged);
+            this.nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nombre_KeyPress);
+            // 
+            // nombreLabel
+            // 
+            this.nombreLabel.AutoSize = true;
+            this.nombreLabel.Location = new System.Drawing.Point(22, 81);
+            this.nombreLabel.Name = "nombreLabel";
+            this.nombreLabel.Size = new System.Drawing.Size(62, 19);
+            this.nombreLabel.TabIndex = 11;
+            this.nombreLabel.Text = "Nombre:";
             // 
             // ABM_Stock
             // 

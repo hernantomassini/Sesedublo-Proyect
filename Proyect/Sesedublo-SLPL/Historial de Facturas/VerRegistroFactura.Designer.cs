@@ -44,7 +44,7 @@
             this.CerrarTile.Location = new System.Drawing.Point(23, 296);
             this.CerrarTile.Name = "CerrarTile";
             this.CerrarTile.Size = new System.Drawing.Size(89, 44);
-            this.CerrarTile.TabIndex = 0;
+            this.CerrarTile.TabIndex = 1;
             this.CerrarTile.Text = "Cerrar";
             this.CerrarTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.CerrarTile.TileImage = ((System.Drawing.Image)(resources.GetObject("CerrarTile.TileImage")));
@@ -100,7 +100,7 @@
             this.registrosDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.registrosDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.registrosDGV.Size = new System.Drawing.Size(416, 227);
-            this.registrosDGV.TabIndex = 1;
+            this.registrosDGV.TabIndex = 0;
             // 
             // VerRegistroFactura
             // 

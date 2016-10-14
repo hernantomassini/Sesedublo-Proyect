@@ -52,6 +52,13 @@
             this.Nombre = new System.Windows.Forms.TextBox();
             this.Cantidad = new System.Windows.Forms.TextBox();
             this.dgvPedido = new MetroFramework.Controls.MetroGrid();
+            this.CantidadXBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UtilidadProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.esBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.agregarBtn = new MetroFramework.Controls.MetroTile();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.eliminarBtn = new MetroFramework.Controls.MetroTile();
@@ -60,13 +67,7 @@
             this.PrecioLabel = new System.Windows.Forms.Label();
             this.Precio = new System.Windows.Forms.TextBox();
             this.nuevoProducto = new MetroFramework.Controls.MetroTile();
-            this.CantidadXBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UtilidadProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.esBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
@@ -148,7 +149,7 @@
             this.buscarProducto.SelectionStart = 0;
             this.buscarProducto.ShortcutsEnabled = true;
             this.buscarProducto.Size = new System.Drawing.Size(113, 23);
-            this.buscarProducto.TabIndex = 36;
+            this.buscarProducto.TabIndex = 2;
             this.buscarProducto.UseSelectable = true;
             this.buscarProducto.WaterMark = "Buscar";
             this.buscarProducto.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -181,7 +182,7 @@
             this.titleCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.titleCancelar.Name = "titleCancelar";
             this.titleCancelar.Size = new System.Drawing.Size(102, 41);
-            this.titleCancelar.TabIndex = 31;
+            this.titleCancelar.TabIndex = 13;
             this.titleCancelar.Text = "Cancelar";
             this.titleCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleCancelar.TileImage = ((System.Drawing.Image)(resources.GetObject("titleCancelar.TileImage")));
@@ -200,7 +201,7 @@
             this.titleAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.titleAceptar.Name = "titleAceptar";
             this.titleAceptar.Size = new System.Drawing.Size(99, 41);
-            this.titleAceptar.TabIndex = 30;
+            this.titleAceptar.TabIndex = 12;
             this.titleAceptar.Text = "Aceptar";
             this.titleAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleAceptar.TileImage = ((System.Drawing.Image)(resources.GetObject("titleAceptar.TileImage")));
@@ -218,7 +219,7 @@
             this.bultoRadio.Margin = new System.Windows.Forms.Padding(2);
             this.bultoRadio.Name = "bultoRadio";
             this.bultoRadio.Size = new System.Drawing.Size(51, 15);
-            this.bultoRadio.TabIndex = 23;
+            this.bultoRadio.TabIndex = 4;
             this.bultoRadio.Text = "Bulto";
             this.bultoRadio.UseSelectable = true;
             // 
@@ -229,7 +230,7 @@
             this.individualRadio.Margin = new System.Windows.Forms.Padding(2);
             this.individualRadio.Name = "individualRadio";
             this.individualRadio.Size = new System.Drawing.Size(75, 15);
-            this.individualRadio.TabIndex = 22;
+            this.individualRadio.TabIndex = 3;
             this.individualRadio.Text = "Individual";
             this.individualRadio.UseSelectable = true;
             this.individualRadio.CheckedChanged += new System.EventHandler(this.individualRadio_CheckedChanged);
@@ -245,7 +246,7 @@
             this.UnidadesXBulto.Margin = new System.Windows.Forms.Padding(4);
             this.UnidadesXBulto.Name = "UnidadesXBulto";
             this.UnidadesXBulto.Size = new System.Drawing.Size(100, 21);
-            this.UnidadesXBulto.TabIndex = 28;
+            this.UnidadesXBulto.TabIndex = 9;
             this.UnidadesXBulto.TextChanged += new System.EventHandler(this.utilidad_TextChanged);
             this.UnidadesXBulto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cantidad_KeyPress);
             // 
@@ -265,7 +266,7 @@
             this.Costo.MaxLength = 12;
             this.Costo.Name = "Costo";
             this.Costo.Size = new System.Drawing.Size(100, 20);
-            this.Costo.TabIndex = 21;
+            this.Costo.TabIndex = 5;
             this.Costo.TextChanged += new System.EventHandler(this.utilidad_TextChanged);
             this.Costo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Costo_KeyPress);
             // 
@@ -304,7 +305,7 @@
             this.Nombre.MaxLength = 100;
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(192, 20);
-            this.Nombre.TabIndex = 20;
+            this.Nombre.TabIndex = 1;
             this.Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Nombre_KeyPress);
             // 
             // Cantidad
@@ -314,7 +315,7 @@
             this.Cantidad.MaxLength = 5;
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.Size = new System.Drawing.Size(100, 20);
-            this.Cantidad.TabIndex = 24;
+            this.Cantidad.TabIndex = 6;
             this.Cantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cantidad_KeyPress);
             // 
             // dgvPedido
@@ -372,6 +373,43 @@
             this.dgvPedido.TabIndex = 38;
             this.dgvPedido.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellValueChanged);
             // 
+            // CantidadXBulto
+            // 
+            this.CantidadXBulto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CantidadXBulto.HeaderText = "CantidadXBulto";
+            this.CantidadXBulto.Name = "CantidadXBulto";
+            this.CantidadXBulto.ReadOnly = true;
+            this.CantidadXBulto.Visible = false;
+            // 
+            // NombreDGV
+            // 
+            this.NombreDGV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NombreDGV.HeaderText = "Nombre";
+            this.NombreDGV.Name = "NombreDGV";
+            this.NombreDGV.ReadOnly = true;
+            this.NombreDGV.Width = 71;
+            // 
+            // Cost
+            // 
+            this.Cost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Cost.HeaderText = "Costo";
+            this.Cost.Name = "Cost";
+            this.Cost.Width = 60;
+            // 
+            // Price
+            // 
+            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Price.HeaderText = "Precio";
+            this.Price.Name = "Price";
+            this.Price.Width = 61;
+            // 
+            // Cant
+            // 
+            this.Cant.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Cant.HeaderText = "Cantidad";
+            this.Cant.Name = "Cant";
+            this.Cant.Width = 77;
+            // 
             // agregarBtn
             // 
             this.agregarBtn.ActiveControl = null;
@@ -380,7 +418,7 @@
             this.agregarBtn.Margin = new System.Windows.Forms.Padding(2);
             this.agregarBtn.Name = "agregarBtn";
             this.agregarBtn.Size = new System.Drawing.Size(154, 43);
-            this.agregarBtn.TabIndex = 39;
+            this.agregarBtn.TabIndex = 10;
             this.agregarBtn.Text = "Agregar Producto";
             this.agregarBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.agregarBtn.TileImage = ((System.Drawing.Image)(resources.GetObject("agregarBtn.TileImage")));
@@ -408,7 +446,7 @@
             this.eliminarBtn.Margin = new System.Windows.Forms.Padding(2);
             this.eliminarBtn.Name = "eliminarBtn";
             this.eliminarBtn.Size = new System.Drawing.Size(156, 43);
-            this.eliminarBtn.TabIndex = 41;
+            this.eliminarBtn.TabIndex = 14;
             this.eliminarBtn.Text = "Eliminar Producto";
             this.eliminarBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.eliminarBtn.TileImage = ((System.Drawing.Image)(resources.GetObject("eliminarBtn.TileImage")));
@@ -426,7 +464,7 @@
             this.Utilidad.MaxLength = 12;
             this.Utilidad.Name = "Utilidad";
             this.Utilidad.Size = new System.Drawing.Size(100, 20);
-            this.Utilidad.TabIndex = 42;
+            this.Utilidad.TabIndex = 7;
             this.Utilidad.TextChanged += new System.EventHandler(this.utilidad_TextChanged);
             this.Utilidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cantidad_KeyPress);
             // 
@@ -455,7 +493,7 @@
             this.Precio.MaxLength = 10;
             this.Precio.Name = "Precio";
             this.Precio.Size = new System.Drawing.Size(100, 20);
-            this.Precio.TabIndex = 25;
+            this.Precio.TabIndex = 8;
             this.Precio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Precio_KeyPress);
             // 
             // nuevoProducto
@@ -465,7 +503,7 @@
             this.nuevoProducto.Location = new System.Drawing.Point(505, 265);
             this.nuevoProducto.Name = "nuevoProducto";
             this.nuevoProducto.Size = new System.Drawing.Size(149, 42);
-            this.nuevoProducto.TabIndex = 44;
+            this.nuevoProducto.TabIndex = 11;
             this.nuevoProducto.Text = "Nuevo Producto";
             this.nuevoProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.nuevoProducto.TileImage = ((System.Drawing.Image)(resources.GetObject("nuevoProducto.TileImage")));

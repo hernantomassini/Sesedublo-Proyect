@@ -43,7 +43,7 @@
             this.titleCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.titleCancelar.Name = "titleCancelar";
             this.titleCancelar.Size = new System.Drawing.Size(102, 41);
-            this.titleCancelar.TabIndex = 33;
+            this.titleCancelar.TabIndex = 3;
             this.titleCancelar.Text = "Cancelar";
             this.titleCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleCancelar.TileImage = ((System.Drawing.Image)(resources.GetObject("titleCancelar.TileImage")));
@@ -62,7 +62,7 @@
             this.titleAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.titleAceptar.Name = "titleAceptar";
             this.titleAceptar.Size = new System.Drawing.Size(99, 41);
-            this.titleAceptar.TabIndex = 32;
+            this.titleAceptar.TabIndex = 2;
             this.titleAceptar.Text = "Aceptar";
             this.titleAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleAceptar.TileImage = ((System.Drawing.Image)(resources.GetObject("titleAceptar.TileImage")));
@@ -100,7 +100,7 @@
             this.Nombre.SelectionStart = 0;
             this.Nombre.ShortcutsEnabled = true;
             this.Nombre.Size = new System.Drawing.Size(209, 23);
-            this.Nombre.TabIndex = 38;
+            this.Nombre.TabIndex = 1;
             this.Nombre.UseSelectable = true;
             this.Nombre.WaterMark = "Ingrese el nombre";
             this.Nombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));

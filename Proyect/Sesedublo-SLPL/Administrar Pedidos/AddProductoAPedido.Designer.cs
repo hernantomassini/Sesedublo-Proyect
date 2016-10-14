@@ -160,7 +160,7 @@
             this.AtrasTile.Margin = new System.Windows.Forms.Padding(2);
             this.AtrasTile.Name = "AtrasTile";
             this.AtrasTile.Size = new System.Drawing.Size(84, 44);
-            this.AtrasTile.TabIndex = 2;
+            this.AtrasTile.TabIndex = 7;
             this.AtrasTile.Text = "Atras";
             this.AtrasTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AtrasTile.TileImage = ((System.Drawing.Image)(resources.GetObject("AtrasTile.TileImage")));
@@ -198,7 +198,7 @@
             this.Nombre.SelectionStart = 0;
             this.Nombre.ShortcutsEnabled = true;
             this.Nombre.Size = new System.Drawing.Size(114, 23);
-            this.Nombre.TabIndex = 14;
+            this.Nombre.TabIndex = 1;
             this.Nombre.UseSelectable = true;
             this.Nombre.WaterMark = "Buscar";
             this.Nombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -223,7 +223,7 @@
             this.AgregarTile.Margin = new System.Windows.Forms.Padding(2);
             this.AgregarTile.Name = "AgregarTile";
             this.AgregarTile.Size = new System.Drawing.Size(99, 44);
-            this.AgregarTile.TabIndex = 15;
+            this.AgregarTile.TabIndex = 3;
             this.AgregarTile.Text = "Agregar";
             this.AgregarTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AgregarTile.TileImage = ((System.Drawing.Image)(resources.GetObject("AgregarTile.TileImage")));
@@ -260,7 +260,7 @@
             this.Cantidad.SelectionStart = 0;
             this.Cantidad.ShortcutsEnabled = true;
             this.Cantidad.Size = new System.Drawing.Size(114, 23);
-            this.Cantidad.TabIndex = 17;
+            this.Cantidad.TabIndex = 2;
             this.Cantidad.UseSelectable = true;
             this.Cantidad.WaterMark = "Cantidad";
             this.Cantidad.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -284,7 +284,7 @@
             this.BorrarTile.Margin = new System.Windows.Forms.Padding(2);
             this.BorrarTile.Name = "BorrarTile";
             this.BorrarTile.Size = new System.Drawing.Size(84, 44);
-            this.BorrarTile.TabIndex = 18;
+            this.BorrarTile.TabIndex = 8;
             this.BorrarTile.Text = "Borrar";
             this.BorrarTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BorrarTile.TileImage = ((System.Drawing.Image)(resources.GetObject("BorrarTile.TileImage")));
@@ -399,7 +399,7 @@
             this.FinalizarTile.Margin = new System.Windows.Forms.Padding(2);
             this.FinalizarTile.Name = "FinalizarTile";
             this.FinalizarTile.Size = new System.Drawing.Size(99, 44);
-            this.FinalizarTile.TabIndex = 21;
+            this.FinalizarTile.TabIndex = 6;
             this.FinalizarTile.Text = "Finalizar";
             this.FinalizarTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.FinalizarTile.TileImage = ((System.Drawing.Image)(resources.GetObject("FinalizarTile.TileImage")));
@@ -445,7 +445,7 @@
             this.montoAPagarDelPedido.SelectionStart = 0;
             this.montoAPagarDelPedido.ShortcutsEnabled = true;
             this.montoAPagarDelPedido.Size = new System.Drawing.Size(114, 23);
-            this.montoAPagarDelPedido.TabIndex = 25;
+            this.montoAPagarDelPedido.TabIndex = 4;
             this.montoAPagarDelPedido.UseSelectable = true;
             this.montoAPagarDelPedido.WaterMark = "Cantidad";
             this.montoAPagarDelPedido.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -489,7 +489,7 @@
             this.cantidadPagada.SelectionStart = 0;
             this.cantidadPagada.ShortcutsEnabled = true;
             this.cantidadPagada.Size = new System.Drawing.Size(114, 23);
-            this.cantidadPagada.TabIndex = 27;
+            this.cantidadPagada.TabIndex = 5;
             this.cantidadPagada.UseSelectable = true;
             this.cantidadPagada.WaterMark = "Cantidad";
             this.cantidadPagada.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));

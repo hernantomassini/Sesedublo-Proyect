@@ -77,7 +77,7 @@
             this.ClienteDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.ClienteDGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClienteDGV.Location = new System.Drawing.Point(17, 89);
-            this.ClienteDGV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ClienteDGV.Margin = new System.Windows.Forms.Padding(2);
             this.ClienteDGV.MultiSelect = false;
             this.ClienteDGV.Name = "ClienteDGV";
             this.ClienteDGV.ReadOnly = true;
@@ -111,10 +111,10 @@
             this.AtrasTile.ActiveControl = null;
             this.AtrasTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.AtrasTile.Location = new System.Drawing.Point(17, 299);
-            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2);
             this.AtrasTile.Name = "AtrasTile";
             this.AtrasTile.Size = new System.Drawing.Size(84, 44);
-            this.AtrasTile.TabIndex = 5;
+            this.AtrasTile.TabIndex = 6;
             this.AtrasTile.Text = "Atras";
             this.AtrasTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AtrasTile.TileImage = ((System.Drawing.Image)(resources.GetObject("AtrasTile.TileImage")));
@@ -130,9 +130,9 @@
             // 
             // 
             this.direccion.CustomButton.Image = null;
-            this.direccion.CustomButton.Location = new System.Drawing.Point(64, 1);
+            this.direccion.CustomButton.Location = new System.Drawing.Point(85, 1);
             this.direccion.CustomButton.Name = "";
-            this.direccion.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.direccion.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.direccion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.direccion.CustomButton.TabIndex = 1;
             this.direccion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -149,7 +149,7 @@
             this.direccion.SelectionStart = 0;
             this.direccion.ShortcutsEnabled = true;
             this.direccion.Size = new System.Drawing.Size(107, 23);
-            this.direccion.TabIndex = 16;
+            this.direccion.TabIndex = 3;
             this.direccion.UseSelectable = true;
             this.direccion.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.direccion.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -170,9 +170,9 @@
             // 
             // 
             this.apellido.CustomButton.Image = null;
-            this.apellido.CustomButton.Location = new System.Drawing.Point(64, 1);
+            this.apellido.CustomButton.Location = new System.Drawing.Point(85, 1);
             this.apellido.CustomButton.Name = "";
-            this.apellido.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.apellido.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.apellido.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.apellido.CustomButton.TabIndex = 1;
             this.apellido.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -189,7 +189,7 @@
             this.apellido.SelectionStart = 0;
             this.apellido.ShortcutsEnabled = true;
             this.apellido.Size = new System.Drawing.Size(107, 23);
-            this.apellido.TabIndex = 14;
+            this.apellido.TabIndex = 2;
             this.apellido.UseSelectable = true;
             this.apellido.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.apellido.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -202,9 +202,9 @@
             // 
             // 
             this.nombre.CustomButton.Image = null;
-            this.nombre.CustomButton.Location = new System.Drawing.Point(59, 1);
+            this.nombre.CustomButton.Location = new System.Drawing.Point(79, 1);
             this.nombre.CustomButton.Name = "";
-            this.nombre.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.nombre.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.nombre.CustomButton.TabIndex = 1;
             this.nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -221,7 +221,7 @@
             this.nombre.SelectionStart = 0;
             this.nombre.ShortcutsEnabled = true;
             this.nombre.Size = new System.Drawing.Size(101, 23);
-            this.nombre.TabIndex = 13;
+            this.nombre.TabIndex = 1;
             this.nombre.UseSelectable = true;
             this.nombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.nombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -251,10 +251,10 @@
             this.SiguienteTile.ActiveControl = null;
             this.SiguienteTile.BackColor = System.Drawing.Color.CornflowerBlue;
             this.SiguienteTile.Location = new System.Drawing.Point(649, 299);
-            this.SiguienteTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SiguienteTile.Margin = new System.Windows.Forms.Padding(2);
             this.SiguienteTile.Name = "SiguienteTile";
             this.SiguienteTile.Size = new System.Drawing.Size(105, 44);
-            this.SiguienteTile.TabIndex = 17;
+            this.SiguienteTile.TabIndex = 5;
             this.SiguienteTile.Text = "Siguiente";
             this.SiguienteTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SiguienteTile.TileImage = ((System.Drawing.Image)(resources.GetObject("SiguienteTile.TileImage")));
@@ -268,10 +268,10 @@
             // 
             this.metroLink1.FontSize = MetroFramework.MetroLinkSize.Medium;
             this.metroLink1.Location = new System.Drawing.Point(200, 310);
-            this.metroLink1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroLink1.Margin = new System.Windows.Forms.Padding(2);
             this.metroLink1.Name = "metroLink1";
             this.metroLink1.Size = new System.Drawing.Size(388, 19);
-            this.metroLink1.TabIndex = 18;
+            this.metroLink1.TabIndex = 4;
             this.metroLink1.Text = "El usuario que usted desea no se encuentra? Click aqui!";
             this.metroLink1.UseSelectable = true;
             this.metroLink1.Click += new System.EventHandler(this.metroLink1_Click);
@@ -292,7 +292,7 @@
             this.Controls.Add(this.AtrasTile);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.ClienteDGV);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AgregarPedido";
             this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Text = "Nuevo Pedido";

@@ -39,7 +39,7 @@
             // 
             this.ModificarEfectivo.ActiveControl = null;
             this.ModificarEfectivo.Location = new System.Drawing.Point(177, 170);
-            this.ModificarEfectivo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ModificarEfectivo.Margin = new System.Windows.Forms.Padding(2);
             this.ModificarEfectivo.Name = "ModificarEfectivo";
             this.ModificarEfectivo.Size = new System.Drawing.Size(156, 36);
             this.ModificarEfectivo.TabIndex = 1;
@@ -58,7 +58,7 @@
             this.EfectivoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.EfectivoLabel.Name = "EfectivoLabel";
             this.EfectivoLabel.Size = new System.Drawing.Size(85, 19);
-            this.EfectivoLabel.TabIndex = 2;
+            this.EfectivoLabel.TabIndex = 0;
             this.EfectivoLabel.Text = "EfectivoLabel";
             // 
             // MercaderiaLabel
@@ -75,10 +75,10 @@
             // 
             this.AtrasTile.ActiveControl = null;
             this.AtrasTile.Location = new System.Drawing.Point(22, 170);
-            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2);
             this.AtrasTile.Name = "AtrasTile";
             this.AtrasTile.Size = new System.Drawing.Size(85, 36);
-            this.AtrasTile.TabIndex = 5;
+            this.AtrasTile.TabIndex = 2;
             this.AtrasTile.Text = "Atras";
             this.AtrasTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AtrasTile.TileImage = ((System.Drawing.Image)(resources.GetObject("AtrasTile.TileImage")));

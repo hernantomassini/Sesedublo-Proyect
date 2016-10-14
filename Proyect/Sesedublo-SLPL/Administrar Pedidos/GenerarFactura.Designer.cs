@@ -39,10 +39,10 @@
             this.AceptarTile.ActiveControl = null;
             this.AceptarTile.BackColor = System.Drawing.Color.Violet;
             this.AceptarTile.Location = new System.Drawing.Point(120, 123);
-            this.AceptarTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AceptarTile.Margin = new System.Windows.Forms.Padding(2);
             this.AceptarTile.Name = "AceptarTile";
             this.AceptarTile.Size = new System.Drawing.Size(78, 43);
-            this.AceptarTile.TabIndex = 3;
+            this.AceptarTile.TabIndex = 2;
             this.AceptarTile.Text = "Aceptar";
             this.AceptarTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AceptarTile.TileImage = ((System.Drawing.Image)(resources.GetObject("AceptarTile.TileImage")));
@@ -59,7 +59,7 @@
             this.AtrasTile.Location = new System.Drawing.Point(23, 123);
             this.AtrasTile.Name = "AtrasTile";
             this.AtrasTile.Size = new System.Drawing.Size(79, 42);
-            this.AtrasTile.TabIndex = 4;
+            this.AtrasTile.TabIndex = 3;
             this.AtrasTile.Text = "Atras";
             this.AtrasTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AtrasTile.TileImage = ((System.Drawing.Image)(resources.GetObject("AtrasTile.TileImage")));
@@ -79,7 +79,7 @@
             this.tipoDeFactura.Location = new System.Drawing.Point(53, 75);
             this.tipoDeFactura.Name = "tipoDeFactura";
             this.tipoDeFactura.Size = new System.Drawing.Size(121, 29);
-            this.tipoDeFactura.TabIndex = 5;
+            this.tipoDeFactura.TabIndex = 1;
             this.tipoDeFactura.UseSelectable = true;
             // 
             // GenerarFactura

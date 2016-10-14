@@ -51,7 +51,7 @@
             this.modificarPedidoTile.Margin = new System.Windows.Forms.Padding(2);
             this.modificarPedidoTile.Name = "modificarPedidoTile";
             this.modificarPedidoTile.Size = new System.Drawing.Size(153, 43);
-            this.modificarPedidoTile.TabIndex = 9;
+            this.modificarPedidoTile.TabIndex = 2;
             this.modificarPedidoTile.Text = "Modificar pedido";
             this.modificarPedidoTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.modificarPedidoTile.TileImage = ((System.Drawing.Image)(resources.GetObject("modificarPedidoTile.TileImage")));
@@ -70,7 +70,7 @@
             this.AgregarPedidoTile.Margin = new System.Windows.Forms.Padding(2);
             this.AgregarPedidoTile.Name = "AgregarPedidoTile";
             this.AgregarPedidoTile.Size = new System.Drawing.Size(153, 43);
-            this.AgregarPedidoTile.TabIndex = 8;
+            this.AgregarPedidoTile.TabIndex = 1;
             this.AgregarPedidoTile.Text = "Agregar pedido";
             this.AgregarPedidoTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AgregarPedidoTile.TileImage = ((System.Drawing.Image)(resources.GetObject("AgregarPedidoTile.TileImage")));
@@ -89,7 +89,7 @@
             this.AtrasTile.Margin = new System.Windows.Forms.Padding(2);
             this.AtrasTile.Name = "AtrasTile";
             this.AtrasTile.Size = new System.Drawing.Size(93, 41);
-            this.AtrasTile.TabIndex = 7;
+            this.AtrasTile.TabIndex = 3;
             this.AtrasTile.Text = "Atras";
             this.AtrasTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AtrasTile.TileImage = ((System.Drawing.Image)(resources.GetObject("AtrasTile.TileImage")));
@@ -160,7 +160,6 @@
             this.IDPedidoLea.Name = "IDPedidoLea";
             this.IDPedidoLea.ReadOnly = true;
             this.IDPedidoLea.Visible = false;
-            this.IDPedidoLea.Width = 94;
             // 
             // Fecha
             // 

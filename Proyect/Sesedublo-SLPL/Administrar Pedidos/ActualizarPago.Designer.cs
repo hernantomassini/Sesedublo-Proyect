@@ -53,7 +53,7 @@
             this.cantidadAPagar.CustomButton.Visible = false;
             this.cantidadAPagar.Lines = new string[0];
             this.cantidadAPagar.Location = new System.Drawing.Point(176, 114);
-            this.cantidadAPagar.MaxLength = 32767;
+            this.cantidadAPagar.MaxLength = 12;
             this.cantidadAPagar.Name = "cantidadAPagar";
             this.cantidadAPagar.PasswordChar = '\0';
             this.cantidadAPagar.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -84,7 +84,7 @@
             this.cantidadPagada.CustomButton.Visible = false;
             this.cantidadPagada.Lines = new string[0];
             this.cantidadPagada.Location = new System.Drawing.Point(176, 160);
-            this.cantidadPagada.MaxLength = 32767;
+            this.cantidadPagada.MaxLength = 12;
             this.cantidadPagada.Name = "cantidadPagada";
             this.cantidadPagada.PasswordChar = '\0';
             this.cantidadPagada.ScrollBars = System.Windows.Forms.ScrollBars.None;

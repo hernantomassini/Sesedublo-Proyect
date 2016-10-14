@@ -113,5 +113,25 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             Manejador_Formularios.AddNotaDeCredito.getData();
             Manejador_Formularios.AddNotaDeCredito.Show();
         }
+
+        private void nombre_TextChanged(object sender, EventArgs e)
+        {
+            this.getData();
+        }
+
+        private void apellido_TextChanged(object sender, EventArgs e)
+        {
+            this.getData();
+        }
+
+        private void descripcion_TextChanged(object sender, EventArgs e)
+        {
+            this.getData();
+        }
+
+        private void direccion_TextChanged(object sender, EventArgs e)
+        {
+            this.getData();
+        }
     }
 }

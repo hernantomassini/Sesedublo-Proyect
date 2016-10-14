@@ -136,7 +136,7 @@ CREATE TABLE Items (
     producto INT,
     pedido INT,
     cantidadProductos INT,
-    cantidaDeProductosEdit INT DEFAULT 0,
+    cantidadProductosEdit INT DEFAULT 0,
     PRIMARY KEY (id_item),
     FOREIGN KEY (producto)
         REFERENCES Productos (id_producto),
@@ -612,7 +612,7 @@ BEGIN
 	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto
 	FROM Stock s INNER JOIN Productos p 
 	ON p.id_producto = s.producto
-	WHERE ((p.nombre LIKE CONCAT("%", "", "%") COLLATE utf8_general_ci ) OR ("" IS NULL OR "" = ""))
+	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
     AND s.deleted = 0;
 
 END //

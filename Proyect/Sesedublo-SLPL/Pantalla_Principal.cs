@@ -2,6 +2,7 @@
 using Sesedublo_SLPL.Generales;
 using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace Sesedublo_SLPL
@@ -82,7 +83,10 @@ namespace Sesedublo_SLPL
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            label1.Text = DateTime.Now.ToString("dddd dd MMMM, yyyy");
+            CultureInfo ci = new CultureInfo("Es-Es");
+
+            TextInfo myTI = new CultureInfo("Es-Es", false).TextInfo;
+            label1.Text = myTI.ToTitleCase(ci.DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek)) + DateTime.Now.ToString(" dd ") + "de " + DateTime.Now.ToString("MMMM") + " de " + DateTime.Now.ToString("yyyy") ;
             label2.Text = DateTime.Now.ToString("H:mm");
         }
 
@@ -91,5 +95,7 @@ namespace Sesedublo_SLPL
             Manejador_Formularios.Pedido_de_compra.cargarDGV();
             Manejador_Formularios.Pedido_de_compra.Show();
         }
+
+
     }
 }

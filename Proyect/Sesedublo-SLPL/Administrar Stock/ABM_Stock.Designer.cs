@@ -30,21 +30,21 @@ namespace Sesedublo_SLPL.Administrar_Productos
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Stock));
             this.StockDGV = new MetroFramework.Controls.MetroGrid();
+            this.titleAtras = new MetroFramework.Controls.MetroTile();
+            this.titleAgregarCliente = new MetroFramework.Controls.MetroTile();
+            this.nombre = new MetroFramework.Controls.MetroTextBox();
+            this.nombreLabel = new MetroFramework.Controls.MetroLabel();
             this.id_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PVUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PVBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleAtras = new MetroFramework.Controls.MetroTile();
-            this.titleAgregarCliente = new MetroFramework.Controls.MetroTile();
-            this.nombre = new MetroFramework.Controls.MetroTextBox();
-            this.nombreLabel = new MetroFramework.Controls.MetroLabel();
             this.stockOPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.StockDGV)).BeginInit();
             this.SuspendLayout();
@@ -58,14 +58,14 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.StockDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.StockDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.StockDGV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.StockDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.StockDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.StockDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.StockDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_stock,
@@ -75,88 +75,33 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.PVUnitario,
             this.PVBulto,
             this.stockOPedido});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.StockDGV.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.StockDGV.DefaultCellStyle = dataGridViewCellStyle2;
             this.StockDGV.EnableHeadersVisualStyles = false;
             this.StockDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.StockDGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.StockDGV.Location = new System.Drawing.Point(22, 113);
             this.StockDGV.MultiSelect = false;
             this.StockDGV.Name = "StockDGV";
-            this.StockDGV.ReadOnly = true;
             this.StockDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.StockDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.StockDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.StockDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.StockDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.StockDGV.Size = new System.Drawing.Size(562, 248);
             this.StockDGV.TabIndex = 4;
-            // 
-            // id_stock
-            // 
-            this.id_stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.id_stock.HeaderText = "ID Stock";
-            this.id_stock.Name = "id_stock";
-            this.id_stock.ReadOnly = true;
-            this.id_stock.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.id_stock.Visible = false;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            this.Cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Cantidad.Width = 77;
-            // 
-            // Producto
-            // 
-            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            this.Producto.ReadOnly = true;
-            this.Producto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Producto.Width = 77;
-            // 
-            // Costo
-            // 
-            this.Costo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Costo.HeaderText = "Costo";
-            this.Costo.Name = "Costo";
-            this.Costo.ReadOnly = true;
-            this.Costo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Costo.Width = 60;
-            // 
-            // PVUnitario
-            // 
-            this.PVUnitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.PVUnitario.HeaderText = "Precio de venta unitario";
-            this.PVUnitario.Name = "PVUnitario";
-            this.PVUnitario.ReadOnly = true;
-            this.PVUnitario.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PVUnitario.Width = 102;
-            // 
-            // PVBulto
-            // 
-            this.PVBulto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.PVBulto.HeaderText = "Precio de venta por Bulto";
-            this.PVBulto.Name = "PVBulto";
-            this.PVBulto.ReadOnly = true;
-            this.PVBulto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PVBulto.Width = 121;
             // 
             // titleAtras
             // 
@@ -215,6 +160,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.nombre.MaxLength = 70;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
+            this.nombre.PromptText = "Buscar";
             this.nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.nombre.SelectedText = "";
             this.nombre.SelectionLength = 0;
@@ -238,11 +184,60 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.nombreLabel.TabIndex = 11;
             this.nombreLabel.Text = "Nombre:";
             // 
+            // id_stock
+            // 
+            this.id_stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.id_stock.HeaderText = "ID Stock";
+            this.id_stock.Name = "id_stock";
+            this.id_stock.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.id_stock.Visible = false;
+            this.id_stock.Width = 72;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Cantidad.Width = 77;
+            // 
+            // Producto
+            // 
+            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Producto.HeaderText = "Producto";
+            this.Producto.Name = "Producto";
+            this.Producto.ReadOnly = true;
+            this.Producto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Producto.Width = 77;
+            // 
+            // Costo
+            // 
+            this.Costo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Costo.HeaderText = "Costo";
+            this.Costo.Name = "Costo";
+            this.Costo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Costo.Width = 60;
+            // 
+            // PVUnitario
+            // 
+            this.PVUnitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.PVUnitario.HeaderText = "Precio de venta unitario";
+            this.PVUnitario.Name = "PVUnitario";
+            this.PVUnitario.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.PVUnitario.Width = 102;
+            // 
+            // PVBulto
+            // 
+            this.PVBulto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.PVBulto.HeaderText = "Precio de venta por Bulto";
+            this.PVBulto.Name = "PVBulto";
+            this.PVBulto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.PVBulto.Width = 121;
+            // 
             // stockOPedido
             // 
             this.stockOPedido.HeaderText = "Tipo";
             this.stockOPedido.Name = "stockOPedido";
-            this.stockOPedido.ReadOnly = true;
             this.stockOPedido.Visible = false;
             // 
             // ABM_Stock
@@ -267,16 +262,16 @@ namespace Sesedublo_SLPL.Administrar_Productos
         #endregion
 
         private MetroGrid StockDGV;
+        private MetroTile titleAtras;
+        private MetroTile titleAgregarCliente;
+        private MetroTextBox nombre;
+        private MetroLabel nombreLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
         private System.Windows.Forms.DataGridViewTextBoxColumn PVUnitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn PVBulto;
-        private MetroTile titleAtras;
-        private MetroTile titleAgregarCliente;
-        private MetroTextBox nombre;
-        private MetroLabel nombreLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockOPedido;
     }
 }

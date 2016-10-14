@@ -139,6 +139,7 @@
             this.buscarProducto.MaxLength = 70;
             this.buscarProducto.Name = "buscarProducto";
             this.buscarProducto.PasswordChar = '\0';
+            this.buscarProducto.PromptText = "Buscar";
             this.buscarProducto.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.buscarProducto.SelectedText = "";
             this.buscarProducto.SelectionLength = 0;
@@ -352,7 +353,6 @@
             this.dgvPedido.Location = new System.Drawing.Point(15, 346);
             this.dgvPedido.MultiSelect = false;
             this.dgvPedido.Name = "dgvPedido";
-            this.dgvPedido.ReadOnly = true;
             this.dgvPedido.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
@@ -493,7 +493,6 @@
             this.Cost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Cost.HeaderText = "Costo";
             this.Cost.Name = "Cost";
-            this.Cost.ReadOnly = true;
             this.Cost.Width = 60;
             // 
             // Price
@@ -501,7 +500,6 @@
             this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Price.HeaderText = "Precio";
             this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
             this.Price.Width = 61;
             // 
             // Cant
@@ -509,7 +507,6 @@
             this.Cant.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Cant.HeaderText = "Cantidad";
             this.Cant.Name = "Cant";
-            this.Cant.ReadOnly = true;
             this.Cant.Width = 77;
             // 
             // AddPedidoCompra

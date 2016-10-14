@@ -171,7 +171,7 @@ CREATE TABLE Operaciones (
 CREATE TABLE NotasDeCredito (
     id_NotaDeCredito INT AUTO_INCREMENT,
     factura INT,
-    importe DECIMAL(7 , 5 ),
+    importe DECIMAL(7 , 2 ),
     motivo VARCHAR(50),
     fecha DATETIME,
     PRIMARY KEY (id_NotaDeCredito),
@@ -872,9 +872,9 @@ BEGIN
 	);
 	
 	INSERT INTO ItemsDeFac SELECT pr.nombre AS Nombre, i.cantidadProductos AS 'Cantidad Total',
-		   IF(PVBulto = 0, PVUnitario, PVBulto / cantidadXBulto) AS 'Precio Unitario',
-           IF(PVBulto = 0, 0, PVBulto / cantidadXBulto) AS 'Precio Bulto',
-		   IF(PVBulto = 0, PVUnitario * cantidadProductos, PVBulto * cantidadProductos) AS 'Precio Total'
+		   IF(PVBulto = 0, PVUnitario, Round(PVBulto / cantidadXBulto, 2)) AS 'Precio Unitario',
+           IF(PVBulto = 0, 0, Round(PVBulto * cantidadXBulto, 2)) AS 'Precio Bulto',
+		   IF(PVBulto = 0, Round(PVUnitario * cantidadProductos, 2), Round(PVBulto * cantidadProductos, 2)) AS 'Precio Total'
 	FROM Facturas f
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Items i ON i.pedido = p.id_pedido
@@ -905,9 +905,9 @@ END //
 CREATE PROCEDURE obtenerItemsDeFacturaSinNC (IN _id_factura INT)
 BEGIN
 SELECT pr.id_producto, pr.nombre AS Nombre, i.cantidaDeProductosEdit AS 'Cantidad Total',
-		   IF(PVBulto = 0, PVUnitario, PVBulto / cantidadXBulto) AS 'Precio Unitario',
-           IF(PVBulto = 0, 0, PVBulto / cantidadXBulto) AS 'Precio Bulto',
-		   IF(PVBulto = 0, PVUnitario * cantidadProductos, PVBulto * cantidadProductos) AS 'Precio Total'
+		   IF(PVBulto = 0, PVUnitario, Round(PVBulto / cantidadXBulto, 2)) AS 'Precio Unitario',
+           IF(PVBulto = 0, 0, Round(PVBulto * cantidadXBulto, 2)) AS 'Precio Bulto',
+		   IF(PVBulto = 0, Round(PVUnitario * cantidadProductos,2), Round(PVBulto * cantidadProductos,2)) AS 'Precio Total'
 	FROM Facturas f
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Items i ON i.pedido = p.id_pedido

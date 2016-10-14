@@ -97,12 +97,12 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
 
         private void dgvVerFactura_CellContentClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
-            Nombre.Text = this.dgvVerFactura.CurrentRow.Cells[1].Value.ToString();
+            Nombre.Text = dgvVerFactura.CurrentRow.Cells[1].Value.ToString();
         }
 
         private void dgvVerFactura_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
-            Nombre.Text = this.dgvVerFactura.CurrentRow.Cells[1].Value.ToString();
+            Nombre.Text = dgvVerFactura.CurrentRow.Cells[1].Value.ToString();
         }
 
     }

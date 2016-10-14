@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Sesedublo_SLPL.Generales;
 using System;
 using System.ComponentModel;
 using System.Data;
@@ -59,6 +60,7 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
         {
             this.Hide();
             e.Cancel = true;
+            Manejador_Formularios.Historial_de_Facturas.Show();
         }
 
         public void meterId(int idFactura, int idCliente)

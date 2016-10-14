@@ -806,7 +806,7 @@ BEGIN
 SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = _id_producto) - _cantidad;
 
 	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = _id_producto;
-	INSERT INTO Items (producto, pedido, cantidadProductos, cantidadProductosE) VALUES (_id_producto, _id_pedido, _cantidad, _cantidad);
+	INSERT INTO Items (producto, pedido, cantidadProductos, cantidaDeProductosEdit) VALUES (_id_producto, _id_pedido, _cantidad, _cantidad);
 
 END //
 
@@ -928,14 +928,14 @@ WHERE
 	SET @_cantidadDePrEdit = ( SELECT cantidadProductosEdit FROM Items INNER JOIN Pedidos p ON i.pedido = p.id_pedido
 																 INNER JOIN Facturas f ON p.id_pedido = f.pedido 
 																 INNER JOIN Productos pr ON pr.id_producto = i.producto
-                                                                 WHERE f.id_factura = _id_factura AND pr.id_producto = _id_producto)
+                                                                 WHERE f.id_factura = _id_factura AND pr.id_producto = _id_producto);
     
     UPDATE Items 
     INNER JOIN Pedidos p ON i.pedido = p.id_pedido
     INNER JOIN Facturas f ON p.id_pedido = f.pedido 
     INNER JOIN Productos pr ON pr.id_producto = i.producto
-    SET cantidadProductosEdit = @_cantidadDePrEdit - cantidad;
-    WHERE f.id_factura = _id_factura AND pr.id_producto = _id_producto
+    SET cantidadProductosEdit = @_cantidadDePrEdit - cantidad
+    WHERE f.id_factura = _id_factura AND pr.id_producto = _id_producto;
     
 END//
 

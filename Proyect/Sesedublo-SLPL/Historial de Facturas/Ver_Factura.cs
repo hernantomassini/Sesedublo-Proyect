@@ -15,7 +15,6 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
         int id_factura;
         int id_cliente;
         private PrintDocument printDocument1 = new PrintDocument();
-        private PrintDocument printDocument2 = new PrintDocument();
 
         public Ver_Factura()
         {
@@ -31,8 +30,6 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             ingresosBrutos.Text = "INGRESOS BRUTOS: 901-070815-6";
             inicioActividad.Text = "INICIO ACTIVIDAD: 01-10-2003";
             printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
-            oriOdup.Text = "DUPLICADO";
-            printDocument2.PrintPage += new PrintPageEventHandler(printDocument2_PrintPage);
         }
 
         private void getData()
@@ -78,12 +75,12 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             if (reader.HasRows)
             {
                 if (reader.GetString(0) != "") { tipoFactura.Text = reader.GetString(0); };
-                double iva = Convert.ToDouble(reader.GetDecimal(1)) * 0.21;
+                decimal iva =  Convert.ToDecimal(Convert.ToDouble(reader.GetDecimal(1)) * 0.21);
                 if (tipoFactura.Text.Equals("A"))
                 {
                     if (reader.GetString(1) != "") { subTotal.Text = Convert.ToString(reader.GetDecimal(1)); };
                     if (reader.GetString(1) != "") { subTotalPrec.Text = Convert.ToString(reader.GetDecimal(1)); }
-                    ivaCalculado.Text = Convert.ToString(iva);
+                    ivaCalculado.Text = Convert.ToString(decimal.Round(iva, 2));
 
                     sub.Visible = true;
                     subTotal.Visible = true;
@@ -152,30 +149,15 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             e.Graphics.DrawImage(memoryImage, 0, 0);
         }
 
-        private void printDocument2_PrintPage(System.Object
-sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            e.Graphics.DrawImage(memoryImage, 0, 0);
-        }
-
         private void printButton_Click(System.Object sender,
         System.EventArgs e)
         {
-
-
             printButton.Visible = false;
             CaptureScreen();
             PrintPreviewDialog printPreviewDialog1;
             printPreviewDialog1 = new PrintPreviewDialog();
             printPreviewDialog1.Document = printDocument1;
             printPreviewDialog1.Show();
-
-            CaptureScreen();
-            PrintPreviewDialog printPreviewDialog2;
-            printPreviewDialog2 = new PrintPreviewDialog();
-            printPreviewDialog2.Document = printDocument2;
-            printPreviewDialog2.Show();
-
             printButton.Visible = true;
         }
 

@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="AceptarTile.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="AceptarTile.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cgAAEnIBXmVb4wAABXhJREFUWEftlm1MU3cUxjGLH5ZFk+3jpku2xA/LtizKQJnbzFzMonGJ2TKDmxNj
+        cQAAEnEB89x6jgAABXhJREFUWEftlm1MU3cUxjGLH5ZFk+3jpku2xA/LtizKQJnbzFzMonGJ2TKDmxNj
         nJuLiWYum246kg2ZQ5INiMrECQLWQkHBOpCXCr5yhwVFy1sLhQKtrBQrLdUibZ/dc9p/KdKuXeIXk53k
         yb29b8/vnHvO/zbusYy8vAocOXKKRfuhvwsLzyJw2aMPYaTVdiBS6HS9fE1JSd2jBXnY+KCyGWkFV7En
         pyqotENVgbPgayNVw1D9JgYur48dMNS8RjuKfVU2/N58D7W9k2ge8UBt8rGKdQ7sPXgOB/Jq+Vq6R6Go
@@ -147,10 +150,13 @@
         5Kadg3bVM7GX/FHE4NWNvJKxsbye03/8wKn/43GLuLh/ACktmn18/27VAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="AtrasTile.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="AtrasTile.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cgAAEnIBXmVb4wAABmBJREFUWEfNV2tQVGUYRq0ZMxABFVGnFAsYhtFJ2cCAEJBMkUxEGNDRAVMEzEvi
+        cQAAEnEB89x6jgAABmBJREFUWEfNV2tQVGUYRq0ZMxABFVGnFAsYhtFJ2cCAEJBMkUxEGNDRAVMEzEvi
         QoppLCIQFiIoYoggsoqCIsgt3AmURbk0KSregQbE6wxOOlpN88bzsud4lgXFy4++mWd2Oef73uf53uui
         97Irp+MApbbtpPjWOEbUZQVFXt/M3zVb3vwCIYivPLrCqH9YR+oH1VR+v4yfC4LCr8lpwQV/hubo6y0Y
         BskfT1qp5Z9mJt51qZQ2njrGWFeRT6HF2bSoeCctrNxKIY1htOzKMvry/GyaXGtDzvUury5k3710JgZK
@@ -180,4 +186,10 @@
         GaMx8eYWuhfEgKA3wNWBpf38D+j/sfT0/gN0Ict2tlJXxgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="tipoDeFactura.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

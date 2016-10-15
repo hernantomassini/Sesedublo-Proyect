@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="ClienteDGV.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="metroLabel1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="AtrasTile.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="AtrasTile.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cgAAEnIBXmVb4wAABB5JREFUWEftlf9P1HUcxz/MHXgFOJDLi3UECGMkjC83KWiAFI6w6/jSztHVFUQs
+        cQAAEnEB89x6jgAABB5JREFUWEftlf9P1HUcxz/MHXgFOJDLi3UECGMkjC83KWiAFI6w6/jSztHVFUQs
         dGA2x7Qlohk1zTTHdEbaBlssCJEvWYxFwilEggSLFqNSa7VWa6vWH/Ds/Xx97k5QnMDqt3ttj33ed5/P
         PZ+ve73fr9dH84c//LHSKBksRXxPPCI6wxHeEYbE3kRUfVEFz+3/J2q/rEVoeyg2fGLBUxM52DVXhH3X
         t2LvNQd2zD6OjIE4xHbFrjyJitEKBLatgmPYcYtIREeEGOz+rhgn/6zCmX+2o/nvapxSa9L814to+r0c
@@ -142,10 +151,31 @@
         SUVORK5CYII=
 </value>
   </data>
+  <metadata name="direccion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="metroLabel4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="apellido.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="nombre.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="metroLabel5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="metroLabel6.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="SiguienteTile.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="SiguienteTile.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cgAAEnIBXmVb4wAAA7dJREFUWEftlvtPU2ccxvlL9gcYsyxx08So2RhxzoRkmmiyeVnUbNEZlqDRTDOV
+        cQAAEnEB89x6jgAAA7dJREFUWEftlvtPU2ccxvlL9gcYsyxx08So2RhxzoRkmmiyeVnUbNEZlqDRTDOV
         msiE4IXOC2wRZQ4FBEHQTjuriOAFdRMlSsBURMBGalva0zvweJ6Xt6VHC2/PftoPPMkTejjP9/v9nNt7
         TtaM/pfKqfBA/jSlTZfDWNMUxMa/QuBverM9IvxVfTjznrmVb5D9u9s0xPe2EGq7o+h0x/HEN2owYWRM
         rXXnfTjZGUJ2+WtTEOubNFR1hXHPFcM/w3EBkjDhZEyttXVe9PjH8NuDIBYecWVc+G1DACf/DaHtZRR3
@@ -164,4 +194,10 @@
         KcrKegvlWINT/HHy3AAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="metroLink1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

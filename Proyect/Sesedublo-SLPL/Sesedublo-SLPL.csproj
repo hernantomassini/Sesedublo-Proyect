@@ -57,9 +57,6 @@
     <Reference Include="BarcodeLib">
       <HintPath>..\packages\BarcodeLib.1.0.0.22\lib\net20\BarcodeLib.dll</HintPath>
     </Reference>
-    <Reference Include="GlassButton">
-      <HintPath>dll\GlassButton.dll</HintPath>
-    </Reference>
     <Reference Include="MetroFramework">
       <HintPath>dll\MetroFramework.dll</HintPath>
     </Reference>

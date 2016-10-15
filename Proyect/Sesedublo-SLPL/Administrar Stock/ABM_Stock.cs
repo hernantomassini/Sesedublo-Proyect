@@ -110,9 +110,5 @@ namespace Sesedublo_SLPL.Administrar_Productos
 
         }
 
-        private void nombre_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            val.ingresarNombre(e);
-        }
     }
 }

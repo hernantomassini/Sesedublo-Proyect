@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="dgvOperaciones.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="metroTile2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="metroTile2.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAAyhJREFUWEftlIlL1EEcxf2bvFLx7jC6RELT1NJEzTXFq631Xq9UzDOP9QLtEBFD
+        vgAADr4B6kKxwAAAAyhJREFUWEftlIlL1EEcxf2bvFLx7jC6RELT1NJEzTXFq631Xq9UzDOP9QLtEBFD
         JMUOCYOg8mzxWtfV3XUzMyXLBJXgtW9yRQhst2Ml8MFjd+b3m3mf+f5mxuZQh/pdeT+zBb3TtK4YnDkc
         dDAADL2jzkSjrsj6AAysmMlA21IdaufyrAvAsCqNHC3vyoVZBasBiJVrskTZmw3FwqUzMusAMKRsLg21
         ejkU+hw0LOShyZAv/vPZfvZ6aifs+dgeHn0OcO9xtAyYk5TMSVGhlaFGly6sWMhCgyHbCCHfNdvs5/Nq
@@ -138,6 +144,9 @@
         YII=
 </value>
   </data>
+  <metadata name="descripcion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="descripcion.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAW9JREFUOE+V
@@ -150,6 +159,12 @@
         BzZOd9cWo6IAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="metroLabel6.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="operacion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="operacion.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAW9JREFUOE+V
@@ -162,4 +177,10 @@
         BzZOd9cWo6IAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="metroLabel3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

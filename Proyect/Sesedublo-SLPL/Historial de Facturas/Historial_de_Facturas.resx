@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="dgvFacturas.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="direccion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="direccion.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -130,6 +136,12 @@
         BzZOd9cWo6IAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="metroLabel3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="apellido.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="apellido.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAW9JREFUOE+V
@@ -142,6 +154,9 @@
         BzZOd9cWo6IAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="nombre.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="nombre.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAW9JREFUOE+V
@@ -154,6 +169,15 @@
         BzZOd9cWo6IAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="metroLabel2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="metroLabel1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="descripcion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="descripcion.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAW9JREFUOE+V
@@ -166,6 +190,12 @@
         BzZOd9cWo6IAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="metroLabel6.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="metroTile1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="metroTile1.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -186,6 +216,9 @@
         YII=
 </value>
   </data>
+  <metadata name="titleDetalleFactura.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="titleDetalleFactura.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -204,10 +237,13 @@
         X5X6P7ZW6zc7XgK/htqy9AAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="RegistroTile.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="RegistroTile.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAABIhJREFUWEftl91Pm3UUx/vXeOWNVxovTIwxviRqFrdkWZxxydRFpyNqFKfGObKp
+        vwAADr8BOAVTJAAABIhJREFUWEftl91Pm3UUx/vXeOWNVxovTIwxviRqFrdkWZxxydRFpyNqFKfGObKp
         F8yNsGygZTCRbLIRkYEVytoyrAUpLy0UWlqwjMpaGCUw2qdby9dznl9P+xQKLTfGiz3JJ317+vt9+j3n
         PG1ND4//1TE4OAdrTwBWawn4nCzd3f5dwXtkt9t61NcPIRpLYCYYzxGcLmQ6UBy/f6UA39RqAeOTa/BM
         JVBd7dxeoKlpFKFoClU9cRx3JPG5PYtD0zluz1PZm+fj7vs5Pux6oFNxI42KjjTeb0/jaFsGX1nSmJgD
@@ -229,10 +265,13 @@
         wrW2SbRe8+Fqqw8tVxWXWyZQe8GNykrL9iP58PhvDpPpXyHnM+b9Xf+kAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="AddNotaCreditoTile.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="AddNotaCreditoTile.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAmtJREFUWEdjGAWjgBKwbWnffxCGcuEAJo6Ol8/qwFBLEfi0p/Q/CLcURsINBlkE
+        vwAADr8BOAVTJAAAAmtJREFUWEdjGAWjgBKwbWnffxCGcuEAJo6Ol8/qwFBLEfi0p/Q/CLcURsINBlkE
         E0fHR+ekUtcBH3fm/wfh5vwQuMHbl3SBxbDhIzMTqOuAjvbW/8VFBf9rqqtRDC4vKwGLY8NQJUMMbJrX
         /P/gpOD/b9fH/P+wMeZ/e0EA2Cfr2gL+g3BTaRLcZ4unNILFsOHJRe6kh8DRKUH/368LQ8Gt2Z5gg2D8
         piwPuMFb59f/f7cm6P+bRTb/X80y+P9yusb/VzM0/7+eZ/7/YLcTaQ64M8/7//vV/hi4NcsNbND+bpf/
@@ -245,4 +284,7 @@
         /4Zwxf+z4gX+r0zj/T87nh+c1UCpneq+HgWjgH6AgQEADrkyjKSSjb0AAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

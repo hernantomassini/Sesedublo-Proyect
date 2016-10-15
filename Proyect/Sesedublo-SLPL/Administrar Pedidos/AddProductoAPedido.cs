@@ -35,6 +35,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             this.id_cliente = id_cliente;
             this.id_pedido = -1;
             sumatoriaMoney = 0;
+
             updateLabelMoney();
             Clean();
             cargarDGV();
@@ -121,49 +122,56 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
-            MySqlDataReader reader;
-
-            if (flag == accionesABM.Modificar)
+            if (Convert.ToDecimal(cantidadPagada.Text) > Convert.ToDecimal(montoAPagarDelPedido.Text))
             {
-                foreach (var registro in productosARestockear)
-                {
-                    int id_stock = registro.Key;
-                    int cantidad = registro.Value;
+                Funciones.imprimirMensajeDeError("Está haciendo que el cliente pague un monto mayor al que debe", this);
+            }
+            else
+            {
+                MySqlDataReader reader;
 
-                    Conexion.executeProcedure("updatearStock", Conexion.generarArgumentos("_id_stock", "_cantidad"), id_stock, cantidad);
+                if (flag == accionesABM.Modificar)
+                {
+                    foreach (var registro in productosARestockear)
+                    {
+                        int id_stock = registro.Key;
+                        int cantidad = registro.Value;
+
+                        Conexion.executeProcedure("updatearStock", Conexion.generarArgumentos("_id_stock", "_cantidad"), id_stock, cantidad);
+                        Conexion.closeConnection();
+                    }
+
+                    Conexion.executeProcedure("borrarPedido", Conexion.generarArgumentos("_id_pedido"), this.id_pedido);
                     Conexion.closeConnection();
                 }
 
-                Conexion.executeProcedure("borrarPedido", Conexion.generarArgumentos("_id_pedido"), this.id_pedido);
+                //Crear pedido y actualizar Caja:
+                reader = Conexion.executeProcedureWithReader("crearPedido", Conexion.generarArgumentos("_id_comprador", "_pagadoHastaElMomento", "_precio"), id_cliente, Convert.ToDecimal(cantidadPagada.Text), Convert.ToDecimal(montoAPagarDelPedido.Text));
+                reader.Read();
+
+                int id_pedido = reader.GetInt32(0);
+
+                reader.Close();
                 Conexion.closeConnection();
+
+                //Agregar productos al pedido y disminuir stock de todos los productos involucrados:
+                foreach (var registro in productosAVender)
+                {
+                    Conexion.executeProcedure("agregarItemAPedido", Conexion.generarArgumentos("_id_pedido", "_id_producto", "_cantidad"), id_pedido, registro.Key, registro.Value);
+                    Conexion.closeConnection();
+                }
+
+                Funciones.imprimirMensajeDeAviso("Se realizó el pedido correctamente", this);
+
+                Manejador_Formularios.ABM_Pedidos.cargarDGV();
+                Manejador_Formularios.ABM_Pedidos.Show();
+
+
+                this.id_pedido = -1;
+                this.id_cliente = -1;
+                flag = accionesABM.Crear;
+                Close();
             }
-
-            //Crear pedido y actualizar Caja:
-            reader = Conexion.executeProcedureWithReader("crearPedido", Conexion.generarArgumentos("_id_comprador", "_pagadoHastaElMomento", "_precio"), id_cliente, Convert.ToDecimal(cantidadPagada.Text), Convert.ToDecimal(montoAPagarDelPedido.Text));
-            reader.Read();
-
-            int id_pedido = reader.GetInt32(0);
-
-            reader.Close();
-            Conexion.closeConnection();
-
-            //Agregar productos al pedido y disminuir stock de todos los productos involucrados:
-            foreach (var registro in productosAVender)
-            {
-                Conexion.executeProcedure("agregarItemAPedido", Conexion.generarArgumentos("_id_pedido", "_id_producto", "_cantidad"), id_pedido, registro.Key, registro.Value);
-                Conexion.closeConnection();
-            }
-
-            Funciones.imprimirMensajeDeAviso("Se realizó el pedido correctamente", this);
-
-            Manejador_Formularios.ABM_Pedidos.cargarDGV();
-            Manejador_Formularios.ABM_Pedidos.Show();
-
-
-            this.id_pedido = -1;
-            this.id_cliente = -1;
-            flag = accionesABM.Crear;
-            Close();
         }
 
         public void cargarDGV()
@@ -363,6 +371,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             productosARestockear.Clear();
             ItemsDGV.Rows.Clear();
             cantidadPagada.Clear();
+            cantidadPagada.Text = "0";
         }
 
         private void AtrasTile_Click(object sender, EventArgs e)

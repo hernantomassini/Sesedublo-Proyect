@@ -91,9 +91,9 @@
             // 
             // 
             this.Nombre.CustomButton.Image = null;
-            this.Nombre.CustomButton.Location = new System.Drawing.Point(68, 1);
+            this.Nombre.CustomButton.Location = new System.Drawing.Point(91, 1);
             this.Nombre.CustomButton.Name = "";
-            this.Nombre.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.Nombre.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.Nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.Nombre.CustomButton.TabIndex = 1;
             this.Nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -122,9 +122,9 @@
             // 
             // 
             this.Apellido.CustomButton.Image = null;
-            this.Apellido.CustomButton.Location = new System.Drawing.Point(68, 1);
+            this.Apellido.CustomButton.Location = new System.Drawing.Point(91, 1);
             this.Apellido.CustomButton.Name = "";
-            this.Apellido.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.Apellido.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.Apellido.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.Apellido.CustomButton.TabIndex = 1;
             this.Apellido.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -153,9 +153,9 @@
             // 
             // 
             this.Mail.CustomButton.Image = null;
-            this.Mail.CustomButton.Location = new System.Drawing.Point(68, 1);
+            this.Mail.CustomButton.Location = new System.Drawing.Point(91, 1);
             this.Mail.CustomButton.Name = "";
-            this.Mail.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.Mail.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.Mail.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.Mail.CustomButton.TabIndex = 1;
             this.Mail.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -184,9 +184,9 @@
             // 
             // 
             this.Direccion.CustomButton.Image = null;
-            this.Direccion.CustomButton.Location = new System.Drawing.Point(68, 1);
+            this.Direccion.CustomButton.Location = new System.Drawing.Point(91, 1);
             this.Direccion.CustomButton.Name = "";
-            this.Direccion.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.Direccion.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.Direccion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.Direccion.CustomButton.TabIndex = 1;
             this.Direccion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -232,9 +232,9 @@
             // 
             // 
             this.Telefono.CustomButton.Image = null;
-            this.Telefono.CustomButton.Location = new System.Drawing.Point(68, 1);
+            this.Telefono.CustomButton.Location = new System.Drawing.Point(91, 1);
             this.Telefono.CustomButton.Name = "";
-            this.Telefono.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.Telefono.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.Telefono.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.Telefono.CustomButton.TabIndex = 1;
             this.Telefono.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -272,9 +272,9 @@
             // 
             // 
             this.Localidad.CustomButton.Image = null;
-            this.Localidad.CustomButton.Location = new System.Drawing.Point(68, 1);
+            this.Localidad.CustomButton.Location = new System.Drawing.Point(91, 1);
             this.Localidad.CustomButton.Name = "";
-            this.Localidad.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.Localidad.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.Localidad.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.Localidad.CustomButton.TabIndex = 1;
             this.Localidad.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -312,9 +312,9 @@
             // 
             // 
             this.CUIT.CustomButton.Image = null;
-            this.CUIT.CustomButton.Location = new System.Drawing.Point(68, 1);
+            this.CUIT.CustomButton.Location = new System.Drawing.Point(91, 1);
             this.CUIT.CustomButton.Name = "";
-            this.CUIT.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.CUIT.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.CUIT.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.CUIT.CustomButton.TabIndex = 1;
             this.CUIT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -352,9 +352,9 @@
             // 
             // 
             this.RazonSocial.CustomButton.Image = null;
-            this.RazonSocial.CustomButton.Location = new System.Drawing.Point(68, 1);
+            this.RazonSocial.CustomButton.Location = new System.Drawing.Point(91, 1);
             this.RazonSocial.CustomButton.Name = "";
-            this.RazonSocial.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.RazonSocial.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.RazonSocial.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.RazonSocial.CustomButton.TabIndex = 1;
             this.RazonSocial.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;

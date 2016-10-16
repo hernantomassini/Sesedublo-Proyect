@@ -177,6 +177,7 @@
             this.Controls.Add(this.AtrasTile);
             this.Controls.Add(this.AceptarTIle);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "ModifyCash";
             this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Text = "Modificar Caja";

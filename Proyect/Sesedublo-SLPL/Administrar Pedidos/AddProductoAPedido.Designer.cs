@@ -527,6 +527,7 @@
             this.Controls.Add(this.AtrasTile);
             this.Controls.Add(this.ProductosDGV);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "AddProductoAPedido";
             this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Text = "Agregar Productos";

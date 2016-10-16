@@ -1,26 +1,29 @@
 ﻿using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sesedublo_SLPL.Historial_de_Facturasns
+namespace Sesedublo_SLPL
 {
-    public partial class Ver_Factura : Form
+    public partial class Ver_Factura_Dup : Form
     {
         int id_factura;
         int id_cliente;
         private PrintDocument printDocument1 = new PrintDocument();
 
-        public Ver_Factura()
+        public Ver_Factura_Dup()
         {
 
             this.Controls.Add(printButton);
-            InitializeComponent();
-            this.Closing += new CancelEventHandler(Avoid_Closing);
+            InitializeComponent(); this.Closing += new CancelEventHandler(Avoid_Closing);
 
             direccionLea.Text = "Elpidio Gonzales 9510";
             CPLea.Text = "C1416EFP CABA";
@@ -74,10 +77,10 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             if (reader.HasRows)
             {
                 if (reader.GetString(0) != "") { tipoFactura.Text = reader.GetString(0); };
-                decimal iva = decimal.Round(Convert.ToDecimal(Convert.ToDouble(reader.GetDecimal(1)) - Convert.ToDouble(reader.GetDecimal(1)) / 1.21),2);
+                decimal iva = decimal.Round(Convert.ToDecimal(Convert.ToDouble(reader.GetDecimal(1)) - Convert.ToDouble(reader.GetDecimal(1)) / 1.21), 2);
                 if (tipoFactura.Text.Equals("A"))
                 {
-                    if (reader.GetString(1) != "") { subTotal.Text = Convert.ToString(decimal.Round(reader.GetDecimal(1) / Convert.ToDecimal(1.21),2)); };
+                    if (reader.GetString(1) != "") { subTotal.Text = Convert.ToString(decimal.Round(reader.GetDecimal(1) / Convert.ToDecimal(1.21), 2)); };
                     if (reader.GetString(1) != "") { subTotalPrec.Text = Convert.ToString(decimal.Round(reader.GetDecimal(1) / Convert.ToDecimal(1.21), 2)); }
                     ivaCalculado.Text = Convert.ToString(decimal.Round(iva, 2));
 
@@ -98,7 +101,7 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
                     ivaCalculado.Visible = false;
                 }
 
-                oriOdup.Text = "ORIGINAL";
+                oriOdup.Text = "DUPLICADO";
             }
             reader.Close();
             Conexion.closeConnection();
@@ -128,7 +131,7 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             facturaID.Text = "FACTURA N° 00001-" + Convert.ToString(id_factura);
         }
 
-           [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
         public static extern long BitBlt(IntPtr hdcDest,
         int nXDest, int nYDest, int nWidth, int nHeight,
         IntPtr hdcSrc, int nXSrc, int nYSrc, int dwRop);
@@ -173,5 +176,4 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
 
         }
     }
-    
 }

@@ -46,6 +46,7 @@
             this.dgvOperaciones.AllowUserToAddRows = false;
             this.dgvOperaciones.AllowUserToDeleteRows = false;
             this.dgvOperaciones.AllowUserToResizeRows = false;
+            this.dgvOperaciones.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.dgvOperaciones.BackgroundColor = System.Drawing.Color.DarkGray;
             this.dgvOperaciones.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvOperaciones.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -206,6 +207,7 @@
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.dgvOperaciones);
+            this.MaximizeBox = false;
             this.Name = "Historial_de_Operaciones";
             this.Text = "Operaciones Realizadas";
             this.Load += new System.EventHandler(this.Historial_de_Operaciones_Load);

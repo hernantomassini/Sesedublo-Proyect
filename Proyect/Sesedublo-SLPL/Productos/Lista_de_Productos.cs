@@ -21,7 +21,6 @@ namespace Sesedublo_SLPL.Productos
             DataTable tablaDeUsuarios = new DataTable("Clientes");
             da.Fill(tablaDeUsuarios);
             dgvProductos.DataSource = tablaDeUsuarios.DefaultView;
-            dgvProductos.Columns[1].Width = 200;
             dgvProductos.Columns[0].Visible = false;
 
             Conexion.closeConnection();
@@ -53,7 +52,6 @@ namespace Sesedublo_SLPL.Productos
             DataTable tablaDeUsuarios = new DataTable("Clientes");
             da.Fill(tablaDeUsuarios);
             dgvProductos.DataSource = tablaDeUsuarios.DefaultView;
-            dgvProductos.Columns[0].Width = 200;
 
             Conexion.closeConnection();
         }

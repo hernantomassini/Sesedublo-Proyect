@@ -42,7 +42,6 @@
             this.descripcion = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
-            this.titleDetalleFactura = new MetroFramework.Controls.MetroTile();
             this.RegistroTile = new MetroFramework.Controls.MetroTile();
             this.AddNotaCreditoTile = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
@@ -322,30 +321,11 @@
             this.metroTile1.UseTileImage = true;
             this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
-            // titleDetalleFactura
-            // 
-            this.titleDetalleFactura.ActiveControl = null;
-            this.titleDetalleFactura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.titleDetalleFactura.BackColor = System.Drawing.Color.YellowGreen;
-            this.titleDetalleFactura.Location = new System.Drawing.Point(565, 551);
-            this.titleDetalleFactura.Name = "titleDetalleFactura";
-            this.titleDetalleFactura.Size = new System.Drawing.Size(114, 44);
-            this.titleDetalleFactura.TabIndex = 5;
-            this.titleDetalleFactura.Text = "Ver en Detalle";
-            this.titleDetalleFactura.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.titleDetalleFactura.TileImage = ((System.Drawing.Image)(resources.GetObject("titleDetalleFactura.TileImage")));
-            this.titleDetalleFactura.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.titleDetalleFactura.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.titleDetalleFactura.UseCustomBackColor = true;
-            this.titleDetalleFactura.UseSelectable = true;
-            this.titleDetalleFactura.UseTileImage = true;
-            this.titleDetalleFactura.Click += new System.EventHandler(this.titleDetalleFactura_Click);
-            // 
             // RegistroTile
             // 
             this.RegistroTile.ActiveControl = null;
             this.RegistroTile.BackColor = System.Drawing.Color.SkyBlue;
-            this.RegistroTile.Location = new System.Drawing.Point(202, 551);
+            this.RegistroTile.Location = new System.Drawing.Point(323, 551);
             this.RegistroTile.Name = "RegistroTile";
             this.RegistroTile.Size = new System.Drawing.Size(168, 44);
             this.RegistroTile.TabIndex = 7;
@@ -363,7 +343,7 @@
             // 
             this.AddNotaCreditoTile.ActiveControl = null;
             this.AddNotaCreditoTile.BackColor = System.Drawing.Color.Teal;
-            this.AddNotaCreditoTile.Location = new System.Drawing.Point(376, 551);
+            this.AddNotaCreditoTile.Location = new System.Drawing.Point(497, 551);
             this.AddNotaCreditoTile.Name = "AddNotaCreditoTile";
             this.AddNotaCreditoTile.Size = new System.Drawing.Size(183, 44);
             this.AddNotaCreditoTile.TabIndex = 6;
@@ -387,7 +367,6 @@
             this.Controls.Add(this.AddNotaCreditoTile);
             this.Controls.Add(this.RegistroTile);
             this.Controls.Add(this.dgvFacturas);
-            this.Controls.Add(this.titleDetalleFactura);
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.descripcion);
             this.Controls.Add(this.metroLabel6);
@@ -397,6 +376,7 @@
             this.Controls.Add(this.nombre);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
+            this.MaximizeBox = false;
             this.Name = "Historial_de_Facturas";
             this.Text = "Facturas";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -420,7 +400,6 @@
         private MetroFramework.Controls.MetroTextBox descripcion;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroTile metroTile1;
-        private MetroFramework.Controls.MetroTile titleDetalleFactura;
         private MetroFramework.Controls.MetroTile RegistroTile;
         private MetroFramework.Controls.MetroTile AddNotaCreditoTile;
     }

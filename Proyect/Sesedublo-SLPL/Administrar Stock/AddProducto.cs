@@ -91,7 +91,6 @@ namespace Sesedublo_SLPL.Administrar_Stock
             DataTable tablaDeUsuarios = new DataTable("Clientes");
             da.Fill(tablaDeUsuarios);
             dgvProductos.DataSource = tablaDeUsuarios.DefaultView;
-            dgvProductos.Columns[0].Width = 200;
 
             Conexion.closeConnection();
         }
@@ -231,6 +230,10 @@ namespace Sesedublo_SLPL.Administrar_Stock
             Nombre.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();
             string tipo = dgvProductos.CurrentRow.Cells[2].Value.ToString();
 
+            if (tipo == "N/E")
+            {
+                return;
+            }
 
             decimal costo = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[3].Value) / 100;
             decimal precio = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[4].Value) / 100;

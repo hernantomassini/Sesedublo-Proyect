@@ -140,6 +140,8 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             int idFactura = Convert.ToInt32(dgvFacturas.SelectedCells[0].Value);
             int idCliente = Convert.ToInt32(dgvFacturas.SelectedCells[1].Value);
             Manejador_Formularios.Ver_Remito.meterId(idFactura, idCliente);
+            Manejador_Formularios.Ver_Factura_Dup.meterId(idFactura, idCliente);
+            Manejador_Formularios.Ver_Factura_Dup.Show();
             Manejador_Formularios.Ver_Factura.meterId(idFactura, idCliente);
             Manejador_Formularios.Ver_Factura.Show();
             Manejador_Formularios.Ver_Remito.Show();

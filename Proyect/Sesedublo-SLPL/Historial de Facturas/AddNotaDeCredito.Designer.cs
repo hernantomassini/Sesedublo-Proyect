@@ -111,6 +111,8 @@
             this.dgvVerFactura.AllowUserToAddRows = false;
             this.dgvVerFactura.AllowUserToDeleteRows = false;
             this.dgvVerFactura.AllowUserToResizeRows = false;
+            this.dgvVerFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvVerFactura.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.dgvVerFactura.BackgroundColor = System.Drawing.Color.Silver;
             this.dgvVerFactura.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvVerFactura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -235,6 +237,7 @@
             this.Controls.Add(this.dgvVerFactura);
             this.Controls.Add(this.Motivo);
             this.Controls.Add(this.Cantidad);
+            this.MaximizeBox = false;
             this.Name = "AddNotaDeCredito";
             this.Text = "Agregar Nota de Crédito";
             this.Load += new System.EventHandler(this.AddNotaDeCredito_Load);

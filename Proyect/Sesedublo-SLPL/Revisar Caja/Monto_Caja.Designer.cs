@@ -97,6 +97,7 @@
             this.Controls.Add(this.MercaderiaLabel);
             this.Controls.Add(this.EfectivoLabel);
             this.Controls.Add(this.ModificarEfectivo);
+            this.MaximizeBox = false;
             this.Name = "Monto_Caja";
             this.Text = "Caja";
             this.Load += new System.EventHandler(this.Monto_Caja_Load);

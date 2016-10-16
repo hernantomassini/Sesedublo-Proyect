@@ -224,6 +224,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Utilidad);
             this.Controls.Add(this.Nombre);
+            this.MaximizeBox = false;
             this.Name = "Producto_Nuevo";
             this.Text = "Producto Nuevo";
             this.ResumeLayout(false);

@@ -125,6 +125,8 @@
             this.dgvProductos.AllowUserToAddRows = false;
             this.dgvProductos.AllowUserToDeleteRows = false;
             this.dgvProductos.AllowUserToResizeRows = false;
+            this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.dgvProductos.BackgroundColor = System.Drawing.Color.Gray;
             this.dgvProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -177,6 +179,7 @@
             this.Controls.Add(this.titleAtras);
             this.Controls.Add(this.titleAgregarProducto);
             this.Controls.Add(this.dgvProductos);
+            this.MaximizeBox = false;
             this.Name = "Lista_de_Productos";
             this.Text = "Lista de Productos";
             this.Load += new System.EventHandler(this.Lista_de_Productos_Load);

@@ -315,5 +315,19 @@ namespace Sesedublo_SLPL.Generales
                 return Ver_Remito_Form;
             }
         }
+
+        private static Ver_Factura_Dup Ver_Factura_Dup_Form;
+        public static Ver_Factura_Dup Ver_Factura_Dup
+        {
+            get
+            {
+                if (Ver_Factura_Dup_Form == null)
+                {
+                    Ver_Factura_Dup_Form = new Ver_Factura_Dup();
+                }
+                return Ver_Factura_Dup_Form;
+            }
+        }
+
     }
 }

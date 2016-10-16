@@ -216,27 +216,6 @@
         YII=
 </value>
   </data>
-  <metadata name="titleDetalleFactura.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="titleDetalleFactura.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAspJREFUWEfllkGLGkEQhf3/v2BhNxAPXjzIkt1sFBGUxLAuTNgsyEYWDx48uAQ3
-        /oJJvpp6Q0/POI4GDyEFD6e7X72qqe6ptvXP2cXFu7Tb7ZXAvFPOawRaLBbpfD7PwfgsCVxevk/H488F
-        YeaS5Fs6nX7NwZh5p5jhF88dZe12J318/G7lnUy+GK6u2mm/P7T5MAHGzLMuLn7Mo+OSzQ2n5+cfJgBu
-        bz+ZqOZms1kJzLMOD758mTsqiTD4w0Ni4JkyA/Z7tVql6/U6B2PmxYl9GycB6elpXggovLwsCwFjaA1e
-        7IseugeTYD97vQ95EoICLJfL0prAPOtKMF5DF30Ptd+m03s7UHxeOOvNNEbk7m5gh4w34pexDiM8+WiM
-        Hroeot4gAhx5k9fXn/YMOFwEdGrBeEMSERc//HmWplPrrdPpWik5OLvdLm86g8HIAjit0lhX9fDDHx30
-        0HVa2VgUaCA6cJvNxsQ4SDc3/UZvQCXg44c/OuihG8Zxema8HUQyhUzWb2+/8krwbTu1kaln4I8Oz+gy
-        Jg7xnJrZcDi2BcombLfb/JmyOrWRwa/SAcQhnlMzUwJkKYTjpuWXwa/S0biUwGg0sf2iRFVg3amNDH6V
-        DiBOSY8DQqnIjk8ndqKlOrWRwY811MyIE9+wdnIFnCGGzhyiRl3sj8HTARTQQzeM4/SyXV9/tCYSCgA+
-        rUOVYB1e7Iseuk6rtyTJbq94Kxizti+JLHh2b8R+6LHm1HpTkHgbBE5y1py4F+7tV52viq/yN0qAy4Mm
-        si/4qUAPXfQ9VLXRy9mvcySA7qG7xIwmQfsMk+A53tt9gBf7oldqPnUGmZsMZ8D+sffqFWHAMBDr8ODL
-        F52jgsvoVpSNg8Y/GsAlwm+cBONwHeCH/7FdtGBkjpgPzZirSiB+S/xOevNDhihlZV+Fk8t8ilFS9jjG
-        X5X6P7ZW6zc7XgK/htqy9AAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="RegistroTile.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

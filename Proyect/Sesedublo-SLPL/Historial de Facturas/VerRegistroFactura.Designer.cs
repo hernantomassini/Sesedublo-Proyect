@@ -59,7 +59,8 @@
             // 
             this.registrosDGV.AllowUserToAddRows = false;
             this.registrosDGV.AllowUserToDeleteRows = false;
-            this.registrosDGV.AllowUserToResizeRows = false;
+            this.registrosDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.registrosDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.registrosDGV.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.registrosDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.registrosDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -109,6 +110,7 @@
             this.ClientSize = new System.Drawing.Size(462, 363);
             this.Controls.Add(this.registrosDGV);
             this.Controls.Add(this.CerrarTile);
+            this.MaximizeBox = false;
             this.Name = "VerRegistroFactura";
             this.Text = "Notas de Credito";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;

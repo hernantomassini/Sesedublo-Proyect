@@ -63,7 +63,6 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             DataTable tablaDeUsuarios = new DataTable("Clientes");
             da.Fill(tablaDeUsuarios);
             dgvProductos.DataSource = tablaDeUsuarios.DefaultView;
-            dgvProductos.Columns[0].Width = 200;
 
             Conexion.closeConnection();
         }

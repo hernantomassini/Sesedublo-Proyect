@@ -53,8 +53,6 @@ namespace Sesedublo_SLPL
              da.Fill(tablaDeFacturas);
              dgvVerFactura.DataSource = tablaDeFacturas.DefaultView;
 
-             dgvVerFactura.Columns[0].Width = 200;
-             dgvVerFactura.Columns[1].Width = 130;
              Conexion.closeConnection();
 
              facturaID.Text = "REMITO N° 00001-" + Convert.ToString(id_factura);

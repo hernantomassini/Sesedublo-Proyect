@@ -222,6 +222,12 @@
     <Compile Include="Historial de Facturas\Ver_Remito.Designer.cs">
       <DependentUpon>Ver_Remito.cs</DependentUpon>
     </Compile>
+    <Compile Include="Historial de Facturas\Ver_Factura_Dup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historial de Facturas\Ver_Factura_Dup.Designer.cs">
+      <DependentUpon>Ver_Factura_Dup.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Administrar Pedidos\ABM_Pedidos.resx">
       <DependentUpon>ABM_Pedidos.cs</DependentUpon>
     </EmbeddedResource>
@@ -297,6 +303,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Historial de Facturas\Ver_Remito.resx">
       <DependentUpon>Ver_Remito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Historial de Facturas\Ver_Factura_Dup.resx">
+      <DependentUpon>Ver_Factura_Dup.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

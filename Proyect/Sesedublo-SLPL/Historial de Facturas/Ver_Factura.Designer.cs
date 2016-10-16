@@ -494,6 +494,8 @@
             this.dgvVerFactura.AllowUserToAddRows = false;
             this.dgvVerFactura.AllowUserToDeleteRows = false;
             this.dgvVerFactura.AllowUserToResizeRows = false;
+            this.dgvVerFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvVerFactura.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.dgvVerFactura.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvVerFactura.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvVerFactura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -575,6 +577,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
             this.Name = "Ver_Factura";
             this.Text = "Factura Detalle";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));

@@ -177,6 +177,7 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.cantidadPagada);
             this.Controls.Add(this.cantidadAPagar);
+            this.MaximizeBox = false;
             this.Name = "ActualizarPago";
             this.Text = "Actualizar Pago";
             this.Load += new System.EventHandler(this.ActualizarPago_Load);

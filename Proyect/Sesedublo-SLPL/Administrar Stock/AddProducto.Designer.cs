@@ -383,6 +383,7 @@
             this.Controls.Add(this.Nombre);
             this.Controls.Add(this.Cantidad);
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "AddProducto";
             this.Text = "Agregar Producto";
             this.Load += new System.EventHandler(this.AddProducto_Load);

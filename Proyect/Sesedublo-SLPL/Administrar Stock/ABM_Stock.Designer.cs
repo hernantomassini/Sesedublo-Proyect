@@ -54,6 +54,8 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.StockDGV.AllowUserToAddRows = false;
             this.StockDGV.AllowUserToDeleteRows = false;
             this.StockDGV.AllowUserToResizeRows = false;
+            this.StockDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.StockDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.StockDGV.BackgroundColor = System.Drawing.Color.Gray;
             this.StockDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.StockDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -256,6 +258,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.Controls.Add(this.titleAtras);
             this.Controls.Add(this.titleAgregarCliente);
             this.Controls.Add(this.StockDGV);
+            this.MaximizeBox = false;
             this.Name = "ABM_Stock";
             this.Text = "Stock";
             this.Load += new System.EventHandler(this.ABM_Stock_Load);

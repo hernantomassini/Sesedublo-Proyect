@@ -91,6 +91,7 @@
             this.Controls.Add(this.tipoDeFactura);
             this.Controls.Add(this.AtrasTile);
             this.Controls.Add(this.AceptarTile);
+            this.MaximizeBox = false;
             this.Name = "GenerarFactura";
             this.Text = "Generar Factura";
             this.Load += new System.EventHandler(this.GenerarFactura_Load);

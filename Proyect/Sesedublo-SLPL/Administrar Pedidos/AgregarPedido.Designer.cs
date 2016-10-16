@@ -50,8 +50,9 @@
             // 
             this.ClienteDGV.AllowUserToAddRows = false;
             this.ClienteDGV.AllowUserToDeleteRows = false;
-            this.ClienteDGV.AllowUserToResizeColumns = false;
             this.ClienteDGV.AllowUserToResizeRows = false;
+            this.ClienteDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ClienteDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.ClienteDGV.BackgroundColor = System.Drawing.Color.Black;
             this.ClienteDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ClienteDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -293,6 +294,7 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.ClienteDGV);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "AgregarPedido";
             this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Text = "Nuevo Pedido";

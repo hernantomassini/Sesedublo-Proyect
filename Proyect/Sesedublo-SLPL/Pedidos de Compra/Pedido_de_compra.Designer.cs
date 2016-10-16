@@ -195,6 +195,7 @@
             this.Controls.Add(this.AgregarPedidoTile);
             this.Controls.Add(this.AtrasTile);
             this.Controls.Add(this.PedidosDGV);
+            this.MaximizeBox = false;
             this.Name = "Pedido_de_compra";
             this.Text = "Pedido de Compra";
             this.Load += new System.EventHandler(this.Pedido_de_compra_Load);

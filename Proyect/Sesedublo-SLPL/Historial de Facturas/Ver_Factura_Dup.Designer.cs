@@ -1,6 +1,6 @@
 ﻿namespace Sesedublo_SLPL
 {
-    partial class Ver_Remito
+    partial class Ver_Factura_Dup
     {
         /// <summary>
         /// Required designer variable.
@@ -31,10 +31,30 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ver_Remito));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ver_Factura_Dup));
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.dgvVerFactura = new MetroFramework.Controls.MetroGrid();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.printButton = new MetroFramework.Controls.MetroTile();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.algoRaro = new System.Windows.Forms.Label();
+            this.fechaVencimiento = new System.Windows.Forms.Label();
+            this.fechaActualImp = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.oriOdup = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.ivaCalculado = new System.Windows.Forms.Label();
+            this.totalT = new System.Windows.Forms.Label();
+            this.subTotalPrec = new System.Windows.Forms.Label();
+            this.vendedorLea = new System.Windows.Forms.Label();
+            this.subTotal = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.IVA = new System.Windows.Forms.Label();
+            this.sub = new System.Windows.Forms.Label();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.RazonSocialComp = new System.Windows.Forms.Label();
@@ -55,9 +75,10 @@
             this.direccionLea = new System.Windows.Forms.Label();
             this.facturaID = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.printButton = new MetroFramework.Controls.MetroTile();
             this.metroPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVerFactura)).BeginInit();
+            this.panel5.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.metroPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -71,10 +92,10 @@
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(14, 377);
+            this.metroPanel2.Location = new System.Drawing.Point(14, 374);
             this.metroPanel2.Name = "metroPanel2";
             this.metroPanel2.Size = new System.Drawing.Size(751, 143);
-            this.metroPanel2.TabIndex = 33;
+            this.metroPanel2.TabIndex = 36;
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
@@ -138,6 +159,207 @@
             this.panel6.Size = new System.Drawing.Size(774, 24);
             this.panel6.TabIndex = 25;
             // 
+            // printButton
+            // 
+            this.printButton.ActiveControl = null;
+            this.printButton.BackColor = System.Drawing.Color.SteelBlue;
+            this.printButton.Location = new System.Drawing.Point(14, 808);
+            this.printButton.Name = "printButton";
+            this.printButton.Size = new System.Drawing.Size(153, 49);
+            this.printButton.TabIndex = 35;
+            this.printButton.Text = "Imprimir";
+            this.printButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.printButton.TileImage = ((System.Drawing.Image)(resources.GetObject("printButton.TileImage")));
+            this.printButton.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.printButton.UseCustomBackColor = true;
+            this.printButton.UseSelectable = true;
+            this.printButton.UseTileImage = true;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.panel7);
+            this.panel5.Controls.Add(this.algoRaro);
+            this.panel5.Controls.Add(this.fechaVencimiento);
+            this.panel5.Controls.Add(this.fechaActualImp);
+            this.panel5.Controls.Add(this.label6);
+            this.panel5.Controls.Add(this.label5);
+            this.panel5.Controls.Add(this.oriOdup);
+            this.panel5.Controls.Add(this.label4);
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Location = new System.Drawing.Point(12, 686);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(753, 107);
+            this.panel5.TabIndex = 34;
+            // 
+            // panel7
+            // 
+            this.panel7.Location = new System.Drawing.Point(321, 27);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(92, 58);
+            this.panel7.TabIndex = 11;
+            // 
+            // algoRaro
+            // 
+            this.algoRaro.AutoSize = true;
+            this.algoRaro.Location = new System.Drawing.Point(482, 59);
+            this.algoRaro.Name = "algoRaro";
+            this.algoRaro.Size = new System.Drawing.Size(245, 13);
+            this.algoRaro.TabIndex = 10;
+            this.algoRaro.Text = "Numerados del 0001-00015001 al 0001-00025000";
+            // 
+            // fechaVencimiento
+            // 
+            this.fechaVencimiento.AutoSize = true;
+            this.fechaVencimiento.Location = new System.Drawing.Point(482, 33);
+            this.fechaVencimiento.Name = "fechaVencimiento";
+            this.fechaVencimiento.Size = new System.Drawing.Size(59, 13);
+            this.fechaVencimiento.TabIndex = 9;
+            this.fechaVencimiento.Text = "labelFecha";
+            // 
+            // fechaActualImp
+            // 
+            this.fechaActualImp.AutoSize = true;
+            this.fechaActualImp.Location = new System.Drawing.Point(482, 10);
+            this.fechaActualImp.Name = "fechaActualImp";
+            this.fechaActualImp.Size = new System.Drawing.Size(59, 13);
+            this.fechaActualImp.TabIndex = 8;
+            this.fechaActualImp.Text = "labelFecha";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(344, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "47580";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(140, 59);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(113, 13);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "CAJ 41015108829289";
+            // 
+            // oriOdup
+            // 
+            this.oriOdup.AutoSize = true;
+            this.oriOdup.Location = new System.Drawing.Point(51, 59);
+            this.oriOdup.Name = "oriOdup";
+            this.oriOdup.Size = new System.Drawing.Size(35, 13);
+            this.oriOdup.TabIndex = 2;
+            this.oriOdup.Text = "label5";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(22, 33);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(198, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "CUIT 30-68718622-9   H.M.  8697/2000";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(22, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(172, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "PRODUCCIONES GRAFICAS S.A.";
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.ivaCalculado);
+            this.panel3.Controls.Add(this.totalT);
+            this.panel3.Controls.Add(this.subTotalPrec);
+            this.panel3.Controls.Add(this.vendedorLea);
+            this.panel3.Controls.Add(this.subTotal);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.IVA);
+            this.panel3.Controls.Add(this.sub);
+            this.panel3.Location = new System.Drawing.Point(12, 523);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(753, 157);
+            this.panel3.TabIndex = 33;
+            // 
+            // ivaCalculado
+            // 
+            this.ivaCalculado.AutoSize = true;
+            this.ivaCalculado.Location = new System.Drawing.Point(163, 38);
+            this.ivaCalculado.Name = "ivaCalculado";
+            this.ivaCalculado.Size = new System.Drawing.Size(35, 13);
+            this.ivaCalculado.TabIndex = 7;
+            this.ivaCalculado.Text = "label3";
+            // 
+            // totalT
+            // 
+            this.totalT.AutoSize = true;
+            this.totalT.Location = new System.Drawing.Point(505, 38);
+            this.totalT.Name = "totalT";
+            this.totalT.Size = new System.Drawing.Size(35, 13);
+            this.totalT.TabIndex = 6;
+            this.totalT.Text = "label3";
+            // 
+            // subTotalPrec
+            // 
+            this.subTotalPrec.AutoSize = true;
+            this.subTotalPrec.Location = new System.Drawing.Point(163, 11);
+            this.subTotalPrec.Name = "subTotalPrec";
+            this.subTotalPrec.Size = new System.Drawing.Size(35, 13);
+            this.subTotalPrec.TabIndex = 5;
+            this.subTotalPrec.Text = "label3";
+            // 
+            // vendedorLea
+            // 
+            this.vendedorLea.AutoSize = true;
+            this.vendedorLea.Location = new System.Drawing.Point(22, 79);
+            this.vendedorLea.Name = "vendedorLea";
+            this.vendedorLea.Size = new System.Drawing.Size(193, 13);
+            this.vendedorLea.TabIndex = 4;
+            this.vendedorLea.Text = "Vendedor       LEANDRO DILONARDO";
+            // 
+            // subTotal
+            // 
+            this.subTotal.AutoSize = true;
+            this.subTotal.Location = new System.Drawing.Point(99, 11);
+            this.subTotal.Name = "subTotal";
+            this.subTotal.Size = new System.Drawing.Size(35, 13);
+            this.subTotal.TabIndex = 3;
+            this.subTotal.Text = "label3";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(94, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "(21.00)";
+            // 
+            // IVA
+            // 
+            this.IVA.AutoSize = true;
+            this.IVA.Location = new System.Drawing.Point(22, 38);
+            this.IVA.Name = "IVA";
+            this.IVA.Size = new System.Drawing.Size(24, 13);
+            this.IVA.TabIndex = 1;
+            this.IVA.Text = "IVA";
+            // 
+            // sub
+            // 
+            this.sub.AutoSize = true;
+            this.sub.Location = new System.Drawing.Point(22, 11);
+            this.sub.Name = "sub";
+            this.sub.Size = new System.Drawing.Size(64, 13);
+            this.sub.TabIndex = 0;
+            this.sub.Text = "SUBTOTAL";
+            // 
             // metroPanel1
             // 
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -150,7 +372,7 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(12, 234);
+            this.metroPanel1.Location = new System.Drawing.Point(12, 231);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(753, 137);
             this.metroPanel1.TabIndex = 32;
@@ -225,7 +447,7 @@
             this.panel1.Controls.Add(this.direccionLea);
             this.panel1.Controls.Add(this.facturaID);
             this.panel1.Controls.Add(this.label24);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 9);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(753, 216);
             this.panel1.TabIndex = 31;
@@ -342,38 +564,27 @@
             this.label24.TabIndex = 20;
             this.label24.Text = "SESEDUBLO S.A.";
             // 
-            // printButton
-            // 
-            this.printButton.ActiveControl = null;
-            this.printButton.BackColor = System.Drawing.Color.SteelBlue;
-            this.printButton.Location = new System.Drawing.Point(14, 533);
-            this.printButton.Name = "printButton";
-            this.printButton.Size = new System.Drawing.Size(153, 49);
-            this.printButton.TabIndex = 34;
-            this.printButton.Text = "Imprimir";
-            this.printButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.printButton.TileImage = ((System.Drawing.Image)(resources.GetObject("printButton.TileImage")));
-            this.printButton.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.printButton.UseCustomBackColor = true;
-            this.printButton.UseSelectable = true;
-            this.printButton.UseTileImage = true;
-            this.printButton.Click += new System.EventHandler(this.printButton_Click);
-            // 
-            // Ver_Remito
+            // Ver_Factura_Dup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(794, 594);
-            this.Controls.Add(this.printButton);
+            this.ClientSize = new System.Drawing.Size(827, 670);
             this.Controls.Add(this.metroPanel2);
+            this.Controls.Add(this.printButton);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.panel1);
-            this.MaximizeBox = false;
-            this.Name = "Ver_Remito";
-            this.Text = "Ver_Remito";
+            this.Name = "Ver_Factura_Dup";
+            this.Text = "Ver_Factura_Dup";
             this.metroPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVerFactura)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -389,6 +600,26 @@
         private MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroGrid dgvVerFactura;
         private System.Windows.Forms.Panel panel6;
+        private MetroFramework.Controls.MetroTile printButton;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label algoRaro;
+        private System.Windows.Forms.Label fechaVencimiento;
+        private System.Windows.Forms.Label fechaActualImp;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label oriOdup;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label ivaCalculado;
+        private System.Windows.Forms.Label totalT;
+        private System.Windows.Forms.Label subTotalPrec;
+        private System.Windows.Forms.Label vendedorLea;
+        private System.Windows.Forms.Label subTotal;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label IVA;
+        private System.Windows.Forms.Label sub;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label RazonSocialComp;
@@ -409,6 +640,5 @@
         private System.Windows.Forms.Label direccionLea;
         private System.Windows.Forms.Label facturaID;
         private System.Windows.Forms.Label label24;
-        private MetroFramework.Controls.MetroTile printButton;
     }
 }

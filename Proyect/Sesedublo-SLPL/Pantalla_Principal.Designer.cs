@@ -195,7 +195,7 @@
             this.metroTile7.Location = new System.Drawing.Point(414, 215);
             this.metroTile7.Margin = new System.Windows.Forms.Padding(2);
             this.metroTile7.Name = "metroTile7";
-            this.metroTile7.Size = new System.Drawing.Size(146, 97);
+            this.metroTile7.Size = new System.Drawing.Size(153, 97);
             this.metroTile7.TabIndex = 14;
             this.metroTile7.Text = "Pedidos de Compra";
             this.metroTile7.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile7.TileImage")));
@@ -212,10 +212,10 @@
             this.metroTile8.ActiveControl = null;
             this.metroTile8.BackColor = System.Drawing.Color.Teal;
             this.metroTile8.ForeColor = System.Drawing.Color.White;
-            this.metroTile8.Location = new System.Drawing.Point(564, 215);
+            this.metroTile8.Location = new System.Drawing.Point(571, 215);
             this.metroTile8.Margin = new System.Windows.Forms.Padding(2);
             this.metroTile8.Name = "metroTile8";
-            this.metroTile8.Size = new System.Drawing.Size(148, 97);
+            this.metroTile8.Size = new System.Drawing.Size(200, 97);
             this.metroTile8.TabIndex = 15;
             this.metroTile8.Text = "Productos";
             this.metroTile8.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile8.TileImage")));
@@ -234,7 +234,7 @@
             this.BackImagePadding = new System.Windows.Forms.Padding(50);
             this.BackLocation = MetroFramework.Forms.BackLocation.BottomLeft;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(720, 339);
+            this.ClientSize = new System.Drawing.Size(786, 339);
             this.Controls.Add(this.metroTile8);
             this.Controls.Add(this.metroTile7);
             this.Controls.Add(this.label2);
@@ -245,6 +245,7 @@
             this.Controls.Add(this.metroTile3);
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.metroTile1);
+            this.MaximizeBox = false;
             this.Name = "Pantalla_Principal";
             this.Style = MetroFramework.MetroColorStyle.Default;
             this.Text = "Menú Principal";

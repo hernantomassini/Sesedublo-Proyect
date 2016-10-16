@@ -63,9 +63,6 @@ namespace Sesedublo_SLPL.Productos
 
                 Conexion.executeProcedure("agregarNuevoProducto", Conexion.generarArgumentos("_nombre"), Nombre.Text);
                 Conexion.closeConnection();
-                Manejador_Formularios.AddPedidoCompra.getProductos();
-                Manejador_Formularios.AddProducto.getProductos();
-                Manejador_Formularios.Lista_de_Productos.getData();
 
                 int cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
                 decimal costo = Convert.ToDecimal(Costo.Text);
@@ -87,6 +84,10 @@ namespace Sesedublo_SLPL.Productos
 
                 Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), 0, cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto);
                 Conexion.closeConnection();
+
+                Manejador_Formularios.AddPedidoCompra.getProductos();
+                Manejador_Formularios.AddProducto.getProductos();
+                Manejador_Formularios.Lista_de_Productos.getData();
                 Close();
             }
         }

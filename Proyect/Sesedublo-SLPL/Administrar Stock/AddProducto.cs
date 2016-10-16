@@ -42,6 +42,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
         {
             Clean();
             flag = accionesABM.Crear;
+            this.getProductos();
             Nombre.Text = dgvProductos.Rows[0].Cells[1].Value.ToString();
         }
 

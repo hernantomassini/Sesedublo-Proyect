@@ -245,7 +245,6 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Clean();
             Nombre.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();
             string tipo = dgvProductos.CurrentRow.Cells[2].Value.ToString();
 
@@ -368,6 +367,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         public void CrearPedido()
         {
             Clean();
+            Nombre.Text = this.dgvProductos.Rows[0].Cells[1].Value.ToString();
             flag = accionesABM.Crear;
             Text = "Agregar pedido de compra";
         }

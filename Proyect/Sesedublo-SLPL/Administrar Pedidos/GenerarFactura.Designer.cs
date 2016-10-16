@@ -76,8 +76,7 @@
             this.tipoDeFactura.FormattingEnabled = true;
             this.tipoDeFactura.ItemHeight = 23;
             this.tipoDeFactura.Items.AddRange(new object[] {
-            "A",
-            "Remito"});
+            "A"});
             this.tipoDeFactura.Location = new System.Drawing.Point(53, 75);
             this.tipoDeFactura.Name = "tipoDeFactura";
             this.tipoDeFactura.Size = new System.Drawing.Size(121, 29);

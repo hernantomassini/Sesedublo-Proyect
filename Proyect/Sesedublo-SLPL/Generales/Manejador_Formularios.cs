@@ -302,5 +302,18 @@ namespace Sesedublo_SLPL.Generales
                 return Producto_Nuevo_Form;
             }
         }
+
+        private static Ver_Remito Ver_Remito_Form;
+        public static Ver_Remito Ver_Remito
+        {
+            get
+            {
+                if (Ver_Remito_Form == null)
+                {
+                    Ver_Remito_Form = new Ver_Remito();
+                }
+                return Ver_Remito_Form;
+            }
+        }
     }
 }

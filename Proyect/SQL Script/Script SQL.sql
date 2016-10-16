@@ -59,6 +59,7 @@ DROP PROCEDURE IF EXISTS agregarNotaDeCredito;
 DROP PROCEDURE IF EXISTS cargarNotasDeCredito;
 DROP PROCEDURE IF EXISTS obtenerItemsDeFacturaSinNC;
 DROP PROCEDURE IF EXISTS agregarCantidad;
+DROP PROCEDURE IF EXISTS obtenerItemsDeRemito;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -1060,6 +1061,17 @@ BEGIN
 	SELECT fecha AS Fecha, importe AS Importe, motivo AS Motivo FROM NotasDeCredito
     WHERE factura = _id_factura;
 	
+END //
+
+CREATE PROCEDURE obtenerItemsDeRemito(IN _id_factura INT)
+BEGIN
+	SELECT pr.nombre AS Nombre, i.cantidadProductosEdit AS 'Cantidad Total'
+	FROM Facturas f
+    INNER JOIN Pedidos p ON p.id_pedido = f.pedido
+    INNER JOIN Items i ON i.pedido = p.id_pedido
+    INNER JOIN Productos pr ON pr.id_producto = i.producto
+    WHERE f.id_factura = _id_factura
+    GROUP BY i.id_item;
 END //
 DELIMITER ;
 

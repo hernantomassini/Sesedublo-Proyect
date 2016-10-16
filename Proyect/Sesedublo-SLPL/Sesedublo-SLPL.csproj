@@ -216,6 +216,12 @@
     <Compile Include="Revisar Caja\Monto_Caja.Designer.cs">
       <DependentUpon>Monto_Caja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Historial de Facturas\Ver_Remito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historial de Facturas\Ver_Remito.Designer.cs">
+      <DependentUpon>Ver_Remito.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Administrar Pedidos\ABM_Pedidos.resx">
       <DependentUpon>ABM_Pedidos.cs</DependentUpon>
     </EmbeddedResource>
@@ -288,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Revisar Caja\Monto_Caja.resx">
       <DependentUpon>Monto_Caja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Historial de Facturas\Ver_Remito.resx">
+      <DependentUpon>Ver_Remito.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

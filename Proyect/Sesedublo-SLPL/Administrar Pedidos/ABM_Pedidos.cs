@@ -117,7 +117,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
-            if (Funciones.imprimirMensajeDeAlerta("¿Estás seguro de generar la factura? Esto significará que el pedido ya fue pago y se eliminará de esta tabla.", this) == DialogResult.Cancel)
+            if (Funciones.imprimirMensajeDeAlerta("¿Estás seguro de generar la factura?", this) == DialogResult.Cancel)
             {
                 return;
             }

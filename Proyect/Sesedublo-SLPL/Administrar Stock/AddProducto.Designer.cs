@@ -75,7 +75,6 @@
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(192, 20);
             this.Nombre.TabIndex = 2;
-            this.Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Nombre_KeyPress);
             // 
             // Utilidad
             // 
@@ -185,7 +184,7 @@
             // 
             this.titleCancelar.ActiveControl = null;
             this.titleCancelar.BackColor = System.Drawing.Color.DarkRed;
-            this.titleCancelar.Location = new System.Drawing.Point(26, 336);
+            this.titleCancelar.Location = new System.Drawing.Point(26, 331);
             this.titleCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.titleCancelar.Name = "titleCancelar";
             this.titleCancelar.Size = new System.Drawing.Size(102, 41);
@@ -204,7 +203,7 @@
             // 
             this.titleAceptar.ActiveControl = null;
             this.titleAceptar.BackColor = System.Drawing.Color.Green;
-            this.titleAceptar.Location = new System.Drawing.Point(184, 336);
+            this.titleAceptar.Location = new System.Drawing.Point(184, 331);
             this.titleAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.titleAceptar.Name = "titleAceptar";
             this.titleAceptar.Size = new System.Drawing.Size(99, 41);
@@ -245,7 +244,7 @@
             this.buscarProducto.DisplayIcon = true;
             this.buscarProducto.Icon = ((System.Drawing.Image)(resources.GetObject("buscarProducto.Icon")));
             this.buscarProducto.Lines = new string[0];
-            this.buscarProducto.Location = new System.Drawing.Point(545, 27);
+            this.buscarProducto.Location = new System.Drawing.Point(689, 27);
             this.buscarProducto.MaxLength = 70;
             this.buscarProducto.Name = "buscarProducto";
             this.buscarProducto.PasswordChar = '\0';
@@ -262,12 +261,11 @@
             this.buscarProducto.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.buscarProducto.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.buscarProducto.TextChanged += new System.EventHandler(this.buscadorProducto_TextChanged);
-            this.buscarProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Nombre_KeyPress);
             // 
             // nombreLabel
             // 
             this.nombreLabel.AutoSize = true;
-            this.nombreLabel.Location = new System.Drawing.Point(477, 27);
+            this.nombreLabel.Location = new System.Drawing.Point(621, 27);
             this.nombreLabel.Name = "nombreLabel";
             this.nombreLabel.Size = new System.Drawing.Size(62, 19);
             this.nombreLabel.TabIndex = 17;
@@ -317,7 +315,7 @@
             this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(363, 266);
+            this.dgvProductos.Size = new System.Drawing.Size(466, 266);
             this.dgvProductos.TabIndex = 19;
             this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
             // 
@@ -325,7 +323,7 @@
             // 
             this.nuevoProducto.ActiveControl = null;
             this.nuevoProducto.BackColor = System.Drawing.Color.MediumBlue;
-            this.nuevoProducto.Location = new System.Drawing.Point(550, 336);
+            this.nuevoProducto.Location = new System.Drawing.Point(653, 336);
             this.nuevoProducto.Name = "nuevoProducto";
             this.nuevoProducto.Size = new System.Drawing.Size(149, 43);
             this.nuevoProducto.TabIndex = 11;
@@ -361,7 +359,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(721, 396);
+            this.ClientSize = new System.Drawing.Size(825, 396);
             this.Controls.Add(this.PrecioLabel);
             this.Controls.Add(this.Precio);
             this.Controls.Add(this.nuevoProducto);

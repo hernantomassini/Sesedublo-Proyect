@@ -7,6 +7,7 @@ using Sesedublo_SLPL.Historial_de_Facturasns;
 using Sesedublo_SLPL.Administrar_Stock;
 using Sesedublo_SLPL.Revisar_Caja;
 using Sesedublo_SLPL.Pedidos_de_Compra;
+using Sesedublo_SLPL.Productos;
 
 namespace Sesedublo_SLPL.Generales
 {
@@ -29,20 +30,6 @@ namespace Sesedublo_SLPL.Generales
                 }
                 
                 return PantallaPrincipal_Form;
-            }
-        }
-
-        private static NuevoProducto NuevoProducto_Form;
-        public static NuevoProducto NuevoProducto
-        {
-            get
-            {
-                if (NuevoProducto_Form == null)
-                {
-                    NuevoProducto_Form = new NuevoProducto();
-                }
-
-                return NuevoProducto_Form;
             }
         }
 
@@ -285,6 +272,34 @@ namespace Sesedublo_SLPL.Generales
                     VerRegistroFactura_Form = new VerRegistroFactura();
                 }
                 return VerRegistroFactura_Form;
+            }
+        }
+
+
+
+        private static Lista_de_Productos Lista_de_Productos_Form;
+        public static Lista_de_Productos Lista_de_Productos
+        {
+            get
+            {
+                if (Lista_de_Productos_Form == null)
+                {
+                    Lista_de_Productos_Form = new Lista_de_Productos();
+                }
+                return Lista_de_Productos_Form;
+            }
+        }
+
+        private static Producto_Nuevo Producto_Nuevo_Form;
+        public static Producto_Nuevo Producto_Nuevo
+        {
+            get
+            {
+                if (Producto_Nuevo_Form == null)
+                {
+                    Producto_Nuevo_Form = new Producto_Nuevo();
+                }
+                return Producto_Nuevo_Form;
             }
         }
     }

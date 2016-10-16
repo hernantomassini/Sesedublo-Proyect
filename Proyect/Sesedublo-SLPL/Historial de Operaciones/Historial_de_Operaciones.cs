@@ -40,7 +40,7 @@ namespace Sesedublo_SLPL.Historial_de_Operacionesns
             da.Fill(tablaDeUsuarios);
             dgvOperaciones.DataSource = tablaDeUsuarios.DefaultView;
             dgvOperaciones.Columns[1].Width = 130;
-            dgvOperaciones.Columns[2].Width = 200;
+            dgvOperaciones.Columns[2].Width = 490;
 
             Conexion.closeConnection();
         }

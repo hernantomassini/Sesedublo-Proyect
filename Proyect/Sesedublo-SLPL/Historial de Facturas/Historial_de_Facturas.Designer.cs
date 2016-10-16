@@ -331,7 +331,7 @@
             this.titleDetalleFactura.Name = "titleDetalleFactura";
             this.titleDetalleFactura.Size = new System.Drawing.Size(114, 44);
             this.titleDetalleFactura.TabIndex = 5;
-            this.titleDetalleFactura.Text = "Ver Factura";
+            this.titleDetalleFactura.Text = "Ver en Detalle";
             this.titleDetalleFactura.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.titleDetalleFactura.TileImage = ((System.Drawing.Image)(resources.GetObject("titleDetalleFactura.TileImage")));
             this.titleDetalleFactura.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;

@@ -53,6 +53,7 @@ namespace Sesedublo_SLPL
         private void GoToStock_Click(object sender, EventArgs e)
         {
             Manejador_Formularios.ABM_Stock.cargarDGV();
+            Manejador_Formularios.AddProducto.getProductos();
             Manejador_Formularios.ABM_Stock.Clean();
             Manejador_Formularios.ABM_Stock.Show();
         }
@@ -94,6 +95,12 @@ namespace Sesedublo_SLPL
         {
             Manejador_Formularios.Pedido_de_compra.cargarDGV();
             Manejador_Formularios.Pedido_de_compra.Show();
+        }
+
+        private void metroTile8_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.Lista_de_Productos.getData();
+            Manejador_Formularios.Lista_de_Productos.Show();
         }
 
 

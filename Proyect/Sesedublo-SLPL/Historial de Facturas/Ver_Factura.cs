@@ -99,8 +99,6 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
                     ivaCalculado.Visible = false;
                 }
 
-                totalT.Text = "TOTAL " + Convert.ToString( reader.GetDecimal(1));
-
                 oriOdup.Text = "ORIGINAL";
             }
             reader.Close();
@@ -112,10 +110,24 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             dgvVerFactura.DataSource = tablaDeFacturas.DefaultView;
 
 
-            dgvVerFactura.Columns[0].Width = 130;
+            dgvVerFactura.Columns[0].Width = 200;
             dgvVerFactura.Columns[1].Width = 130;
             dgvVerFactura.Columns[3].Width = 130;
             dgvVerFactura.Columns[2].Width = 130;
+            decimal valor = 0;
+            foreach (DataGridViewRow row in dgvVerFactura.Rows)
+            {
+                if (row.Cells[0].Value.ToString() == "Nota de credito")
+                {
+                    valor -= Convert.ToDecimal(row.Cells[4].Value);
+                }
+                else
+                {
+                    valor += Convert.ToDecimal(row.Cells[4].Value);
+                }
+            }
+            totalT.Text = "TOTAL " + Convert.ToString(valor);
+
             Conexion.closeConnection();
 
             facturaID.Text = "FACTURA N° 00001-" + Convert.ToString(id_factura);

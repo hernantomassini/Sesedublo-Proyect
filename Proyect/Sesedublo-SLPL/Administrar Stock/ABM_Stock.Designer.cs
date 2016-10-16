@@ -89,6 +89,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.StockDGV.Location = new System.Drawing.Point(22, 113);
             this.StockDGV.MultiSelect = false;
             this.StockDGV.Name = "StockDGV";
+            this.StockDGV.ReadOnly = true;
             this.StockDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
@@ -109,6 +110,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.id_stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.id_stock.HeaderText = "ID Stock";
             this.id_stock.Name = "id_stock";
+            this.id_stock.ReadOnly = true;
             this.id_stock.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.id_stock.Visible = false;
             // 
@@ -117,6 +119,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
             this.Cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Cantidad.Width = 77;
             // 
@@ -134,6 +137,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.Costo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Costo.HeaderText = "Costo";
             this.Costo.Name = "Costo";
+            this.Costo.ReadOnly = true;
             this.Costo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Costo.Width = 60;
             // 
@@ -142,6 +146,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.PVUnitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.PVUnitario.HeaderText = "Precio de venta unitario";
             this.PVUnitario.Name = "PVUnitario";
+            this.PVUnitario.ReadOnly = true;
             this.PVUnitario.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.PVUnitario.Width = 102;
             // 
@@ -150,6 +155,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.PVBulto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.PVBulto.HeaderText = "Precio de venta por Bulto";
             this.PVBulto.Name = "PVBulto";
+            this.PVBulto.ReadOnly = true;
             this.PVBulto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.PVBulto.Width = 121;
             // 
@@ -157,6 +163,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             // 
             this.stockOPedido.HeaderText = "Tipo";
             this.stockOPedido.Name = "stockOPedido";
+            this.stockOPedido.ReadOnly = true;
             this.stockOPedido.Visible = false;
             // 
             // titleAtras

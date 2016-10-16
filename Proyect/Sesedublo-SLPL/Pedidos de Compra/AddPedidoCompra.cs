@@ -24,6 +24,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             InitializeComponent();
             this.getProductos();
             Nombre.Text = dgvProductos.Rows[0].Cells[0].Value.ToString();
+            dgvProductos.Columns[0].Visible = false;
             this.Closing += new CancelEventHandler(Avoid_Closing);
         }
 
@@ -219,12 +220,66 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         {
             this.getProductos();
             if (dgvProductos.Rows.Count == 1)
+            {
                 Nombre.Text = this.dgvProductos.CurrentRow.Cells[0].Value.ToString();
+
+                if (this.dgvProductos.CurrentRow.Cells[1].Value.ToString() != "N/E")
+                {
+                    Cantidad.Text = "0";
+                    if (this.dgvProductos.CurrentRow.Cells[1].Value.ToString() != "Individual")
+                    {
+                        UnidadesXBulto.Text = this.dgvProductos.CurrentRow.Cells[1].Value.ToString();
+                        bultoRadio.Checked = true;
+                    }
+                    else
+                    {
+                        individualRadio.Checked = true;
+                    }
+
+                    decimal utilidad = Convert.ToDecimal(this.dgvProductos.CurrentRow.Cells[3].Value) - Convert.ToDecimal(this.dgvProductos.CurrentRow.Cells[2].Value);
+                    Costo.Text = this.dgvProductos.CurrentRow.Cells[2].Value.ToString();
+                    Utilidad.Text = Convert.ToString(utilidad);
+                    Precio.Text = this.dgvProductos.CurrentRow.Cells[3].Value.ToString();
+                }
+            }
         }
 
         private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Nombre.Text = this.dgvProductos.CurrentRow.Cells[0].Value.ToString();
+            Nombre.Text = this.dgvProductos.CurrentRow.Cells[1].Value.ToString();
+
+            if (this.dgvProductos.CurrentRow.Cells[2].Value.ToString() != "N/E")
+            {
+                Cantidad.Text = "0";
+                if (this.dgvProductos.CurrentRow.Cells[2].Value.ToString() != "Individual")
+                {
+                    UnidadesXBulto.Text = this.dgvProductos.CurrentRow.Cells[1].Value.ToString();
+                    bultoRadio.Checked = true;
+                }
+                else
+                {
+                    individualRadio.Checked = true;
+                }
+
+                decimal utilidad = Convert.ToDecimal(this.dgvProductos.CurrentRow.Cells[4].Value);
+                Costo.Text = this.dgvProductos.CurrentRow.Cells[3].Value.ToString();
+                Utilidad.Text = Convert.ToString(utilidad);
+                Precio.Text = this.dgvProductos.CurrentRow.Cells[4].Value.ToString();
+            }
+            else
+            {
+                Clean2();
+            }
+        }
+
+        public void Clean2()
+        {
+            Utilidad.Clear();
+            Cantidad.Clear();
+            Precio.Clear();
+            Costo.Clear();
+            UnidadesXBulto.SelectedIndex = 0;
+            individualRadio.Checked = true;
         }
 
         private void titleAceptar_Click(object sender, EventArgs e)
@@ -370,7 +425,8 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void nuevoProducto_Click(object sender, EventArgs e)
         {
-            Manejador_Formularios.NuevoProducto.Show();
+            Manejador_Formularios.Producto_Nuevo.Clean();
+            Manejador_Formularios.Producto_Nuevo.Show();
         }
 
         private void dgvPedido_CellValueChanged(object sender, DataGridViewCellEventArgs e)

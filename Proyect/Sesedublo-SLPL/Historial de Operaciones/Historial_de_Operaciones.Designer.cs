@@ -85,7 +85,7 @@
             this.dgvOperaciones.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvOperaciones.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvOperaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOperaciones.Size = new System.Drawing.Size(453, 290);
+            this.dgvOperaciones.Size = new System.Drawing.Size(758, 290);
             this.dgvOperaciones.TabIndex = 0;
             // 
             // metroTile2
@@ -199,7 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 448);
+            this.ClientSize = new System.Drawing.Size(799, 448);
             this.Controls.Add(this.descripcion);
             this.Controls.Add(this.metroLabel6);
             this.Controls.Add(this.operacion);

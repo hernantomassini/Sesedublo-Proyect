@@ -70,12 +70,12 @@ INSERT INTO Caja (efectivoActual) VALUES (0);
 
 CREATE TABLE Productos (
     id_producto INT AUTO_INCREMENT,
-    cantidad INT,
-    cantidadXBulto INT,
-    costo DECIMAL(10 , 2 ),
+    cantidad INT DEFAULT 0,
+    cantidadXBulto INT DEFAULT 0,
+    costo DECIMAL(10 , 2 ) DEFAULT 0,
     nombre VARCHAR(100),
-    PVUnitario DECIMAL(10 , 2 ),
-    PVBulto DECIMAL(10 , 2 ),
+    PVUnitario DECIMAL(10 , 2 ) DEFAULT 0,
+    PVBulto DECIMAL(10 , 2 ) DEFAULT 0,
     PRIMARY KEY (id_producto)
 );
 
@@ -614,7 +614,7 @@ BEGIN
 	FROM Stock s INNER JOIN Productos p 
 	ON p.id_producto = s.producto
 	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
-    AND s.deleted = 0;
+    AND s.deleted = 0 AND p.cantidad != 0;
 
 END //
 
@@ -627,7 +627,13 @@ SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AN
 		IF(@_otro_id_producto IS NOT NULL AND _cantidadXBulto = 0) THEN
 			#Es un producto individual existente.
             SET @_cantidadVieja = (SELECT cantidad FROM Productos WHERE id_producto = @_otro_id_producto);
-			UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, costo = _costo, PVUnitario = _PVUnitario WHERE id_producto = @_otro_id_producto ;
+            SET @_costoViejo = (SELECT costo FROM Productos WHERE id_producto = @_otro_id_producto);
+            IF(@_costoViejo < _costo)
+            THEN
+				UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, costo = _costo, PVUnitario = _PVUnitario WHERE id_producto = @_otro_id_producto ;
+            ELSE
+				UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, PVUnitario = _PVUnitario WHERE id_producto = @_otro_id_producto ;
+            END IF;
 		ELSE
 			#Es un producto nuevo.
 			INSERT INTO Productos (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto) VALUES (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto);
@@ -637,7 +643,13 @@ SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AN
     ELSE
 		#Es un Bulto con un _cantidadXBulto ya existente
 		SET @_cantidadVieja = (SELECT cantidad FROM Productos WHERE id_producto = @_id_producto);
-		UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, costo = _costo, PVBulto = _PVBulto, PVUnitario = _PVUnitario WHERE id_producto = @_id_producto;
+        SET @_costoViejo = (SELECT costo FROM Productos WHERE id_producto = @_otro_id_producto);
+            IF(@_costoViejo < _costo)
+            THEN
+				UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, costo = _costo, PVBulto = _PVBulto, PVUnitario = _PVUnitario WHERE id_producto = @_id_producto;
+            ELSE
+				UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, PVBulto = _PVBulto, PVUnitario = _PVUnitario WHERE id_producto = @_id_producto;
+            END IF;
     END IF;
 
 END //
@@ -942,7 +954,8 @@ END//
 
 CREATE PROCEDURE obtenerLista (IN _nombre VARCHAR(60))
 BEGIN
-	SELECT descripcion AS Descripción FROM ListaDeProductos
+	SELECT p.id_producto, descripcion AS Descripción, IF(PVunitario IS NULL,'N/E',IF(cantidadXBulto = 0, 'Individual',cantidadXBulto)) AS 'Tipo', IF(costo IS NULL,'N/E',costo) AS Costo, IF(PVunitario IS NULL,'N/E',PVUnitario) AS 'Precio Unitario', IF(PVBulto IS NULL, 'N/E', IF(PVBulto = 0,'-',PVBulto)) AS 'Precio Bulto' FROM ListaDeProductos lp
+    LEFT JOIN Productos p ON lp.descripcion = p.nombre
 	WHERE ((descripcion LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
     ORDER BY descripcion;
 END //
@@ -1048,5 +1061,5 @@ BEGIN
     WHERE factura = _id_factura;
 	
 END //
-
 DELIMITER ;
+

@@ -707,7 +707,6 @@ CREATE PROCEDURE agregarCliente (IN _nombre VARCHAR(255), _apellido VARCHAR(255)
 BEGIN
 
     INSERT INTO Clientes (nombre, apellido, email, telefono, direccion, localidad, cuit, razonSocial) VALUES (_nombre, _apellido, _mail, _telefono, _direccion, _localidad, _cuit, _razonSocial);
-    
 END //
 
 CREATE PROCEDURE modificarCliente (IN _id_cliente INT, _nombre VARCHAR(255), _apellido VARCHAR(255), _mail VARCHAR(255),
@@ -776,7 +775,7 @@ BEGIN
     ORDER BY fecha;
 END //
 
-CREATE PROCEDURE obtenerPedidos () 
+CREATE PROCEDURE obtenerPedidos (_nombre VARCHAR(50)) 
 BEGIN
         SELECT p.id_pedido, CONCAT(c.nombre, " ", c.apellido), p.pagadoHastaElMomento, p.precio - p.pagadoHastaElMomento, group_concat(pr.nombre), p.facturada FROM Pedidos p 
         LEFT JOIN Facturas f ON p.id_pedido = f.pedido
@@ -784,6 +783,7 @@ BEGIN
         INNER JOIN Items i ON p.id_pedido = i.pedido
         INNER JOIN Productos pr ON i.producto = pr.id_producto
         WHERE (p.facturada = 0 OR (p.precio - p.pagadoHastaElMomento) > 0)
+        AND ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
         GROUP BY p.id_pedido;
 END //
 

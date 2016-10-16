@@ -75,11 +75,11 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             if (reader.HasRows)
             {
                 if (reader.GetString(0) != "") { tipoFactura.Text = reader.GetString(0); };
-                decimal iva =  Convert.ToDecimal(Convert.ToDouble(reader.GetDecimal(1)) * 0.21);
+                decimal iva = decimal.Round(Convert.ToDecimal(Convert.ToDouble(reader.GetDecimal(1)) - Convert.ToDouble(reader.GetDecimal(1)) / 1.21),2);
                 if (tipoFactura.Text.Equals("A"))
                 {
-                    if (reader.GetString(1) != "") { subTotal.Text = Convert.ToString(reader.GetDecimal(1)); };
-                    if (reader.GetString(1) != "") { subTotalPrec.Text = Convert.ToString(reader.GetDecimal(1)); }
+                    if (reader.GetString(1) != "") { subTotal.Text = Convert.ToString(decimal.Round(reader.GetDecimal(1) / Convert.ToDecimal(1.21),2)); };
+                    if (reader.GetString(1) != "") { subTotalPrec.Text = Convert.ToString(decimal.Round(reader.GetDecimal(1) / Convert.ToDecimal(1.21), 2)); }
                     ivaCalculado.Text = Convert.ToString(decimal.Round(iva, 2));
 
                     sub.Visible = true;
@@ -99,7 +99,7 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
                     ivaCalculado.Visible = false;
                 }
 
-                totalT.Text = "TOTAL " + Convert.ToString(Convert.ToDecimal(iva) + reader.GetDecimal(1));
+                totalT.Text = "TOTAL " + Convert.ToString( reader.GetDecimal(1));
 
                 oriOdup.Text = "ORIGINAL";
             }

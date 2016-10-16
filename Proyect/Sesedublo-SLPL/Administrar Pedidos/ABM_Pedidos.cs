@@ -137,7 +137,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         public void cargarDGV()
         {
             Funciones.limpiarDGV(PedidosDGV);
-            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerPedidos", Conexion.generarArgumentos());
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerPedidos", Conexion.generarArgumentos("_nombre"),nombre.Text);
             
             while (reader.Read())
             {
@@ -189,6 +189,11 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             Manejador_Formularios.AddProductoAPedido.modificarPedido(id_pedido);
             Manejador_Formularios.AddProductoAPedido.Show();
             Close();
+        }
+
+        private void nombre_TextChanged(object sender, EventArgs e)
+        {
+            this.cargarDGV();
         }
     }
 }

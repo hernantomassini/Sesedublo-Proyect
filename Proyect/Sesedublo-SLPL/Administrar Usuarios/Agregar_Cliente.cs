@@ -90,8 +90,6 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
         {
             
            val.validarNoVacio(Nombre,st);
-            val.validarNoVacio(Direccion, st);
-            val.validarNoVacio(Telefono, st);
 
             if (st.Length > 0)
             {

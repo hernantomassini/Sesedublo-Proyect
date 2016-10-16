@@ -955,6 +955,7 @@ END//
 
 CREATE PROCEDURE obtenerLista (IN _nombre VARCHAR(60))
 BEGIN
+	#retorna id_producto (0), descripcion(1), tipo(2)(wut), 3 - costo, 	4 - precio unitario, 5- precio bulto
 	SELECT p.id_producto, descripcion AS Descripción, IF(PVunitario IS NULL,'N/E',IF(cantidadXBulto = 0, 'Individual',cantidadXBulto)) AS 'Tipo', IF(costo IS NULL,'N/E',costo) AS Costo, IF(PVunitario IS NULL,'N/E',PVUnitario) AS 'Precio Unitario', IF(PVBulto IS NULL, 'N/E', IF(PVBulto = 0,'-',PVBulto)) AS 'Precio Bulto' FROM ListaDeProductos lp
     LEFT JOIN Productos p ON lp.descripcion = p.nombre
 	WHERE ((descripcion LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))

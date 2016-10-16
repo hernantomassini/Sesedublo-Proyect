@@ -6,7 +6,6 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
-using BarcodeLib;
 
 namespace Sesedublo_SLPL.Historial_de_Facturasns
 {

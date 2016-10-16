@@ -119,9 +119,9 @@
             this.CostoLabel.AutoSize = true;
             this.CostoLabel.Location = new System.Drawing.Point(23, 157);
             this.CostoLabel.Name = "CostoLabel";
-            this.CostoLabel.Size = new System.Drawing.Size(37, 13);
+            this.CostoLabel.Size = new System.Drawing.Size(89, 13);
             this.CostoLabel.TabIndex = 10;
-            this.CostoLabel.Text = "Costo:";
+            this.CostoLabel.Text = "Costo por botella:";
             // 
             // Costo
             // 
@@ -155,6 +155,7 @@
             this.UnidadesXBulto.Name = "UnidadesXBulto";
             this.UnidadesXBulto.Size = new System.Drawing.Size(100, 21);
             this.UnidadesXBulto.TabIndex = 9;
+            this.UnidadesXBulto.TextChanged += new System.EventHandler(this.UnidadesXBulto_SelectedIndexChanged);
             this.UnidadesXBulto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cantidad_KeyPress);
             // 
             // individualRadio

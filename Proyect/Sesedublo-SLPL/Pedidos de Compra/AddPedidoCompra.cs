@@ -180,14 +180,16 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             {
                 CostoLabel.Text = "Costo por unidad:";
                 CantidadLbl.Text = "Cantidad de unidades:";
+                UtilidadLabel.Text = "Utilidad por unidad:";
                 PrecioLabel.Text = "Precio por unidad:";
                 UnidadesXBultoLbl.Visible = false;
                 UnidadesXBulto.Visible = false;
             }
             else
             {
-                CostoLabel.Text = "Costo por bulto:";
+                CostoLabel.Text = "Costo por botella:";
                 CantidadLbl.Text = "Cantidad de bultos:";
+                UtilidadLabel.Text = "Utilidad por bulto:";
                 PrecioLabel.Text = "Precio por bulto:";
                 UnidadesXBultoLbl.Visible = true;
                 UnidadesXBulto.Visible = true;
@@ -401,23 +403,24 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void updatePrecio()
         {
-            decimal utilidad = 0;
-            decimal costo = 0;
-            int unidadesXBulto = 0;
-            decimal resultado;
+            if (Costo.Text == "" || Utilidad.Text == "")
+                return;
 
-            if (Utilidad.Text != "")
-                utilidad = Convert.ToDecimal(Utilidad.Text);
+            decimal costo = Convert.ToDecimal(Costo.Text);
+            decimal utilidad = Convert.ToDecimal(Utilidad.Text);
 
-            if (Costo.Text != "")
-                costo = Convert.ToDecimal(Costo.Text);
+            if (individualRadio.Checked)
+            {
+                Precio.Text = Convert.ToString(costo + utilidad);
+            }
+            else
+            {
+                if (UnidadesXBulto.Text == "")
+                    return;
 
-            if (UnidadesXBulto.Text != "")
-                unidadesXBulto = Convert.ToInt32(UnidadesXBulto.Text);
-
-            resultado = decimal.Round(costo + utilidad, 2);
-
-            Precio.Text = Convert.ToString(resultado);
+                int botellasPorBulto = Convert.ToInt32(UnidadesXBulto.Text);
+                Precio.Text = Convert.ToString(costo * botellasPorBulto + utilidad);
+            }
         }
 
         private void AddPedidoCompra_Load(object sender, EventArgs e)
@@ -465,6 +468,11 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             Manejador_Formularios.ABM_Stock.cargarDGV();
             Manejador_Formularios.ABM_Stock.Clean();
             Manejador_Formularios.ABM_Stock.Show();
+        }
+
+        private void UnidadesXBulto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updatePrecio();
         }
     }
 }

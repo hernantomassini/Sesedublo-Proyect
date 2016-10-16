@@ -63,7 +63,7 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.eliminarBtn = new MetroFramework.Controls.MetroTile();
             this.Utilidad = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.UtilidadLabel = new System.Windows.Forms.Label();
             this.PrecioLabel = new System.Windows.Forms.Label();
             this.Precio = new System.Windows.Forms.TextBox();
             this.nuevoProducto = new MetroFramework.Controls.MetroTile();
@@ -449,7 +449,7 @@
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.Location = new System.Drawing.Point(15, 319);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(101, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(102, 19);
             this.metroLabel2.TabIndex = 40;
             this.metroLabel2.Text = "Lista del Pedido";
             // 
@@ -483,14 +483,14 @@
             this.Utilidad.TextChanged += new System.EventHandler(this.utilidad_TextChanged);
             this.Utilidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cantidad_KeyPress);
             // 
-            // label1
+            // UtilidadLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 178);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
-            this.label1.TabIndex = 43;
-            this.label1.Text = "Utilidad:";
+            this.UtilidadLabel.AutoSize = true;
+            this.UtilidadLabel.Location = new System.Drawing.Point(18, 178);
+            this.UtilidadLabel.Name = "UtilidadLabel";
+            this.UtilidadLabel.Size = new System.Drawing.Size(45, 13);
+            this.UtilidadLabel.TabIndex = 43;
+            this.UtilidadLabel.Text = "Utilidad:";
             // 
             // PrecioLabel
             // 
@@ -548,7 +548,7 @@
             this.Controls.Add(this.metroLink1);
             this.Controls.Add(this.nuevoProducto);
             this.Controls.Add(this.Utilidad);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.UtilidadLabel);
             this.Controls.Add(this.eliminarBtn);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.agregarBtn);
@@ -606,7 +606,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroTile eliminarBtn;
         private System.Windows.Forms.TextBox Utilidad;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label UtilidadLabel;
         private System.Windows.Forms.Label PrecioLabel;
         private System.Windows.Forms.TextBox Precio;
         private MetroFramework.Controls.MetroTile nuevoProducto;

@@ -161,17 +161,23 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         private void individualRadio_CheckedChanged(object sender, EventArgs e)
         {
-            if(individualRadio.Checked)
+            updatePrecio();
+
+            if (individualRadio.Checked)
             {
                 CostoLabel.Text = "Costo por unidad:";
                 CantidadLbl.Text = "Cantidad de unidades:";
+                UtilidadLabel.Text = "Utilidad por unidad:";
+                PrecioLabel.Text = "Precio por unidad:";
                 UnidadesXBultoLbl.Visible = false;
                 UnidadesXBulto.Visible = false;
             }
             else
             {
-                CostoLabel.Text = "Costo por bulto:";
+                CostoLabel.Text = "Costo por botella:";
                 CantidadLbl.Text = "Cantidad de bultos:";
+                UtilidadLabel.Text = "Utilidad por bulto:";
+                PrecioLabel.Text = "Precio por bulto:";
                 UnidadesXBultoLbl.Visible = true;
                 UnidadesXBulto.Visible = true;
             }
@@ -216,10 +222,6 @@ namespace Sesedublo_SLPL.Administrar_Stock
                     Utilidad.Text = Convert.ToString(utilidad);
                     Precio.Text = this.dgvProductos.CurrentRow.Cells[4].Value.ToString();
                 }
-                else
-                {
-                    Clean2();
-                }
             }
         }
 
@@ -229,11 +231,6 @@ namespace Sesedublo_SLPL.Administrar_Stock
             Nombre.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();
             string tipo = dgvProductos.CurrentRow.Cells[2].Value.ToString();
 
-            if (tipo == "N/E")
-            {
-                Clean2();
-                return;
-            }
 
             decimal costo = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[3].Value) / 100;
             decimal precio = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[4].Value) / 100;
@@ -275,49 +272,39 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         private void Utilidad_TextChanged(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(Costo.Text))
-            {
-                if (!String.IsNullOrEmpty(Utilidad.Text))
-                {
-                    Precio.Text = Convert.ToString(Convert.ToDecimal(Utilidad.Text));
-                }
-            }
-            else
-            {
-                if (!String.IsNullOrEmpty(Utilidad.Text))
-                {
-                    Precio.Text = Convert.ToString(Convert.ToDecimal(Utilidad.Text) + Convert.ToDecimal(Costo.Text));
-
-                    if (!individualRadio.Checked)
-                    {
-                        Precio.Text = Convert.ToString(Convert.ToDecimal(Costo.Text) + Convert.ToDecimal(Utilidad.Text));
-                    }
-                }
-            } 
+            updatePrecio();
         }
 
         private void Costo_TextChanged(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(Utilidad.Text))
+            updatePrecio();
+        }
+
+        private void updatePrecio()
+        {
+            if (Costo.Text == "" || Utilidad.Text == "")
+                return;
+
+            decimal costo = Convert.ToDecimal(Costo.Text);
+            decimal utilidad = Convert.ToDecimal(Utilidad.Text);
+
+            if (individualRadio.Checked)
             {
-                if (!String.IsNullOrEmpty(Costo.Text))
-                {
-                    Precio.Text = Convert.ToString(Convert.ToDecimal(Costo.Text));
-                }
+                Precio.Text = Convert.ToString(costo + utilidad);
             }
             else
             {
-                if (!String.IsNullOrEmpty(Costo.Text))
-                {
-                    Precio.Text = Convert.ToString(Convert.ToDecimal(Utilidad.Text) + Convert.ToDecimal(Costo.Text));
+                if (UnidadesXBulto.Text == "")
+                    return;
 
-                    if (!individualRadio.Checked)
-                    {
-                        Precio.Text = Convert.ToString(Convert.ToDecimal(Costo.Text) + Convert.ToDecimal(Utilidad.Text));
-                    }
-                    
-                }
-            } 
+                int botellasPorBulto = Convert.ToInt32(UnidadesXBulto.Text);
+                Precio.Text = Convert.ToString(costo * botellasPorBulto + utilidad);
+            }
+        }
+
+        private void UnidadesXBulto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updatePrecio();
         }
     }
 }

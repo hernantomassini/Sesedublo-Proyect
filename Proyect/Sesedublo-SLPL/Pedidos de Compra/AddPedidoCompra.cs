@@ -459,9 +459,8 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 cantidadString = cantidadString.Substring(posI);
 
                 int cantXBulto = obtenerCantidadEnInt(cantidadString);
-                filaDgv.Cells[3].Value =  costo + utilidad * cantXBulto;
             }
-            else
+
                 filaDgv.Cells[3].Value = utilidad + costo;
         }
 

@@ -179,6 +179,7 @@
             this.Controls.Add(this.dgvProductos);
             this.Name = "Lista_de_Productos";
             this.Text = "Lista de Productos";
+            this.Load += new System.EventHandler(this.Lista_de_Productos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -2,14 +2,8 @@
 using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Productos
 {
@@ -62,6 +56,11 @@ namespace Sesedublo_SLPL.Productos
             dgvProductos.Columns[0].Width = 200;
 
             Conexion.closeConnection();
+        }
+
+        private void Lista_de_Productos_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

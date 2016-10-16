@@ -74,7 +74,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
                 //Bulto
                 bultoRadio.Checked = true;
                 decimal PVBulto = reader.GetDecimal(5);
-                Utilidad.Text = Convert.ToString(Decimal.Round((PVBulto - costo) / cantXBulto, 2));
+                Utilidad.Text = Convert.ToString(PVBulto - costo);
             }
 
             Nombre.Text = reader.GetString(2);

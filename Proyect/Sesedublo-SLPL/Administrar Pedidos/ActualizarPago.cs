@@ -26,6 +26,8 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         public void cargarDatos(int id_pedido)
         {
             this.id_pedido = id_pedido;
+            this.cantidadAPagar.Enabled = false;
+            this.pagadoCheck.Checked = false;
 
             MySqlDataReader reader = Conexion.executeProcedureWithReader("cargarDatosActualizarPago", Conexion.generarArgumentos("_id_pedido"), id_pedido);
             reader.Read();
@@ -44,7 +46,11 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         private void AceptarTile_Click(object sender, EventArgs e)
         {
-            Conexion.executeProcedureWithReader("actualizarPago", Conexion.generarArgumentos("_id_pedido", "_total_a_pagar", "_cantidad_paga"), id_pedido, Convert.ToDecimal(cantidadAPagar.Text), Convert.ToDecimal(cantidadPagada.Text));
+            int pagadoTot = 0;
+            if(pagadoCheck.Checked){
+                pagadoTot = 1;
+            }
+            Conexion.executeProcedureWithReader("actualizarPago", Conexion.generarArgumentos("_id_pedido", "_total_a_pagar", "_cantidad_paga","_pagadoTot"), id_pedido, Convert.ToDecimal(cantidadAPagar.Text), Convert.ToDecimal(cantidadPagada.Text),pagadoTot);
             Conexion.closeConnection();
             Manejador_Formularios.ABM_Pedidos.cargarDGV();
             Close();

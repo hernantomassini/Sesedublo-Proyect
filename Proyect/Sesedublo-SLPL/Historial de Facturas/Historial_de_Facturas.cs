@@ -133,5 +133,15 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
         {
             this.getData();
         }
+
+
+        private void dgvFacturas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int idFactura = Convert.ToInt32(dgvFacturas.SelectedCells[0].Value);
+            int idCliente = Convert.ToInt32(dgvFacturas.SelectedCells[1].Value);
+            Manejador_Formularios.Ver_Factura.meterId(idFactura, idCliente);
+            Manejador_Formularios.Ver_Factura.Show();
+            this.Hide();
+        }
     }
 }

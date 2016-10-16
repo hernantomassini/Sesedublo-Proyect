@@ -152,6 +152,7 @@
             this.PedidosDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.PedidosDGV.Size = new System.Drawing.Size(730, 249);
             this.PedidosDGV.TabIndex = 6;
+            this.PedidosDGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PedidosDGV_CellDoubleClick);
             // 
             // IDPedidoLea
             // 

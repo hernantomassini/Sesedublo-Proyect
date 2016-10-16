@@ -93,6 +93,7 @@
             this.dgvClientes.Size = new System.Drawing.Size(797, 304);
             this.dgvClientes.TabIndex = 0;
             this.dgvClientes.UseCustomBackColor = true;
+            this.dgvClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellContentClick);
             // 
             // titleModificarCliente
             // 

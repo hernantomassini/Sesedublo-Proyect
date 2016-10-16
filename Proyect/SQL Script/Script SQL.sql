@@ -1019,14 +1019,18 @@ BEGIN
 
 END //
 
-CREATE PROCEDURE actualizarPago (IN _id_pedido INT, IN _total_a_pagar DECIMAL(10,2), IN _cantidad_paga DECIMAL(10,2))
+CREATE PROCEDURE actualizarPago (IN _id_pedido INT, IN _total_a_pagar DECIMAL(10,2), IN _cantidad_paga DECIMAL(10,2), pagadoTot INT)
 BEGIN
 
 SET @_cantidadPagadaVieja = (SELECT pagadoHastaElMomento FROM Pedidos WHERE id_pedido = _id_pedido);
 SET @_efectivoNuevo = (_cantidad_paga - @_cantidadPagadaVieja);
 
-
-	UPDATE Pedidos SET precio = _total_a_pagar, pagadoHastaElMomento = _cantidad_paga WHERE id_pedido = _id_pedido;
+	IF(pagadoTot = 1)
+    THEN
+		UPDATE Pedidos SET precio = _total_a_pagar, pagadoHastaElMomento = _cantidad_paga WHERE id_pedido = _id_pedido;
+    ELSE
+		UPDATE Pedidos SET precio = _total_a_pagar, pagadoHastaElMomento = _cantidad_paga WHERE id_pedido = _id_pedido;
+    END IF;
 	CALL agregarEfectivo(@_efectivoNuevo, CONCAT("Un cliente pagó ", @_efectivoNuevo, " $ que debía de un pedido en la fecha ", CURDATE(), "."));
 	
 END //

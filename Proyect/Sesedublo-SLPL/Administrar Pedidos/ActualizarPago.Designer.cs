@@ -35,6 +35,7 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.titleCancelar = new MetroFramework.Controls.MetroTile();
             this.titleAceptar = new MetroFramework.Controls.MetroTile();
+            this.pagadoCheck = new MetroFramework.Controls.MetroCheckBox();
             this.SuspendLayout();
             // 
             // cantidadAPagar
@@ -52,7 +53,7 @@
             this.cantidadAPagar.CustomButton.UseSelectable = true;
             this.cantidadAPagar.CustomButton.Visible = false;
             this.cantidadAPagar.Lines = new string[0];
-            this.cantidadAPagar.Location = new System.Drawing.Point(176, 114);
+            this.cantidadAPagar.Location = new System.Drawing.Point(176, 85);
             this.cantidadAPagar.MaxLength = 12;
             this.cantidadAPagar.Name = "cantidadAPagar";
             this.cantidadAPagar.PasswordChar = '\0';
@@ -83,7 +84,7 @@
             this.cantidadPagada.CustomButton.UseSelectable = true;
             this.cantidadPagada.CustomButton.Visible = false;
             this.cantidadPagada.Lines = new string[0];
-            this.cantidadPagada.Location = new System.Drawing.Point(176, 160);
+            this.cantidadPagada.Location = new System.Drawing.Point(176, 131);
             this.cantidadPagada.MaxLength = 12;
             this.cantidadPagada.Name = "cantidadPagada";
             this.cantidadPagada.PasswordChar = '\0';
@@ -102,7 +103,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(55, 114);
+            this.metroLabel1.Location = new System.Drawing.Point(55, 85);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(116, 19);
             this.metroLabel1.TabIndex = 2;
@@ -111,7 +112,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(55, 160);
+            this.metroLabel2.Location = new System.Drawing.Point(55, 131);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(114, 19);
             this.metroLabel2.TabIndex = 3;
@@ -139,7 +140,7 @@
             // 
             this.titleAceptar.ActiveControl = null;
             this.titleAceptar.BackColor = System.Drawing.Color.Green;
-            this.titleAceptar.Location = new System.Drawing.Point(173, 208);
+            this.titleAceptar.Location = new System.Drawing.Point(184, 208);
             this.titleAceptar.Name = "titleAceptar";
             this.titleAceptar.Size = new System.Drawing.Size(99, 41);
             this.titleAceptar.TabIndex = 11;
@@ -153,11 +154,23 @@
             this.titleAceptar.UseTileImage = true;
             this.titleAceptar.Click += new System.EventHandler(this.AceptarTile_Click);
             // 
+            // pagadoCheck
+            // 
+            this.pagadoCheck.AutoSize = true;
+            this.pagadoCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.pagadoCheck.Location = new System.Drawing.Point(58, 170);
+            this.pagadoCheck.Name = "pagadoCheck";
+            this.pagadoCheck.Size = new System.Drawing.Size(135, 15);
+            this.pagadoCheck.TabIndex = 13;
+            this.pagadoCheck.Text = "Es el pago completo?";
+            this.pagadoCheck.UseSelectable = true;
+            // 
             // ActualizarPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(339, 282);
+            this.ClientSize = new System.Drawing.Size(326, 259);
+            this.Controls.Add(this.pagadoCheck);
             this.Controls.Add(this.titleCancelar);
             this.Controls.Add(this.titleAceptar);
             this.Controls.Add(this.metroLabel2);
@@ -180,5 +193,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroTile titleCancelar;
         private MetroFramework.Controls.MetroTile titleAceptar;
+        private MetroFramework.Controls.MetroCheckBox pagadoCheck;
     }
 }

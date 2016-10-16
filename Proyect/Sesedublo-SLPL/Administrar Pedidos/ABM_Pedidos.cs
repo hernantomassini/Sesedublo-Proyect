@@ -159,11 +159,36 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
+            if (Convert.ToInt32(filaDgv.Cells[3].Value) == 0)
+            {
+                Funciones.imprimirMensajeDeError("El cliente ya pagó todo lo acordado según lo que puso previamente", this);
+            }
+            else
+            {
+
+                int id_pedido = Convert.ToInt32(filaDgv.Cells[0].Value);
+
+                Manejador_Formularios.ActualizarPago.cargarDatos(id_pedido);
+                Manejador_Formularios.ActualizarPago.Show();
+            }
+
+        }
+
+        private void PedidosDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            DataGridViewRow filaDgv = PedidosDGV.CurrentRow;
+            if (Convert.ToInt32(filaDgv.Cells[5].Value) == 1)
+            {
+                Funciones.imprimirMensajeDeError("No puede modificar un pedido que ya ha sido facturado, sólo modificar su monto del debe", this);
+                return;
+            }
+
             int id_pedido = Convert.ToInt32(filaDgv.Cells[0].Value);
 
-            Manejador_Formularios.ActualizarPago.cargarDatos(id_pedido);
-            Manejador_Formularios.ActualizarPago.Show();
-
+            Manejador_Formularios.AddProductoAPedido.modificarPedido(id_pedido);
+            Manejador_Formularios.AddProductoAPedido.Show();
+            Close();
         }
     }
 }

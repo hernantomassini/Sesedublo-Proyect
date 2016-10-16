@@ -97,7 +97,6 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             if (!individualRadio.Checked)
             {
                 cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
-                precio = costo + cantXBulto * utilidad;
                 cantidad = Cantidad.Text + " bultos de " + cantXBulto + " unidades";
                 esUnBulto = 1;
             }
@@ -416,10 +415,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             if (UnidadesXBulto.Text != "")
                 unidadesXBulto = Convert.ToInt32(UnidadesXBulto.Text);
 
-            if (individualRadio.Checked)
-                resultado = decimal.Round(costo + utilidad, 2);
-            else
-                resultado = decimal.Round(costo + utilidad * unidadesXBulto, 2);
+            resultado = decimal.Round(costo + utilidad, 2);
 
             Precio.Text = Convert.ToString(resultado);
         }

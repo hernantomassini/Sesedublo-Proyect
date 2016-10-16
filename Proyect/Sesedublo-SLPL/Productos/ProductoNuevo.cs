@@ -65,6 +65,7 @@ namespace Sesedublo_SLPL.Productos
                 Conexion.closeConnection();
                 Manejador_Formularios.AddPedidoCompra.getProductos();
                 Manejador_Formularios.AddProducto.getProductos();
+                Manejador_Formularios.Lista_de_Productos.getData();
 
                 int cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
                 decimal costo = Convert.ToDecimal(Costo.Text);

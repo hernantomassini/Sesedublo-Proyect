@@ -246,30 +246,36 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Nombre.Text = this.dgvProductos.CurrentRow.Cells[1].Value.ToString();
+            Clean();
+            Nombre.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();
+            string tipo = dgvProductos.CurrentRow.Cells[2].Value.ToString();
 
-            if (this.dgvProductos.CurrentRow.Cells[2].Value.ToString() != "N/E")
-            {
-                Cantidad.Text = "0";
-                if (this.dgvProductos.CurrentRow.Cells[2].Value.ToString() != "Individual")
-                {
-                    UnidadesXBulto.Text = this.dgvProductos.CurrentRow.Cells[1].Value.ToString();
-                    bultoRadio.Checked = true;
-                }
-                else
-                {
-                    individualRadio.Checked = true;
-                }
-
-                decimal utilidad = Convert.ToDecimal(this.dgvProductos.CurrentRow.Cells[4].Value);
-                Costo.Text = this.dgvProductos.CurrentRow.Cells[3].Value.ToString();
-                Utilidad.Text = Convert.ToString(utilidad);
-                Precio.Text = this.dgvProductos.CurrentRow.Cells[4].Value.ToString();
-            }
-            else
+            if (tipo == "N/E")
             {
                 Clean2();
+                return;
             }
+
+            decimal costo = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[3].Value) / 100;
+            decimal precio = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[4].Value) / 100;
+
+            individualRadio.Checked = true;
+
+            if (tipo != "Individual")
+            {
+                bultoRadio.Checked = true;
+                UnidadesXBulto.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();
+
+                precio = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[5].Value);
+            }
+
+            Cantidad.Text = "0";
+            Costo.Text = Convert.ToString(costo);
+            Precio.Text = Convert.ToString(precio);
+
+            decimal utilidad = precio - costo;
+
+            Utilidad.Text = Convert.ToString(utilidad);
         }
 
         public void Clean2()

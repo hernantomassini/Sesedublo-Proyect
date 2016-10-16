@@ -77,7 +77,6 @@ namespace Sesedublo_SLPL.Administrar_Stock
             }
 
             Nombre.Text = reader.GetString(2);
-            Cantidad.Text = reader.GetString(0);
             UnidadesXBulto.Text = Convert.ToString(cantXBulto);
             Costo.Text = Convert.ToString(costo);
 
@@ -150,18 +149,9 @@ namespace Sesedublo_SLPL.Administrar_Stock
                     precioPorUnidad = decimal.Round(precioPorBulto / cantXBulto, 2);
                 }
 
-
-                if (flag == accionesABM.Crear)
-                {
-
                     Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto);
                     Conexion.closeConnection();
                     Conexion.executeProcedure("restarEfectivo", Conexion.generarArgumentos("_montoARestar", "_descripcion"), costo, "Compra de productos " + Nombre.Text + "de " + Cantidad.Text + " unidades");
-                }
-                else
-                {
-                    Conexion.executeProcedure("modificarStock", Conexion.generarArgumentos("_id_stock", "_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), id_stock, Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto);
-                }
                 Conexion.closeConnection();
                 Close();
             }
@@ -197,7 +187,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         private void Cantidad_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
-            val.ingresarNumero(e);
+            val.ingresarNumeroConRaya(e);
         }
 
         private void Precio_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)

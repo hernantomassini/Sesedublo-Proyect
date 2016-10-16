@@ -102,6 +102,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.StockDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.StockDGV.Size = new System.Drawing.Size(562, 248);
             this.StockDGV.TabIndex = 4;
+            this.StockDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StockDGV_CellContentClick);
             // 
             // id_stock
             // 

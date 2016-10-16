@@ -110,5 +110,15 @@ namespace Sesedublo_SLPL.Administrar_Productos
 
         }
 
+        private void StockDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow filaDgv = StockDGV.CurrentRow;
+
+            int id_stock = Convert.ToInt32(filaDgv.Cells[0].Value);
+
+            Manejador_Formularios.AddProducto.ModificarProducto(id_stock);
+            Manejador_Formularios.AddProducto.Show();
+        }
+
     }
 }

@@ -60,6 +60,7 @@ DROP PROCEDURE IF EXISTS cargarNotasDeCredito;
 DROP PROCEDURE IF EXISTS obtenerItemsDeFacturaSinNC;
 DROP PROCEDURE IF EXISTS agregarCantidad;
 DROP PROCEDURE IF EXISTS obtenerItemsDeRemito;
+DROP PROCEDURE IF EXISTS cobrarPedidoDeLea;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -85,6 +86,7 @@ CREATE TABLE PedidosDeLea (
     fecha DATETIME,
     costo DECIMAL(10 , 2 ),
     vendedor INT,
+    pagado INT DEFAULT 0,
     PRIMARY KEY (id_pedido)
 );
 
@@ -968,8 +970,15 @@ BEGIN
 
 	INSERT INTO PedidosDeLea (fecha, costo, vendedor) VALUES (NOW(), _costo,_id_vendedor);
 	SELECT LAST_INSERT_ID();
-    CALL restarEfectivo (_costo , CONCAT("Se realizo una pedido de compra por el valor de "));
+    #CALL restarEfectivo (_costo , CONCAT("Se realizo una pedido de compra por el valor de "));
 
+END //
+
+CREATE PROCEDURE cobrarPedidoDeLea(IN _id_pedido INT)
+BEGIN
+	SET @_costo = (SELECT costo FROM PedidosDeLea WHERE id_pedido = _id_pedido);
+    UPDATE PedidosDeLea SET pagado = 1 WHERE id_pedido = _id_pedido;
+	CALL restarEfectivo (@_costo , CONCAT("Se realizo una pedido de compra por el valor de "));
 END //
 
 CREATE PROCEDURE crearItemDeLea (IN _id_pedidoLea INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL (10,2))
@@ -995,7 +1004,7 @@ END //
 CREATE PROCEDURE cargarPedidoCompras ()
 BEGIN
 
-	SELECT  p.id_pedido, c.nombre AS Proveedor, p.fecha, group_concat(pr.nombre), p.costo FROM PedidosDeLea p 
+	SELECT  p.id_pedido, c.nombre AS Proveedor, p.fecha, group_concat(pr.nombre), p.costo, p.pagado FROM PedidosDeLea p 
     INNER JOIN ItemsDeLea i ON p.id_pedido = i.id_pedido
     INNER JOIN Productos pr ON pr.id_producto = i.id_producto
     INNER JOIN Clientes c ON c.id_cliente = vendedor
@@ -1077,7 +1086,3 @@ BEGIN
     GROUP BY i.id_item;
 END //
 DELIMITER ;
-
-	SELECT s.id_stock, p.nombre, p.PVUnitario, p.PVBulto, p.cantidadXBulto FROM Stock s
-    INNER JOIN Productos p ON s.producto = p.id_producto
-    WHERE s.producto = 1;

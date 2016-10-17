@@ -78,6 +78,12 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             if(bultoRadio.Checked)
                 val.validarNoVacio(UnidadesXBulto, st);
 
+            if (Cantidad.Text == "0")
+            {
+                Funciones.imprimirMensajeDeError("No puede agregar un producto con 0 unidades", this);
+                return;
+            }
+
             if (st.Length > 0)
             {
                 Funciones.imprimirMensajeDeError(st.ToString(), this);

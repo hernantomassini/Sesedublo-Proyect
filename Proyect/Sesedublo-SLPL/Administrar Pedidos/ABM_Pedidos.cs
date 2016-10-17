@@ -113,7 +113,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
             if (Convert.ToInt32(filaDgv.Cells[5].Value) == 1)
             {
-                Funciones.imprimirMensajeDeError("La siguiente factura ya ha sido facturada", this);
+                Funciones.imprimirMensajeDeError("El siguiente pedido ya ha sido facturada", this);
                 return;
             }
 

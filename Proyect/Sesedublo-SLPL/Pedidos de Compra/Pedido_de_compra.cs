@@ -69,16 +69,11 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         private void PedidosDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow filaDgv = PedidosDGV.CurrentRow;
-            if (Convert.ToInt32(filaDgv.Cells[5].Value) == 1)
-            {
-                Funciones.imprimirMensajeDeError("No puede modificar un pedido que ya ha sido facturado, sólo modificar su monto del debe", this);
-                return;
-            }
 
             int id_pedido = Convert.ToInt32(filaDgv.Cells[0].Value);
 
-            Manejador_Formularios.AddProductoAPedido.modificarPedido(id_pedido);
-            Manejador_Formularios.AddProductoAPedido.Show();
+            Manejador_Formularios.AddPedidoCompra.modificarPedido(id_pedido);
+            Manejador_Formularios.AddPedidoCompra.Show();
             Close();
         }
     }

@@ -845,7 +845,7 @@ BEGIN
 
 	SELECT s.id_stock, cantidadProductos FROM Items i
     INNER JOIN Stock s ON i.producto = s.producto 
-    WHERE pedido = _id_pedido;
+    WHERE pedido = _id_pedido AND cantidadProductos != 0;
 
 END //
 
@@ -1077,3 +1077,7 @@ BEGIN
     GROUP BY i.id_item;
 END //
 DELIMITER ;
+
+	SELECT s.id_stock, p.nombre, p.PVUnitario, p.PVBulto, p.cantidadXBulto FROM Stock s
+    INNER JOIN Productos p ON s.producto = p.id_producto
+    WHERE s.producto = 1;

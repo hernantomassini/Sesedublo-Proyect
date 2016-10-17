@@ -577,7 +577,6 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.panel1);
-            this.MaximizeBox = false;
             this.Name = "Ver_Factura";
             this.Text = "Factura Detalle";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));

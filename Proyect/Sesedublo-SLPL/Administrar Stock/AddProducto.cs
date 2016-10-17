@@ -149,8 +149,6 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
                 Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto);
                 Conexion.closeConnection();
-                Conexion.executeProcedure("restarEfectivo", Conexion.generarArgumentos("_montoARestar", "_descripcion"), costo, "Compra de productos " + Nombre.Text + " de " + Cantidad.Text + " unidades");
-                Conexion.closeConnection();
                 Close();
             }
         }
@@ -223,7 +221,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         private void dgvProductos_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
-            Clean();
+            Clean2();
             Nombre.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();
             string tipo = dgvProductos.CurrentRow.Cells[2].Value.ToString();
 

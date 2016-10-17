@@ -162,7 +162,17 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 }
 
                 dgvPedido.Rows.Add(cantXBulto, reader.GetString(1), reader.GetDecimal(2), precio, cantidadString, utilidad, esUnBulto);
-                stockAEliminar.Add(reader.GetInt32(6), cantidad);
+                if (!stockAEliminar.ContainsKey(reader.GetInt32(6)))
+                {
+                    stockAEliminar.Add(reader.GetInt32(6), cantidad);
+                }
+                else
+                {
+                    int cantidadVieja = stockAEliminar[reader.GetInt32(6)];
+                    cantidadVieja += cantidad;
+                    stockAEliminar.Remove(reader.GetInt32(6));
+                    stockAEliminar.Add(reader.GetInt32(6), cantidadVieja);
+                }
             }
 
             reader.Close();

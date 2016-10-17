@@ -51,7 +51,7 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             reader.Close();
 
             fechaActualImp.Text = "FECHA DE IMPRESIÓN: " + DateTime.Now.ToShortDateString();
-            fechaVencimiento.Text = "FECHA DE VENCIMIENTO: " + DateTime.Now.AddDays(29).ToShortDateString();
+            fechaVencimiento.Text = "FECHA DE VENCIMIENTO: " + DateTime.Now.AddDays(180).ToShortDateString();
             Conexion.closeConnection();
         }
 

@@ -103,6 +103,7 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
                     Conexion.executeProcedure("agregarCliente", Conexion.generarArgumentos("_nombre", "_apellido", "_mail", "_direccion", "_telefono", "_localidad", "_cuit", "_razonSocial"), Nombre.Text, Apellido.Text, Mail.Text, Direccion.Text, Telefono.Text, Localidad.Text, CUIT.Text, RazonSocial.Text);
                     Conexion.closeConnection();
                     Manejador_Formularios.AgregarPedido.cargarDGVUsuarios();
+                    Manejador_Formularios.Elegir_Proveedor.getData();
                 }
                 else
                 {

@@ -195,9 +195,9 @@
             // 
             // panel7
             // 
-            this.panel7.Location = new System.Drawing.Point(321, 27);
+            this.panel7.Location = new System.Drawing.Point(295, 26);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(92, 58);
+            this.panel7.Size = new System.Drawing.Size(131, 51);
             this.panel7.TabIndex = 11;
             // 
             // algoRaro
@@ -570,7 +570,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(827, 670);
+            this.ClientSize = new System.Drawing.Size(838, 894);
             this.Controls.Add(this.metroPanel2);
             this.Controls.Add(this.printButton);
             this.Controls.Add(this.panel5);

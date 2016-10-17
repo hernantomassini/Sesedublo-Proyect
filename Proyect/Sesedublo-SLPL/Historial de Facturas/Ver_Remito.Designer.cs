@@ -369,7 +369,6 @@
             this.Controls.Add(this.metroPanel2);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.panel1);
-            this.MaximizeBox = false;
             this.Name = "Ver_Remito";
             this.Text = "Ver_Remito";
             this.metroPanel2.ResumeLayout(false);

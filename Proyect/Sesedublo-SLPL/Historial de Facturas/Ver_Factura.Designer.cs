@@ -395,9 +395,9 @@
             // 
             // panel7
             // 
-            this.panel7.Location = new System.Drawing.Point(321, 27);
+            this.panel7.Location = new System.Drawing.Point(298, 26);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(92, 58);
+            this.panel7.Size = new System.Drawing.Size(131, 51);
             this.panel7.TabIndex = 11;
             // 
             // algoRaro
@@ -570,14 +570,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(870, 782);
+            this.ClientSize = new System.Drawing.Size(867, 867);
             this.Controls.Add(this.metroPanel2);
             this.Controls.Add(this.printButton);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.panel1);
-            this.MaximizeBox = false;
             this.Name = "Ver_Factura";
             this.Text = "Factura Detalle";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));

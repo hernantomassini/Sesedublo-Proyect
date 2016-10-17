@@ -28,7 +28,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
             while (reader.Read())
             {
-                PedidosDGV.Rows.Add(reader.GetInt32(0),reader.GetString(1), reader.GetDateTime(2).ToShortDateString(), reader.GetString(3), reader.GetDecimal(4));
+                PedidosDGV.Rows.Add(reader.GetInt32(0),reader.GetString(1), reader.GetDateTime(2).ToShortDateString(), reader.GetString(3), reader.GetDecimal(4), reader.GetInt32(5));
             }
 
             reader.Close();
@@ -76,5 +76,33 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             Manejador_Formularios.AddPedidoCompra.Show();
             Close();
         }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow filaDgv = PedidosDGV.CurrentRow;
+
+            if (!Validaciones.validarFilaMarcada(filaDgv, this))
+            {
+                return;
+            }
+
+            if (Convert.ToInt32(filaDgv.Cells[5].Value) == 1)
+            {
+                Funciones.imprimirMensajeDeError("El siguiente pedido ya ha sido pagado", this);
+                return;
+            }
+
+            if (Funciones.imprimirMensajeDeAlerta("¿Estás seguro de pagar este pedido?", this) == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            int id_pedidoLea = Convert.ToInt32(filaDgv.Cells[0].Value);
+            Conexion.executeProcedure("cobrarPedidoDeLea", Conexion.generarArgumentos("_id_pedido"), id_pedidoLea);
+            Conexion.closeConnection();
+
+            this.cargarDGV();
+        }
+
     }
 }

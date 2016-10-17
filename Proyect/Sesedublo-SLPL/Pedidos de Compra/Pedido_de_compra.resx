@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="modificarPedidoTile.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="modificarPedidoTile.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -143,9 +140,6 @@
         cBXcWiuzVoUBF+IPeXstUsPL/sIAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="AgregarPedidoTile.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="AgregarPedidoTile.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -201,9 +195,6 @@
         +53r0H78CTG+b+Y6tOl9N753kZf3H6TDqpeuqfEcAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="PedidosDGV.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="IDPedidoLea.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -219,7 +210,35 @@
   <metadata name="Costo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="pagado.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="cargado.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="metroTile1.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARuSURBVFhHvZftUxtVGMX579ROp+NodXwZv9T6CT+qg6MW
+        1I6OnTqKUwqDWOW9A6XQhlCREJOGlFAm0KSJECChAZKWNJtXkg3Y5vGeZ3PDsk0bEqhn5szdvcne87vP
+        vbubNEwtxMg8t00WT6Jsqy9JNn+afTuQLduxkiPHWo6cwTzZgwVqOA4hvB49Su3R9Mru0SFuzUZ4QHdY
+        peWoSi5fjPLqHvdVU0Z9QpaAejQIs2OTMjt7FNrO8aCr6wqth5N8fBihEpP/5OuHuGkPU2HvKVluhzj4
+        7sImKYmd0vCHEyrx5/2d+iDGLOs8SOzxDgXF7NHWo2iiQBOedO0QI5NrpSGOLlTC7E7VBnFtYqV0+fEI
+        lTDNJw4PMWRaKl1am7yeEHV0mOjihWEaHraTEk9ToaDdPdjUN+YeHw5icNTPFxWLxbKrye9/QO+89T2d
+        OtnMPvHqV9T0WRed/7aPwaBIPE9jzlh1iJ4hD1+w+2TfgJCt0ZlMToT9KoJb6PVTX9N77/5AH7x/gc8B
+        Yh538XgQKjHq2H4xBAAwsB6gkqUiUYU+bmzjcMx+3OSipqauUjVaqPlcD0NKoRIjtsjzIQCAgJxYvrIN
+        4cmMeELOLfPzAs+ITz/Zr8BHH/7MVWhp7uG+kyfOkXPGV4rXhEpcs25VhgAAAhGc2S0eBBEGwPDIDJ1+
+        4zwNDNp4wIGrNg4CwJui3/q3h3r7pum1V77kfmxKSC4btCWetEOWjWchunrd5PYpHG40Q4l7u+Wbfi4x
+        Av7onqJYMs/hMAIBJEGxOVEt47LiPJXdpauT4Wch2n5zUzCikpInUgr7liAagFbeyWkPtbWPM4yEQKgM
+        8vo3GFAfLg1tPMxS/0SoMgQqUYZAKwyA0fF53uEIO3PmJw40Ty5QY2M79+Gz+cV1bSlhwzLKPYVjtMls
+        gfpMa5UhlsRrGS9GfTVi2ad09mwrh2Epfmwd40pg80kAm3OpHFhevlJ7wCWY9UiaBm4GKkPMepMUEe8k
+        gMBb4pX7+RfdHK5BaMuBY/jt09/xa1kCS8sl1IPojysCQIDwBlWKZIq0LQbyPUjyXTB43cVLgBkDBhAI
+        N0959oMN+0gawbKFPcsJ6r2+VBkA+qXLTfYFhTaTRa5GOPUvwwDK6lqlK/12BsIPGQwsq4XvAALHB2BK
+        x1hO7LXLV2afHy4FiPkVlUIJESwgNoXR8vIgVFiec5+E0MFIIAk1541TR7energUICx3FYYIZzQDRLYS
+        Sg+nt4RBJZ2LcbrU6Th8uBQg7vhVCgiIUFoLl+2LoKTRj+Xs+L2GmRsFiFuuJPljWngl64GkV2NFrmBd
+        MzeKN6ZXZYhASguVbSWjYlOuOLXXsubVBIgbM0nyRIscAAA2jnXn+HziTp1rXk2A+GtRJXdUFy5BhO8/
+        IjI54uJWu3f84VKtnW4asSsM4Rf/Y6Rd4SL3X+p6CTM3ChDj8+LHighdFPsC7bD1Jc/cKEAMWBTxz0g8
+        20X7v8zcKMz4Yuc9uty9WGN4Q8N/eHDkoHnMHXUAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

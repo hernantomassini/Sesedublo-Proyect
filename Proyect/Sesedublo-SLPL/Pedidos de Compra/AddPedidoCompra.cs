@@ -17,6 +17,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         accionesABM flag = accionesABM.Crear;
         Validaciones val = new Validaciones();
         int id_pedidoLea = -1;
+        int id_cliente = -1;
         StringBuilder st = new StringBuilder();
 
         public AddPedidoCompra()
@@ -101,6 +102,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             }
 
             dgvPedido.Rows.Add(cantXBulto, Nombre.Text, costo, precio, cantidad, utilidad, esUnBulto);
+            updateLabel();
         }
 
         private void eliminarBtn_Click(object sender, EventArgs e)
@@ -116,6 +118,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             int cantidadDeleteada = obtenerCantidadEnInt(Convert.ToString(filaDgv.Cells[4].Value));
 
             dgvPedido.Rows.Remove(filaDgv);
+            updateLabel();
         }
 
         private void cargarDatos()
@@ -320,7 +323,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             decimal PVBulto;
             int cantXBulto;
 
-            reader = Conexion.executeProcedureWithReader("crearPedidoDeLea", Conexion.generarArgumentos("_costo"), obtenerCostoDelDGV());
+            reader = Conexion.executeProcedureWithReader("crearPedidoDeLea", Conexion.generarArgumentos("_costo","_id_vendedor"), obtenerCostoDelDGV(),id_cliente);
             reader.Read();
 
             int id_pedidoDeLea = reader.GetInt32(0);
@@ -365,12 +368,15 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             return sum;
         }
 
-        public void CrearPedido()
+        public void CrearPedido(int id_cliente)
         {
             Clean();
+            this.id_cliente = id_cliente;
             Nombre.Text = this.dgvProductos.Rows[0].Cells[1].Value.ToString();
             flag = accionesABM.Crear;
             Text = "Agregar pedido de compra";
+
+            updateLabel();
         }
 
 
@@ -382,6 +388,8 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             flag = accionesABM.Modificar;
             cargarDatos();
             Text = "Modificar pedido de compra";
+
+            updateLabel();
         }
 
         private void titleCancelar_Click(object sender, EventArgs e)
@@ -472,6 +480,12 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         private void UnidadesXBulto_SelectedIndexChanged(object sender, EventArgs e)
         {
             updatePrecio();
+        }
+
+        private void updateLabel()
+        {
+            decimal costoTotal = obtenerCostoDelDGV();
+            costoSumatoriaLabel.Text = "El monto total es de " + costoTotal;
         }
     }
 }

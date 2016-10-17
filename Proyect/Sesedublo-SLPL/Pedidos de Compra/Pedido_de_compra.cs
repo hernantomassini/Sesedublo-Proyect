@@ -28,7 +28,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
             while (reader.Read())
             {
-                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetDateTime(1).ToShortDateString(), reader.GetString(2), reader.GetDecimal(3));
+                PedidosDGV.Rows.Add(reader.GetInt32(0),reader.GetString(1), reader.GetDateTime(2).ToShortDateString(), reader.GetString(3), reader.GetDecimal(4));
             }
 
             reader.Close();
@@ -37,8 +37,8 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void AgregarPedidoTile_Click(object sender, EventArgs e)
         {
-            Manejador_Formularios.AddPedidoCompra.CrearPedido();
-            Manejador_Formularios.AddPedidoCompra.Show();
+            Manejador_Formularios.Elegir_Proveedor.getData();
+            Manejador_Formularios.Elegir_Proveedor.Show();
         }
 
         private void modificarPedidoTile_Click(object sender, EventArgs e)

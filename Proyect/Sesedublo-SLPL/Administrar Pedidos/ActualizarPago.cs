@@ -50,7 +50,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             if(pagadoCheck.Checked){
                 pagadoTot = 1;
             }
-            Conexion.executeProcedureWithReader("actualizarPago", Conexion.generarArgumentos("_id_pedido", "_total_a_pagar", "_cantidad_paga","_pagadoTot"), id_pedido, Convert.ToDecimal(cantidadAPagar.Text), Convert.ToDecimal(cantidadPagada.Text),pagadoTot);
+            Conexion.executeProcedureWithReader("actualizarPago", Conexion.generarArgumentos("_id_pedido", "_total_a_pagar", "_cantidad_paga","_pagadoTot"), id_pedido, Convert.ToDecimal(cantidadAPagar.Text), Convert.ToDecimal(cantidadPagada.Text), pagadoTot);
             Conexion.closeConnection();
             Manejador_Formularios.ABM_Pedidos.cargarDGV();
             Close();

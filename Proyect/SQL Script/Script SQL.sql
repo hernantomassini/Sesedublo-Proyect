@@ -84,6 +84,7 @@ CREATE TABLE PedidosDeLea (
     id_pedido INT AUTO_INCREMENT,
     fecha DATETIME,
     costo DECIMAL(10 , 2 ),
+    vendedor INT,
     PRIMARY KEY (id_pedido)
 );
 
@@ -962,10 +963,10 @@ BEGIN
     ORDER BY descripcion;
 END //
 
-CREATE PROCEDURE crearPedidoDeLea (IN _costo DECIMAL(10,2))
+CREATE PROCEDURE crearPedidoDeLea (IN _costo DECIMAL(10,2), _id_vendedor INT)
 BEGIN
 
-	INSERT INTO PedidosDeLea (fecha, costo) VALUES (NOW(), _costo);
+	INSERT INTO PedidosDeLea (fecha, costo, vendedor) VALUES (NOW(), _costo,_id_vendedor);
 	SELECT LAST_INSERT_ID();
     CALL restarEfectivo (_costo , CONCAT("Se realizo una pedido de compra por el valor de "));
 
@@ -994,9 +995,10 @@ END //
 CREATE PROCEDURE cargarPedidoCompras ()
 BEGIN
 
-	SELECT p.id_pedido, p.fecha, group_concat(pr.nombre), p.costo FROM PedidosDeLea p 
+	SELECT  p.id_pedido, c.nombre AS Proveedor, p.fecha, group_concat(pr.nombre), p.costo FROM PedidosDeLea p 
     INNER JOIN ItemsDeLea i ON p.id_pedido = i.id_pedido
     INNER JOIN Productos pr ON pr.id_producto = i.id_producto
+    INNER JOIN Clientes c ON c.id_cliente = vendedor
     GROUP BY p.id_pedido;
 
 END //
@@ -1034,15 +1036,15 @@ BEGIN
 
 END //
 
-CREATE PROCEDURE actualizarPago (IN _id_pedido INT, IN _total_a_pagar DECIMAL(10,2), IN _cantidad_paga DECIMAL(10,2), pagadoTot INT)
+CREATE PROCEDURE actualizarPago (IN _id_pedido INT, IN _total_a_pagar DECIMAL(10,2), IN _cantidad_paga DECIMAL(10,2), _pagadoTot INT)
 BEGIN
 
 SET @_cantidadPagadaVieja = (SELECT pagadoHastaElMomento FROM Pedidos WHERE id_pedido = _id_pedido);
 SET @_efectivoNuevo = (_cantidad_paga - @_cantidadPagadaVieja);
 
-	IF(pagadoTot = 1)
+	IF(_pagadoTot = 1)
     THEN
-		UPDATE Pedidos SET precio = _total_a_pagar, pagadoHastaElMomento = _cantidad_paga WHERE id_pedido = _id_pedido;
+		UPDATE Pedidos SET precio = _total_a_pagar, pagadoHastaElMomento = _total_a_pagar WHERE id_pedido = _id_pedido;
     ELSE
 		UPDATE Pedidos SET precio = _total_a_pagar, pagadoHastaElMomento = _cantidad_paga WHERE id_pedido = _id_pedido;
     END IF;

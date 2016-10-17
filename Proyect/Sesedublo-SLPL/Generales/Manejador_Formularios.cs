@@ -329,5 +329,18 @@ namespace Sesedublo_SLPL.Generales
             }
         }
 
+        private static Elegir_Proveedor Elegir_Proveedor_Form;
+        public static Elegir_Proveedor Elegir_Proveedor
+        {
+            get
+            {
+                if (Elegir_Proveedor_Form == null)
+                {
+                    Elegir_Proveedor_Form = new Elegir_Proveedor();
+                }
+                return Elegir_Proveedor_Form;
+            }
+        }
+
     }
 }

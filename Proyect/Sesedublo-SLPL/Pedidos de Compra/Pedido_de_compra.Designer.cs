@@ -48,10 +48,10 @@
             // 
             this.modificarPedidoTile.ActiveControl = null;
             this.modificarPedidoTile.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.modificarPedidoTile.Location = new System.Drawing.Point(587, 388);
-            this.modificarPedidoTile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.modificarPedidoTile.Location = new System.Drawing.Point(440, 315);
+            this.modificarPedidoTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.modificarPedidoTile.Name = "modificarPedidoTile";
-            this.modificarPedidoTile.Size = new System.Drawing.Size(204, 53);
+            this.modificarPedidoTile.Size = new System.Drawing.Size(153, 43);
             this.modificarPedidoTile.TabIndex = 2;
             this.modificarPedidoTile.Text = "Modificar pedido";
             this.modificarPedidoTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -67,10 +67,10 @@
             // 
             this.AgregarPedidoTile.ActiveControl = null;
             this.AgregarPedidoTile.BackColor = System.Drawing.Color.SteelBlue;
-            this.AgregarPedidoTile.Location = new System.Drawing.Point(799, 388);
-            this.AgregarPedidoTile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AgregarPedidoTile.Location = new System.Drawing.Point(599, 315);
+            this.AgregarPedidoTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AgregarPedidoTile.Name = "AgregarPedidoTile";
-            this.AgregarPedidoTile.Size = new System.Drawing.Size(204, 53);
+            this.AgregarPedidoTile.Size = new System.Drawing.Size(153, 43);
             this.AgregarPedidoTile.TabIndex = 1;
             this.AgregarPedidoTile.Text = "Agregar pedido";
             this.AgregarPedidoTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -86,10 +86,10 @@
             // 
             this.AtrasTile.ActiveControl = null;
             this.AtrasTile.BackColor = System.Drawing.Color.SlateGray;
-            this.AtrasTile.Location = new System.Drawing.Point(29, 388);
-            this.AtrasTile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AtrasTile.Location = new System.Drawing.Point(22, 315);
+            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AtrasTile.Name = "AtrasTile";
-            this.AtrasTile.Size = new System.Drawing.Size(124, 50);
+            this.AtrasTile.Size = new System.Drawing.Size(93, 41);
             this.AtrasTile.TabIndex = 3;
             this.AtrasTile.Text = "Atras";
             this.AtrasTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -105,7 +105,7 @@
             this.PedidosDGV.AllowUserToAddRows = false;
             this.PedidosDGV.AllowUserToDeleteRows = false;
             this.PedidosDGV.AllowUserToResizeRows = false;
-            this.PedidosDGV.BackgroundColor = System.Drawing.Color.Gray;
+            this.PedidosDGV.BackgroundColor = System.Drawing.Color.DarkGray;
             this.PedidosDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PedidosDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.PedidosDGV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -135,8 +135,8 @@
             this.PedidosDGV.EnableHeadersVisualStyles = false;
             this.PedidosDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.PedidosDGV.GridColor = System.Drawing.Color.White;
-            this.PedidosDGV.Location = new System.Drawing.Point(29, 76);
-            this.PedidosDGV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PedidosDGV.Location = new System.Drawing.Point(22, 62);
+            this.PedidosDGV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PedidosDGV.MultiSelect = false;
             this.PedidosDGV.Name = "PedidosDGV";
             this.PedidosDGV.ReadOnly = true;
@@ -152,7 +152,7 @@
             this.PedidosDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.PedidosDGV.RowTemplate.Height = 24;
             this.PedidosDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PedidosDGV.Size = new System.Drawing.Size(973, 306);
+            this.PedidosDGV.Size = new System.Drawing.Size(730, 249);
             this.PedidosDGV.TabIndex = 6;
             this.PedidosDGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PedidosDGV_CellDoubleClick);
             // 
@@ -176,7 +176,7 @@
             this.Fecha.HeaderText = "Fecha";
             this.Fecha.Name = "Fecha";
             this.Fecha.ReadOnly = true;
-            this.Fecha.Width = 65;
+            this.Fecha.Width = 60;
             // 
             // Productos
             // 
@@ -184,7 +184,7 @@
             this.Productos.HeaderText = "Productos comprados";
             this.Productos.Name = "Productos";
             this.Productos.ReadOnly = true;
-            this.Productos.Width = 138;
+            this.Productos.Width = 130;
             // 
             // Costo
             // 
@@ -192,21 +192,19 @@
             this.Costo.HeaderText = "Costo";
             this.Costo.Name = "Costo";
             this.Costo.ReadOnly = true;
-            this.Costo.Width = 65;
+            this.Costo.Width = 60;
             // 
             // Pedido_de_compra
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1027, 465);
+            this.ClientSize = new System.Drawing.Size(770, 378);
             this.Controls.Add(this.modificarPedidoTile);
             this.Controls.Add(this.AgregarPedidoTile);
             this.Controls.Add(this.AtrasTile);
             this.Controls.Add(this.PedidosDGV);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Pedido_de_compra";
-            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Pedido de Compra";
             this.Load += new System.EventHandler(this.Pedido_de_compra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PedidosDGV)).EndInit();

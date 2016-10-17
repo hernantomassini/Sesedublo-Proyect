@@ -136,7 +136,6 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
             reader = Conexion.executeProcedureWithReader("obtenerItemsDeLea", Conexion.generarArgumentos("_id_pedidoLea"), id_pedidoLea);
 
-
             int cantXBulto;
             int esUnBulto = 0;
             decimal precio;
@@ -148,22 +147,17 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             {
                 cantXBulto = reader.GetInt32(0);
                 cantidad = reader.GetInt32(5);
+                precio = reader.GetDecimal(3);
+                cantidadString = cantidad + " unidades";
+                utilidad = precio - reader.GetDecimal(2);
 
-                if (cantXBulto == 0)
-                {
-                    //Individual
-
-                    precio = reader.GetDecimal(3);
-                    cantidadString = cantidad + " unidades";
-                    utilidad = precio - reader.GetDecimal(2);
-                }
-                else
+                if (cantXBulto != 0)
                 {
                     //Bulto
                     precio = reader.GetDecimal(4);
                     cantidadString = cantidad + " bultos de " + cantXBulto + " unidades";
                     esUnBulto = 1;
-                    utilidad = decimal.Round((precio - reader.GetDecimal(2))/ cantXBulto, 2);
+                    utilidad = cantXBulto * (reader.GetDecimal(3) - reader.GetDecimal(2));
                 }
 
                 dgvPedido.Rows.Add(cantXBulto, reader.GetString(1), reader.GetDecimal(2), precio, cantidadString, utilidad, esUnBulto);
@@ -249,6 +243,8 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            Clean2();
             Nombre.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();
             string tipo = dgvProductos.CurrentRow.Cells[2].Value.ToString();
 
@@ -266,9 +262,9 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             if (tipo != "Individual")
             {
                 bultoRadio.Checked = true;
-                UnidadesXBulto.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();
+                UnidadesXBulto.Text = dgvProductos.CurrentRow.Cells[2].Value.ToString();
 
-                precio = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[5].Value);
+                precio = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[5].Value) / 100;
             }
 
             Cantidad.Text = "0";
@@ -362,7 +358,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
             for (int i = 0; i < dgvPedido.Rows.Count; i++)
             {
-                sum += Convert.ToInt32(dgvPedido.Rows[i].Cells[2].Value);
+                sum += Convert.ToInt32(dgvPedido.Rows[i].Cells[2].Value) * obtenerCantidadEnInt(Convert.ToString(dgvPedido.Rows[i].Cells[4].Value));
             }
 
             return sum;
@@ -485,7 +481,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         private void updateLabel()
         {
             decimal costoTotal = obtenerCostoDelDGV();
-            costoSumatoriaLabel.Text = "El monto total es de " + costoTotal;
+            costoSumatoriaLabel.Text = "Total: " + costoTotal;
         }
     }
 }

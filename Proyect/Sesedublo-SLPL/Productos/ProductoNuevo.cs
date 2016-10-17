@@ -102,12 +102,16 @@ namespace Sesedublo_SLPL.Productos
             if (individualRadio.Checked)
             {
                 CostoLabel.Text = "Costo por unidad:";
+                UtilidadLabel.Text = "Utilidad por unidad:";
+                PrecioLabel.Text = "Precio por unidad:";
                 UnidadesXBultoLbl.Visible = false;
                 UnidadesXBulto.Visible = false;
             }
             else
             {
-                CostoLabel.Text = "Costo por bulto:";
+                CostoLabel.Text = "Costo por botella:";
+                UtilidadLabel.Text = "Utilidad por bulto:";
+                PrecioLabel.Text = "Precio por bulto:";
                 UnidadesXBultoLbl.Visible = true;
                 UnidadesXBulto.Visible = true;
             }
@@ -125,49 +129,12 @@ namespace Sesedublo_SLPL.Productos
 
         private void Costo_TextChanged(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(Utilidad.Text))
-            {
-                if (!String.IsNullOrEmpty(Costo.Text))
-                {
-                    Precio.Text = Convert.ToString(Convert.ToDecimal(Costo.Text));
-                }
-            }
-            else
-            {
-                if (!String.IsNullOrEmpty(Costo.Text))
-                {
-                    Precio.Text = Convert.ToString(Convert.ToDecimal(Utilidad.Text) + Convert.ToDecimal(Costo.Text));
-
-                    if (!individualRadio.Checked)
-                    {
-                        Precio.Text = Convert.ToString(Convert.ToDecimal(Costo.Text) + Convert.ToDecimal(Utilidad.Text) * Convert.ToDecimal(UnidadesXBulto.Text));
-                    }
-
-                }
-            }
+            updatePrecio();
         }
 
         private void Utilidad_TextChanged(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(Costo.Text))
-            {
-                if (!String.IsNullOrEmpty(Utilidad.Text))
-                {
-                    Precio.Text = Convert.ToString(Convert.ToDecimal(Utilidad.Text));
-                }
-            }
-            else
-            {
-                if (!String.IsNullOrEmpty(Utilidad.Text))
-                {
-                    Precio.Text = Convert.ToString(Convert.ToDecimal(Utilidad.Text) + Convert.ToDecimal(Costo.Text));
-
-                    if (!individualRadio.Checked)
-                    {
-                        Precio.Text = Convert.ToString(Convert.ToDecimal(Costo.Text) + Convert.ToDecimal(Utilidad.Text));
-                    }
-                }
-            }
+            updatePrecio();
         }
 
         public void Clean()
@@ -184,6 +151,38 @@ namespace Sesedublo_SLPL.Productos
         private void Utilidad_KeyPress(object sender, KeyPressEventArgs e)
         {
             val.ingresarNumeroDecimal(e);
+        }
+
+        private void updatePrecio()
+        {
+            if (Costo.Text == "" || Utilidad.Text == "")
+                return;
+
+            decimal costo = Convert.ToDecimal(Costo.Text);
+            decimal utilidad = Convert.ToDecimal(Utilidad.Text);
+
+            if (individualRadio.Checked)
+            {
+                Precio.Text = Convert.ToString(costo + utilidad);
+            }
+            else
+            {
+                if (UnidadesXBulto.Text == "")
+                    return;
+
+                int botellasPorBulto = Convert.ToInt32(UnidadesXBulto.Text);
+                Precio.Text = Convert.ToString(costo * botellasPorBulto + utilidad);
+            }
+        }
+
+        private void Producto_Nuevo_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UnidadesXBulto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updatePrecio();
         }
     }
 }

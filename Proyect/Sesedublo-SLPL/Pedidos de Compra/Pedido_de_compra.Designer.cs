@@ -105,7 +105,7 @@
             this.PedidosDGV.AllowUserToAddRows = false;
             this.PedidosDGV.AllowUserToDeleteRows = false;
             this.PedidosDGV.AllowUserToResizeRows = false;
-            this.PedidosDGV.BackgroundColor = System.Drawing.Color.Black;
+            this.PedidosDGV.BackgroundColor = System.Drawing.Color.Gray;
             this.PedidosDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PedidosDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.PedidosDGV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -203,7 +203,7 @@
             this.Controls.Add(this.AgregarPedidoTile);
             this.Controls.Add(this.AtrasTile);
             this.Controls.Add(this.PedidosDGV);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Pedido_de_compra";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);

@@ -59,27 +59,27 @@ namespace Sesedublo_SLPL.Administrar_Stock
             MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerProducto", Conexion.generarArgumentos("_id_stock"), id_stock);
             reader.Read();
 
+            individualRadio.Checked = true;
             int cantXBulto = reader.GetInt32(1);
             decimal costo = Convert.ToDecimal(reader.GetDecimal(3));
 
-            if (cantXBulto == 0)
-            { 
-                //Individual
-                individualRadio.Checked = true;
-                decimal PVUnitario = reader.GetDecimal(4);
-                Utilidad.Text = Convert.ToString(PVUnitario - costo);
-            }
-            else
+            decimal precio = Convert.ToDecimal(reader.GetDecimal(4));
+            decimal utilidad = precio - costo;
+
+            if (cantXBulto != 0)
             {
                 //Bulto
                 bultoRadio.Checked = true;
-                decimal PVBulto = reader.GetDecimal(5);
-                Utilidad.Text = Convert.ToString(PVBulto - costo);
+                precio = reader.GetDecimal(5);
+                utilidad = cantXBulto * (reader.GetDecimal(4) - costo);
             }
 
             Nombre.Text = reader.GetString(2);
-            UnidadesXBulto.Text = Convert.ToString(cantXBulto);
             Costo.Text = Convert.ToString(costo);
+            Cantidad.Text = "0";
+            Utilidad.Text = Convert.ToString(utilidad);
+            Precio.Text = Convert.ToString(precio);
+            UnidadesXBulto.Text = Convert.ToString(cantXBulto);
 
             reader.Close();
             Conexion.closeConnection();
@@ -132,27 +132,24 @@ namespace Sesedublo_SLPL.Administrar_Stock
             else
             {
 
-                int cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
+                int cantXBulto = 0;
                 decimal costo = Convert.ToDecimal(Costo.Text);
                 decimal utilidad = Convert.ToDecimal(Utilidad.Text);
 
                 decimal precioPorUnidad = costo + utilidad;
-                decimal precioPorBulto = precioPorUnidad;
+                decimal precioPorBulto = 0;
 
-                if (individualRadio.Checked)
+
+                if (bultoRadio.Checked)
                 {
-                    cantXBulto = 0;
-                    precioPorBulto = 0;
-                }
-                else
-                {
+                    cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
                     precioPorBulto = Convert.ToDecimal(Precio.Text);
                     precioPorUnidad = decimal.Round(precioPorBulto / cantXBulto, 2);
                 }
 
-                    Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto);
-                    Conexion.closeConnection();
-                    Conexion.executeProcedure("restarEfectivo", Conexion.generarArgumentos("_montoARestar", "_descripcion"), costo, "Compra de productos " + Nombre.Text + " de " + Cantidad.Text + " unidades");
+                Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto"), Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto);
+                Conexion.closeConnection();
+                Conexion.executeProcedure("restarEfectivo", Conexion.generarArgumentos("_montoARestar", "_descripcion"), costo, "Compra de productos " + Nombre.Text + " de " + Cantidad.Text + " unidades");
                 Conexion.closeConnection();
                 Close();
             }
@@ -243,7 +240,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
             if (tipo != "Individual")
             {
                 bultoRadio.Checked = true;
-                UnidadesXBulto.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();
+                UnidadesXBulto.Text = dgvProductos.CurrentRow.Cells[2].Value.ToString();
 
                 precio = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[5].Value);
             }
@@ -306,6 +303,11 @@ namespace Sesedublo_SLPL.Administrar_Stock
         }
 
         private void UnidadesXBulto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updatePrecio();
+        }
+
+        private void UnidadesXBulto_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             updatePrecio();
         }

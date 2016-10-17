@@ -53,7 +53,7 @@
             this.dgvClientes.AllowUserToResizeRows = false;
             this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvClientes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
-            this.dgvClientes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgvClientes.BackgroundColor = System.Drawing.Color.DarkGray;
             this.dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -77,7 +77,8 @@
             this.dgvClientes.EnableHeadersVisualStyles = false;
             this.dgvClientes.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvClientes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvClientes.Location = new System.Drawing.Point(27, 103);
+            this.dgvClientes.Location = new System.Drawing.Point(36, 127);
+            this.dgvClientes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvClientes.MultiSelect = false;
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.ReadOnly = true;
@@ -92,7 +93,7 @@
             this.dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvClientes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClientes.Size = new System.Drawing.Size(797, 304);
+            this.dgvClientes.Size = new System.Drawing.Size(1063, 374);
             this.dgvClientes.TabIndex = 0;
             this.dgvClientes.UseCustomBackColor = true;
             this.dgvClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellContentClick);
@@ -100,9 +101,10 @@
             // titleModificarCliente
             // 
             this.titleModificarCliente.ActiveControl = null;
-            this.titleModificarCliente.Location = new System.Drawing.Point(527, 422);
+            this.titleModificarCliente.Location = new System.Drawing.Point(703, 519);
+            this.titleModificarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titleModificarCliente.Name = "titleModificarCliente";
-            this.titleModificarCliente.Size = new System.Drawing.Size(153, 44);
+            this.titleModificarCliente.Size = new System.Drawing.Size(204, 54);
             this.titleModificarCliente.TabIndex = 5;
             this.titleModificarCliente.Text = "Modificar Cliente";
             this.titleModificarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -117,9 +119,10 @@
             // 
             this.titleAgregarCliente.ActiveControl = null;
             this.titleAgregarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.titleAgregarCliente.Location = new System.Drawing.Point(686, 422);
+            this.titleAgregarCliente.Location = new System.Drawing.Point(915, 519);
+            this.titleAgregarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titleAgregarCliente.Name = "titleAgregarCliente";
-            this.titleAgregarCliente.Size = new System.Drawing.Size(138, 44);
+            this.titleAgregarCliente.Size = new System.Drawing.Size(184, 54);
             this.titleAgregarCliente.TabIndex = 4;
             this.titleAgregarCliente.Text = "Agregar Cliente";
             this.titleAgregarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -135,9 +138,10 @@
             // 
             this.titleEliminarCliente.ActiveControl = null;
             this.titleEliminarCliente.BackColor = System.Drawing.Color.IndianRed;
-            this.titleEliminarCliente.Location = new System.Drawing.Point(383, 422);
+            this.titleEliminarCliente.Location = new System.Drawing.Point(511, 519);
+            this.titleEliminarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titleEliminarCliente.Name = "titleEliminarCliente";
-            this.titleEliminarCliente.Size = new System.Drawing.Size(138, 44);
+            this.titleEliminarCliente.Size = new System.Drawing.Size(184, 54);
             this.titleEliminarCliente.TabIndex = 6;
             this.titleEliminarCliente.Text = "Eliminar Cliente";
             this.titleEliminarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -153,9 +157,10 @@
             // 
             this.titleAtras.ActiveControl = null;
             this.titleAtras.BackColor = System.Drawing.Color.CadetBlue;
-            this.titleAtras.Location = new System.Drawing.Point(27, 422);
+            this.titleAtras.Location = new System.Drawing.Point(36, 519);
+            this.titleAtras.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titleAtras.Name = "titleAtras";
-            this.titleAtras.Size = new System.Drawing.Size(75, 44);
+            this.titleAtras.Size = new System.Drawing.Size(100, 54);
             this.titleAtras.TabIndex = 7;
             this.titleAtras.Text = "Atrás";
             this.titleAtras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -170,18 +175,20 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(27, 72);
+            this.metroLabel1.Location = new System.Drawing.Point(36, 89);
+            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(62, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(64, 20);
             this.metroLabel1.TabIndex = 5;
             this.metroLabel1.Text = "Nombre:";
             // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(237, 72);
+            this.metroLabel2.Location = new System.Drawing.Point(316, 89);
+            this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(61, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(62, 20);
             this.metroLabel2.TabIndex = 6;
             this.metroLabel2.Text = "Apellido:";
             // 
@@ -191,9 +198,10 @@
             // 
             // 
             this.nombre.CustomButton.Image = null;
-            this.nombre.CustomButton.Location = new System.Drawing.Point(105, 1);
+            this.nombre.CustomButton.Location = new System.Drawing.Point(143, 2);
+            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nombre.CustomButton.Name = "";
-            this.nombre.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.nombre.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.nombre.CustomButton.TabIndex = 1;
             this.nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -202,7 +210,8 @@
             this.nombre.DisplayIcon = true;
             this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
             this.nombre.Lines = new string[0];
-            this.nombre.Location = new System.Drawing.Point(95, 69);
+            this.nombre.Location = new System.Drawing.Point(127, 85);
+            this.nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nombre.MaxLength = 60;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
@@ -212,7 +221,7 @@
             this.nombre.SelectionLength = 0;
             this.nombre.SelectionStart = 0;
             this.nombre.ShortcutsEnabled = true;
-            this.nombre.Size = new System.Drawing.Size(127, 23);
+            this.nombre.Size = new System.Drawing.Size(169, 28);
             this.nombre.TabIndex = 1;
             this.nombre.UseSelectable = true;
             this.nombre.WaterMark = "Buscar";
@@ -227,9 +236,10 @@
             // 
             // 
             this.apellido.CustomButton.Image = null;
-            this.apellido.CustomButton.Location = new System.Drawing.Point(112, 1);
+            this.apellido.CustomButton.Location = new System.Drawing.Point(153, 2);
+            this.apellido.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.apellido.CustomButton.Name = "";
-            this.apellido.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.apellido.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.apellido.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.apellido.CustomButton.TabIndex = 1;
             this.apellido.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -238,7 +248,8 @@
             this.apellido.DisplayIcon = true;
             this.apellido.Icon = ((System.Drawing.Image)(resources.GetObject("apellido.Icon")));
             this.apellido.Lines = new string[0];
-            this.apellido.Location = new System.Drawing.Point(304, 69);
+            this.apellido.Location = new System.Drawing.Point(405, 85);
+            this.apellido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.apellido.MaxLength = 60;
             this.apellido.Name = "apellido";
             this.apellido.PasswordChar = '\0';
@@ -248,7 +259,7 @@
             this.apellido.SelectionLength = 0;
             this.apellido.SelectionStart = 0;
             this.apellido.ShortcutsEnabled = true;
-            this.apellido.Size = new System.Drawing.Size(134, 23);
+            this.apellido.Size = new System.Drawing.Size(179, 28);
             this.apellido.TabIndex = 2;
             this.apellido.UseSelectable = true;
             this.apellido.WaterMark = "Buscar";
@@ -263,9 +274,10 @@
             // 
             // 
             this.direccion.CustomButton.Image = null;
-            this.direccion.CustomButton.Location = new System.Drawing.Point(124, 1);
+            this.direccion.CustomButton.Location = new System.Drawing.Point(169, 2);
+            this.direccion.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.direccion.CustomButton.Name = "";
-            this.direccion.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.direccion.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.direccion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.direccion.CustomButton.TabIndex = 1;
             this.direccion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -274,7 +286,8 @@
             this.direccion.DisplayIcon = true;
             this.direccion.Icon = ((System.Drawing.Image)(resources.GetObject("direccion.Icon")));
             this.direccion.Lines = new string[0];
-            this.direccion.Location = new System.Drawing.Point(525, 69);
+            this.direccion.Location = new System.Drawing.Point(700, 85);
+            this.direccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.direccion.MaxLength = 100;
             this.direccion.Name = "direccion";
             this.direccion.PasswordChar = '\0';
@@ -284,7 +297,7 @@
             this.direccion.SelectionLength = 0;
             this.direccion.SelectionStart = 0;
             this.direccion.ShortcutsEnabled = true;
-            this.direccion.Size = new System.Drawing.Size(146, 23);
+            this.direccion.Size = new System.Drawing.Size(195, 28);
             this.direccion.TabIndex = 3;
             this.direccion.UseSelectable = true;
             this.direccion.WaterMark = "Buscar";
@@ -295,17 +308,18 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(453, 72);
+            this.metroLabel3.Location = new System.Drawing.Point(604, 89);
+            this.metroLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(66, 19);
+            this.metroLabel3.Size = new System.Drawing.Size(71, 20);
             this.metroLabel3.TabIndex = 9;
             this.metroLabel3.Text = "Dirección:";
             // 
             // ABM_Usuarios
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 481);
+            this.ClientSize = new System.Drawing.Size(1129, 592);
             this.Controls.Add(this.direccion);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.apellido);
@@ -317,10 +331,10 @@
             this.Controls.Add(this.titleAgregarCliente);
             this.Controls.Add(this.titleModificarCliente);
             this.Controls.Add(this.dgvClientes);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "ABM_Usuarios";
-            this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
+            this.Padding = new System.Windows.Forms.Padding(20, 74, 20, 20);
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.ABM_Usuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();

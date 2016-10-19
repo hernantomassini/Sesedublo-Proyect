@@ -92,11 +92,15 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             }
 
             int esUnBulto = 0;
+            int cantXBulto = 0;
+
             decimal utilidad = Convert.ToDecimal(Utilidad.Text);
             decimal costo = Convert.ToDecimal(Costo.Text);
 
-            int cantXBulto = 0;
-            decimal precio = costo + utilidad;
+            //TODO - modificar esto
+            decimal precioUnitario = costo + utilidad;
+            decimal precioBulto;
+            string stringPrecioBulto = "-";
 
             string cantidad = Cantidad.Text + " unidades";
 
@@ -105,10 +109,16 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
                 cantidad = Cantidad.Text + " bultos de " + cantXBulto + " unidades";
                 esUnBulto = 1;
-                precio = costo * cantXBulto + utilidad;
+
+                //TODO - modificar esto
+                precioBulto = costo * cantXBulto + utilidad;
+                precioUnitario = precioBulto / cantXBulto;
+                precioUnitario = decimal.Round(precioUnitario, 2);
+
+                stringPrecioBulto = Convert.ToString(precioBulto);
             }
 
-            dgvPedido.Rows.Add(cantXBulto, Nombre.Text, costo, precio, cantidad, utilidad, esUnBulto);
+            dgvPedido.Rows.Add(cantXBulto, Nombre.Text, costo, precioUnitario, stringPrecioBulto, cantidad, utilidad, esUnBulto);
             updateLabel();
         }
 
@@ -122,7 +132,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             }
 
             decimal costoDeleteado = Convert.ToDecimal(filaDgv.Cells[2].Value);
-            int cantidadDeleteada = obtenerCantidadEnInt(Convert.ToString(filaDgv.Cells[4].Value));
+            int cantidadDeleteada = obtenerCantidadEnInt(Convert.ToString(filaDgv.Cells[5].Value));
 
             dgvPedido.Rows.Remove(filaDgv);
             updateLabel();
@@ -132,11 +142,13 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         {
             Funciones.limpiarDGV(dgvPedido);
 
-            string query = "SELECT costo FROM PedidosDeLea WHERE id_pedido = " + id_pedidoLea;
+            string query = "SELECT vendedor FROM PedidosDeLea WHERE id_pedido = " + id_pedidoLea;
 
             MySqlDataReader reader = Conexion.ejecutarQuery(query);
 
             reader.Read();
+
+            id_cliente = reader.GetInt32(0);
 
             reader.Close();
             Conexion.closeConnection();
@@ -144,30 +156,40 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             reader = Conexion.executeProcedureWithReader("obtenerItemsDeLea", Conexion.generarArgumentos("_id_pedidoLea"), id_pedidoLea);
 
             int cantXBulto;
-            int esUnBulto = 0;
-            decimal precio;
-            decimal utilidad = 0;
-            string cantidadString;
+            string nombre;
+            decimal costo;
+            decimal PVUnitario;
+            decimal PVBulto;
             int cantidad;
+
+            string cantidadString;
+            decimal utilidad = 0;
+            int esUnBulto = 0;
+
 
             while (reader.Read())
             {
                 cantXBulto = reader.GetInt32(0);
+                nombre = reader.GetString(1);
+                costo = reader.GetDecimal(2);
+                PVUnitario = reader.GetDecimal(3);
+                PVBulto = reader.GetDecimal(4);
                 cantidad = reader.GetInt32(5);
-                precio = reader.GetDecimal(3);
+
                 cantidadString = cantidad + " unidades";
-                utilidad = precio - reader.GetDecimal(2);
+                //TODO - modificar esto
+                utilidad = PVUnitario - reader.GetDecimal(2);
 
                 if (cantXBulto != 0)
                 {
                     //Bulto
-                    precio = reader.GetDecimal(4);
+                    //TODO - modificar esto
                     cantidadString = cantidad + " bultos de " + cantXBulto + " unidades";
                     esUnBulto = 1;
-                    utilidad = cantXBulto * (reader.GetDecimal(3) - reader.GetDecimal(2));
+                    utilidad = cantXBulto * (PVUnitario - costo);
                 }
 
-                dgvPedido.Rows.Add(cantXBulto, reader.GetString(1), reader.GetDecimal(2), precio, cantidadString, utilidad, esUnBulto);
+                dgvPedido.Rows.Add(cantXBulto, nombre, costo, PVUnitario, PVBulto, cantidadString, utilidad, esUnBulto);
                 if (!stockAEliminar.ContainsKey(reader.GetInt32(6)))
                 {
                     stockAEliminar.Add(reader.GetInt32(6), cantidad);
@@ -362,7 +384,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 cantXBulto = Convert.ToInt32(row.Cells[0].Value);
                 nombre = Convert.ToString(row.Cells[1].Value);
                 costo = Convert.ToDecimal(row.Cells[2].Value);
-                cantidad = obtenerCantidadEnInt(Convert.ToString(row.Cells[4].Value));
+                cantidad = obtenerCantidadEnInt(Convert.ToString(row.Cells[5].Value));
 
                 if(cantXBulto == 0)
                 {
@@ -382,6 +404,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             Close();
         }
 
+
         private decimal obtenerCostoDelDGV()
         {
             decimal sum = 0;
@@ -389,15 +412,15 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
          
             for (int i = 0; i < dgvPedido.Rows.Count; i++)
                {
-                int esUnBulto = Convert.ToInt32(dgvPedido.Rows[i].Cells[6].Value);
+                int esUnBulto = Convert.ToInt32(dgvPedido.Rows[i].Cells[7].Value);
 
                 if (esUnBulto == 0)
                 {
-                    sum += Convert.ToDecimal(dgvPedido.Rows[i].Cells[2].Value) * obtenerCantidadEnInt(Convert.ToString(dgvPedido.Rows[i].Cells[4].Value));
+                    sum += Convert.ToDecimal(dgvPedido.Rows[i].Cells[2].Value) * obtenerCantidadEnInt(Convert.ToString(dgvPedido.Rows[i].Cells[5].Value));
                 }
                 else
                 {
-                    string cantidadString = Convert.ToString(dgvPedido.Rows[i].Cells[4].Value);
+                    string cantidadString = Convert.ToString(dgvPedido.Rows[i].Cells[5].Value);
                     int posI = cantidadString.IndexOf(" ") + 1;
 
                     cantidadString = cantidadString.Substring(posI);
@@ -409,7 +432,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
                     int cantXBulto = obtenerCantidadEnInt(cantidadString);
 
-                    sum += Convert.ToDecimal(dgvPedido.Rows[i].Cells[2].Value) * cantXBulto * obtenerCantidadEnInt(Convert.ToString(dgvPedido.Rows[i].Cells[4].Value));
+                    sum += Convert.ToDecimal(dgvPedido.Rows[i].Cells[2].Value) * cantXBulto * obtenerCantidadEnInt(Convert.ToString(dgvPedido.Rows[i].Cells[5].Value));
                 }
 
               }
@@ -497,13 +520,13 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             if (filaDgv == null)
                 return;
 
-            int esUnBulto = Convert.ToInt32(filaDgv.Cells[6].Value);
+            int esUnBulto = Convert.ToInt32(filaDgv.Cells[7].Value);
             decimal costo = Convert.ToDecimal(filaDgv.Cells[2].Value);
-            decimal utilidad = Convert.ToDecimal(filaDgv.Cells[5].Value);
+            decimal utilidad = Convert.ToDecimal(filaDgv.Cells[6].Value);
 
             if(esUnBulto == 1)
             {
-                string cantidadString = Convert.ToString(filaDgv.Cells[4].Value);
+                string cantidadString = Convert.ToString(filaDgv.Cells[5].Value);
                 int posI = cantidadString.IndexOf(" ") + 1;
 
                 cantidadString = cantidadString.Substring(posI);

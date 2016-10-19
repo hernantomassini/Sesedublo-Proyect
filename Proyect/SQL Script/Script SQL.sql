@@ -61,6 +61,7 @@ DROP PROCEDURE IF EXISTS obtenerItemsDeFacturaSinNC;
 DROP PROCEDURE IF EXISTS agregarCantidad;
 DROP PROCEDURE IF EXISTS obtenerItemsDeRemito;
 DROP PROCEDURE IF EXISTS cobrarPedidoDeLea;
+DROP PROCEDURE IF EXISTS obtenerStockPedido;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -619,6 +620,16 @@ BEGIN
 	ON p.id_producto = s.producto
 	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
     AND s.deleted = 0 AND p.cantidad != 0;
+END //
+
+CREATE PROCEDURE obtenerStockPedido (IN _nombre VARCHAR(50)) 
+BEGIN
+
+	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto
+	FROM Stock s INNER JOIN Productos p 
+	ON p.id_producto = s.producto
+	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+    AND s.deleted = 0;
 
 END //
 
@@ -847,7 +858,7 @@ BEGIN
 
 	SELECT s.id_stock, cantidadProductos FROM Items i
     INNER JOIN Stock s ON i.producto = s.producto 
-    WHERE pedido = _id_pedido AND cantidadProductos != 0;
+    WHERE pedido = _id_pedido;
 
 END //
 

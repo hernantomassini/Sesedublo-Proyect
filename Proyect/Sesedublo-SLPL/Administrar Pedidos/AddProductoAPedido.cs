@@ -177,7 +177,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         public void cargarDGV()
         {
             Funciones.limpiarDGV(ProductosDGV);
-            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerStock", Conexion.generarArgumentos("_nombre"), Nombre.Text);
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerStockPedido", Conexion.generarArgumentos("_nombre"), Nombre.Text);
 
             string cantidad;
             int cantXBulto;

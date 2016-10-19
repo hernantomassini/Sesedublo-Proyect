@@ -79,6 +79,7 @@ CREATE TABLE Productos (
     nombre VARCHAR(100),
     PVUnitario DECIMAL(10 , 2 ) DEFAULT 0,
     PVBulto DECIMAL(10 , 2 ) DEFAULT 0,
+    radioSelected INT DEFAULT 1,
     PRIMARY KEY (id_producto)
 );
 
@@ -633,7 +634,7 @@ BEGIN
 
 END //
 
-CREATE PROCEDURE agregarStock (IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL(10,2)) 
+CREATE PROCEDURE agregarStock (IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL(10,2), IN _radioSelected INT) 
 BEGIN
 
 SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AND cantidadXBulto = _cantidadXBulto AND cantidadXBulto != 0);
@@ -651,7 +652,7 @@ SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AN
             END IF;
 		ELSE
 			#Es un producto nuevo.
-			INSERT INTO Productos (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto) VALUES (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto);
+			INSERT INTO Productos (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto, radioSelected) VALUES (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto, _radioSelected);
 			SET @_id_producto = LAST_INSERT_ID();
 			INSERT INTO Stock (producto) VALUES (@_id_producto);
         END IF;
@@ -666,7 +667,6 @@ SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AN
 				UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, PVBulto = _PVBulto, PVUnitario = _PVUnitario WHERE id_producto = @_id_producto;
             END IF;
     END IF;
-
 END //
 
 CREATE PROCEDURE modificarStock (IN _id_stock INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL(10,2)) 
@@ -698,7 +698,7 @@ BEGIN
 SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
 
 	SELECT 
-    cantidad, cantidadXBulto, nombre, costo, PVUnitario, PVBulto
+    cantidad, cantidadXBulto, nombre, costo, PVUnitario, PVBulto, radioSelected
 FROM
     Productos
 WHERE
@@ -1100,3 +1100,4 @@ BEGIN
 END //
 DELIMITER ;
 
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'admin';

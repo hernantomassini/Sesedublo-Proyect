@@ -50,6 +50,13 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             if(pagadoCheck.Checked){
                 pagadoTot = 1;
             }
+
+            if (Convert.ToDecimal(cantidadPagada.Text) >= Convert.ToDecimal(cantidadAPagar.Text))
+            {
+                Funciones.imprimirMensajeDeError("La cantidad que paga el cliente debe ser menor a la que debe", this);
+                return;
+            }
+
             Conexion.executeProcedureWithReader("actualizarPago", Conexion.generarArgumentos("_id_pedido", "_total_a_pagar", "_cantidad_paga","_pagadoTot"), id_pedido, Convert.ToDecimal(cantidadAPagar.Text), Convert.ToDecimal(cantidadPagada.Text), pagadoTot);
             Conexion.closeConnection();
             Manejador_Formularios.ABM_Pedidos.cargarDGV();

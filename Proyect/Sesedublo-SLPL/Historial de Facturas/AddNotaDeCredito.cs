@@ -60,7 +60,11 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
         {
             val.validarNoVacio(Cantidad,st);
             val.validarNoVacio(Motivo, st);
-
+            if (0 >= Convert.ToInt32(Cantidad.Text))
+            {
+                Funciones.imprimirMensajeDeError("La cantidad debe ser mayor a 0", this);
+                return;
+            }
             if (st.Length > 0)
             {
                 Funciones.imprimirMensajeDeError(st.ToString(), this);

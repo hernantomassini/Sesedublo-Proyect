@@ -1068,8 +1068,10 @@ SET @_efectivoNuevo = (_cantidad_paga - @_cantidadPagadaVieja);
     ELSE
 		UPDATE Pedidos SET precio = _total_a_pagar, pagadoHastaElMomento = _cantidad_paga WHERE id_pedido = _id_pedido;
     END IF;
-	CALL agregarEfectivo(@_efectivoNuevo, CONCAT("Un cliente pagó ", @_efectivoNuevo, " $ que debía de un pedido en la fecha ", CURDATE(), "."));
-	
+    IF(@_efectivoNuevo > 0)
+	THEN
+		CALL agregarEfectivo(@_efectivoNuevo, CONCAT("Un cliente pagó ", @_efectivoNuevo, " $ que debía de un pedido en la fecha ", CURDATE(), "."));
+	END IF;
 END //
 
 CREATE PROCEDURE agregarNotaDeCredito (IN _id_factura INT, _cantidad DECIMAL(10 , 2), _motivo VARCHAR(50))
@@ -1088,7 +1090,7 @@ END //
 
 CREATE PROCEDURE obtenerItemsDeRemito(IN _id_factura INT)
 BEGIN
-	SELECT pr.nombre AS Nombre, i.cantidadProductosEdit AS 'Cantidad Total'
+	SELECT pr.nombre AS Nombre, IF(0 > i.cantidadProductosEdit,0,i.cantidadProductosEdit) AS 'Cantidad Total'
 	FROM Facturas f
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Items i ON i.pedido = p.id_pedido

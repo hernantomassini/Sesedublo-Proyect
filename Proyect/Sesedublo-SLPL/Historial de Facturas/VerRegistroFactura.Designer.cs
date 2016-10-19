@@ -41,9 +41,10 @@
             // 
             this.CerrarTile.ActiveControl = null;
             this.CerrarTile.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.CerrarTile.Location = new System.Drawing.Point(23, 296);
+            this.CerrarTile.Location = new System.Drawing.Point(31, 364);
+            this.CerrarTile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CerrarTile.Name = "CerrarTile";
-            this.CerrarTile.Size = new System.Drawing.Size(89, 44);
+            this.CerrarTile.Size = new System.Drawing.Size(119, 54);
             this.CerrarTile.TabIndex = 1;
             this.CerrarTile.Text = "Cerrar";
             this.CerrarTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -59,8 +60,9 @@
             // 
             this.registrosDGV.AllowUserToAddRows = false;
             this.registrosDGV.AllowUserToDeleteRows = false;
-            this.registrosDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.registrosDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.registrosDGV.AllowUserToResizeRows = false;
+            this.registrosDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.registrosDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.registrosDGV.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.registrosDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.registrosDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -85,7 +87,8 @@
             this.registrosDGV.EnableHeadersVisualStyles = false;
             this.registrosDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.registrosDGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.registrosDGV.Location = new System.Drawing.Point(23, 63);
+            this.registrosDGV.Location = new System.Drawing.Point(31, 78);
+            this.registrosDGV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.registrosDGV.MultiSelect = false;
             this.registrosDGV.Name = "registrosDGV";
             this.registrosDGV.ReadOnly = true;
@@ -100,18 +103,20 @@
             this.registrosDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.registrosDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.registrosDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.registrosDGV.Size = new System.Drawing.Size(416, 227);
+            this.registrosDGV.Size = new System.Drawing.Size(555, 279);
             this.registrosDGV.TabIndex = 0;
             // 
             // VerRegistroFactura
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 363);
+            this.ClientSize = new System.Drawing.Size(616, 447);
             this.Controls.Add(this.registrosDGV);
             this.Controls.Add(this.CerrarTile);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "VerRegistroFactura";
+            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Notas de Credito";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Load += new System.EventHandler(this.VerRegistroFactura_Load);

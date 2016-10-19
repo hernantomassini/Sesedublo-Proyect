@@ -47,16 +47,18 @@
             // 
             // 
             this.Cantidad.CustomButton.Image = null;
-            this.Cantidad.CustomButton.Location = new System.Drawing.Point(172, 1);
+            this.Cantidad.CustomButton.Location = new System.Drawing.Point(311, 2);
+            this.Cantidad.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Cantidad.CustomButton.Name = "";
-            this.Cantidad.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.Cantidad.CustomButton.Size = new System.Drawing.Size(31, 28);
             this.Cantidad.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.Cantidad.CustomButton.TabIndex = 1;
             this.Cantidad.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.Cantidad.CustomButton.UseSelectable = true;
             this.Cantidad.CustomButton.Visible = false;
             this.Cantidad.Lines = new string[0];
-            this.Cantidad.Location = new System.Drawing.Point(23, 93);
+            this.Cantidad.Location = new System.Drawing.Point(31, 114);
+            this.Cantidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Cantidad.MaxLength = 32767;
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.PasswordChar = '\0';
@@ -66,7 +68,7 @@
             this.Cantidad.SelectionLength = 0;
             this.Cantidad.SelectionStart = 0;
             this.Cantidad.ShortcutsEnabled = true;
-            this.Cantidad.Size = new System.Drawing.Size(194, 23);
+            this.Cantidad.Size = new System.Drawing.Size(259, 28);
             this.Cantidad.TabIndex = 2;
             this.Cantidad.UseSelectable = true;
             this.Cantidad.WaterMark = "Cantidad";
@@ -79,16 +81,18 @@
             // 
             // 
             this.Motivo.CustomButton.Image = null;
-            this.Motivo.CustomButton.Location = new System.Drawing.Point(78, 2);
+            this.Motivo.CustomButton.Location = new System.Drawing.Point(153, 1);
+            this.Motivo.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Motivo.CustomButton.Name = "";
-            this.Motivo.CustomButton.Size = new System.Drawing.Size(113, 113);
+            this.Motivo.CustomButton.Size = new System.Drawing.Size(191, 176);
             this.Motivo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.Motivo.CustomButton.TabIndex = 1;
             this.Motivo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.Motivo.CustomButton.UseSelectable = true;
             this.Motivo.CustomButton.Visible = false;
             this.Motivo.Lines = new string[0];
-            this.Motivo.Location = new System.Drawing.Point(23, 122);
+            this.Motivo.Location = new System.Drawing.Point(31, 150);
+            this.Motivo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Motivo.MaxLength = 32767;
             this.Motivo.Multiline = true;
             this.Motivo.Name = "Motivo";
@@ -99,7 +103,7 @@
             this.Motivo.SelectionLength = 0;
             this.Motivo.SelectionStart = 0;
             this.Motivo.ShortcutsEnabled = true;
-            this.Motivo.Size = new System.Drawing.Size(194, 118);
+            this.Motivo.Size = new System.Drawing.Size(259, 145);
             this.Motivo.TabIndex = 3;
             this.Motivo.UseSelectable = true;
             this.Motivo.WaterMark = "Motivo";
@@ -111,8 +115,8 @@
             this.dgvVerFactura.AllowUserToAddRows = false;
             this.dgvVerFactura.AllowUserToDeleteRows = false;
             this.dgvVerFactura.AllowUserToResizeRows = false;
-            this.dgvVerFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvVerFactura.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.dgvVerFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvVerFactura.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dgvVerFactura.BackgroundColor = System.Drawing.Color.Silver;
             this.dgvVerFactura.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvVerFactura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -137,7 +141,8 @@
             this.dgvVerFactura.EnableHeadersVisualStyles = false;
             this.dgvVerFactura.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvVerFactura.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvVerFactura.Location = new System.Drawing.Point(232, 63);
+            this.dgvVerFactura.Location = new System.Drawing.Point(309, 78);
+            this.dgvVerFactura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvVerFactura.MultiSelect = false;
             this.dgvVerFactura.Name = "dgvVerFactura";
             this.dgvVerFactura.ReadOnly = true;
@@ -152,7 +157,7 @@
             this.dgvVerFactura.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvVerFactura.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvVerFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVerFactura.Size = new System.Drawing.Size(483, 177);
+            this.dgvVerFactura.Size = new System.Drawing.Size(644, 218);
             this.dgvVerFactura.TabIndex = 4;
             this.dgvVerFactura.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVerFactura_CellClick);
             this.dgvVerFactura.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVerFactura_CellContentClick);
@@ -161,9 +166,10 @@
             // 
             this.titleCancelar.ActiveControl = null;
             this.titleCancelar.BackColor = System.Drawing.Color.DarkRed;
-            this.titleCancelar.Location = new System.Drawing.Point(497, 255);
+            this.titleCancelar.Location = new System.Drawing.Point(663, 314);
+            this.titleCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titleCancelar.Name = "titleCancelar";
-            this.titleCancelar.Size = new System.Drawing.Size(102, 41);
+            this.titleCancelar.Size = new System.Drawing.Size(136, 50);
             this.titleCancelar.TabIndex = 5;
             this.titleCancelar.Text = "Cancelar";
             this.titleCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -179,9 +185,10 @@
             // 
             this.titleAceptar.ActiveControl = null;
             this.titleAceptar.BackColor = System.Drawing.Color.Green;
-            this.titleAceptar.Location = new System.Drawing.Point(615, 255);
+            this.titleAceptar.Location = new System.Drawing.Point(820, 314);
+            this.titleAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titleAceptar.Name = "titleAceptar";
-            this.titleAceptar.Size = new System.Drawing.Size(99, 41);
+            this.titleAceptar.Size = new System.Drawing.Size(132, 50);
             this.titleAceptar.TabIndex = 4;
             this.titleAceptar.Text = "Aceptar";
             this.titleAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -199,9 +206,10 @@
             // 
             // 
             this.Nombre.CustomButton.Image = null;
-            this.Nombre.CustomButton.Location = new System.Drawing.Point(172, 1);
+            this.Nombre.CustomButton.Location = new System.Drawing.Point(311, 2);
+            this.Nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Nombre.CustomButton.Name = "";
-            this.Nombre.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.Nombre.CustomButton.Size = new System.Drawing.Size(31, 28);
             this.Nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.Nombre.CustomButton.TabIndex = 1;
             this.Nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -209,7 +217,8 @@
             this.Nombre.CustomButton.Visible = false;
             this.Nombre.Enabled = false;
             this.Nombre.Lines = new string[0];
-            this.Nombre.Location = new System.Drawing.Point(23, 63);
+            this.Nombre.Location = new System.Drawing.Point(31, 78);
+            this.Nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Nombre.MaxLength = 32767;
             this.Nombre.Name = "Nombre";
             this.Nombre.PasswordChar = '\0';
@@ -219,7 +228,7 @@
             this.Nombre.SelectionLength = 0;
             this.Nombre.SelectionStart = 0;
             this.Nombre.ShortcutsEnabled = true;
-            this.Nombre.Size = new System.Drawing.Size(194, 23);
+            this.Nombre.Size = new System.Drawing.Size(259, 28);
             this.Nombre.TabIndex = 1;
             this.Nombre.UseSelectable = true;
             this.Nombre.WaterMark = "Seleccione un producto";
@@ -228,17 +237,19 @@
             // 
             // AddNotaDeCredito
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(731, 314);
+            this.ClientSize = new System.Drawing.Size(975, 386);
             this.Controls.Add(this.Nombre);
             this.Controls.Add(this.titleCancelar);
             this.Controls.Add(this.titleAceptar);
             this.Controls.Add(this.dgvVerFactura);
             this.Controls.Add(this.Motivo);
             this.Controls.Add(this.Cantidad);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "AddNotaDeCredito";
+            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Agregar Nota de Crédito";
             this.Load += new System.EventHandler(this.AddNotaDeCredito_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVerFactura)).EndInit();

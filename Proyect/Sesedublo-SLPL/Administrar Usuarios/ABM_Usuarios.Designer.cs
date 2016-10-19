@@ -51,8 +51,8 @@
             this.dgvClientes.AllowUserToAddRows = false;
             this.dgvClientes.AllowUserToDeleteRows = false;
             this.dgvClientes.AllowUserToResizeRows = false;
-            this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvClientes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvClientes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dgvClientes.BackgroundColor = System.Drawing.Color.DarkGray;
             this.dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -78,7 +78,7 @@
             this.dgvClientes.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvClientes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvClientes.Location = new System.Drawing.Point(36, 127);
-            this.dgvClientes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvClientes.Margin = new System.Windows.Forms.Padding(4);
             this.dgvClientes.MultiSelect = false;
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.ReadOnly = true;
@@ -102,7 +102,7 @@
             // 
             this.titleModificarCliente.ActiveControl = null;
             this.titleModificarCliente.Location = new System.Drawing.Point(703, 519);
-            this.titleModificarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleModificarCliente.Margin = new System.Windows.Forms.Padding(4);
             this.titleModificarCliente.Name = "titleModificarCliente";
             this.titleModificarCliente.Size = new System.Drawing.Size(204, 54);
             this.titleModificarCliente.TabIndex = 5;
@@ -120,7 +120,7 @@
             this.titleAgregarCliente.ActiveControl = null;
             this.titleAgregarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.titleAgregarCliente.Location = new System.Drawing.Point(915, 519);
-            this.titleAgregarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleAgregarCliente.Margin = new System.Windows.Forms.Padding(4);
             this.titleAgregarCliente.Name = "titleAgregarCliente";
             this.titleAgregarCliente.Size = new System.Drawing.Size(184, 54);
             this.titleAgregarCliente.TabIndex = 4;
@@ -139,7 +139,7 @@
             this.titleEliminarCliente.ActiveControl = null;
             this.titleEliminarCliente.BackColor = System.Drawing.Color.IndianRed;
             this.titleEliminarCliente.Location = new System.Drawing.Point(511, 519);
-            this.titleEliminarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleEliminarCliente.Margin = new System.Windows.Forms.Padding(4);
             this.titleEliminarCliente.Name = "titleEliminarCliente";
             this.titleEliminarCliente.Size = new System.Drawing.Size(184, 54);
             this.titleEliminarCliente.TabIndex = 6;
@@ -158,7 +158,7 @@
             this.titleAtras.ActiveControl = null;
             this.titleAtras.BackColor = System.Drawing.Color.CadetBlue;
             this.titleAtras.Location = new System.Drawing.Point(36, 519);
-            this.titleAtras.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleAtras.Margin = new System.Windows.Forms.Padding(4);
             this.titleAtras.Name = "titleAtras";
             this.titleAtras.Size = new System.Drawing.Size(100, 54);
             this.titleAtras.TabIndex = 7;
@@ -199,7 +199,7 @@
             // 
             this.nombre.CustomButton.Image = null;
             this.nombre.CustomButton.Location = new System.Drawing.Point(143, 2);
-            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.nombre.CustomButton.Name = "";
             this.nombre.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -211,7 +211,7 @@
             this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
             this.nombre.Lines = new string[0];
             this.nombre.Location = new System.Drawing.Point(127, 85);
-            this.nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nombre.Margin = new System.Windows.Forms.Padding(4);
             this.nombre.MaxLength = 60;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
@@ -237,7 +237,7 @@
             // 
             this.apellido.CustomButton.Image = null;
             this.apellido.CustomButton.Location = new System.Drawing.Point(153, 2);
-            this.apellido.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.apellido.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.apellido.CustomButton.Name = "";
             this.apellido.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.apellido.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -249,7 +249,7 @@
             this.apellido.Icon = ((System.Drawing.Image)(resources.GetObject("apellido.Icon")));
             this.apellido.Lines = new string[0];
             this.apellido.Location = new System.Drawing.Point(405, 85);
-            this.apellido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.apellido.Margin = new System.Windows.Forms.Padding(4);
             this.apellido.MaxLength = 60;
             this.apellido.Name = "apellido";
             this.apellido.PasswordChar = '\0';
@@ -275,7 +275,7 @@
             // 
             this.direccion.CustomButton.Image = null;
             this.direccion.CustomButton.Location = new System.Drawing.Point(169, 2);
-            this.direccion.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.direccion.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.direccion.CustomButton.Name = "";
             this.direccion.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.direccion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -287,7 +287,7 @@
             this.direccion.Icon = ((System.Drawing.Image)(resources.GetObject("direccion.Icon")));
             this.direccion.Lines = new string[0];
             this.direccion.Location = new System.Drawing.Point(700, 85);
-            this.direccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.direccion.Margin = new System.Windows.Forms.Padding(4);
             this.direccion.MaxLength = 100;
             this.direccion.Name = "direccion";
             this.direccion.PasswordChar = '\0';

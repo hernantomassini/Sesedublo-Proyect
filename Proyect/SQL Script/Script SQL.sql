@@ -1086,3 +1086,4 @@ BEGIN
     GROUP BY i.id_item;
 END //
 DELIMITER ;
+

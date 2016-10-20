@@ -2,13 +2,8 @@
 using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Productos
@@ -145,11 +140,12 @@ namespace Sesedublo_SLPL.Productos
             if (Utilidad.Text == "," || Utilidad.Text == "")
                 return;
 
-            decimal costo = Convert.ToDecimal(Costo.Text);
             decimal utilidad = Convert.ToDecimal(Utilidad.Text);
 
             if (individualRadio.Checked)
             {
+                decimal costo = Convert.ToDecimal(Costo.Text);
+
                 Precio.Text = Convert.ToString(costo + utilidad);
                 return;
             }
@@ -169,7 +165,12 @@ namespace Sesedublo_SLPL.Productos
             }
             else
             {
+                decimal costo = Convert.ToDecimal(Costo.Text);
+
                 Precio.Text = Convert.ToString(costo + utilidad);
+
+                if (botellasPorBulto == 0)
+                    return;
 
                 decimal costoUnitario = decimal.Round(costo / botellasPorBulto, 2);
                 costoIndividual.Text = Convert.ToString(costoUnitario);

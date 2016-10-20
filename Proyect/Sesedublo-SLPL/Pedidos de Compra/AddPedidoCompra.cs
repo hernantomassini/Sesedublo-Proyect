@@ -448,11 +448,12 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             if (Utilidad.Text == "," || Utilidad.Text == "")
                 return;
 
-            decimal costo = Convert.ToDecimal(Costo.Text);
             decimal utilidad = Convert.ToDecimal(Utilidad.Text);
 
             if (individualRadio.Checked)
             {
+                decimal costo = Convert.ToDecimal(Costo.Text);
+
                 Precio.Text = Convert.ToString(costo + utilidad);
                 return;
             }
@@ -472,7 +473,12 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             }
             else
             {
+                decimal costo = Convert.ToDecimal(Costo.Text);
+
                 Precio.Text = Convert.ToString(costo + utilidad);
+
+                if (botellasPorBulto == 0)
+                    return;
 
                 decimal costoUnitario = decimal.Round(costo / botellasPorBulto, 2);
                 costoIndividual.Text = Convert.ToString(costoUnitario);

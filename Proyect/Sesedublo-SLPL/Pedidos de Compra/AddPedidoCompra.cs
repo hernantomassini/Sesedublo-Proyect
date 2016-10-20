@@ -114,6 +114,12 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
                 cantidad = Cantidad.Text + " bultos de " + cantXBulto + " unidades";
 
+                if (cantXBulto == 0)
+                {
+                    Funciones.imprimirMensajeDeError("Las cantidad de botellas de un bulto no pueden ser 0.", this);
+                    return;
+                }
+
                 precioUnitario = decimal.Round(precioBulto / cantXBulto);
                 stringPrecioBulto = precioBulto.ToString();
             }

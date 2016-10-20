@@ -71,6 +71,13 @@ namespace Sesedublo_SLPL.Productos
                 {
                     cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
                     precioPorBulto = precioPorUnidad;
+
+                    if (cantXBulto == 0)
+                    {
+                        Funciones.imprimirMensajeDeError("Las cantidad de botellas de un bulto no pueden ser 0.", this);
+                        return;
+                    }
+
                     precioPorUnidad = decimal.Round(precioPorBulto / cantXBulto, 2);
                 }
 

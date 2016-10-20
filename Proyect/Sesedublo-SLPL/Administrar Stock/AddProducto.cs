@@ -154,7 +154,6 @@ namespace Sesedublo_SLPL.Administrar_Stock
             }
             else
             {
-
                 int cantXBulto = 0;
                 decimal costo = Convert.ToDecimal(Costo.Text);
                 decimal utilidad = Convert.ToDecimal(Utilidad.Text);
@@ -167,8 +166,10 @@ namespace Sesedublo_SLPL.Administrar_Stock
                 {
                     cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
 
-                    if (cantXBulto == 0)
+                    if (cantXBulto == 0) { 
                         Funciones.imprimirMensajeDeError("Las cantidad de botellas de un bulto no pueden ser 0.", this);
+                        return;
+                    }
 
                     precioPorBulto = precioPorUnidad;
                     precioPorUnidad = decimal.Round(precioPorBulto / cantXBulto, 2);

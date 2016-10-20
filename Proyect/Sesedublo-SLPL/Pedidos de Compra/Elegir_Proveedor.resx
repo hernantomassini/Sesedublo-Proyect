@@ -140,6 +140,18 @@
         KcrKegvlWINT/HHy3AAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="nombre.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAFvSURBVDhPlZI9SwNBEIbjF1pZaMQkl7tLLvcdUyhoK/gDbCwsROxE1KBGFETtxMIUCqJdsEnp
+        PxAEK0ELGxFEbG30R/hsmGbx4OIDLzvzzszusXuZNMyyNeJXw6WwFh+iLSdwa1JKJ5iINhl6Zd0te5X5
+        oBptqxy1DKvYL23JMLRK45PllIbF6pAvFgbw26gp1l9yRn6Ihu9K6MViaRRMY5D6u+XYY2Lp2JXSLA3P
+        kiZC/dSPw0VJdUqus0DDraSJcLF1ehqS6vBpMxQfJU2E+g2bLEuqY9hmLw1fXuQnPhl3E1H/Mct2Viwd
+        imfoDX24kV8VuwP5JP4nr7Qilg7FC3TM5/WwviC10T1qoTv04MXBnLTrUGyiAxVzwg7xtYp51lHe3x8v
+        5LR/QoPmIyUVM7xO3Gawt1NMQ/66E4k31HDeNPo6xTQqgTvNwJWKWffRZdcnK7iQPYbW0Dmn18XunqJt
+        Ztmk4fjulFj/IJP5BQc2TnfXFqOiAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="AtrasTile.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS

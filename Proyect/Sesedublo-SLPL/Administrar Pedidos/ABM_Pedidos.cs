@@ -134,6 +134,11 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         }
 
+        public void Clean()
+        {
+            nombre.Clear();
+        }
+
         public void cargarDGV()
         {
             Funciones.limpiarDGV(PedidosDGV);

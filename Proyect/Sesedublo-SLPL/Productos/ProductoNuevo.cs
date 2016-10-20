@@ -32,7 +32,10 @@ namespace Sesedublo_SLPL.Productos
             val.validarNoVacio(Utilidad, st);
 
             if (bultoxBotellaRadio.Checked)
+            { 
                 val.validarNoVacio(UnidadesXBulto, st);
+                val.validarNoCero(UnidadesXBulto, st);
+            }
 
             if (st.Length > 0)
             {
@@ -71,13 +74,6 @@ namespace Sesedublo_SLPL.Productos
                 {
                     cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
                     precioPorBulto = precioPorUnidad;
-
-                    if (cantXBulto == 0)
-                    {
-                        Funciones.imprimirMensajeDeError("Las cantidad de botellas de un bulto no pueden ser 0.", this);
-                        return;
-                    }
-
                     precioPorUnidad = decimal.Round(precioPorBulto / cantXBulto, 2);
                 }
 

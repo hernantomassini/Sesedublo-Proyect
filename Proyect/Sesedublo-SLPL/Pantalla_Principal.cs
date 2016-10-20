@@ -45,8 +45,7 @@ namespace Sesedublo_SLPL
 
         private void GoToPedidos_Click(object sender, EventArgs e)
         {
-
-            //Manejador_Formularios.ABM_Pedidos.getData();
+            Manejador_Formularios.ABM_Pedidos.Clean();
             Manejador_Formularios.ABM_Pedidos.Show();
         }
 

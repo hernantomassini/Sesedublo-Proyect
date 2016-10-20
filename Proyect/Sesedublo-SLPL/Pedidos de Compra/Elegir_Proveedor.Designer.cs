@@ -46,7 +46,7 @@
             // 
             this.metroLink1.FontSize = MetroFramework.MetroLinkSize.Medium;
             this.metroLink1.Location = new System.Drawing.Point(198, 341);
-            this.metroLink1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroLink1.Margin = new System.Windows.Forms.Padding(2);
             this.metroLink1.Name = "metroLink1";
             this.metroLink1.Size = new System.Drawing.Size(388, 19);
             this.metroLink1.TabIndex = 15;
@@ -60,7 +60,7 @@
             this.SiguienteTile.ActiveControl = null;
             this.SiguienteTile.BackColor = System.Drawing.Color.CornflowerBlue;
             this.SiguienteTile.Location = new System.Drawing.Point(646, 330);
-            this.SiguienteTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SiguienteTile.Margin = new System.Windows.Forms.Padding(2);
             this.SiguienteTile.Name = "SiguienteTile";
             this.SiguienteTile.Size = new System.Drawing.Size(105, 44);
             this.SiguienteTile.TabIndex = 16;
@@ -79,19 +79,22 @@
             // 
             // 
             this.nombre.CustomButton.Image = null;
-            this.nombre.CustomButton.Location = new System.Drawing.Point(59, 1);
+            this.nombre.CustomButton.Location = new System.Drawing.Point(79, 1);
             this.nombre.CustomButton.Name = "";
-            this.nombre.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.nombre.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.nombre.CustomButton.TabIndex = 1;
             this.nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.nombre.CustomButton.UseSelectable = true;
             this.nombre.CustomButton.Visible = false;
+            this.nombre.DisplayIcon = true;
+            this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
             this.nombre.Lines = new string[0];
             this.nombre.Location = new System.Drawing.Point(80, 67);
             this.nombre.MaxLength = 32767;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
+            this.nombre.PromptText = "Buscar";
             this.nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.nombre.SelectedText = "";
             this.nombre.SelectionLength = 0;
@@ -100,6 +103,7 @@
             this.nombre.Size = new System.Drawing.Size(101, 23);
             this.nombre.TabIndex = 13;
             this.nombre.UseSelectable = true;
+            this.nombre.WaterMark = "Buscar";
             this.nombre.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.nombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.nombre.TextChanged += new System.EventHandler(this.nombre_TextChanged);
@@ -119,7 +123,7 @@
             this.AtrasTile.ActiveControl = null;
             this.AtrasTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.AtrasTile.Location = new System.Drawing.Point(15, 330);
-            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2);
             this.AtrasTile.Name = "AtrasTile";
             this.AtrasTile.Size = new System.Drawing.Size(84, 44);
             this.AtrasTile.TabIndex = 17;
@@ -176,7 +180,7 @@
             this.ClienteDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.ClienteDGV.GridColor = System.Drawing.Color.White;
             this.ClienteDGV.Location = new System.Drawing.Point(15, 120);
-            this.ClienteDGV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ClienteDGV.Margin = new System.Windows.Forms.Padding(2);
             this.ClienteDGV.MultiSelect = false;
             this.ClienteDGV.Name = "ClienteDGV";
             this.ClienteDGV.ReadOnly = true;
@@ -207,10 +211,10 @@
             this.Controls.Add(this.AtrasTile);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.ClienteDGV);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Elegir_Proveedor";
-            this.Padding = new System.Windows.Forms.Padding(15, 49, 15, 16);
+            this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Text = "Seleccionar al proveedor";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Load += new System.EventHandler(this.Elegir_Proveedor_Load);

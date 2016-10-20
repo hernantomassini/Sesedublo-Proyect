@@ -37,6 +37,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void AgregarPedidoTile_Click(object sender, EventArgs e)
         {
+            Manejador_Formularios.Elegir_Proveedor.Clean();
             Manejador_Formularios.Elegir_Proveedor.getData();
             Manejador_Formularios.Elegir_Proveedor.Show();
         }

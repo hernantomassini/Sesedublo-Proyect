@@ -19,6 +19,16 @@ namespace Sesedublo_SLPL.Generales
             return true;
         }
 
+        public bool validarNoCero(Control control, StringBuilder mensajeValidacion)
+        {
+            if (control.Text == "0")
+            {
+                mensajeValidacion.AppendLine(string.Format(" El campo {0} no puede ser 0.", control.Name));
+                return false;
+            }
+            return true;
+        }
+
         public static bool validarFilaMarcada(DataGridViewRow filaDgv, MetroForm form)
         {
             if (filaDgv == null)

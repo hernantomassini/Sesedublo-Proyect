@@ -110,5 +110,9 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             Nombre.Text = dgvVerFactura.CurrentRow.Cells[1].Value.ToString();
         }
 
+        private void Cantidad_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            val.ingresarNumero(e);
+        }
     }
 }

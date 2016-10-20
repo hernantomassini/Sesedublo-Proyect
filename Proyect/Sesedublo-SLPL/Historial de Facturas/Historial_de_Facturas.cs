@@ -94,7 +94,7 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             }
 
             int id_factura = Convert.ToInt32(filaDgv.Cells[0].Value);
-
+            Manejador_Formularios.VerRegistroFactura.cargarRegistro(id_factura);
             Manejador_Formularios.VerRegistroFactura.Show();
         }
 

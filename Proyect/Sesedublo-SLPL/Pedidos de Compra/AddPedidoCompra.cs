@@ -3,7 +3,6 @@ using MetroFramework.Forms;
 using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Text;
@@ -218,8 +217,11 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
                 if (radioSelected == 2)
                 {
-                    utilidad = Decimal.Round((PVBulto - costo) / cantXBulto, 2);
+                    utilidad = Decimal.Round((PVBulto - (costo/cantXBulto)) / cantXBulto, 2);
                     cantidadString = cantidad + " bultos de " + cantXBulto + " unidades";
+
+                    //Utilidad = (PrecioBulto - costoUnitario) / cantBotellas
+                    //12 = (169 - 25) / 12
                 }
 
                 if (radioSelected == 3)
@@ -283,8 +285,6 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             int radioSelected = Convert.ToInt32(dgvProductos.CurrentRow.Cells[6].Value);
 
             seleccionarRadioCorrespondiente(radioSelected);
-
-            Costo.Text = Convert.ToString(costo);
             Cantidad.Text = "0";
 
             decimal precio = 0;
@@ -294,16 +294,21 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             {
                 precio = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[4].Value) / 100;
                 utilidad = precio - costo;
+
+                Costo.Text = Convert.ToString(costo);
             }
 
             if (bultoxBotellaRadio.Checked)
             {
                 int cantBotellasBulto = Convert.ToInt32(dgvProductos.CurrentRow.Cells[2].Value);
+                decimal costoUnitario = (costo / cantBotellasBulto);
+
 
                 precio = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[5].Value) / 100;
-                utilidad = (precio - costo) / cantBotellasBulto;
+                utilidad = (precio - costoUnitario) / cantBotellasBulto;
 
-                UnidadesXBulto.Text = cantBotellasBulto.ToString();
+                costoIndividual.Text = Convert.ToString(costoUnitario);
+                UnidadesXBulto.Text = Convert.ToString(cantBotellasBulto);
 
             }
 
@@ -315,6 +320,8 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 utilidad = precio - costo;
 
                 UnidadesXBulto.Text = cantBotellasBulto.ToString();
+
+                Costo.Text = Convert.ToString(costo);
             }
 
             Utilidad.Text = Convert.ToString(utilidad);
@@ -368,7 +375,6 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 if (radioSelected != 1)
                 {
                     PVBulto = Convert.ToDecimal(row.Cells[4].Value);
-                    PVUnitario = Decimal.Round(PVBulto / cantXBulto, 2);
                 }
 
                 Conexion.executeProcedure("crearItemDeLea", Conexion.generarArgumentos("_id_pedidoLea", "_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto", "_radioSelected"), id_pedidoDeLea, cantidad, cantXBulto, costo, nombre, PVUnitario, PVBulto, radioSelected);
@@ -622,14 +628,30 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
             seleccionarRadioCorrespondiente(selectedRadio);
 
-            if (selectedRadio != 1)
+            if (selectedRadio == 1)
+            {
+                Costo.Text = Convert.ToString(costo);
+            }
+
+            if (selectedRadio == 2)
             {
                 int cantBotellasBulto = obtenerCantBulto(filaDgv.Cells[5].Value.ToString());
                 UnidadesXBulto.Text = Convert.ToString(cantBotellasBulto);
+
+                decimal costoUnitario = decimal.Round(costo / cantBotellasBulto, 2);
+                costoIndividual.Text = Convert.ToString(costoUnitario);
+            }
+
+
+            if (selectedRadio == 3)
+            {
+                int cantBotellasBulto = obtenerCantBulto(filaDgv.Cells[5].Value.ToString());
+                UnidadesXBulto.Text = Convert.ToString(cantBotellasBulto);
+
+                Costo.Text = Convert.ToString(costo);
             }
 
             Nombre.Text = nombre;
-            Costo.Text = Convert.ToString(costo);
             Cantidad.Text = Convert.ToString(cantidad);
             Utilidad.Text = Convert.ToString(utilidad);
         }

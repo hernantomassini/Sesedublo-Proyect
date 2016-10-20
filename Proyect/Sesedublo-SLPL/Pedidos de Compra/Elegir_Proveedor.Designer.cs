@@ -45,7 +45,7 @@
             // metroLink1
             // 
             this.metroLink1.FontSize = MetroFramework.MetroLinkSize.Medium;
-            this.metroLink1.Location = new System.Drawing.Point(198, 341);
+            this.metroLink1.Location = new System.Drawing.Point(292, 344);
             this.metroLink1.Margin = new System.Windows.Forms.Padding(2);
             this.metroLink1.Name = "metroLink1";
             this.metroLink1.Size = new System.Drawing.Size(388, 19);
@@ -59,7 +59,7 @@
             // 
             this.SiguienteTile.ActiveControl = null;
             this.SiguienteTile.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.SiguienteTile.Location = new System.Drawing.Point(646, 330);
+            this.SiguienteTile.Location = new System.Drawing.Point(838, 330);
             this.SiguienteTile.Margin = new System.Windows.Forms.Padding(2);
             this.SiguienteTile.Name = "SiguienteTile";
             this.SiguienteTile.Size = new System.Drawing.Size(105, 44);
@@ -154,7 +154,7 @@
             this.ClienteDGV.AllowUserToDeleteRows = false;
             this.ClienteDGV.AllowUserToResizeRows = false;
             this.ClienteDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ClienteDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.ClienteDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.ClienteDGV.BackgroundColor = System.Drawing.Color.DarkGray;
             this.ClienteDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ClienteDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -196,14 +196,14 @@
             this.ClienteDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.ClienteDGV.RowTemplate.Height = 24;
             this.ClienteDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ClienteDGV.Size = new System.Drawing.Size(737, 206);
+            this.ClienteDGV.Size = new System.Drawing.Size(928, 206);
             this.ClienteDGV.TabIndex = 12;
             // 
             // Elegir_Proveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(766, 398);
+            this.ClientSize = new System.Drawing.Size(960, 398);
             this.Controls.Add(this.metroLink1);
             this.Controls.Add(this.SiguienteTile);
             this.Controls.Add(this.nombre);

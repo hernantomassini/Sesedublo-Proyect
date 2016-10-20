@@ -9,9 +9,6 @@ namespace Sesedublo_SLPL
 {
     public partial class Pantalla_Principal : MetroForm
     {
-        const int WM_SYSCOMMAND = 0x0112;
-        const int SC_CLOSE = 0xF060;
-
         public Pantalla_Principal()
         {
             InitializeComponent();
@@ -22,19 +19,6 @@ namespace Sesedublo_SLPL
         private void Pantalla_Principal_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected override void WndProc(ref Message m)
-        {
-            if ((m.Msg == WM_SYSCOMMAND) && (m.WParam == (IntPtr)SC_CLOSE))
-            {
-                if (Funciones.imprimirMensajeDeAlerta("¿Realmente desea salir? Esta acción finalizará el programa",this) == DialogResult.Cancel)
-                {
-                    return;
-                }
-            }
-
-            base.WndProc(ref m);
         }
 
         void Principal_Closing(object sender, CancelEventArgs e)
@@ -101,7 +85,5 @@ namespace Sesedublo_SLPL
             Manejador_Formularios.Lista_de_Productos.getData();
             Manejador_Formularios.Lista_de_Productos.Show();
         }
-
-
     }
 }

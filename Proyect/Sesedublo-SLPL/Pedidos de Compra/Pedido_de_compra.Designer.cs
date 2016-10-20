@@ -36,7 +36,6 @@
             this.AgregarPedidoTile = new MetroFramework.Controls.MetroTile();
             this.AtrasTile = new MetroFramework.Controls.MetroTile();
             this.PedidosDGV = new MetroFramework.Controls.MetroGrid();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.IDPedidoLea = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +43,7 @@
             this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pagado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockCargado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.CargarStockTile = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.PedidosDGV)).BeginInit();
             this.SuspendLayout();
@@ -109,6 +109,8 @@
             this.PedidosDGV.AllowUserToAddRows = false;
             this.PedidosDGV.AllowUserToDeleteRows = false;
             this.PedidosDGV.AllowUserToResizeRows = false;
+            this.PedidosDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.PedidosDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.PedidosDGV.BackgroundColor = System.Drawing.Color.DarkGray;
             this.PedidosDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PedidosDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -162,25 +164,6 @@
             this.PedidosDGV.TabIndex = 6;
             this.PedidosDGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PedidosDGV_CellDoubleClick);
             // 
-            // metroTile1
-            // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.metroTile1.Location = new System.Drawing.Point(482, 315);
-            this.metroTile1.Margin = new System.Windows.Forms.Padding(2);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(153, 43);
-            this.metroTile1.TabIndex = 7;
-            this.metroTile1.Text = "Pagar pedido";
-            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.metroTile1.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile1.TileImage")));
-            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.metroTile1.UseCustomBackColor = true;
-            this.metroTile1.UseSelectable = true;
-            this.metroTile1.UseTileImage = true;
-            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
-            // 
             // IDPedidoLea
             // 
             this.IDPedidoLea.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -188,7 +171,6 @@
             this.IDPedidoLea.Name = "IDPedidoLea";
             this.IDPedidoLea.ReadOnly = true;
             this.IDPedidoLea.Visible = false;
-            this.IDPedidoLea.Width = 94;
             // 
             // Proveedor
             // 
@@ -231,6 +213,25 @@
             this.StockCargado.HeaderText = "Stock cargado";
             this.StockCargado.Name = "StockCargado";
             this.StockCargado.ReadOnly = true;
+            // 
+            // metroTile1
+            // 
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.metroTile1.Location = new System.Drawing.Point(482, 315);
+            this.metroTile1.Margin = new System.Windows.Forms.Padding(2);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(153, 43);
+            this.metroTile1.TabIndex = 7;
+            this.metroTile1.Text = "Pagar pedido";
+            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile1.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile1.TileImage")));
+            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.metroTile1.UseCustomBackColor = true;
+            this.metroTile1.UseSelectable = true;
+            this.metroTile1.UseTileImage = true;
+            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
             // CargarStockTile
             // 

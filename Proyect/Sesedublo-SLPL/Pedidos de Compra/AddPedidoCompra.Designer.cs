@@ -50,14 +50,6 @@
             this.Nombre = new System.Windows.Forms.TextBox();
             this.Cantidad = new System.Windows.Forms.TextBox();
             this.dgvPedido = new MetroFramework.Controls.MetroGrid();
-            this.CantidadXBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PriceUnitary = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UtilidadProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.selectedRadio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.agregarBtn = new MetroFramework.Controls.MetroTile();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.eliminarBtn = new MetroFramework.Controls.MetroTile();
@@ -78,6 +70,14 @@
             this.bultoCuadradoRadio = new MetroFramework.Controls.MetroRadioButton();
             this.bultoxBotellaRadio = new MetroFramework.Controls.MetroRadioButton();
             this.individualRadio = new MetroFramework.Controls.MetroRadioButton();
+            this.CantidadXBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PriceUnitary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UtilidadProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.selectedRadio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
@@ -331,7 +331,7 @@
             this.dgvPedido.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CantidadXBulto,
             this.NombreDGV,
-            this.Cost,
+            this.CostBulto,
             this.PriceUnitary,
             this.PrecioBulto,
             this.Cant,
@@ -365,56 +365,6 @@
             this.dgvPedido.Size = new System.Drawing.Size(742, 263);
             this.dgvPedido.TabIndex = 38;
             this.dgvPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellClick);
-            // 
-            // CantidadXBulto
-            // 
-            this.CantidadXBulto.HeaderText = "CantidadXBulto";
-            this.CantidadXBulto.Name = "CantidadXBulto";
-            this.CantidadXBulto.ReadOnly = true;
-            this.CantidadXBulto.Visible = false;
-            // 
-            // NombreDGV
-            // 
-            this.NombreDGV.HeaderText = "Nombre";
-            this.NombreDGV.Name = "NombreDGV";
-            this.NombreDGV.ReadOnly = true;
-            // 
-            // Cost
-            // 
-            this.Cost.HeaderText = "Costo";
-            this.Cost.Name = "Cost";
-            this.Cost.ReadOnly = true;
-            // 
-            // PriceUnitary
-            // 
-            this.PriceUnitary.HeaderText = "Precio Unitario";
-            this.PriceUnitary.Name = "PriceUnitary";
-            this.PriceUnitary.ReadOnly = true;
-            // 
-            // PrecioBulto
-            // 
-            this.PrecioBulto.HeaderText = "Precio bulto";
-            this.PrecioBulto.Name = "PrecioBulto";
-            this.PrecioBulto.ReadOnly = true;
-            // 
-            // Cant
-            // 
-            this.Cant.HeaderText = "Cantidad";
-            this.Cant.Name = "Cant";
-            this.Cant.ReadOnly = true;
-            // 
-            // UtilidadProducto
-            // 
-            this.UtilidadProducto.HeaderText = "Utilidad";
-            this.UtilidadProducto.Name = "UtilidadProducto";
-            this.UtilidadProducto.ReadOnly = true;
-            // 
-            // selectedRadio
-            // 
-            this.selectedRadio.HeaderText = "selectedRadio";
-            this.selectedRadio.Name = "selectedRadio";
-            this.selectedRadio.ReadOnly = true;
-            this.selectedRadio.Visible = false;
             // 
             // agregarBtn
             // 
@@ -645,6 +595,56 @@
             this.individualRadio.UseSelectable = true;
             this.individualRadio.CheckedChanged += new System.EventHandler(this.individualRadio_CheckedChanged);
             // 
+            // CantidadXBulto
+            // 
+            this.CantidadXBulto.HeaderText = "CantidadXBulto";
+            this.CantidadXBulto.Name = "CantidadXBulto";
+            this.CantidadXBulto.ReadOnly = true;
+            this.CantidadXBulto.Visible = false;
+            // 
+            // NombreDGV
+            // 
+            this.NombreDGV.HeaderText = "Nombre";
+            this.NombreDGV.Name = "NombreDGV";
+            this.NombreDGV.ReadOnly = true;
+            // 
+            // CostBulto
+            // 
+            this.CostBulto.HeaderText = "Costo por bulto";
+            this.CostBulto.Name = "CostBulto";
+            this.CostBulto.ReadOnly = true;
+            // 
+            // PriceUnitary
+            // 
+            this.PriceUnitary.HeaderText = "Precio Unitario";
+            this.PriceUnitary.Name = "PriceUnitary";
+            this.PriceUnitary.ReadOnly = true;
+            // 
+            // PrecioBulto
+            // 
+            this.PrecioBulto.HeaderText = "Precio bulto";
+            this.PrecioBulto.Name = "PrecioBulto";
+            this.PrecioBulto.ReadOnly = true;
+            // 
+            // Cant
+            // 
+            this.Cant.HeaderText = "Cantidad";
+            this.Cant.Name = "Cant";
+            this.Cant.ReadOnly = true;
+            // 
+            // UtilidadProducto
+            // 
+            this.UtilidadProducto.HeaderText = "Utilidad";
+            this.UtilidadProducto.Name = "UtilidadProducto";
+            this.UtilidadProducto.ReadOnly = true;
+            // 
+            // selectedRadio
+            // 
+            this.selectedRadio.HeaderText = "selectedRadio";
+            this.selectedRadio.Name = "selectedRadio";
+            this.selectedRadio.ReadOnly = true;
+            this.selectedRadio.Visible = false;
+            // 
             // AddPedidoCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -730,18 +730,18 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox costoIndividual;
         private System.Windows.Forms.Label CostoIndividualLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadXBulto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombreDGV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PriceUnitary;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioBulto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cant;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UtilidadProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn selectedRadio;
         private System.Windows.Forms.Label costoIndividualObligatory;
         private System.Windows.Forms.Label costoSegunRadioObligatory;
         private MetroFramework.Controls.MetroRadioButton bultoCuadradoRadio;
         private MetroFramework.Controls.MetroRadioButton bultoxBotellaRadio;
         private MetroFramework.Controls.MetroRadioButton individualRadio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadXBulto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreDGV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CostBulto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PriceUnitary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioBulto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UtilidadProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn selectedRadio;
     }
 }

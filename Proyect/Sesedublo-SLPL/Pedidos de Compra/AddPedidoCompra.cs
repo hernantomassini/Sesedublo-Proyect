@@ -249,7 +249,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void Precio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            val.ingresarNumero(e);
+            val.ingresarNumeroDecimal(e);
         }
 
         private void buscadorProducto_TextChanged(object sender, EventArgs e)

@@ -108,16 +108,6 @@ namespace Sesedublo_SLPL.Productos
             Close();
         }
 
-        private void Costo_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-            val.ingresarNumeroDecimal(e);
-        }
-
-        private void Precio_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-            val.ingresarNumero(e);
-        }
-
         private void Costo_TextChanged(object sender, EventArgs e)
         {
             updatePrecio();
@@ -137,11 +127,6 @@ namespace Sesedublo_SLPL.Productos
             Nombre.Clear();
             Costo.Clear();
             Utilidad.Clear();
-        }
-
-        private void Utilidad_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            val.ingresarNumeroDecimal(e);
         }
 
         private void updatePrecio()
@@ -239,6 +224,21 @@ namespace Sesedublo_SLPL.Productos
                 UnidadesXBulto.Visible = true;
                 unidadesObligatorio.Visible = true;
             }
+        }
+
+        private void Utilidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNumeroDecimal(e);
+        }
+
+        private void Costo_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            val.ingresarNumeroDecimal(e);
+        }
+
+        private void Precio_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            val.ingresarNumero(e);
         }
     }
 }

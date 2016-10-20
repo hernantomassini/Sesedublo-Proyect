@@ -44,17 +44,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void modificarPedidoTile_Click(object sender, EventArgs e)
         {
-            DataGridViewRow filaDgv = PedidosDGV.CurrentRow;
-
-            if (!Validaciones.validarFilaMarcada(filaDgv, this))
-            {
-                return;
-            }
-
-            int id_pedidoLea = Convert.ToInt32(filaDgv.Cells[0].Value);
-
-            Manejador_Formularios.AddPedidoCompra.modificarPedido(id_pedidoLea);
-            Manejador_Formularios.AddPedidoCompra.Show();
+            modificarPedido();
         }
 
         private void Pedido_de_compra_Load(object sender, EventArgs e)
@@ -69,12 +59,28 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void PedidosDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            modificarPedido();
+        }
+
+        private void modificarPedido()
+        {
             DataGridViewRow filaDgv = PedidosDGV.CurrentRow;
 
             int id_pedido = Convert.ToInt32(filaDgv.Cells[0].Value);
+            
 
-            Manejador_Formularios.AddPedidoCompra.modificarPedido(id_pedido);
-            Manejador_Formularios.AddPedidoCompra.Show();
+            if(Convert.ToString(filaDgv.Cells[6].Value) == "Si")
+            {
+                Manejador_Formularios.MostrarPedidoCompra.mostrarPedido(id_pedido);
+                Manejador_Formularios.MostrarPedidoCompra.Show();
+            }
+            else
+            {
+                Manejador_Formularios.AddPedidoCompra.modificarPedido(id_pedido);
+                Manejador_Formularios.AddPedidoCompra.Show();
+            }
+
+
             Close();
         }
 

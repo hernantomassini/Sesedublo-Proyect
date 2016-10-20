@@ -205,6 +205,12 @@
     <Compile Include="Pedidos de Compra\Elegir_Proveedor.Designer.cs">
       <DependentUpon>Elegir_Proveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pedidos de Compra\MostrarPedidoCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedidos de Compra\MostrarPedidoCompra.Designer.cs">
+      <DependentUpon>MostrarPedidoCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pedidos de Compra\Pedido_de_compra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -298,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pedidos de Compra\Elegir_Proveedor.resx">
       <DependentUpon>Elegir_Proveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedidos de Compra\MostrarPedidoCompra.resx">
+      <DependentUpon>MostrarPedidoCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pedidos de Compra\Pedido_de_compra.resx">
       <DependentUpon>Pedido_de_compra.cs</DependentUpon>

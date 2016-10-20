@@ -342,5 +342,18 @@ namespace Sesedublo_SLPL.Generales
             }
         }
 
+        private static MostrarPedidoCompra MostrarPedidoCompra_Form;
+        public static MostrarPedidoCompra MostrarPedidoCompra
+        {
+            get
+            {
+                if (MostrarPedidoCompra_Form == null)
+                {
+                    MostrarPedidoCompra_Form = new MostrarPedidoCompra();
+                }
+                return MostrarPedidoCompra_Form;
+            }
+        }
+
     }
 }

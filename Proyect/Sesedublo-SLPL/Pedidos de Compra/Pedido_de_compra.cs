@@ -28,7 +28,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
             while (reader.Read())
             {
-                PedidosDGV.Rows.Add(reader.GetInt32(0),reader.GetString(1), reader.GetDateTime(2).ToShortDateString(), reader.GetString(3), reader.GetDecimal(4), reader.GetInt32(5));
+                PedidosDGV.Rows.Add(reader.GetInt32(0),reader.GetString(1), reader.GetDateTime(2).ToShortDateString(), reader.GetString(3), reader.GetDecimal(4), reader.GetString(5), reader.GetString(6));
             }
 
             reader.Close();
@@ -86,7 +86,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 return;
             }
 
-            if (Convert.ToInt32(filaDgv.Cells[5].Value) == 1)
+            if (filaDgv.Cells[5].Value.ToString() == "Si")
             {
                 Funciones.imprimirMensajeDeError("El siguiente pedido ya ha sido pagado", this);
                 return;
@@ -104,5 +104,31 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             this.cargarDGV();
         }
 
+        private void CargarStockTile_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow filaDgv = PedidosDGV.CurrentRow;
+
+            if (!Validaciones.validarFilaMarcada(filaDgv, this))
+            {
+                return;
+            }
+
+            if (filaDgv.Cells[6].Value.ToString() == "Si")
+            {
+                Funciones.imprimirMensajeDeError("Ya se cargo el stock de este pedido.", this);
+                return;
+            }
+
+            if (Funciones.imprimirMensajeDeAlerta("¿Estás seguro de cargar el stock de este pedido?", this) == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            int id_pedidoLea = Convert.ToInt32(filaDgv.Cells[0].Value);
+            Conexion.executeProcedure("cargarStockPedidoLea", Conexion.generarArgumentos("_id_pedido"), id_pedidoLea);
+            Conexion.closeConnection();
+
+            this.cargarDGV();
+        }
     }
 }

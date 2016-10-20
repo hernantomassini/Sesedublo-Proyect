@@ -13,6 +13,7 @@ DROP TABLE IF EXISTS Clientes;
 DROP TABLE IF EXISTS Caja;
 DROP TABLE IF EXISTS ListaDeProductos;
 DROP TABLE IF EXISTS ItemsDeLea;
+DROP TABLE IF EXISTS StockACargar;
 DROP TABLE IF EXISTS PedidosDeLea;
 DROP TABLE IF EXISTS Productos;
 
@@ -62,6 +63,7 @@ DROP PROCEDURE IF EXISTS agregarCantidad;
 DROP PROCEDURE IF EXISTS obtenerItemsDeRemito;
 DROP PROCEDURE IF EXISTS cobrarPedidoDeLea;
 DROP PROCEDURE IF EXISTS obtenerStockPedido;
+DROP PROCEDURE IF EXISTS cargarStockPedidoLea;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
@@ -89,19 +91,31 @@ CREATE TABLE PedidosDeLea (
     costo DECIMAL(10 , 2 ),
     vendedor INT,
     pagado INT DEFAULT 0,
+    stockCargado INT DEFAULT 0,
     PRIMARY KEY (id_pedido)
+);
+
+CREATE TABLE StockACargar (
+    id_stockACargar INT AUTO_INCREMENT,
+    cantidad INT,
+    cantidadXBulto INT,
+    costo DECIMAL(10 , 2 ),
+    nombre VARCHAR(100),
+    PVUnitario DECIMAL(10 , 2 ) DEFAULT 0,
+    PVBulto DECIMAL(10 , 2 ) DEFAULT 0,
+    radioSelected INT DEFAULT 1,
+    PRIMARY KEY (id_stockACargar)
 );
 
 CREATE TABLE ItemsDeLea (
     id_item INT AUTO_INCREMENT,
     id_pedido INT,
-    id_producto INT,
-    cantidadDeProductos INT,
+    id_stockACargar INT,
     PRIMARY KEY (id_item),
     FOREIGN KEY (id_pedido)
         REFERENCES PedidosDeLea (id_pedido),
-    FOREIGN KEY (id_producto)
-        REFERENCES Productos (id_producto)
+    FOREIGN KEY (id_stockACargar)
+        REFERENCES StockACargar (id_stockACargar)
 );
 
 CREATE TABLE Clientes (
@@ -185,8 +199,6 @@ CREATE TABLE NotasDeCredito (
     FOREIGN KEY (factura)
         REFERENCES Facturas (id_factura)
 );
-
-
 
 INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 											 ("ABSENTA GREEN SPIRIT"),
@@ -979,9 +991,18 @@ END //
 CREATE PROCEDURE crearPedidoDeLea (IN _costo DECIMAL(10,2), _id_vendedor INT)
 BEGIN
 
-	INSERT INTO PedidosDeLea (fecha, costo, vendedor) VALUES (NOW(), _costo,_id_vendedor);
+	INSERT INTO PedidosDeLea (fecha, costo, vendedor) VALUES (NOW(), _costo, _id_vendedor);
 	SELECT LAST_INSERT_ID();
-    #CALL restarEfectivo (_costo , CONCAT("Se realizo una pedido de compra por el valor de "));
+    
+END //
+
+CREATE PROCEDURE crearItemDeLea (IN _id_pedidoLea INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL (10,2), IN _radioSelected INT)
+BEGIN
+    
+    INSERT INTO StockACargar (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto, radioSelected) VALUES (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto, _radioSelected);
+    SET @_id_stockACargar = LAST_INSERT_ID();
+
+    INSERT INTO ItemsDeLea (id_pedido, id_stockACargar) VALUES (_id_pedidoLea, @_id_stockACargar);
 
 END //
 
@@ -992,21 +1013,11 @@ BEGIN
 	CALL restarEfectivo (@_costo , CONCAT("Se realizo una pedido de compra por el valor de "));
 END //
 
-CREATE PROCEDURE crearItemDeLea (IN _id_pedidoLea INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL (10,2), IN _radioSelected INT)
-BEGIN
-    
-	CALL agregarStock (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto, _radioSelected); 
-    SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AND cantidadXBulto = _cantidadXBulto);
-
-    INSERT INTO ItemsDeLea (id_pedido, id_producto, cantidadDeProductos) VALUES (_id_pedidoLea, @_id_producto, _cantidad);
-
-END //
-
 CREATE PROCEDURE obtenerItemsDeLea (IN _id_pedidoLea INT)
 BEGIN
 
-	SELECT p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto, iLea.cantidadDeProductos, p.id_producto, p.radioSelected FROM ItemsDeLea iLea
-    INNER JOIN Productos p ON iLea.id_producto = p.id_producto
+	SELECT sac.cantidadXBulto, sac.nombre, sac.costo, sac.PVUnitario, sac.PVBulto, sac.cantidad, sac.id_producto, sac.radioSelected FROM ItemsDeLea iLea
+    INNER JOIN StockACargar sac ON iLea.id_stockACargar = sac.id_stockACargar
     INNER JOIN PedidosDeLea pdl ON pdl.id_pedido = iLea.id_pedido
     WHERE pdl.id_pedido = _id_pedidoLea;
 
@@ -1015,10 +1026,10 @@ END //
 CREATE PROCEDURE cargarPedidoCompras ()
 BEGIN
 
-	SELECT  p.id_pedido, c.nombre AS Proveedor, p.fecha, group_concat(pr.nombre), p.costo, p.pagado FROM PedidosDeLea p 
+	SELECT p.id_pedido, c.nombre AS Proveedor, p.fecha, group_concat(sac.nombre), p.costo, IF(p.pagado = 1, 'Si', 'No'), IF(p.stockCargado = 1, 'Si', 'No') FROM PedidosDeLea p 
     INNER JOIN ItemsDeLea i ON p.id_pedido = i.id_pedido
-    INNER JOIN Productos pr ON pr.id_producto = i.id_producto
-    INNER JOIN Clientes c ON c.id_cliente = vendedor
+    INNER JOIN StockACargar sac ON sac.id_stockACargar = i.id_stockACargar
+    INNER JOIN Clientes c ON c.id_cliente = p.vendedor
     GROUP BY p.id_pedido;
 
 END //
@@ -1090,7 +1101,7 @@ END //
 
 CREATE PROCEDURE obtenerItemsDeRemito(IN _id_factura INT)
 BEGIN
-	SELECT pr.nombre AS Nombre, IF(0 > i.cantidadProductosEdit,0,i.cantidadProductosEdit) AS 'Cantidad Total'
+	SELECT pr.nombre AS Nombre, IF(0 > i.cantidadProductosEdit, 0, i.cantidadProductosEdit) AS 'Cantidad Total'
 	FROM Facturas f
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Items i ON i.pedido = p.id_pedido
@@ -1098,6 +1109,45 @@ BEGIN
     WHERE f.id_factura = _id_factura
     GROUP BY i.id_item;
 END //
-DELIMITER ;
 
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'admin';
+CREATE PROCEDURE cargarStockPedidoLea (IN _id_pedido INT)
+BEGIN
+
+	DECLARE finished INT DEFAULT 0;
+	DECLARE cantidad INT;
+    DECLARE cantidadXBulto INT;
+    DECLARE costo DECIMAL(10,2);
+    DECLARE nombre VARCHAR(100);
+    DECLARE PVUnitario DECIMAL(10,2);
+	DECLARE PVBulto DECIMAL(10,2);
+    DECLARE radioSelected INT;
+
+	DECLARE row_cursor CURSOR FOR 
+    SELECT sac.cantidad, sac.cantidadXBulto, sac.costo, sac.nombre, sac.PVUnitario, sac.PVBulto, sac.radioSelected FROM ItemsDeLea idl
+    INNER JOIN StockACargar sac ON idl.id_stockACargar = sac.id_stockACargar
+    WHERE id_pedido = _id_pedido;
+
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
+
+	OPEN row_cursor;
+
+	SET finished = 0;
+
+        REPEAT	
+
+			FETCH row_cursor INTO cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto, radioSelected;
+			
+			if ! finished then
+				CALL agregarStock (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto, radioSelected); 
+			END IF;
+
+
+	UNTIL finished END REPEAT;
+	CLOSE row_cursor;
+
+	UPDATE PedidosDeLea SET stockCargado = 1 WHERE id_pedido = _id_pedido;
+
+
+END //
+
+DELIMITER ;

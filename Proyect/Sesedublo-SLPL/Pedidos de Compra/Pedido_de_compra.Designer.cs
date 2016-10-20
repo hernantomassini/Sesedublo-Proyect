@@ -29,21 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pedido_de_compra));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.modificarPedidoTile = new MetroFramework.Controls.MetroTile();
             this.AgregarPedidoTile = new MetroFramework.Controls.MetroTile();
             this.AtrasTile = new MetroFramework.Controls.MetroTile();
             this.PedidosDGV = new MetroFramework.Controls.MetroGrid();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.IDPedidoLea = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Productos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.pagado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cargado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StockCargado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CargarStockTile = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.PedidosDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,14 +113,14 @@
             this.PedidosDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PedidosDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.PedidosDGV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PedidosDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PedidosDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.PedidosDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PedidosDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDPedidoLea,
@@ -128,15 +129,15 @@
             this.Productos,
             this.Costo,
             this.pagado,
-            this.cargado});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PedidosDGV.DefaultCellStyle = dataGridViewCellStyle5;
+            this.StockCargado});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PedidosDGV.DefaultCellStyle = dataGridViewCellStyle2;
             this.PedidosDGV.EnableHeadersVisualStyles = false;
             this.PedidosDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.PedidosDGV.GridColor = System.Drawing.Color.White;
@@ -146,20 +147,39 @@
             this.PedidosDGV.Name = "PedidosDGV";
             this.PedidosDGV.ReadOnly = true;
             this.PedidosDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PedidosDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PedidosDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.PedidosDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.PedidosDGV.RowTemplate.Height = 24;
             this.PedidosDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.PedidosDGV.Size = new System.Drawing.Size(928, 249);
             this.PedidosDGV.TabIndex = 6;
             this.PedidosDGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PedidosDGV_CellDoubleClick);
+            // 
+            // metroTile1
+            // 
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.metroTile1.Location = new System.Drawing.Point(482, 315);
+            this.metroTile1.Margin = new System.Windows.Forms.Padding(2);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(153, 43);
+            this.metroTile1.TabIndex = 7;
+            this.metroTile1.Text = "Pagar pedido";
+            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile1.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile1.TileImage")));
+            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.metroTile1.UseCustomBackColor = true;
+            this.metroTile1.UseSelectable = true;
+            this.metroTile1.UseTileImage = true;
+            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
             // IDPedidoLea
             // 
@@ -168,6 +188,7 @@
             this.IDPedidoLea.Name = "IDPedidoLea";
             this.IDPedidoLea.ReadOnly = true;
             this.IDPedidoLea.Visible = false;
+            this.IDPedidoLea.Width = 94;
             // 
             // Proveedor
             // 
@@ -199,44 +220,37 @@
             this.Costo.ReadOnly = true;
             this.Costo.Width = 60;
             // 
-            // metroTile1
-            // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.metroTile1.Location = new System.Drawing.Point(482, 315);
-            this.metroTile1.Margin = new System.Windows.Forms.Padding(2);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(153, 43);
-            this.metroTile1.TabIndex = 7;
-            this.metroTile1.Text = "Pagar pedido";
-            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.metroTile1.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile1.TileImage")));
-            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.metroTile1.UseCustomBackColor = true;
-            this.metroTile1.UseSelectable = true;
-            this.metroTile1.UseTileImage = true;
-            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
-            // 
             // pagado
             // 
             this.pagado.HeaderText = "Pagado";
             this.pagado.Name = "pagado";
             this.pagado.ReadOnly = true;
-            this.pagado.Visible = false;
             // 
-            // cargado
+            // StockCargado
             // 
-            this.cargado.HeaderText = "cargado";
-            this.cargado.Name = "cargado";
-            this.cargado.ReadOnly = true;
-            this.cargado.Visible = false;
+            this.StockCargado.HeaderText = "Stock cargado";
+            this.StockCargado.Name = "StockCargado";
+            this.StockCargado.ReadOnly = true;
+            // 
+            // CargarStockTile
+            // 
+            this.CargarStockTile.ActiveControl = null;
+            this.CargarStockTile.Location = new System.Drawing.Point(345, 315);
+            this.CargarStockTile.Name = "CargarStockTile";
+            this.CargarStockTile.Size = new System.Drawing.Size(132, 43);
+            this.CargarStockTile.TabIndex = 8;
+            this.CargarStockTile.Text = "Cargar stock";
+            this.CargarStockTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CargarStockTile.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CargarStockTile.UseSelectable = true;
+            this.CargarStockTile.Click += new System.EventHandler(this.CargarStockTile_Click);
             // 
             // Pedido_de_compra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(972, 378);
+            this.Controls.Add(this.CargarStockTile);
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.modificarPedidoTile);
             this.Controls.Add(this.AgregarPedidoTile);
@@ -256,13 +270,14 @@
         private MetroFramework.Controls.MetroTile AgregarPedidoTile;
         private MetroFramework.Controls.MetroTile AtrasTile;
         private MetroFramework.Controls.MetroGrid PedidosDGV;
+        private MetroFramework.Controls.MetroTile metroTile1;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDPedidoLea;
         private System.Windows.Forms.DataGridViewTextBoxColumn Proveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Productos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
-        private MetroFramework.Controls.MetroTile metroTile1;
         private System.Windows.Forms.DataGridViewTextBoxColumn pagado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cargado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StockCargado;
+        private MetroFramework.Controls.MetroTile CargarStockTile;
     }
 }

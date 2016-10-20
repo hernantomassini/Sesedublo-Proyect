@@ -118,10 +118,34 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 stringPrecioBulto = precioBulto.ToString();
             }
 
+            borrarProductoIfExists(Nombre.Text, cantXBulto);
+
             dgvPedido.Rows.Add(cantXBulto, Nombre.Text, costo, precioUnitario, stringPrecioBulto, cantidad, utilidad, selectedRadio);
             updateLabel();
 
             Clean2();
+        }
+
+        private void borrarProductoIfExists(string nombreProducto, int cantidadBulto)
+        {
+            string nombre;
+            int cantXBulto;
+
+            for (int i = 0; i < dgvPedido.Rows.Count; i++)
+            {
+                nombre = Convert.ToString(dgvPedido.Rows[i].Cells[1].Value);
+
+                if (nombreProducto.Equals(nombre))
+                {
+                    cantXBulto = obtenerCantBulto(Convert.ToString(dgvPedido.Rows[i].Cells[5].Value));
+
+                    if(cantidadBulto == cantXBulto)
+                    {
+                        dgvPedido.Rows.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
         }
 
         private void eliminarBtn_Click(object sender, EventArgs e)

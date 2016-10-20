@@ -51,7 +51,6 @@ DROP PROCEDURE IF EXISTS ItemsDeLea;
 DROP PROCEDURE IF EXISTS crearItemDeLea;
 DROP PROCEDURE IF EXISTS obtenerItemsDeLea;
 DROP PROCEDURE IF EXISTS cargarPedidoCompras;
-DROP PROCEDURE IF EXISTS restaurarStockLea;
 DROP PROCEDURE IF EXISTS borrarPedidoDeLea;
 DROP PROCEDURE IF EXISTS agregarNuevoProducto;
 DROP PROCEDURE IF EXISTS cargarDatosActualizarPago;
@@ -1016,7 +1015,7 @@ END //
 CREATE PROCEDURE obtenerItemsDeLea (IN _id_pedidoLea INT)
 BEGIN
 
-	SELECT sac.cantidadXBulto, sac.nombre, sac.costo, sac.PVUnitario, sac.PVBulto, sac.cantidad, sac.id_producto, sac.radioSelected FROM ItemsDeLea iLea
+	SELECT sac.cantidadXBulto, sac.nombre, sac.costo, sac.PVUnitario, sac.PVBulto, sac.cantidad, sac.radioSelected FROM ItemsDeLea iLea
     INNER JOIN StockACargar sac ON iLea.id_stockACargar = sac.id_stockACargar
     INNER JOIN PedidosDeLea pdl ON pdl.id_pedido = iLea.id_pedido
     WHERE pdl.id_pedido = _id_pedidoLea;
@@ -1034,29 +1033,11 @@ BEGIN
 
 END //
 
-CREATE PROCEDURE restaurarStockLea (IN _id_producto INT, IN _cantidad INT)
-BEGIN
-
-SET @_cantidadVieja = (SELECT cantidad FROM Productos WHERE id_producto = _id_producto);
-
-	UPDATE Productos SET cantidad = (@_cantidadVieja - _cantidad) WHERE id_producto = _id_producto;
-
-END //
-
 CREATE PROCEDURE borrarPedidoDeLea (IN _id_pedidoLea INT)
 BEGIN
 
-SET @_fecha = (SELECT fecha FROM PedidosDeLea WHERE id_pedido = _id_pedidoLea);
-SET @_costoARestaurar = (SELECT costo FROM PedidosDeLea WHERE id_pedido = _id_pedidoLea);
-
-	CALL agregarEfectivo (@_costoARestaurar, CONCAT("Manejo interno del programa. Se esta modificando un pedido de compra cuya fecha es ", @_fecha, "."));
-
-	DELETE FROM ItemsDeLea 
-WHERE
-    id_pedido = _id_pedidoLea;
-DELETE FROM PedidosDeLea 
-WHERE
-    id_pedido = _id_pedidoLea;
+	DELETE FROM ItemsDeLea WHERE id_pedido = _id_pedidoLea; 
+    DELETE FROM PedidosDeLea WHERE id_pedido = _id_pedidoLea;
 
 END //
 

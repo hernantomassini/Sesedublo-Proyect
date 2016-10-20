@@ -185,7 +185,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         private void Cantidad_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
-            val.ingresarNumeroDecimal(e);
+            val.ingresarNumeroConRaya(e);
         }
 
         private void Precio_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
@@ -276,7 +276,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         private void updatePrecio()
         {
-            if (Costo.Text == "" || Utilidad.Text == "")
+            if (Costo.Text == "" || Utilidad.Text == "" || Costo.Text == "," || Utilidad.Text == ",")
                 return;
 
             decimal costo = Convert.ToDecimal(Costo.Text);
@@ -295,10 +295,11 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
             if(bultoxBotellaRadio.Checked)
             {
-                Precio.Text = Convert.ToString(costo + utilidad * botellasPorBulto);
+                decimal costoUnitario = Convert.ToDecimal(costoIndividual.Text);
+                decimal costoBulto = decimal.Round(costoUnitario * botellasPorBulto, 2);
+                Costo.Text = Convert.ToString(costoBulto);
 
-                decimal costoUnitario = decimal.Round(costo / botellasPorBulto, 2);
-                costoIndividual.Text = Convert.ToString(costoUnitario);
+                Precio.Text = Convert.ToString(costoUnitario + utilidad * botellasPorBulto);
             }
             else
             {
@@ -334,6 +335,10 @@ namespace Sesedublo_SLPL.Administrar_Stock
                 UnidadesXBultoLbl.Visible = false;
                 UnidadesXBulto.Visible = false;
                 unidadesObligatorio.Visible = false;
+
+
+                costoIndividualObligatory.Visible = false;
+                costoSegunRadioObligatory.Visible = true;
             }
         }
 
@@ -347,6 +352,9 @@ namespace Sesedublo_SLPL.Administrar_Stock
                 CantidadLbl.Text = "Cantidad de bultos:";
                 UtilidadLabel.Text = "Utilidad por botella:";
                 PrecioLabel.Text = "Precio por bulto:";
+                costoIndividualObligatory.Visible = true;
+                costoSegunRadioObligatory.Visible = false;
+
                 CostoIndividualLabel.Visible = true;
                 costoIndividual.Visible = true;
                 UnidadesXBultoLbl.Visible = true;
@@ -370,6 +378,9 @@ namespace Sesedublo_SLPL.Administrar_Stock
                 UnidadesXBultoLbl.Visible = true;
                 UnidadesXBulto.Visible = true;
                 unidadesObligatorio.Visible = true;
+
+                costoIndividualObligatory.Visible = false;
+                costoSegunRadioObligatory.Visible = true;
             }
         }
 

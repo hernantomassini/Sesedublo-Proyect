@@ -131,7 +131,7 @@ namespace Sesedublo_SLPL.Productos
 
         private void updatePrecio()
         {
-            if (Costo.Text == "" || Utilidad.Text == "")
+            if (Costo.Text == "" || Utilidad.Text == "" || Costo.Text == "," || Utilidad.Text == ",")
                 return;
 
             decimal costo = Convert.ToDecimal(Costo.Text);
@@ -150,10 +150,11 @@ namespace Sesedublo_SLPL.Productos
 
             if (bultoxBotellaRadio.Checked)
             {
-                Precio.Text = Convert.ToString(costo + utilidad * botellasPorBulto);
+                decimal costoUnitario = Convert.ToDecimal(costoIndividual.Text);
+                decimal costoBulto = decimal.Round(costoUnitario * botellasPorBulto, 2);
+                Costo.Text = Convert.ToString(costoBulto);
 
-                decimal costoUnitario = decimal.Round(costo / botellasPorBulto, 2);
-                costoIndividual.Text = Convert.ToString(costoUnitario);
+                Precio.Text = Convert.ToString(costoUnitario + utilidad * botellasPorBulto);
             }
             else
             {
@@ -189,6 +190,10 @@ namespace Sesedublo_SLPL.Productos
                 UnidadesXBultoLbl.Visible = false;
                 UnidadesXBulto.Visible = false;
                 unidadesObligatorio.Visible = false;
+
+
+                costoIndividualObligatory.Visible = false;
+                costoSegunRadioObligatory.Visible = true;
             }
         }
 
@@ -201,6 +206,9 @@ namespace Sesedublo_SLPL.Productos
                 CostoLabel.Text = "Costo por bulto:";
                 UtilidadLabel.Text = "Utilidad por botella:";
                 PrecioLabel.Text = "Precio por bulto:";
+                costoIndividualObligatory.Visible = true;
+                costoSegunRadioObligatory.Visible = false;
+
                 CostoIndividualLabel.Visible = true;
                 costoIndividual.Visible = true;
                 UnidadesXBultoLbl.Visible = true;
@@ -223,6 +231,9 @@ namespace Sesedublo_SLPL.Productos
                 UnidadesXBultoLbl.Visible = true;
                 UnidadesXBulto.Visible = true;
                 unidadesObligatorio.Visible = true;
+
+                costoIndividualObligatory.Visible = false;
+                costoSegunRadioObligatory.Visible = true;
             }
         }
 

@@ -33,8 +33,6 @@
             this.Precio = new System.Windows.Forms.TextBox();
             this.titleCancelar = new MetroFramework.Controls.MetroTile();
             this.titleAceptar = new MetroFramework.Controls.MetroTile();
-            this.bultoxBotellaRadio = new MetroFramework.Controls.MetroRadioButton();
-            this.individualRadio = new MetroFramework.Controls.MetroRadioButton();
             this.UnidadesXBulto = new System.Windows.Forms.ComboBox();
             this.UnidadesXBultoLbl = new System.Windows.Forms.Label();
             this.Costo = new System.Windows.Forms.TextBox();
@@ -43,12 +41,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Utilidad = new System.Windows.Forms.TextBox();
             this.Nombre = new System.Windows.Forms.TextBox();
-            this.bultoCuadradoRadio = new MetroFramework.Controls.MetroRadioButton();
             this.costoIndividual = new System.Windows.Forms.TextBox();
             this.CostoIndividualLabel = new System.Windows.Forms.Label();
             this.unidadesObligatorio = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.bultoCuadradoRadio = new MetroFramework.Controls.MetroRadioButton();
+            this.bultoxBotellaRadio = new MetroFramework.Controls.MetroRadioButton();
+            this.individualRadio = new MetroFramework.Controls.MetroRadioButton();
+            this.costoIndividualObligatory = new System.Windows.Forms.Label();
+            this.costoSegunRadioObligatory = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // PrecioLabel
@@ -107,30 +108,6 @@
             this.titleAceptar.UseSelectable = true;
             this.titleAceptar.UseTileImage = true;
             this.titleAceptar.Click += new System.EventHandler(this.titleAceptar_Click);
-            // 
-            // bultoxBotellaRadio
-            // 
-            this.bultoxBotellaRadio.AutoSize = true;
-            this.bultoxBotellaRadio.Location = new System.Drawing.Point(151, 118);
-            this.bultoxBotellaRadio.Margin = new System.Windows.Forms.Padding(2);
-            this.bultoxBotellaRadio.Name = "bultoxBotellaRadio";
-            this.bultoxBotellaRadio.Size = new System.Drawing.Size(51, 15);
-            this.bultoxBotellaRadio.TabIndex = 35;
-            this.bultoxBotellaRadio.Text = "Bulto";
-            this.bultoxBotellaRadio.UseSelectable = true;
-            this.bultoxBotellaRadio.CheckedChanged += new System.EventHandler(this.bultoRadio_CheckedChanged);
-            // 
-            // individualRadio
-            // 
-            this.individualRadio.AutoSize = true;
-            this.individualRadio.Location = new System.Drawing.Point(60, 118);
-            this.individualRadio.Margin = new System.Windows.Forms.Padding(2);
-            this.individualRadio.Name = "individualRadio";
-            this.individualRadio.Size = new System.Drawing.Size(75, 15);
-            this.individualRadio.TabIndex = 34;
-            this.individualRadio.Text = "Individual";
-            this.individualRadio.UseSelectable = true;
-            this.individualRadio.CheckedChanged += new System.EventHandler(this.individualRadio_CheckedChanged);
             // 
             // UnidadesXBulto
             // 
@@ -213,17 +190,6 @@
             this.Nombre.Size = new System.Drawing.Size(192, 20);
             this.Nombre.TabIndex = 33;
             // 
-            // bultoCuadradoRadio
-            // 
-            this.bultoCuadradoRadio.AutoSize = true;
-            this.bultoCuadradoRadio.Location = new System.Drawing.Point(207, 118);
-            this.bultoCuadradoRadio.Name = "bultoCuadradoRadio";
-            this.bultoCuadradoRadio.Size = new System.Drawing.Size(116, 15);
-            this.bultoCuadradoRadio.TabIndex = 53;
-            this.bultoCuadradoRadio.Text = "Bulto al cuadrado";
-            this.bultoCuadradoRadio.UseSelectable = true;
-            this.bultoCuadradoRadio.CheckedChanged += new System.EventHandler(this.bultoCuadradoRadio_CheckedChanged);
-            // 
             // costoIndividual
             // 
             this.costoIndividual.Location = new System.Drawing.Point(191, 167);
@@ -264,32 +230,77 @@
             this.label4.TabIndex = 58;
             this.label4.Text = "*";
             // 
-            // label3
+            // bultoCuadradoRadio
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(295, 195);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(11, 13);
-            this.label3.TabIndex = 57;
-            this.label3.Text = "*";
+            this.bultoCuadradoRadio.AutoSize = true;
+            this.bultoCuadradoRadio.Location = new System.Drawing.Point(234, 123);
+            this.bultoCuadradoRadio.Name = "bultoCuadradoRadio";
+            this.bultoCuadradoRadio.Size = new System.Drawing.Size(115, 15);
+            this.bultoCuadradoRadio.TabIndex = 62;
+            this.bultoCuadradoRadio.Text = "Ganancia al bulto";
+            this.bultoCuadradoRadio.UseSelectable = true;
+            this.bultoCuadradoRadio.CheckedChanged += new System.EventHandler(this.bultoCuadradoRadio_CheckedChanged);
+            // 
+            // bultoxBotellaRadio
+            // 
+            this.bultoxBotellaRadio.AutoSize = true;
+            this.bultoxBotellaRadio.Location = new System.Drawing.Point(101, 123);
+            this.bultoxBotellaRadio.Margin = new System.Windows.Forms.Padding(2);
+            this.bultoxBotellaRadio.Name = "bultoxBotellaRadio";
+            this.bultoxBotellaRadio.Size = new System.Drawing.Size(132, 15);
+            this.bultoxBotellaRadio.TabIndex = 61;
+            this.bultoxBotellaRadio.Text = "Ganancia a la botella";
+            this.bultoxBotellaRadio.UseSelectable = true;
+            this.bultoxBotellaRadio.CheckedChanged += new System.EventHandler(this.bultoRadio_CheckedChanged);
+            // 
+            // individualRadio
+            // 
+            this.individualRadio.AutoSize = true;
+            this.individualRadio.Location = new System.Drawing.Point(22, 123);
+            this.individualRadio.Margin = new System.Windows.Forms.Padding(2);
+            this.individualRadio.Name = "individualRadio";
+            this.individualRadio.Size = new System.Drawing.Size(75, 15);
+            this.individualRadio.TabIndex = 60;
+            this.individualRadio.Text = "Individual";
+            this.individualRadio.UseSelectable = true;
+            this.individualRadio.CheckedChanged += new System.EventHandler(this.individualRadio_CheckedChanged);
+            // 
+            // costoIndividualObligatory
+            // 
+            this.costoIndividualObligatory.AutoSize = true;
+            this.costoIndividualObligatory.Location = new System.Drawing.Point(295, 170);
+            this.costoIndividualObligatory.Name = "costoIndividualObligatory";
+            this.costoIndividualObligatory.Size = new System.Drawing.Size(11, 13);
+            this.costoIndividualObligatory.TabIndex = 64;
+            this.costoIndividualObligatory.Text = "*";
+            // 
+            // costoSegunRadioObligatory
+            // 
+            this.costoSegunRadioObligatory.AutoSize = true;
+            this.costoSegunRadioObligatory.Location = new System.Drawing.Point(295, 198);
+            this.costoSegunRadioObligatory.Name = "costoSegunRadioObligatory";
+            this.costoSegunRadioObligatory.Size = new System.Drawing.Size(11, 13);
+            this.costoSegunRadioObligatory.TabIndex = 63;
+            this.costoSegunRadioObligatory.Text = "*";
             // 
             // Producto_Nuevo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(370, 406);
+            this.Controls.Add(this.costoIndividualObligatory);
+            this.Controls.Add(this.costoSegunRadioObligatory);
+            this.Controls.Add(this.bultoCuadradoRadio);
+            this.Controls.Add(this.bultoxBotellaRadio);
+            this.Controls.Add(this.individualRadio);
             this.Controls.Add(this.unidadesObligatorio);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.costoIndividual);
             this.Controls.Add(this.CostoIndividualLabel);
-            this.Controls.Add(this.bultoCuadradoRadio);
             this.Controls.Add(this.PrecioLabel);
             this.Controls.Add(this.Precio);
             this.Controls.Add(this.titleCancelar);
             this.Controls.Add(this.titleAceptar);
-            this.Controls.Add(this.bultoxBotellaRadio);
-            this.Controls.Add(this.individualRadio);
             this.Controls.Add(this.UnidadesXBulto);
             this.Controls.Add(this.UnidadesXBultoLbl);
             this.Controls.Add(this.Costo);
@@ -313,8 +324,6 @@
         private System.Windows.Forms.TextBox Precio;
         private MetroFramework.Controls.MetroTile titleCancelar;
         private MetroFramework.Controls.MetroTile titleAceptar;
-        private MetroFramework.Controls.MetroRadioButton bultoxBotellaRadio;
-        private MetroFramework.Controls.MetroRadioButton individualRadio;
         private System.Windows.Forms.ComboBox UnidadesXBulto;
         private System.Windows.Forms.Label UnidadesXBultoLbl;
         private System.Windows.Forms.TextBox Costo;
@@ -323,11 +332,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Utilidad;
         private System.Windows.Forms.TextBox Nombre;
-        private MetroFramework.Controls.MetroRadioButton bultoCuadradoRadio;
         private System.Windows.Forms.TextBox costoIndividual;
         private System.Windows.Forms.Label CostoIndividualLabel;
         private System.Windows.Forms.Label unidadesObligatorio;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private MetroFramework.Controls.MetroRadioButton bultoCuadradoRadio;
+        private MetroFramework.Controls.MetroRadioButton bultoxBotellaRadio;
+        private MetroFramework.Controls.MetroRadioButton individualRadio;
+        private System.Windows.Forms.Label costoIndividualObligatory;
+        private System.Windows.Forms.Label costoSegunRadioObligatory;
     }
 }

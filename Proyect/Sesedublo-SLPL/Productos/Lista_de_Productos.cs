@@ -22,6 +22,7 @@ namespace Sesedublo_SLPL.Productos
             da.Fill(tablaDeUsuarios);
             dgvProductos.DataSource = tablaDeUsuarios.DefaultView;
             dgvProductos.Columns[0].Visible = false;
+            dgvProductos.Columns[6].Visible = false;
 
             Conexion.closeConnection();
         }

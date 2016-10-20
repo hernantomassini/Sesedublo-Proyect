@@ -13,7 +13,6 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 {
     public partial class AddPedidoCompra : MetroForm
     {
-        Dictionary<int, int> stockAEliminar = new Dictionary<int, int>();
         accionesABM flag = accionesABM.Crear;
         Validaciones val = new Validaciones();
         int id_pedidoLea = -1;
@@ -23,7 +22,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         public AddPedidoCompra()
         {
             InitializeComponent();
-            this.getProductos();
+            getProductos();
             Nombre.Text = dgvProductos.Rows[0].Cells[1].Value.ToString();
             dgvProductos.Columns[0].Visible = false;
             dgvProductos.Columns[6].Visible = false;
@@ -52,7 +51,8 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             Utilidad.Clear();
             UnidadesXBulto.SelectedIndex = 0;
             dgvPedido.Rows.Clear();
-            stockAEliminar.Clear();
+
+            getProductos();
         }
 
         public void Clean2()
@@ -130,12 +130,14 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         {
             string nombre;
             int cantXBulto;
+            int radioSelected;
 
             for (int i = 0; i < dgvPedido.Rows.Count; i++)
             {
                 nombre = Convert.ToString(dgvPedido.Rows[i].Cells[1].Value);
+                radioSelected = Convert.ToInt32(dgvPedido.Rows[i].Cells[7].Value);
 
-                if (nombreProducto.Equals(nombre))
+                if (nombreProducto.Equals(nombre) && radioSelected != 1)
                 {
                     cantXBulto = obtenerCantBulto(Convert.ToString(dgvPedido.Rows[i].Cells[5].Value));
 
@@ -144,6 +146,12 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                         dgvPedido.Rows.RemoveAt(i);
                         i--;
                     }
+                }
+
+                if (nombreProducto.Equals(nombre) && radioSelected == 1)
+                {
+                    dgvPedido.Rows.RemoveAt(i);
+                    i--;
                 }
             }
         }
@@ -184,7 +192,6 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             decimal PVUnitario;
             decimal PVBulto;
             int cantidad;
-            int id_producto;
             int radioSelected = 0;
 
             string cantidadString;
@@ -198,8 +205,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 PVUnitario = reader.GetDecimal(3);
                 PVBulto = reader.GetDecimal(4);
                 cantidad = reader.GetInt32(5);
-                id_producto = reader.GetInt32(6);
-                radioSelected = reader.GetInt32(7);
+                radioSelected = reader.GetInt32(6);
 
                 cantidadString = cantidad + " unidades";
                 utilidad = PVUnitario - costo;
@@ -217,15 +223,6 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 }
 
                 dgvPedido.Rows.Add(cantXBulto, nombre, costo, PVUnitario, PVBulto, cantidadString, utilidad, radioSelected);
-
-                if (stockAEliminar.ContainsKey(id_producto))
-                {
-                    stockAEliminar[id_producto] += cantidad;
-                }
-                else
-                {
-                    stockAEliminar.Add(id_producto, cantidad);
-                }
             }
 
             reader.Close();
@@ -244,7 +241,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void Cantidad_KeyPress(object sender, KeyPressEventArgs e)
         {
-            val.ingresarNumero(e);
+            val.ingresarNumeroConRaya(e);
         }
 
         private void Precio_KeyPress(object sender, KeyPressEventArgs e)
@@ -332,15 +329,6 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
             if (flag == accionesABM.Modificar)
             {
-                foreach (var registro in stockAEliminar) 
-                {
-                    int id_producto = registro.Key;
-                    cantidad = registro.Value;
-
-                    Conexion.executeProcedure("restaurarStockLea", Conexion.generarArgumentos("_id_producto", "_cantidad"), id_producto, cantidad);
-                    Conexion.closeConnection();
-                }
-
                 Conexion.executeProcedure("borrarPedidoDeLea", Conexion.generarArgumentos("_id_pedidoLea"), id_pedidoLea);
                 Conexion.closeConnection();
             }
@@ -446,7 +434,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void updatePrecio()
         {
-            if (Costo.Text == "" || Utilidad.Text == "")
+            if (Costo.Text == "" || Utilidad.Text == "" || Costo.Text == "," || Utilidad.Text == ",")
                 return;
 
             decimal costo = Convert.ToDecimal(Costo.Text);
@@ -465,10 +453,11 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
             if (bultoxBotellaRadio.Checked)
             {
-                Precio.Text = Convert.ToString(costo + utilidad * botellasPorBulto);
+                decimal costoUnitario = Convert.ToDecimal(costoIndividual.Text);
+                decimal costoBulto = decimal.Round(costoUnitario * botellasPorBulto, 2);
+                Costo.Text = Convert.ToString(costoBulto);
 
-                decimal costoUnitario = decimal.Round(costo / botellasPorBulto, 2);
-                costoIndividual.Text = Convert.ToString(costoUnitario);
+                Precio.Text = Convert.ToString(costoUnitario + utilidad * botellasPorBulto);
             }
             else
             {
@@ -523,6 +512,10 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 UnidadesXBultoLbl.Visible = false;
                 UnidadesXBulto.Visible = false;
                 unidadesObligatorio.Visible = false;
+
+
+                costoIndividualObligatory.Visible = false;
+                costoSegunRadioObligatory.Visible = true;
             }
         }
 
@@ -536,6 +529,9 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 CantidadLbl.Text = "Cantidad de bultos:";
                 UtilidadLabel.Text = "Utilidad por botella:";
                 PrecioLabel.Text = "Precio por bulto:";
+                costoIndividualObligatory.Visible = true;
+                costoSegunRadioObligatory.Visible = false;
+
                 CostoIndividualLabel.Visible = true;
                 costoIndividual.Visible = true;
                 UnidadesXBultoLbl.Visible = true;
@@ -559,6 +555,9 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 UnidadesXBultoLbl.Visible = true;
                 UnidadesXBulto.Visible = true;
                 unidadesObligatorio.Visible = true;
+
+                costoIndividualObligatory.Visible = false;
+                costoSegunRadioObligatory.Visible = true;
             }
         }
 

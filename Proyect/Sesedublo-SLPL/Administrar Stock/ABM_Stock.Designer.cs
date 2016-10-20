@@ -35,17 +35,18 @@ namespace Sesedublo_SLPL.Administrar_Productos
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Stock));
             this.StockDGV = new MetroFramework.Controls.MetroGrid();
-            this.id_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PVUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PVBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockOPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleAtras = new MetroFramework.Controls.MetroTile();
             this.titleAgregarCliente = new MetroFramework.Controls.MetroTile();
             this.nombre = new MetroFramework.Controls.MetroTextBox();
             this.nombreLabel = new MetroFramework.Controls.MetroLabel();
+            this.id_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostoUnitary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PVUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PVBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stockOPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.StockDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,7 +74,8 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.id_stock,
             this.Cantidad,
             this.Producto,
-            this.Costo,
+            this.CostoUnitary,
+            this.CostoTotal,
             this.PVUnitario,
             this.PVBulto,
             this.stockOPedido});
@@ -106,67 +108,6 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.StockDGV.Size = new System.Drawing.Size(562, 248);
             this.StockDGV.TabIndex = 4;
             this.StockDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StockDGV_CellContentClick);
-            // 
-            // id_stock
-            // 
-            this.id_stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.id_stock.HeaderText = "ID Stock";
-            this.id_stock.Name = "id_stock";
-            this.id_stock.ReadOnly = true;
-            this.id_stock.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.id_stock.Visible = false;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            this.Cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Cantidad.Width = 77;
-            // 
-            // Producto
-            // 
-            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            this.Producto.ReadOnly = true;
-            this.Producto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Producto.Width = 77;
-            // 
-            // Costo
-            // 
-            this.Costo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Costo.HeaderText = "Costo";
-            this.Costo.Name = "Costo";
-            this.Costo.ReadOnly = true;
-            this.Costo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Costo.Width = 60;
-            // 
-            // PVUnitario
-            // 
-            this.PVUnitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.PVUnitario.HeaderText = "Precio de venta unitario";
-            this.PVUnitario.Name = "PVUnitario";
-            this.PVUnitario.ReadOnly = true;
-            this.PVUnitario.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PVUnitario.Width = 102;
-            // 
-            // PVBulto
-            // 
-            this.PVBulto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.PVBulto.HeaderText = "Precio de venta por Bulto";
-            this.PVBulto.Name = "PVBulto";
-            this.PVBulto.ReadOnly = true;
-            this.PVBulto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PVBulto.Width = 121;
-            // 
-            // stockOPedido
-            // 
-            this.stockOPedido.HeaderText = "Tipo";
-            this.stockOPedido.Name = "stockOPedido";
-            this.stockOPedido.ReadOnly = true;
-            this.stockOPedido.Visible = false;
             // 
             // titleAtras
             // 
@@ -248,6 +189,74 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.nombreLabel.TabIndex = 11;
             this.nombreLabel.Text = "Nombre:";
             // 
+            // id_stock
+            // 
+            this.id_stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.id_stock.HeaderText = "ID Stock";
+            this.id_stock.Name = "id_stock";
+            this.id_stock.ReadOnly = true;
+            this.id_stock.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.id_stock.Visible = false;
+            this.id_stock.Width = 72;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            this.Cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Cantidad.Width = 77;
+            // 
+            // Producto
+            // 
+            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Producto.HeaderText = "Producto";
+            this.Producto.Name = "Producto";
+            this.Producto.ReadOnly = true;
+            this.Producto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Producto.Width = 77;
+            // 
+            // CostoUnitary
+            // 
+            this.CostoUnitary.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.CostoUnitary.HeaderText = "Costo unitario";
+            this.CostoUnitary.Name = "CostoUnitary";
+            this.CostoUnitary.ReadOnly = true;
+            this.CostoUnitary.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CostoUnitary.Width = 95;
+            // 
+            // CostoTotal
+            // 
+            this.CostoTotal.HeaderText = "Costo total";
+            this.CostoTotal.Name = "CostoTotal";
+            this.CostoTotal.ReadOnly = true;
+            // 
+            // PVUnitario
+            // 
+            this.PVUnitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.PVUnitario.HeaderText = "Precio de venta unitario";
+            this.PVUnitario.Name = "PVUnitario";
+            this.PVUnitario.ReadOnly = true;
+            this.PVUnitario.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.PVUnitario.Width = 102;
+            // 
+            // PVBulto
+            // 
+            this.PVBulto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.PVBulto.HeaderText = "Precio de venta por Bulto";
+            this.PVBulto.Name = "PVBulto";
+            this.PVBulto.ReadOnly = true;
+            this.PVBulto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.PVBulto.Width = 121;
+            // 
+            // stockOPedido
+            // 
+            this.stockOPedido.HeaderText = "Tipo";
+            this.stockOPedido.Name = "stockOPedido";
+            this.stockOPedido.ReadOnly = true;
+            this.stockOPedido.Visible = false;
+            // 
             // ABM_Stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -278,7 +287,8 @@ namespace Sesedublo_SLPL.Administrar_Productos
         private System.Windows.Forms.DataGridViewTextBoxColumn id_stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CostoUnitary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CostoTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn PVUnitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn PVBulto;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockOPedido;

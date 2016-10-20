@@ -992,10 +992,10 @@ BEGIN
 	CALL restarEfectivo (@_costo , CONCAT("Se realizo una pedido de compra por el valor de "));
 END //
 
-CREATE PROCEDURE crearItemDeLea (IN _id_pedidoLea INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL (10,2))
+CREATE PROCEDURE crearItemDeLea (IN _id_pedidoLea INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL (10,2), IN _radioSelected INT)
 BEGIN
     
-	CALL agregarStock (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto); 
+	CALL agregarStock (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto, _radioSelected); 
     SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AND cantidadXBulto = _cantidadXBulto);
 
     INSERT INTO ItemsDeLea (id_pedido, id_producto, cantidadDeProductos) VALUES (_id_pedidoLea, @_id_producto, _cantidad);
@@ -1005,7 +1005,7 @@ END //
 CREATE PROCEDURE obtenerItemsDeLea (IN _id_pedidoLea INT)
 BEGIN
 
-	SELECT p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto, iLea.cantidadDeProductos, p.id_producto FROM ItemsDeLea iLea
+	SELECT p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto, iLea.cantidadDeProductos, p.id_producto, p.radioSelected FROM ItemsDeLea iLea
     INNER JOIN Productos p ON iLea.id_producto = p.id_producto
     INNER JOIN PedidosDeLea pdl ON pdl.id_pedido = iLea.id_pedido
     WHERE pdl.id_pedido = _id_pedidoLea;
@@ -1102,4 +1102,7 @@ DELIMITER ;
 
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'admin';
 
-select * from productos;
+SELECT 
+    *
+FROM
+    productos;

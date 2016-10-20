@@ -41,8 +41,6 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.titleCancelar = new MetroFramework.Controls.MetroTile();
             this.titleAceptar = new MetroFramework.Controls.MetroTile();
-            this.bultoRadio = new MetroFramework.Controls.MetroRadioButton();
-            this.individualRadio = new MetroFramework.Controls.MetroRadioButton();
             this.UnidadesXBulto = new System.Windows.Forms.ComboBox();
             this.UnidadesXBultoLbl = new System.Windows.Forms.Label();
             this.Costo = new System.Windows.Forms.TextBox();
@@ -62,6 +60,15 @@
             this.nuevoProducto = new MetroFramework.Controls.MetroTile();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
             this.costoSumatoriaLabel = new System.Windows.Forms.Label();
+            this.unidadesObligatorio = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.costoIndividual = new System.Windows.Forms.TextBox();
+            this.CostoIndividualLabel = new System.Windows.Forms.Label();
+            this.bultoCuadradoRadio = new MetroFramework.Controls.MetroRadioButton();
+            this.bultoxBotellaRadio = new MetroFramework.Controls.MetroRadioButton();
+            this.individualRadio = new MetroFramework.Controls.MetroRadioButton();
             this.CantidadXBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,7 +76,7 @@
             this.PrecioBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UtilidadProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.esBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.selectedRadio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
@@ -120,7 +127,7 @@
             this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(303, 157);
+            this.dgvProductos.Size = new System.Drawing.Size(408, 220);
             this.dgvProductos.TabIndex = 37;
             this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
             this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
@@ -142,7 +149,7 @@
             this.buscarProducto.DisplayIcon = true;
             this.buscarProducto.Icon = ((System.Drawing.Image)(resources.GetObject("buscarProducto.Icon")));
             this.buscarProducto.Lines = new string[0];
-            this.buscarProducto.Location = new System.Drawing.Point(541, 59);
+            this.buscarProducto.Location = new System.Drawing.Point(646, 61);
             this.buscarProducto.MaxLength = 70;
             this.buscarProducto.Name = "buscarProducto";
             this.buscarProducto.PasswordChar = '\0';
@@ -163,7 +170,7 @@
             // nombreLabel
             // 
             this.nombreLabel.AutoSize = true;
-            this.nombreLabel.Location = new System.Drawing.Point(473, 59);
+            this.nombreLabel.Location = new System.Drawing.Point(578, 65);
             this.nombreLabel.Name = "nombreLabel";
             this.nombreLabel.Size = new System.Drawing.Size(62, 19);
             this.nombreLabel.TabIndex = 35;
@@ -182,8 +189,8 @@
             // 
             this.titleCancelar.ActiveControl = null;
             this.titleCancelar.BackColor = System.Drawing.Color.DarkRed;
-            this.titleCancelar.Location = new System.Drawing.Point(443, 617);
-            this.titleCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleCancelar.Location = new System.Drawing.Point(538, 682);
+            this.titleCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.titleCancelar.Name = "titleCancelar";
             this.titleCancelar.Size = new System.Drawing.Size(102, 41);
             this.titleCancelar.TabIndex = 13;
@@ -201,8 +208,8 @@
             // 
             this.titleAceptar.ActiveControl = null;
             this.titleAceptar.BackColor = System.Drawing.Color.Green;
-            this.titleAceptar.Location = new System.Drawing.Point(565, 617);
-            this.titleAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleAceptar.Location = new System.Drawing.Point(659, 682);
+            this.titleAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.titleAceptar.Name = "titleAceptar";
             this.titleAceptar.Size = new System.Drawing.Size(99, 41);
             this.titleAceptar.TabIndex = 12;
@@ -216,29 +223,6 @@
             this.titleAceptar.UseTileImage = true;
             this.titleAceptar.Click += new System.EventHandler(this.titleAceptar_Click);
             // 
-            // bultoRadio
-            // 
-            this.bultoRadio.AutoSize = true;
-            this.bultoRadio.Location = new System.Drawing.Point(164, 96);
-            this.bultoRadio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.bultoRadio.Name = "bultoRadio";
-            this.bultoRadio.Size = new System.Drawing.Size(51, 15);
-            this.bultoRadio.TabIndex = 4;
-            this.bultoRadio.Text = "Bulto";
-            this.bultoRadio.UseSelectable = true;
-            // 
-            // individualRadio
-            // 
-            this.individualRadio.AutoSize = true;
-            this.individualRadio.Location = new System.Drawing.Point(75, 96);
-            this.individualRadio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.individualRadio.Name = "individualRadio";
-            this.individualRadio.Size = new System.Drawing.Size(75, 15);
-            this.individualRadio.TabIndex = 3;
-            this.individualRadio.Text = "Individual";
-            this.individualRadio.UseSelectable = true;
-            this.individualRadio.CheckedChanged += new System.EventHandler(this.individualRadio_CheckedChanged);
-            // 
             // UnidadesXBulto
             // 
             this.UnidadesXBulto.FormattingEnabled = true;
@@ -246,8 +230,8 @@
             "6",
             "12",
             "24"});
-            this.UnidadesXBulto.Location = new System.Drawing.Point(132, 227);
-            this.UnidadesXBulto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UnidadesXBulto.Location = new System.Drawing.Point(132, 265);
+            this.UnidadesXBulto.Margin = new System.Windows.Forms.Padding(4);
             this.UnidadesXBulto.Name = "UnidadesXBulto";
             this.UnidadesXBulto.Size = new System.Drawing.Size(100, 21);
             this.UnidadesXBulto.TabIndex = 9;
@@ -257,7 +241,7 @@
             // UnidadesXBultoLbl
             // 
             this.UnidadesXBultoLbl.AutoSize = true;
-            this.UnidadesXBultoLbl.Location = new System.Drawing.Point(18, 230);
+            this.UnidadesXBultoLbl.Location = new System.Drawing.Point(18, 268);
             this.UnidadesXBultoLbl.Name = "UnidadesXBultoLbl";
             this.UnidadesXBultoLbl.Size = new System.Drawing.Size(98, 13);
             this.UnidadesXBultoLbl.TabIndex = 33;
@@ -265,8 +249,8 @@
             // 
             // Costo
             // 
-            this.Costo.Location = new System.Drawing.Point(132, 121);
-            this.Costo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Costo.Location = new System.Drawing.Point(132, 159);
+            this.Costo.Margin = new System.Windows.Forms.Padding(4);
             this.Costo.MaxLength = 12;
             this.Costo.Name = "Costo";
             this.Costo.Size = new System.Drawing.Size(100, 20);
@@ -277,7 +261,7 @@
             // CostoLabel
             // 
             this.CostoLabel.AutoSize = true;
-            this.CostoLabel.Location = new System.Drawing.Point(18, 123);
+            this.CostoLabel.Location = new System.Drawing.Point(18, 161);
             this.CostoLabel.Name = "CostoLabel";
             this.CostoLabel.Size = new System.Drawing.Size(37, 13);
             this.CostoLabel.TabIndex = 32;
@@ -295,7 +279,7 @@
             // CantidadLbl
             // 
             this.CantidadLbl.AutoSize = true;
-            this.CantidadLbl.Location = new System.Drawing.Point(18, 149);
+            this.CantidadLbl.Location = new System.Drawing.Point(18, 187);
             this.CantidadLbl.Name = "CantidadLbl";
             this.CantidadLbl.Size = new System.Drawing.Size(52, 13);
             this.CantidadLbl.TabIndex = 26;
@@ -305,7 +289,7 @@
             // 
             this.Nombre.Enabled = false;
             this.Nombre.Location = new System.Drawing.Point(135, 61);
-            this.Nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Nombre.Margin = new System.Windows.Forms.Padding(4);
             this.Nombre.MaxLength = 100;
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(192, 20);
@@ -314,8 +298,8 @@
             // 
             // Cantidad
             // 
-            this.Cantidad.Location = new System.Drawing.Point(132, 147);
-            this.Cantidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Cantidad.Location = new System.Drawing.Point(132, 185);
+            this.Cantidad.Margin = new System.Windows.Forms.Padding(4);
             this.Cantidad.MaxLength = 5;
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.Size = new System.Drawing.Size(100, 20);
@@ -350,7 +334,7 @@
             this.PrecioBulto,
             this.Cant,
             this.UtilidadProducto,
-            this.esBulto});
+            this.selectedRadio});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -362,7 +346,7 @@
             this.dgvPedido.EnableHeadersVisualStyles = false;
             this.dgvPedido.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvPedido.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvPedido.Location = new System.Drawing.Point(17, 347);
+            this.dgvPedido.Location = new System.Drawing.Point(17, 412);
             this.dgvPedido.MultiSelect = false;
             this.dgvPedido.Name = "dgvPedido";
             this.dgvPedido.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -376,16 +360,16 @@
             this.dgvPedido.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvPedido.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPedido.Size = new System.Drawing.Size(647, 266);
+            this.dgvPedido.Size = new System.Drawing.Size(742, 263);
             this.dgvPedido.TabIndex = 38;
-            this.dgvPedido.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellValueChanged);
+            this.dgvPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellClick);
             // 
             // agregarBtn
             // 
             this.agregarBtn.ActiveControl = null;
             this.agregarBtn.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.agregarBtn.Location = new System.Drawing.Point(17, 265);
-            this.agregarBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.agregarBtn.Location = new System.Drawing.Point(19, 313);
+            this.agregarBtn.Margin = new System.Windows.Forms.Padding(2);
             this.agregarBtn.Name = "agregarBtn";
             this.agregarBtn.Size = new System.Drawing.Size(154, 43);
             this.agregarBtn.TabIndex = 10;
@@ -402,7 +386,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(15, 319);
+            this.metroLabel2.Location = new System.Drawing.Point(17, 390);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(102, 19);
             this.metroLabel2.TabIndex = 40;
@@ -412,8 +396,8 @@
             // 
             this.eliminarBtn.ActiveControl = null;
             this.eliminarBtn.BackColor = System.Drawing.Color.DarkOrange;
-            this.eliminarBtn.Location = new System.Drawing.Point(15, 617);
-            this.eliminarBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.eliminarBtn.Location = new System.Drawing.Point(17, 682);
+            this.eliminarBtn.Margin = new System.Windows.Forms.Padding(2);
             this.eliminarBtn.Name = "eliminarBtn";
             this.eliminarBtn.Size = new System.Drawing.Size(156, 43);
             this.eliminarBtn.TabIndex = 14;
@@ -429,8 +413,8 @@
             // 
             // Utilidad
             // 
-            this.Utilidad.Location = new System.Drawing.Point(132, 175);
-            this.Utilidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Utilidad.Location = new System.Drawing.Point(132, 213);
+            this.Utilidad.Margin = new System.Windows.Forms.Padding(4);
             this.Utilidad.MaxLength = 12;
             this.Utilidad.Name = "Utilidad";
             this.Utilidad.Size = new System.Drawing.Size(100, 20);
@@ -441,7 +425,7 @@
             // UtilidadLabel
             // 
             this.UtilidadLabel.AutoSize = true;
-            this.UtilidadLabel.Location = new System.Drawing.Point(18, 178);
+            this.UtilidadLabel.Location = new System.Drawing.Point(18, 216);
             this.UtilidadLabel.Name = "UtilidadLabel";
             this.UtilidadLabel.Size = new System.Drawing.Size(45, 13);
             this.UtilidadLabel.TabIndex = 43;
@@ -450,7 +434,7 @@
             // PrecioLabel
             // 
             this.PrecioLabel.AutoSize = true;
-            this.PrecioLabel.Location = new System.Drawing.Point(18, 204);
+            this.PrecioLabel.Location = new System.Drawing.Point(18, 242);
             this.PrecioLabel.Name = "PrecioLabel";
             this.PrecioLabel.Size = new System.Drawing.Size(40, 13);
             this.PrecioLabel.TabIndex = 29;
@@ -458,8 +442,8 @@
             // 
             // Precio
             // 
-            this.Precio.Location = new System.Drawing.Point(132, 200);
-            this.Precio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Precio.Location = new System.Drawing.Point(132, 238);
+            this.Precio.Margin = new System.Windows.Forms.Padding(4);
             this.Precio.MaxLength = 10;
             this.Precio.Name = "Precio";
             this.Precio.Size = new System.Drawing.Size(100, 20);
@@ -470,7 +454,7 @@
             // 
             this.nuevoProducto.ActiveControl = null;
             this.nuevoProducto.BackColor = System.Drawing.Color.MediumBlue;
-            this.nuevoProducto.Location = new System.Drawing.Point(505, 265);
+            this.nuevoProducto.Location = new System.Drawing.Point(610, 317);
             this.nuevoProducto.Name = "nuevoProducto";
             this.nuevoProducto.Size = new System.Drawing.Size(149, 42);
             this.nuevoProducto.TabIndex = 11;
@@ -487,7 +471,7 @@
             // metroLink1
             // 
             this.metroLink1.FontSize = MetroFramework.MetroLinkSize.Medium;
-            this.metroLink1.Location = new System.Drawing.Point(176, 619);
+            this.metroLink1.Location = new System.Drawing.Point(242, 684);
             this.metroLink1.Name = "metroLink1";
             this.metroLink1.Size = new System.Drawing.Size(260, 41);
             this.metroLink1.TabIndex = 44;
@@ -499,12 +483,104 @@
             // 
             this.costoSumatoriaLabel.AutoSize = true;
             this.costoSumatoriaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.costoSumatoriaLabel.Location = new System.Drawing.Point(253, 272);
+            this.costoSumatoriaLabel.Location = new System.Drawing.Point(309, 332);
             this.costoSumatoriaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.costoSumatoriaLabel.Name = "costoSumatoriaLabel";
             this.costoSumatoriaLabel.Size = new System.Drawing.Size(139, 24);
             this.costoSumatoriaLabel.TabIndex = 45;
             this.costoSumatoriaLabel.Text = "costoSumatoria";
+            // 
+            // unidadesObligatorio
+            // 
+            this.unidadesObligatorio.AutoSize = true;
+            this.unidadesObligatorio.Location = new System.Drawing.Point(239, 273);
+            this.unidadesObligatorio.Name = "unidadesObligatorio";
+            this.unidadesObligatorio.Size = new System.Drawing.Size(11, 13);
+            this.unidadesObligatorio.TabIndex = 49;
+            this.unidadesObligatorio.Text = "*";
+            this.unidadesObligatorio.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(239, 217);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(11, 13);
+            this.label4.TabIndex = 48;
+            this.label4.Text = "*";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(239, 189);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(11, 13);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "*";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(239, 161);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(11, 13);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "*";
+            // 
+            // costoIndividual
+            // 
+            this.costoIndividual.Location = new System.Drawing.Point(132, 131);
+            this.costoIndividual.Margin = new System.Windows.Forms.Padding(4);
+            this.costoIndividual.MaxLength = 12;
+            this.costoIndividual.Name = "costoIndividual";
+            this.costoIndividual.Size = new System.Drawing.Size(100, 20);
+            this.costoIndividual.TabIndex = 50;
+            this.costoIndividual.Visible = false;
+            // 
+            // CostoIndividualLabel
+            // 
+            this.CostoIndividualLabel.AutoSize = true;
+            this.CostoIndividualLabel.Location = new System.Drawing.Point(18, 134);
+            this.CostoIndividualLabel.Name = "CostoIndividualLabel";
+            this.CostoIndividualLabel.Size = new System.Drawing.Size(84, 13);
+            this.CostoIndividualLabel.TabIndex = 51;
+            this.CostoIndividualLabel.Text = "Costo individual:";
+            this.CostoIndividualLabel.Visible = false;
+            // 
+            // bultoCuadradoRadio
+            // 
+            this.bultoCuadradoRadio.AutoSize = true;
+            this.bultoCuadradoRadio.Location = new System.Drawing.Point(209, 100);
+            this.bultoCuadradoRadio.Name = "bultoCuadradoRadio";
+            this.bultoCuadradoRadio.Size = new System.Drawing.Size(116, 15);
+            this.bultoCuadradoRadio.TabIndex = 54;
+            this.bultoCuadradoRadio.Text = "Bulto al cuadrado";
+            this.bultoCuadradoRadio.UseSelectable = true;
+            this.bultoCuadradoRadio.CheckedChanged += new System.EventHandler(this.bultoCuadradoRadio_CheckedChanged);
+            // 
+            // bultoxBotellaRadio
+            // 
+            this.bultoxBotellaRadio.AutoSize = true;
+            this.bultoxBotellaRadio.Location = new System.Drawing.Point(106, 100);
+            this.bultoxBotellaRadio.Margin = new System.Windows.Forms.Padding(2);
+            this.bultoxBotellaRadio.Name = "bultoxBotellaRadio";
+            this.bultoxBotellaRadio.Size = new System.Drawing.Size(98, 15);
+            this.bultoxBotellaRadio.TabIndex = 53;
+            this.bultoxBotellaRadio.Text = "Bulto x botella";
+            this.bultoxBotellaRadio.UseSelectable = true;
+            this.bultoxBotellaRadio.CheckedChanged += new System.EventHandler(this.bultoxBotellaRadio_CheckedChanged);
+            // 
+            // individualRadio
+            // 
+            this.individualRadio.AutoSize = true;
+            this.individualRadio.Location = new System.Drawing.Point(27, 100);
+            this.individualRadio.Margin = new System.Windows.Forms.Padding(2);
+            this.individualRadio.Name = "individualRadio";
+            this.individualRadio.Size = new System.Drawing.Size(75, 15);
+            this.individualRadio.TabIndex = 52;
+            this.individualRadio.Text = "Individual";
+            this.individualRadio.UseSelectable = true;
+            this.individualRadio.CheckedChanged += new System.EventHandler(this.individualRadio_CheckedChanged);
             // 
             // CantidadXBulto
             // 
@@ -523,11 +599,13 @@
             // 
             this.Cost.HeaderText = "Costo";
             this.Cost.Name = "Cost";
+            this.Cost.ReadOnly = true;
             // 
             // PriceUnitary
             // 
             this.PriceUnitary.HeaderText = "Precio Unitario";
             this.PriceUnitary.Name = "PriceUnitary";
+            this.PriceUnitary.ReadOnly = true;
             // 
             // PrecioBulto
             // 
@@ -539,24 +617,35 @@
             // 
             this.Cant.HeaderText = "Cantidad";
             this.Cant.Name = "Cant";
+            this.Cant.ReadOnly = true;
             // 
             // UtilidadProducto
             // 
             this.UtilidadProducto.HeaderText = "Utilidad";
             this.UtilidadProducto.Name = "UtilidadProducto";
+            this.UtilidadProducto.ReadOnly = true;
             // 
-            // esBulto
+            // selectedRadio
             // 
-            this.esBulto.HeaderText = "esBulto";
-            this.esBulto.Name = "esBulto";
-            this.esBulto.ReadOnly = true;
-            this.esBulto.Visible = false;
+            this.selectedRadio.HeaderText = "selectedRadio";
+            this.selectedRadio.Name = "selectedRadio";
+            this.selectedRadio.ReadOnly = true;
+            this.selectedRadio.Visible = false;
             // 
             // AddPedidoCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 666);
+            this.ClientSize = new System.Drawing.Size(777, 743);
+            this.Controls.Add(this.bultoCuadradoRadio);
+            this.Controls.Add(this.bultoxBotellaRadio);
+            this.Controls.Add(this.individualRadio);
+            this.Controls.Add(this.costoIndividual);
+            this.Controls.Add(this.CostoIndividualLabel);
+            this.Controls.Add(this.unidadesObligatorio);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.costoSumatoriaLabel);
             this.Controls.Add(this.metroLink1);
             this.Controls.Add(this.nuevoProducto);
@@ -572,8 +661,6 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.titleCancelar);
             this.Controls.Add(this.titleAceptar);
-            this.Controls.Add(this.bultoRadio);
-            this.Controls.Add(this.individualRadio);
             this.Controls.Add(this.UnidadesXBulto);
             this.Controls.Add(this.UnidadesXBultoLbl);
             this.Controls.Add(this.Costo);
@@ -584,7 +671,7 @@
             this.Controls.Add(this.Precio);
             this.Controls.Add(this.Nombre);
             this.Controls.Add(this.Cantidad);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "AddPedidoCompra";
             this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
@@ -605,8 +692,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTile titleCancelar;
         private MetroFramework.Controls.MetroTile titleAceptar;
-        private MetroFramework.Controls.MetroRadioButton bultoRadio;
-        private MetroFramework.Controls.MetroRadioButton individualRadio;
         private System.Windows.Forms.ComboBox UnidadesXBulto;
         private System.Windows.Forms.Label UnidadesXBultoLbl;
         private System.Windows.Forms.TextBox Costo;
@@ -626,6 +711,15 @@
         private MetroFramework.Controls.MetroTile nuevoProducto;
         private MetroFramework.Controls.MetroLink metroLink1;
         private System.Windows.Forms.Label costoSumatoriaLabel;
+        private System.Windows.Forms.Label unidadesObligatorio;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox costoIndividual;
+        private System.Windows.Forms.Label CostoIndividualLabel;
+        private MetroFramework.Controls.MetroRadioButton bultoCuadradoRadio;
+        private MetroFramework.Controls.MetroRadioButton bultoxBotellaRadio;
+        private MetroFramework.Controls.MetroRadioButton individualRadio;
         private System.Windows.Forms.DataGridViewTextBoxColumn CantidadXBulto;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreDGV;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cost;
@@ -633,6 +727,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioBulto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cant;
         private System.Windows.Forms.DataGridViewTextBoxColumn UtilidadProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn esBulto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn selectedRadio;
     }
 }

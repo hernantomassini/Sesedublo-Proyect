@@ -11,7 +11,6 @@ namespace Sesedublo_SLPL.Administrar_Stock
 {
     public partial class AddProducto : MetroForm
     {
-        accionesABM flag = accionesABM.Crear;
         int id_stock = -1;
         Validaciones val = new Validaciones();
         StringBuilder st = new StringBuilder();
@@ -41,17 +40,15 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         public void AgregarProducto()
         {
-            Clean();
-            flag = accionesABM.Crear;
-            this.getProductos();
+            getProductos();
             Nombre.Text = dgvProductos.Rows[0].Cells[1].Value.ToString();
+            Clean();
         }
 
         public void ModificarProducto(int id_stock)
         {
-            Clean();
-            flag = accionesABM.Modificar;
             this.id_stock = id_stock;
+            Clean();
             cargarDatos();
         }
 
@@ -83,8 +80,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
             if (bultoxBotellaRadio.Checked)
             {
                 precio = reader.GetDecimal(5);
-                utilidad = (precio - costo) / cantBotellasBulto;
-
+                utilidad = Decimal.Round((precio - costo) / cantBotellasBulto, 2);
             }
 
             if(bultoCuadradoRadio.Checked)
@@ -132,7 +128,6 @@ namespace Sesedublo_SLPL.Administrar_Stock
             Cantidad.Clear();
             UnidadesXBulto.SelectedIndex = 0;
             Precio.Clear();
-            Nombre.Clear();
             Costo.Clear();
             Utilidad.Clear();
         }
@@ -200,49 +195,35 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         private void buscadorProducto_TextChanged(object sender, EventArgs e)
         {
-            this.getProductos();
+            getProductos();
             if (dgvProductos.Rows.Count == 1)
             {
-                Nombre.Text = this.dgvProductos.CurrentRow.Cells[1].Value.ToString();
-                if (this.dgvProductos.CurrentRow.Cells[2].Value.ToString() != "N/E")
-                {
-                    Cantidad.Text = "0";
-                    if (this.dgvProductos.CurrentRow.Cells[2].Value.ToString() != "Individual")
-                    {
-                        UnidadesXBulto.Text = this.dgvProductos.CurrentRow.Cells[1].Value.ToString();
-                        bultoxBotellaRadio.Checked = true;
-                    }
-                    else
-                    {
-                        individualRadio.Checked = true;
-                    }
-
-                    decimal utilidad = Convert.ToDecimal(this.dgvProductos.CurrentRow.Cells[4].Value) - Convert.ToDecimal(this.dgvProductos.CurrentRow.Cells[3].Value);
-                    Costo.Text = this.dgvProductos.CurrentRow.Cells[3].Value.ToString();
-                    Utilidad.Text = Convert.ToString(utilidad);
-                    Precio.Text = this.dgvProductos.CurrentRow.Cells[4].Value.ToString();
-                }
+                cargarElementoDeGrilla();
             }
         }
 
         private void dgvProductos_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
+            cargarElementoDeGrilla();
+        }
 
-            decimal costo = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[3].Value) / 100;
-            int radioSelected = Convert.ToInt32(dgvProductos.CurrentRow.Cells[6].Value);
-
-            seleccionarRadioCorrespondiente(radioSelected);
-
+        private void cargarElementoDeGrilla()
+        {
             Nombre.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();
-            Costo.Text = Convert.ToString(costo);
-            Cantidad.Text = "0";
-
             string tipo = dgvProductos.CurrentRow.Cells[2].Value.ToString();
 
             if (tipo == "N/E")
             {
                 return;
             }
+
+            decimal costo = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[3].Value) / 100;
+            int radioSelected = Convert.ToInt32(dgvProductos.CurrentRow.Cells[6].Value);
+
+            seleccionarRadioCorrespondiente(radioSelected);
+
+            Costo.Text = Convert.ToString(costo);
+            Cantidad.Text = "0";
 
             decimal precio = 0;
             decimal utilidad = 0;
@@ -275,16 +256,6 @@ namespace Sesedublo_SLPL.Administrar_Stock
             }
 
             Utilidad.Text = Convert.ToString(utilidad);
-        }
-
-        public void Clean2()
-        {
-            Utilidad.Clear();
-            Cantidad.Clear();
-            Precio.Clear();
-            Costo.Clear();
-            UnidadesXBulto.SelectedIndex = 0;
-            individualRadio.Checked = true;
         }
 
         private void nuevoProducto_Click(object sender, EventArgs e)

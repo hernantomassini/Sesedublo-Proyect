@@ -276,14 +276,26 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         private void updatePrecio()
         {
-            if (Costo.Text == "" || Utilidad.Text == "" || Costo.Text == "," || Utilidad.Text == ",")
+            if(bultoxBotellaRadio.Checked)
+            { 
+                if (costoIndividual.Text == "" || costoIndividual.Text == ",")
+                    return;
+            }
+            else
+            { 
+                if (Costo.Text == ""  || Costo.Text == ",")
+                    return;
+            }
+
+            if (Utilidad.Text == "," || Utilidad.Text == "")
                 return;
 
-            decimal costo = Convert.ToDecimal(Costo.Text);
             decimal utilidad = Convert.ToDecimal(Utilidad.Text);
 
             if (individualRadio.Checked)
             {
+                decimal costo = Convert.ToDecimal(Costo.Text);
+
                 Precio.Text = Convert.ToString(costo + utilidad);
                 return;
             }
@@ -303,6 +315,8 @@ namespace Sesedublo_SLPL.Administrar_Stock
             }
             else
             {
+                decimal costo = Convert.ToDecimal(Costo.Text);
+
                 Precio.Text = Convert.ToString(costo + utilidad);
 
                 decimal costoUnitario = decimal.Round(costo / botellasPorBulto, 2);
@@ -401,5 +415,9 @@ namespace Sesedublo_SLPL.Administrar_Stock
             val.ingresarNumeroDecimal(e);
         }
 
+        private void costoIndividual_TextChanged(object sender, EventArgs e)
+        {
+            updatePrecio();
+        }
     }
 }

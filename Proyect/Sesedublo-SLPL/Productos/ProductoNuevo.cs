@@ -131,7 +131,18 @@ namespace Sesedublo_SLPL.Productos
 
         private void updatePrecio()
         {
-            if (Costo.Text == "" || Utilidad.Text == "" || Costo.Text == "," || Utilidad.Text == ",")
+            if (bultoxBotellaRadio.Checked)
+            {
+                if (costoIndividual.Text == "" || costoIndividual.Text == ",")
+                    return;
+            }
+            else
+            {
+                if (Costo.Text == "" || Costo.Text == ",")
+                    return;
+            }
+
+            if (Utilidad.Text == "," || Utilidad.Text == "")
                 return;
 
             decimal costo = Convert.ToDecimal(Costo.Text);
@@ -250,6 +261,11 @@ namespace Sesedublo_SLPL.Productos
         private void Precio_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             val.ingresarNumero(e);
+        }
+
+        private void costoIndividual_TextChanged(object sender, EventArgs e)
+        {
+            updatePrecio();
         }
     }
 }

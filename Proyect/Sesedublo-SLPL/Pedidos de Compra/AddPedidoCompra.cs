@@ -434,7 +434,18 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
         private void updatePrecio()
         {
-            if (Costo.Text == "" || Utilidad.Text == "" || Costo.Text == "," || Utilidad.Text == ",")
+            if (bultoxBotellaRadio.Checked)
+            {
+                if (costoIndividual.Text == "" || costoIndividual.Text == ",")
+                    return;
+            }
+            else
+            {
+                if (Costo.Text == "" || Costo.Text == ",")
+                    return;
+            }
+
+            if (Utilidad.Text == "," || Utilidad.Text == "")
                 return;
 
             decimal costo = Convert.ToDecimal(Costo.Text);
@@ -621,6 +632,11 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             pos1 = cantidadString.IndexOf(" ", pos2 + 1);
             pos2 = cantidadString.IndexOf(" ", pos1 + 1);
             return Convert.ToInt32(cantidadString.Substring(pos1, pos2 - pos1));
+        }
+
+        private void costoIndividual_TextChanged(object sender, EventArgs e)
+        {
+            updatePrecio();
         }
     }
 }

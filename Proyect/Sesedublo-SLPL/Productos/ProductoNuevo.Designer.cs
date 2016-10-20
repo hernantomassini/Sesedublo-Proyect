@@ -199,6 +199,7 @@
             this.costoIndividual.Size = new System.Drawing.Size(100, 20);
             this.costoIndividual.TabIndex = 54;
             this.costoIndividual.Visible = false;
+            this.costoIndividual.TextChanged += new System.EventHandler(this.costoIndividual_TextChanged);
             this.costoIndividual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Costo_KeyPress);
             // 
             // CostoIndividualLabel

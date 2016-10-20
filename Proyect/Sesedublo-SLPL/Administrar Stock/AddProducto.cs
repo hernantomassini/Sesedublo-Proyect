@@ -21,6 +21,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
             InitializeComponent();
             this.getProductos();
             dgvProductos.Columns[0].Visible = false;
+            dgvProductos.Columns[6].Visible = false;
             this.Closing += new CancelEventHandler(Avoid_Closing);
         }
 
@@ -70,8 +71,6 @@ namespace Sesedublo_SLPL.Administrar_Stock
             Cantidad.Text = Convert.ToString(reader.GetInt32(0));
             UnidadesXBulto.Text = Convert.ToString(cantBotellasBulto);
 
-            decimal precioUnitario = 0;
-            decimal precioBulto = 0;
             decimal precio = 0;
             decimal utilidad = 0;
 
@@ -81,25 +80,19 @@ namespace Sesedublo_SLPL.Administrar_Stock
                 utilidad = precio - costo;
             }
 
-            if(bultoxBotellaRadio.Checked)
+            if (bultoxBotellaRadio.Checked)
             {
                 precio = reader.GetDecimal(5);
-                utilidad = precio / cantBotellasBulto - costo;
+                utilidad = (precio - costo) / cantBotellasBulto;
 
-                decimal precioPorBotella = costo + utilidad;
-                costoIndividual.Text = Convert.ToString(precioPorBotella);
             }
 
             if(bultoCuadradoRadio.Checked)
             {
                 precio = reader.GetDecimal(5);
                 utilidad = precio - costo;
-
-                decimal precioPorBotella = decimal.Round(precio / cantBotellasBulto);
-                costoIndividual.Text = Convert.ToString(precioPorBotella);
             }
 
-            Precio.Text = Convert.ToString(precio);
             Utilidad.Text = Convert.ToString(utilidad);
 
             reader.Close();
@@ -109,7 +102,10 @@ namespace Sesedublo_SLPL.Administrar_Stock
         private void seleccionarRadioCorrespondiente(int radioSelected)
         {
             if (radioSelected == 1)
+            { 
                 individualRadio.Checked = true;
+                return;
+            }
 
             if (radioSelected == 2)
                 bultoxBotellaRadio.Checked = true;
@@ -131,6 +127,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
         {
             individualRadio.Checked = true;
 
+            costoIndividual.Clear();
             buscarProducto.Clear();
             Cantidad.Clear();
             UnidadesXBulto.SelectedIndex = 0;
@@ -147,7 +144,6 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         private void AgregarProductoBtn_Click(object sender, EventArgs e)
         {
-
             val.validarNoVacio(Nombre,st);
             val.validarNoVacio(Costo, st);
             val.validarNoVacio(Utilidad, st);
@@ -172,7 +168,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
                 decimal precioPorBulto = 0;
 
 
-                if (bultoxBotellaRadio.Checked)
+                if (!individualRadio.Checked)
                 {
                     cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
                     precioPorBulto = Convert.ToDecimal(Precio.Text);
@@ -232,7 +228,15 @@ namespace Sesedublo_SLPL.Administrar_Stock
         private void dgvProductos_CellClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
 
+            decimal costo = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[3].Value) / 100;
+            int radioSelected = Convert.ToInt32(dgvProductos.CurrentRow.Cells[6].Value);
+
+            seleccionarRadioCorrespondiente(radioSelected);
+
             Nombre.Text = dgvProductos.CurrentRow.Cells[1].Value.ToString();
+            Costo.Text = Convert.ToString(costo);
+            Cantidad.Text = "0";
+
             string tipo = dgvProductos.CurrentRow.Cells[2].Value.ToString();
 
             if (tipo == "N/E")
@@ -240,24 +244,35 @@ namespace Sesedublo_SLPL.Administrar_Stock
                 return;
             }
 
-            decimal costo = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[3].Value) / 100;
-            decimal precio = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[4].Value) / 100;
+            decimal precio = 0;
+            decimal utilidad = 0;
 
-            individualRadio.Checked = true;
-
-            if (tipo != "Individual")
+            if (individualRadio.Checked)
             {
-                bultoxBotellaRadio.Checked = true;
-                UnidadesXBulto.Text = dgvProductos.CurrentRow.Cells[2].Value.ToString();
-
-                precio = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[5].Value);
+                precio = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[4].Value) / 100;
+                utilidad = precio - costo;
             }
 
-            Cantidad.Text = "0";
-            Costo.Text = Convert.ToString(costo);
-            Precio.Text = Convert.ToString(precio);
+            if (bultoxBotellaRadio.Checked)
+            {
+                int cantBotellasBulto = Convert.ToInt32(dgvProductos.CurrentRow.Cells[2].Value);
 
-            decimal utilidad = precio - costo;
+                precio = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[5].Value) / 100;
+                utilidad = (precio - costo) / cantBotellasBulto;
+
+                UnidadesXBulto.Text = cantBotellasBulto.ToString();
+
+            }
+
+            if (bultoCuadradoRadio.Checked)
+            {
+                int cantBotellasBulto = Convert.ToInt32(dgvProductos.CurrentRow.Cells[2].Value);
+
+                precio = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[5].Value) / 100;
+                utilidad = precio - costo;
+
+                UnidadesXBulto.Text = cantBotellasBulto.ToString();
+            }
 
             Utilidad.Text = Convert.ToString(utilidad);
         }
@@ -309,15 +324,17 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
             if(bultoxBotellaRadio.Checked)
             {
-                costoIndividual.Text = Convert.ToString(costo + utilidad);
                 Precio.Text = Convert.ToString(costo + utilidad * botellasPorBulto);
+
+                decimal costoUnitario = decimal.Round(costo / botellasPorBulto, 2);
+                costoIndividual.Text = Convert.ToString(costoUnitario);
             }
             else
             {
-                decimal costoUnitario = decimal.Round((costo + utilidad) / botellasPorBulto, 2);
-
-                costoIndividual.Text = Convert.ToString(costoUnitario);
                 Precio.Text = Convert.ToString(costo + utilidad);
+
+                decimal costoUnitario = decimal.Round(costo / botellasPorBulto, 2);
+                costoIndividual.Text = Convert.ToString(costoUnitario);
             }
         }
 

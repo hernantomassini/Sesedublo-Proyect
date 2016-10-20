@@ -96,7 +96,7 @@
             this.dgvFacturas.Size = new System.Drawing.Size(655, 323);
             this.dgvFacturas.TabIndex = 0;
             this.dgvFacturas.UseCustomBackColor = true;
-            this.dgvFacturas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturas_CellClick);
+            this.dgvFacturas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturas_CellDoubleClick);
             // 
             // direccion
             // 

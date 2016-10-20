@@ -24,7 +24,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         {
             InitializeComponent();
             this.getProductos();
-            Nombre.Text = dgvProductos.Rows[0].Cells[0].Value.ToString();
+            Nombre.Text = dgvProductos.Rows[0].Cells[1].Value.ToString();
             dgvProductos.Columns[0].Visible = false;
             dgvProductos.Columns[6].Visible = false;
             this.Closing += new CancelEventHandler(Avoid_Closing);
@@ -418,12 +418,13 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         public void modificarPedido(int id_pedidoLea)
         {
             this.id_pedidoLea = id_pedidoLea;
-
+            Nombre.Text = this.dgvProductos.Rows[0].Cells[1].Value.ToString();
             Clean();
+
             flag = accionesABM.Modificar;
-            cargarDatos();
             Text = "Modificar pedido de compra";
 
+            cargarDatos();
             updateLabel();
         }
 
@@ -591,6 +592,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         {
             DataGridViewRow filaDgv = dgvPedido.CurrentRow;
 
+            string nombre = filaDgv.Cells[1].Value.ToString();
             decimal costo = Convert.ToDecimal(filaDgv.Cells[2].Value);
             decimal utilidad = Convert.ToDecimal(filaDgv.Cells[6].Value);
             int selectedRadio = Convert.ToInt32(filaDgv.Cells[7].Value);
@@ -604,6 +606,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 UnidadesXBulto.Text = Convert.ToString(cantBotellasBulto);
             }
 
+            Nombre.Text = nombre;
             Costo.Text = Convert.ToString(costo);
             Cantidad.Text = Convert.ToString(cantidad);
             Utilidad.Text = Convert.ToString(utilidad);

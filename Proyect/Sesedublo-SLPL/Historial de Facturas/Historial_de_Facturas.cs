@@ -134,8 +134,7 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             this.getData();
         }
 
-
-        private void dgvFacturas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvFacturas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int idFactura = Convert.ToInt32(dgvFacturas.SelectedCells[0].Value);
             int idCliente = Convert.ToInt32(dgvFacturas.SelectedCells[1].Value);

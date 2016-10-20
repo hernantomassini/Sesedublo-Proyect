@@ -26,8 +26,8 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         public void cargarDatos(int id_pedido)
         {
             this.id_pedido = id_pedido;
-            this.cantidadAPagar.Enabled = false;
-            this.pagadoCheck.Checked = false;
+            cantidadAPagar.Enabled = false;
+            pagadoCheck.Checked = false;
 
             MySqlDataReader reader = Conexion.executeProcedureWithReader("cargarDatosActualizarPago", Conexion.generarArgumentos("_id_pedido"), id_pedido);
             reader.Read();
@@ -51,7 +51,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 pagadoTot = 1;
             }
 
-            if (Convert.ToDecimal(cantidadPagada.Text) >= Convert.ToDecimal(cantidadAPagar.Text))
+            if (Convert.ToDecimal(cantidadPagada.Text) > Convert.ToDecimal(cantidadAPagar.Text))
             {
                 Funciones.imprimirMensajeDeError("La cantidad que paga el cliente debe ser menor a la que debe", this);
                 return;
@@ -79,6 +79,20 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         private void cantidadPagada_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             val.ingresarNumeroDecimal(e);
+        }
+
+        private void pagadoCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if(pagadoCheck.Checked)
+            {
+                cantidadPagada.Text = cantidadAPagar.Text;
+                cantidadPagada.Enabled = false;
+            }
+            else
+            {
+                cantidadPagada.Enabled = true;
+                cargarDatos(id_pedido);
+            }
         }
     }
 }

@@ -1101,8 +1101,3 @@ END //
 DELIMITER ;
 
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'admin';
-
-SELECT 
-    *
-FROM
-    productos;

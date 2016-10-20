@@ -105,7 +105,7 @@
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.Location = new System.Drawing.Point(55, 85);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(116, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(115, 19);
             this.metroLabel1.TabIndex = 2;
             this.metroLabel1.Text = "Cantidad a pagar:";
             // 
@@ -164,6 +164,7 @@
             this.pagadoCheck.TabIndex = 13;
             this.pagadoCheck.Text = "Es el pago completo?";
             this.pagadoCheck.UseSelectable = true;
+            this.pagadoCheck.CheckedChanged += new System.EventHandler(this.pagadoCheck_CheckedChanged);
             // 
             // ActualizarPago
             // 

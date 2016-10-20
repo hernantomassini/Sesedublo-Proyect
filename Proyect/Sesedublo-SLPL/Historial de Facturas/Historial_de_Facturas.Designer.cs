@@ -78,8 +78,7 @@
             this.dgvFacturas.EnableHeadersVisualStyles = false;
             this.dgvFacturas.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvFacturas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvFacturas.Location = new System.Drawing.Point(32, 261);
-            this.dgvFacturas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvFacturas.Location = new System.Drawing.Point(24, 212);
             this.dgvFacturas.MultiSelect = false;
             this.dgvFacturas.Name = "dgvFacturas";
             this.dgvFacturas.ReadOnly = true;
@@ -94,10 +93,10 @@
             this.dgvFacturas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvFacturas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFacturas.Size = new System.Drawing.Size(873, 398);
+            this.dgvFacturas.Size = new System.Drawing.Size(655, 323);
             this.dgvFacturas.TabIndex = 0;
             this.dgvFacturas.UseCustomBackColor = true;
-            this.dgvFacturas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturas_CellDoubleClick);
+            this.dgvFacturas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturas_CellClick);
             // 
             // direccion
             // 
@@ -106,10 +105,9 @@
             // 
             // 
             this.direccion.CustomButton.Image = null;
-            this.direccion.CustomButton.Location = new System.Drawing.Point(159, 2);
-            this.direccion.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.direccion.CustomButton.Location = new System.Drawing.Point(117, 1);
             this.direccion.CustomButton.Name = "";
-            this.direccion.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.direccion.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.direccion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.direccion.CustomButton.TabIndex = 1;
             this.direccion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -118,8 +116,7 @@
             this.direccion.DisplayIcon = true;
             this.direccion.Icon = ((System.Drawing.Image)(resources.GetObject("direccion.Icon")));
             this.direccion.Lines = new string[0];
-            this.direccion.Location = new System.Drawing.Point(176, 201);
-            this.direccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.direccion.Location = new System.Drawing.Point(132, 163);
             this.direccion.MaxLength = 60;
             this.direccion.Name = "direccion";
             this.direccion.PasswordChar = '\0';
@@ -129,7 +126,7 @@
             this.direccion.SelectionLength = 0;
             this.direccion.SelectionStart = 0;
             this.direccion.ShortcutsEnabled = true;
-            this.direccion.Size = new System.Drawing.Size(185, 28);
+            this.direccion.Size = new System.Drawing.Size(139, 23);
             this.direccion.TabIndex = 4;
             this.direccion.UseCustomBackColor = true;
             this.direccion.UseCustomForeColor = true;
@@ -144,10 +141,9 @@
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel3.ForeColor = System.Drawing.Color.White;
-            this.metroLabel3.Location = new System.Drawing.Point(35, 203);
-            this.metroLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel3.Location = new System.Drawing.Point(26, 165);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(75, 20);
+            this.metroLabel3.Size = new System.Drawing.Size(68, 19);
             this.metroLabel3.TabIndex = 15;
             this.metroLabel3.Text = "Dirección:";
             this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -160,10 +156,9 @@
             // 
             // 
             this.apellido.CustomButton.Image = null;
-            this.apellido.CustomButton.Location = new System.Drawing.Point(159, 2);
-            this.apellido.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.apellido.CustomButton.Location = new System.Drawing.Point(117, 1);
             this.apellido.CustomButton.Name = "";
-            this.apellido.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.apellido.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.apellido.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.apellido.CustomButton.TabIndex = 1;
             this.apellido.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -172,8 +167,7 @@
             this.apellido.DisplayIcon = true;
             this.apellido.Icon = ((System.Drawing.Image)(resources.GetObject("apellido.Icon")));
             this.apellido.Lines = new string[0];
-            this.apellido.Location = new System.Drawing.Point(175, 118);
-            this.apellido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.apellido.Location = new System.Drawing.Point(131, 96);
             this.apellido.MaxLength = 50;
             this.apellido.Name = "apellido";
             this.apellido.PasswordChar = '\0';
@@ -183,7 +177,7 @@
             this.apellido.SelectionLength = 0;
             this.apellido.SelectionStart = 0;
             this.apellido.ShortcutsEnabled = true;
-            this.apellido.Size = new System.Drawing.Size(185, 28);
+            this.apellido.Size = new System.Drawing.Size(139, 23);
             this.apellido.TabIndex = 2;
             this.apellido.UseCustomBackColor = true;
             this.apellido.UseCustomForeColor = true;
@@ -201,10 +195,9 @@
             // 
             // 
             this.nombre.CustomButton.Image = null;
-            this.nombre.CustomButton.Location = new System.Drawing.Point(159, 2);
-            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nombre.CustomButton.Location = new System.Drawing.Point(117, 1);
             this.nombre.CustomButton.Name = "";
-            this.nombre.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.nombre.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.nombre.CustomButton.TabIndex = 1;
             this.nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -213,8 +206,7 @@
             this.nombre.DisplayIcon = true;
             this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
             this.nombre.Lines = new string[0];
-            this.nombre.Location = new System.Drawing.Point(176, 78);
-            this.nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nombre.Location = new System.Drawing.Point(132, 63);
             this.nombre.MaxLength = 60;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
@@ -224,7 +216,7 @@
             this.nombre.SelectionLength = 0;
             this.nombre.SelectionStart = 0;
             this.nombre.ShortcutsEnabled = true;
-            this.nombre.Size = new System.Drawing.Size(185, 28);
+            this.nombre.Size = new System.Drawing.Size(139, 23);
             this.nombre.TabIndex = 1;
             this.nombre.UseCustomBackColor = true;
             this.nombre.UseCustomForeColor = true;
@@ -240,10 +232,9 @@
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel2.ForeColor = System.Drawing.Color.White;
-            this.metroLabel2.Location = new System.Drawing.Point(33, 123);
-            this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel2.Location = new System.Drawing.Point(25, 100);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(69, 20);
+            this.metroLabel2.Size = new System.Drawing.Size(61, 19);
             this.metroLabel2.TabIndex = 12;
             this.metroLabel2.Text = "Apellido:";
             this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -254,10 +245,9 @@
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel1.ForeColor = System.Drawing.Color.White;
-            this.metroLabel1.Location = new System.Drawing.Point(35, 84);
-            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel1.Location = new System.Drawing.Point(26, 68);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(67, 20);
+            this.metroLabel1.Size = new System.Drawing.Size(62, 19);
             this.metroLabel1.Style = MetroFramework.MetroColorStyle.Black;
             this.metroLabel1.TabIndex = 11;
             this.metroLabel1.Text = "Nombre:";
@@ -271,10 +261,9 @@
             // 
             // 
             this.descripcion.CustomButton.Image = null;
-            this.descripcion.CustomButton.Location = new System.Drawing.Point(159, 2);
-            this.descripcion.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.descripcion.CustomButton.Location = new System.Drawing.Point(117, 1);
             this.descripcion.CustomButton.Name = "";
-            this.descripcion.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.descripcion.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.descripcion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.descripcion.CustomButton.TabIndex = 1;
             this.descripcion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -283,8 +272,7 @@
             this.descripcion.DisplayIcon = true;
             this.descripcion.Icon = ((System.Drawing.Image)(resources.GetObject("descripcion.Icon")));
             this.descripcion.Lines = new string[0];
-            this.descripcion.Location = new System.Drawing.Point(176, 160);
-            this.descripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.descripcion.Location = new System.Drawing.Point(132, 130);
             this.descripcion.MaxLength = 60;
             this.descripcion.Name = "descripcion";
             this.descripcion.PasswordChar = '\0';
@@ -294,7 +282,7 @@
             this.descripcion.SelectionLength = 0;
             this.descripcion.SelectionStart = 0;
             this.descripcion.ShortcutsEnabled = true;
-            this.descripcion.Size = new System.Drawing.Size(185, 28);
+            this.descripcion.Size = new System.Drawing.Size(139, 23);
             this.descripcion.TabIndex = 3;
             this.descripcion.UseCustomBackColor = true;
             this.descripcion.UseCustomForeColor = true;
@@ -309,10 +297,9 @@
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.metroLabel6.Location = new System.Drawing.Point(32, 164);
-            this.metroLabel6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel6.Location = new System.Drawing.Point(24, 133);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(90, 20);
+            this.metroLabel6.Size = new System.Drawing.Size(82, 19);
             this.metroLabel6.TabIndex = 17;
             this.metroLabel6.Text = "Descripción:";
             this.metroLabel6.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -322,10 +309,9 @@
             // 
             this.metroTile1.ActiveControl = null;
             this.metroTile1.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.metroTile1.Location = new System.Drawing.Point(32, 678);
-            this.metroTile1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTile1.Location = new System.Drawing.Point(24, 551);
             this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(105, 54);
+            this.metroTile1.Size = new System.Drawing.Size(79, 44);
             this.metroTile1.TabIndex = 8;
             this.metroTile1.Text = "Atrás";
             this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -341,10 +327,9 @@
             // 
             this.RegistroTile.ActiveControl = null;
             this.RegistroTile.BackColor = System.Drawing.Color.SkyBlue;
-            this.RegistroTile.Location = new System.Drawing.Point(431, 678);
-            this.RegistroTile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RegistroTile.Location = new System.Drawing.Point(323, 551);
             this.RegistroTile.Name = "RegistroTile";
-            this.RegistroTile.Size = new System.Drawing.Size(224, 54);
+            this.RegistroTile.Size = new System.Drawing.Size(168, 44);
             this.RegistroTile.TabIndex = 7;
             this.RegistroTile.Text = "Ver historial de NC";
             this.RegistroTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -360,10 +345,9 @@
             // 
             this.AddNotaCreditoTile.ActiveControl = null;
             this.AddNotaCreditoTile.BackColor = System.Drawing.Color.Teal;
-            this.AddNotaCreditoTile.Location = new System.Drawing.Point(663, 678);
-            this.AddNotaCreditoTile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddNotaCreditoTile.Location = new System.Drawing.Point(497, 551);
             this.AddNotaCreditoTile.Name = "AddNotaCreditoTile";
-            this.AddNotaCreditoTile.Size = new System.Drawing.Size(244, 54);
+            this.AddNotaCreditoTile.Size = new System.Drawing.Size(183, 44);
             this.AddNotaCreditoTile.TabIndex = 6;
             this.AddNotaCreditoTile.Text = "Agregar Nota de Cred.";
             this.AddNotaCreditoTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -378,10 +362,10 @@
             // Historial_de_Facturas
             // 
             this.ApplyImageInvert = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(936, 758);
+            this.ClientSize = new System.Drawing.Size(702, 616);
             this.Controls.Add(this.AddNotaCreditoTile);
             this.Controls.Add(this.RegistroTile);
             this.Controls.Add(this.dgvFacturas);
@@ -394,10 +378,8 @@
             this.Controls.Add(this.nombre);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "Historial_de_Facturas";
-            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Facturas";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.TransparencyKey = System.Drawing.Color.LightSkyBlue;

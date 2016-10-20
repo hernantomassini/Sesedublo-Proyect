@@ -159,14 +159,14 @@ namespace Sesedublo_SLPL.Administrar_Stock
                 decimal costo = Convert.ToDecimal(Costo.Text);
                 decimal utilidad = Convert.ToDecimal(Utilidad.Text);
 
-                decimal precioPorUnidad = costo + utilidad;
+                decimal precioPorUnidad = Convert.ToDecimal(Precio.Text);
                 decimal precioPorBulto = 0;
 
 
                 if (!individualRadio.Checked)
                 {
                     cantXBulto = Convert.ToInt32(UnidadesXBulto.Text);
-                    precioPorBulto = Convert.ToDecimal(Precio.Text);
+                    precioPorBulto = precioPorUnidad;
                     precioPorUnidad = decimal.Round(precioPorBulto / cantXBulto, 2);
                 }
 

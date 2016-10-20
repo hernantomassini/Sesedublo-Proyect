@@ -107,7 +107,13 @@ namespace Sesedublo_SLPL
          private void printButton_Click(System.Object sender,
          System.EventArgs e)
          {
-
+             printButton.Visible = false;
+             CaptureScreen();
+             PrintPreviewDialog printPreviewDialog1;
+             printPreviewDialog1 = new PrintPreviewDialog();
+             printPreviewDialog1.Document = printDocument1;
+             printPreviewDialog1.Show();
+             printButton.Visible = true;
          }
     }
 }

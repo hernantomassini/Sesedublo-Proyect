@@ -185,12 +185,12 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
         private void Cantidad_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
-            val.ingresarNumeroConRaya(e);
+            val.ingresarNumeroDecimal(e);
         }
 
         private void Precio_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
-            val.ingresarNumero(e);
+            val.ingresarNumeroDecimal(e);
         }
 
         private void buscadorProducto_TextChanged(object sender, EventArgs e)
@@ -383,6 +383,11 @@ namespace Sesedublo_SLPL.Administrar_Stock
             else
 
             return 3;
+        }
+
+        private void costoIndividual_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            val.ingresarNumeroDecimal(e);
         }
 
     }

@@ -49,7 +49,7 @@
             this.metroTile1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.metroTile1.ForeColor = System.Drawing.Color.White;
             this.metroTile1.Location = new System.Drawing.Point(13, 62);
-            this.metroTile1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTile1.Margin = new System.Windows.Forms.Padding(2);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(257, 86);
             this.metroTile1.TabIndex = 6;
@@ -69,7 +69,7 @@
             this.metroTile2.BackColor = System.Drawing.Color.Orange;
             this.metroTile2.ForeColor = System.Drawing.Color.White;
             this.metroTile2.Location = new System.Drawing.Point(122, 152);
-            this.metroTile2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTile2.Margin = new System.Windows.Forms.Padding(2);
             this.metroTile2.Name = "metroTile2";
             this.metroTile2.Size = new System.Drawing.Size(287, 80);
             this.metroTile2.TabIndex = 7;
@@ -89,7 +89,7 @@
             this.metroTile3.BackColor = System.Drawing.Color.Teal;
             this.metroTile3.ForeColor = System.Drawing.Color.White;
             this.metroTile3.Location = new System.Drawing.Point(13, 152);
-            this.metroTile3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTile3.Margin = new System.Windows.Forms.Padding(2);
             this.metroTile3.Name = "metroTile3";
             this.metroTile3.Size = new System.Drawing.Size(105, 80);
             this.metroTile3.TabIndex = 8;
@@ -108,7 +108,7 @@
             this.metroTile4.BackColor = System.Drawing.Color.Crimson;
             this.metroTile4.ForeColor = System.Drawing.Color.White;
             this.metroTile4.Location = new System.Drawing.Point(274, 62);
-            this.metroTile4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTile4.Margin = new System.Windows.Forms.Padding(2);
             this.metroTile4.Name = "metroTile4";
             this.metroTile4.Size = new System.Drawing.Size(135, 86);
             this.metroTile4.TabIndex = 9;
@@ -128,13 +128,13 @@
             this.metroTile5.BackColor = System.Drawing.Color.Brown;
             this.metroTile5.ForeColor = System.Drawing.Color.Black;
             this.metroTile5.Location = new System.Drawing.Point(13, 236);
-            this.metroTile5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTile5.Margin = new System.Windows.Forms.Padding(2);
             this.metroTile5.Name = "metroTile5";
             this.metroTile5.Size = new System.Drawing.Size(105, 76);
             this.metroTile5.TabIndex = 10;
             this.metroTile5.Text = "Caja";
             this.metroTile5.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile5.TileImage")));
-            this.metroTile5.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile5.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.metroTile5.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.metroTile5.UseCustomForeColor = true;
             this.metroTile5.UseSelectable = true;
@@ -147,7 +147,7 @@
             this.metroTile6.BackColor = System.Drawing.Color.MidnightBlue;
             this.metroTile6.ForeColor = System.Drawing.Color.White;
             this.metroTile6.Location = new System.Drawing.Point(122, 236);
-            this.metroTile6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTile6.Margin = new System.Windows.Forms.Padding(2);
             this.metroTile6.Name = "metroTile6";
             this.metroTile6.Size = new System.Drawing.Size(287, 76);
             this.metroTile6.TabIndex = 11;
@@ -193,7 +193,7 @@
             this.metroTile7.BackColor = System.Drawing.Color.Teal;
             this.metroTile7.ForeColor = System.Drawing.Color.White;
             this.metroTile7.Location = new System.Drawing.Point(414, 215);
-            this.metroTile7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTile7.Margin = new System.Windows.Forms.Padding(2);
             this.metroTile7.Name = "metroTile7";
             this.metroTile7.Size = new System.Drawing.Size(153, 97);
             this.metroTile7.TabIndex = 14;
@@ -213,7 +213,7 @@
             this.metroTile8.BackColor = System.Drawing.Color.Teal;
             this.metroTile8.ForeColor = System.Drawing.Color.White;
             this.metroTile8.Location = new System.Drawing.Point(571, 215);
-            this.metroTile8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTile8.Margin = new System.Windows.Forms.Padding(2);
             this.metroTile8.Name = "metroTile8";
             this.metroTile8.Size = new System.Drawing.Size(200, 97);
             this.metroTile8.TabIndex = 15;

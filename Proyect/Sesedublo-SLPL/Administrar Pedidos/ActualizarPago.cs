@@ -80,19 +80,5 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
             val.ingresarNumeroDecimal(e);
         }
-
-        private void pagadoCheck_CheckedChanged(object sender, EventArgs e)
-        {
-            if(pagadoCheck.Checked)
-            {
-                cantidadPagada.Text = cantidadAPagar.Text;
-                cantidadPagada.Enabled = false;
-            }
-            else
-            {
-                cantidadPagada.Enabled = true;
-                cargarDatos(id_pedido);
-            }
-        }
     }
 }

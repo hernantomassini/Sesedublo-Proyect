@@ -111,6 +111,7 @@
             // 
             // UnidadesXBulto
             // 
+            this.UnidadesXBulto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.UnidadesXBulto.FormattingEnabled = true;
             this.UnidadesXBulto.Items.AddRange(new object[] {
             "6",

@@ -164,7 +164,6 @@
             this.pagadoCheck.TabIndex = 13;
             this.pagadoCheck.Text = "Es el pago completo?";
             this.pagadoCheck.UseSelectable = true;
-            this.pagadoCheck.CheckedChanged += new System.EventHandler(this.pagadoCheck_CheckedChanged);
             // 
             // ActualizarPago
             // 

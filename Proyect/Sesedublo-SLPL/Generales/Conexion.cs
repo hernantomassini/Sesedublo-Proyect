@@ -13,7 +13,6 @@ namespace Sesedublo_SLPL
         public static void executeProcedure(string procedure, List<string> args, params object[] values)
         {
             connection.Open();
-
             MySqlDataReader dr;
             MySqlCommand cm = new MySqlCommand(procedure, connection);
             cm.CommandTimeout = 2000;

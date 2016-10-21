@@ -1044,7 +1044,7 @@ END //
 CREATE PROCEDURE cargarDatosActualizarPago (IN _id_pedido INT)
 BEGIN
 
-	SELECT precio, pagadoHastaElMomento FROM Pedidos WHERE id_pedido = _id_pedido;
+	SELECT (precio - pagadoHastaElMomento),0 FROM Pedidos WHERE id_pedido = _id_pedido;
 
 END //
 

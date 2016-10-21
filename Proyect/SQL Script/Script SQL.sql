@@ -797,7 +797,7 @@ BEGIN
 	SELECT fecha AS Fecha, operacion AS Operación, descripcion AS Descripción FROM Operaciones
 	WHERE ((descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
 	AND ((operacion LIKE CONCAT("%", _operacion, "%") COLLATE utf8_general_ci ) OR (_operacion IS NULL OR _operacion = ""))
-    ORDER BY fecha;
+    ORDER BY fecha DESC;
 END //
 
 CREATE PROCEDURE obtenerPedidos (_nombre VARCHAR(50)) 
@@ -1051,19 +1051,18 @@ END //
 CREATE PROCEDURE actualizarPago (IN _id_pedido INT, IN _total_a_pagar DECIMAL(10,2), IN _cantidad_paga DECIMAL(10,2), _pagadoTot INT)
 BEGIN
 
-SET @_cantidadPagadaVieja = (SELECT pagadoHastaElMomento FROM Pedidos WHERE id_pedido = _id_pedido);
-SET @_efectivoNuevo = (_cantidad_paga - @_cantidadPagadaVieja);
-
 	IF(_pagadoTot = 1)
     THEN
-		UPDATE Pedidos SET precio = _total_a_pagar, pagadoHastaElMomento = _total_a_pagar WHERE id_pedido = _id_pedido;
+		UPDATE Pedidos SET pagadoHastaElMomento = _total_a_pagar WHERE id_pedido = _id_pedido;
     ELSE
-		UPDATE Pedidos SET precio = _total_a_pagar, pagadoHastaElMomento = _cantidad_paga WHERE id_pedido = _id_pedido;
+		UPDATE Pedidos SET pagadoHastaElMomento = _cantidad_paga WHERE id_pedido = _id_pedido;
     END IF;
-    IF(@_efectivoNuevo > 0)
+    
+    IF(_cantidad_paga != 0)
 	THEN
-		CALL agregarEfectivo(@_efectivoNuevo, CONCAT("Un cliente pagó ", @_efectivoNuevo, " $ que debía de un pedido en la fecha ", CURDATE(), "."));
+		CALL agregarEfectivo(_cantidad_paga, CONCAT("Un cliente pagó ", _cantidad_paga, " $ que debía de un pedido en la fecha ", CURDATE(), "."));
 	END IF;
+    
 END //
 
 CREATE PROCEDURE agregarNotaDeCredito (IN _id_factura INT, _cantidad DECIMAL(10 , 2), _motivo VARCHAR(50))

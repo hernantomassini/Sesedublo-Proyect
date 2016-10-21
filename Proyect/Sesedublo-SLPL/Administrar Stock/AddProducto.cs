@@ -187,6 +187,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
                 Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto", "_radioSelected"), Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto, radioSelected);
                 Conexion.closeConnection();
+                Manejador_Formularios.ABM_Stock.cargarDGVMetro();
                 Close();
             }
         }

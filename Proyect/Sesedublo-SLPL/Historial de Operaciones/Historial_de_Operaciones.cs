@@ -1,11 +1,15 @@
-﻿using MetroFramework.Forms;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using MetroFramework.Forms;
 using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +19,8 @@ namespace Sesedublo_SLPL.Historial_de_Operacionesns
 {
     public partial class Historial_de_Operaciones : MetroForm
     {
+        Funciones fun = new Funciones();
+
         public Historial_de_Operaciones()
         {
             InitializeComponent();
@@ -63,6 +69,26 @@ namespace Sesedublo_SLPL.Historial_de_Operacionesns
         private void operacion_KeyPress(object sender, KeyPressEventArgs e)
         {
             val.ingresarNombre(e);
+        }
+
+        private void metroTile3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Document doc = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
+
+                string filename = this.Text + ".pdf";
+                FileStream file = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
+                PdfWriter.GetInstance(doc, file);
+                doc.Open();
+                fun.GenerarDocumento(doc, this.dgvOperaciones);
+                doc.Close();
+                Process.Start(filename);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

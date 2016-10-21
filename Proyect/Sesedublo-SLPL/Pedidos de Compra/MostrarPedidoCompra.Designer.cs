@@ -44,6 +44,7 @@
             this.UtilidadProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.selectedRadio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CerrarTile = new MetroFramework.Controls.MetroTile();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +64,7 @@
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.Location = new System.Drawing.Point(18, 118);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(102, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(101, 19);
             this.metroLabel2.TabIndex = 47;
             this.metroLabel2.Text = "Lista del Pedido";
             // 
@@ -193,11 +194,31 @@
             this.CerrarTile.UseTileImage = true;
             this.CerrarTile.Click += new System.EventHandler(this.CerrarTile_Click);
             // 
+            // metroTile1
+            // 
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.BackColor = System.Drawing.Color.Silver;
+            this.metroTile1.Location = new System.Drawing.Point(633, 90);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(127, 44);
+            this.metroTile1.TabIndex = 50;
+            this.metroTile1.Text = "PDF";
+            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile1.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile1.TileImage")));
+            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.metroTile1.UseCustomBackColor = true;
+            this.metroTile1.UseCustomForeColor = true;
+            this.metroTile1.UseSelectable = true;
+            this.metroTile1.UseTileImage = true;
+            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
+            // 
             // MostrarPedidoCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(790, 469);
+            this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.CerrarTile);
             this.Controls.Add(this.costoSumatoriaLabel);
             this.Controls.Add(this.metroLabel2);
@@ -225,5 +246,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UtilidadProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn selectedRadio;
         private MetroFramework.Controls.MetroTile CerrarTile;
+        private MetroFramework.Controls.MetroTile metroTile1;
     }
 }

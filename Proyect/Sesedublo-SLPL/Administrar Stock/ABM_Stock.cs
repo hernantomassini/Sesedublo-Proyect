@@ -1,14 +1,20 @@
-﻿using MetroFramework.Forms;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using MetroFramework.Forms;
 using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
 using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Administrar_Productos
 {
     public partial class ABM_Stock : MetroForm
     {
+        Funciones fun = new Funciones();
         Validaciones val = new Validaciones();
         public ABM_Stock()
         {
@@ -119,6 +125,39 @@ namespace Sesedublo_SLPL.Administrar_Productos
             Manejador_Formularios.AddProducto.ModificarProducto(id_stock);
             Manejador_Formularios.AddProducto.Show();
         }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Document doc = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
+
+                string filename = this.Text + ".pdf";
+                FileStream file = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
+                PdfWriter.GetInstance(doc, file);
+                doc.Open();
+                fun.GenerarDocumento(doc, this.metroGrid1);
+                doc.Close();
+                Process.Start(filename);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void cargarDGVMetro()
+        {
+            MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("obtenerStock", Conexion.generarArgumentos("_nombre"), nombre.Text);
+            DataTable tablaDeUsuarios = new DataTable("Clientes");
+            da.Fill(tablaDeUsuarios);
+            metroGrid1.DataSource = tablaDeUsuarios.DefaultView;
+            metroGrid1.Columns[0].Visible = false;
+
+            Conexion.closeConnection();
+        }
+
+
 
     }
 }

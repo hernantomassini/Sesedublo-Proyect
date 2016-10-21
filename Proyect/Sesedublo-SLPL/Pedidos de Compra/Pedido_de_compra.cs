@@ -1,14 +1,19 @@
-﻿using MetroFramework.Forms;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using MetroFramework.Forms;
 using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Pedidos_de_Compra
 {
     public partial class Pedido_de_compra : MetroForm
     {
+        Funciones fun = new Funciones();
         public Pedido_de_compra()
         {
             InitializeComponent();
@@ -136,6 +141,26 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             Conexion.closeConnection();
 
             this.cargarDGV();
+        }
+
+        private void metroTile2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Document doc = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
+
+                string filename = this.Text + ".pdf";
+                FileStream file = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
+                PdfWriter.GetInstance(doc, file);
+                doc.Open();
+                fun.GenerarDocumento(doc, this.PedidosDGV);
+                doc.Close();
+                Process.Start(filename);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

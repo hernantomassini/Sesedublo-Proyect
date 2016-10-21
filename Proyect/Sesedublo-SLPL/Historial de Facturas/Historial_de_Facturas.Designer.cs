@@ -44,6 +44,7 @@
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.RegistroTile = new MetroFramework.Controls.MetroTile();
             this.AddNotaCreditoTile = new MetroFramework.Controls.MetroTile();
+            this.metroTile2 = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -359,6 +360,25 @@
             this.AddNotaCreditoTile.UseTileImage = true;
             this.AddNotaCreditoTile.Click += new System.EventHandler(this.AddNotaCreditoTile_Click);
             // 
+            // metroTile2
+            // 
+            this.metroTile2.ActiveControl = null;
+            this.metroTile2.BackColor = System.Drawing.Color.White;
+            this.metroTile2.Location = new System.Drawing.Point(190, 551);
+            this.metroTile2.Name = "metroTile2";
+            this.metroTile2.Size = new System.Drawing.Size(127, 44);
+            this.metroTile2.TabIndex = 18;
+            this.metroTile2.Text = "PDF";
+            this.metroTile2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile2.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile2.TileImage")));
+            this.metroTile2.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.metroTile2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.metroTile2.UseCustomBackColor = true;
+            this.metroTile2.UseCustomForeColor = true;
+            this.metroTile2.UseSelectable = true;
+            this.metroTile2.UseTileImage = true;
+            this.metroTile2.Click += new System.EventHandler(this.metroTile2_Click);
+            // 
             // Historial_de_Facturas
             // 
             this.ApplyImageInvert = true;
@@ -366,6 +386,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(702, 616);
+            this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.AddNotaCreditoTile);
             this.Controls.Add(this.RegistroTile);
             this.Controls.Add(this.dgvFacturas);
@@ -404,5 +425,6 @@
         private MetroFramework.Controls.MetroTile metroTile1;
         private MetroFramework.Controls.MetroTile RegistroTile;
         private MetroFramework.Controls.MetroTile AddNotaCreditoTile;
+        private MetroFramework.Controls.MetroTile metroTile2;
     }
 }

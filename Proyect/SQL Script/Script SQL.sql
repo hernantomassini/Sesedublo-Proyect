@@ -797,7 +797,7 @@ BEGIN
 	SELECT fecha AS Fecha, operacion AS Operación, descripcion AS Descripción FROM Operaciones
 	WHERE ((descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
 	AND ((operacion LIKE CONCAT("%", _operacion, "%") COLLATE utf8_general_ci ) OR (_operacion IS NULL OR _operacion = ""))
-    ORDER BY fecha DESC;
+    ORDER BY fecha ASC;
 END //
 
 CREATE PROCEDURE obtenerPedidos (_nombre VARCHAR(50)) 
@@ -807,8 +807,7 @@ BEGIN
         INNER JOIN Clientes c ON p.comprador = c.id_cliente
         INNER JOIN Items i ON p.id_pedido = i.pedido
         INNER JOIN Productos pr ON i.producto = pr.id_producto
-        WHERE (p.facturada = 0 OR (p.precio - p.pagadoHastaElMomento) > 0)
-        AND ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+        WHERE ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
         GROUP BY p.id_pedido;
 END //
 
@@ -832,8 +831,11 @@ END //
 CREATE PROCEDURE crearPedido (IN _id_comprador INT, IN _pagadoHastaElMomento DECIMAL(10,2), IN _precio DECIMAL(10,2))
 BEGIN
 
-	CALL agregarEfectivo(_pagadoHastaElMomento, "El cliente pagó ");
-
+	IF(_pagadoHastaElMomento > 0)
+    THEN
+		CALL agregarEfectivo(_pagadoHastaElMomento, "El cliente pagó ");
+	END IF;
+    
 	INSERT INTO Pedidos (comprador, pagadoHastaElMomento, precio) VALUES (_id_comprador, _pagadoHastaElMomento, _precio);
 	SELECT LAST_INSERT_ID();
     
@@ -1060,7 +1062,7 @@ BEGIN
     
     IF(_cantidad_paga != 0)
 	THEN
-		CALL agregarEfectivo(_cantidad_paga, CONCAT("Un cliente pagó ", _cantidad_paga, " $ que debía de un pedido en la fecha ", CURDATE(), "."));
+		CALL agregarEfectivo(_cantidad_paga, CONCAT("Un cliente pagó un pedido en la fecha ", CURDATE(), "."));
 	END IF;
     
 END //

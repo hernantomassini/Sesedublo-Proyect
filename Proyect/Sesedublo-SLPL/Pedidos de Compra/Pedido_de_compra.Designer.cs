@@ -45,6 +45,7 @@
             this.StockCargado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.CargarStockTile = new MetroFramework.Controls.MetroTile();
+            this.metroTile2 = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.PedidosDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,8 +110,8 @@
             this.PedidosDGV.AllowUserToAddRows = false;
             this.PedidosDGV.AllowUserToDeleteRows = false;
             this.PedidosDGV.AllowUserToResizeRows = false;
-            this.PedidosDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.PedidosDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.PedidosDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.PedidosDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.PedidosDGV.BackgroundColor = System.Drawing.Color.DarkGray;
             this.PedidosDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PedidosDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -177,6 +178,7 @@
             this.Proveedor.HeaderText = "Proveedor";
             this.Proveedor.Name = "Proveedor";
             this.Proveedor.ReadOnly = true;
+            this.Proveedor.Width = 82;
             // 
             // Fecha
             // 
@@ -207,12 +209,14 @@
             this.pagado.HeaderText = "Pagado";
             this.pagado.Name = "pagado";
             this.pagado.ReadOnly = true;
+            this.pagado.Width = 69;
             // 
             // StockCargado
             // 
             this.StockCargado.HeaderText = "Stock cargado";
             this.StockCargado.Name = "StockCargado";
             this.StockCargado.ReadOnly = true;
+            this.StockCargado.Width = 94;
             // 
             // metroTile1
             // 
@@ -236,21 +240,45 @@
             // CargarStockTile
             // 
             this.CargarStockTile.ActiveControl = null;
+            this.CargarStockTile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.CargarStockTile.Location = new System.Drawing.Point(345, 315);
             this.CargarStockTile.Name = "CargarStockTile";
             this.CargarStockTile.Size = new System.Drawing.Size(132, 43);
             this.CargarStockTile.TabIndex = 8;
             this.CargarStockTile.Text = "Cargar stock";
             this.CargarStockTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CargarStockTile.TileImage = ((System.Drawing.Image)(resources.GetObject("CargarStockTile.TileImage")));
             this.CargarStockTile.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CargarStockTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.CargarStockTile.UseCustomBackColor = true;
             this.CargarStockTile.UseSelectable = true;
+            this.CargarStockTile.UseTileImage = true;
             this.CargarStockTile.Click += new System.EventHandler(this.CargarStockTile_Click);
+            // 
+            // metroTile2
+            // 
+            this.metroTile2.ActiveControl = null;
+            this.metroTile2.Location = new System.Drawing.Point(824, 13);
+            this.metroTile2.Name = "metroTile2";
+            this.metroTile2.Size = new System.Drawing.Size(127, 44);
+            this.metroTile2.TabIndex = 18;
+            this.metroTile2.Text = "PDF";
+            this.metroTile2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile2.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile2.TileImage")));
+            this.metroTile2.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.metroTile2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.metroTile2.UseCustomBackColor = true;
+            this.metroTile2.UseCustomForeColor = true;
+            this.metroTile2.UseSelectable = true;
+            this.metroTile2.UseTileImage = true;
+            this.metroTile2.Click += new System.EventHandler(this.metroTile2_Click);
             // 
             // Pedido_de_compra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(972, 378);
+            this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.CargarStockTile);
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.modificarPedidoTile);
@@ -280,5 +308,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pagado;
         private System.Windows.Forms.DataGridViewTextBoxColumn StockCargado;
         private MetroFramework.Controls.MetroTile CargarStockTile;
+        private MetroFramework.Controls.MetroTile metroTile2;
     }
 }

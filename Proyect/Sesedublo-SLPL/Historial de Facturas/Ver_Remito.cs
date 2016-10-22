@@ -25,13 +25,7 @@ namespace Sesedublo_SLPL
             this.Controls.Add(printButton);
             InitializeComponent();
             this.Closing += new CancelEventHandler(Avoid_Closing);
-            
-            direccionLea.Text = "Elpidio Gonzales 9510";
-            CPLea.Text = "C1416EFP CABA";
-            TelLea.Text = "Tel/Fax 4639-5712";
-            CUITLea.Text = "CUIT: 30-70850524-9";
-            ingresosBrutos.Text = "INGRESOS BRUTOS: 901-070815-6";
-            inicioActividad.Text = "INICIO ACTIVIDAD: 01-10-2003";
+            this.SetBorderAndGridlineStyles();
             printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
         }
 
@@ -46,31 +40,38 @@ namespace Sesedublo_SLPL
          {
              id_factura = idFactura;
              id_cliente = idCliente;
-             tipoFactura.Text = "Remito";
              getData();
              MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("obtenerItemsDeRemito", Conexion.generarArgumentos("_id_factura"), id_factura);
              DataTable tablaDeFacturas = new DataTable("Factura");
              da.Fill(tablaDeFacturas);
-             dgvVerFactura.DataSource = tablaDeFacturas.DefaultView;
 
              Conexion.closeConnection();
 
-             facturaID.Text = "REMITO N° 00001-" + Convert.ToString(id_factura);
+             facturaID.Text = "REMITO N° 0001-" + Convert.ToString(id_factura);
+
+             int cantidad = 8 - tablaDeFacturas.Rows.Count;
+             for (int i = 0; i <= cantidad; i++)
+             {
+                 DataRow fila = tablaDeFacturas.NewRow();
+                 tablaDeFacturas.Rows.Add(fila);
+             }
+
+             dgvVerFactura.DataSource = tablaDeFacturas.DefaultView;
          }
 
          public void getData()
          {
-             fechaAct.Text = "FECHA: " + DateTime.Now.ToShortDateString();
+             fechaAct.Text = "LUGAR Y FECHA: " + DateTime.Now.ToShortDateString().Replace('/', '-');
              MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerCliente", Conexion.generarArgumentos("_id_cliente"), id_cliente);
 
              reader.Read();
              if (reader.HasRows)
              {
-                 if (reader.GetString(4) != "") { direccionVen.Text = "DIRECCIÓN: " + reader.GetString(4); } else { direccionVen.Text = ""; };
-                 if (reader.GetString(5) != "") { localidadCl.Text = "LOCALIDAD: " + reader.GetString(5); } else { localidadCl.Text = ""; };
-                 if (reader.GetString(6) != "") { cuitV.Text = "CUIT: " + reader.GetString(6); } else { cuitV.Text = ""; };
-                 if (reader.GetString(7) != "") { RazonSocialComp.Text = "RAZÓN SOCIAL: " + reader.GetString(7); } else { RazonSocialComp.Text = ""; };
-                 id_usuarioCompr.Text = "Cod. vendedor: " + id_cliente;
+                 if (reader.GetString(0) != "") { nombreLabel.Text = reader.GetString(0).ToUpper() + " -"; } else { nombreLabel.Text = ""; };
+                 if (reader.GetString(3) != "") { direccionLabel.Text = reader.GetString(5).ToUpper() + " - 0 "; } else { direccionLabel.Text = ""; };
+                 if (reader.GetString(0) != "") { codPostalComprador.Text = "1407-CAPITAL"; } else { codPostalComprador.Text = ""; };
+                 if (reader.GetString(1) != "") { label12.Text += " " + reader.GetString(1); }
+                 if (reader.GetString(2) != "") { label8.Text += " " + reader.GetString(2); }
              }
              reader.Close();
              Conexion.closeConnection();
@@ -115,5 +116,19 @@ namespace Sesedublo_SLPL
              printPreviewDialog1.Show();
              printButton.Visible = true;
          }
+
+         private void SetBorderAndGridlineStyles()
+         {
+             this.dgvVerFactura.GridColor = Color.Black;
+             this.dgvVerFactura.BorderStyle = BorderStyle.FixedSingle;
+             this.dgvVerFactura.CellBorderStyle =
+                 DataGridViewCellBorderStyle.Single;
+             this.dgvVerFactura.RowHeadersBorderStyle =
+                 DataGridViewHeaderBorderStyle.Single;
+             this.dgvVerFactura.ColumnHeadersBorderStyle =
+                 DataGridViewHeaderBorderStyle.Single;
+             dgvVerFactura.CurrentCell = null;
+         }
+
     }
 }

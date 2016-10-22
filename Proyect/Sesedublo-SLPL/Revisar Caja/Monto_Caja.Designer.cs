@@ -38,6 +38,7 @@
             // ModificarEfectivo
             // 
             this.ModificarEfectivo.ActiveControl = null;
+            this.ModificarEfectivo.BackColor = System.Drawing.Color.OliveDrab;
             this.ModificarEfectivo.Location = new System.Drawing.Point(177, 170);
             this.ModificarEfectivo.Margin = new System.Windows.Forms.Padding(2);
             this.ModificarEfectivo.Name = "ModificarEfectivo";
@@ -47,6 +48,7 @@
             this.ModificarEfectivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ModificarEfectivo.TileImage = ((System.Drawing.Image)(resources.GetObject("ModificarEfectivo.TileImage")));
             this.ModificarEfectivo.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.ModificarEfectivo.UseCustomBackColor = true;
             this.ModificarEfectivo.UseSelectable = true;
             this.ModificarEfectivo.UseTileImage = true;
             this.ModificarEfectivo.Click += new System.EventHandler(this.ModificarEfectivo_Click);
@@ -60,6 +62,7 @@
             this.EfectivoLabel.Size = new System.Drawing.Size(85, 19);
             this.EfectivoLabel.TabIndex = 0;
             this.EfectivoLabel.Text = "EfectivoLabel";
+            this.EfectivoLabel.UseCustomForeColor = true;
             // 
             // MercaderiaLabel
             // 
@@ -70,10 +73,12 @@
             this.MercaderiaLabel.Size = new System.Drawing.Size(162, 19);
             this.MercaderiaLabel.TabIndex = 4;
             this.MercaderiaLabel.Text = "CapitalEnMercaderíaLabel";
+            this.MercaderiaLabel.UseCustomForeColor = true;
             // 
             // AtrasTile
             // 
             this.AtrasTile.ActiveControl = null;
+            this.AtrasTile.BackColor = System.Drawing.Color.MediumOrchid;
             this.AtrasTile.Location = new System.Drawing.Point(22, 170);
             this.AtrasTile.Margin = new System.Windows.Forms.Padding(2);
             this.AtrasTile.Name = "AtrasTile";
@@ -84,6 +89,7 @@
             this.AtrasTile.TileImage = ((System.Drawing.Image)(resources.GetObject("AtrasTile.TileImage")));
             this.AtrasTile.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.AtrasTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.AtrasTile.UseCustomBackColor = true;
             this.AtrasTile.UseSelectable = true;
             this.AtrasTile.UseTileImage = true;
             this.AtrasTile.Click += new System.EventHandler(this.AtrasTile_Click);

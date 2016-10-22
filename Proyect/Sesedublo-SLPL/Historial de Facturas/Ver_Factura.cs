@@ -20,14 +20,9 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
 
             this.Controls.Add(printButton);
             InitializeComponent();
+            this.SetBorderAndGridlineStyles();
             this.Closing += new CancelEventHandler(Avoid_Closing);
 
-            direccionLea.Text = "Elpidio Gonzales 9510";
-            CPLea.Text = "C1416EFP CABA";
-            TelLea.Text = "Tel/Fax 4639-5712";
-            CUITLea.Text = "CUIT: 30-70850524-9";
-            ingresosBrutos.Text = "INGRESOS BRUTOS: 901-070815-6";
-            inicioActividad.Text = "INICIO ACTIVIDAD: 01-10-2003";
             printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
         }
 
@@ -36,23 +31,25 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             BarcodeLib.Barcode Codigo = new BarcodeLib.Barcode();
             Codigo.IncludeLabel = true;
             panel7.BackgroundImage = Codigo.Encode(BarcodeLib.TYPE.CODE128, "2503242523", Color.Black, Color.White, 131, 51);
-            fechaAct.Text = "FECHA: " + DateTime.Now.ToShortDateString();
+
+            fechaAct.Text = "LUGAR Y FECHA: " + DateTime.Now.ToShortDateString().Replace('/','-');
             MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerCliente", Conexion.generarArgumentos("_id_cliente"), id_cliente);
 
             reader.Read();
             if (reader.HasRows)
             {
-                if (reader.GetString(4) != "") { direccionVen.Text = "DIRECCIÓN: " + reader.GetString(4); } else { direccionVen.Text = ""; };
-                if (reader.GetString(5) != "") { localidadCl.Text = "LOCALIDAD: " + reader.GetString(5); } else { localidadCl.Text = ""; };
-                if (reader.GetString(6) != "") { cuitV.Text = "CUIT: " + reader.GetString(6); } else { cuitV.Text = ""; };
-                if (reader.GetString(7) != "") { RazonSocialComp.Text = "RAZÓN SOCIAL: " + reader.GetString(7); } else { RazonSocialComp.Text = ""; };
-                id_usuarioCompr.Text = "Cod. vendedor: " + id_cliente;
+                if (reader.GetString(0) != "") { nombreLabel.Text = reader.GetString(0).ToUpper() + " -"; } else { nombreLabel.Text = ""; };
+                if (reader.GetString(3) != "") { direccionLabel.Text = reader.GetString(5).ToUpper() + " - 0 "; } else { direccionLabel.Text = ""; };
+                if (reader.GetString(0) != "") { codPostalComprador.Text = "1407-CAPITAL"; } else { codPostalComprador.Text = ""; };
+                if (reader.GetString(1) != "") { label12.Text += " " + reader.GetString(1) ; }
+                if (reader.GetString(2) != "") { label14.Text += " " + reader.GetString(2); }
+                if (reader.GetString(0) != "") { codPostalComprador.Text = "1407-CAPITAL"; } else { codPostalComprador.Text = ""; };
             }
             reader.Close();
+            Conexion.closeConnection();
 
             fechaActualImp.Text = "FECHA DE IMPRESIÓN: " + DateTime.Now.ToShortDateString();
             fechaVencimiento.Text = "FECHA DE VENCIMIENTO: " + DateTime.Now.AddDays(180).ToShortDateString();
-            Conexion.closeConnection();
         }
 
 
@@ -106,8 +103,15 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("obtenerItemsDeFactura", Conexion.generarArgumentos("_id_factura"), id_factura);
             DataTable tablaDeFacturas = new DataTable("Factura");
             da.Fill(tablaDeFacturas);
-            dgvVerFactura.DataSource = tablaDeFacturas.DefaultView;
 
+            int cantidad = 9 - tablaDeFacturas.Rows.Count;
+            for (int i = 0; i <= cantidad; i++)
+            {
+                DataRow fila = tablaDeFacturas.NewRow();
+                tablaDeFacturas.Rows.Add(fila);
+            }
+
+            dgvVerFactura.DataSource = tablaDeFacturas.DefaultView;
 
             decimal valor = 0;
             foreach (DataGridViewRow row in dgvVerFactura.Rows)
@@ -118,14 +122,16 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
                 }
                 else
                 {
-                    valor += Convert.ToDecimal(row.Cells[4].Value);
+                    if(!String.IsNullOrEmpty(row.Cells[4].Value.ToString())){
+                      valor += Convert.ToDecimal(row.Cells[4].Value);
+                    };
                 }
             }
-            totalT.Text = "TOTAL " + Convert.ToString(valor);
+            totalT.Text = Convert.ToString(valor);
 
             Conexion.closeConnection();
 
-            facturaID.Text = "FACTURA N° 00001-" + Convert.ToString(id_factura);
+            facturaID.Text = "FACTURA N° 0001-" + Convert.ToString(id_factura);
         }
 
            [System.Runtime.InteropServices.DllImport("gdi32.dll")]
@@ -171,6 +177,18 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
         private void Ver_Factura_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void SetBorderAndGridlineStyles()
+        {
+            this.dgvVerFactura.GridColor = Color.Black;
+            this.dgvVerFactura.BorderStyle = BorderStyle.FixedSingle;
+            this.dgvVerFactura.CellBorderStyle =
+                DataGridViewCellBorderStyle.Single;
+            this.dgvVerFactura.RowHeadersBorderStyle =
+                DataGridViewHeaderBorderStyle.Single;
+            this.dgvVerFactura.ColumnHeadersBorderStyle =
+                DataGridViewHeaderBorderStyle.Single;
         }
     }
     

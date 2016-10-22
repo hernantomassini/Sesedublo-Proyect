@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddProducto));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Cantidad = new System.Windows.Forms.TextBox();
             this.Nombre = new System.Windows.Forms.TextBox();
             this.Utilidad = new System.Windows.Forms.TextBox();
@@ -66,88 +66,93 @@
             // 
             // Cantidad
             // 
-            this.Cantidad.Location = new System.Drawing.Point(181, 208);
-            this.Cantidad.Margin = new System.Windows.Forms.Padding(4);
+            this.Cantidad.Location = new System.Drawing.Point(241, 256);
+            this.Cantidad.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Cantidad.MaxLength = 5;
             this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Size = new System.Drawing.Size(100, 20);
-            this.Cantidad.TabIndex = 6;
+            this.Cantidad.Size = new System.Drawing.Size(132, 22);
+            this.Cantidad.TabIndex = 8;
             this.Cantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cantidad_KeyPress);
             // 
             // Nombre
             // 
             this.Nombre.Enabled = false;
-            this.Nombre.Location = new System.Drawing.Point(137, 81);
-            this.Nombre.Margin = new System.Windows.Forms.Padding(4);
+            this.Nombre.Location = new System.Drawing.Point(183, 100);
+            this.Nombre.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Nombre.MaxLength = 100;
             this.Nombre.Name = "Nombre";
-            this.Nombre.Size = new System.Drawing.Size(192, 20);
+            this.Nombre.Size = new System.Drawing.Size(255, 22);
             this.Nombre.TabIndex = 2;
             // 
             // Utilidad
             // 
-            this.Utilidad.Location = new System.Drawing.Point(181, 236);
-            this.Utilidad.Margin = new System.Windows.Forms.Padding(4);
+            this.Utilidad.Location = new System.Drawing.Point(241, 290);
+            this.Utilidad.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Utilidad.MaxLength = 10;
             this.Utilidad.Name = "Utilidad";
-            this.Utilidad.Size = new System.Drawing.Size(100, 20);
-            this.Utilidad.TabIndex = 7;
+            this.Utilidad.Size = new System.Drawing.Size(132, 22);
+            this.Utilidad.TabIndex = 9;
             this.Utilidad.TextChanged += new System.EventHandler(this.Utilidad_TextChanged);
             this.Utilidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Costo_KeyPress);
             // 
             // CantidadLbl
             // 
             this.CantidadLbl.AutoSize = true;
-            this.CantidadLbl.Location = new System.Drawing.Point(24, 211);
+            this.CantidadLbl.Location = new System.Drawing.Point(32, 260);
+            this.CantidadLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CantidadLbl.Name = "CantidadLbl";
-            this.CantidadLbl.Size = new System.Drawing.Size(52, 13);
+            this.CantidadLbl.Size = new System.Drawing.Size(68, 17);
             this.CantidadLbl.TabIndex = 6;
             this.CantidadLbl.Text = "Cantidad:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 85);
+            this.label2.Location = new System.Drawing.Point(27, 105);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 13);
+            this.label2.Size = new System.Drawing.Size(145, 17);
             this.label2.TabIndex = 7;
             this.label2.Text = "Nombre del producto:";
             // 
             // UtilidadLabel
             // 
             this.UtilidadLabel.AutoSize = true;
-            this.UtilidadLabel.Location = new System.Drawing.Point(24, 239);
+            this.UtilidadLabel.Location = new System.Drawing.Point(32, 294);
+            this.UtilidadLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.UtilidadLabel.Name = "UtilidadLabel";
-            this.UtilidadLabel.Size = new System.Drawing.Size(98, 13);
+            this.UtilidadLabel.Size = new System.Drawing.Size(131, 17);
             this.UtilidadLabel.TabIndex = 8;
             this.UtilidadLabel.Text = "Utilidad por unidad:";
             // 
             // CostoLabel
             // 
             this.CostoLabel.AutoSize = true;
-            this.CostoLabel.Location = new System.Drawing.Point(24, 183);
+            this.CostoLabel.Location = new System.Drawing.Point(32, 225);
+            this.CostoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CostoLabel.Name = "CostoLabel";
-            this.CostoLabel.Size = new System.Drawing.Size(95, 13);
+            this.CostoLabel.Size = new System.Drawing.Size(127, 17);
             this.CostoLabel.TabIndex = 10;
             this.CostoLabel.Text = "Costo segun radio:";
             // 
             // Costo
             // 
-            this.Costo.Location = new System.Drawing.Point(181, 180);
-            this.Costo.Margin = new System.Windows.Forms.Padding(4);
+            this.Costo.Location = new System.Drawing.Point(241, 222);
+            this.Costo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Costo.MaxLength = 12;
             this.Costo.Name = "Costo";
-            this.Costo.Size = new System.Drawing.Size(100, 20);
-            this.Costo.TabIndex = 5;
+            this.Costo.Size = new System.Drawing.Size(132, 22);
+            this.Costo.TabIndex = 7;
             this.Costo.TextChanged += new System.EventHandler(this.Costo_TextChanged);
             this.Costo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Costo_KeyPress);
             // 
             // UnidadesXBultoLbl
             // 
             this.UnidadesXBultoLbl.AutoSize = true;
-            this.UnidadesXBultoLbl.Location = new System.Drawing.Point(23, 295);
+            this.UnidadesXBultoLbl.Location = new System.Drawing.Point(31, 363);
+            this.UnidadesXBultoLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.UnidadesXBultoLbl.Name = "UnidadesXBultoLbl";
-            this.UnidadesXBultoLbl.Size = new System.Drawing.Size(98, 13);
+            this.UnidadesXBultoLbl.Size = new System.Drawing.Size(130, 17);
             this.UnidadesXBultoLbl.TabIndex = 14;
             this.UnidadesXBultoLbl.Text = "Unidades del bulto:";
             // 
@@ -155,14 +160,15 @@
             // 
             this.UnidadesXBulto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.UnidadesXBulto.FormattingEnabled = true;
+            this.UnidadesXBulto.ItemHeight = 16;
             this.UnidadesXBulto.Items.AddRange(new object[] {
             "6",
             "12",
             "24"});
-            this.UnidadesXBulto.Location = new System.Drawing.Point(181, 292);
-            this.UnidadesXBulto.Margin = new System.Windows.Forms.Padding(4);
+            this.UnidadesXBulto.Location = new System.Drawing.Point(241, 359);
+            this.UnidadesXBulto.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.UnidadesXBulto.Name = "UnidadesXBulto";
-            this.UnidadesXBulto.Size = new System.Drawing.Size(100, 21);
+            this.UnidadesXBulto.Size = new System.Drawing.Size(132, 24);
             this.UnidadesXBulto.TabIndex = 9;
             this.UnidadesXBulto.SelectedIndexChanged += new System.EventHandler(this.UnidadesXBulto_SelectedIndexChanged_1);
             this.UnidadesXBulto.TextChanged += new System.EventHandler(this.UnidadesXBulto_SelectedIndexChanged);
@@ -171,10 +177,10 @@
             // individualRadio
             // 
             this.individualRadio.AutoSize = true;
-            this.individualRadio.Location = new System.Drawing.Point(10, 116);
-            this.individualRadio.Margin = new System.Windows.Forms.Padding(2);
+            this.individualRadio.Location = new System.Drawing.Point(13, 143);
+            this.individualRadio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.individualRadio.Name = "individualRadio";
-            this.individualRadio.Size = new System.Drawing.Size(75, 15);
+            this.individualRadio.Size = new System.Drawing.Size(79, 17);
             this.individualRadio.TabIndex = 3;
             this.individualRadio.Text = "Individual";
             this.individualRadio.UseSelectable = true;
@@ -183,10 +189,10 @@
             // bultoxBotellaRadio
             // 
             this.bultoxBotellaRadio.AutoSize = true;
-            this.bultoxBotellaRadio.Location = new System.Drawing.Point(89, 116);
-            this.bultoxBotellaRadio.Margin = new System.Windows.Forms.Padding(2);
+            this.bultoxBotellaRadio.Location = new System.Drawing.Point(119, 143);
+            this.bultoxBotellaRadio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bultoxBotellaRadio.Name = "bultoxBotellaRadio";
-            this.bultoxBotellaRadio.Size = new System.Drawing.Size(132, 15);
+            this.bultoxBotellaRadio.Size = new System.Drawing.Size(146, 17);
             this.bultoxBotellaRadio.TabIndex = 4;
             this.bultoxBotellaRadio.Text = "Ganancia a la botella";
             this.bultoxBotellaRadio.UseSelectable = true;
@@ -196,10 +202,10 @@
             // 
             this.titleCancelar.ActiveControl = null;
             this.titleCancelar.BackColor = System.Drawing.Color.DarkRed;
-            this.titleCancelar.Location = new System.Drawing.Point(27, 344);
-            this.titleCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.titleCancelar.Location = new System.Drawing.Point(36, 423);
+            this.titleCancelar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.titleCancelar.Name = "titleCancelar";
-            this.titleCancelar.Size = new System.Drawing.Size(102, 41);
+            this.titleCancelar.Size = new System.Drawing.Size(136, 50);
             this.titleCancelar.TabIndex = 12;
             this.titleCancelar.Text = "Cancelar";
             this.titleCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -215,10 +221,10 @@
             // 
             this.titleAceptar.ActiveControl = null;
             this.titleAceptar.BackColor = System.Drawing.Color.Green;
-            this.titleAceptar.Location = new System.Drawing.Point(181, 344);
-            this.titleAceptar.Margin = new System.Windows.Forms.Padding(4);
+            this.titleAceptar.Location = new System.Drawing.Point(241, 423);
+            this.titleAceptar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.titleAceptar.Name = "titleAceptar";
-            this.titleAceptar.Size = new System.Drawing.Size(99, 41);
+            this.titleAceptar.Size = new System.Drawing.Size(132, 50);
             this.titleAceptar.TabIndex = 10;
             this.titleAceptar.Text = "Aceptar";
             this.titleAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -233,9 +239,10 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(336, 27);
+            this.metroLabel1.Location = new System.Drawing.Point(448, 33);
+            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(116, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(122, 20);
             this.metroLabel1.TabIndex = 16;
             this.metroLabel1.Text = "Lista de Productos";
             // 
@@ -245,9 +252,10 @@
             // 
             // 
             this.buscarProducto.CustomButton.Image = null;
-            this.buscarProducto.CustomButton.Location = new System.Drawing.Point(92, 1);
+            this.buscarProducto.CustomButton.Location = new System.Drawing.Point(126, 2);
+            this.buscarProducto.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buscarProducto.CustomButton.Name = "";
-            this.buscarProducto.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.buscarProducto.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.buscarProducto.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.buscarProducto.CustomButton.TabIndex = 1;
             this.buscarProducto.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -256,7 +264,8 @@
             this.buscarProducto.DisplayIcon = true;
             this.buscarProducto.Icon = ((System.Drawing.Image)(resources.GetObject("buscarProducto.Icon")));
             this.buscarProducto.Lines = new string[0];
-            this.buscarProducto.Location = new System.Drawing.Point(689, 27);
+            this.buscarProducto.Location = new System.Drawing.Point(919, 33);
+            this.buscarProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buscarProducto.MaxLength = 70;
             this.buscarProducto.Name = "buscarProducto";
             this.buscarProducto.PasswordChar = '\0';
@@ -266,7 +275,7 @@
             this.buscarProducto.SelectionLength = 0;
             this.buscarProducto.SelectionStart = 0;
             this.buscarProducto.ShortcutsEnabled = true;
-            this.buscarProducto.Size = new System.Drawing.Size(114, 23);
+            this.buscarProducto.Size = new System.Drawing.Size(152, 28);
             this.buscarProducto.TabIndex = 1;
             this.buscarProducto.UseSelectable = true;
             this.buscarProducto.WaterMark = "Buscar";
@@ -277,9 +286,10 @@
             // nombreLabel
             // 
             this.nombreLabel.AutoSize = true;
-            this.nombreLabel.Location = new System.Drawing.Point(621, 27);
+            this.nombreLabel.Location = new System.Drawing.Point(828, 33);
+            this.nombreLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.nombreLabel.Name = "nombreLabel";
-            this.nombreLabel.Size = new System.Drawing.Size(62, 19);
+            this.nombreLabel.Size = new System.Drawing.Size(64, 20);
             this.nombreLabel.TabIndex = 17;
             this.nombreLabel.Text = "Nombre:";
             // 
@@ -294,42 +304,43 @@
             this.dgvProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductos.EnableHeadersVisualStyles = false;
             this.dgvProductos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvProductos.Location = new System.Drawing.Point(338, 64);
+            this.dgvProductos.Location = new System.Drawing.Point(451, 79);
+            this.dgvProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvProductos.MultiSelect = false;
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.ReadOnly = true;
             this.dgvProductos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(466, 272);
+            this.dgvProductos.Size = new System.Drawing.Size(621, 335);
             this.dgvProductos.TabIndex = 19;
             this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
             // 
@@ -337,9 +348,10 @@
             // 
             this.nuevoProducto.ActiveControl = null;
             this.nuevoProducto.BackColor = System.Drawing.Color.MediumBlue;
-            this.nuevoProducto.Location = new System.Drawing.Point(653, 342);
+            this.nuevoProducto.Location = new System.Drawing.Point(871, 421);
+            this.nuevoProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nuevoProducto.Name = "nuevoProducto";
-            this.nuevoProducto.Size = new System.Drawing.Size(149, 43);
+            this.nuevoProducto.Size = new System.Drawing.Size(199, 53);
             this.nuevoProducto.TabIndex = 11;
             this.nuevoProducto.Text = "Nuevo Producto";
             this.nuevoProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -354,41 +366,43 @@
             // PrecioLabel
             // 
             this.PrecioLabel.AutoSize = true;
-            this.PrecioLabel.Location = new System.Drawing.Point(23, 267);
+            this.PrecioLabel.Location = new System.Drawing.Point(31, 329);
+            this.PrecioLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PrecioLabel.Name = "PrecioLabel";
-            this.PrecioLabel.Size = new System.Drawing.Size(40, 13);
+            this.PrecioLabel.Size = new System.Drawing.Size(52, 17);
             this.PrecioLabel.TabIndex = 31;
             this.PrecioLabel.Text = "Precio:";
             // 
             // Precio
             // 
-            this.Precio.Location = new System.Drawing.Point(181, 264);
-            this.Precio.Margin = new System.Windows.Forms.Padding(4);
+            this.Precio.Location = new System.Drawing.Point(241, 325);
+            this.Precio.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Precio.MaxLength = 10;
             this.Precio.Name = "Precio";
-            this.Precio.Size = new System.Drawing.Size(100, 20);
-            this.Precio.TabIndex = 8;
+            this.Precio.Size = new System.Drawing.Size(132, 22);
+            this.Precio.TabIndex = 10;
             this.Precio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Costo_KeyPress);
             // 
             // bultoCuadradoRadio
             // 
             this.bultoCuadradoRadio.AutoSize = true;
-            this.bultoCuadradoRadio.Location = new System.Drawing.Point(222, 116);
+            this.bultoCuadradoRadio.Location = new System.Drawing.Point(296, 143);
+            this.bultoCuadradoRadio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bultoCuadradoRadio.Name = "bultoCuadradoRadio";
-            this.bultoCuadradoRadio.Size = new System.Drawing.Size(115, 15);
-            this.bultoCuadradoRadio.TabIndex = 32;
+            this.bultoCuadradoRadio.Size = new System.Drawing.Size(125, 17);
+            this.bultoCuadradoRadio.TabIndex = 5;
             this.bultoCuadradoRadio.Text = "Ganancia al bulto";
             this.bultoCuadradoRadio.UseSelectable = true;
             this.bultoCuadradoRadio.CheckedChanged += new System.EventHandler(this.bultoCuadradoRadio_CheckedChanged);
             // 
             // costoIndividual
             // 
-            this.costoIndividual.Location = new System.Drawing.Point(181, 152);
-            this.costoIndividual.Margin = new System.Windows.Forms.Padding(4);
+            this.costoIndividual.Location = new System.Drawing.Point(241, 187);
+            this.costoIndividual.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.costoIndividual.MaxLength = 12;
             this.costoIndividual.Name = "costoIndividual";
-            this.costoIndividual.Size = new System.Drawing.Size(100, 20);
-            this.costoIndividual.TabIndex = 33;
+            this.costoIndividual.Size = new System.Drawing.Size(132, 22);
+            this.costoIndividual.TabIndex = 6;
             this.costoIndividual.Visible = false;
             this.costoIndividual.TextChanged += new System.EventHandler(this.costoIndividual_TextChanged);
             this.costoIndividual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.costoIndividual_KeyPress);
@@ -396,9 +410,10 @@
             // CostoIndividualLabel
             // 
             this.CostoIndividualLabel.AutoSize = true;
-            this.CostoIndividualLabel.Location = new System.Drawing.Point(24, 152);
+            this.CostoIndividualLabel.Location = new System.Drawing.Point(32, 187);
+            this.CostoIndividualLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CostoIndividualLabel.Name = "CostoIndividualLabel";
-            this.CostoIndividualLabel.Size = new System.Drawing.Size(84, 13);
+            this.CostoIndividualLabel.Size = new System.Drawing.Size(111, 17);
             this.CostoIndividualLabel.TabIndex = 34;
             this.CostoIndividualLabel.Text = "Costo individual:";
             this.CostoIndividualLabel.Visible = false;
@@ -406,36 +421,40 @@
             // costoSegunRadioObligatory
             // 
             this.costoSegunRadioObligatory.AutoSize = true;
-            this.costoSegunRadioObligatory.Location = new System.Drawing.Point(288, 183);
+            this.costoSegunRadioObligatory.Location = new System.Drawing.Point(384, 225);
+            this.costoSegunRadioObligatory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.costoSegunRadioObligatory.Name = "costoSegunRadioObligatory";
-            this.costoSegunRadioObligatory.Size = new System.Drawing.Size(11, 13);
+            this.costoSegunRadioObligatory.Size = new System.Drawing.Size(13, 17);
             this.costoSegunRadioObligatory.TabIndex = 35;
             this.costoSegunRadioObligatory.Text = "*";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(288, 211);
+            this.label3.Location = new System.Drawing.Point(384, 260);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(11, 13);
+            this.label3.Size = new System.Drawing.Size(13, 17);
             this.label3.TabIndex = 36;
             this.label3.Text = "*";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(288, 239);
+            this.label4.Location = new System.Drawing.Point(384, 294);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(11, 13);
+            this.label4.Size = new System.Drawing.Size(13, 17);
             this.label4.TabIndex = 37;
             this.label4.Text = "*";
             // 
             // unidadesObligatorio
             // 
             this.unidadesObligatorio.AutoSize = true;
-            this.unidadesObligatorio.Location = new System.Drawing.Point(288, 295);
+            this.unidadesObligatorio.Location = new System.Drawing.Point(384, 363);
+            this.unidadesObligatorio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.unidadesObligatorio.Name = "unidadesObligatorio";
-            this.unidadesObligatorio.Size = new System.Drawing.Size(11, 13);
+            this.unidadesObligatorio.Size = new System.Drawing.Size(13, 17);
             this.unidadesObligatorio.TabIndex = 38;
             this.unidadesObligatorio.Text = "*";
             this.unidadesObligatorio.Visible = false;
@@ -443,17 +462,18 @@
             // costoIndividualObligatory
             // 
             this.costoIndividualObligatory.AutoSize = true;
-            this.costoIndividualObligatory.Location = new System.Drawing.Point(288, 152);
+            this.costoIndividualObligatory.Location = new System.Drawing.Point(384, 187);
+            this.costoIndividualObligatory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.costoIndividualObligatory.Name = "costoIndividualObligatory";
-            this.costoIndividualObligatory.Size = new System.Drawing.Size(11, 13);
+            this.costoIndividualObligatory.Size = new System.Drawing.Size(13, 17);
             this.costoIndividualObligatory.TabIndex = 39;
             this.costoIndividualObligatory.Text = "*";
             // 
             // AddProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 399);
+            this.ClientSize = new System.Drawing.Size(1100, 491);
             this.Controls.Add(this.costoIndividualObligatory);
             this.Controls.Add(this.unidadesObligatorio);
             this.Controls.Add(this.label4);
@@ -483,9 +503,10 @@
             this.Controls.Add(this.Utilidad);
             this.Controls.Add(this.Nombre);
             this.Controls.Add(this.Cantidad);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.MaximizeBox = false;
             this.Name = "AddProducto";
+            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Agregar Producto";
             this.Load += new System.EventHandler(this.AddProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();

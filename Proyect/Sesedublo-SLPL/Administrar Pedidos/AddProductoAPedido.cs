@@ -11,8 +11,8 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 {
     public partial class AddProductoAPedido : MetroForm
     {
-        Dictionary<int, int> productosAVender = new Dictionary<int, int>();
-        Dictionary<int, int> productosARestockear = new Dictionary<int, int>();
+        Dictionary<int, Producto> productosAVender = new Dictionary<int, Producto>();
+        Dictionary<int, Producto> productosARestockear = new Dictionary<int, Producto>();
         accionesABM flag = accionesABM.Crear;
         int id_pedido = -1;
         int id_cliente = -1;
@@ -63,6 +63,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
             cantidadPagada.Text = reader.GetString(0);
             montoAPagarDelPedido.Text = reader.GetString(1);
+            MontoACobrarLabel.Text = "El valor del pedido es de " + reader.GetString(1);
             this.id_cliente = reader.GetInt32(2);
 
             reader.Close();
@@ -72,8 +73,9 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
             while (reader.Read())
             {
-                productosAVender.Add(reader.GetInt32(0), reader.GetInt32(1));
-                productosARestockear.Add(reader.GetInt32(0), reader.GetInt32(1));
+                Producto unProducto = new Producto(reader.GetInt32(1), reader.GetDecimal(2));
+                productosAVender.Add(reader.GetInt32(0), unProducto);
+                productosARestockear.Add(reader.GetInt32(0), unProducto);
             }
 
             reader.Close();
@@ -84,22 +86,18 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 reader = Conexion.executeProcedureWithReader("obtenerInfoItems", Conexion.generarArgumentos("_id_producto"), registro.Key);
                 reader.Read();
 
-                int cantidad = registro.Value;
+                int cantidad = registro.Value.getCantidad();
                 int cantXBulto = reader.GetInt32(4);
-                decimal precio;
+                decimal precio = registro.Value.getPrecioCobrado();
                 string precioString;
 
                 if(cantXBulto == 0)
                 {
-                    //individuales
-                    precio = reader.GetDecimal(2) * cantidad;
                     precioString = cantidad + " unidades";
 
                 }
                 else
                 {
-                    //Bulto
-                    precio = reader.GetDecimal(3) * cantidad;
                     precioString = cantidad + " bultos de " + cantXBulto + " unidades";
                 }
 
@@ -109,9 +107,6 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
                 reader.Close();
                 Conexion.closeConnection();
-
-                sumatoriaMoney += precio;
-                updateLabelMoney();
             }
         }
 
@@ -135,7 +130,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                     foreach (var registro in productosARestockear)
                     {
                         int id_stock = registro.Key;
-                        int cantidad = registro.Value;
+                        int cantidad = registro.Value.getCantidad();
 
                         Conexion.executeProcedure("updatearStock", Conexion.generarArgumentos("_id_stock", "_cantidad"), id_stock, cantidad);
                         Conexion.closeConnection();
@@ -157,7 +152,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 //Agregar productos al pedido y disminuir stock de todos los productos involucrados:
                 foreach (var registro in productosAVender)
                 {
-                    Conexion.executeProcedure("agregarItemAPedido", Conexion.generarArgumentos("_id_pedido", "_id_producto", "_cantidad"), id_pedido, registro.Key, registro.Value);
+                    Conexion.executeProcedure("agregarItemAPedido", Conexion.generarArgumentos("_id_pedido", "_id_producto", "_cantidad"), id_pedido, registro.Key, registro.Value.getCantidad());
                     Conexion.closeConnection();
                 }
 
@@ -179,25 +174,28 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             Funciones.limpiarDGV(ProductosDGV);
             MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerStockPedido", Conexion.generarArgumentos("_nombre"), Nombre.Text);
 
+            int id_stock;
             string cantidad;
             int cantXBulto;
             decimal precio;
 
             while (reader.Read())
             {
+                id_stock = reader.GetInt32(0);
+
                 cantXBulto = reader.GetInt32(2);
 
                 if (cantXBulto == 0)
                 {
                     //Significa que el producto es individual!
-                    cantidad = obtenerCantidadReal(reader.GetInt32(0), reader.GetInt32(1)) + " unidades";
-                    precio = reader.GetDecimal(5);
+                    cantidad = obtenerCantidadReal(id_stock, reader.GetInt32(1)) + " unidades";
+                    precio = obtenerPrecioReal(id_stock, reader.GetDecimal(5));
                 }
                 else
                 {
                     //El producto es un Bulto!
-                    cantidad = obtenerCantidadReal(reader.GetInt32(0), reader.GetInt32(1)) + " bultos de " + cantXBulto + " unidades";
-                    precio = reader.GetDecimal(6);
+                    cantidad = obtenerCantidadReal(id_stock, reader.GetInt32(1)) + " bultos de " + cantXBulto + " unidades";
+                    precio = obtenerPrecioReal(id_stock, reader.GetDecimal(6));
                 }
 
                 //ID Stock 0 - Nombre 3
@@ -242,9 +240,12 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             updateLabelMoney();
 
             if (!productosAVender.ContainsKey(id_stock))
-                productosAVender.Add(id_stock, cantidad);
+            {
+                Producto unProducto = new Producto(cantidad, precioUnitario);
+                productosAVender.Add(id_stock, unProducto);
+            }
             else
-                productosAVender[id_stock] = productosAVender[id_stock] + cantidad;
+                productosAVender[id_stock].setCantidad(productosAVender[id_stock].getCantidad() + cantidad); 
 
             Cantidad.Clear();
             Cantidad.Focus();
@@ -264,7 +265,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             int cantidadABorrar = obtenerCantidadEnInt(Convert.ToString(filaDgv.Cells[1].Value));
             decimal precio = Convert.ToInt32(filaDgv.Cells[3].Value);
 
-            productosAVender[id_stock] = productosAVender[id_stock] - cantidadABorrar;
+            productosAVender[id_stock].setCantidad(productosAVender[id_stock].getCantidad() - cantidadABorrar);
 
             cargarDGV();
             ItemsDGV.Rows.Remove(filaDgv);
@@ -277,12 +278,21 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
             if (productosAVender.ContainsKey(id_stock))
                 if (flag == accionesABM.Modificar && productosARestockear.ContainsKey(id_stock))
-                    return cantEnDB - productosAVender[id_stock] + productosARestockear[id_stock];
+                    return cantEnDB - productosAVender[id_stock].getCantidad() + productosARestockear[id_stock].getCantidad();
                 else
-                    return cantEnDB - productosAVender[id_stock];
+                    return cantEnDB - productosAVender[id_stock].getCantidad();
 
             return cantEnDB;
         }
+
+        private decimal obtenerPrecioReal(int id_stock, decimal precioEnTablaDeProductos)
+        {
+            if (flag == accionesABM.Modificar && productosARestockear.ContainsKey(id_stock))
+                return productosARestockear[id_stock].getPrecioCobrado();
+            else
+                return precioEnTablaDeProductos;
+        }
+
 
         private int obtenerCantidadEnInt(string cantidad)
         {

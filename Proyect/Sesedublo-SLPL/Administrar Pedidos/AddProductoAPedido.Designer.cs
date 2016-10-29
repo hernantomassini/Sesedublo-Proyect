@@ -36,10 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ProductosDGV = new MetroFramework.Controls.MetroGrid();
-            this.IDStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CantidadProductos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AtrasTile = new MetroFramework.Controls.MetroTile();
             this.Nombre = new MetroFramework.Controls.MetroTextBox();
             this.nombreLabel = new MetroFramework.Controls.MetroLabel();
@@ -49,16 +45,20 @@
             this.BorrarTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.ItemsDGV = new MetroFramework.Controls.MetroGrid();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FinalizarTile = new MetroFramework.Controls.MetroTile();
             this.MontoACobrarLabel = new MetroFramework.Controls.MetroLabel();
             this.montoAPagarDelPedido = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.cantidadPagada = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.IDStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadProductos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ProductosDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDGV)).BeginInit();
             this.SuspendLayout();
@@ -98,10 +98,9 @@
             this.ProductosDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.ProductosDGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ProductosDGV.Location = new System.Drawing.Point(17, 113);
-            this.ProductosDGV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ProductosDGV.Margin = new System.Windows.Forms.Padding(2);
             this.ProductosDGV.MultiSelect = false;
             this.ProductosDGV.Name = "ProductosDGV";
-            this.ProductosDGV.ReadOnly = true;
             this.ProductosDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
@@ -118,46 +117,12 @@
             this.ProductosDGV.TabIndex = 0;
             this.ProductosDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductosDGV_CellClick);
             // 
-            // IDStock
-            // 
-            this.IDStock.HeaderText = "IDStock";
-            this.IDStock.Name = "IDStock";
-            this.IDStock.ReadOnly = true;
-            this.IDStock.Visible = false;
-            // 
-            // CantidadProductos
-            // 
-            this.CantidadProductos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.CantidadProductos.HeaderText = "Cantidad";
-            this.CantidadProductos.Name = "CantidadProductos";
-            this.CantidadProductos.ReadOnly = true;
-            this.CantidadProductos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CantidadProductos.Width = 77;
-            // 
-            // NombreProducto
-            // 
-            this.NombreProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.NombreProducto.HeaderText = "Nombre";
-            this.NombreProducto.Name = "NombreProducto";
-            this.NombreProducto.ReadOnly = true;
-            this.NombreProducto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NombreProducto.Width = 71;
-            // 
-            // PrecioProducto
-            // 
-            this.PrecioProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.PrecioProducto.HeaderText = "Precio";
-            this.PrecioProducto.Name = "PrecioProducto";
-            this.PrecioProducto.ReadOnly = true;
-            this.PrecioProducto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.PrecioProducto.Width = 61;
-            // 
             // AtrasTile
             // 
             this.AtrasTile.ActiveControl = null;
             this.AtrasTile.BackColor = System.Drawing.Color.Teal;
             this.AtrasTile.Location = new System.Drawing.Point(18, 528);
-            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AtrasTile.Margin = new System.Windows.Forms.Padding(2);
             this.AtrasTile.Name = "AtrasTile";
             this.AtrasTile.Size = new System.Drawing.Size(84, 44);
             this.AtrasTile.TabIndex = 7;
@@ -220,7 +185,7 @@
             this.AgregarTile.ActiveControl = null;
             this.AgregarTile.BackColor = System.Drawing.Color.DarkBlue;
             this.AgregarTile.Location = new System.Drawing.Point(509, 286);
-            this.AgregarTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AgregarTile.Margin = new System.Windows.Forms.Padding(2);
             this.AgregarTile.Name = "AgregarTile";
             this.AgregarTile.Size = new System.Drawing.Size(99, 44);
             this.AgregarTile.TabIndex = 3;
@@ -239,9 +204,9 @@
             // 
             // 
             this.Cantidad.CustomButton.Image = null;
-            this.Cantidad.CustomButton.Location = new System.Drawing.Point(69, 1);
+            this.Cantidad.CustomButton.Location = new System.Drawing.Point(92, 1);
             this.Cantidad.CustomButton.Name = "";
-            this.Cantidad.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.Cantidad.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.Cantidad.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.Cantidad.CustomButton.TabIndex = 1;
             this.Cantidad.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -281,7 +246,7 @@
             this.BorrarTile.ActiveControl = null;
             this.BorrarTile.BackColor = System.Drawing.Color.OrangeRed;
             this.BorrarTile.Location = new System.Drawing.Point(524, 528);
-            this.BorrarTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BorrarTile.Margin = new System.Windows.Forms.Padding(2);
             this.BorrarTile.Name = "BorrarTile";
             this.BorrarTile.Size = new System.Drawing.Size(84, 44);
             this.BorrarTile.TabIndex = 8;
@@ -338,10 +303,9 @@
             this.ItemsDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.ItemsDGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ItemsDGV.Location = new System.Drawing.Point(17, 360);
-            this.ItemsDGV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ItemsDGV.Margin = new System.Windows.Forms.Padding(2);
             this.ItemsDGV.MultiSelect = false;
             this.ItemsDGV.Name = "ItemsDGV";
-            this.ItemsDGV.ReadOnly = true;
             this.ItemsDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
@@ -357,46 +321,12 @@
             this.ItemsDGV.Size = new System.Drawing.Size(591, 164);
             this.ItemsDGV.TabIndex = 19;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "IDStock";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Cantidad";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn2.Width = 77;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn3.Width = 71;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Precio";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn4.Width = 61;
-            // 
             // FinalizarTile
             // 
             this.FinalizarTile.ActiveControl = null;
             this.FinalizarTile.BackColor = System.Drawing.Color.BlueViolet;
             this.FinalizarTile.Location = new System.Drawing.Point(509, 616);
-            this.FinalizarTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FinalizarTile.Margin = new System.Windows.Forms.Padding(2);
             this.FinalizarTile.Name = "FinalizarTile";
             this.FinalizarTile.Size = new System.Drawing.Size(99, 44);
             this.FinalizarTile.TabIndex = 6;
@@ -424,9 +354,9 @@
             // 
             // 
             this.montoAPagarDelPedido.CustomButton.Image = null;
-            this.montoAPagarDelPedido.CustomButton.Location = new System.Drawing.Point(69, 1);
+            this.montoAPagarDelPedido.CustomButton.Location = new System.Drawing.Point(92, 1);
             this.montoAPagarDelPedido.CustomButton.Name = "";
-            this.montoAPagarDelPedido.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.montoAPagarDelPedido.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.montoAPagarDelPedido.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.montoAPagarDelPedido.CustomButton.TabIndex = 1;
             this.montoAPagarDelPedido.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -468,9 +398,9 @@
             // 
             // 
             this.cantidadPagada.CustomButton.Image = null;
-            this.cantidadPagada.CustomButton.Location = new System.Drawing.Point(69, 1);
+            this.cantidadPagada.CustomButton.Location = new System.Drawing.Point(92, 1);
             this.cantidadPagada.CustomButton.Name = "";
-            this.cantidadPagada.CustomButton.Size = new System.Drawing.Size(16, 17);
+            this.cantidadPagada.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.cantidadPagada.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.cantidadPagada.CustomButton.TabIndex = 1;
             this.cantidadPagada.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -505,6 +435,72 @@
             this.metroLabel3.TabIndex = 26;
             this.metroLabel3.Text = "Monto que el cliente paga/deja pagado:";
             // 
+            // IDStock
+            // 
+            this.IDStock.HeaderText = "IDStock";
+            this.IDStock.Name = "IDStock";
+            this.IDStock.ReadOnly = true;
+            this.IDStock.Visible = false;
+            // 
+            // CantidadProductos
+            // 
+            this.CantidadProductos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.CantidadProductos.HeaderText = "Cantidad";
+            this.CantidadProductos.Name = "CantidadProductos";
+            this.CantidadProductos.ReadOnly = true;
+            this.CantidadProductos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CantidadProductos.Width = 77;
+            // 
+            // NombreProducto
+            // 
+            this.NombreProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.NombreProducto.HeaderText = "Nombre";
+            this.NombreProducto.Name = "NombreProducto";
+            this.NombreProducto.ReadOnly = true;
+            this.NombreProducto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NombreProducto.Width = 71;
+            // 
+            // PrecioProducto
+            // 
+            this.PrecioProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.PrecioProducto.HeaderText = "Precio";
+            this.PrecioProducto.Name = "PrecioProducto";
+            this.PrecioProducto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PrecioProducto.Width = 61;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "IDStock";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Cantidad";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn2.Width = 77;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn3.Width = 71;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Precio";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn4.Width = 61;
+            // 
             // AddProductoAPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -526,7 +522,7 @@
             this.Controls.Add(this.nombreLabel);
             this.Controls.Add(this.AtrasTile);
             this.Controls.Add(this.ProductosDGV);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "AddProductoAPedido";
             this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);

@@ -2,6 +2,9 @@
 CREATE DATABASE IF NOT EXISTS Sesedublo;
 USE Sesedublo;
 
+DROP DATABASE sesedublo
+REPAIR TABLE proc USE_FRM
+
 #DROP TABLES:
 DROP TABLE IF EXISTS NotasDeCredito;
 DROP TABLE IF EXISTS Operaciones;
@@ -624,6 +627,24 @@ INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 #Store Procedures
 DELIMITER //
 
+CREATE PROCEDURE actualizarPago (IN _id_pedido INT, IN _total_a_pagar DECIMAL(10,2), IN _cantidad_paga DECIMAL(10,2), _pagadoTot INT)
+BEGIN
+
+	IF(_pagadoTot = 1)
+    THEN
+		SET @_valorPedido = (SELECT precio FROM Pedidos WHERE id_pedido = _id_pedido);
+		UPDATE Pedidos SET pagadoHastaElMomento = @_valorPedido WHERE id_pedido = _id_pedido;
+    ELSE
+		UPDATE Pedidos SET pagadoHastaElMomento = _cantidad_paga WHERE id_pedido = _id_pedido;
+    END IF;
+    
+    IF(_cantidad_paga != 0)
+	THEN
+		CALL agregarEfectivo(_cantidad_paga, CONCAT("Un cliente pagó un pedido en la fecha ", CURDATE(), "."));
+	END IF;
+    
+END //
+
 CREATE PROCEDURE obtenerStock (IN _nombre VARCHAR(50)) 
 BEGIN
 
@@ -881,10 +902,11 @@ END //
 CREATE PROCEDURE obtenerItems (IN _id_pedido INT)
 BEGIN
 
-	SELECT s.id_stock, cantidadProductos FROM Items i
+	SELECT s.id_stock, cantidadProductos, p.precio FROM Items i
     INNER JOIN Stock s ON i.producto = s.producto 
-    WHERE pedido = _id_pedido;
-
+	INNER JOIN Pedidos p ON p.id_pedido = s.pedido 
+    WHERE s.pedido = _id_pedido;
+    
 END //
 
 CREATE PROCEDURE updatearStock (IN _id_stock INT, IN _cantidad INT)
@@ -1064,23 +1086,6 @@ BEGIN
 
 END //
 
-CREATE PROCEDURE actualizarPago (IN _id_pedido INT, IN _total_a_pagar DECIMAL(10,2), IN _cantidad_paga DECIMAL(10,2), _pagadoTot INT)
-BEGIN
-
-	IF(_pagadoTot = 1)
-    THEN
-		UPDATE Pedidos SET pagadoHastaElMomento = _total_a_pagar WHERE id_pedido = _id_pedido;
-    ELSE
-		UPDATE Pedidos SET pagadoHastaElMomento = _cantidad_paga WHERE id_pedido = _id_pedido;
-    END IF;
-    
-    IF(_cantidad_paga != 0)
-	THEN
-		CALL agregarEfectivo(_cantidad_paga, CONCAT("Un cliente pagó un pedido en la fecha ", CURDATE(), "."));
-	END IF;
-    
-END //
-
 CREATE PROCEDURE agregarNotaDeCredito (IN _id_factura INT, _cantidad DECIMAL(10 , 2), _motivo VARCHAR(50))
 BEGIN
 	INSERT INTO NotasDeCredito (factura, importe, motivo, fecha) VALUES (_id_factura, _cantidad, _motivo, NOW());
@@ -1105,6 +1110,7 @@ BEGIN
     WHERE f.id_factura = _id_factura
     GROUP BY i.id_item;
 END //
+
 
 CREATE PROCEDURE cargarStockPedidoLea (IN _id_pedido INT)
 BEGIN
@@ -1146,7 +1152,6 @@ SET
     stockCargado = 1
 WHERE
     id_pedido = _id_pedido;
-
-
 END //
+
 DELIMITER ;

@@ -408,5 +408,12 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
             val.ingresarNumeroDecimal(e);
         }
+
+        private void metroLink1_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.ABM_Stock.cargarDGV();
+            Manejador_Formularios.ABM_Stock.Clean();
+            Manejador_Formularios.ABM_Stock.Show();
+        }
     }
 }

@@ -481,7 +481,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 decimal costoBulto = decimal.Round(costoUnitario * botellasPorBulto, 2);
                 Costo.Text = Convert.ToString(costoBulto);
 
-                Precio.Text = Convert.ToString(costoUnitario + utilidad * botellasPorBulto);
+                Precio.Text = Convert.ToString((costoUnitario + utilidad) * botellasPorBulto);
             }
             else
             {

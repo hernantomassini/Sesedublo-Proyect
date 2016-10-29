@@ -188,6 +188,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
                 Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto", "_radioSelected"), Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto, radioSelected);
                 Conexion.closeConnection();
                 Manejador_Formularios.ABM_Stock.cargarDGVMetro();
+                Manejador_Formularios.AddProductoAPedido.cargarDGV();
                 Close();
             }
         }
@@ -331,7 +332,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
                 decimal costoBulto = decimal.Round(costoUnitario * botellasPorBulto, 2);
                 Costo.Text = Convert.ToString(costoBulto);
 
-                Precio.Text = Convert.ToString(costoUnitario + utilidad * botellasPorBulto);
+                Precio.Text = Convert.ToString((costoUnitario + utilidad) * botellasPorBulto);
             }
             else
             {

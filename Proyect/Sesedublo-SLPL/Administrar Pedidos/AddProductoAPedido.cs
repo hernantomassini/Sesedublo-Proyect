@@ -44,11 +44,15 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         public void modificarPedido(int id_pedido)
         {
+  
+
             this.id_cliente = -1;
             this.id_pedido = id_pedido;
             sumatoriaMoney = 0;
             updateLabelMoney();
+
             Clean();
+
             flag = accionesABM.Modificar;
             CargarItems();
             cargarDGV();
@@ -63,7 +67,8 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
             cantidadPagada.Text = reader.GetString(0);
             montoAPagarDelPedido.Text = reader.GetString(1);
-            MontoACobrarLabel.Text = "El valor del pedido es de " + reader.GetString(1);
+            sumatoriaMoney = reader.GetDecimal(1);
+            updateLabelMoney();
             this.id_cliente = reader.GetInt32(2);
 
             reader.Close();
@@ -71,11 +76,16 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
             reader = Conexion.executeProcedureWithReader("obtenerItems", Conexion.generarArgumentos("_id_pedido"), id_pedido);
 
+            Producto producto1;
+            Producto producto2;
+
             while (reader.Read())
             {
-                Producto unProducto = new Producto(reader.GetInt32(1), reader.GetDecimal(2));
-                productosAVender.Add(reader.GetInt32(0), unProducto);
-                productosARestockear.Add(reader.GetInt32(0), unProducto);
+                producto1 = new Producto(reader.GetInt32(1), reader.GetDecimal(2));
+                producto2 = new Producto(reader.GetInt32(1), reader.GetDecimal(2));
+
+                productosAVender.Add(reader.GetInt32(0), producto1);
+                productosARestockear.Add(reader.GetInt32(0), producto2);
             }
 
             reader.Close();
@@ -266,6 +276,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             decimal precio = Convert.ToInt32(filaDgv.Cells[3].Value);
 
             productosAVender[id_stock].setCantidad(productosAVender[id_stock].getCantidad() - cantidadABorrar);
+            int memes = productosARestockear[id_stock].getCantidad();// (productosARestockear[id_stock].getCantidad() + cantidadABorrar);
 
             cargarDGV();
             ItemsDGV.Rows.Remove(filaDgv);

@@ -2,9 +2,6 @@
 CREATE DATABASE IF NOT EXISTS Sesedublo;
 USE Sesedublo;
 
-DROP DATABASE sesedublo
-REPAIR TABLE proc USE_FRM
-
 #DROP TABLES:
 DROP TABLE IF EXISTS NotasDeCredito;
 DROP TABLE IF EXISTS Operaciones;
@@ -904,8 +901,8 @@ BEGIN
 
 	SELECT s.id_stock, cantidadProductos, p.precio FROM Items i
     INNER JOIN Stock s ON i.producto = s.producto 
-	INNER JOIN Pedidos p ON p.id_pedido = s.pedido 
-    WHERE s.pedido = _id_pedido;
+	INNER JOIN Pedidos p ON p.id_pedido = i.pedido 
+    WHERE i.pedido = _id_pedido;
     
 END //
 

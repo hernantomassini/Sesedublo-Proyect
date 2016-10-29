@@ -89,7 +89,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
                     cantidad = reader.GetString(1) + " bultos de " + cantXBulto + " unidades";
 
                 //ID Stock 0 - Cantidad 1 - Nombre 3 - Costo unitario 4 - Costo total x - PVU 5 - PVB 6 
-                StockDGV.Rows.Add(reader.GetInt32(0), cantidad, reader.GetString(3), reader.GetDecimal(4), reader.GetDecimal(4) * reader.GetDecimal(1), reader.GetDecimal(5), reader.GetDecimal(6));
+                StockDGV.Rows.Add(reader.GetInt32(0), cantidad, reader.GetString(3), reader.GetDecimal(4), Math.Abs(reader.GetDecimal(4) * reader.GetDecimal(1)), reader.GetDecimal(5), reader.GetDecimal(6));
             }
 
             reader.Close();

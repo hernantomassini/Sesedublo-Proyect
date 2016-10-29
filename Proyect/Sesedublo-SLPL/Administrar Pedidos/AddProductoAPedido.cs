@@ -82,7 +82,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             while (reader.Read())
             {
                 producto1 = new Producto(reader.GetInt32(1), reader.GetDecimal(2));
-                producto2 = new Producto(reader.GetInt32(1), reader.GetDecimal(2));
+                producto2 = new Producto(reader.GetInt32(1), decimal.Round(reader.GetDecimal(2) / reader.GetInt32(1) , 2));
 
                 productosAVender.Add(reader.GetInt32(0), producto1);
                 productosARestockear.Add(reader.GetInt32(0), producto2);

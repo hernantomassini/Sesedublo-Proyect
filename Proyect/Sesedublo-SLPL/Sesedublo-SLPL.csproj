@@ -129,6 +129,7 @@
     <Compile Include="Administrar Pedidos\GenerarFactura.Designer.cs">
       <DependentUpon>GenerarFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administrar Pedidos\Producto.cs" />
     <Compile Include="Administrar Stock\ABM_Stock.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -88,6 +88,9 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 //Y TE VAS A DAR CUENTA QUE APRETANDO 800 VECES FINALIZAR 
                 //QUEDA IGUAL, PERO LE PONGO ESA MULTIPLICACION Y EMPIEZA A MULTIPLICAR
                 //POR LA CANTIDAD OTRA VEZ CADA VEZ QUE LO HACE Y NO SÉ PORQUE, SE CARGA MAL EN LA DB
+
+
+                //PD HAY UN PROBLEMA DE DIVISIÓN POR 0 EN reader.GetDecimal(2) / reader.GetInt32(1)
                 producto1 = new Producto(reader.GetInt32(1), decimal.Round(reader.GetDecimal(2) ,2));
                 producto2 = new Producto(reader.GetInt32(1), decimal.Round(reader.GetDecimal(2) / reader.GetInt32(1), 2));
                 productosAVender.Add(reader.GetInt32(0), producto1);

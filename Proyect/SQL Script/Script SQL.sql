@@ -904,7 +904,7 @@ BEGIN
     INNER JOIN Stock s ON i.producto = s.producto 
 	INNER JOIN Pedidos p ON p.id_pedido = i.pedido
     INNER JOIN Productos pr ON pr.id_producto = i.producto
-    WHERE i.pedido = _id_pedido;
+    WHERE i.pedido = _id_pedido AND cantidadProductos != 0;
     
 END //
 

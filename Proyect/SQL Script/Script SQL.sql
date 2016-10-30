@@ -889,6 +889,7 @@ END //
 CREATE PROCEDURE obtenerInfoItems (IN _id_producto INT)
 BEGIN
 
+	SELECT id_producto, nombre, PVUnitario, PVBulto, cantidadXBulto FROM Productos WHERE id_producto = _id_producto;
 
 END //
 

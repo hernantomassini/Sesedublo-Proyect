@@ -82,8 +82,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             while (reader.Read())
             {
                 producto1 = new Producto(reader.GetInt32(1), reader.GetDecimal(2));
-                producto2 = new Producto(reader.GetInt32(1), decimal.Round(reader.GetDecimal(2) / reader.GetInt32(1) , 2));
-
+                producto2 = new Producto(reader.GetInt32(1), decimal.Round(reader.GetDecimal(2) / reader.GetInt32(1) , 21));
                 productosAVender.Add(reader.GetInt32(0), producto1);
                 productosARestockear.Add(reader.GetInt32(0), producto2);
             }
@@ -162,7 +161,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 //Agregar productos al pedido y disminuir stock de todos los productos involucrados:
                 foreach (var registro in productosAVender)
                 {
-                    Conexion.executeProcedure("agregarItemAPedido", Conexion.generarArgumentos("_id_pedido", "_id_producto", "_cantidad"), id_pedido, registro.Key, registro.Value.getCantidad());
+                    Conexion.executeProcedure("agregarItemAPedido", Conexion.generarArgumentos("_id_pedido", "_id_producto", "_cantidad","_valorDelItem"), id_pedido, registro.Key, registro.Value.getCantidad(),registro.Value.getPrecioCobrado());
                     Conexion.closeConnection();
                 }
 
@@ -276,7 +275,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             decimal precio = Convert.ToInt32(filaDgv.Cells[3].Value);
 
             productosAVender[id_stock].setCantidad(productosAVender[id_stock].getCantidad() - cantidadABorrar);
-            int memes = productosARestockear[id_stock].getCantidad();// (productosARestockear[id_stock].getCantidad() + cantidadABorrar);
+            // (productosARestockear[id_stock].getCantidad() + cantidadABorrar);
 
             cargarDGV();
             ItemsDGV.Rows.Remove(filaDgv);

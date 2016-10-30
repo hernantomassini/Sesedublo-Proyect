@@ -3,7 +3,6 @@ CREATE DATABASE IF NOT EXISTS Sesedublo;
 USE Sesedublo;
 
 #DROP TABLES:
-/*
 DROP TABLE IF EXISTS NotasDeCredito;
 DROP TABLE IF EXISTS Operaciones;
 DROP TABLE IF EXISTS Facturas;
@@ -17,7 +16,6 @@ DROP TABLE IF EXISTS ItemsDeLea;
 DROP TABLE IF EXISTS StockACargar;
 DROP TABLE IF EXISTS PedidosDeLea;
 DROP TABLE IF EXISTS Productos;
-*/
 
 #DROP PROCEDURES:
 DROP PROCEDURE IF EXISTS obtenerStock;
@@ -66,7 +64,6 @@ DROP PROCEDURE IF EXISTS cobrarPedidoDeLea;
 DROP PROCEDURE IF EXISTS obtenerStockPedido;
 DROP PROCEDURE IF EXISTS cargarStockPedidoLea;
 
-/*
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
     efectivoActual DECIMAL(20 , 2 ),
@@ -160,6 +157,7 @@ CREATE TABLE Items (
     pedido INT,
     cantidadProductos INT,
     cantidadProductosEdit INT DEFAULT 0,
+    valorDelItem decimal,
     PRIMARY KEY (id_item),
     FOREIGN KEY (producto)
         REFERENCES Productos (id_producto),
@@ -623,8 +621,7 @@ INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 											("WHISKY HIRAM WALKER"),
 											("WHITE HORSE"),
 											("WYBOROWA");
-*/
-
+                                            
 #Store Procedures
 DELIMITER //
 
@@ -875,13 +872,13 @@ BEGIN
     
 END //
 
-CREATE PROCEDURE agregarItemAPedido (IN _id_pedido INT, IN _id_producto INT, IN _cantidad INT)
+CREATE PROCEDURE agregarItemAPedido (IN _id_pedido INT, IN _id_producto INT, IN _cantidad INT, _valorDelItem decimal)
 BEGIN
 
 SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = _id_producto) - _cantidad;
 
 	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = _id_producto;
-	INSERT INTO Items (producto, pedido, cantidadProductos, cantidadProductosEdit) VALUES (_id_producto, _id_pedido, _cantidad, _cantidad);
+	INSERT INTO Items (producto, pedido, cantidadProductos, cantidadProductosEdit, valorDelItem) VALUES (_id_producto, _id_pedido, _cantidad, _cantidad, _valorDelItem);
 
 END //
 
@@ -903,9 +900,10 @@ END //
 CREATE PROCEDURE obtenerItems (IN _id_pedido INT)
 BEGIN
 
-	SELECT s.id_stock, cantidadProductos, p.precio FROM Items i
+	SELECT s.id_stock, cantidadProductos, i.valorDelItem * cantidadProductos FROM Items i
     INNER JOIN Stock s ON i.producto = s.producto 
-	INNER JOIN Pedidos p ON p.id_pedido = i.pedido 
+	INNER JOIN Pedidos p ON p.id_pedido = i.pedido
+    INNER JOIN Productos pr ON pr.id_producto = i.producto
     WHERE i.pedido = _id_pedido;
     
 END //

@@ -81,8 +81,15 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
             while (reader.Read())
             {
-                producto1 = new Producto(reader.GetInt32(1), reader.GetDecimal(2));
-                producto2 = new Producto(reader.GetInt32(1), decimal.Round(reader.GetDecimal(2) / reader.GetInt32(1) , 21));
+                //GONZA
+                //TODO
+                //YO INTENTE HACER ESTO, PERO TIRAS FINALIZAR EN EL MODIFICAR Y SE MULTIPLICA POR LA CANTIDAD OTRA VEZ, COMO SI LA CANTIDAD ESTUVIERA SUBIENDO
+                //AHORA SINO LO PONIA, FUNCIONA PERO... NO TE DA LA CANTIDAD, FIJATE SACANDO LOS * Y ESAS COSAS
+                //Y TE VAS A DAR CUENTA QUE APRETANDO 800 VECES FINALIZAR 
+                //QUEDA IGUAL, PERO LE PONGO ESA MULTIPLICACION Y EMPIEZA A MULTIPLICAR
+                //POR LA CANTIDAD OTRA VEZ CADA VEZ QUE LO HACE Y NO SÉ PORQUE, SE CARGA MAL EN LA DB
+                producto1 = new Producto(reader.GetInt32(1), decimal.Round(reader.GetDecimal(2) * reader.GetInt32(1),2));
+                producto2 = new Producto(reader.GetInt32(1), decimal.Round((reader.GetDecimal(2) * reader.GetInt32(1)) / reader.GetInt32(1) , 21));
                 productosAVender.Add(reader.GetInt32(0), producto1);
                 productosARestockear.Add(reader.GetInt32(0), producto2);
             }
@@ -161,6 +168,10 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 //Agregar productos al pedido y disminuir stock de todos los productos involucrados:
                 foreach (var registro in productosAVender)
                 {
+                    //LE AGREGUE A ITEMS EL NUEVO CAMPO, VALOR DE ITEM
+                    //FIJATE QUE ACÁ SE LO PASO, LO AGARRO DE LA DGV
+                    //HAY ALGO ROMPIENDO Y NO SÉ QUE ES :(
+                    //CREERÍA QUE EL PROBLEMA ESTÁ ACÁ
                     Conexion.executeProcedure("agregarItemAPedido", Conexion.generarArgumentos("_id_pedido", "_id_producto", "_cantidad","_valorDelItem"), id_pedido, registro.Key, registro.Value.getCantidad(),registro.Value.getPrecioCobrado());
                     Conexion.closeConnection();
                 }

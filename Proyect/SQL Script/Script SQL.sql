@@ -870,9 +870,9 @@ END //
 CREATE PROCEDURE obtenerItems (IN _id_pedido INT)
 BEGIN
 
-	SELECT pr.id_producto, pr.cantidadProductos, i.valorDelItem FROM Items i
+	SELECT pr.id_producto, cantidadProductos, i.valorDelItem FROM Items i
     INNER JOIN Productos pr ON pr.id_producto = i.producto
-    WHERE i.pedido = _id_pedido AND pr.cantidadProductos != 0;
+    WHERE i.pedido = _id_pedido AND i.cantidadProductos != 0;
     
 END //
 

@@ -900,7 +900,7 @@ END //
 CREATE PROCEDURE obtenerItems (IN _id_pedido INT)
 BEGIN
 
-	SELECT s.id_stock, cantidadProductos, i.valorDelItem * cantidadProductos * cantidadProductos FROM Items i
+	SELECT s.id_stock, cantidadProductos, i.valorDelItem FROM Items i
     INNER JOIN Stock s ON i.producto = s.producto 
 	INNER JOIN Pedidos p ON p.id_pedido = i.pedido
     INNER JOIN Productos pr ON pr.id_producto = i.producto

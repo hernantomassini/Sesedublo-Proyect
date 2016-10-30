@@ -172,6 +172,9 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                     //FIJATE QUE ACÁ SE LO PASO, LO AGARRO DE LA DGV
                     //HAY ALGO ROMPIENDO Y NO SÉ QUE ES :(
                     //CREERÍA QUE EL PROBLEMA ESTÁ ACÁ
+
+
+                    //Lo arreglé haciendo ese if re negro porque el problema estaba ahí básicamente, si podes fijarte vos que entendes el código mejor :P
                     decimal pr;
                     if (flag == accionesABM.Modificar)
                     {

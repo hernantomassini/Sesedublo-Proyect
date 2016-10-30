@@ -82,7 +82,8 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             while (reader.Read())
             {
                 producto1 = new Producto(reader.GetInt32(1), reader.GetDecimal(2));
-                producto2 = new Producto(reader.GetInt32(1), reader.GetDecimal(2) / reader.GetInt32(1));
+                //producto2 = new Producto(reader.GetInt32(1), reader.GetDecimal(2) / reader.GetInt32(1));
+                producto2 = new Producto(reader.GetInt32(1), reader.GetDecimal(2));
                 productosARestockear.Add(reader.GetInt32(0), producto2);
                 productosAVender.Add(reader.GetInt32(0), producto1);
             }
@@ -112,7 +113,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
 
                 //IDStock - Cantidad - Nombre - Precio
-                ItemsDGV.Rows.Add(reader.GetInt32(0), precioString, reader.GetString(1), precio);
+                ItemsDGV.Rows.Add(reader.GetInt32(0), precioString, reader.GetString(1), precio * cantidad);
 
                 reader.Close();
                 Conexion.closeConnection();
@@ -161,10 +162,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 //Agregar productos al pedido y disminuir stock de todos los productos involucrados:
                 foreach (var registro in productosAVender)
                 {
-                    
-                    decimal pr = registro.Value.getPrecioCobrado();
-
-                    Conexion.executeProcedure("agregarItemAPedido", Conexion.generarArgumentos("_id_pedido", "_id_producto", "_cantidad", "_valorDelItem"), id_pedido, registro.Key, registro.Value.getCantidad(), pr);
+                    Conexion.executeProcedure("agregarItemAPedido", Conexion.generarArgumentos("_id_pedido", "_id_producto", "_cantidad", "_valorDelItem"), id_pedido, registro.Key, registro.Value.getCantidad(), registro.Value.getPrecioCobrado());
                     Conexion.closeConnection();
                 }
 
@@ -172,7 +170,6 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
                 Manejador_Formularios.ABM_Pedidos.cargarDGV();
                 Manejador_Formularios.ABM_Pedidos.Show();
-
 
                 this.id_pedido = -1;
                 this.id_cliente = -1;

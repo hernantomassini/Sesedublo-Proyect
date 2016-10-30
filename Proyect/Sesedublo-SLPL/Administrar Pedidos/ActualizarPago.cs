@@ -9,6 +9,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 {
     public partial class ActualizarPago : MetroForm
     {
+        Validaciones val = new Validaciones();
         int id_pedido = -1;
 
         public ActualizarPago()
@@ -67,9 +68,6 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
             Close();
         }
-
-
-        Validaciones val = new Validaciones();
 
         private void cantidadAPagar_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {

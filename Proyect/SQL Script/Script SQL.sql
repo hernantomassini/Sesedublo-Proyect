@@ -157,7 +157,7 @@ CREATE TABLE Items (
     pedido INT,
     cantidadProductos INT,
     cantidadProductosEdit INT DEFAULT 0,
-    valorDelItem decimal,
+    valorDelItem DECIMAL,
     PRIMARY KEY (id_item),
     FOREIGN KEY (producto)
         REFERENCES Productos (id_producto),

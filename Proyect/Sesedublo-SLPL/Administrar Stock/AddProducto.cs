@@ -11,7 +11,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
 {
     public partial class AddProducto : MetroForm
     {
-        int id_stock = -1;
+        int id_producto = -1;
         Validaciones val = new Validaciones();
         StringBuilder st = new StringBuilder();
 
@@ -45,16 +45,16 @@ namespace Sesedublo_SLPL.Administrar_Stock
             Clean();
         }
 
-        public void ModificarProducto(int id_stock)
+        public void ModificarProducto(int id_producto)
         {
-            this.id_stock = id_stock;
+            this.id_producto = id_producto;
             Clean();
             cargarDatos();
         }
 
         private void cargarDatos()
         {
-            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerProducto", Conexion.generarArgumentos("_id_stock"), id_stock);
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerProducto", Conexion.generarArgumentos("_id_producto"), id_producto);
             reader.Read();
 
             decimal costo = reader.GetDecimal(3);

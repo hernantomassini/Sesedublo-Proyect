@@ -44,9 +44,9 @@ namespace Sesedublo_SLPL.Administrar_Productos
                 return;
             }
 
-            int id_stock = Convert.ToInt32(filaDgv.Cells[0].Value);
+            int id_producto = Convert.ToInt32(filaDgv.Cells[0].Value);
 
-            Manejador_Formularios.AddProducto.ModificarProducto(id_stock);
+            Manejador_Formularios.AddProducto.ModificarProducto(id_producto);
             Manejador_Formularios.AddProducto.Show();
         }
 
@@ -64,9 +64,9 @@ namespace Sesedublo_SLPL.Administrar_Productos
                 return;
             }
 
-            int id_stock = Convert.ToInt32(filaDgv.Cells[0].Value);
+            int id_producto = Convert.ToInt32(filaDgv.Cells[0].Value);
 
-            Conexion.executeProcedure("borrarStock", Conexion.generarArgumentos("_id_stock"), id_stock);
+            Conexion.executeProcedure("borrarStock", Conexion.generarArgumentos("_id_producto"), id_producto);
             Conexion.closeConnection();
 
             cargarDGV();
@@ -88,7 +88,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
                 else
                     cantidad = reader.GetString(1) + " bultos de " + cantXBulto + " unidades";
 
-                //ID Stock 0 - Cantidad 1 - Nombre 3 - Costo unitario 4 - Costo total x - PVU 5 - PVB 6 
+                //ID Producto 0 - Cantidad 1 - Nombre 3 - Costo unitario 4 - Costo total x - PVU 5 - PVB 6 
                 StockDGV.Rows.Add(reader.GetInt32(0), cantidad, reader.GetString(3), reader.GetDecimal(4), Math.Abs(reader.GetDecimal(4) * reader.GetDecimal(1)), reader.GetDecimal(5), reader.GetDecimal(6));
             }
 
@@ -120,9 +120,9 @@ namespace Sesedublo_SLPL.Administrar_Productos
         {
             DataGridViewRow filaDgv = StockDGV.CurrentRow;
 
-            int id_stock = Convert.ToInt32(filaDgv.Cells[0].Value);
+            int id_producto = Convert.ToInt32(filaDgv.Cells[0].Value);
 
-            Manejador_Formularios.AddProducto.ModificarProducto(id_stock);
+            Manejador_Formularios.AddProducto.ModificarProducto(id_producto);
             Manejador_Formularios.AddProducto.Show();
         }
 
@@ -156,8 +156,5 @@ namespace Sesedublo_SLPL.Administrar_Productos
 
             Conexion.closeConnection();
         }
-
-
-
     }
 }

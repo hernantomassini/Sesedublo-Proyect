@@ -80,6 +80,7 @@ CREATE TABLE Productos (
     nombre VARCHAR(100),
     PVUnitario DECIMAL(10 , 2 ) DEFAULT 0,
     PVBulto DECIMAL(10 , 2 ) DEFAULT 0,
+    deleted INT DEFAULT 0,
     radioSelected INT DEFAULT 1,
     PRIMARY KEY (id_producto)
 );
@@ -129,15 +130,6 @@ CREATE TABLE Clientes (
     razonSocial VARCHAR(60),
     deleted INT DEFAULT 0,
     PRIMARY KEY (id_cliente)
-);
-
-CREATE TABLE Stock (
-    id_stock INT AUTO_INCREMENT,
-    producto INT,
-    deleted INT DEFAULT 0,
-    PRIMARY KEY (id_stock),
-    FOREIGN KEY (producto)
-        REFERENCES Productos (id_producto)
 );
 
 CREATE TABLE Pedidos (
@@ -646,21 +638,20 @@ END //
 CREATE PROCEDURE obtenerStock (IN _nombre VARCHAR(50)) 
 BEGIN
 
-	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto
-	FROM Stock s INNER JOIN Productos p 
-	ON p.id_producto = s.producto
-	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
-    AND s.deleted = 0 AND p.cantidad != 0;
+	SELECT id_producto, cantidad, cantidadXBulto, nombre, costo, PVUnitario, PVBulto
+	FROM Productos 
+	WHERE ((nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+    AND deleted = 0 AND cantidad != 0;
+    
 END //
 
 CREATE PROCEDURE obtenerStockPedido (IN _nombre VARCHAR(50)) 
 BEGIN
 
-	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto
-	FROM Stock s INNER JOIN Productos p 
-	ON p.id_producto = s.producto
-	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
-    AND s.deleted = 0;
+	SELECT id_producto, cantidad, cantidadXBulto, nombre, costo, PVUnitario, PVBulto
+	FROM Productos 
+	WHERE ((nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+    AND deleted = 0;
 
 END //
 
@@ -683,8 +674,6 @@ SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AN
 		ELSE
 			#Es un producto nuevo.
 			INSERT INTO Productos (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto, radioSelected) VALUES (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto, _radioSelected);
-			SET @_id_producto = LAST_INSERT_ID();
-			INSERT INTO Stock (producto) VALUES (@_id_producto);
         END IF;
     ELSE
 		#Es un Bulto con un _cantidadXBulto ya existente
@@ -699,40 +688,22 @@ SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AN
     END IF;
 END //
 
-CREATE PROCEDURE modificarStock (IN _id_stock INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL(10,2)) 
+CREATE PROCEDURE borrarStock (IN _id_producto INT) 
 BEGIN
 
-SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
-
-	UPDATE Productos SET 
-	cantidad = _cantidad,
-    cantidadXBulto = _cantidadXBulto,
-    costo = _costo,
-    nombre = _nombre,
-    PVUnitario = _PVUnitario,
-    PVBulto = _PVBulto
-    WHERE id_producto = @_id_producto;
+	UPDATE Productos SET deleted = 1 WHERE id_producto = _id_producto;
 
 END //
 
-CREATE PROCEDURE borrarStock (IN _id_stock INT) 
+CREATE PROCEDURE obtenerProducto (IN _id_producto INT) 
 BEGIN
-
-	UPDATE Stock SET deleted = 1 WHERE id_stock = _id_stock;
-
-END //
-
-CREATE PROCEDURE obtenerProducto (IN _id_stock INT) 
-BEGIN
-
-SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
 
 	SELECT 
     cantidad, cantidadXBulto, nombre, costo, PVUnitario, PVBulto, radioSelected
 FROM
     Productos
 WHERE
-    id_producto = @_id_producto;
+    id_producto = _id_producto;
     
 END //
 
@@ -900,30 +871,24 @@ END //
 CREATE PROCEDURE obtenerItems (IN _id_pedido INT)
 BEGIN
 
-	SELECT s.id_stock, cantidadProductos, i.valorDelItem FROM Items i
-    INNER JOIN Stock s ON i.producto = s.producto 
-	INNER JOIN Pedidos p ON p.id_pedido = i.pedido
+	SELECT pr.id_producto, pr.cantidadProductos, i.valorDelItem FROM Items i
     INNER JOIN Productos pr ON pr.id_producto = i.producto
-    WHERE i.pedido = _id_pedido AND cantidadProductos != 0;
+    WHERE i.pedido = _id_pedido AND pr.cantidadProductos != 0;
     
 END //
 
-CREATE PROCEDURE updatearStock (IN _id_stock INT, IN _cantidad INT)
+CREATE PROCEDURE updatearStock (IN _id_producto INT, IN _cantidad INT)
 BEGIN
 
-SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
-SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = @_id_producto) + _cantidad;
+SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = _id_producto) + _cantidad;
 
-	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = @_id_producto;
+	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = _id_producto;
     
 END //
 
 CREATE PROCEDURE obtenerInfoItems (IN _id_producto INT)
 BEGIN
 
-	SELECT s.id_stock, p.nombre, p.PVUnitario, p.PVBulto, p.cantidadXBulto FROM Stock s
-    INNER JOIN Productos p ON s.producto = p.id_producto
-    WHERE s.producto = _id_producto;
 
 END //
 

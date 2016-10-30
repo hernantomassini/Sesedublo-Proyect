@@ -82,7 +82,6 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             while (reader.Read())
             {
                 producto1 = new Producto(reader.GetInt32(1), reader.GetDecimal(2));
-                //producto2 = new Producto(reader.GetInt32(1), reader.GetDecimal(2) / reader.GetInt32(1));
                 producto2 = new Producto(reader.GetInt32(1), reader.GetDecimal(2));
                 productosARestockear.Add(reader.GetInt32(0), producto2);
                 productosAVender.Add(reader.GetInt32(0), producto1);
@@ -139,10 +138,10 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 {
                     foreach (var registro in productosARestockear)
                     {
-                        int id_stock = registro.Key;
+                        int id_producto = registro.Key;
                         int cantidad = registro.Value.getCantidad();
 
-                        Conexion.executeProcedure("updatearStock", Conexion.generarArgumentos("_id_stock", "_cantidad"), id_stock, cantidad);
+                        Conexion.executeProcedure("updatearStock", Conexion.generarArgumentos("_id_producto", "_cantidad"), id_producto, cantidad);
                         Conexion.closeConnection();
                     }
 
@@ -183,28 +182,28 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             Funciones.limpiarDGV(ProductosDGV);
             MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerStockPedido", Conexion.generarArgumentos("_nombre"), Nombre.Text);
 
-            int id_stock;
+            int id_producto;
             string cantidad;
             int cantXBulto;
             decimal precio;
 
             while (reader.Read())
             {
-                id_stock = reader.GetInt32(0);
+                id_producto = reader.GetInt32(0);
 
                 cantXBulto = reader.GetInt32(2);
 
                 if (cantXBulto == 0)
                 {
                     //Significa que el producto es individual!
-                    cantidad = obtenerCantidadReal(id_stock, reader.GetInt32(1)) + " unidades";
-                    precio = obtenerPrecioReal(id_stock, reader.GetDecimal(5));
+                    cantidad = obtenerCantidadReal(id_producto, reader.GetInt32(1)) + " unidades";
+                    precio = obtenerPrecioReal(id_producto, reader.GetDecimal(5));
                 }
                 else
                 {
                     //El producto es un Bulto!
-                    cantidad = obtenerCantidadReal(id_stock, reader.GetInt32(1)) + " bultos de " + cantXBulto + " unidades";
-                    precio = obtenerPrecioReal(id_stock, reader.GetDecimal(6));
+                    cantidad = obtenerCantidadReal(id_producto, reader.GetInt32(1)) + " bultos de " + cantXBulto + " unidades";
+                    precio = obtenerPrecioReal(id_producto, reader.GetDecimal(6));
                 }
 
                 //ID Stock 0 - Nombre 3
@@ -239,22 +238,22 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
-            int id_stock = Convert.ToInt32(filaDgv.Cells[0].Value);
+            int id_producto = Convert.ToInt32(filaDgv.Cells[0].Value);
             string nombre = Convert.ToString(filaDgv.Cells[2].Value);
             decimal precioUnitario = Convert.ToDecimal(filaDgv.Cells[3].Value);
             string cantidadEnString = obtenerCantidadEnString(cantidad, Convert.ToString(filaDgv.Cells[1].Value));
 
-            ItemsDGV.Rows.Add(id_stock, cantidadEnString, nombre, precioUnitario * cantidad);
+            ItemsDGV.Rows.Add(id_producto, cantidadEnString, nombre, precioUnitario * cantidad);
             sumatoriaMoney += precioUnitario * cantidad;
             updateLabelMoney();
 
-            if (!productosAVender.ContainsKey(id_stock))
+            if (!productosAVender.ContainsKey(id_producto))
             {
                 Producto unProducto = new Producto(cantidad, precioUnitario);
-                productosAVender.Add(id_stock, unProducto);
+                productosAVender.Add(id_producto, unProducto);
             }
             else
-                productosAVender[id_stock].setCantidad(productosAVender[id_stock].getCantidad() + cantidad); 
+                productosAVender[id_producto].setCantidad(productosAVender[id_producto].getCantidad() + cantidad); 
 
             Cantidad.Clear();
             Cantidad.Focus();
@@ -270,12 +269,11 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
-            int id_stock = Convert.ToInt32(filaDgv.Cells[0].Value);
+            int id_producto = Convert.ToInt32(filaDgv.Cells[0].Value);
             int cantidadABorrar = obtenerCantidadEnInt(Convert.ToString(filaDgv.Cells[1].Value));
             decimal precio = Convert.ToInt32(filaDgv.Cells[3].Value);
 
-            productosAVender[id_stock].setCantidad(productosAVender[id_stock].getCantidad() - cantidadABorrar);
-            // (productosARestockear[id_stock].getCantidad() + cantidadABorrar);
+            productosAVender[id_producto].setCantidad(productosAVender[id_producto].getCantidad() - cantidadABorrar);
 
             cargarDGV();
             ItemsDGV.Rows.Remove(filaDgv);
@@ -283,22 +281,22 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             updateLabelMoney();
         }
 
-        private int obtenerCantidadReal(int id_stock, int cantEnDB)
+        private int obtenerCantidadReal(int id_producto, int cantEnDB)
         {
 
-            if (productosAVender.ContainsKey(id_stock))
-                if (flag == accionesABM.Modificar && productosARestockear.ContainsKey(id_stock))
-                    return cantEnDB - productosAVender[id_stock].getCantidad() + productosARestockear[id_stock].getCantidad();
+            if (productosAVender.ContainsKey(id_producto))
+                if (flag == accionesABM.Modificar && productosARestockear.ContainsKey(id_producto))
+                    return cantEnDB - productosAVender[id_producto].getCantidad() + productosARestockear[id_producto].getCantidad();
                 else
-                    return cantEnDB - productosAVender[id_stock].getCantidad();
+                    return cantEnDB - productosAVender[id_producto].getCantidad();
 
             return cantEnDB;
         }
 
-        private decimal obtenerPrecioReal(int id_stock, decimal precioEnTablaDeProductos)
+        private decimal obtenerPrecioReal(int id_producto, decimal precioEnTablaDeProductos)
         {
-            if (flag == accionesABM.Modificar && productosARestockear.ContainsKey(id_stock))
-                return productosARestockear[id_stock].getPrecioCobrado();
+            if (flag == accionesABM.Modificar && productosARestockear.ContainsKey(id_producto))
+                return productosARestockear[id_producto].getPrecioCobrado();
             else
                 return precioEnTablaDeProductos;
         }

@@ -44,7 +44,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.nombreLabel = new MetroFramework.Controls.MetroLabel();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
-            this.id_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CostoUnitary = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,7 +75,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.StockDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.StockDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.StockDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_stock,
+            this.id_producto,
             this.Cantidad,
             this.Producto,
             this.CostoUnitary,
@@ -270,15 +270,15 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.metroGrid1.TabIndex = 19;
             this.metroGrid1.Visible = false;
             // 
-            // id_stock
+            // id_producto
             // 
-            this.id_stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.id_stock.HeaderText = "ID Stock";
-            this.id_stock.Name = "id_stock";
-            this.id_stock.ReadOnly = true;
-            this.id_stock.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.id_stock.Visible = false;
-            this.id_stock.Width = 77;
+            this.id_producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.id_producto.HeaderText = "ID Producto";
+            this.id_producto.Name = "id_producto";
+            this.id_producto.ReadOnly = true;
+            this.id_producto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.id_producto.Visible = false;
+            this.id_producto.Width = 77;
             // 
             // Cantidad
             // 
@@ -373,7 +373,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
         private MetroLabel nombreLabel;
         private MetroTile metroTile1;
         private MetroGrid metroGrid1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_stock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn CostoUnitary;

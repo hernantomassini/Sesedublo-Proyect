@@ -1,22 +1,17 @@
 ﻿using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sesedublo_SLPL
 {
     public partial class Ver_Remito : Form
     {
-        
-         int id_factura;
+        int id_factura;
         int id_cliente;
         private PrintDocument printDocument1 = new PrintDocument();
 
@@ -27,9 +22,10 @@ namespace Sesedublo_SLPL
             this.Closing += new CancelEventHandler(Avoid_Closing);
             this.SetBorderAndGridlineStyles();
             printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+            this.WindowState = FormWindowState.Maximized;
         }
 
-         void Avoid_Closing(object sender, CancelEventArgs e)
+        void Avoid_Closing(object sender, CancelEventArgs e)
         {
             this.Hide();
             e.Cancel = true;
@@ -130,5 +126,9 @@ namespace Sesedublo_SLPL
              dgvVerFactura.CurrentCell = null;
          }
 
+        private void Ver_Remito_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sesedublo_SLPL.Administrar_Pedidos
+﻿namespace Sesedublo_SLPL.Administrar_Pedidos
 {
     class Producto
     {

@@ -24,6 +24,7 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             this.Closing += new CancelEventHandler(Avoid_Closing);
 
             printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void getData()

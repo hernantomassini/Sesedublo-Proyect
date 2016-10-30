@@ -1,14 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sesedublo_SLPL
@@ -26,6 +22,7 @@ namespace Sesedublo_SLPL
             InitializeComponent(); this.Closing += new CancelEventHandler(Avoid_Closing);
             printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
             this.SetBorderAndGridlineStyles();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void getData()

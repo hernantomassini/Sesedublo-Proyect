@@ -749,7 +749,7 @@ BEGIN
 	AND ((c.apellido LIKE CONCAT("%", _apellido, "%") COLLATE utf8_general_ci ) OR (_apellido IS NULL OR _apellido = ""))
 	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""))
     GROUP BY p.id_pedido
-    ORDER BY f.id_factura ASC
+    ORDER BY f.id_factura DESC
     LIMIT 20000;
 END //
 
@@ -795,7 +795,7 @@ BEGIN
 	SELECT fecha AS Fecha, operacion AS Operación, descripcion AS Descripción FROM Operaciones
 	WHERE ((descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
 	AND ((operacion LIKE CONCAT("%", _operacion, "%") COLLATE utf8_general_ci ) OR (_operacion IS NULL OR _operacion = ""))
-    ORDER BY id_operacion ASC
+    ORDER BY id_operacion DESC
     LIMIT 20000;
 END //
 
@@ -808,7 +808,7 @@ BEGIN
         INNER JOIN Productos pr ON i.producto = pr.id_producto
         WHERE ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
         GROUP BY p.id_pedido
-        ORDER BY p.id_pedido ASC
+        ORDER BY p.id_pedido DESC
 		LIMIT 20000;
 END //
 
@@ -1030,7 +1030,7 @@ BEGIN
     INNER JOIN StockACargar sac ON sac.id_stockACargar = i.id_stockACargar
     INNER JOIN Clientes c ON c.id_cliente = p.vendedor
     GROUP BY p.id_pedido
-    ORDER BY p.id_pedido ASC
+    ORDER BY p.id_pedido DESC
 	LIMIT 20000;
 
 END //

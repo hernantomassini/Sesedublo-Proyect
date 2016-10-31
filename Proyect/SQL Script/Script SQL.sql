@@ -742,7 +742,8 @@ BEGIN
 	SELECT c.id_cliente, c.nombre AS Nombre, c.apellido AS Apellido, c.email AS Mail, c.telefono AS Teléfono, c.direccion AS Dirección, c.localidad AS Localidad, c.cuit as CUIT, c.razonSocial AS Razon_Social FROM Clientes c
 	WHERE c.deleted = 0 AND ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
 	AND ((c.apellido LIKE CONCAT("%", _apellido, "%") COLLATE utf8_general_ci ) OR (_apellido IS NULL OR _apellido = ""))
-	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""));
+	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""))
+    ORDER BY c.id_cliente DESC;
 END //
 
 CREATE PROCEDURE agregarCliente (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _mail VARCHAR(255),
@@ -778,8 +779,8 @@ BEGIN
 	AND ((c.apellido LIKE CONCAT("%", _apellido, "%") COLLATE utf8_general_ci ) OR (_apellido IS NULL OR _apellido = ""))
 	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""))
     GROUP BY p.id_pedido
-    ORDER BY f.id_factura ASC
-    LIMIT 20000;
+    ORDER BY f.id_factura DESC
+    LIMIT 5000;
 END //
 
 CREATE PROCEDURE agregarEfectivo (IN _montoASumar INT, _descripcion VARCHAR(200)) 
@@ -825,8 +826,8 @@ BEGIN
 	SELECT fecha AS Fecha, operacion AS Operación, descripcion AS Descripción FROM Operaciones
 	WHERE ((descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
 	AND ((operacion LIKE CONCAT("%", _operacion, "%") COLLATE utf8_general_ci ) OR (_operacion IS NULL OR _operacion = ""))
-    ORDER BY id_operacion ASC
-    LIMIT 20000;
+    ORDER BY id_operacion DESC
+    LIMIT 5000;
 END //
 
 CREATE PROCEDURE obtenerPedidos (_nombre VARCHAR(50)) 
@@ -838,8 +839,8 @@ BEGIN
         INNER JOIN Productos pr ON i.producto = pr.id_producto
         WHERE ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
         GROUP BY p.id_pedido
-        ORDER BY p.id_pedido ASC
-		LIMIT 20000;
+        ORDER BY p.id_pedido DESC
+		LIMIT 5000;
 END //
 
 CREATE PROCEDURE borrarPedido (IN _id_pedido INT)
@@ -1065,8 +1066,8 @@ BEGIN
     INNER JOIN StockACargar sac ON sac.id_stockACargar = i.id_stockACargar
     INNER JOIN Clientes c ON c.id_cliente = p.vendedor
     GROUP BY p.id_pedido
-    ORDER BY p.id_pedido ASC
-	LIMIT 20000;
+    ORDER BY p.id_pedido DESC
+	LIMIT 5000;
 
 END //
 

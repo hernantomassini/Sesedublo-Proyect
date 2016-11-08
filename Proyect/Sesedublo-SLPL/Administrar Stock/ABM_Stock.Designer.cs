@@ -38,12 +38,6 @@ namespace Sesedublo_SLPL.Administrar_Productos
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.StockDGV = new MetroFramework.Controls.MetroGrid();
-            this.titleAtras = new MetroFramework.Controls.MetroTile();
-            this.titleAgregarCliente = new MetroFramework.Controls.MetroTile();
-            this.nombre = new MetroFramework.Controls.MetroTextBox();
-            this.nombreLabel = new MetroFramework.Controls.MetroLabel();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
-            this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
             this.id_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +46,12 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.PVUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PVBulto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stockOPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleAtras = new MetroFramework.Controls.MetroTile();
+            this.titleAgregarCliente = new MetroFramework.Controls.MetroTile();
+            this.nombre = new MetroFramework.Controls.MetroTextBox();
+            this.nombreLabel = new MetroFramework.Controls.MetroLabel();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
             ((System.ComponentModel.ISupportInitialize)(this.StockDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.SuspendLayout();
@@ -95,7 +95,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.StockDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.StockDGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.StockDGV.Location = new System.Drawing.Point(29, 139);
-            this.StockDGV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.StockDGV.Margin = new System.Windows.Forms.Padding(4);
             this.StockDGV.MultiSelect = false;
             this.StockDGV.Name = "StockDGV";
             this.StockDGV.ReadOnly = true;
@@ -112,14 +112,82 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.StockDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.StockDGV.Size = new System.Drawing.Size(868, 305);
             this.StockDGV.TabIndex = 4;
-            this.StockDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StockDGV_CellContentClick);
+            this.StockDGV.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StockDGV_CellContentClick);
+            this.StockDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.StockDGV_CellFormatting);
+            // 
+            // id_stock
+            // 
+            this.id_stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.id_stock.HeaderText = "ID Stock";
+            this.id_stock.Name = "id_stock";
+            this.id_stock.ReadOnly = true;
+            this.id_stock.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.id_stock.Visible = false;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            this.Cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Cantidad.Width = 82;
+            // 
+            // Producto
+            // 
+            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Producto.HeaderText = "Producto";
+            this.Producto.Name = "Producto";
+            this.Producto.ReadOnly = true;
+            this.Producto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Producto.Width = 83;
+            // 
+            // CostoUnitary
+            // 
+            this.CostoUnitary.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.CostoUnitary.HeaderText = "Costo unitario";
+            this.CostoUnitary.Name = "CostoUnitary";
+            this.CostoUnitary.ReadOnly = true;
+            this.CostoUnitary.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // CostoTotal
+            // 
+            this.CostoTotal.HeaderText = "Costo total";
+            this.CostoTotal.Name = "CostoTotal";
+            this.CostoTotal.ReadOnly = true;
+            this.CostoTotal.Width = 150;
+            // 
+            // PVUnitario
+            // 
+            this.PVUnitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.PVUnitario.HeaderText = "Precio de venta unitario";
+            this.PVUnitario.Name = "PVUnitario";
+            this.PVUnitario.ReadOnly = true;
+            this.PVUnitario.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.PVUnitario.Width = 108;
+            // 
+            // PVBulto
+            // 
+            this.PVBulto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.PVBulto.HeaderText = "Precio de venta por Bulto";
+            this.PVBulto.Name = "PVBulto";
+            this.PVBulto.ReadOnly = true;
+            this.PVBulto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.PVBulto.Width = 127;
+            // 
+            // stockOPedido
+            // 
+            this.stockOPedido.HeaderText = "Tipo";
+            this.stockOPedido.Name = "stockOPedido";
+            this.stockOPedido.ReadOnly = true;
+            this.stockOPedido.Visible = false;
             // 
             // titleAtras
             // 
             this.titleAtras.ActiveControl = null;
             this.titleAtras.BackColor = System.Drawing.Color.CadetBlue;
             this.titleAtras.Location = new System.Drawing.Point(31, 452);
-            this.titleAtras.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleAtras.Margin = new System.Windows.Forms.Padding(4);
             this.titleAtras.Name = "titleAtras";
             this.titleAtras.Size = new System.Drawing.Size(100, 54);
             this.titleAtras.TabIndex = 3;
@@ -138,7 +206,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.titleAgregarCliente.ActiveControl = null;
             this.titleAgregarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.titleAgregarCliente.Location = new System.Drawing.Point(713, 452);
-            this.titleAgregarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleAgregarCliente.Margin = new System.Windows.Forms.Padding(4);
             this.titleAgregarCliente.Name = "titleAgregarCliente";
             this.titleAgregarCliente.Size = new System.Drawing.Size(184, 54);
             this.titleAgregarCliente.TabIndex = 2;
@@ -159,7 +227,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             // 
             this.nombre.CustomButton.Image = null;
             this.nombre.CustomButton.Location = new System.Drawing.Point(126, 2);
-            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.nombre.CustomButton.Name = "";
             this.nombre.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -171,7 +239,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
             this.nombre.Lines = new string[0];
             this.nombre.Location = new System.Drawing.Point(120, 100);
-            this.nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nombre.Margin = new System.Windows.Forms.Padding(4);
             this.nombre.MaxLength = 70;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
@@ -204,7 +272,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.metroTile1.ActiveControl = null;
             this.metroTile1.BackColor = System.Drawing.Color.Gray;
             this.metroTile1.Location = new System.Drawing.Point(536, 452);
-            this.metroTile1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTile1.Margin = new System.Windows.Forms.Padding(4);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(169, 54);
             this.metroTile1.TabIndex = 18;
@@ -251,7 +319,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid1.Location = new System.Drawing.Point(29, 139);
-            this.metroGrid1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroGrid1.Margin = new System.Windows.Forms.Padding(4);
             this.metroGrid1.MultiSelect = false;
             this.metroGrid1.Name = "metroGrid1";
             this.metroGrid1.ReadOnly = true;
@@ -270,75 +338,6 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.metroGrid1.TabIndex = 19;
             this.metroGrid1.Visible = false;
             // 
-            // id_stock
-            // 
-            this.id_stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.id_stock.HeaderText = "ID Stock";
-            this.id_stock.Name = "id_stock";
-            this.id_stock.ReadOnly = true;
-            this.id_stock.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.id_stock.Visible = false;
-            this.id_stock.Width = 77;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            this.Cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Cantidad.Width = 82;
-            // 
-            // Producto
-            // 
-            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            this.Producto.ReadOnly = true;
-            this.Producto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Producto.Width = 83;
-            // 
-            // CostoUnitary
-            // 
-            this.CostoUnitary.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.CostoUnitary.HeaderText = "Costo unitario";
-            this.CostoUnitary.Name = "CostoUnitary";
-            this.CostoUnitary.ReadOnly = true;
-            this.CostoUnitary.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CostoUnitary.Width = 109;
-            // 
-            // CostoTotal
-            // 
-            this.CostoTotal.HeaderText = "Costo total";
-            this.CostoTotal.Name = "CostoTotal";
-            this.CostoTotal.ReadOnly = true;
-            this.CostoTotal.Width = 150;
-            // 
-            // PVUnitario
-            // 
-            this.PVUnitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.PVUnitario.HeaderText = "Precio de venta unitario";
-            this.PVUnitario.Name = "PVUnitario";
-            this.PVUnitario.ReadOnly = true;
-            this.PVUnitario.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PVUnitario.Width = 108;
-            // 
-            // PVBulto
-            // 
-            this.PVBulto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.PVBulto.HeaderText = "Precio de venta por Bulto";
-            this.PVBulto.Name = "PVBulto";
-            this.PVBulto.ReadOnly = true;
-            this.PVBulto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PVBulto.Width = 127;
-            // 
-            // stockOPedido
-            // 
-            this.stockOPedido.HeaderText = "Tipo";
-            this.stockOPedido.Name = "stockOPedido";
-            this.stockOPedido.ReadOnly = true;
-            this.stockOPedido.Visible = false;
-            // 
             // ABM_Stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -351,7 +350,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             this.Controls.Add(this.titleAtras);
             this.Controls.Add(this.titleAgregarCliente);
             this.Controls.Add(this.StockDGV);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "ABM_Stock";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);

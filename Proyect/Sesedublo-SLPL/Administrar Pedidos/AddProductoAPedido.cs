@@ -396,7 +396,14 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         private void AtrasTile_Click(object sender, EventArgs e)
         {
-           Manejador_Formularios.AgregarPedido.Show();
+            if (accionesABM.Crear == flag)
+            {
+                Manejador_Formularios.AgregarPedido.Show();
+            }
+            else
+            {
+                Manejador_Formularios.ABM_Pedidos.Show();
+            }
             Close();
         }
 

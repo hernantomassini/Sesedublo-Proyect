@@ -39,7 +39,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
         {
             DataGridViewRow filaDgv = StockDGV.CurrentRow;
 
-            if (!Validaciones.validarFilaMarcada(filaDgv,this))
+            if (!Validaciones.validarFilaMarcada(filaDgv, this))
             {
                 return;
             }
@@ -79,7 +79,7 @@ namespace Sesedublo_SLPL.Administrar_Productos
             string cantidad;
             int cantXBulto;
 
-            while(reader.Read())
+            while (reader.Read())
             {
                 cantXBulto = reader.GetInt32(2);
 
@@ -157,7 +157,22 @@ namespace Sesedublo_SLPL.Administrar_Productos
             Conexion.closeConnection();
         }
 
+        private void StockDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            foreach (DataGridViewRow Myrow in StockDGV.Rows)
+            {
+                if (Convert.ToString(Myrow.Cells[1].Value).Substring(0, 1) == "-")// Or your condition 
+                {
+                    Myrow.Cells[1].Style.BackColor = System.Drawing.Color.Red;
+                    Myrow.Cells[1].Style.ForeColor = System.Drawing.Color.White;
+                }
+                else
+                {
+                    Myrow.Cells[1].Style.BackColor = System.Drawing.Color.White;
+                    Myrow.Cells[1].Style.ForeColor = System.Drawing.Color.Black;
+                }
 
-
+            }
+        }
     }
 }

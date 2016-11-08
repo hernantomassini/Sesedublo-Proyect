@@ -1,4 +1,5 @@
-﻿using iTextSharp.text;
+﻿
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 using MetroFramework.Forms;
 using MySql.Data.MySqlClient;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -42,7 +44,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
-            if (Convert.ToInt32(filaDgv.Cells[5].Value) == 1)
+            if (Convert.ToString(filaDgv.Cells[5].Value) == "SI")
             {
                 Funciones.imprimirMensajeDeError("No puede eliminar un pedido ya facturado, que no fue del todo cobrado", this);
                 return;
@@ -87,7 +89,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
-            if(Convert.ToInt32(filaDgv.Cells[5].Value) == 1)
+            if(Convert.ToString(filaDgv.Cells[5].Value) == "SI")
             {
                 Funciones.imprimirMensajeDeError("No puede modificar un pedido que ya ha sido facturado, sólo modificar su monto del debe", this);
                 return;
@@ -245,6 +247,35 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void PedidosDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            foreach (DataGridViewRow Myrow in PedidosDGV.Rows)
+            {            //Here 2 cell is target value and 1 cell is Volume
+                if (Convert.ToString(Myrow.Cells[5].Value) == "SI")// Or your condition 
+                {
+                    Myrow.Cells[5].Style.BackColor = System.Drawing.Color.Green;
+                }
+                else
+                {
+                    Myrow.Cells[5].Style.BackColor = System.Drawing.Color.Red;
+
+                }
+
+                if (Convert.ToString(Myrow.Cells[6].Value) == "SI")// Or your condition 
+                {
+                    Myrow.Cells[6].Style.BackColor = System.Drawing.Color.Green;
+                }
+                else
+                {
+                    Myrow.Cells[6].Style.BackColor = System.Drawing.Color.Red;
+
+                }
+
+                Myrow.Cells[6].Style.ForeColor = System.Drawing.Color.White;
+                Myrow.Cells[5].Style.ForeColor = System.Drawing.Color.White;
             }
         }
     }

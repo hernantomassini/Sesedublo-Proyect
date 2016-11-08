@@ -33,6 +33,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Pedidos));
             this.PedidosDGV = new MetroFramework.Controls.MetroGrid();
+            this.IDPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comprador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pagado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Debe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Productos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Facturada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pag = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AtrasTile = new MetroFramework.Controls.MetroTile();
             this.AgregarPedidoTile = new MetroFramework.Controls.MetroTile();
             this.modificarPedidoTile = new MetroFramework.Controls.MetroTile();
@@ -42,13 +49,6 @@
             this.nombre = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
-            this.IDPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comprador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pagado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Debe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Productos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Facturada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pag = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PedidosDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,6 +110,65 @@
             this.PedidosDGV.Size = new System.Drawing.Size(1205, 306);
             this.PedidosDGV.TabIndex = 0;
             this.PedidosDGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PedidosDGV_CellDoubleClick);
+            this.PedidosDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.PedidosDGV_CellFormatting);
+            // 
+            // IDPedido
+            // 
+            this.IDPedido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDPedido.HeaderText = "IDPedido";
+            this.IDPedido.Name = "IDPedido";
+            this.IDPedido.ReadOnly = true;
+            this.IDPedido.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IDPedido.Visible = false;
+            // 
+            // Comprador
+            // 
+            this.Comprador.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Comprador.HeaderText = "Comprador";
+            this.Comprador.Name = "Comprador";
+            this.Comprador.ReadOnly = true;
+            this.Comprador.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Comprador.Width = 95;
+            // 
+            // Pagado
+            // 
+            this.Pagado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Pagado.HeaderText = "Pagado";
+            this.Pagado.Name = "Pagado";
+            this.Pagado.ReadOnly = true;
+            this.Pagado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Pagado.Width = 74;
+            // 
+            // Debe
+            // 
+            this.Debe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Debe.HeaderText = "Debe";
+            this.Debe.Name = "Debe";
+            this.Debe.ReadOnly = true;
+            this.Debe.Width = 61;
+            // 
+            // Productos
+            // 
+            this.Productos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Productos.HeaderText = "Productos";
+            this.Productos.Name = "Productos";
+            this.Productos.ReadOnly = true;
+            this.Productos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Productos.Width = 88;
+            // 
+            // Facturada
+            // 
+            this.Facturada.HeaderText = "Facturada";
+            this.Facturada.Name = "Facturada";
+            this.Facturada.ReadOnly = true;
+            this.Facturada.Width = 86;
+            // 
+            // Pag
+            // 
+            this.Pag.HeaderText = "Pagado";
+            this.Pag.Name = "Pag";
+            this.Pag.ReadOnly = true;
+            this.Pag.Width = 74;
             // 
             // AtrasTile
             // 
@@ -213,7 +272,7 @@
             this.ActualizarPagoTile.ActiveControl = null;
             this.ActualizarPagoTile.BackColor = System.Drawing.Color.Crimson;
             this.ActualizarPagoTile.Location = new System.Drawing.Point(380, 421);
-            this.ActualizarPagoTile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ActualizarPagoTile.Margin = new System.Windows.Forms.Padding(4);
             this.ActualizarPagoTile.Name = "ActualizarPagoTile";
             this.ActualizarPagoTile.Size = new System.Drawing.Size(201, 53);
             this.ActualizarPagoTile.TabIndex = 6;
@@ -234,7 +293,7 @@
             // 
             this.nombre.CustomButton.Image = null;
             this.nombre.CustomButton.Location = new System.Drawing.Point(109, 2);
-            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.nombre.CustomButton.Name = "";
             this.nombre.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -246,7 +305,7 @@
             this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
             this.nombre.Lines = new string[0];
             this.nombre.Location = new System.Drawing.Point(161, 74);
-            this.nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nombre.Margin = new System.Windows.Forms.Padding(4);
             this.nombre.MaxLength = 32767;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
@@ -280,7 +339,7 @@
             this.metroTile1.ActiveControl = null;
             this.metroTile1.BackColor = System.Drawing.Color.Gray;
             this.metroTile1.Location = new System.Drawing.Point(1060, 43);
-            this.metroTile1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTile1.Margin = new System.Windows.Forms.Padding(4);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(169, 54);
             this.metroTile1.TabIndex = 19;
@@ -294,65 +353,6 @@
             this.metroTile1.UseSelectable = true;
             this.metroTile1.UseTileImage = true;
             this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
-            // 
-            // IDPedido
-            // 
-            this.IDPedido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.IDPedido.HeaderText = "IDPedido";
-            this.IDPedido.Name = "IDPedido";
-            this.IDPedido.ReadOnly = true;
-            this.IDPedido.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IDPedido.Visible = false;
-            this.IDPedido.Width = 82;
-            // 
-            // Comprador
-            // 
-            this.Comprador.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Comprador.HeaderText = "Comprador";
-            this.Comprador.Name = "Comprador";
-            this.Comprador.ReadOnly = true;
-            this.Comprador.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Comprador.Width = 95;
-            // 
-            // Pagado
-            // 
-            this.Pagado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Pagado.HeaderText = "Pagado";
-            this.Pagado.Name = "Pagado";
-            this.Pagado.ReadOnly = true;
-            this.Pagado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Pagado.Width = 74;
-            // 
-            // Debe
-            // 
-            this.Debe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Debe.HeaderText = "Debe";
-            this.Debe.Name = "Debe";
-            this.Debe.ReadOnly = true;
-            this.Debe.Width = 61;
-            // 
-            // Productos
-            // 
-            this.Productos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Productos.HeaderText = "Productos";
-            this.Productos.Name = "Productos";
-            this.Productos.ReadOnly = true;
-            this.Productos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Productos.Width = 88;
-            // 
-            // Facturada
-            // 
-            this.Facturada.HeaderText = "Facturada";
-            this.Facturada.Name = "Facturada";
-            this.Facturada.ReadOnly = true;
-            this.Facturada.Width = 86;
-            // 
-            // Pag
-            // 
-            this.Pag.HeaderText = "Pagado";
-            this.Pag.Name = "Pag";
-            this.Pag.ReadOnly = true;
-            this.Pag.Width = 74;
             // 
             // ABM_Pedidos
             // 

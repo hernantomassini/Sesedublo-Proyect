@@ -168,5 +168,34 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         {
             this.cargarDGV();
         }
+
+        private void PedidosDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            foreach (DataGridViewRow Myrow in PedidosDGV.Rows)
+            {            //Here 2 cell is target value and 1 cell is Volume
+                if (Convert.ToString(Myrow.Cells[5].Value) == "Si")// Or your condition 
+                {
+                    Myrow.Cells[5].Style.BackColor = System.Drawing.Color.Green;
+                }
+                else
+                {
+                    Myrow.Cells[5].Style.BackColor = System.Drawing.Color.Red;
+
+                }
+
+                if (Convert.ToString(Myrow.Cells[6].Value) == "Si")// Or your condition 
+                {
+                    Myrow.Cells[6].Style.BackColor = System.Drawing.Color.Green;
+                }
+                else
+                {
+                    Myrow.Cells[6].Style.BackColor = System.Drawing.Color.Red;
+
+                }
+
+                Myrow.Cells[6].Style.ForeColor = System.Drawing.Color.White;
+                Myrow.Cells[5].Style.ForeColor = System.Drawing.Color.White;
+            }
+        }
     }
 }

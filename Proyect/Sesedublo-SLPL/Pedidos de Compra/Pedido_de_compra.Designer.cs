@@ -166,6 +166,7 @@
             this.PedidosDGV.Size = new System.Drawing.Size(1237, 306);
             this.PedidosDGV.TabIndex = 6;
             this.PedidosDGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PedidosDGV_CellDoubleClick);
+            this.PedidosDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.PedidosDGV_CellFormatting);
             // 
             // IDPedidoLea
             // 

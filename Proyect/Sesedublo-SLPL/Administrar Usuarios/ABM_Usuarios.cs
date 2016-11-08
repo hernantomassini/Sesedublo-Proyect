@@ -138,7 +138,7 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
             val.ingresarNombre(e);
         }
 
-        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvClientes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int idCliente = Convert.ToInt32(dgvClientes.SelectedCells[0].Value);
             Manejador_Formularios.Agregar_Cliente.modificarCliente(idCliente);

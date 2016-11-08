@@ -116,7 +116,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
-            if (Convert.ToInt32(filaDgv.Cells[5].Value) == 1)
+            if (Convert.ToString(filaDgv.Cells[5].Value) == "SI")
             {
                 Funciones.imprimirMensajeDeError("El siguiente pedido ya ha sido facturada", this);
                 return;
@@ -152,12 +152,34 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             while (reader.Read())
             {
                 //ID Stock 0 - Nombre 1 - Costo 2 - Debe 3 - Lista strings 4 - facturada 5
-                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetDecimal(3), reader.GetString(4), reader.GetInt32(5));
+                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetDecimal(3), reader.GetString(4), this.verSiONo(reader.GetInt32(5)), this.verSiONoDec(reader.GetInt32(3)));
             }
-
-            PedidosDGV.Columns[5].Visible = false;
             reader.Close();
             Conexion.closeConnection();
+        }
+
+        private string verSiONo(int valor)
+        {
+            if(valor == 1)
+            {
+                return "SI";
+            }
+            else
+            {
+                return "NO";
+            }
+        }
+
+        private string verSiONoDec(int valor)
+        {
+            if (valor == 0)
+            {
+                return "SI";
+            }
+            else
+            {
+                return "NO";
+            }
         }
 
         private void ActualizarPagoTile_Click(object sender, EventArgs e)
@@ -188,7 +210,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
 
             DataGridViewRow filaDgv = PedidosDGV.CurrentRow;
-            if (Convert.ToInt32(filaDgv.Cells[5].Value) == 1)
+            if (Convert.ToString(filaDgv.Cells[5].Value) == "SI")
             {
                 Funciones.imprimirMensajeDeError("No puede modificar un pedido que ya ha sido facturado, sólo modificar su monto del debe", this);
                 return;

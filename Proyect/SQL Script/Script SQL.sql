@@ -2,6 +2,7 @@
 CREATE DATABASE IF NOT EXISTS Sesedublo;
 USE Sesedublo;
 
+/*
 #DROP TABLES:
 DROP TABLE IF EXISTS NotasDeCredito;
 DROP TABLE IF EXISTS Operaciones;
@@ -16,6 +17,7 @@ DROP TABLE IF EXISTS ItemsDeLea;
 DROP TABLE IF EXISTS StockACargar;
 DROP TABLE IF EXISTS PedidosDeLea;
 DROP TABLE IF EXISTS Productos;
+*/
 
 #DROP PROCEDURES:
 DROP PROCEDURE IF EXISTS obtenerStock;
@@ -64,6 +66,7 @@ DROP PROCEDURE IF EXISTS cobrarPedidoDeLea;
 DROP PROCEDURE IF EXISTS obtenerStockPedido;
 DROP PROCEDURE IF EXISTS cargarStockPedidoLea;
 
+/*
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
     efectivoActual DECIMAL(20 , 2 ),
@@ -621,7 +624,8 @@ INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 											("WHISKY HIRAM WALKER"),
 											("WHITE HORSE"),
 											("WYBOROWA");
-                                            
+                                            */
+										
 #Store Procedures
 DELIMITER //
 
@@ -633,7 +637,7 @@ BEGIN
 		SET @_valorPedido = (SELECT precio FROM Pedidos WHERE id_pedido = _id_pedido);
 		UPDATE Pedidos SET pagadoHastaElMomento = @_valorPedido WHERE id_pedido = _id_pedido;
     ELSE
-		UPDATE Pedidos SET pagadoHastaElMomento = _cantidad_paga WHERE id_pedido = _id_pedido;
+		UPDATE Pedidos SET pagadoHastaElMomento = _cantidad_paga + pagadoHastaElMomento WHERE id_pedido = _id_pedido;
     END IF;
     
     IF(_cantidad_paga != 0)
@@ -650,7 +654,8 @@ BEGIN
 	FROM Stock s INNER JOIN Productos p 
 	ON p.id_producto = s.producto
 	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
-    AND s.deleted = 0 AND p.cantidad != 0;
+    AND s.deleted = 0 AND p.cantidad != 0
+    ORDER BY p.nombre;
 END //
 
 CREATE PROCEDURE obtenerStockPedido (IN _nombre VARCHAR(50)) 
@@ -743,7 +748,7 @@ BEGIN
 	WHERE c.deleted = 0 AND ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
 	AND ((c.apellido LIKE CONCAT("%", _apellido, "%") COLLATE utf8_general_ci ) OR (_apellido IS NULL OR _apellido = ""))
 	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""))
-    ORDER BY c.id_cliente DESC;
+    ORDER BY c.nombre,c.apellido;
 END //
 
 CREATE PROCEDURE agregarCliente (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _mail VARCHAR(255),
@@ -947,9 +952,9 @@ BEGIN
 	);
 	
 	INSERT INTO ItemsDeFac SELECT pr.nombre AS Nombre, i.cantidadProductos AS 'Cantidad Total',
-		   IF(PVBulto = 0, PVUnitario, Round(PVBulto / cantidadXBulto, 2)) AS 'Precio Unitario',
-           IF(PVBulto = 0, 0, Round(PVUnitario * cantidadXBulto, 2)) AS 'Precio Bulto',
-		   IF(PVBulto = 0, Round(PVUnitario * i.cantidadProductos, 2), Round(PVBulto * i.cantidadProductos, 2)) AS 'Precio Total'
+		   IF(PVBulto = 0, i.valorDelItem, Round(i.valorDelItem / cantidadXBulto, 2)) AS 'Precio Unitario',
+           IF(PVBulto = 0, 0, Round(i.valorDelItem, 2)) AS 'Precio Bulto',
+		   IF(PVBulto = 0, Round(i.valorDelItem * i.cantidadProductos, 2), Round(i.valorDelItem * i.cantidadProductos, 2)) AS 'Precio Total'
 	FROM Facturas f
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Items i ON i.pedido = p.id_pedido
@@ -980,9 +985,9 @@ END //
 CREATE PROCEDURE obtenerItemsDeFacturaSinNC (IN _id_factura INT)
 BEGIN
 SELECT pr.id_producto, pr.nombre AS Nombre, i.cantidadProductosEdit AS 'Cantidad Total',
-		   IF(PVBulto = 0, PVUnitario, Round(PVBulto / cantidadXBulto, 2)) AS 'Precio Unitario',
-           IF(PVBulto = 0, 0, Round(PVUnitario * cantidadXBulto, 2)) AS 'Precio Bulto',
-		   IF(PVBulto = 0, Round(PVUnitario * cantidadProductos,2), Round(PVBulto * cantidadProductos,2)) AS 'Precio Total'
+		   IF(PVBulto = 0, i.valorDelItem, Round(i.valorDelItem / cantidadXBulto, 2)) AS 'Precio Unitario',
+           IF(PVBulto = 0, 0, Round(i.valorDelItem * cantidadXBulto, 2)) AS 'Precio Bulto',
+		   IF(PVBulto = 0, Round(i.valorDelItem * cantidadProductos,2), Round(i.valorDelItem * cantidadProductos,2)) AS 'Precio Total'
 	FROM Facturas f
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Items i ON i.pedido = p.id_pedido
@@ -1058,13 +1063,14 @@ BEGIN
 
 END //
 
-CREATE PROCEDURE cargarPedidoCompras ()
+CREATE PROCEDURE cargarPedidoCompras (IN _nombre VARCHAR(60))
 BEGIN
 
 	SELECT p.id_pedido, c.nombre AS Proveedor, p.fecha, group_concat(sac.nombre), p.costo, IF(p.pagado = 1, 'Si', 'No'), IF(p.stockCargado = 1, 'Si', 'No') FROM PedidosDeLea p 
     INNER JOIN ItemsDeLea i ON p.id_pedido = i.id_pedido
     INNER JOIN StockACargar sac ON sac.id_stockACargar = i.id_stockACargar
     INNER JOIN Clientes c ON c.id_cliente = p.vendedor
+	WHERE ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
     GROUP BY p.id_pedido
     ORDER BY p.id_pedido DESC
 	LIMIT 5000;

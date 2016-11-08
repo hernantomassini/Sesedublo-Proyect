@@ -30,7 +30,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         public void cargarDGV()
         {
             Funciones.limpiarDGV(PedidosDGV);
-            MySqlDataReader reader = Conexion.executeProcedureWithReader("cargarPedidoCompras", Conexion.generarArgumentos());
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("cargarPedidoCompras", Conexion.generarArgumentos("_nombre"),nombre.Text);
 
             while (reader.Read())
             {
@@ -162,6 +162,11 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void nombre_TextChanged(object sender, EventArgs e)
+        {
+            this.cargarDGV();
         }
     }
 }

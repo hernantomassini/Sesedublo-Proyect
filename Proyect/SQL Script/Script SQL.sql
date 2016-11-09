@@ -769,7 +769,7 @@ END //
 CREATE PROCEDURE obtenerCliente (IN _id_cliente INT) 
 BEGIN
 
-	SELECT CONCAT(nombre," ",apellido), email, telefono, direccion, localidad, cuit, razonSocial FROM Clientes WHERE id_cliente = _id_cliente;
+	SELECT nombre,apellido, email, telefono, direccion, localidad, cuit, razonSocial FROM Clientes WHERE id_cliente = _id_cliente;
 END //
 
 CREATE PROCEDURE cargarGrillaFacturas (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _descripcion VARCHAR(50), _direccion VARCHAR(255))
@@ -1159,5 +1159,7 @@ SET
 WHERE
     id_pedido = _id_pedido;
 END //
+
+SELECT * FROM Items
 
 DELIMITER ;

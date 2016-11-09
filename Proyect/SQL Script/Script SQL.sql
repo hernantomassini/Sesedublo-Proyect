@@ -1159,7 +1159,4 @@ SET
 WHERE
     id_pedido = _id_pedido;
 END //
-
-SELECT * FROM Items
-
 DELIMITER ;

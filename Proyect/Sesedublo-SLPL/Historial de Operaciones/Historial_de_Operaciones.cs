@@ -90,5 +90,28 @@ namespace Sesedublo_SLPL.Historial_de_Operacionesns
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void dgvOperaciones_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            foreach (DataGridViewRow Myrow in dgvOperaciones.Rows)
+            {
+                if (Convert.ToString(Myrow.Cells[1].Value) == "Efectivo saliente")// Or your condition 
+                {
+                    Myrow.Cells[1].Style.BackColor = System.Drawing.Color.Red;
+                    Myrow.Cells[1].Style.ForeColor = System.Drawing.Color.White;
+                }
+                else if(Convert.ToString(Myrow.Cells[1].Value) == "Efectivo entrante")
+                {
+                    Myrow.Cells[1].Style.BackColor = System.Drawing.Color.Green;
+                    Myrow.Cells[1].Style.ForeColor = System.Drawing.Color.White;
+                }
+                else
+                {
+                    Myrow.Cells[1].Style.BackColor = System.Drawing.Color.Yellow;
+                    Myrow.Cells[1].Style.ForeColor = System.Drawing.Color.Black;
+                }
+
+            }
+        }
     }
 }

@@ -74,7 +74,7 @@
             this.dgvOperaciones.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvOperaciones.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvOperaciones.Location = new System.Drawing.Point(31, 116);
-            this.dgvOperaciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvOperaciones.Margin = new System.Windows.Forms.Padding(4);
             this.dgvOperaciones.MultiSelect = false;
             this.dgvOperaciones.Name = "dgvOperaciones";
             this.dgvOperaciones.ReadOnly = true;
@@ -91,13 +91,14 @@
             this.dgvOperaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOperaciones.Size = new System.Drawing.Size(1072, 400);
             this.dgvOperaciones.TabIndex = 0;
+            this.dgvOperaciones.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvOperaciones_CellFormatting);
             // 
             // metroTile2
             // 
             this.metroTile2.ActiveControl = null;
             this.metroTile2.BackColor = System.Drawing.Color.LightSeaGreen;
             this.metroTile2.Location = new System.Drawing.Point(31, 524);
-            this.metroTile2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTile2.Margin = new System.Windows.Forms.Padding(4);
             this.metroTile2.Name = "metroTile2";
             this.metroTile2.Size = new System.Drawing.Size(111, 54);
             this.metroTile2.TabIndex = 3;
@@ -118,7 +119,7 @@
             // 
             this.descripcion.CustomButton.Image = null;
             this.descripcion.CustomButton.Location = new System.Drawing.Point(159, 2);
-            this.descripcion.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.descripcion.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.descripcion.CustomButton.Name = "";
             this.descripcion.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.descripcion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -130,7 +131,7 @@
             this.descripcion.Icon = ((System.Drawing.Image)(resources.GetObject("descripcion.Icon")));
             this.descripcion.Lines = new string[0];
             this.descripcion.Location = new System.Drawing.Point(144, 74);
-            this.descripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.descripcion.Margin = new System.Windows.Forms.Padding(4);
             this.descripcion.MaxLength = 60;
             this.descripcion.Name = "descripcion";
             this.descripcion.PasswordChar = '\0';
@@ -165,7 +166,7 @@
             // 
             this.operacion.CustomButton.Image = null;
             this.operacion.CustomButton.Location = new System.Drawing.Point(159, 2);
-            this.operacion.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.operacion.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.operacion.CustomButton.Name = "";
             this.operacion.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.operacion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -177,7 +178,7 @@
             this.operacion.Icon = ((System.Drawing.Image)(resources.GetObject("operacion.Icon")));
             this.operacion.Lines = new string[0];
             this.operacion.Location = new System.Drawing.Point(449, 74);
-            this.operacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.operacion.Margin = new System.Windows.Forms.Padding(4);
             this.operacion.MaxLength = 60;
             this.operacion.Name = "operacion";
             this.operacion.PasswordChar = '\0';
@@ -211,7 +212,7 @@
             this.metroTile3.ActiveControl = null;
             this.metroTile3.BackColor = System.Drawing.Color.Silver;
             this.metroTile3.Location = new System.Drawing.Point(934, 524);
-            this.metroTile3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTile3.Margin = new System.Windows.Forms.Padding(4);
             this.metroTile3.Name = "metroTile3";
             this.metroTile3.Size = new System.Drawing.Size(169, 54);
             this.metroTile3.TabIndex = 26;
@@ -238,7 +239,7 @@
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.dgvOperaciones);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Historial_de_Operaciones";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);

@@ -43,7 +43,10 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             da.Fill(tablaDeFacturas);
             dgvVerFactura.DataSource = tablaDeFacturas.DefaultView;
 
-            Nombre.Text = dgvVerFactura.Rows[0].Cells[1].Value.ToString();
+            if (dgvVerFactura.RowCount > 0)
+            {
+                Nombre.Text = dgvVerFactura.Rows[0].Cells[1].Value.ToString();
+            }
             dgvVerFactura.Columns[0].Visible = false;
             Cantidad.Clear();
             Motivo.Clear();
@@ -97,6 +100,8 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
                  Conexion.executeProcedure("agregarCantidad", Conexion.generarArgumentos("_id_producto", "_cantidad", "_id_factura"), id_producto, Convert.ToInt32(Cantidad.Text), id_factura);
                  Conexion.closeConnection();
                  this.Close();
+                 Manejador_Formularios.Historial_de_Facturas.getData();
+                 Manejador_Formularios.ABM_Pedidos.cargarDGV();
             }
         }
 

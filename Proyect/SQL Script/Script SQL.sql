@@ -990,13 +990,13 @@ CREATE PROCEDURE obtenerItemsDeFacturaSinNC (IN _id_factura INT)
 BEGIN
 SELECT pr.id_producto, pr.nombre AS Nombre, i.cantidadProductosEdit AS 'Cantidad Total',
 		   IF(PVBulto = 0, i.valorDelItem, Round(i.valorDelItem / cantidadXBulto, 2)) AS 'Precio Unitario',
-           IF(PVBulto = 0, 0, Round(i.valorDelItem * cantidadXBulto, 2)) AS 'Precio Bulto',
-		   IF(PVBulto = 0, Round(i.valorDelItem * cantidadProductos,2), Round(i.valorDelItem * cantidadProductos,2)) AS 'Precio Total'
+           IF(PVBulto = 0, 0, Round(i.valorDelItem, 2)) AS 'Precio Bulto',
+		   IF(PVBulto = 0, Round(i.valorDelItem * i.cantidadProductosEdit, 2), Round(i.valorDelItem * i.cantidadProductosEdit, 2)) AS 'Precio Total'
 	FROM Facturas f
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Items i ON i.pedido = p.id_pedido
     INNER JOIN Productos pr ON pr.id_producto = i.producto
-    WHERE f.id_factura = _id_factura AND i.cantidadProductos > 0
+    WHERE f.id_factura = _id_factura
     GROUP BY i.id_item;
 END //
 
@@ -1018,7 +1018,7 @@ WHERE
     INNER JOIN Pedidos p ON i.pedido = p.id_pedido
     INNER JOIN Facturas f ON p.id_pedido = f.pedido 
     INNER JOIN Productos pr ON pr.id_producto = i.producto
-    SET i.cantidadProductosEdit = @_cantidadDePrEdit - cantidad
+    SET i.cantidadProductosEdit = @_cantidadDePrEdit - _cantidad
     WHERE f.id_factura = _id_factura AND pr.id_producto = _id_producto;
     
 END//
@@ -1099,6 +1099,9 @@ END //
 CREATE PROCEDURE agregarNotaDeCredito (IN _id_factura INT, _cantidad DECIMAL(10 , 2), _motivo VARCHAR(50))
 BEGIN
 	INSERT INTO NotasDeCredito (factura, importe, motivo, fecha) VALUES (_id_factura, _cantidad, _motivo, NOW());
+   
+   UPDATE Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido SET precio = (precio - _cantidad) 
+   WHERE id_factura = _id_factura ;
 	
 END //
 
@@ -1117,7 +1120,7 @@ BEGIN
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Items i ON i.pedido = p.id_pedido
     INNER JOIN Productos pr ON pr.id_producto = i.producto
-    WHERE f.id_factura = _id_factura AND i.cantidadProductos > 0
+    WHERE f.id_factura = _id_factura
     GROUP BY i.id_item;
 END //
 

@@ -65,6 +65,7 @@ DROP PROCEDURE IF EXISTS obtenerItemsDeRemito;
 DROP PROCEDURE IF EXISTS cobrarPedidoDeLea;
 DROP PROCEDURE IF EXISTS obtenerStockPedido;
 DROP PROCEDURE IF EXISTS cargarStockPedidoLea;
+DROP PROCEDURE IF EXISTS cargarDeudas;
 
 /*
 CREATE TABLE Caja (
@@ -798,7 +799,8 @@ SET
     efectivoActual = (@_efectivo + _montoASumar)
 WHERE
     id_caja = 1;
-    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Efectivo entrante", CONCAT(_descripcion, " por el valor de $ ", _montoASumar));
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Efectivo entrante", 
+    IF(_montoASumar > 0,CONCAT(_descripcion, " por el valor de $ ", _montoASumar), _descripcion));
 
 END //
 
@@ -808,7 +810,7 @@ BEGIN
 	SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
 
     UPDATE Caja SET efectivoActual = (@_efectivo - _montoARestar) WHERE id_caja=1;
-    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Efectivo saliente", CONCAT(_descripcion, " por el valor de $ ", _montoARestar));
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Efectivo saliente",IF(_montoARestar > 0, CONCAT(_descripcion, " por el valor de $ ", _montoARestar), _descripcion));
 END //
 
 CREATE PROCEDURE obtenerMontoEnEfectivo () 
@@ -1159,4 +1161,17 @@ SET
 WHERE
     id_pedido = _id_pedido;
 END //
+
+CREATE PROCEDURE cargarDeudas ()
+BEGIN
+
+SELECT c.nombre as Cliente,SUM(pagadoHastaElMomento) as Pagado, SUM(precio) - SUM(pagadoHastaElMomento) as Debe,
+	 IF(SUM(precio) - SUM(pagadoHastaElMomento) > 0, 'NO', 'SI') as 'Está todo pago?' 
+	  FROM Pedidos p
+INNER JOIN Clientes c ON c.id_cliente = p.comprador
+GROUP BY comprador;
+
+END //
+
 DELIMITER ;
+

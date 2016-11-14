@@ -158,6 +158,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             }
             reader.Close();
             Conexion.closeConnection();
+            PedidosDGV.Columns[4].Width = 300;
         }
 
         private string verSiONo(int valor)
@@ -277,6 +278,12 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 Myrow.Cells[6].Style.ForeColor = System.Drawing.Color.White;
                 Myrow.Cells[5].Style.ForeColor = System.Drawing.Color.White;
             }
+        }
+
+        private void metroTile2_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.Historial_de_Deudas.cargarDGV();
+            Manejador_Formularios.Historial_de_Deudas.Show();
         }
     }
 }

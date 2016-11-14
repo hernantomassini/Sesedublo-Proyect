@@ -355,5 +355,18 @@ namespace Sesedublo_SLPL.Generales
             }
         }
 
+        private static Historial_de_Deudas Historial_de_Deudas_Form;
+        public static Historial_de_Deudas Historial_de_Deudas
+        {
+            get
+            {
+                if (Historial_de_Deudas_Form == null)
+                {
+                    Historial_de_Deudas_Form = new Historial_de_Deudas();
+                }
+                return Historial_de_Deudas_Form;
+            }
+        }
+
     }
 }

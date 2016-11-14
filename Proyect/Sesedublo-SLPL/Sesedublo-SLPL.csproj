@@ -85,7 +85,7 @@
     <Reference Include="MetroFramework.Fonts">
       <HintPath>dll\MetroFramework.Fonts.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -131,6 +131,12 @@
     </Compile>
     <Compile Include="Administrar Pedidos\GenerarFactura.Designer.cs">
       <DependentUpon>GenerarFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrar Pedidos\Historial_de_Deudas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrar Pedidos\Historial_de_Deudas.Designer.cs">
+      <DependentUpon>Historial_de_Deudas.cs</DependentUpon>
     </Compile>
     <Compile Include="Administrar Pedidos\Producto.cs" />
     <Compile Include="Administrar Stock\ABM_Stock.cs">
@@ -274,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administrar Pedidos\GenerarFactura.resx">
       <DependentUpon>GenerarFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrar Pedidos\Historial_de_Deudas.resx">
+      <DependentUpon>Historial_de_Deudas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrar Stock\ABM_Stock.resx">
       <DependentUpon>ABM_Stock.cs</DependentUpon>

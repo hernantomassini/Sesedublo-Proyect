@@ -47,7 +47,7 @@ namespace Sesedublo_SLPL
 
              Conexion.closeConnection();
 
-             facturaID.Text = "REMITO N° 0001-" + Convert.ToString(id_factura);
+             facturaID.Text = "REM. N° 0001-" + Convert.ToString(id_factura);
 
              int cantidad = 17 - tablaDeFacturas.Rows.Count;
              for (int i = 0; i <= cantidad; i++)

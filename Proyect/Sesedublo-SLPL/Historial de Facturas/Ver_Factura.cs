@@ -131,7 +131,7 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
 
             Conexion.closeConnection();
 
-            facturaID.Text = "FACTURA N° 0001-" + Convert.ToString(id_factura);
+            facturaID.Text = "FAC. N° 0001-" + Convert.ToString(id_factura);
         }
 
            [System.Runtime.InteropServices.DllImport("gdi32.dll")]

@@ -784,6 +784,7 @@ BEGIN
 	AND ((CONCAT(c.nombre, " ", c.apellido) LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
 	AND ((c.apellido LIKE CONCAT("%", _apellido, "%") COLLATE utf8_general_ci ) OR (_apellido IS NULL OR _apellido = ""))
 	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""))
+    AND i.cantidadProductos > 0
     GROUP BY p.id_pedido
     ORDER BY f.id_factura DESC
     LIMIT 5000;
@@ -845,6 +846,7 @@ BEGIN
         INNER JOIN Items i ON p.id_pedido = i.pedido
         INNER JOIN Productos pr ON i.producto = pr.id_producto
         WHERE ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+        AND i.cantidadProductos > 0
         GROUP BY p.id_pedido
         ORDER BY p.id_pedido DESC
 		LIMIT 5000;
@@ -961,7 +963,7 @@ BEGIN
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Items i ON i.pedido = p.id_pedido
     INNER JOIN Productos pr ON pr.id_producto = i.producto
-    WHERE f.id_factura = _id_factura
+    WHERE f.id_factura = _id_factura AND i.cantidadProductos > 0
     GROUP BY i.id_item;
     
     
@@ -994,7 +996,7 @@ SELECT pr.id_producto, pr.nombre AS Nombre, i.cantidadProductosEdit AS 'Cantidad
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Items i ON i.pedido = p.id_pedido
     INNER JOIN Productos pr ON pr.id_producto = i.producto
-    WHERE f.id_factura = _id_factura
+    WHERE f.id_factura = _id_factura AND i.cantidadProductos > 0
     GROUP BY i.id_item;
 END //
 
@@ -1115,7 +1117,7 @@ BEGIN
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     INNER JOIN Items i ON i.pedido = p.id_pedido
     INNER JOIN Productos pr ON pr.id_producto = i.producto
-    WHERE f.id_factura = _id_factura
+    WHERE f.id_factura = _id_factura AND i.cantidadProductos > 0
     GROUP BY i.id_item;
 END //
 

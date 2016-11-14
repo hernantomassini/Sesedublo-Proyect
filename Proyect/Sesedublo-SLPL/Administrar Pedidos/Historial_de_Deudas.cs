@@ -57,6 +57,9 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 }
 
                 Myrow.Cells[3].Style.ForeColor = System.Drawing.Color.White;
+                Myrow.Cells[0].Style.ForeColor = System.Drawing.Color.Black;
+                Myrow.Cells[2].Style.ForeColor = System.Drawing.Color.Black;
+
             }
         }
     }

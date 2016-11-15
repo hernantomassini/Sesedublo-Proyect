@@ -91,7 +91,7 @@
             this.metroPanel2.HorizontalScrollbarSize = 10;
             this.metroPanel2.Location = new System.Drawing.Point(14, 311);
             this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(747, 347);
+            this.metroPanel2.Size = new System.Drawing.Size(743, 347);
             this.metroPanel2.TabIndex = 33;
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
@@ -150,7 +150,7 @@
             this.dgvVerFactura.ShowCellToolTips = false;
             this.dgvVerFactura.ShowEditingIcon = false;
             this.dgvVerFactura.ShowRowErrors = false;
-            this.dgvVerFactura.Size = new System.Drawing.Size(747, 347);
+            this.dgvVerFactura.Size = new System.Drawing.Size(743, 347);
             this.dgvVerFactura.TabIndex = 29;
             this.dgvVerFactura.UseCustomBackColor = true;
             this.dgvVerFactura.UseCustomForeColor = true;
@@ -183,7 +183,7 @@
             this.metroPanel1.HorizontalScrollbarSize = 10;
             this.metroPanel1.Location = new System.Drawing.Point(14, 173);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(747, 132);
+            this.metroPanel1.Size = new System.Drawing.Size(743, 132);
             this.metroPanel1.TabIndex = 32;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
@@ -318,7 +318,7 @@
             this.panel1.Controls.Add(this.label24);
             this.panel1.Location = new System.Drawing.Point(14, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(747, 171);
+            this.panel1.Size = new System.Drawing.Size(743, 171);
             this.panel1.TabIndex = 31;
             // 
             // label4
@@ -506,7 +506,7 @@
             this.metroPanel6.HorizontalScrollbarSize = 10;
             this.metroPanel6.Location = new System.Drawing.Point(14, 656);
             this.metroPanel6.Name = "metroPanel6";
-            this.metroPanel6.Size = new System.Drawing.Size(747, 118);
+            this.metroPanel6.Size = new System.Drawing.Size(743, 118);
             this.metroPanel6.TabIndex = 38;
             this.metroPanel6.VerticalScrollbarBarColor = true;
             this.metroPanel6.VerticalScrollbarHighlightOnWheel = false;
@@ -571,7 +571,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(772, 823);
+            this.ClientSize = new System.Drawing.Size(764, 823);
             this.Controls.Add(this.metroPanel6);
             this.Controls.Add(this.printButton);
             this.Controls.Add(this.metroPanel2);

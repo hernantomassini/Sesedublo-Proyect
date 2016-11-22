@@ -625,8 +625,8 @@ INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 											("WHISKY HIRAM WALKER"),
 											("WHITE HORSE"),
 											("WYBOROWA");
-                                            */
-										
+                                            
+*/
 #Store Procedures
 DELIMITER //
 
@@ -670,7 +670,7 @@ BEGIN
 
 END //
 
-CREATE PROCEDURE agregarStock (IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL(10,2), IN _radioSelected INT) 
+CREATE PROCEDURE agregarStock (IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL(10,2), IN _radioSelected INT, _tipo INT) 
 BEGIN
 
 SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AND cantidadXBulto = _cantidadXBulto AND cantidadXBulto != 0);
@@ -680,7 +680,7 @@ SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AN
 			#Es un producto individual existente.
             SET @_cantidadVieja = (SELECT cantidad FROM Productos WHERE id_producto = @_otro_id_producto);
             SET @_costoViejo = (SELECT costo FROM Productos WHERE id_producto = @_otro_id_producto);
-            IF(@_costoViejo < _costo)
+            IF(@_costoViejo < _costo OR _tipo = 1)
             THEN
 				UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, costo = _costo, PVUnitario = _PVUnitario WHERE id_producto = @_otro_id_producto ;
             ELSE
@@ -1125,7 +1125,7 @@ BEGIN
 END //
 
 
-CREATE PROCEDURE cargarStockPedidoLea (IN _id_pedido INT)
+CREATE PROCEDURE cargarStockPedidoLea (IN _id_pedido INT, _tipo INT)
 BEGIN
 
 	DECLARE finished INT DEFAULT 0;
@@ -1153,7 +1153,7 @@ BEGIN
 			FETCH row_cursor INTO cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto, radioSelected;
 			
 			if ! finished then
-				CALL agregarStock (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto, radioSelected); 
+				CALL agregarStock (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto, radioSelected, _tipo); 
 			END IF;
 
 

@@ -138,7 +138,8 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             }
 
             int id_pedidoLea = Convert.ToInt32(filaDgv.Cells[0].Value);
-            Conexion.executeProcedure("cargarStockPedidoLea", Conexion.generarArgumentos("_id_pedido"), id_pedidoLea);
+            int tipo = 0;
+            Conexion.executeProcedure("cargarStockPedidoLea", Conexion.generarArgumentos("_id_pedido", "_tipo"), id_pedidoLea, tipo);
             Conexion.closeConnection();
 
             this.cargarDGV();

@@ -79,7 +79,7 @@ namespace Sesedublo_SLPL.Productos
 
                 int radioSelected = obtenerRadioSeleccionado();
 
-                Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto", "_radioSelected"), 0, cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto, radioSelected);
+                Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto", "_radioSelected", "_tipo"), 0, cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto, radioSelected,1);
                 Conexion.closeConnection();
 
                 Manejador_Formularios.AddPedidoCompra.getProductos();

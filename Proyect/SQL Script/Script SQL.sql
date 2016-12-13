@@ -633,17 +633,24 @@ DELIMITER //
 CREATE PROCEDURE actualizarPago (IN _id_pedido INT, IN _total_a_pagar DECIMAL(10,2), IN _cantidad_paga DECIMAL(10,2), _pagadoTot INT)
 BEGIN
 
+	SET @_cliente =	(SELECT CONCAT(nombre,", ",apellido) Vendedor FROM Pedidos p
+						inner join Clientes c on c.id_cliente = p.comprador
+						WHERE id_pedido = _id_pedido);
 	IF(_pagadoTot = 1)
     THEN
 		SET @_valorPedido = (SELECT precio FROM Pedidos WHERE id_pedido = _id_pedido);
-		UPDATE Pedidos SET pagadoHastaElMomento = @_valorPedido WHERE id_pedido = _id_pedido;
+		UPDATE Pedidos 
+SET 
+    pagadoHastaElMomento = @_valorPedido
+WHERE
+    id_pedido = _id_pedido;
     ELSE
 		UPDATE Pedidos SET pagadoHastaElMomento = _cantidad_paga + pagadoHastaElMomento WHERE id_pedido = _id_pedido;
     END IF;
     
     IF(_cantidad_paga != 0)
 	THEN
-		CALL agregarEfectivo(_cantidad_paga, CONCAT("Un cliente pagó un pedido en la fecha ", CURDATE(), "."));
+		CALL agregarEfectivo(_cantidad_paga, CONCAT("El cliente ",@_cliente," pagó un pedido"));
 	END IF;
     
 END //
@@ -696,7 +703,7 @@ SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AN
 		#Es un Bulto con un _cantidadXBulto ya existente
 		SET @_cantidadVieja = (SELECT cantidad FROM Productos WHERE id_producto = @_id_producto);
         SET @_costoViejo = (SELECT costo FROM Productos WHERE id_producto = @_otro_id_producto);
-            IF(@_costoViejo < _costo)
+            IF(@_costoViejo < _costo OR _tipo = 1)
             THEN
 				UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, costo = _costo, PVBulto = _PVBulto, PVUnitario = _PVUnitario WHERE id_producto = @_id_producto;
             ELSE
@@ -1053,8 +1060,11 @@ END //
 CREATE PROCEDURE cobrarPedidoDeLea(IN _id_pedido INT)
 BEGIN
 	SET @_costo = (SELECT costo FROM PedidosDeLea WHERE id_pedido = _id_pedido);
+    SET @_proveedor = (SELECT CONCAT(nombre,", ",apellido) Vendedor FROM PedidosDeLea p
+				   inner join Clientes c on c.id_cliente = p.vendedor
+                   WHERE id_pedido = _id_pedido);
     UPDATE PedidosDeLea SET pagado = 1 WHERE id_pedido = _id_pedido;
-	CALL restarEfectivo (@_costo , CONCAT("Se realizo una pedido de compra"));
+	CALL restarEfectivo (@_costo , CONCAT("Se realizo un pedido de compra al proveedor ", @_proveedor));
 END //
 
 CREATE PROCEDURE obtenerItemsDeLea (IN _id_pedidoLea INT)
@@ -1179,4 +1189,3 @@ GROUP BY comprador;
 END //
 
 DELIMITER ;
-

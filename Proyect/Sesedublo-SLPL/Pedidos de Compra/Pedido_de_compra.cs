@@ -37,6 +37,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 PedidosDGV.Rows.Add(reader.GetInt32(0),reader.GetString(1), reader.GetDateTime(2).ToShortDateString(), reader.GetString(3), reader.GetDecimal(4), reader.GetString(5), reader.GetString(6));
             }
 
+            this.PedidosDGV.Columns[2].Width = 300;
             reader.Close();
             Conexion.closeConnection();
         }

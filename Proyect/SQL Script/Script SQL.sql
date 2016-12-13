@@ -881,7 +881,8 @@ BEGIN
 
 	IF(_pagadoHastaElMomento > 0)
     THEN
-		CALL agregarEfectivo(_pagadoHastaElMomento, "El cliente pagó ");
+		SET @_cliente = (SELECT CONCAT(nombre, ", ", apellido) FROM Clientes WHERE id_cliente = _id_comprador);
+		CALL agregarEfectivo(_pagadoHastaElMomento, CONCAT("El cliente ",@_cliente," pagó un pedido"));
 	END IF;
     
 	INSERT INTO Pedidos (comprador, pagadoHastaElMomento, precio) VALUES (_id_comprador, _pagadoHastaElMomento, _precio);

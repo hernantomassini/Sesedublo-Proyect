@@ -6,6 +6,7 @@ using System;
 using System.ComponentModel;
 using System.Data;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Administrar_Stock
 {
@@ -64,7 +65,7 @@ namespace Sesedublo_SLPL.Administrar_Stock
             seleccionarRadioCorrespondiente(radioSelected);
 
             Nombre.Text = reader.GetString(2);
-            Cantidad.Text = Convert.ToString(reader.GetInt32(0));
+            Cantidad.Text = "0";
             UnidadesXBulto.Text = Convert.ToString(cantBotellasBulto);
 
             decimal precio = 0;
@@ -81,11 +82,10 @@ namespace Sesedublo_SLPL.Administrar_Stock
             if (bultoxBotellaRadio.Checked)
             {
                 precio = reader.GetDecimal(5);
-
                 decimal costoUnitario = costo/cantBotellasBulto;
                 costoIndividual.Text = Convert.ToString(costoUnitario);
 
-                utilidad = Decimal.Round((precio - costoUnitario) / cantBotellasBulto, 2);
+                utilidad = Decimal.Round((precio - costo) / cantBotellasBulto, 2);
             }
 
             if(bultoCuadradoRadio.Checked)

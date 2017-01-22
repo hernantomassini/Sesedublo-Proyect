@@ -31,19 +31,17 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             BarcodeLib.Barcode Codigo = new BarcodeLib.Barcode();
             Codigo.IncludeLabel = true;
             panel7.BackgroundImage = Codigo.Encode(BarcodeLib.TYPE.CODE128, "2503242523", Color.Black, Color.White, 131, 51);
-
-            fechaAct.Text = "LUGAR Y FECHA: " + DateTime.Now.ToShortDateString().Replace('/','-');
-            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerCliente", Conexion.generarArgumentos("_id_cliente"), id_cliente);
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerClienteParaFactura", Conexion.generarArgumentos("_id_cliente"), id_cliente);
 
             reader.Read();
             if (reader.HasRows)
             {
-                if (reader.GetString(0) != "") { nombreLabel.Text = reader.GetString(0).ToUpper() + " -"; } else { nombreLabel.Text = ""; };
-                if (reader.GetString(3) != "") { direccionLabel.Text = reader.GetString(5).ToUpper() + " - 0 "; } else { direccionLabel.Text = ""; };
+                if (reader.GetString(0) != "") { nombreLabel.Text = reader.GetString(0).ToUpper(); } else { nombreLabel.Text = ""; };
+                if (reader.GetString(1) != "") { direccionLabel.Text = "DIRECCION: " + reader.GetString(1).ToUpper(); } else { direccionLabel.Text = ""; };
                 if (reader.GetString(0) != "") { codPostalComprador.Text = "1407-CAPITAL"; } else { codPostalComprador.Text = ""; };
-                if (reader.GetString(1) != "") { label12.Text += " " + reader.GetString(1) ; }
-                if (reader.GetString(2) != "") { label14.Text += " " + reader.GetString(2); }
-                if (reader.GetString(0) != "") { codPostalComprador.Text = "1407-CAPITAL"; } else { codPostalComprador.Text = ""; };
+                if (reader.GetString(3) != "") { label12.Text += " " + reader.GetString(3).ToUpper() ; }
+                if (reader.GetString(2) != "") { label14.Text += " " + reader.GetString(2).ToUpper(); }
+                if (reader.GetString(4) != "") { cuilComprador.Text = "CUIL: " + reader.GetString(4).ToUpper(); }
             }
             reader.Close();
             Conexion.closeConnection();
@@ -70,6 +68,7 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             reader.Read();
             if (reader.HasRows)
             {
+                fechaAct.Text = "LUGAR Y FECHA: " + reader.GetDateTime(2).ToShortDateString().Replace('/', '-');
                 if (reader.GetString(0) != "") { tipoFactura.Text = reader.GetString(0); };
                 decimal iva = decimal.Round(Convert.ToDecimal(Convert.ToDouble(reader.GetDecimal(1)) - Convert.ToDouble(reader.GetDecimal(1)) / 1.21),2);
                 if (tipoFactura.Text.Equals("A"))

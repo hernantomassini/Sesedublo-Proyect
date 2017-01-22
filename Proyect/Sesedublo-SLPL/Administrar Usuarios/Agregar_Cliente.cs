@@ -56,14 +56,14 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
 
             reader.Read();
 
-            Nombre.Text = reader.GetString(0);
-            Apellido.Text = reader.GetString(1);
-            Mail.Text = reader.GetString(2);
-            Telefono.Text = reader.GetString(3);
-            Direccion.Text = reader.GetString(4);
-            Localidad.Text = reader.GetString(5);
-            CUIT.Text = reader.GetString(6);
-            RazonSocial.Text = reader.GetString(7);
+            if (!reader[0].Equals(DBNull.Value)) Nombre.Text = reader.GetString(0);
+            if (!reader[1].Equals(DBNull.Value)) Apellido.Text = reader.GetString(1);
+            if (!reader[2].Equals(DBNull.Value)) Mail.Text = reader.GetString(2);
+            if (!reader[3].Equals(DBNull.Value)) Telefono.Text = reader.GetString(3);
+            if (!reader[4].Equals(DBNull.Value)) Direccion.Text = reader.GetString(4);
+            if (!reader[5].Equals(DBNull.Value)) Localidad.Text = reader.GetString(5);
+            if (!reader[6].Equals(DBNull.Value)) CUIT.Text = reader.GetString(6);
+            if (!reader[7].Equals(DBNull.Value)) RazonSocial.Text = reader.GetString(7);
 
             reader.Close();
             Conexion.closeConnection();

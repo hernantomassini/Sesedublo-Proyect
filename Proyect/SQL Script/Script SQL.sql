@@ -66,6 +66,7 @@ DROP PROCEDURE IF EXISTS cobrarPedidoDeLea;
 DROP PROCEDURE IF EXISTS obtenerStockPedido;
 DROP PROCEDURE IF EXISTS cargarStockPedidoLea;
 DROP PROCEDURE IF EXISTS cargarDeudas;
+DROP PROCEDURE IF EXISTS obtenerClienteParaFactura;
 
 /*
 CREATE TABLE Caja (
@@ -780,21 +781,26 @@ BEGIN
 	SELECT nombre,apellido, email, telefono, direccion, localidad, cuit, razonSocial FROM Clientes WHERE id_cliente = _id_cliente;
 END //
 
-CREATE PROCEDURE cargarGrillaFacturas (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _descripcion VARCHAR(50), _direccion VARCHAR(255))
+CREATE PROCEDURE obtenerClienteParaFactura (IN _id_cliente INT) 
 BEGIN
-	SELECT f.id_factura, c.id_cliente, CONCAT(c.nombre, " ", c.apellido) AS Nombre, f.tipoDeFactura AS 'Tipo de factura', p.precio AS Precio, group_concat(pr.nombre) AS 'Productos de Factura' FROM Facturas f
+
+	SELECT CONCAT(nombre," ",apellido), direccion, telefono, email, cuit FROM Clientes WHERE id_cliente = _id_cliente;
+END //
+
+CREATE PROCEDURE cargarGrillaFacturas (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _descripcion VARCHAR(50))
+BEGIN
+	SELECT f.id_factura as 'Nro de Factura', c.id_cliente, f.fecha AS 'Fecha de Factura', CONCAT(c.nombre, " ", c.apellido) AS Nombre, f.tipoDeFactura AS 'Tipo de factura', p.precio AS Precio, group_concat(pr.nombre) AS 'Productos de Factura', f.pedido AS 'Nro de pedido' FROM Facturas f
 	INNER JOIN Pedidos p ON p.id_pedido = f.pedido
 	INNER JOIN Clientes c ON p.comprador = c.id_cliente
 	INNER JOIN Items i ON p.id_pedido = i.pedido
 	INNER JOIN Productos pr ON i.producto = pr.id_producto
-	WHERE ((f.tipoDeFactura LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
-	AND ((CONCAT(c.nombre, " ", c.apellido) LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
-	AND ((c.apellido LIKE CONCAT("%", _apellido, "%") COLLATE utf8_general_ci ) OR (_apellido IS NULL OR _apellido = ""))
-	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""))
+	WHERE ((CONCAT(c.nombre, " ", c.apellido) LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+	AND ((f.id_factura = CONVERT(_apellido,UNSIGNED INTEGER)) OR (_apellido IS NULL OR _apellido = ""))
+    AND ((f.pedido = CONVERT(_descripcion,UNSIGNED INTEGER) ) OR (_descripcion IS NULL OR _descripcion = ""))
     AND i.cantidadProductos > 0
     GROUP BY p.id_pedido
     ORDER BY f.id_factura DESC
-    LIMIT 5000;
+    LIMIT 3000;
 END //
 
 CREATE PROCEDURE agregarEfectivo (IN _montoASumar INT, _descripcion VARCHAR(200)) 
@@ -842,21 +848,23 @@ BEGIN
 	WHERE ((descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
 	AND ((operacion LIKE CONCAT("%", _operacion, "%") COLLATE utf8_general_ci ) OR (_operacion IS NULL OR _operacion = ""))
     ORDER BY id_operacion DESC
-    LIMIT 5000;
+    LIMIT 3000;
 END //
 
-CREATE PROCEDURE obtenerPedidos (_nombre VARCHAR(50)) 
+CREATE PROCEDURE obtenerPedidos (IN _nombre VARCHAR(50),_id_pedido VARCHAR(50),_id_factura VARCHAR(50)) 
 BEGIN
-        SELECT p.id_pedido, CONCAT(c.nombre, " ", c.apellido), p.pagadoHastaElMomento, p.precio - p.pagadoHastaElMomento, group_concat(pr.nombre), p.facturada FROM Pedidos p 
+        SELECT p.id_pedido, CONCAT(c.nombre, " ", c.apellido), p.pagadoHastaElMomento, p.precio - p.pagadoHastaElMomento, group_concat(pr.nombre), p.facturada, f.id_factura FROM Pedidos p 
         LEFT JOIN Facturas f ON p.id_pedido = f.pedido
         INNER JOIN Clientes c ON p.comprador = c.id_cliente
         INNER JOIN Items i ON p.id_pedido = i.pedido
         INNER JOIN Productos pr ON i.producto = pr.id_producto
         WHERE ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+		AND ((f.id_factura = CONVERT(_id_factura,UNSIGNED INTEGER)) OR (_id_factura IS NULL OR _id_factura = ""))
+		AND ((p.id_pedido = CONVERT(_id_pedido,UNSIGNED INTEGER) ) OR (_id_pedido IS NULL OR _id_pedido = ""))
         AND i.cantidadProductos > 0
         GROUP BY p.id_pedido
         ORDER BY p.id_pedido DESC
-		LIMIT 5000;
+		LIMIT 3000;
 END //
 
 CREATE PROCEDURE borrarPedido (IN _id_pedido INT)
@@ -947,7 +955,7 @@ END //
 
 CREATE PROCEDURE obtenerFactura (IN _id_factura INT)
 BEGIN
-	SELECT f.tipoDeFactura, p.precio FROM Facturas f
+	SELECT f.tipoDeFactura, p.precio, f.fecha FROM Facturas f
     INNER JOIN Pedidos p ON p.id_pedido = f.pedido
     WHERE f.id_factura = _id_factura; 
 END //

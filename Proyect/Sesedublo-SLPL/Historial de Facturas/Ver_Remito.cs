@@ -60,22 +60,23 @@ namespace Sesedublo_SLPL
          }
 
          public void getData()
-         {
-             fechaAct.Text = "LUGAR Y FECHA: " + DateTime.Now.ToShortDateString().Replace('/', '-');
-             MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerCliente", Conexion.generarArgumentos("_id_cliente"), id_cliente);
+        {
+            fechaAct.Text = "LUGAR Y FECHA: " + DateTime.Now.ToShortDateString().Replace('/', '-');
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerClienteParaFactura", Conexion.generarArgumentos("_id_cliente"), id_cliente);
 
-             reader.Read();
-             if (reader.HasRows)
-             {
-                 if (reader.GetString(0) != "") { nombreLabel.Text = reader.GetString(0).ToUpper() + " -"; } else { nombreLabel.Text = ""; };
-                 if (reader.GetString(3) != "") { direccionLabel.Text = reader.GetString(5).ToUpper() + " - 0 "; } else { direccionLabel.Text = ""; };
-                 if (reader.GetString(0) != "") { codPostalComprador.Text = "1407-CAPITAL"; } else { codPostalComprador.Text = ""; };
-                 if (reader.GetString(1) != "") { label12.Text += " " + reader.GetString(1); }
-                 if (reader.GetString(2) != "") { label8.Text += " " + reader.GetString(2); }
-             }
-             reader.Close();
-             Conexion.closeConnection();
-         }
+            reader.Read();
+            if (reader.HasRows)
+            {
+                if (reader.GetString(0) != "") { nombreLabel.Text = reader.GetString(0).ToUpper(); } else { nombreLabel.Text = ""; };
+                if (reader.GetString(1) != "") { direccionLabel.Text = "DIRECCION: " + reader.GetString(1).ToUpper(); } else { direccionLabel.Text = ""; };
+                if (reader.GetString(0) != "") { codPostalComprador.Text = "1407-CAPITAL"; } else { codPostalComprador.Text = ""; };
+                if (reader.GetString(3) != "") { label12.Text += " " + reader.GetString(3).ToUpper(); }
+                if (reader.GetString(2) != "") { label8.Text += " " + reader.GetString(2).ToUpper(); }
+                if (reader.GetString(4) != "") { codPostalComprador.Text = "CUIL: " + reader.GetString(4).ToUpper(); }
+            }
+            reader.Close();
+            Conexion.closeConnection();
+        }
 
          [System.Runtime.InteropServices.DllImport("gdi32.dll")]
          public static extern long BitBlt(IntPtr hdcDest,

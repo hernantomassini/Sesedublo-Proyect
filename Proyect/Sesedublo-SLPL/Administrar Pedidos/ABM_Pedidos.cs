@@ -17,6 +17,8 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
     public partial class ABM_Pedidos : MetroForm
     {
         Funciones fun = new Funciones();
+        Validaciones val = new Validaciones();
+
         public ABM_Pedidos()
         {
             InitializeComponent();
@@ -51,7 +53,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             }
 
             if (Funciones.imprimirMensajeDeAlerta("¿Estás seguro de borrar este pedido? Esta acción no se podrá deshacer.", this) == DialogResult.Cancel)
-            {   
+            {
                 return;
             }
 
@@ -89,7 +91,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
-            if(Convert.ToString(filaDgv.Cells[5].Value) == "SI")
+            if (Convert.ToString(filaDgv.Cells[5].Value) == "SI")
             {
                 Funciones.imprimirMensajeDeError("No puede modificar un pedido que ya ha sido facturado, sólo modificar su monto del debe", this);
                 return;
@@ -149,12 +151,21 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         public void cargarDGV()
         {
             Funciones.limpiarDGV(PedidosDGV);
-            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerPedidos", Conexion.generarArgumentos("_nombre"),nombre.Text);
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerPedidos", Conexion.generarArgumentos("_nombre", "_id_pedido","_id_factura"),nombre.Text,id_pedido.Text,metroTextBox1.Text);
             
             while (reader.Read())
             {
-                //ID Stock 0 - Nombre 1 - Costo 2 - Debe 3 - Lista strings 4 - facturada 5
-                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetDecimal(3), reader.GetString(4), this.verSiONo(reader.GetInt32(5)), this.verSiONoDec(reader.GetInt32(3)));
+                String id_pedido;
+
+
+                if (reader[6].Equals(DBNull.Value)) {
+                    id_pedido = "No tiene";
+                }
+                else {
+                    id_pedido = Convert.ToString(reader.GetInt32(6));
+                }
+                //ID Stock 0 - Nombre 1 - Costo 2 - Debe 3 - Lista strings 4 - facturada 5 - numero de factura 6
+                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetDecimal(3), reader.GetString(4), this.verSiONo(reader.GetInt32(5)), this.verSiONoDec(reader.GetInt32(3)), id_pedido);
             }
             reader.Close();
             Conexion.closeConnection();
@@ -277,6 +288,11 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
                 Myrow.Cells[6].Style.ForeColor = System.Drawing.Color.White;
                 Myrow.Cells[5].Style.ForeColor = System.Drawing.Color.White;
+
+                Myrow.Cells[0].Style.BackColor = System.Drawing.Color.White;
+                Myrow.Cells[0].Style.ForeColor = System.Drawing.Color.Black;
+                Myrow.Cells[7].Style.BackColor = System.Drawing.Color.White;
+                Myrow.Cells[7].Style.ForeColor = System.Drawing.Color.Black;
             }
         }
 
@@ -284,6 +300,26 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
             Manejador_Formularios.Historial_de_Deudas.cargarDGV();
             Manejador_Formularios.Historial_de_Deudas.Show();
+        }
+
+        private void descripcion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNumero(e);
+        }
+
+        private void metroTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            val.ingresarNumero(e);
+        }
+
+        private void id_pedido_TextChanged(object sender, EventArgs e)
+        {
+            this.cargarDGV();
+        }
+
+        private void metroTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            this.cargarDGV();
         }
     }
 }

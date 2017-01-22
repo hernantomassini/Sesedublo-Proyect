@@ -70,11 +70,10 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
 
         public void getData()
         {
-            MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("cargarGrillaFacturas", Conexion.generarArgumentos("_nombre", "_apellido", "_descripcion", "_direccion"), nombre.Text, apellido.Text, descripcion.Text, direccion.Text);
+            MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("cargarGrillaFacturas", Conexion.generarArgumentos("_nombre", "_apellido", "_descripcion"), nombre.Text, apellido.Text, descripcion.Text);
             DataTable tablaDeUsuarios = new DataTable("Clientes");
             da.Fill(tablaDeUsuarios);
             dgvFacturas.DataSource = tablaDeUsuarios.DefaultView;
-            dgvFacturas.Columns[0].Visible = false;
             dgvFacturas.Columns[1].Visible = false;
 
             Conexion.closeConnection();
@@ -87,7 +86,7 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
 
         private void apellido_KeyPress(object sender, KeyPressEventArgs e)
         {
-            val.ingresarNombre(e);
+            val.ingresarNumero(e);
         }
 
         private void RegistroTile_Click(object sender, EventArgs e)
@@ -135,11 +134,6 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             this.getData();
         }
 
-        private void direccion_TextChanged(object sender, EventArgs e)
-        {
-            this.getData();
-        }
-
         private void dgvFacturas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int idFactura = Convert.ToInt32(dgvFacturas.SelectedCells[0].Value);
@@ -170,6 +164,17 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void FacturasDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            foreach (DataGridViewRow Myrow in dgvFacturas.Rows)
+            {            //Here 2 cell is target value and 1 cell is Volume
+                Myrow.Cells[0].Style.BackColor = System.Drawing.Color.White;
+                Myrow.Cells[0].Style.ForeColor = System.Drawing.Color.Black;
+                Myrow.Cells[7].Style.BackColor = System.Drawing.Color.White;
+                Myrow.Cells[7].Style.ForeColor = System.Drawing.Color.Black;
             }
         }
     }

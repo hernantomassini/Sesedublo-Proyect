@@ -102,5 +102,11 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             Manejador_Formularios.Agregar_Cliente.agregarCliente();
             Manejador_Formularios.Agregar_Cliente.Show();
         }
+
+        private void ClienteDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            ClienteDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ClienteDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
     }
 }

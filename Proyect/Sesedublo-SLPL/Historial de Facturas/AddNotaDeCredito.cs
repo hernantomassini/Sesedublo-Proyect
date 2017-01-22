@@ -5,6 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Data;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Historial_de_Facturasns
 {
@@ -118,6 +119,12 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
         private void Cantidad_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             val.ingresarNumero(e);
+        }
+
+        private void dgvVerFactura_CellFormatting(object sender, System.Windows.Forms.DataGridViewCellFormattingEventArgs e)
+        {
+            dgvVerFactura.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvVerFactura.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
     }
 }

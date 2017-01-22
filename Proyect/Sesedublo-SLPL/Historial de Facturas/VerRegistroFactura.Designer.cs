@@ -42,7 +42,7 @@
             this.CerrarTile.ActiveControl = null;
             this.CerrarTile.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.CerrarTile.Location = new System.Drawing.Point(31, 364);
-            this.CerrarTile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CerrarTile.Margin = new System.Windows.Forms.Padding(4);
             this.CerrarTile.Name = "CerrarTile";
             this.CerrarTile.Size = new System.Drawing.Size(119, 54);
             this.CerrarTile.TabIndex = 1;
@@ -88,7 +88,7 @@
             this.registrosDGV.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.registrosDGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.registrosDGV.Location = new System.Drawing.Point(31, 78);
-            this.registrosDGV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.registrosDGV.Margin = new System.Windows.Forms.Padding(4);
             this.registrosDGV.MultiSelect = false;
             this.registrosDGV.Name = "registrosDGV";
             this.registrosDGV.ReadOnly = true;
@@ -105,6 +105,7 @@
             this.registrosDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.registrosDGV.Size = new System.Drawing.Size(555, 279);
             this.registrosDGV.TabIndex = 0;
+            this.registrosDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.registrosDGV_CellFormatting);
             // 
             // VerRegistroFactura
             // 
@@ -113,7 +114,7 @@
             this.ClientSize = new System.Drawing.Size(616, 447);
             this.Controls.Add(this.registrosDGV);
             this.Controls.Add(this.CerrarTile);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "VerRegistroFactura";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);

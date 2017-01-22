@@ -151,5 +151,11 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void dgvPedido_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvPedido.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPedido.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
     }
 }

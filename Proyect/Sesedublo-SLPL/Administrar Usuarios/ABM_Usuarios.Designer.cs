@@ -97,6 +97,7 @@
             this.dgvClientes.TabIndex = 0;
             this.dgvClientes.UseCustomBackColor = true;
             this.dgvClientes.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellContentDoubleClick);
+            this.dgvClientes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvClientes_CellFormatting);
             // 
             // titleModificarCliente
             // 

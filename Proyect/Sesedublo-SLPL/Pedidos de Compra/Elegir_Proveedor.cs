@@ -75,5 +75,11 @@ namespace Sesedublo_SLPL
         {
 
         }
+
+        private void ClienteDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            ClienteDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ClienteDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
     }
 }

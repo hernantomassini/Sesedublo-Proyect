@@ -440,5 +440,17 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             Manejador_Formularios.ABM_Stock.Clean();
             Manejador_Formularios.ABM_Stock.Show();
         }
+
+        private void ProductosDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            ProductosDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ProductosDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
+
+        private void ItemsDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            ItemsDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ItemsDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
     }
 }

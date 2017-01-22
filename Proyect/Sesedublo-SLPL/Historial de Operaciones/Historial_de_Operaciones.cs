@@ -112,6 +112,9 @@ namespace Sesedublo_SLPL.Historial_de_Operacionesns
                 }
 
             }
+
+            dgvOperaciones.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvOperaciones.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
     }
 }

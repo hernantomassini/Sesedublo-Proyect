@@ -1089,7 +1089,7 @@ END //
 CREATE PROCEDURE cargarPedidoCompras (IN _nombre VARCHAR(60))
 BEGIN
 
-	SELECT p.id_pedido, c.nombre AS Proveedor, p.fecha, group_concat(sac.nombre), p.costo, IF(p.pagado = 1, 'Si', 'No'), IF(p.stockCargado = 1, 'Si', 'No') FROM PedidosDeLea p 
+	SELECT p.id_pedido, c.nombre AS Proveedor, p.fecha, group_concat(sac.nombre), p.costo, IF(p.pagado = 1, 'SI', 'NO'), IF(p.stockCargado = 1, 'SI', 'NO') FROM PedidosDeLea p 
     INNER JOIN ItemsDeLea i ON p.id_pedido = i.id_pedido
     INNER JOIN StockACargar sac ON sac.id_stockACargar = i.id_stockACargar
     INNER JOIN Clientes c ON c.id_cliente = p.vendedor

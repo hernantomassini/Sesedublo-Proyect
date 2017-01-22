@@ -114,7 +114,7 @@
             this.dgvProductos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvProductos.Location = new System.Drawing.Point(468, 112);
-            this.dgvProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvProductos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvProductos.MultiSelect = false;
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.ReadOnly = true;
@@ -133,6 +133,7 @@
             this.dgvProductos.TabIndex = 37;
             this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
             this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
+            this.dgvProductos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductos_CellFormatting);
             // 
             // buscarProducto
             // 
@@ -141,7 +142,7 @@
             // 
             this.buscarProducto.CustomButton.Image = null;
             this.buscarProducto.CustomButton.Location = new System.Drawing.Point(125, 2);
-            this.buscarProducto.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buscarProducto.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.buscarProducto.CustomButton.Name = "";
             this.buscarProducto.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.buscarProducto.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -153,7 +154,7 @@
             this.buscarProducto.Icon = ((System.Drawing.Image)(resources.GetObject("buscarProducto.Icon")));
             this.buscarProducto.Lines = new string[0];
             this.buscarProducto.Location = new System.Drawing.Point(861, 75);
-            this.buscarProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buscarProducto.Margin = new System.Windows.Forms.Padding(4);
             this.buscarProducto.MaxLength = 70;
             this.buscarProducto.Name = "buscarProducto";
             this.buscarProducto.PasswordChar = '\0';
@@ -196,7 +197,7 @@
             this.titleCancelar.ActiveControl = null;
             this.titleCancelar.BackColor = System.Drawing.Color.DarkRed;
             this.titleCancelar.Location = new System.Drawing.Point(717, 839);
-            this.titleCancelar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.titleCancelar.Margin = new System.Windows.Forms.Padding(5);
             this.titleCancelar.Name = "titleCancelar";
             this.titleCancelar.Size = new System.Drawing.Size(136, 50);
             this.titleCancelar.TabIndex = 13;
@@ -215,7 +216,7 @@
             this.titleAceptar.ActiveControl = null;
             this.titleAceptar.BackColor = System.Drawing.Color.Green;
             this.titleAceptar.Location = new System.Drawing.Point(879, 839);
-            this.titleAceptar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.titleAceptar.Margin = new System.Windows.Forms.Padding(5);
             this.titleAceptar.Name = "titleAceptar";
             this.titleAceptar.Size = new System.Drawing.Size(132, 50);
             this.titleAceptar.TabIndex = 12;
@@ -238,7 +239,7 @@
             "12",
             "24"});
             this.UnidadesXBulto.Location = new System.Drawing.Point(176, 326);
-            this.UnidadesXBulto.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.UnidadesXBulto.Margin = new System.Windows.Forms.Padding(5);
             this.UnidadesXBulto.Name = "UnidadesXBulto";
             this.UnidadesXBulto.Size = new System.Drawing.Size(132, 24);
             this.UnidadesXBulto.TabIndex = 9;
@@ -258,7 +259,7 @@
             // Costo
             // 
             this.Costo.Location = new System.Drawing.Point(176, 196);
-            this.Costo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Costo.Margin = new System.Windows.Forms.Padding(5);
             this.Costo.MaxLength = 12;
             this.Costo.Name = "Costo";
             this.Costo.Size = new System.Drawing.Size(132, 22);
@@ -300,7 +301,7 @@
             // 
             this.Nombre.Enabled = false;
             this.Nombre.Location = new System.Drawing.Point(180, 75);
-            this.Nombre.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Nombre.Margin = new System.Windows.Forms.Padding(5);
             this.Nombre.MaxLength = 100;
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(255, 22);
@@ -310,7 +311,7 @@
             // Cantidad
             // 
             this.Cantidad.Location = new System.Drawing.Point(176, 228);
-            this.Cantidad.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Cantidad.Margin = new System.Windows.Forms.Padding(5);
             this.Cantidad.MaxLength = 5;
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.Size = new System.Drawing.Size(132, 22);
@@ -358,7 +359,7 @@
             this.dgvPedido.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvPedido.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvPedido.Location = new System.Drawing.Point(23, 507);
-            this.dgvPedido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvPedido.Margin = new System.Windows.Forms.Padding(4);
             this.dgvPedido.MultiSelect = false;
             this.dgvPedido.Name = "dgvPedido";
             this.dgvPedido.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -375,6 +376,7 @@
             this.dgvPedido.Size = new System.Drawing.Size(989, 324);
             this.dgvPedido.TabIndex = 38;
             this.dgvPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellClick);
+            this.dgvPedido.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPedido_CellFormatting);
             // 
             // CantidadXBulto
             // 
@@ -477,7 +479,7 @@
             // Utilidad
             // 
             this.Utilidad.Location = new System.Drawing.Point(176, 262);
-            this.Utilidad.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Utilidad.Margin = new System.Windows.Forms.Padding(5);
             this.Utilidad.MaxLength = 12;
             this.Utilidad.Name = "Utilidad";
             this.Utilidad.Size = new System.Drawing.Size(132, 22);
@@ -508,7 +510,7 @@
             // Precio
             // 
             this.Precio.Location = new System.Drawing.Point(176, 293);
-            this.Precio.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Precio.Margin = new System.Windows.Forms.Padding(5);
             this.Precio.MaxLength = 10;
             this.Precio.Name = "Precio";
             this.Precio.Size = new System.Drawing.Size(132, 22);
@@ -520,7 +522,7 @@
             this.nuevoProducto.ActiveControl = null;
             this.nuevoProducto.BackColor = System.Drawing.Color.MediumBlue;
             this.nuevoProducto.Location = new System.Drawing.Point(813, 390);
-            this.nuevoProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nuevoProducto.Margin = new System.Windows.Forms.Padding(4);
             this.nuevoProducto.Name = "nuevoProducto";
             this.nuevoProducto.Size = new System.Drawing.Size(199, 52);
             this.nuevoProducto.TabIndex = 11;
@@ -538,7 +540,7 @@
             // 
             this.metroLink1.FontSize = MetroFramework.MetroLinkSize.Medium;
             this.metroLink1.Location = new System.Drawing.Point(323, 842);
-            this.metroLink1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroLink1.Margin = new System.Windows.Forms.Padding(4);
             this.metroLink1.Name = "metroLink1";
             this.metroLink1.Size = new System.Drawing.Size(347, 50);
             this.metroLink1.TabIndex = 44;
@@ -590,7 +592,7 @@
             // costoIndividual
             // 
             this.costoIndividual.Location = new System.Drawing.Point(176, 161);
-            this.costoIndividual.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.costoIndividual.Margin = new System.Windows.Forms.Padding(5);
             this.costoIndividual.MaxLength = 12;
             this.costoIndividual.Name = "costoIndividual";
             this.costoIndividual.Size = new System.Drawing.Size(132, 22);
@@ -634,7 +636,7 @@
             // 
             this.bultoCuadradoRadio.AutoSize = true;
             this.bultoCuadradoRadio.Location = new System.Drawing.Point(305, 123);
-            this.bultoCuadradoRadio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bultoCuadradoRadio.Margin = new System.Windows.Forms.Padding(4);
             this.bultoCuadradoRadio.Name = "bultoCuadradoRadio";
             this.bultoCuadradoRadio.Size = new System.Drawing.Size(125, 17);
             this.bultoCuadradoRadio.TabIndex = 3;

@@ -96,6 +96,7 @@
             this.ClienteDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ClienteDGV.Size = new System.Drawing.Size(983, 254);
             this.ClienteDGV.TabIndex = 0;
+            this.ClienteDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ClienteDGV_CellFormatting);
             // 
             // metroLabel1
             // 
@@ -130,10 +131,10 @@
             // 
             // 
             this.direccion.CustomButton.Image = null;
-            this.direccion.CustomButton.Location = new System.Drawing.Point(156, 2);
-            this.direccion.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.direccion.CustomButton.Location = new System.Drawing.Point(117, 2);
+            this.direccion.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.direccion.CustomButton.Name = "";
-            this.direccion.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.direccion.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.direccion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.direccion.CustomButton.TabIndex = 1;
             this.direccion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -141,7 +142,7 @@
             this.direccion.CustomButton.Visible = false;
             this.direccion.Lines = new string[0];
             this.direccion.Location = new System.Drawing.Point(853, 64);
-            this.direccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.direccion.Margin = new System.Windows.Forms.Padding(4);
             this.direccion.MaxLength = 32767;
             this.direccion.Name = "direccion";
             this.direccion.PasswordChar = '\0';
@@ -173,10 +174,10 @@
             // 
             // 
             this.apellido.CustomButton.Image = null;
-            this.apellido.CustomButton.Location = new System.Drawing.Point(156, 2);
-            this.apellido.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.apellido.CustomButton.Location = new System.Drawing.Point(117, 2);
+            this.apellido.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.apellido.CustomButton.Name = "";
-            this.apellido.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.apellido.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.apellido.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.apellido.CustomButton.TabIndex = 1;
             this.apellido.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -184,7 +185,7 @@
             this.apellido.CustomButton.Visible = false;
             this.apellido.Lines = new string[0];
             this.apellido.Location = new System.Drawing.Point(595, 64);
-            this.apellido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.apellido.Margin = new System.Windows.Forms.Padding(4);
             this.apellido.MaxLength = 32767;
             this.apellido.Name = "apellido";
             this.apellido.PasswordChar = '\0';
@@ -207,10 +208,10 @@
             // 
             // 
             this.nombre.CustomButton.Image = null;
-            this.nombre.CustomButton.Location = new System.Drawing.Point(145, 2);
-            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nombre.CustomButton.Location = new System.Drawing.Point(109, 2);
+            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.nombre.CustomButton.Name = "";
-            this.nombre.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.nombre.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.nombre.CustomButton.TabIndex = 1;
             this.nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -218,7 +219,7 @@
             this.nombre.CustomButton.Visible = false;
             this.nombre.Lines = new string[0];
             this.nombre.Location = new System.Drawing.Point(353, 64);
-            this.nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nombre.Margin = new System.Windows.Forms.Padding(4);
             this.nombre.MaxLength = 32767;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';

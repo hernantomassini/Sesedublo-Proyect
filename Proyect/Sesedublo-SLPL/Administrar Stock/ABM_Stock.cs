@@ -173,6 +173,9 @@ namespace Sesedublo_SLPL.Administrar_Productos
                 }
 
             }
+
+            StockDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            StockDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
     }
 }

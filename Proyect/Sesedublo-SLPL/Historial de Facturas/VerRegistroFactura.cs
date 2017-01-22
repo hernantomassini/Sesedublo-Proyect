@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.ComponentModel;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Historial_de_Facturasns
 {
@@ -43,6 +44,12 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
         private void CerrarTile_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void registrosDGV_CellFormatting(object sender, System.Windows.Forms.DataGridViewCellFormattingEventArgs e)
+        {
+            registrosDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            registrosDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
     }
 }

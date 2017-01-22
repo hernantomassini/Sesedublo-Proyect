@@ -171,11 +171,13 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
         {
             foreach (DataGridViewRow Myrow in dgvFacturas.Rows)
             {            //Here 2 cell is target value and 1 cell is Volume
-                Myrow.Cells[0].Style.BackColor = System.Drawing.Color.White;
-                Myrow.Cells[0].Style.ForeColor = System.Drawing.Color.Black;
-                Myrow.Cells[7].Style.BackColor = System.Drawing.Color.White;
-                Myrow.Cells[7].Style.ForeColor = System.Drawing.Color.Black;
+                Myrow.Cells[0].Style.BackColor = System.Drawing.Color.OrangeRed;
+                Myrow.Cells[0].Style.ForeColor = System.Drawing.Color.White;
+                Myrow.Cells[7].Style.BackColor = System.Drawing.Color.Orchid;
+                Myrow.Cells[7].Style.ForeColor = System.Drawing.Color.White;
             }
+            dgvFacturas.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvFacturas.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
     }
 }

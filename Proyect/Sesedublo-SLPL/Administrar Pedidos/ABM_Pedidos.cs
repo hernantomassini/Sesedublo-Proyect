@@ -289,11 +289,14 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 Myrow.Cells[6].Style.ForeColor = System.Drawing.Color.White;
                 Myrow.Cells[5].Style.ForeColor = System.Drawing.Color.White;
 
-                Myrow.Cells[0].Style.BackColor = System.Drawing.Color.White;
-                Myrow.Cells[0].Style.ForeColor = System.Drawing.Color.Black;
-                Myrow.Cells[7].Style.BackColor = System.Drawing.Color.White;
-                Myrow.Cells[7].Style.ForeColor = System.Drawing.Color.Black;
+                Myrow.Cells[0].Style.BackColor = System.Drawing.Color.OrangeRed;
+                Myrow.Cells[0].Style.ForeColor = System.Drawing.Color.White;
+                Myrow.Cells[7].Style.BackColor = System.Drawing.Color.Orange;
+                Myrow.Cells[7].Style.ForeColor = System.Drawing.Color.White;
             }
+
+            PedidosDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            PedidosDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void metroTile2_Click(object sender, EventArgs e)

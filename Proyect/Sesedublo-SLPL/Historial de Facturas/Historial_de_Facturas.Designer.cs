@@ -78,7 +78,7 @@
             this.dgvFacturas.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvFacturas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvFacturas.Location = new System.Drawing.Point(32, 261);
-            this.dgvFacturas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvFacturas.Margin = new System.Windows.Forms.Padding(4);
             this.dgvFacturas.MultiSelect = false;
             this.dgvFacturas.Name = "dgvFacturas";
             this.dgvFacturas.ReadOnly = true;
@@ -97,6 +97,7 @@
             this.dgvFacturas.TabIndex = 0;
             this.dgvFacturas.UseCustomBackColor = true;
             this.dgvFacturas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturas_CellDoubleClick);
+            this.dgvFacturas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.FacturasDGV_CellFormatting);
             // 
             // apellido
             // 
@@ -106,7 +107,7 @@
             // 
             this.apellido.CustomButton.Image = null;
             this.apellido.CustomButton.Location = new System.Drawing.Point(159, 2);
-            this.apellido.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.apellido.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.apellido.CustomButton.Name = "";
             this.apellido.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.apellido.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -118,7 +119,7 @@
             this.apellido.Icon = ((System.Drawing.Image)(resources.GetObject("apellido.Icon")));
             this.apellido.Lines = new string[0];
             this.apellido.Location = new System.Drawing.Point(175, 118);
-            this.apellido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.apellido.Margin = new System.Windows.Forms.Padding(4);
             this.apellido.MaxLength = 50;
             this.apellido.Name = "apellido";
             this.apellido.PasswordChar = '\0';
@@ -147,7 +148,7 @@
             // 
             this.nombre.CustomButton.Image = null;
             this.nombre.CustomButton.Location = new System.Drawing.Point(159, 2);
-            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.nombre.CustomButton.Name = "";
             this.nombre.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -159,7 +160,7 @@
             this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
             this.nombre.Lines = new string[0];
             this.nombre.Location = new System.Drawing.Point(176, 78);
-            this.nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nombre.Margin = new System.Windows.Forms.Padding(4);
             this.nombre.MaxLength = 60;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
@@ -217,7 +218,7 @@
             // 
             this.descripcion.CustomButton.Image = null;
             this.descripcion.CustomButton.Location = new System.Drawing.Point(159, 2);
-            this.descripcion.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.descripcion.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.descripcion.CustomButton.Name = "";
             this.descripcion.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.descripcion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -229,7 +230,7 @@
             this.descripcion.Icon = ((System.Drawing.Image)(resources.GetObject("descripcion.Icon")));
             this.descripcion.Lines = new string[0];
             this.descripcion.Location = new System.Drawing.Point(176, 160);
-            this.descripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.descripcion.Margin = new System.Windows.Forms.Padding(4);
             this.descripcion.MaxLength = 60;
             this.descripcion.Name = "descripcion";
             this.descripcion.PasswordChar = '\0';
@@ -268,7 +269,7 @@
             this.metroTile1.ActiveControl = null;
             this.metroTile1.BackColor = System.Drawing.Color.LightSeaGreen;
             this.metroTile1.Location = new System.Drawing.Point(32, 678);
-            this.metroTile1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTile1.Margin = new System.Windows.Forms.Padding(4);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(105, 54);
             this.metroTile1.TabIndex = 8;
@@ -287,7 +288,7 @@
             this.RegistroTile.ActiveControl = null;
             this.RegistroTile.BackColor = System.Drawing.Color.SkyBlue;
             this.RegistroTile.Location = new System.Drawing.Point(431, 678);
-            this.RegistroTile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RegistroTile.Margin = new System.Windows.Forms.Padding(4);
             this.RegistroTile.Name = "RegistroTile";
             this.RegistroTile.Size = new System.Drawing.Size(224, 54);
             this.RegistroTile.TabIndex = 7;
@@ -306,7 +307,7 @@
             this.AddNotaCreditoTile.ActiveControl = null;
             this.AddNotaCreditoTile.BackColor = System.Drawing.Color.Teal;
             this.AddNotaCreditoTile.Location = new System.Drawing.Point(663, 678);
-            this.AddNotaCreditoTile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddNotaCreditoTile.Margin = new System.Windows.Forms.Padding(4);
             this.AddNotaCreditoTile.Name = "AddNotaCreditoTile";
             this.AddNotaCreditoTile.Size = new System.Drawing.Size(244, 54);
             this.AddNotaCreditoTile.TabIndex = 6;
@@ -325,7 +326,7 @@
             this.metroTile2.ActiveControl = null;
             this.metroTile2.BackColor = System.Drawing.Color.White;
             this.metroTile2.Location = new System.Drawing.Point(253, 678);
-            this.metroTile2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTile2.Margin = new System.Windows.Forms.Padding(4);
             this.metroTile2.Name = "metroTile2";
             this.metroTile2.Size = new System.Drawing.Size(169, 54);
             this.metroTile2.TabIndex = 18;
@@ -358,7 +359,7 @@
             this.Controls.Add(this.nombre);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Historial_de_Facturas";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);

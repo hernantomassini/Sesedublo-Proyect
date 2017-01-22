@@ -67,7 +67,7 @@
             // Cantidad
             // 
             this.Cantidad.Location = new System.Drawing.Point(241, 256);
-            this.Cantidad.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Cantidad.Margin = new System.Windows.Forms.Padding(5);
             this.Cantidad.MaxLength = 5;
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.Size = new System.Drawing.Size(132, 22);
@@ -78,7 +78,7 @@
             // 
             this.Nombre.Enabled = false;
             this.Nombre.Location = new System.Drawing.Point(183, 100);
-            this.Nombre.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Nombre.Margin = new System.Windows.Forms.Padding(5);
             this.Nombre.MaxLength = 100;
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(255, 22);
@@ -87,7 +87,7 @@
             // Utilidad
             // 
             this.Utilidad.Location = new System.Drawing.Point(241, 290);
-            this.Utilidad.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Utilidad.Margin = new System.Windows.Forms.Padding(5);
             this.Utilidad.MaxLength = 10;
             this.Utilidad.Name = "Utilidad";
             this.Utilidad.Size = new System.Drawing.Size(132, 22);
@@ -138,7 +138,7 @@
             // Costo
             // 
             this.Costo.Location = new System.Drawing.Point(241, 222);
-            this.Costo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Costo.Margin = new System.Windows.Forms.Padding(5);
             this.Costo.MaxLength = 12;
             this.Costo.Name = "Costo";
             this.Costo.Size = new System.Drawing.Size(132, 22);
@@ -166,7 +166,7 @@
             "12",
             "24"});
             this.UnidadesXBulto.Location = new System.Drawing.Point(241, 359);
-            this.UnidadesXBulto.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.UnidadesXBulto.Margin = new System.Windows.Forms.Padding(5);
             this.UnidadesXBulto.Name = "UnidadesXBulto";
             this.UnidadesXBulto.Size = new System.Drawing.Size(132, 24);
             this.UnidadesXBulto.TabIndex = 9;
@@ -203,7 +203,7 @@
             this.titleCancelar.ActiveControl = null;
             this.titleCancelar.BackColor = System.Drawing.Color.DarkRed;
             this.titleCancelar.Location = new System.Drawing.Point(36, 423);
-            this.titleCancelar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.titleCancelar.Margin = new System.Windows.Forms.Padding(5);
             this.titleCancelar.Name = "titleCancelar";
             this.titleCancelar.Size = new System.Drawing.Size(136, 50);
             this.titleCancelar.TabIndex = 12;
@@ -222,7 +222,7 @@
             this.titleAceptar.ActiveControl = null;
             this.titleAceptar.BackColor = System.Drawing.Color.Green;
             this.titleAceptar.Location = new System.Drawing.Point(241, 423);
-            this.titleAceptar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.titleAceptar.Margin = new System.Windows.Forms.Padding(5);
             this.titleAceptar.Name = "titleAceptar";
             this.titleAceptar.Size = new System.Drawing.Size(132, 50);
             this.titleAceptar.TabIndex = 10;
@@ -253,7 +253,7 @@
             // 
             this.buscarProducto.CustomButton.Image = null;
             this.buscarProducto.CustomButton.Location = new System.Drawing.Point(126, 2);
-            this.buscarProducto.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buscarProducto.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.buscarProducto.CustomButton.Name = "";
             this.buscarProducto.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.buscarProducto.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -265,7 +265,7 @@
             this.buscarProducto.Icon = ((System.Drawing.Image)(resources.GetObject("buscarProducto.Icon")));
             this.buscarProducto.Lines = new string[0];
             this.buscarProducto.Location = new System.Drawing.Point(919, 33);
-            this.buscarProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buscarProducto.Margin = new System.Windows.Forms.Padding(4);
             this.buscarProducto.MaxLength = 70;
             this.buscarProducto.Name = "buscarProducto";
             this.buscarProducto.PasswordChar = '\0';
@@ -325,7 +325,7 @@
             this.dgvProductos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvProductos.Location = new System.Drawing.Point(451, 79);
-            this.dgvProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvProductos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvProductos.MultiSelect = false;
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.ReadOnly = true;
@@ -343,13 +343,14 @@
             this.dgvProductos.Size = new System.Drawing.Size(621, 335);
             this.dgvProductos.TabIndex = 19;
             this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
+            this.dgvProductos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductos_CellFormatting);
             // 
             // nuevoProducto
             // 
             this.nuevoProducto.ActiveControl = null;
             this.nuevoProducto.BackColor = System.Drawing.Color.MediumBlue;
             this.nuevoProducto.Location = new System.Drawing.Point(871, 421);
-            this.nuevoProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nuevoProducto.Margin = new System.Windows.Forms.Padding(4);
             this.nuevoProducto.Name = "nuevoProducto";
             this.nuevoProducto.Size = new System.Drawing.Size(199, 53);
             this.nuevoProducto.TabIndex = 11;
@@ -376,7 +377,7 @@
             // Precio
             // 
             this.Precio.Location = new System.Drawing.Point(241, 325);
-            this.Precio.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Precio.Margin = new System.Windows.Forms.Padding(5);
             this.Precio.MaxLength = 10;
             this.Precio.Name = "Precio";
             this.Precio.Size = new System.Drawing.Size(132, 22);
@@ -387,7 +388,7 @@
             // 
             this.bultoCuadradoRadio.AutoSize = true;
             this.bultoCuadradoRadio.Location = new System.Drawing.Point(296, 143);
-            this.bultoCuadradoRadio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bultoCuadradoRadio.Margin = new System.Windows.Forms.Padding(4);
             this.bultoCuadradoRadio.Name = "bultoCuadradoRadio";
             this.bultoCuadradoRadio.Size = new System.Drawing.Size(125, 17);
             this.bultoCuadradoRadio.TabIndex = 5;
@@ -398,7 +399,7 @@
             // costoIndividual
             // 
             this.costoIndividual.Location = new System.Drawing.Point(241, 187);
-            this.costoIndividual.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.costoIndividual.Margin = new System.Windows.Forms.Padding(5);
             this.costoIndividual.MaxLength = 12;
             this.costoIndividual.Name = "costoIndividual";
             this.costoIndividual.Size = new System.Drawing.Size(132, 22);
@@ -503,7 +504,7 @@
             this.Controls.Add(this.Utilidad);
             this.Controls.Add(this.Nombre);
             this.Controls.Add(this.Cantidad);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.Name = "AddProducto";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);

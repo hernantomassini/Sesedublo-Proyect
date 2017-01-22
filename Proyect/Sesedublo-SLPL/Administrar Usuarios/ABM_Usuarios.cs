@@ -144,5 +144,11 @@ namespace Sesedublo_SLPL.Administrar_Usuarios
             Manejador_Formularios.Agregar_Cliente.modificarCliente(idCliente);
             Manejador_Formularios.Agregar_Cliente.Show();
         }
+
+        private void dgvClientes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvClientes.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvClientes.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
     }
 }

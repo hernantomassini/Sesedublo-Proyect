@@ -672,5 +672,17 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         {
             updatePrecio();
         }
+
+        private void dgvProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvProductos.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvProductos.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
+
+        private void dgvPedido_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvPedido.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPedido.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
     }
 }

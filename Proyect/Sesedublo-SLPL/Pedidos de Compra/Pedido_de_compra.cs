@@ -76,7 +76,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             int id_pedido = Convert.ToInt32(filaDgv.Cells[0].Value);
             
 
-            if(Convert.ToString(filaDgv.Cells[6].Value) == "Si")
+            if(Convert.ToString(filaDgv.Cells[6].Value) == "SI")
             {
                 Manejador_Formularios.MostrarPedidoCompra.mostrarPedido(id_pedido);
                 Manejador_Formularios.MostrarPedidoCompra.Show();
@@ -100,7 +100,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 return;
             }
 
-            if (filaDgv.Cells[5].Value.ToString() == "Si")
+            if (filaDgv.Cells[5].Value.ToString() == "SI")
             {
                 Funciones.imprimirMensajeDeError("El siguiente pedido ya ha sido pagado", this);
                 return;
@@ -127,7 +127,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 return;
             }
 
-            if (filaDgv.Cells[6].Value.ToString() == "Si")
+            if (filaDgv.Cells[6].Value.ToString() == "SI")
             {
                 Funciones.imprimirMensajeDeError("Ya se cargo el stock de este pedido.", this);
                 return;
@@ -175,7 +175,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         {
             foreach (DataGridViewRow Myrow in PedidosDGV.Rows)
             {            //Here 2 cell is target value and 1 cell is Volume
-                if (Convert.ToString(Myrow.Cells[5].Value) == "Si")// Or your condition 
+                if (Convert.ToString(Myrow.Cells[5].Value) == "SI")// Or your condition 
                 {
                     Myrow.Cells[5].Style.BackColor = System.Drawing.Color.Green;
                 }
@@ -185,7 +185,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
                 }
 
-                if (Convert.ToString(Myrow.Cells[6].Value) == "Si")// Or your condition 
+                if (Convert.ToString(Myrow.Cells[6].Value) == "SI")// Or your condition 
                 {
                     Myrow.Cells[6].Style.BackColor = System.Drawing.Color.Green;
                 }
@@ -198,6 +198,9 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 Myrow.Cells[6].Style.ForeColor = System.Drawing.Color.White;
                 Myrow.Cells[5].Style.ForeColor = System.Drawing.Color.White;
             }
+
+            PedidosDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            PedidosDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
     }
 }

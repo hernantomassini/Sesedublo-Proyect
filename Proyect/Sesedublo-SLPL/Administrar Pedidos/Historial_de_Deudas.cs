@@ -24,7 +24,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         public void cargarDGV()
         {
-            MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("cargarDeudas", Conexion.generarArgumentos());
+            MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("cargarDeudas", Conexion.generarArgumentos("_nombre"),nombre.Text);
             DataTable tablaDeUsuarios = new DataTable("Clientes");
             da.Fill(tablaDeUsuarios);
             deudasDGV.DataSource = tablaDeUsuarios.DefaultView;
@@ -62,6 +62,11 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             }
             deudasDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             deudasDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
+
+        private void nombre_TextChanged(object sender, EventArgs e)
+        {
+            this.cargarDGV();
         }
     }
 }

@@ -70,7 +70,7 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
 
         public void getData()
         {
-            MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("cargarGrillaFacturas", Conexion.generarArgumentos("_nombre", "_apellido", "_descripcion"), nombre.Text, apellido.Text, descripcion.Text);
+            MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("cargarGrillaFacturas", Conexion.generarArgumentos("_nombre", "_apellido", "_descripcion", "_fecha"), nombre.Text, apellido.Text, descripcion.Text, fechaTxt.Text);
             DataTable tablaDeUsuarios = new DataTable("Clientes");
             da.Fill(tablaDeUsuarios);
             dgvFacturas.DataSource = tablaDeUsuarios.DefaultView;
@@ -176,8 +176,28 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
                 Myrow.Cells[7].Style.BackColor = System.Drawing.Color.Orchid;
                 Myrow.Cells[7].Style.ForeColor = System.Drawing.Color.White;
             }
-            dgvFacturas.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvFacturas.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+        }
+
+        private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            fechaTxt.Clear();
+            fechaTxt.AppendText(fechaCalendario.SelectionStart.ToShortDateString().Replace('/', '-'));
+
+        }
+
+        private void fechaTxt_TextChanged(object sender, EventArgs e)
+        {
+            this.getData();
+        }
+
+        private void limpiarFiltrosTile_Click(object sender, EventArgs e)
+        {
+            fechaTxt.Clear();
+            nombre.Clear();
+            descripcion.Clear();
+            apellido.Clear();
+
         }
     }
 }

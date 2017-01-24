@@ -47,10 +47,9 @@
             // 
             // 
             this.nombre.CustomButton.Image = null;
-            this.nombre.CustomButton.Location = new System.Drawing.Point(126, 2);
-            this.nombre.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nombre.CustomButton.Location = new System.Drawing.Point(92, 1);
             this.nombre.CustomButton.Name = "";
-            this.nombre.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.nombre.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.nombre.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.nombre.CustomButton.TabIndex = 1;
             this.nombre.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -59,8 +58,7 @@
             this.nombre.DisplayIcon = true;
             this.nombre.Icon = ((System.Drawing.Image)(resources.GetObject("nombre.Icon")));
             this.nombre.Lines = new string[0];
-            this.nombre.Location = new System.Drawing.Point(121, 74);
-            this.nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nombre.Location = new System.Drawing.Point(91, 60);
             this.nombre.MaxLength = 70;
             this.nombre.Name = "nombre";
             this.nombre.PasswordChar = '\0';
@@ -70,7 +68,7 @@
             this.nombre.SelectionLength = 0;
             this.nombre.SelectionStart = 0;
             this.nombre.ShortcutsEnabled = true;
-            this.nombre.Size = new System.Drawing.Size(152, 28);
+            this.nombre.Size = new System.Drawing.Size(114, 23);
             this.nombre.TabIndex = 12;
             this.nombre.UseSelectable = true;
             this.nombre.WaterMark = "Buscar";
@@ -81,10 +79,9 @@
             // nombreLabel
             // 
             this.nombreLabel.AutoSize = true;
-            this.nombreLabel.Location = new System.Drawing.Point(31, 74);
-            this.nombreLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.nombreLabel.Location = new System.Drawing.Point(23, 60);
             this.nombreLabel.Name = "nombreLabel";
-            this.nombreLabel.Size = new System.Drawing.Size(64, 20);
+            this.nombreLabel.Size = new System.Drawing.Size(62, 19);
             this.nombreLabel.TabIndex = 16;
             this.nombreLabel.Text = "Nombre:";
             // 
@@ -92,10 +89,9 @@
             // 
             this.titleAtras.ActiveControl = null;
             this.titleAtras.BackColor = System.Drawing.Color.CadetBlue;
-            this.titleAtras.Location = new System.Drawing.Point(32, 426);
-            this.titleAtras.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleAtras.Location = new System.Drawing.Point(24, 346);
             this.titleAtras.Name = "titleAtras";
-            this.titleAtras.Size = new System.Drawing.Size(100, 54);
+            this.titleAtras.Size = new System.Drawing.Size(75, 44);
             this.titleAtras.TabIndex = 14;
             this.titleAtras.Text = "Atrás";
             this.titleAtras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -111,10 +107,9 @@
             // 
             this.titleAgregarProducto.ActiveControl = null;
             this.titleAgregarProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.titleAgregarProducto.Location = new System.Drawing.Point(763, 426);
-            this.titleAgregarProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleAgregarProducto.Location = new System.Drawing.Point(572, 346);
             this.titleAgregarProducto.Name = "titleAgregarProducto";
-            this.titleAgregarProducto.Size = new System.Drawing.Size(207, 54);
+            this.titleAgregarProducto.Size = new System.Drawing.Size(155, 44);
             this.titleAgregarProducto.TabIndex = 13;
             this.titleAgregarProducto.Text = "Agregar Producto";
             this.titleAgregarProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -131,8 +126,6 @@
             this.dgvProductos.AllowUserToAddRows = false;
             this.dgvProductos.AllowUserToDeleteRows = false;
             this.dgvProductos.AllowUserToResizeRows = false;
-            this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dgvProductos.BackgroundColor = System.Drawing.Color.DarkGray;
             this.dgvProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -157,8 +150,7 @@
             this.dgvProductos.EnableHeadersVisualStyles = false;
             this.dgvProductos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvProductos.Location = new System.Drawing.Point(31, 113);
-            this.dgvProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvProductos.Location = new System.Drawing.Point(23, 92);
             this.dgvProductos.MultiSelect = false;
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.ReadOnly = true;
@@ -173,7 +165,7 @@
             this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(939, 305);
+            this.dgvProductos.Size = new System.Drawing.Size(704, 248);
             this.dgvProductos.TabIndex = 15;
             this.dgvProductos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductos_CellFormatting);
             // 
@@ -181,10 +173,9 @@
             // 
             this.metroTile1.ActiveControl = null;
             this.metroTile1.BackColor = System.Drawing.Color.Silver;
-            this.metroTile1.Location = new System.Drawing.Point(585, 426);
-            this.metroTile1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTile1.Location = new System.Drawing.Point(439, 346);
             this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(169, 54);
+            this.metroTile1.Size = new System.Drawing.Size(127, 44);
             this.metroTile1.TabIndex = 17;
             this.metroTile1.Text = "PDF";
             this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -199,19 +190,17 @@
             // 
             // Lista_de_Productos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 532);
+            this.ClientSize = new System.Drawing.Size(750, 432);
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.nombre);
             this.Controls.Add(this.nombreLabel);
             this.Controls.Add(this.titleAtras);
             this.Controls.Add(this.titleAgregarProducto);
             this.Controls.Add(this.dgvProductos);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "Lista_de_Productos";
-            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Lista de Productos";
             this.Load += new System.EventHandler(this.Lista_de_Productos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();

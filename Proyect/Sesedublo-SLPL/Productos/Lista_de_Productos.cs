@@ -93,6 +93,8 @@ namespace Sesedublo_SLPL.Productos
         {
             dgvProductos.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvProductos.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvProductos.Columns[1].Width = 250;
         }
     }
 }

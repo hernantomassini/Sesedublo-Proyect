@@ -155,17 +155,17 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             
             while (reader.Read())
             {
-                String id_pedido;
+                String id_pedido_valor;
 
 
                 if (reader[6].Equals(DBNull.Value)) {
-                    id_pedido = "No tiene";
+                    id_pedido_valor = "No tiene";
                 }
                 else {
-                    id_pedido = Convert.ToString(reader.GetInt32(6));
+                    id_pedido_valor = Convert.ToString(reader.GetInt32(6));
                 }
                 //ID Stock 0 - Nombre 1 - Costo 2 - Debe 3 - Lista strings 4 - facturada 5 - numero de factura 6
-                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetDecimal(3), reader.GetString(4), this.verSiONo(reader.GetInt32(5)), this.verSiONoDec(reader.GetInt32(3)), id_pedido);
+                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetDecimal(3), reader.GetString(4), this.verSiONo(reader.GetInt32(5)), this.verSiONoDec(reader.GetInt32(3)), id_pedido_valor);
             }
             reader.Close();
             Conexion.closeConnection();
@@ -297,6 +297,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
             PedidosDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             PedidosDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            PedidosDGV.Columns[4].Width = 120;
         }
 
         private void metroTile2_Click(object sender, EventArgs e)

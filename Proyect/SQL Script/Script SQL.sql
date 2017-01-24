@@ -787,7 +787,7 @@ BEGIN
 	SELECT CONCAT(nombre," ",apellido), direccion, telefono, email, cuit FROM Clientes WHERE id_cliente = _id_cliente;
 END //
 
-CREATE PROCEDURE cargarGrillaFacturas (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _descripcion VARCHAR(50))
+CREATE PROCEDURE cargarGrillaFacturas (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _descripcion VARCHAR(50), _fecha VARCHAR(50))
 BEGIN
 	SELECT f.id_factura as 'Nro de Factura', c.id_cliente, f.fecha AS 'Fecha de Factura', CONCAT(c.nombre, " ", c.apellido) AS Nombre, f.tipoDeFactura AS 'Tipo de factura', p.precio AS Precio, group_concat(pr.nombre) AS 'Productos de Factura', f.pedido AS 'Nro de pedido' FROM Facturas f
 	INNER JOIN Pedidos p ON p.id_pedido = f.pedido
@@ -797,6 +797,7 @@ BEGIN
 	WHERE ((CONCAT(c.nombre, " ", c.apellido) LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
 	AND ((f.id_factura = CONVERT(_apellido,UNSIGNED INTEGER)) OR (_apellido IS NULL OR _apellido = ""))
     AND ((f.pedido = CONVERT(_descripcion,UNSIGNED INTEGER) ) OR (_descripcion IS NULL OR _descripcion = ""))
+    AND ((DATE_FORMAT(CAST(fecha AS DATE) , '%d-%m-%Y') = _fecha) OR (_fecha IS NULL OR _fecha = ""))
     AND i.cantidadProductos > 0
     GROUP BY p.id_pedido
     ORDER BY f.id_factura DESC

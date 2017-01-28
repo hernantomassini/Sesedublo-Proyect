@@ -109,7 +109,7 @@ namespace Sesedublo_SLPL
             DataTable tablaDeFacturas = new DataTable("Factura");
             da.Fill(tablaDeFacturas);
 
-            int cantidad = 17 - tablaDeFacturas.Rows.Count;
+            int cantidad = 15 - tablaDeFacturas.Rows.Count;
             for (int i = 0; i <= cantidad; i++)
             {
                 DataRow fila = tablaDeFacturas.NewRow();

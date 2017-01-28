@@ -1187,14 +1187,16 @@ WHERE
     id_pedido = _id_pedido;
 END //
 
-CREATE PROCEDURE cargarDeudas ()
+CREATE PROCEDURE cargarDeudas (IN _nombre VARCHAR(50))
 BEGIN
 
 SELECT c.nombre as Cliente,SUM(pagadoHastaElMomento) as Pagado, SUM(precio) - SUM(pagadoHastaElMomento) as Debe,
 	 IF(SUM(precio) - SUM(pagadoHastaElMomento) > 0, 'NO', 'SI') as 'Está todo pago?' 
 	  FROM Pedidos p
 INNER JOIN Clientes c ON c.id_cliente = p.comprador
-GROUP BY comprador;
+WHERE ((CONCAT(c.nombre, " ", c.apellido) LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+GROUP BY comprador
+ORDER BY Debe DESC;
 
 END //
 

@@ -108,6 +108,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
             Manejador_Formularios.AgregarPedido.Clean();
             Manejador_Formularios.AgregarPedido.Show();
+            Manejador_Formularios.AgregarPedido.cargarDGVUsuarios();
             Close();
         }
 

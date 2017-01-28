@@ -14,7 +14,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>F:\SeSeDubloExe23-01-2017-v4\</PublishUrl>
+    <PublishUrl>F:\LACANTINABEBIDASEXE-28-01-2017\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>21</ApplicationRevision>
+    <ApplicationRevision>22</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -174,17 +174,17 @@
     <Compile Include="Historial de Facturas\AddNotaDeCredito.Designer.cs">
       <DependentUpon>AddNotaDeCredito.cs</DependentUpon>
     </Compile>
-    <Compile Include="Historial de Facturas\VerRegistroFactura.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Historial de Facturas\VerRegistroFactura.Designer.cs">
-      <DependentUpon>VerRegistroFactura.cs</DependentUpon>
-    </Compile>
     <Compile Include="Historial de Facturas\Ver_Factura.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Historial de Facturas\Ver_Factura.Designer.cs">
       <DependentUpon>Ver_Factura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Historial de Facturas\VerRegistroFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historial de Facturas\VerRegistroFactura.Designer.cs">
+      <DependentUpon>VerRegistroFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantalla_Principal.cs">
       <SubType>Form</SubType>
@@ -299,14 +299,14 @@
     <EmbeddedResource Include="Historial de Facturas\AddNotaDeCredito.resx">
       <DependentUpon>AddNotaDeCredito.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Historial de Facturas\Ver_Factura.resx">
+      <DependentUpon>Ver_Factura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Historial de Facturas\Historial_de_Facturas.resx">
       <DependentUpon>Historial_de_Facturas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Historial de Facturas\VerRegistroFactura.resx">
       <DependentUpon>VerRegistroFactura.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Historial de Facturas\Ver_Factura.resx">
-      <DependentUpon>Ver_Factura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Historial de Operaciones\Historial_de_Operaciones.resx">
       <DependentUpon>Historial_de_Operaciones.cs</DependentUpon>

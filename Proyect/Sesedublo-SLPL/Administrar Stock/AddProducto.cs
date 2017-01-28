@@ -42,7 +42,11 @@ namespace Sesedublo_SLPL.Administrar_Stock
         public void AgregarProducto()
         {
             getProductos();
-            Nombre.Text = dgvProductos.Rows[0].Cells[1].Value.ToString();
+
+            if (dgvProductos.RowCount != 0)
+            {
+                Nombre.Text = dgvProductos.Rows[0].Cells[1].Value.ToString();
+            }
             Clean();
         }
 

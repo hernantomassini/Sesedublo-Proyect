@@ -130,7 +130,6 @@
             this.Motivo.WaterMark = "Ingrese el motivo";
             this.Motivo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.Motivo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.Motivo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.descripcion_KeyPress);
             // 
             // Monto
             // 
@@ -163,7 +162,6 @@
             this.Monto.WaterMark = "Ingrese el monto";
             this.Monto.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.Monto.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.Monto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cantidad_KeyPress);
             // 
             // ModifyCash
             // 

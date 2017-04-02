@@ -19,6 +19,9 @@ DROP TABLE IF EXISTS PedidosDeLea;
 DROP TABLE IF EXISTS Productos;
 */
 
+ALTER TABLE ListaDeProductos ADD COLUMN deleted int DEFAULT 0;
+ALTER TABLE PedidosDeLea ADD COLUMN deleted int DEFAULT 0;
+
 #DROP PROCEDURES:
 DROP PROCEDURE IF EXISTS obtenerStock;
 DROP PROCEDURE IF EXISTS agregarStock;
@@ -67,6 +70,7 @@ DROP PROCEDURE IF EXISTS obtenerStockPedido;
 DROP PROCEDURE IF EXISTS cargarStockPedidoLea;
 DROP PROCEDURE IF EXISTS cargarDeudas;
 DROP PROCEDURE IF EXISTS obtenerClienteParaFactura;
+
 
 /*
 CREATE TABLE Caja (
@@ -626,8 +630,8 @@ INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 											("WHISKY HIRAM WALKER"),
 											("WHITE HORSE"),
 											("WYBOROWA");
-                                            
 */
+ 
 #Store Procedures
 DELIMITER //
 
@@ -784,7 +788,7 @@ END //
 CREATE PROCEDURE obtenerClienteParaFactura (IN _id_cliente INT) 
 BEGIN
 
-	SELECT CONCAT(nombre," ",apellido), direccion, telefono, email, cuit FROM Clientes WHERE id_cliente = _id_cliente;
+	SELECT CONCAT(nombre," ",apellido), direccion, telefono, email, cuit, localidad FROM Clientes WHERE id_cliente = _id_cliente;
 END //
 
 CREATE PROCEDURE cargarGrillaFacturas (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _descripcion VARCHAR(50), _fecha VARCHAR(50))
@@ -839,7 +843,8 @@ CREATE PROCEDURE obtenerMontoEnProductos ()
 BEGIN
 
 	SELECT SUM(p.costo * p.cantidad) FROM Stock s INNER JOIN Productos p
-	ON p.id_producto = s.producto;
+	ON p.id_producto = s.producto
+    where p.cantidad > 0;
 
 END //
 
@@ -872,8 +877,6 @@ CREATE PROCEDURE borrarPedido (IN _id_pedido INT)
 BEGIN
 
 SET @_montoARemover = (SELECT pagadoHastaElMomento FROM Pedidos WHERE id_pedido = _id_pedido);
-
-	CALL restarEfectivo (@_montoARemover, "Manejo interno del programa - se esta modificando un pedido.");
 
 	DELETE FROM Items WHERE pedido = _id_pedido;
 	DELETE FROM Pedidos WHERE id_pedido = _id_pedido;
@@ -913,7 +916,6 @@ CREATE PROCEDURE generarFactura (IN _id_pedido INT, IN _tipoFactura VARCHAR(60))
 BEGIN
 
 	INSERT INTO Facturas (fecha, tipoDeFactura, pedido) VALUES (CURTIME(), _tipoFactura, _id_pedido);
-    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Generación de factura", "Factura Creada"); 
     UPDATE Pedidos SET facturada = 1 WHERE _id_pedido = id_pedido;
 END //
 
@@ -1043,9 +1045,10 @@ END//
 CREATE PROCEDURE obtenerLista (IN _nombre VARCHAR(60))
 BEGIN
 	#retorna id_producto (0), descripcion(1), tipo(2)(wut), 3 - costo, 	4 - precio unitario, 5- precio bulto, 6-radioSelected
-	SELECT p.id_producto, descripcion AS Descripción, IF(PVunitario IS NULL,'N/E',IF(cantidadXBulto = 0, 'Individual',cantidadXBulto)) AS 'Tipo', IF(costo IS NULL,'N/E',costo) AS Costo, IF(PVunitario IS NULL,'N/E',PVUnitario) AS 'Precio Unitario', IF(PVBulto IS NULL, 'N/E', IF(PVBulto = 0,'-',PVBulto)) AS 'Precio Bulto', radioSelected AS 'RadioSelected' FROM ListaDeProductos lp
+	SELECT lp.id_listPro, descripcion AS Descripción, IF(PVunitario IS NULL,'N/E',IF(cantidadXBulto = 0, 'Individual',cantidadXBulto)) AS 'Tipo', IF(costo IS NULL,'N/E',costo) AS Costo, IF(PVunitario IS NULL,'N/E',PVUnitario) AS 'Precio Unitario', IF(PVBulto IS NULL, 'N/E', IF(PVBulto = 0,'-',PVBulto)) AS 'Precio Bulto', radioSelected AS 'RadioSelected' FROM ListaDeProductos lp
     LEFT JOIN Productos p ON lp.descripcion = p.nombre
 	WHERE ((descripcion LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+    AND deleted = 0
     ORDER BY descripcion;
 END //
 
@@ -1095,6 +1098,7 @@ BEGIN
     INNER JOIN StockACargar sac ON sac.id_stockACargar = i.id_stockACargar
     INNER JOIN Clientes c ON c.id_cliente = p.vendedor
 	WHERE ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+    AND p.deleted = 0
     GROUP BY p.id_pedido
     ORDER BY p.id_pedido DESC
 	LIMIT 5000;

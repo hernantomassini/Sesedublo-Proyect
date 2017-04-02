@@ -61,6 +61,20 @@ namespace Sesedublo_SLPL.Generales
             }
         }
 
+        private static Modificar_Nombre Modificar_Nombre_Form;
+        public static Modificar_Nombre Modificar_Nombre
+        {
+            get
+            {
+                if (Modificar_Nombre_Form == null)
+                {
+                    Modificar_Nombre_Form = new Modificar_Nombre();
+                }
+                //ABM_Usuarios_Form.getData();
+                return Modificar_Nombre_Form;
+            }
+        }
+
         private static ABM_Stock ABM_Stock_Form;
         public static ABM_Stock ABM_Stock
         {

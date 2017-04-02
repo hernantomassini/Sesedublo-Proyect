@@ -202,5 +202,52 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             PedidosDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             PedidosDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
+
+        private void titleCancelar_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow filaMarcada = PedidosDGV.CurrentRow;
+
+            if (filaMarcada.Cells[6].Value.ToString() == "SI")
+            {
+                Funciones.imprimirMensajeDeError("Ya se cargo el stock de este pedido, no puede eliminarse", this);
+                return;
+            }
+
+            if (filaMarcada.Cells[5].Value.ToString() == "SI")
+            {
+                Funciones.imprimirMensajeDeError("El siguiente pedido ya ha sido pagado, no puede eliminarse", this);
+                return;
+            }
+
+            if (!this.validarFilaMarcada(filaMarcada, this))
+            {
+                return;
+            }
+
+            if (Funciones.imprimirMensajeDeAlerta("¿Estás seguro de borrar a este Pedido de Compra? Esta acción no se podrá deshacer.", this) == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            int id_pedido = Convert.ToInt32(PedidosDGV.SelectedCells[0].Value);
+
+            string query = " UPDATE PedidosDeLea SET deleted = 1 where id_pedido=" + id_pedido;
+
+            Conexion.ejecutarNonQuery(query);
+            Conexion.closeConnection();
+            Funciones.imprimirMensajeDeAviso("Se elimino el pedido nro #" + id_pedido, this);
+            this.cargarDGV();
+        }
+
+        private bool validarFilaMarcada(DataGridViewRow filaMarcada, MetroForm form)
+        {
+            if (filaMarcada == null)
+            {
+                Funciones.imprimirMensajeDeError("Debe seleccionar un producto para dicha acción.", form);
+                return false;
+            }
+
+            return true;
+        }
     }
 }

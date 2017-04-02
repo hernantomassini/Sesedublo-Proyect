@@ -213,6 +213,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
             reader.Close();
             Conexion.closeConnection();
+            montoAPagarDelPedido.Enabled = false;
         }
 
         private void AgregarTile_Click(object sender, EventArgs e)
@@ -451,6 +452,29 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
             ItemsDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ItemsDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
+
+        private void ItemsDGV_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            sumatoriaMoney = 0;
+            foreach (DataGridViewRow Myrow in ItemsDGV.Rows)
+            {
+                string[] partes = Myrow.Cells[1].Value.ToString().Split(' ');
+                string subcadena = partes[0];
+                int cantidadP = Convert.ToInt32(subcadena);
+                decimal precioP = Convert.ToDecimal(Myrow.Cells[3].Value.ToString());
+
+                sumatoriaMoney += precioP;
+
+                int id_stock = Convert.ToInt32(Myrow.Cells[0].Value);
+                decimal precioUnitario = Convert.ToDecimal(Myrow.Cells[3].Value) / cantidadP;
+
+                productosAVender[id_stock].setCantidad(productosAVender[id_stock].getCantidad());
+                productosAVender[id_stock].setPrecioCobrado(precioUnitario);
+
+            }
+            MontoACobrarLabel.Text = "El valor del pedido es de " + sumatoriaMoney;
+            montoAPagarDelPedido.Text = Convert.ToString(sumatoriaMoney);
         }
     }
 }

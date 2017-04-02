@@ -38,6 +38,7 @@
             this.titleAgregarProducto = new MetroFramework.Controls.MetroTile();
             this.dgvProductos = new MetroFramework.Controls.MetroGrid();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.titleCancelar = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -167,13 +168,14 @@
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductos.Size = new System.Drawing.Size(704, 248);
             this.dgvProductos.TabIndex = 15;
+            this.dgvProductos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellDoubleClick);
             this.dgvProductos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductos_CellFormatting);
             // 
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
             this.metroTile1.BackColor = System.Drawing.Color.Silver;
-            this.metroTile1.Location = new System.Drawing.Point(439, 346);
+            this.metroTile1.Location = new System.Drawing.Point(275, 346);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(127, 44);
             this.metroTile1.TabIndex = 17;
@@ -188,11 +190,31 @@
             this.metroTile1.UseTileImage = true;
             this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
+            // titleCancelar
+            // 
+            this.titleCancelar.ActiveControl = null;
+            this.titleCancelar.BackColor = System.Drawing.Color.DarkRed;
+            this.titleCancelar.Location = new System.Drawing.Point(409, 346);
+            this.titleCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.titleCancelar.Name = "titleCancelar";
+            this.titleCancelar.Size = new System.Drawing.Size(156, 44);
+            this.titleCancelar.TabIndex = 18;
+            this.titleCancelar.Text = "Eliminar Producto";
+            this.titleCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.titleCancelar.TileImage = ((System.Drawing.Image)(resources.GetObject("titleCancelar.TileImage")));
+            this.titleCancelar.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.titleCancelar.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.titleCancelar.UseCustomBackColor = true;
+            this.titleCancelar.UseSelectable = true;
+            this.titleCancelar.UseTileImage = true;
+            this.titleCancelar.Click += new System.EventHandler(this.titleCancelar_Click);
+            // 
             // Lista_de_Productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 432);
+            this.Controls.Add(this.titleCancelar);
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.nombre);
             this.Controls.Add(this.nombreLabel);
@@ -217,5 +239,6 @@
         private MetroFramework.Controls.MetroTile titleAgregarProducto;
         private MetroFramework.Controls.MetroGrid dgvProductos;
         private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile titleCancelar;
     }
 }

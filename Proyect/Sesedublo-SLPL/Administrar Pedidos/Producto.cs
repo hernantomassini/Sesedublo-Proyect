@@ -31,5 +31,10 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
             this.cantidad = cantidad;
         }
+
+        public void setPrecioCobrado(decimal precio)
+        {
+            this.precioCobrado = precio;
+        }
     }
 }

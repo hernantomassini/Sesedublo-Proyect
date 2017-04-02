@@ -45,6 +45,7 @@ namespace Sesedublo_SLPL
                 if (reader.GetString(3) != "") { label12.Text = "CONTACTO: " + reader.GetString(3).ToUpper(); }
                 if (reader.GetString(2) != "") { label14.Text = "TEL.: " + reader.GetString(2).ToUpper(); }
                 if (reader.GetString(4) != "") { cuilComprador.Text = "CUIL: " + reader.GetString(4).ToUpper(); }
+                if (reader.GetString(5) != "") { localidadLbl.Text = "LOCALIDAD: " + reader.GetString(5).ToUpper(); }
             }
             reader.Close();
             Conexion.closeConnection();
@@ -172,12 +173,14 @@ namespace Sesedublo_SLPL
         System.EventArgs e)
         {
             printButton.Visible = false;
+            metroTile1.Visible = false;
             CaptureScreen();
             PrintPreviewDialog printPreviewDialog1;
             printPreviewDialog1 = new PrintPreviewDialog();
             printPreviewDialog1.Document = printDocument1;
             printPreviewDialog1.Show();
             printButton.Visible = true;
+            metroTile1.Visible = true;
         }
 
         private void Ver_Factura_Load(object sender, EventArgs e)
@@ -206,6 +209,48 @@ namespace Sesedublo_SLPL
             printPreviewDialog1.Document = printDocument1;
             printPreviewDialog1.Show();
             printButton.Visible = true;
+
+        }
+
+        public static Bitmap TakeDialogScreenshot(Form window)
+        {
+            var b = new Bitmap(window.Width, window.Height);
+            window.DrawToBitmap(b, new Rectangle(0, 0, window.Width, window.Height));
+
+            Point p = window.PointToScreen(Point.Empty);
+
+            Bitmap target = new Bitmap(window.ClientSize.Width, window.ClientSize.Height);
+            using (Graphics g = Graphics.FromImage(target))
+            {
+                g.DrawImage(b, 0, 0,
+                            new Rectangle(p.X - window.Location.X, p.Y - window.Location.Y,
+                                          target.Width, target.Height),
+                           GraphicsUnit.Pixel);
+            }
+            b.Dispose();
+            return target;
+        }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+            printButton.Visible = false;
+            metroTile1.Visible = false;
+
+            Bitmap bitmap = TakeDialogScreenshot(this);
+            SaveFileDialog saveDialog = new SaveFileDialog();
+
+            printButton.Visible = true;
+            metroTile1.Visible = true;
+
+            saveDialog.FileName = facturaID.Text + "-DUPLICADO";
+            saveDialog.DefaultExt = "jpg";
+            saveDialog.Filter = "JPG images (*.jpg)|*.jpg";
+
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                var fileName = saveDialog.FileName;
+                bitmap.Save(fileName, System.Drawing.Imaging.ImageFormat.Jpeg);
+            }
 
         }
     }

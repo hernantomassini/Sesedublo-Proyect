@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ver_Factura_Dup));
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.dgvVerFactura = new MetroFramework.Controls.MetroGrid();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.printButton = new MetroFramework.Controls.MetroTile();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -47,6 +46,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.ivaCalculado = new System.Windows.Forms.Label();
             this.totalT = new System.Windows.Forms.Label();
@@ -81,8 +82,8 @@
             this.direccionLea = new System.Windows.Forms.Label();
             this.facturaID = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.localidadLbl = new System.Windows.Forms.Label();
             this.metroPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVerFactura)).BeginInit();
             this.panel5.SuspendLayout();
@@ -96,7 +97,6 @@
             // 
             this.metroPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.metroPanel2.Controls.Add(this.dgvVerFactura);
-            this.metroPanel2.Controls.Add(this.panel6);
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel2.HorizontalScrollbarSize = 10;
@@ -119,39 +119,39 @@
             this.dgvVerFactura.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvVerFactura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvVerFactura.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVerFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVerFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvVerFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVerFactura.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVerFactura.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvVerFactura.EnableHeadersVisualStyles = false;
             this.dgvVerFactura.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvVerFactura.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvVerFactura.Location = new System.Drawing.Point(0, -1);
+            this.dgvVerFactura.Location = new System.Drawing.Point(-1, -1);
             this.dgvVerFactura.MultiSelect = false;
             this.dgvVerFactura.Name = "dgvVerFactura";
             this.dgvVerFactura.ReadOnly = true;
             this.dgvVerFactura.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVerFactura.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVerFactura.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvVerFactura.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvVerFactura.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvVerFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -159,14 +159,6 @@
             this.dgvVerFactura.TabIndex = 29;
             this.dgvVerFactura.UseCustomBackColor = true;
             this.dgvVerFactura.UseCustomForeColor = true;
-            // 
-            // panel6
-            // 
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Location = new System.Drawing.Point(0, 173);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(774, 24);
-            this.panel6.TabIndex = 25;
             // 
             // printButton
             // 
@@ -183,7 +175,7 @@
             this.printButton.UseCustomBackColor = true;
             this.printButton.UseSelectable = true;
             this.printButton.UseTileImage = true;
-            this.printButton.Click += new System.EventHandler(this.printButton_Click_1);
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
             // panel5
             // 
@@ -302,6 +294,25 @@
             this.panel3.Size = new System.Drawing.Size(739, 90);
             this.panel3.TabIndex = 33;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(108, 65);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(129, 13);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "LEANDRO DI LONARDO";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(22, 65);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 13);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "VENDEDOR:";
+            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -381,6 +392,7 @@
             // metroPanel1
             // 
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel1.Controls.Add(this.localidadLbl);
             this.metroPanel1.Controls.Add(this.cuilComprador);
             this.metroPanel1.Controls.Add(this.label12);
             this.metroPanel1.Controls.Add(this.label13);
@@ -412,7 +424,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(18, 92);
+            this.label12.Location = new System.Drawing.Point(18, 96);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(69, 13);
             this.label12.TabIndex = 44;
@@ -421,7 +433,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(18, 108);
+            this.label13.Location = new System.Drawing.Point(18, 123);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(104, 13);
             this.label13.TabIndex = 41;
@@ -430,7 +442,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(18, 76);
+            this.label14.Location = new System.Drawing.Point(18, 78);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(33, 13);
             this.label14.TabIndex = 40;
@@ -649,24 +661,31 @@
             this.label24.TabIndex = 35;
             this.label24.Text = "SESEDUBLO S.A.";
             // 
-            // label10
+            // metroTile1
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(22, 65);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(80, 13);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "VENDEDOR:";
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.metroTile1.Location = new System.Drawing.Point(180, 790);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(142, 36);
+            this.metroTile1.TabIndex = 38;
+            this.metroTile1.Text = "Guardar";
+            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile1.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile1.TileImage")));
+            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.metroTile1.UseCustomBackColor = true;
+            this.metroTile1.UseSelectable = true;
+            this.metroTile1.UseTileImage = true;
+            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
-            // label11
+            // localidadLbl
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(108, 65);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(129, 13);
-            this.label11.TabIndex = 12;
-            this.label11.Text = "LEANDRO DI LONARDO";
+            this.localidadLbl.AutoSize = true;
+            this.localidadLbl.Location = new System.Drawing.Point(273, 41);
+            this.localidadLbl.Name = "localidadLbl";
+            this.localidadLbl.Size = new System.Drawing.Size(70, 13);
+            this.localidadLbl.TabIndex = 48;
+            this.localidadLbl.Text = "ARGENTINA";
             // 
             // Ver_Factura_Dup
             // 
@@ -675,6 +694,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(758, 829);
+            this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.metroPanel2);
             this.Controls.Add(this.printButton);
             this.Controls.Add(this.panel5);
@@ -703,7 +723,6 @@
 
         private MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroGrid dgvVerFactura;
-        private System.Windows.Forms.Panel panel6;
         private MetroFramework.Controls.MetroTile printButton;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel7;
@@ -752,5 +771,7 @@
         private System.Windows.Forms.Label cuilComprador;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private MetroFramework.Controls.MetroTile metroTile1;
+        private System.Windows.Forms.Label localidadLbl;
     }
 }

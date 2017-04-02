@@ -305,7 +305,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
 
                 precio = Convert.ToDecimal(dgvProductos.CurrentRow.Cells[5].Value) / 100;
-                utilidad = (precio - costoUnitario) / cantBotellasBulto;
+                utilidad = (precio - costo) / cantBotellasBulto;
 
                 costoIndividual.Text = Convert.ToString(costoUnitario);
                 UnidadesXBulto.Text = Convert.ToString(cantBotellasBulto);

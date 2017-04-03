@@ -36,6 +36,12 @@
             this.AgregarPedidoTile = new MetroFramework.Controls.MetroTile();
             this.AtrasTile = new MetroFramework.Controls.MetroTile();
             this.PedidosDGV = new MetroFramework.Controls.MetroGrid();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.CargarStockTile = new MetroFramework.Controls.MetroTile();
+            this.metroTile2 = new MetroFramework.Controls.MetroTile();
+            this.nombre = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.titleCancelar = new MetroFramework.Controls.MetroTile();
             this.IDPedidoLea = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,12 +49,6 @@
             this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pagado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockCargado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
-            this.CargarStockTile = new MetroFramework.Controls.MetroTile();
-            this.metroTile2 = new MetroFramework.Controls.MetroTile();
-            this.nombre = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.titleCancelar = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.PedidosDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -166,58 +166,6 @@
             this.PedidosDGV.TabIndex = 6;
             this.PedidosDGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PedidosDGV_CellDoubleClick);
             this.PedidosDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.PedidosDGV_CellFormatting);
-            // 
-            // IDPedidoLea
-            // 
-            this.IDPedidoLea.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.IDPedidoLea.HeaderText = "IDPedidoLea";
-            this.IDPedidoLea.Name = "IDPedidoLea";
-            this.IDPedidoLea.ReadOnly = true;
-            this.IDPedidoLea.Visible = false;
-            // 
-            // Proveedor
-            // 
-            this.Proveedor.HeaderText = "Proveedor";
-            this.Proveedor.Name = "Proveedor";
-            this.Proveedor.ReadOnly = true;
-            this.Proveedor.Width = 82;
-            // 
-            // Fecha
-            // 
-            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            this.Fecha.Width = 60;
-            // 
-            // Productos
-            // 
-            this.Productos.HeaderText = "Productos comprados";
-            this.Productos.Name = "Productos";
-            this.Productos.ReadOnly = true;
-            this.Productos.Width = 130;
-            // 
-            // Costo
-            // 
-            this.Costo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Costo.HeaderText = "Costo";
-            this.Costo.Name = "Costo";
-            this.Costo.ReadOnly = true;
-            this.Costo.Width = 60;
-            // 
-            // pagado
-            // 
-            this.pagado.HeaderText = "Pagado";
-            this.pagado.Name = "pagado";
-            this.pagado.ReadOnly = true;
-            this.pagado.Width = 69;
-            // 
-            // StockCargado
-            // 
-            this.StockCargado.HeaderText = "Stock cargado";
-            this.StockCargado.Name = "StockCargado";
-            this.StockCargado.ReadOnly = true;
-            this.StockCargado.Width = 94;
             // 
             // metroTile1
             // 
@@ -338,6 +286,58 @@
             this.titleCancelar.UseTileImage = true;
             this.titleCancelar.Click += new System.EventHandler(this.titleCancelar_Click);
             // 
+            // IDPedidoLea
+            // 
+            this.IDPedidoLea.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDPedidoLea.HeaderText = "Numero de pedido";
+            this.IDPedidoLea.Name = "IDPedidoLea";
+            this.IDPedidoLea.ReadOnly = true;
+            this.IDPedidoLea.Width = 83;
+            // 
+            // Proveedor
+            // 
+            this.Proveedor.HeaderText = "Proveedor";
+            this.Proveedor.Name = "Proveedor";
+            this.Proveedor.ReadOnly = true;
+            this.Proveedor.Width = 82;
+            // 
+            // Fecha
+            // 
+            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 60;
+            // 
+            // Productos
+            // 
+            this.Productos.HeaderText = "Productos comprados";
+            this.Productos.Name = "Productos";
+            this.Productos.ReadOnly = true;
+            this.Productos.Width = 130;
+            // 
+            // Costo
+            // 
+            this.Costo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Costo.HeaderText = "Costo";
+            this.Costo.Name = "Costo";
+            this.Costo.ReadOnly = true;
+            this.Costo.Width = 60;
+            // 
+            // pagado
+            // 
+            this.pagado.HeaderText = "Pagado";
+            this.pagado.Name = "pagado";
+            this.pagado.ReadOnly = true;
+            this.pagado.Width = 69;
+            // 
+            // StockCargado
+            // 
+            this.StockCargado.HeaderText = "Stock cargado";
+            this.StockCargado.Name = "StockCargado";
+            this.StockCargado.ReadOnly = true;
+            this.StockCargado.Width = 94;
+            // 
             // Pedido_de_compra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -373,6 +373,7 @@
         private MetroFramework.Controls.MetroTile metroTile2;
         private MetroFramework.Controls.MetroTextBox nombre;
         private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroTile titleCancelar;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDPedidoLea;
         private System.Windows.Forms.DataGridViewTextBoxColumn Proveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
@@ -380,6 +381,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
         private System.Windows.Forms.DataGridViewTextBoxColumn pagado;
         private System.Windows.Forms.DataGridViewTextBoxColumn StockCargado;
-        private MetroFramework.Controls.MetroTile titleCancelar;
     }
 }

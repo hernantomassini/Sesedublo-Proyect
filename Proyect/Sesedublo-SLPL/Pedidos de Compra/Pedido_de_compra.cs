@@ -199,6 +199,12 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 Myrow.Cells[5].Style.ForeColor = System.Drawing.Color.White;
             }
 
+            foreach (DataGridViewRow Myrow in PedidosDGV.Rows)
+            {            //Here 2 cell is target value and 1 cell is Volume
+                Myrow.Cells[0].Style.BackColor = System.Drawing.Color.OrangeRed;
+                Myrow.Cells[0].Style.ForeColor = System.Drawing.Color.White;
+            }
+
             PedidosDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             PedidosDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }

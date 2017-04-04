@@ -166,6 +166,10 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                     Conexion.closeConnection();
                 }
 
+
+                Conexion.executeProcedure("registrarPedido", Conexion.generarArgumentos("_id_pedido", "_precio", "_id_comprador"), id_pedido, Convert.ToDecimal(montoAPagarDelPedido.Text), id_cliente);
+                Conexion.closeConnection();
+
                 Funciones.imprimirMensajeDeAviso("Se realizó el pedido correctamente", this);
 
                 Manejador_Formularios.ABM_Pedidos.cargarDGV();

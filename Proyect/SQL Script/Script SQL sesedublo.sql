@@ -2,7 +2,7 @@
 CREATE DATABASE IF NOT EXISTS Sesedublo;
 USE Sesedublo;
 
-/*
+
 #DROP TABLES:
 DROP TABLE IF EXISTS NotasDeCredito;
 DROP TABLE IF EXISTS Operaciones;
@@ -17,10 +17,6 @@ DROP TABLE IF EXISTS ItemsDeLea;
 DROP TABLE IF EXISTS StockACargar;
 DROP TABLE IF EXISTS PedidosDeLea;
 DROP TABLE IF EXISTS Productos;
-*/
-
-ALTER TABLE ListaDeProductos ADD COLUMN deleted int DEFAULT 0;
-ALTER TABLE PedidosDeLea ADD COLUMN deleted int DEFAULT 0;
 
 #DROP PROCEDURES:
 DROP PROCEDURE IF EXISTS obtenerStock;
@@ -70,9 +66,11 @@ DROP PROCEDURE IF EXISTS obtenerStockPedido;
 DROP PROCEDURE IF EXISTS cargarStockPedidoLea;
 DROP PROCEDURE IF EXISTS cargarDeudas;
 DROP PROCEDURE IF EXISTS obtenerClienteParaFactura;
+DROP PROCEDURE IF EXISTS registrarPedidoDeCompra;
+DROP PROCEDURE IF EXISTS registrarPedido;
+DROP PROCEDURE IF EXISTS registrarAgregadoDeStock;
 
 
-/*
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
     efectivoActual DECIMAL(20 , 2 ),
@@ -630,7 +628,9 @@ INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 											("WHISKY HIRAM WALKER"),
 											("WHITE HORSE"),
 											("WYBOROWA");
-*/
+                                            
+ALTER TABLE ListaDeProductos ADD COLUMN deleted int DEFAULT 0;
+ALTER TABLE PedidosDeLea ADD COLUMN deleted int DEFAULT 0;
  
 #Store Procedures
 DELIMITER //
@@ -900,6 +900,39 @@ BEGIN
 	INSERT INTO Pedidos (comprador, pagadoHastaElMomento, precio) VALUES (_id_comprador, _pagadoHastaElMomento, _precio);
 	SELECT LAST_INSERT_ID();
     
+END //
+
+CREATE PROCEDURE registrarPedidoDeCompra (IN _id_pedidoLea INT, IN _costo DECIMAL(10,2), IN _id_vendedor INT)
+BEGIN
+	
+    SET @_cliente = (SELECT CONCAT(nombre, ", ", apellido) FROM Clientes WHERE id_cliente = _id_vendedor);
+    SET @_descripcion = (SELECT CONCAT("Se le hizo un pedido de compra nro # ", _id_pedidoLea ," al cliente ",@_cliente," por el costo de ", _costo));
+    
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Pedido de compra", @_descripcion);
+
+END //
+
+
+CREATE PROCEDURE registrarAgregadoDeStock (IN _cantidad INT, _nombre VARCHAR(50), _costo DECIMAL(10,2))
+BEGIN
+	
+    SET @_costo = (_cantidad * _costo);
+    
+    SET @_descripcion = (SELECT CONCAT("Se agrego manualmente stock del producto ", _nombre ," por la cantidad de ",_cantidad," por el costo de ", @_costo));
+    
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Agregado de Stock Manual", @_descripcion);
+
+END //
+
+
+CREATE PROCEDURE registrarPedido (IN _id_pedido INT, IN _precio DECIMAL(10,2), IN _id_comprador INT)
+BEGIN
+	
+    SET @_cliente = (SELECT CONCAT(nombre, ", ", apellido) FROM Clientes WHERE id_cliente = _id_comprador);
+    SET @_descripcion = (SELECT CONCAT("Se le hizo un pedido nro # ", _id_pedido ," al cliente ",@_cliente," por el precio de ", _precio));
+    
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Pedido", @_descripcion);
+
 END //
 
 CREATE PROCEDURE agregarItemAPedido (IN _id_pedido INT, IN _id_producto INT, IN _cantidad INT, _valorDelItem decimal)

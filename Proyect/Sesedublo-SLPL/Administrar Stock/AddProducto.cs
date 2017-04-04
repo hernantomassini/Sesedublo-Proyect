@@ -192,6 +192,10 @@ namespace Sesedublo_SLPL.Administrar_Stock
 
                 Conexion.executeProcedure("agregarStock", Conexion.generarArgumentos("_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto", "_radioSelected", "_tipo"), Convert.ToInt32(Cantidad.Text), cantXBulto, costo, Nombre.Text, precioPorUnidad, precioPorBulto, radioSelected, tipo);
                 Conexion.closeConnection();
+
+                Conexion.executeProcedure("registrarAgregadoDeStock", Conexion.generarArgumentos("_cantidad", "_nombre", "_costo"), Convert.ToInt32(Cantidad.Text), Nombre.Text, costo);
+                Conexion.closeConnection();
+
                 Manejador_Formularios.ABM_Stock.cargarDGVMetro();
                 Manejador_Formularios.AddProductoAPedido.cargarDGV();
                 Close();

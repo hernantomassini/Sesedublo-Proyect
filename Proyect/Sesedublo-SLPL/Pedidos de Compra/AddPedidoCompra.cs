@@ -380,6 +380,9 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 Conexion.executeProcedure("crearItemDeLea", Conexion.generarArgumentos("_id_pedidoLea", "_cantidad", "_cantidadXBulto", "_costo", "_nombre", "_PVUnitario", "_PVBulto", "_radioSelected"), id_pedidoDeLea, cantidad, cantXBulto, costo, nombre, PVUnitario, PVBulto, radioSelected);
                 Conexion.closeConnection();
             }
+
+            Conexion.executeProcedure("registrarPedidoDeCompra", Conexion.generarArgumentos("_id_pedidoLea", "_costo", "_id_vendedor"), id_pedidoDeLea, obtenerCostoDelDGV(), id_cliente);
+            Conexion.closeConnection();
             
             Close();
         }

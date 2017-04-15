@@ -36,17 +36,10 @@
             this.dgvVerFactura = new MetroFramework.Controls.MetroGrid();
             this.panel6 = new System.Windows.Forms.Panel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.codPostalComprador = new System.Windows.Forms.Label();
-            this.direccionLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.localidadCl = new System.Windows.Forms.Label();
-            this.nombreLabel = new System.Windows.Forms.Label();
             this.cuitV = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -73,6 +66,13 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
+            this.localidadLbl = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.codPostalComprador = new System.Windows.Forms.Label();
+            this.direccionLabel = new System.Windows.Forms.Label();
+            this.nombreLabel = new System.Windows.Forms.Label();
             this.metroPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVerFactura)).BeginInit();
             this.metroPanel1.SuspendLayout();
@@ -166,17 +166,17 @@
             // metroPanel1
             // 
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel1.Controls.Add(this.localidadLbl);
             this.metroPanel1.Controls.Add(this.label12);
-            this.metroPanel1.Controls.Add(this.label11);
-            this.metroPanel1.Controls.Add(this.label10);
             this.metroPanel1.Controls.Add(this.label9);
             this.metroPanel1.Controls.Add(this.label8);
-            this.metroPanel1.Controls.Add(this.label7);
             this.metroPanel1.Controls.Add(this.codPostalComprador);
             this.metroPanel1.Controls.Add(this.direccionLabel);
+            this.metroPanel1.Controls.Add(this.nombreLabel);
+            this.metroPanel1.Controls.Add(this.label11);
+            this.metroPanel1.Controls.Add(this.label10);
             this.metroPanel1.Controls.Add(this.panel2);
             this.metroPanel1.Controls.Add(this.localidadCl);
-            this.metroPanel1.Controls.Add(this.nombreLabel);
             this.metroPanel1.Controls.Add(this.cuitV);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
@@ -188,15 +188,6 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(19, 94);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(69, 13);
-            this.label12.TabIndex = 33;
-            this.label12.Text = "CONTACTO:";
             // 
             // label11
             // 
@@ -217,51 +208,6 @@
             this.label10.TabIndex = 31;
             this.label10.Text = "Peso total: 50";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(19, 110);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(104, 13);
-            this.label9.TabIndex = 30;
-            this.label9.Text = "OBSERVACIONES: ";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(19, 78);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(33, 13);
-            this.label8.TabIndex = 29;
-            this.label8.Text = "TEL.:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(19, 62);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 13);
-            this.label7.TabIndex = 28;
-            this.label7.Text = "ARGENTINA";
-            // 
-            // codPostalComprador
-            // 
-            this.codPostalComprador.AutoSize = true;
-            this.codPostalComprador.Location = new System.Drawing.Point(19, 43);
-            this.codPostalComprador.Name = "codPostalComprador";
-            this.codPostalComprador.Size = new System.Drawing.Size(105, 13);
-            this.codPostalComprador.TabIndex = 27;
-            this.codPostalComprador.Text = "codPostalComprador";
-            // 
-            // direccionLabel
-            // 
-            this.direccionLabel.AutoSize = true;
-            this.direccionLabel.Location = new System.Drawing.Point(19, 25);
-            this.direccionLabel.Name = "direccionLabel";
-            this.direccionLabel.Size = new System.Drawing.Size(76, 13);
-            this.direccionLabel.TabIndex = 26;
-            this.direccionLabel.Text = "direccionLabel";
-            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -278,16 +224,6 @@
             this.localidadCl.Size = new System.Drawing.Size(97, 13);
             this.localidadCl.TabIndex = 23;
             this.localidadCl.Text = "No. Guia: 1587660";
-            // 
-            // nombreLabel
-            // 
-            this.nombreLabel.AutoSize = true;
-            this.nombreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombreLabel.Location = new System.Drawing.Point(17, 5);
-            this.nombreLabel.Name = "nombreLabel";
-            this.nombreLabel.Size = new System.Drawing.Size(105, 18);
-            this.nombreLabel.TabIndex = 19;
-            this.nombreLabel.Text = "nombreLabel";
             // 
             // cuitV
             // 
@@ -566,6 +502,70 @@
             this.label26.TabIndex = 2;
             this.label26.Text = "FIRMA: ________________________________________";
             // 
+            // localidadLbl
+            // 
+            this.localidadLbl.AutoSize = true;
+            this.localidadLbl.Location = new System.Drawing.Point(248, 49);
+            this.localidadLbl.Name = "localidadLbl";
+            this.localidadLbl.Size = new System.Drawing.Size(70, 13);
+            this.localidadLbl.TabIndex = 41;
+            this.localidadLbl.Text = "LOCALIDAD:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(16, 64);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(69, 13);
+            this.label12.TabIndex = 40;
+            this.label12.Text = "CONTACTO:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(16, 88);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(104, 13);
+            this.label9.TabIndex = 39;
+            this.label9.Text = "OBSERVACIONES: ";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 48);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(33, 13);
+            this.label8.TabIndex = 38;
+            this.label8.Text = "TEL.:";
+            // 
+            // codPostalComprador
+            // 
+            this.codPostalComprador.AutoSize = true;
+            this.codPostalComprador.Location = new System.Drawing.Point(248, 32);
+            this.codPostalComprador.Name = "codPostalComprador";
+            this.codPostalComprador.Size = new System.Drawing.Size(34, 13);
+            this.codPostalComprador.TabIndex = 37;
+            this.codPostalComprador.Text = "CUIL:";
+            // 
+            // direccionLabel
+            // 
+            this.direccionLabel.AutoSize = true;
+            this.direccionLabel.Location = new System.Drawing.Point(16, 32);
+            this.direccionLabel.Name = "direccionLabel";
+            this.direccionLabel.Size = new System.Drawing.Size(69, 13);
+            this.direccionLabel.TabIndex = 36;
+            this.direccionLabel.Text = "DIRECCION:";
+            // 
+            // nombreLabel
+            // 
+            this.nombreLabel.AutoSize = true;
+            this.nombreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nombreLabel.Location = new System.Drawing.Point(14, 12);
+            this.nombreLabel.Name = "nombreLabel";
+            this.nombreLabel.Size = new System.Drawing.Size(105, 18);
+            this.nombreLabel.TabIndex = 35;
+            this.nombreLabel.Text = "nombreLabel";
+            // 
             // Ver_Remito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -601,7 +601,6 @@
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label localidadCl;
-        private System.Windows.Forms.Label nombreLabel;
         private System.Windows.Forms.Label cuitV;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel4;
@@ -621,14 +620,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label codPostalComprador;
-        private System.Windows.Forms.Label direccionLabel;
         private MetroFramework.Controls.MetroPanel metroPanel6;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
@@ -636,5 +629,12 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label localidadLbl;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label codPostalComprador;
+        private System.Windows.Forms.Label direccionLabel;
+        private System.Windows.Forms.Label nombreLabel;
     }
 }

@@ -68,13 +68,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BarcodeLib">
-      <HintPath>..\..\..\barcodelib\BarcodeDemo\BarcodeLib.dll</HintPath>
-    </Reference>
-    <Reference Include="BouncyCastle.Crypto">
-      <HintPath>..\packages\BouncyCastle.1.7.0\lib\Net20\BouncyCastle.Crypto.dll</HintPath>
+      <HintPath>..\packages\BarcodeLib.1.0.0.23\lib\net20\BarcodeLib.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\packages\WolfeReiter.iTextSharp.BC.4.1.6.0\lib\net40\itextsharp.dll</HintPath>
+      <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework">
       <HintPath>dll\MetroFramework.dll</HintPath>

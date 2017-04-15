@@ -66,6 +66,7 @@ DROP PROCEDURE IF EXISTS obtenerClienteParaFactura;
 DROP PROCEDURE IF EXISTS registrarPedidoDeCompra;
 DROP PROCEDURE IF EXISTS registrarPedido;
 DROP PROCEDURE IF EXISTS registrarAgregadoDeStock;
+DROP PROCEDURE IF EXISTS obtenerMontoEnDeudas;
 
 /*
 CREATE TABLE Caja (
@@ -761,7 +762,7 @@ END //
 CREATE PROCEDURE cargarGrillaClientes (IN _nombre VARCHAR(255), _apellido VARCHAR(50), _direccion VARCHAR(255))
 BEGIN
 
-	SELECT c.id_cliente, c.nombre AS Nombre, c.apellido AS Apellido, c.email AS Mail, c.telefono AS Teléfono, c.direccion AS Dirección, c.localidad AS Localidad, c.cuit as CUIT, c.razonSocial AS Razon_Social FROM Clientes c
+	SELECT c.id_cliente, c.nombre AS Nombre, c.apellido AS Apellido, c.email AS Mail, c.telefono AS Telefono, c.direccion AS Direccion, c.localidad AS Localidad, c.cuit as CUIT, c.razonSocial AS 'Razon Social' FROM Clientes c
 	WHERE c.deleted = 0 AND ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
 	AND ((c.apellido LIKE CONCAT("%", _apellido, "%") COLLATE utf8_general_ci ) OR (_apellido IS NULL OR _apellido = ""))
 	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""))
@@ -843,6 +844,18 @@ BEGIN
 
 END //
 
+
+CREATE PROCEDURE obtenerMontoEnDeudas()
+BEGIN
+
+	SELECT SUM(td.Debe) Deuda FROM (SELECT SUM(precio) - SUM(pagadoHastaElMomento) as Debe
+									FROM Pedidos p
+									INNER JOIN Clientes c ON c.id_cliente = p.comprador
+                                    GROUP BY comprador
+									ORDER BY Debe DESC) td;
+
+END //
+
 CREATE PROCEDURE obtenerMontoEnProductos () 
 BEGIN
 
@@ -854,7 +867,7 @@ END //
 
 CREATE PROCEDURE cargarGrillaDeOperaciones (IN  _operacion VARCHAR(255), _descripcion VARCHAR(50))
 BEGIN
-	SELECT fecha AS Fecha, operacion AS Operación, descripcion AS Descripción FROM Operaciones
+	SELECT fecha AS Fecha, operacion AS Operacion, descripcion AS Descripcion FROM Operaciones
 	WHERE ((descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
 	AND ((operacion LIKE CONCAT("%", _operacion, "%") COLLATE utf8_general_ci ) OR (_operacion IS NULL OR _operacion = ""))
     ORDER BY id_operacion DESC
@@ -1003,7 +1016,7 @@ END //
 CREATE PROCEDURE obtenerItemsDeFactura (IN _id_factura INT)
 BEGIN
 
-	CREATE TABLE ItemsDeFac(
+CREATE TABLE ItemsDeFac(
 		nombre VARCHAR(50),
         cantidadPr INT DEFAULT 0,
         precioUnitario DECIMAL(18,2) DEFAULT 0,
@@ -1029,11 +1042,11 @@ BEGIN
     
 	SELECT 
     nombre AS 'DESCRIPCION',
-    IF(cantidadPr = 0, '-', cantidadPr) AS 'CANT. TOT.',
+    IF(cantidadPr = 0, '-', cast(cantidadPr as char(10))) AS 'CANT. TOT.',
     IF(precioUnitario = 0,
         '-',
-        precioUnitario) AS 'PRECIO UNITARIO',
-    IF(precioBulto = 0, '-', precioBulto) AS 'PRECIO BULTO',
+        cast(precioUnitario as char(10))) AS 'PRECIO UNITARIO',
+    IF(precioBulto = 0, '-', cast(precioBulto as char(10))) AS 'PRECIO BULTO',
     precioTotal AS 'PRECIO TOTAL'
 FROM
     ItemsDeFac;
@@ -1082,7 +1095,13 @@ END//
 CREATE PROCEDURE obtenerLista (IN _nombre VARCHAR(60))
 BEGIN
 	#retorna id_producto (0), descripcion(1), tipo(2)(wut), 3 - costo, 	4 - precio unitario, 5- precio bulto, 6-radioSelected
-	SELECT lp.id_listPro, descripcion AS Descripción, IF(PVunitario IS NULL,'N/E',IF(cantidadXBulto = 0, 'Individual',cantidadXBulto)) AS 'Tipo', IF(costo IS NULL,'N/E',costo) AS Costo, IF(PVunitario IS NULL,'N/E',PVUnitario) AS 'Precio Unitario', IF(PVBulto IS NULL, 'N/E', IF(PVBulto = 0,'-',PVBulto)) AS 'Precio Bulto', radioSelected AS 'RadioSelected' FROM ListaDeProductos lp
+	SELECT lp.id_listPro,
+    descripcion AS Descripción,
+    IF(PVunitario IS NULL,'N/E',IF(cantidadXBulto = 0, 'Individual',  cast(cantidadXBulto as char(10)))) AS 'Tipo',
+    IF(costo IS NULL,'N/E',cast(costo as char(10))) AS Costo, 
+    IF(PVunitario IS NULL,'N/E',cast(PVunitario as char(10))) AS 'Precio Unitario',
+    IF(PVBulto IS NULL, 'N/E', IF(PVBulto = 0,'-',cast(PVBulto as char(10)))) AS 'Precio Bulto',
+    radioSelected AS 'RadioSelected' FROM ListaDeProductos lp
     LEFT JOIN Productos p ON lp.descripcion = p.nombre
 	WHERE ((descripcion LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
     AND deleted = 0
@@ -1232,7 +1251,7 @@ CREATE PROCEDURE cargarDeudas (IN _nombre VARCHAR(50))
 BEGIN
 
 SELECT c.nombre as Cliente,SUM(pagadoHastaElMomento) as Pagado, SUM(precio) - SUM(pagadoHastaElMomento) as Debe,
-	 IF(SUM(precio) - SUM(pagadoHastaElMomento) > 0, 'NO', 'SI') as 'Está todo pago?' 
+	 IF(SUM(precio) - SUM(pagadoHastaElMomento) > 0, 'NO', 'SI') as 'Esta todo pago?' 
 	  FROM Pedidos p
 INNER JOIN Clientes c ON c.id_cliente = p.comprador
 WHERE ((CONCAT(c.nombre, " ", c.apellido) LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))

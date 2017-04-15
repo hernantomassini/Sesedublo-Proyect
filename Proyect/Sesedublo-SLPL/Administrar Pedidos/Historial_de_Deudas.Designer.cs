@@ -36,6 +36,7 @@
             this.AtrasTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.nombre = new MetroFramework.Controls.MetroTextBox();
+            this.deuda = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.deudasDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -153,11 +154,22 @@
             this.nombre.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.nombre.TextChanged += new System.EventHandler(this.nombre_TextChanged);
             // 
+            // deuda
+            // 
+            this.deuda.AutoSize = true;
+            this.deuda.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.deuda.Location = new System.Drawing.Point(251, 391);
+            this.deuda.Name = "deuda";
+            this.deuda.Size = new System.Drawing.Size(146, 25);
+            this.deuda.TabIndex = 15;
+            this.deuda.Text = "Deuda Total : 0.00";
+            // 
             // Historial_de_Deudas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 453);
+            this.Controls.Add(this.deuda);
             this.Controls.Add(this.nombre);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.AtrasTile);
@@ -176,5 +188,6 @@
         private MetroFramework.Controls.MetroTile AtrasTile;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTextBox nombre;
+        private MetroFramework.Controls.MetroLabel deuda;
     }
 }

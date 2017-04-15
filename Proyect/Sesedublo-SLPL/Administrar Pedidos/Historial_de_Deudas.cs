@@ -29,6 +29,21 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             da.Fill(tablaDeUsuarios);
             deudasDGV.DataSource = tablaDeUsuarios.DefaultView;
             Conexion.closeConnection();
+            this.updateMontoDeudas();
+
+        }
+
+        public void updateMontoDeudas()
+        {
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerMontoEnDeudas", Conexion.generarArgumentos());
+            reader.Read();
+
+            decimal montoEnEfectivo = decimal.Round(reader.GetDecimal(0), 2);
+
+            reader.Close();
+            Conexion.closeConnection();
+
+            this.deuda.Text = "Deuda Total: " + montoEnEfectivo;
         }
 
         private void AtrasTile_Click(object sender, EventArgs e)

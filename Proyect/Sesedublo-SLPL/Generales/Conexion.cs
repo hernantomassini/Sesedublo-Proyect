@@ -7,7 +7,7 @@ namespace Sesedublo_SLPL
 {
     sealed class Conexion
     {
-        private static MySqlConnection connection = new MySqlConnection(Funciones.getStringConnection());
+        public static MySqlConnection connection = new MySqlConnection(Funciones.getStringConnection());
 
         //[Hernán]: Suelo usar cuando necesito ejecutar un store procedure que actualice la DB, o que realice alguna acción que no devuelva datos.
         public static void executeProcedure(string procedure, List<string> args, params object[] values)
@@ -169,6 +169,7 @@ namespace Sesedublo_SLPL
                 return false;
             }
         }
+
     }
 }
 

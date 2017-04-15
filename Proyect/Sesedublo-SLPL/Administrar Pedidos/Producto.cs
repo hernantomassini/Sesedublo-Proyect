@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Sesedublo_SLPL.Administrar_Pedidos
 {
@@ -34,7 +35,10 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         public void setPrecioCobrado(decimal precio)
         {
+
+            string precioS = Convert.ToString(precio);
             this.precioCobrado = precio;
+            MessageBox.Show(Convert.ToString(precioCobrado));
         }
     }
 }

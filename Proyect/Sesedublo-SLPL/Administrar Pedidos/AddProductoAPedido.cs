@@ -476,6 +476,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 productosAVender[id_stock].setCantidad(productosAVender[id_stock].getCantidad());
                 productosAVender[id_stock].setPrecioCobrado(precioUnitario);
 
+
             }
             MontoACobrarLabel.Text = "El valor del pedido es de " + sumatoriaMoney;
             montoAPagarDelPedido.Text = Convert.ToString(sumatoriaMoney);

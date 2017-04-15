@@ -95,6 +95,7 @@ namespace Sesedublo_SLPL
                 conexionBuilder.UserID = Funciones.obtenerUsuario();
                 conexionBuilder.Password = Funciones.obtenerPass();
                 conexionBuilder.Database = Funciones.obtenerDB();
+                conexionBuilder.ConvertZeroDateTime = true;
 
                 connectionString = conexionBuilder.ToString();
             }

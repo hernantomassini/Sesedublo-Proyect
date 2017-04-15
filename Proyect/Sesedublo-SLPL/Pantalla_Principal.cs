@@ -2,8 +2,11 @@
 using Sesedublo_SLPL.Generales;
 using System;
 using System.ComponentModel;
+using System.Configuration;
 using System.Globalization;
 using System.Windows.Forms;
+using System.Web.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace Sesedublo_SLPL
 {
@@ -12,6 +15,7 @@ namespace Sesedublo_SLPL
         public Pantalla_Principal()
         {
             InitializeComponent();
+            this.metroRadioButton1.Checked = true;
             this.Closing += new CancelEventHandler(Principal_Closing);
             timer1.Enabled = true;
         }
@@ -29,6 +33,7 @@ namespace Sesedublo_SLPL
 
         private void GoToPedidos_Click(object sender, EventArgs e)
         {
+            Manejador_Formularios.ABM_Pedidos.cargarDGV();
             Manejador_Formularios.ABM_Pedidos.Clean();
             Manejador_Formularios.ABM_Pedidos.Show();
         }
@@ -85,6 +90,34 @@ namespace Sesedublo_SLPL
         {
             Manejador_Formularios.Lista_de_Productos.getData();
             Manejador_Formularios.Lista_de_Productos.Show();
+        }
+
+        private void metroRadioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (metroRadioButton1.Checked)
+            {
+                MySqlConnectionStringBuilder conexionBuilder = new MySqlConnectionStringBuilder();
+                conexionBuilder.Server = "localhost";
+                conexionBuilder.UserID = "root";
+                conexionBuilder.Password = "admin";
+                conexionBuilder.Database = "sesedublo";
+
+                Conexion.connection = new MySqlConnection(conexionBuilder.ToString());
+            }
+        }
+
+        private void metroRadioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (metroRadioButton2.Checked)
+            {
+                MySqlConnectionStringBuilder conexionBuilder = new MySqlConnectionStringBuilder();
+                conexionBuilder.Server = "200.110.156.81";
+                conexionBuilder.UserID = "admin_lacantina";
+                conexionBuilder.Password = "lacantina";
+                conexionBuilder.Database = "admin_lacantina";
+
+                Conexion.connection = new MySqlConnection(conexionBuilder.ToString());
+            }
         }
     }
 }

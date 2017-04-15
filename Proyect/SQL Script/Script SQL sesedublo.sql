@@ -1,8 +1,4 @@
-#Crear database
-CREATE DATABASE IF NOT EXISTS Sesedublo;
-USE Sesedublo;
-
-
+/*
 #DROP TABLES:
 DROP TABLE IF EXISTS NotasDeCredito;
 DROP TABLE IF EXISTS Operaciones;
@@ -17,6 +13,7 @@ DROP TABLE IF EXISTS ItemsDeLea;
 DROP TABLE IF EXISTS StockACargar;
 DROP TABLE IF EXISTS PedidosDeLea;
 DROP TABLE IF EXISTS Productos;
+*/
 
 #DROP PROCEDURES:
 DROP PROCEDURE IF EXISTS obtenerStock;
@@ -70,7 +67,7 @@ DROP PROCEDURE IF EXISTS registrarPedidoDeCompra;
 DROP PROCEDURE IF EXISTS registrarPedido;
 DROP PROCEDURE IF EXISTS registrarAgregadoDeStock;
 
-
+/*
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
     efectivoActual DECIMAL(20 , 2 ),
@@ -207,6 +204,9 @@ CREATE TABLE NotasDeCredito (
         REFERENCES Facturas (id_factura)
 );
 
+*/
+
+/*
 INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 											 ("ABSENTA GREEN SPIRIT"),
 											 ("ABSOLUT APEACH X 750"),
@@ -628,9 +628,10 @@ INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 											("WHISKY HIRAM WALKER"),
 											("WHITE HORSE"),
 											("WYBOROWA");
-                                            
-ALTER TABLE ListaDeProductos ADD COLUMN deleted int DEFAULT 0;
-ALTER TABLE PedidosDeLea ADD COLUMN deleted int DEFAULT 0;
+*/
+
+#ALTER TABLE ListaDeProductos ADD COLUMN deleted int DEFAULT 0;
+#ALTER TABLE PedidosDeLea ADD COLUMN deleted int DEFAULT 0;
  
 #Store Procedures
 DELIMITER //
@@ -663,7 +664,7 @@ END //
 CREATE PROCEDURE obtenerStock (IN _nombre VARCHAR(50)) 
 BEGIN
 
-	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto
+	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto, IF(p.cantidadXBulto = 0, p.costo, cast(p.costo / p.cantidadXBulto as decimal(10,2)))
 	FROM Stock s INNER JOIN Productos p 
 	ON p.id_producto = s.producto
 	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
@@ -671,14 +672,17 @@ BEGIN
     ORDER BY p.nombre;
 END //
 
+
+
 CREATE PROCEDURE obtenerStockPedido (IN _nombre VARCHAR(50)) 
 BEGIN
 
-	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto
-	FROM Stock s INNER JOIN Productos p 
-	ON p.id_producto = s.producto
+	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto, lp.deleted
+	FROM Stock s 
+    INNER JOIN Productos p 	ON p.id_producto = s.producto
+	INNER JOIN ListaDeProductos lp ON s.producto = lp.id_listPro
 	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
-    AND s.deleted = 0;
+    AND s.deleted = 0 and lp.deleted = 0;
 
 END //
 
@@ -948,7 +952,7 @@ END //
 CREATE PROCEDURE generarFactura (IN _id_pedido INT, IN _tipoFactura VARCHAR(60))
 BEGIN
 
-	INSERT INTO Facturas (fecha, tipoDeFactura, pedido) VALUES (CURTIME(), _tipoFactura, _id_pedido);
+	INSERT INTO Facturas (fecha, tipoDeFactura, pedido) VALUES (NOW(), _tipoFactura, _id_pedido);
     UPDATE Pedidos SET facturada = 1 WHERE _id_pedido = id_pedido;
 END //
 
@@ -999,7 +1003,7 @@ END //
 CREATE PROCEDURE obtenerItemsDeFactura (IN _id_factura INT)
 BEGIN
 
-	CREATE TEMPORARY TABLE ItemsDeFac(
+	CREATE TABLE ItemsDeFac(
 		nombre VARCHAR(50),
         cantidadPr INT DEFAULT 0,
         precioUnitario DECIMAL(18,2) DEFAULT 0,

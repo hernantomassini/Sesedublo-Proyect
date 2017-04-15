@@ -41,6 +41,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.metroTile7 = new MetroFramework.Controls.MetroTile();
             this.metroTile8 = new MetroFramework.Controls.MetroTile();
+            this.metroRadioButton1 = new MetroFramework.Controls.MetroRadioButton();
+            this.metroRadioButton2 = new MetroFramework.Controls.MetroRadioButton();
             this.SuspendLayout();
             // 
             // metroTile1
@@ -227,6 +229,28 @@
             this.metroTile8.UseTileImage = true;
             this.metroTile8.Click += new System.EventHandler(this.metroTile8_Click);
             // 
+            // metroRadioButton1
+            // 
+            this.metroRadioButton1.AutoSize = true;
+            this.metroRadioButton1.Location = new System.Drawing.Point(440, 34);
+            this.metroRadioButton1.Name = "metroRadioButton1";
+            this.metroRadioButton1.Size = new System.Drawing.Size(121, 15);
+            this.metroRadioButton1.TabIndex = 16;
+            this.metroRadioButton1.Text = "Sesedublo Bebidas";
+            this.metroRadioButton1.UseSelectable = true;
+            this.metroRadioButton1.CheckedChanged += new System.EventHandler(this.metroRadioButton1_CheckedChanged);
+            // 
+            // metroRadioButton2
+            // 
+            this.metroRadioButton2.AutoSize = true;
+            this.metroRadioButton2.Location = new System.Drawing.Point(604, 34);
+            this.metroRadioButton2.Name = "metroRadioButton2";
+            this.metroRadioButton2.Size = new System.Drawing.Size(123, 15);
+            this.metroRadioButton2.TabIndex = 17;
+            this.metroRadioButton2.Text = "La Cantina Bebidas";
+            this.metroRadioButton2.UseSelectable = true;
+            this.metroRadioButton2.CheckedChanged += new System.EventHandler(this.metroRadioButton2_CheckedChanged);
+            // 
             // Pantalla_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,6 +259,8 @@
             this.BackLocation = MetroFramework.Forms.BackLocation.BottomLeft;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(786, 339);
+            this.Controls.Add(this.metroRadioButton2);
+            this.Controls.Add(this.metroRadioButton1);
             this.Controls.Add(this.metroTile8);
             this.Controls.Add(this.metroTile7);
             this.Controls.Add(this.label2);
@@ -268,6 +294,8 @@
         private System.Windows.Forms.Label label2;
         private MetroFramework.Controls.MetroTile metroTile7;
         private MetroFramework.Controls.MetroTile metroTile8;
+        private MetroFramework.Controls.MetroRadioButton metroRadioButton1;
+        private MetroFramework.Controls.MetroRadioButton metroRadioButton2;
     }
 }
 

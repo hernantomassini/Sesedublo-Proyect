@@ -27,10 +27,15 @@ namespace Sesedublo_SLPL.Productos
 
         private void titleAceptar_Click(object sender, EventArgs e)
         {
-            string query = " UPDATE ListaDeProductos SET descripcion = '"+ Nombre.Text +"' where id_listPro=" + id_producto;
+            string query = " UPDATE ListaDeProductos SET descripcion = '" + Nombre.Text + "' where id_listPro=" + id_producto;
+            string query1 = " UPDATE Productos SET nombre = '" + Nombre.Text + "' where nombre=(SELECT descripcion FROM ListaDeProductos WHERE id_listPro =" + id_producto + ")";
+
+            Conexion.ejecutarNonQuery(query1);
+            Conexion.closeConnection();
 
             Conexion.ejecutarNonQuery(query);
             Conexion.closeConnection();
+
             Funciones.imprimirMensajeDeAviso("Se modifico el nombre del producto a " + Nombre.Text, this);
             Manejador_Formularios.Lista_de_Productos.getData();
             this.Close();

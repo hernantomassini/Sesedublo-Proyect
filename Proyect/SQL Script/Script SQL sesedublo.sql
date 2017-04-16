@@ -976,7 +976,7 @@ BEGIN
 
 END //
 
-CREATE PROCEDURE agregarItemAPedido (IN _id_pedido INT, IN _id_producto INT, IN _cantidad INT, _valorDelItem decimal)
+CREATE PROCEDURE agregarItemAPedido (IN _id_pedido INT, IN _id_producto INT, IN _cantidad INT, _valorDelItem decimal(10,2))
 BEGIN
 
 SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = _id_producto) - _cantidad;

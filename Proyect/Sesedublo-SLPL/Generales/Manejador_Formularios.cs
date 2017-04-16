@@ -28,7 +28,7 @@ namespace Sesedublo_SLPL.Generales
                 {
                     PantallaPrincipal_Form = new Pantalla_Principal();
                 }
-                
+
                 return PantallaPrincipal_Form;
             }
         }
@@ -74,6 +74,7 @@ namespace Sesedublo_SLPL.Generales
                 return Modificar_Nombre_Form;
             }
         }
+
 
         private static ABM_Stock ABM_Stock_Form;
         public static ABM_Stock ABM_Stock
@@ -126,7 +127,7 @@ namespace Sesedublo_SLPL.Generales
                 {
                     Historial_de_Operaciones_Form = new Historial_de_Operaciones();
                 }
-               // Historial_de_Operaciones_Form.getData();
+                // Historial_de_Operaciones_Form.getData();
                 return Historial_de_Operaciones_Form;
             }
         }
@@ -233,6 +234,19 @@ namespace Sesedublo_SLPL.Generales
                     Pedido_de_compra_Form = new Pedido_de_compra();
                 }
                 return Pedido_de_compra_Form;
+            }
+        }
+
+        private static Actualizar_PedidoDeCompra Actualizar_PedidoDeCompra_Form;
+        public static Actualizar_PedidoDeCompra Actualizar_PedidoDeCompra
+        {
+            get
+            {
+                if (Actualizar_PedidoDeCompra_Form == null)
+                {
+                    Actualizar_PedidoDeCompra_Form = new Actualizar_PedidoDeCompra();
+                }
+                return Actualizar_PedidoDeCompra_Form;
             }
         }
 

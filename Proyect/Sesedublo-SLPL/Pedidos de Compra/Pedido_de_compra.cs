@@ -30,16 +30,28 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         public void cargarDGV()
         {
             Funciones.limpiarDGV(PedidosDGV);
-            MySqlDataReader reader = Conexion.executeProcedureWithReader("cargarPedidoCompras", Conexion.generarArgumentos("_nombre"),nombre.Text);
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("cargarPedidoCompras", Conexion.generarArgumentos("_nombre"), nombre.Text);
 
             while (reader.Read())
             {
-                PedidosDGV.Rows.Add(reader.GetInt32(0),reader.GetString(1), reader.GetDateTime(2).ToShortDateString(), reader.GetString(3), reader.GetDecimal(4), reader.GetString(5), reader.GetString(6));
+                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetString(1), reader.GetDateTime(2).ToShortDateString(), reader.GetString(3), reader.GetDecimal(4), reader.GetDecimal(5), this.verSiONoDec(reader.GetInt32(5)), reader.GetString(6));
             }
 
             this.PedidosDGV.Columns[2].Width = 300;
             reader.Close();
             Conexion.closeConnection();
+        }
+
+        private object verSiONoDec(int valor)
+        {
+            if (valor == 0)
+            {
+                return "SI";
+            }
+            else
+            {
+                return "NO";
+            }
         }
 
         private void AgregarPedidoTile_Click(object sender, EventArgs e)
@@ -74,9 +86,9 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             DataGridViewRow filaDgv = PedidosDGV.CurrentRow;
 
             int id_pedido = Convert.ToInt32(filaDgv.Cells[0].Value);
-            
 
-            if(Convert.ToString(filaDgv.Cells[6].Value) == "SI")
+
+            if (Convert.ToString(filaDgv.Cells[6].Value) == "SI")
             {
                 Manejador_Formularios.MostrarPedidoCompra.mostrarPedido(id_pedido);
                 Manejador_Formularios.MostrarPedidoCompra.Show();
@@ -100,22 +112,19 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 return;
             }
 
-            if (filaDgv.Cells[5].Value.ToString() == "SI")
+            if (Convert.ToInt32(filaDgv.Cells[5].Value) == 0)
             {
-                Funciones.imprimirMensajeDeError("El siguiente pedido ya ha sido pagado", this);
-                return;
+                Funciones.imprimirMensajeDeError("Se le pagó al proveedor todo lo acordado según lo que puso previamente", this);
             }
-
-            if (Funciones.imprimirMensajeDeAlerta("¿Estás seguro de pagar este pedido?", this) == DialogResult.Cancel)
+            else
             {
-                return;
+                int id_pedidoLea = Convert.ToInt32(filaDgv.Cells[0].Value);
+
+                Manejador_Formularios.Actualizar_PedidoDeCompra.cargarDatos(id_pedidoLea);
+                Manejador_Formularios.Actualizar_PedidoDeCompra.Show();
+
+                this.cargarDGV();
             }
-
-            int id_pedidoLea = Convert.ToInt32(filaDgv.Cells[0].Value);
-            Conexion.executeProcedure("cobrarPedidoDeLea", Conexion.generarArgumentos("_id_pedido"), id_pedidoLea);
-            Conexion.closeConnection();
-
-            this.cargarDGV();
         }
 
         private void CargarStockTile_Click(object sender, EventArgs e)
@@ -127,7 +136,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 return;
             }
 
-            if (filaDgv.Cells[6].Value.ToString() == "SI")
+            if (filaDgv.Cells[7].Value.ToString() == "SI")
             {
                 Funciones.imprimirMensajeDeError("Ya se cargo el stock de este pedido.", this);
                 return;
@@ -175,16 +184,6 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         {
             foreach (DataGridViewRow Myrow in PedidosDGV.Rows)
             {            //Here 2 cell is target value and 1 cell is Volume
-                if (Convert.ToString(Myrow.Cells[5].Value) == "SI")// Or your condition 
-                {
-                    Myrow.Cells[5].Style.BackColor = System.Drawing.Color.Green;
-                }
-                else
-                {
-                    Myrow.Cells[5].Style.BackColor = System.Drawing.Color.Red;
-
-                }
-
                 if (Convert.ToString(Myrow.Cells[6].Value) == "SI")// Or your condition 
                 {
                     Myrow.Cells[6].Style.BackColor = System.Drawing.Color.Green;
@@ -195,38 +194,54 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
                 }
 
+                if (Convert.ToString(Myrow.Cells[7].Value) == "SI")// Or your condition 
+                {
+                    Myrow.Cells[7].Style.BackColor = System.Drawing.Color.Green;
+                }
+                else
+                {
+                    Myrow.Cells[7].Style.BackColor = System.Drawing.Color.Red;
+
+                }
+
+                Myrow.Cells[7].Style.ForeColor = System.Drawing.Color.White;
                 Myrow.Cells[6].Style.ForeColor = System.Drawing.Color.White;
-                Myrow.Cells[5].Style.ForeColor = System.Drawing.Color.White;
             }
+
+            PedidosDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            PedidosDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             foreach (DataGridViewRow Myrow in PedidosDGV.Rows)
             {            //Here 2 cell is target value and 1 cell is Volume
                 Myrow.Cells[0].Style.BackColor = System.Drawing.Color.OrangeRed;
                 Myrow.Cells[0].Style.ForeColor = System.Drawing.Color.White;
             }
-
-            PedidosDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            PedidosDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void titleCancelar_Click(object sender, EventArgs e)
         {
             DataGridViewRow filaMarcada = PedidosDGV.CurrentRow;
 
-            if (filaMarcada.Cells[6].Value.ToString() == "SI")
+            if (filaMarcada.Cells[7].Value.ToString() == "SI")
             {
-                Funciones.imprimirMensajeDeError("Ya se cargo el stock de este pedido, no puede eliminarse", this);
+                Funciones.imprimirMensajeDeError("Ya se cargo el stock de este pedido de compra, no puede eliminarse", this);
                 return;
             }
 
-            if (filaMarcada.Cells[5].Value.ToString() == "SI")
+            if (filaMarcada.Cells[6].Value.ToString() == "SI")
             {
-                Funciones.imprimirMensajeDeError("El siguiente pedido ya ha sido pagado, no puede eliminarse", this);
+                Funciones.imprimirMensajeDeError("El siguiente pedido de compra ya ha sido pagado, no puede eliminarse", this);
                 return;
             }
 
             if (!this.validarFilaMarcada(filaMarcada, this))
             {
+                return;
+            }
+
+            if (Convert.ToInt32(filaMarcada.Cells[5].Value) != Convert.ToInt32(filaMarcada.Cells[4].Value))
+            {
+                Funciones.imprimirMensajeDeError("Se le empezó a pagar al proveedor lo acordado, contacte al administrador para borrar este pedido", this);
                 return;
             }
 

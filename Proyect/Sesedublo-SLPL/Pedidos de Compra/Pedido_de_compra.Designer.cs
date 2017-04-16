@@ -47,6 +47,7 @@
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Productos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad_Pagada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pagado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockCargado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PedidosDGV)).BeginInit();
@@ -132,6 +133,7 @@
             this.Fecha,
             this.Productos,
             this.Costo,
+            this.Cantidad_Pagada,
             this.pagado,
             this.StockCargado});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -324,6 +326,12 @@
             this.Costo.ReadOnly = true;
             this.Costo.Width = 60;
             // 
+            // Cantidad_Pagada
+            // 
+            this.Cantidad_Pagada.HeaderText = "Deuda";
+            this.Cantidad_Pagada.Name = "Cantidad_Pagada";
+            this.Cantidad_Pagada.ReadOnly = true;
+            // 
             // pagado
             // 
             this.pagado.HeaderText = "Pagado";
@@ -379,6 +387,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Productos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad_Pagada;
         private System.Windows.Forms.DataGridViewTextBoxColumn pagado;
         private System.Windows.Forms.DataGridViewTextBoxColumn StockCargado;
     }

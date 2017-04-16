@@ -67,6 +67,8 @@ DROP PROCEDURE IF EXISTS registrarPedidoDeCompra;
 DROP PROCEDURE IF EXISTS registrarPedido;
 DROP PROCEDURE IF EXISTS registrarAgregadoDeStock;
 DROP PROCEDURE IF EXISTS obtenerMontoEnDeudas;
+DROP PROCEDURE IF EXISTS cargarDatosActualizarPagoDeLea;
+DROP PROCEDURE IF EXISTS actualizarPagoDeLea;
 
 /*
 CREATE TABLE Caja (
@@ -633,6 +635,7 @@ INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 
 #ALTER TABLE ListaDeProductos ADD COLUMN deleted int DEFAULT 0;
 #ALTER TABLE PedidosDeLea ADD COLUMN deleted int DEFAULT 0;
+#ALTER TABLE PedidosDeLea ADD COLUMN pagadoHastaElMomento decimal(10,2) DEFAULT 0.00 ;
  
 #Store Procedures
 DELIMITER //
@@ -661,6 +664,32 @@ WHERE
 	END IF;
     
 END //
+
+CREATE PROCEDURE actualizarPagoDeLea (IN _id_pedido INT, IN _total_a_pagar DECIMAL(10,2), IN _cantidad_paga DECIMAL(10,2), _pagadoTot INT)
+BEGIN
+
+	SET @_cliente =	(SELECT CONCAT(nombre,", ",apellido) Proveedor FROM PedidosDeLea p
+						inner join Clientes c on c.id_cliente = p.vendedor
+						WHERE id_pedido = _id_pedido);
+	IF(_pagadoTot = 1)
+    THEN
+		SET @_valorPedido = (SELECT costo FROM PedidosDeLea WHERE id_pedido = _id_pedido);
+		UPDATE PedidosDeLea 
+SET 
+    pagadoHastaElMomento = @_valorPedido
+WHERE
+    id_pedido = _id_pedido;
+    ELSE
+		UPDATE PedidosDeLea SET pagadoHastaElMomento = _cantidad_paga + pagadoHastaElMomento WHERE id_pedido = _id_pedido;
+    END IF;
+    
+    IF(_cantidad_paga != 0)
+	THEN
+		CALL restarEfectivo(_cantidad_paga, CONCAT("Se pago al proveedor ",@_cliente," al pedido de compra nro# ", CAST(_id_pedido as char(10))));
+	END IF;
+    
+END //
+
 
 CREATE PROCEDURE obtenerStock (IN _nombre VARCHAR(50)) 
 BEGIN
@@ -813,7 +842,7 @@ BEGIN
     LIMIT 3000;
 END //
 
-CREATE PROCEDURE agregarEfectivo (IN _montoASumar INT, _descripcion VARCHAR(200)) 
+CREATE PROCEDURE agregarEfectivo (IN _montoASumar DECIMAL(10,2), _descripcion VARCHAR(200)) 
 BEGIN
 
 SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
@@ -1149,11 +1178,11 @@ END //
 CREATE PROCEDURE cargarPedidoCompras (IN _nombre VARCHAR(60))
 BEGIN
 
-	SELECT p.id_pedido, c.nombre AS Proveedor, p.fecha, group_concat(sac.nombre), p.costo, IF(p.pagado = 1, 'SI', 'NO'), IF(p.stockCargado = 1, 'SI', 'NO') FROM PedidosDeLea p 
+	SELECT p.id_pedido, CONCAT(c.nombre," ",c.apellido) AS Proveedor, p.fecha, group_concat(sac.nombre), p.costo, (p.costo - p.pagadoHastaElMomento) cantidad, IF(p.stockCargado = 1, 'SI', 'NO') FROM PedidosDeLea p 
     INNER JOIN ItemsDeLea i ON p.id_pedido = i.id_pedido
     INNER JOIN StockACargar sac ON sac.id_stockACargar = i.id_stockACargar
     INNER JOIN Clientes c ON c.id_cliente = p.vendedor
-	WHERE ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+	WHERE ((CONCAT(c.nombre," ",c.apellido) LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
     AND p.deleted = 0
     GROUP BY p.id_pedido
     ORDER BY p.id_pedido DESC
@@ -1173,6 +1202,13 @@ CREATE PROCEDURE cargarDatosActualizarPago (IN _id_pedido INT)
 BEGIN
 
 	SELECT (precio - pagadoHastaElMomento),0 FROM Pedidos WHERE id_pedido = _id_pedido;
+
+END //
+
+CREATE PROCEDURE cargarDatosActualizarPagoDeLea (IN _id_pedido INT)
+BEGIN
+
+	SELECT (costo - pagadoHastaElMomento),0 FROM PedidosDeLea WHERE id_pedido = _id_pedido;
 
 END //
 

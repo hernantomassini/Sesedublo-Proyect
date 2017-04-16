@@ -52,6 +52,15 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
+            decimal precioP = Convert.ToDecimal(filaDgv.Cells[8].Value);
+            decimal debeP = Convert.ToDecimal(filaDgv.Cells[3].Value);
+
+            if (Decimal.Compare(debeP, precioP) != 0)
+            {
+                Funciones.imprimirMensajeDeError("No se puede eliminar un pedido que ya ha sido empezado a pagarse, contacte a su administrador", this);
+                return;
+            }
+
             if (Funciones.imprimirMensajeDeAlerta("¿Estás seguro de borrar este pedido? Esta acción no se podrá deshacer.", this) == DialogResult.Cancel)
             {
                 return;
@@ -94,6 +103,15 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             if (Convert.ToString(filaDgv.Cells[5].Value) == "SI")
             {
                 Funciones.imprimirMensajeDeError("No puede modificar un pedido que ya ha sido facturado, sólo modificar su monto del debe", this);
+                return;
+            }
+
+            decimal precioP = Convert.ToDecimal(filaDgv.Cells[8].Value);
+            decimal debeP = Convert.ToDecimal(filaDgv.Cells[3].Value);
+
+            if (Decimal.Compare(debeP, precioP) != 0)
+            {
+                Funciones.imprimirMensajeDeError("No se puede modificar un pedido que ya ha sido empezado a pagarse, contacte a su administrador", this);
                 return;
             }
 
@@ -152,21 +170,23 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         public void cargarDGV()
         {
             Funciones.limpiarDGV(PedidosDGV);
-            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerPedidos", Conexion.generarArgumentos("_nombre", "_id_pedido","_id_factura"),nombre.Text,id_pedido.Text,metroTextBox1.Text);
-            
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerPedidos", Conexion.generarArgumentos("_nombre", "_id_pedido", "_id_factura"), nombre.Text, id_pedido.Text, metroTextBox1.Text);
+
             while (reader.Read())
             {
                 String id_pedido_valor;
 
 
-                if (reader[6].Equals(DBNull.Value)) {
+                if (reader[6].Equals(DBNull.Value))
+                {
                     id_pedido_valor = "No tiene";
                 }
-                else {
+                else
+                {
                     id_pedido_valor = Convert.ToString(reader.GetInt32(6));
                 }
                 //ID Stock 0 - Nombre 1 - Costo 2 - Debe 3 - Lista strings 4 - facturada 5 - numero de factura 6
-                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetDecimal(3), reader.GetString(4), this.verSiONo(reader.GetInt32(5)), this.verSiONoDec(reader.GetInt32(3)), id_pedido_valor);
+                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetDecimal(3), reader.GetString(4), this.verSiONo(reader.GetInt32(5)), this.verSiONoDec(reader.GetInt32(3)), id_pedido_valor, reader.GetDecimal(7));
             }
             reader.Close();
             Conexion.closeConnection();
@@ -175,7 +195,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         private string verSiONo(int valor)
         {
-            if(valor == 1)
+            if (valor == 1)
             {
                 return "SI";
             }

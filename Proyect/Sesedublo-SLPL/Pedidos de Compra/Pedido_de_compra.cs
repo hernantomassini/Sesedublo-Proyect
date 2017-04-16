@@ -1,5 +1,4 @@
-﻿
-using iTextSharp.text;
+﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using MetroFramework.Forms;
 using MySql.Data.MySqlClient;
@@ -87,14 +86,29 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
             int id_pedido = Convert.ToInt32(filaDgv.Cells[0].Value);
 
+            decimal precioP = Convert.ToDecimal(filaDgv.Cells[4].Value);
+            decimal debeP = Convert.ToDecimal(filaDgv.Cells[5].Value);
 
-            if (Convert.ToString(filaDgv.Cells[6].Value) == "SI")
+            if (Convert.ToString(filaDgv.Cells[7].Value) == "SI")
             {
                 Manejador_Formularios.MostrarPedidoCompra.mostrarPedido(id_pedido);
                 Manejador_Formularios.MostrarPedidoCompra.Show();
             }
             else
             {
+
+                if (Convert.ToString(filaDgv.Cells[7].Value) == "SI")
+                {
+                    Funciones.imprimirMensajeDeError("No se puede modificar un pedido de compra que ya ha sido pasado a stock", this);
+                    return;
+                }
+
+                if (Decimal.Compare(debeP, precioP) != 0)
+                {
+                    Funciones.imprimirMensajeDeError("No se puede modificar un pedido de compra que ya ha sido empezado a pagarse, contacte a su administrador", this);
+                    return;
+                }
+
                 Manejador_Formularios.AddPedidoCompra.modificarPedido(id_pedido);
                 Manejador_Formularios.AddPedidoCompra.Show();
             }
@@ -239,7 +253,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 return;
             }
 
-            if (Convert.ToInt32(filaMarcada.Cells[5].Value) != Convert.ToInt32(filaMarcada.Cells[4].Value))
+            if (Decimal.Compare(Convert.ToInt32(filaMarcada.Cells[5].Value), Convert.ToDecimal(filaMarcada.Cells[4].Value)) != 0)
             {
                 Funciones.imprimirMensajeDeError("Se le empezó a pagar al proveedor lo acordado, contacte al administrador para borrar este pedido", this);
                 return;

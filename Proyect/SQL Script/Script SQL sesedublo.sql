@@ -1,4 +1,3 @@
-
 #DROP TABLES:
 DROP TABLE IF EXISTS NotasDeCredito;
 DROP TABLE IF EXISTS Operaciones;
@@ -655,7 +654,7 @@ WHERE
     
     IF(_cantidad_paga != 0)
 	THEN
-		CALL agregarEfectivo(_cantidad_paga, CONCAT("El cliente ",@_cliente," pagó un pedido"));
+		CALL agregarEfectivo(_cantidad_paga, CONCAT("El cliente ",@_cliente," pago un pedido"));
 	END IF;
     
 END //
@@ -705,7 +704,7 @@ BEGIN
 	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto, lp.deleted
 	FROM Stock s 
     INNER JOIN Productos p 	ON p.id_producto = s.producto
-	INNER JOIN ListaDeProductos lp ON s.producto = lp.id_listPro
+	INNER JOIN ListaDeProductos lp ON p.nombre = lp.descripcion
 	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
     AND s.deleted = 0 and lp.deleted = 0;
 
@@ -900,7 +899,7 @@ END //
 
 CREATE PROCEDURE obtenerPedidos (IN _nombre VARCHAR(50),_id_pedido VARCHAR(50),_id_factura VARCHAR(50)) 
 BEGIN
-        SELECT p.id_pedido, CONCAT(c.nombre, " ", c.apellido), p.pagadoHastaElMomento, p.precio - p.pagadoHastaElMomento, group_concat(pr.nombre), p.facturada, f.id_factura FROM Pedidos p 
+        SELECT p.id_pedido, CONCAT(c.nombre, " ", c.apellido), p.pagadoHastaElMomento, p.precio - p.pagadoHastaElMomento, group_concat(pr.nombre), p.facturada, f.id_factura, p.precio FROM Pedidos p 
         LEFT JOIN Facturas f ON p.id_pedido = f.pedido
         INNER JOIN Clientes c ON p.comprador = c.id_cliente
         INNER JOIN Items i ON p.id_pedido = i.pedido
@@ -1281,7 +1280,7 @@ END //
 CREATE PROCEDURE cargarDeudas (IN _nombre VARCHAR(50))
 BEGIN
 
-SELECT c.nombre as Cliente,SUM(pagadoHastaElMomento) as Pagado, SUM(precio) - SUM(pagadoHastaElMomento) as Debe,
+SELECT CONCAT(c.nombre, " ", c.apellido) as Cliente,SUM(pagadoHastaElMomento) as Pagado, SUM(precio) - SUM(pagadoHastaElMomento) as Debe,
 	 IF(SUM(precio) - SUM(pagadoHastaElMomento) > 0, 'NO', 'SI') as 'Esta todo pago?' 
 	  FROM Pedidos p
 INNER JOIN Clientes c ON c.id_cliente = p.comprador

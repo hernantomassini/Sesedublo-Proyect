@@ -1,4 +1,4 @@
-/*
+
 #DROP TABLES:
 DROP TABLE IF EXISTS NotasDeCredito;
 DROP TABLE IF EXISTS Operaciones;
@@ -13,7 +13,6 @@ DROP TABLE IF EXISTS ItemsDeLea;
 DROP TABLE IF EXISTS StockACargar;
 DROP TABLE IF EXISTS PedidosDeLea;
 DROP TABLE IF EXISTS Productos;
-*/
 
 #DROP PROCEDURES:
 DROP PROCEDURE IF EXISTS obtenerStock;
@@ -68,7 +67,7 @@ DROP PROCEDURE IF EXISTS obtenerMontoEnDeudas;
 DROP PROCEDURE IF EXISTS cargarDatosActualizarPagoDeLea;
 DROP PROCEDURE IF EXISTS actualizarPagoDeLea;
 
-/*
+
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
     efectivoActual DECIMAL(20 , 2 ),
@@ -162,7 +161,7 @@ CREATE TABLE Items (
     pedido INT,
     cantidadProductos INT,
     cantidadProductosEdit INT DEFAULT 0,
-    valorDelItem DECIMAL,
+    valorDelItem DECIMAL(10,2),
     PRIMARY KEY (id_item),
     FOREIGN KEY (producto)
         REFERENCES Productos (id_producto),
@@ -205,9 +204,8 @@ CREATE TABLE NotasDeCredito (
         REFERENCES Facturas (id_factura)
 );
 
-*/
 
-/*
+
 INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 											 ("ABSENTA GREEN SPIRIT"),
 											 ("ABSOLUT APEACH X 750"),
@@ -629,7 +627,6 @@ INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 											("WHISKY HIRAM WALKER"),
 											("WHITE HORSE"),
 											("WYBOROWA");
-*/
 
 ALTER TABLE ListaDeProductos ADD COLUMN deleted int DEFAULT 0;
 ALTER TABLE PedidosDeLea ADD COLUMN deleted int DEFAULT 0;
@@ -886,7 +883,7 @@ END //
 CREATE PROCEDURE obtenerMontoEnProductos () 
 BEGIN
 
-	SELECT SUM(p.costo * p.cantidad) FROM Stock s INNER JOIN Productos p
+	SELECT SUM(p.costo * cast(p.cantidad as decimal(10,2))) FROM Stock s INNER JOIN Productos p
 	ON p.id_producto = s.producto
     where p.cantidad > 0;
 

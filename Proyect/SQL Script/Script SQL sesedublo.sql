@@ -43,9 +43,7 @@ DROP PROCEDURE IF EXISTS obtenerInfoItems;
 DROP PROCEDURE IF EXISTS obtenerFactura;
 DROP PROCEDURE IF EXISTS obtenerItemsDeFactura;
 DROP PROCEDURE IF EXISTS obtenerLista;
-DROP PROCEDURE IF EXISTS generarPedido;
 DROP PROCEDURE IF EXISTS crearPedidoDeLea;
-DROP PROCEDURE IF EXISTS ItemsDeLea;
 DROP PROCEDURE IF EXISTS crearItemDeLea;
 DROP PROCEDURE IF EXISTS obtenerItemsDeLea;
 DROP PROCEDURE IF EXISTS cargarPedidoCompras;
@@ -857,7 +855,7 @@ WHERE
 
 END //
 
-CREATE PROCEDURE restarEfectivo (IN _montoARestar INT, _descripcion VARCHAR(200)) 
+CREATE PROCEDURE restarEfectivo (IN _montoARestar DECIMAL(10,2), _descripcion VARCHAR(200)) 
 BEGIN
 
 	SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);

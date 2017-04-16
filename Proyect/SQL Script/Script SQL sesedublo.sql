@@ -631,9 +631,9 @@ INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 											("WYBOROWA");
 */
 
-#ALTER TABLE ListaDeProductos ADD COLUMN deleted int DEFAULT 0;
-#ALTER TABLE PedidosDeLea ADD COLUMN deleted int DEFAULT 0;
-#ALTER TABLE PedidosDeLea ADD COLUMN pagadoHastaElMomento decimal(10,2) DEFAULT 0.00 ;
+ALTER TABLE ListaDeProductos ADD COLUMN deleted int DEFAULT 0;
+ALTER TABLE PedidosDeLea ADD COLUMN deleted int DEFAULT 0;
+ALTER TABLE PedidosDeLea ADD COLUMN pagadoHastaElMomento decimal(10,2) DEFAULT 0.00 ;
  
 #Store Procedures
 DELIMITER //

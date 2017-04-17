@@ -1,3 +1,4 @@
+/*
 #DROP TABLES:
 DROP TABLE IF EXISTS NotasDeCredito;
 DROP TABLE IF EXISTS Operaciones;
@@ -12,6 +13,7 @@ DROP TABLE IF EXISTS ItemsDeLea;
 DROP TABLE IF EXISTS StockACargar;
 DROP TABLE IF EXISTS PedidosDeLea;
 DROP TABLE IF EXISTS Productos;
+*/
 
 #DROP PROCEDURES:
 DROP PROCEDURE IF EXISTS obtenerStock;
@@ -66,7 +68,7 @@ DROP PROCEDURE IF EXISTS obtenerMontoEnDeudas;
 DROP PROCEDURE IF EXISTS cargarDatosActualizarPagoDeLea;
 DROP PROCEDURE IF EXISTS actualizarPagoDeLea;
 
-
+/*
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
     efectivoActual DECIMAL(20 , 2 ),
@@ -629,6 +631,7 @@ INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 
 ALTER TABLE ListaDeProductos ADD COLUMN deleted int DEFAULT 0;
 ALTER TABLE PedidosDeLea ADD COLUMN deleted int DEFAULT 0;
+*/
 ALTER TABLE PedidosDeLea ADD COLUMN pagadoHastaElMomento decimal(10,2) DEFAULT 0.00 ;
  
 #Store Procedures

@@ -245,9 +245,24 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         {
 
             DataGridViewRow filaDgv = PedidosDGV.CurrentRow;
+
+            if (!Validaciones.validarFilaMarcada(filaDgv, this))
+            {
+                return;
+            }
+
             if (Convert.ToString(filaDgv.Cells[5].Value) == "SI")
             {
                 Funciones.imprimirMensajeDeError("No puede modificar un pedido que ya ha sido facturado, sólo modificar su monto del debe", this);
+                return;
+            }
+
+            decimal precioP = Convert.ToDecimal(filaDgv.Cells[8].Value);
+            decimal debeP = Convert.ToDecimal(filaDgv.Cells[3].Value);
+
+            if (Decimal.Compare(debeP, precioP) != 0)
+            {
+                Funciones.imprimirMensajeDeError("No se puede modificar un pedido que ya ha sido empezado a pagarse, contacte a su administrador", this);
                 return;
             }
 

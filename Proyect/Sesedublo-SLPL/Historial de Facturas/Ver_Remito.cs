@@ -41,6 +41,7 @@ namespace Sesedublo_SLPL
              id_factura = idFactura;
              id_cliente = idCliente;
              getData();
+             this.label24.Text = Conexion.tipo; 
              MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("obtenerItemsDeRemito", Conexion.generarArgumentos("_id_factura"), id_factura);
              DataTable tablaDeFacturas = new DataTable("Factura");
              da.Fill(tablaDeFacturas);

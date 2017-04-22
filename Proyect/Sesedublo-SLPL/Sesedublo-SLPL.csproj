@@ -14,7 +14,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>F:\SESEDUBLOBEBIDASEXE-16-04-2017\</PublishUrl>
+    <PublishUrl>F:\SESEDUBLOBEBIDASEXE-22-04-2017\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>24</ApplicationRevision>
+    <ApplicationRevision>26</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -135,7 +135,7 @@
     <Compile Include="Administrar Pedidos\Historial_de_Deudas.Designer.cs">
       <DependentUpon>Historial_de_Deudas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Administrar Pedidos\Producto.cs" />
+    <Compile Include="Administrar Stock\Producto.cs" />
     <Compile Include="Administrar Stock\ABM_Stock.cs">
       <SubType>Form</SubType>
     </Compile>

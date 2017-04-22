@@ -1,4 +1,4 @@
-/*
+
 #DROP TABLES:
 DROP TABLE IF EXISTS NotasDeCredito;
 DROP TABLE IF EXISTS Operaciones;
@@ -13,7 +13,6 @@ DROP TABLE IF EXISTS ItemsDeLea;
 DROP TABLE IF EXISTS StockACargar;
 DROP TABLE IF EXISTS PedidosDeLea;
 DROP TABLE IF EXISTS Productos;
-*/
 
 #DROP PROCEDURES:
 DROP PROCEDURE IF EXISTS obtenerStock;
@@ -68,7 +67,7 @@ DROP PROCEDURE IF EXISTS obtenerMontoEnDeudas;
 DROP PROCEDURE IF EXISTS cargarDatosActualizarPagoDeLea;
 DROP PROCEDURE IF EXISTS actualizarPagoDeLea;
 
-/*
+
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
     efectivoActual DECIMAL(20 , 2 ),
@@ -631,7 +630,6 @@ INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 
 ALTER TABLE ListaDeProductos ADD COLUMN deleted int DEFAULT 0;
 ALTER TABLE PedidosDeLea ADD COLUMN deleted int DEFAULT 0;
-*/
 ALTER TABLE PedidosDeLea ADD COLUMN pagadoHastaElMomento decimal(10,2) DEFAULT 0.00 ;
  
 #Store Procedures
@@ -657,7 +655,7 @@ WHERE
     
     IF(_cantidad_paga != 0)
 	THEN
-		CALL agregarEfectivo(_cantidad_paga, CONCAT("El cliente ",@_cliente," pago un pedido"));
+		CALL agregarEfectivo(_cantidad_paga, CONCAT("El cliente ",@_cliente," pago un pedido nro # ", cast(_id_pedido as char(10))));
 	END IF;
     
 END //
@@ -934,14 +932,14 @@ END //
 CREATE PROCEDURE crearPedido (IN _id_comprador INT, IN _pagadoHastaElMomento DECIMAL(10,2), IN _precio DECIMAL(10,2))
 BEGIN
 
+	INSERT INTO Pedidos (comprador, pagadoHastaElMomento, precio) VALUES (_id_comprador, _pagadoHastaElMomento, _precio);
+	SELECT LAST_INSERT_ID();
+    
 	IF(_pagadoHastaElMomento > 0)
     THEN
 		SET @_cliente = (SELECT CONCAT(nombre, ", ", apellido) FROM Clientes WHERE id_cliente = _id_comprador);
-		CALL agregarEfectivo(_pagadoHastaElMomento, CONCAT("El cliente ",@_cliente," pagó un pedido"));
+		CALL agregarEfectivo(_pagadoHastaElMomento, CONCAT("El cliente ",@_cliente," pago un pedido nro # ",(SELECT LAST_INSERT_ID()) ));
 	END IF;
-    
-	INSERT INTO Pedidos (comprador, pagadoHastaElMomento, precio) VALUES (_id_comprador, _pagadoHastaElMomento, _precio);
-	SELECT LAST_INSERT_ID();
     
 END //
 
@@ -1122,7 +1120,7 @@ CREATE PROCEDURE obtenerLista (IN _nombre VARCHAR(60))
 BEGIN
 	#retorna id_producto (0), descripcion(1), tipo(2)(wut), 3 - costo, 	4 - precio unitario, 5- precio bulto, 6-radioSelected
 	SELECT lp.id_listPro,
-    descripcion AS Descripción,
+    descripcion AS Descripcion,
     IF(PVunitario IS NULL,'N/E',IF(cantidadXBulto = 0, 'Individual',  cast(cantidadXBulto as char(10)))) AS 'Tipo',
     IF(costo IS NULL,'N/E',cast(costo as char(10))) AS Costo, 
     IF(PVunitario IS NULL,'N/E',cast(PVunitario as char(10))) AS 'Precio Unitario',
@@ -1215,6 +1213,22 @@ BEGIN
    
    UPDATE Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido SET precio = (precio - _cantidad) 
    WHERE id_factura = _id_factura ;
+   
+	SET @_pagadoHastaElMomento = ( SELECT pagadoHastaElMomento FROM Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido WHERE id_factura = _id_factura);
+	
+    IF(@_pagadoHastaElMomento >= _cantidad)
+    THEN
+		UPDATE Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido SET pagadoHastaElMomento = (pagadoHastaElMomento - _cantidad) 
+		WHERE id_factura = _id_factura ;
+        SET @_id_pedido = ( SELECT id_pedido FROM Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido WHERE id_factura = _id_factura);
+        CALL restarEfectivo(_cantidad, CONCAT("Se hizo una NC al pedido nro# ", @_id_pedido));
+	ELSE IF(@_pagadoHastaElMomento < cantidad)
+		THEN
+		UPDATE Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido SET pagadoHastaElMomento = (_cantidad  - pagadoHastaElMomento);
+        CALL restarEfectivo((_cantidad - @_pagadoHastaElMomento), CONCAT("Se hizo una NC al pedido nro# ", @_id_pedido));
+        END IF;
+    
+    END IF;
 	
 END //
 

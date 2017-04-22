@@ -35,10 +35,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         public void setPrecioCobrado(decimal precio)
         {
-
-            string precioS = Convert.ToString(precio);
             this.precioCobrado = precio;
-            MessageBox.Show(Convert.ToString(precioCobrado));
         }
     }
 }

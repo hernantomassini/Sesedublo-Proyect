@@ -103,6 +103,7 @@ namespace Sesedublo_SLPL
                 conexionBuilder.Database = "sesedublo";
 
                 Conexion.connection = new MySqlConnection(conexionBuilder.ToString());
+                Conexion.tipo = "SESEDUBLO S.A.";
             }
         }
 
@@ -117,6 +118,7 @@ namespace Sesedublo_SLPL
                 conexionBuilder.Database = "admin_lacantina";
 
                 Conexion.connection = new MySqlConnection(conexionBuilder.ToString());
+                Conexion.tipo = "LA CANTINA BEBIDAS";
             }
         }
     }

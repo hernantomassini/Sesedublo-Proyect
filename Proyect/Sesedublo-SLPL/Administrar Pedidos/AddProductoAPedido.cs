@@ -142,7 +142,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                         int id_stock = registro.Key;
                         int cantidad = registro.Value.getCantidad();
 
-                        Conexion.executeProcedure("updatearStock", Conexion.generarArgumentos("_id_stock", "_cantidad"), id_stock, cantidad);
+                        Conexion.executeProcedure("updatearStock", Conexion.generarArgumentos("_id_stock", "_cantidad"), id_stock, cantidad );
                         Conexion.closeConnection();
                     }
 
@@ -259,7 +259,10 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 productosAVender.Add(id_stock, unProducto);
             }
             else
-                productosAVender[id_stock].setCantidad(productosAVender[id_stock].getCantidad() + cantidad); 
+            {
+                productosAVender[id_stock].setCantidad(productosAVender[id_stock].getCantidad() + cantidad);
+                productosAVender[id_stock].setPrecioCobrado(precioUnitario);
+            }
 
             Cantidad.Clear();
             Cantidad.Focus();

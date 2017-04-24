@@ -631,7 +631,7 @@ INSERT INTO ListaDeProductos (descripcion) VALUES ("100 PIPPERS"),
 ALTER TABLE ListaDeProductos ADD COLUMN deleted int DEFAULT 0;
 ALTER TABLE PedidosDeLea ADD COLUMN deleted int DEFAULT 0;
 ALTER TABLE PedidosDeLea ADD COLUMN pagadoHastaElMomento decimal(10,2) DEFAULT 0.00 ;
- 
+ALTER TABLE Pedidos ADD COLUMN deleted int DEFAULT 0;
 #Store Procedures
 DELIMITER //
 
@@ -909,6 +909,7 @@ BEGIN
 		AND ((f.id_factura = CONVERT(_id_factura,UNSIGNED INTEGER)) OR (_id_factura IS NULL OR _id_factura = ""))
 		AND ((p.id_pedido = CONVERT(_id_pedido,UNSIGNED INTEGER) ) OR (_id_pedido IS NULL OR _id_pedido = ""))
         AND i.cantidadProductos > 0
+        AND p.deleted = 0
         GROUP BY p.id_pedido
         ORDER BY p.id_pedido DESC
 		LIMIT 3000;
@@ -917,10 +918,7 @@ END //
 CREATE PROCEDURE borrarPedido (IN _id_pedido INT)
 BEGIN
 
-SET @_montoARemover = (SELECT pagadoHastaElMomento FROM Pedidos WHERE id_pedido = _id_pedido);
-
-	DELETE FROM Items WHERE pedido = _id_pedido;
-	DELETE FROM Pedidos WHERE id_pedido = _id_pedido;
+UPDATE Pedidos SET deleted = 1 WHERE id_pedido = _id_pedido;
 
 END //
 
@@ -1215,19 +1213,14 @@ BEGIN
    WHERE id_factura = _id_factura ;
    
 	SET @_pagadoHastaElMomento = ( SELECT pagadoHastaElMomento FROM Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido WHERE id_factura = _id_factura);
-	
-    IF(@_pagadoHastaElMomento >= _cantidad)
-    THEN
-		UPDATE Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido SET pagadoHastaElMomento = (pagadoHastaElMomento - _cantidad) 
-		WHERE id_factura = _id_factura ;
-        SET @_id_pedido = ( SELECT id_pedido FROM Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido WHERE id_factura = _id_factura);
-        CALL restarEfectivo(_cantidad, CONCAT("Se hizo una NC al pedido nro# ", @_id_pedido));
-	ELSE IF(@_pagadoHastaElMomento < cantidad)
-		THEN
-		UPDATE Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido SET pagadoHastaElMomento = (_cantidad  - pagadoHastaElMomento);
-        CALL restarEfectivo((_cantidad - @_pagadoHastaElMomento), CONCAT("Se hizo una NC al pedido nro# ", @_id_pedido));
-        END IF;
+	SET @_id_pedido = ( SELECT id_pedido FROM Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido WHERE id_factura = _id_factura);
+    SET @_precio = ( SELECT precio FROM Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido WHERE id_factura = _id_factura);
     
+    IF(@_pagadoHastaElMomento > @_precio)
+    THEN
+		UPDATE Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido SET pagadoHastaElMomento = ( @_pagadoHastaElMomento - (_cantidad)) 
+		WHERE id_factura = _id_factura ;
+        CALL restarEfectivo(((_cantidad)), CONCAT("Se hizo una NC al pedido nro# ", @_id_pedido));
     END IF;
 	
 END //

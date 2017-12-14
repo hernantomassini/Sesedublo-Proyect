@@ -284,5 +284,11 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
             return true;
         }
+
+        private void metroTile3_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.Historial_de_Deudas_Compras.cargarDGV();
+            Manejador_Formularios.Historial_de_Deudas_Compras.Show();
+        }
     }
 }

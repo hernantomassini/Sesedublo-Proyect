@@ -93,7 +93,7 @@
             this.dgvFacturas.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvFacturas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFacturas.Size = new System.Drawing.Size(741, 323);
+            this.dgvFacturas.Size = new System.Drawing.Size(852, 323);
             this.dgvFacturas.TabIndex = 100;
             this.dgvFacturas.UseCustomBackColor = true;
             this.dgvFacturas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturas_CellDoubleClick);
@@ -277,7 +277,7 @@
             // 
             this.RegistroTile.ActiveControl = null;
             this.RegistroTile.BackColor = System.Drawing.Color.SkyBlue;
-            this.RegistroTile.Location = new System.Drawing.Point(407, 591);
+            this.RegistroTile.Location = new System.Drawing.Point(518, 591);
             this.RegistroTile.Name = "RegistroTile";
             this.RegistroTile.Size = new System.Drawing.Size(168, 44);
             this.RegistroTile.TabIndex = 8;
@@ -295,7 +295,7 @@
             // 
             this.AddNotaCreditoTile.ActiveControl = null;
             this.AddNotaCreditoTile.BackColor = System.Drawing.Color.Teal;
-            this.AddNotaCreditoTile.Location = new System.Drawing.Point(581, 591);
+            this.AddNotaCreditoTile.Location = new System.Drawing.Point(692, 591);
             this.AddNotaCreditoTile.Name = "AddNotaCreditoTile";
             this.AddNotaCreditoTile.Size = new System.Drawing.Size(183, 44);
             this.AddNotaCreditoTile.TabIndex = 7;
@@ -313,7 +313,7 @@
             // 
             this.metroTile2.ActiveControl = null;
             this.metroTile2.BackColor = System.Drawing.Color.White;
-            this.metroTile2.Location = new System.Drawing.Point(291, 591);
+            this.metroTile2.Location = new System.Drawing.Point(402, 591);
             this.metroTile2.Name = "metroTile2";
             this.metroTile2.Size = new System.Drawing.Size(110, 44);
             this.metroTile2.TabIndex = 9;
@@ -330,7 +330,7 @@
             // 
             // fechaCalendario
             // 
-            this.fechaCalendario.Location = new System.Drawing.Point(544, 36);
+            this.fechaCalendario.Location = new System.Drawing.Point(683, 42);
             this.fechaCalendario.Name = "fechaCalendario";
             this.fechaCalendario.TabIndex = 5;
             this.fechaCalendario.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected);
@@ -353,7 +353,7 @@
             this.fechaTxt.DisplayIcon = true;
             this.fechaTxt.Icon = ((System.Drawing.Image)(resources.GetObject("fechaTxt.Icon")));
             this.fechaTxt.Lines = new string[0];
-            this.fechaTxt.Location = new System.Drawing.Point(571, 204);
+            this.fechaTxt.Location = new System.Drawing.Point(710, 210);
             this.fechaTxt.MaxLength = 60;
             this.fechaTxt.Name = "fechaTxt";
             this.fechaTxt.PasswordChar = '\0';
@@ -377,7 +377,7 @@
             // 
             this.limpiarFiltrosTile.ActiveControl = null;
             this.limpiarFiltrosTile.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.limpiarFiltrosTile.Location = new System.Drawing.Point(347, 99);
+            this.limpiarFiltrosTile.Location = new System.Drawing.Point(402, 103);
             this.limpiarFiltrosTile.Name = "limpiarFiltrosTile";
             this.limpiarFiltrosTile.Size = new System.Drawing.Size(138, 44);
             this.limpiarFiltrosTile.TabIndex = 4;
@@ -397,7 +397,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(787, 650);
+            this.ClientSize = new System.Drawing.Size(898, 671);
             this.Controls.Add(this.limpiarFiltrosTile);
             this.Controls.Add(this.fechaTxt);
             this.Controls.Add(this.fechaCalendario);

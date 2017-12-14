@@ -1,10 +1,12 @@
-﻿using MySql.Data.MySqlClient;
+﻿using BarcodeLib;
+using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
@@ -30,11 +32,13 @@ namespace Sesedublo_SLPL
 
         private void getData()
         {
-            BarcodeLib.Barcode Codigo = new BarcodeLib.Barcode();
+            Barcode Codigo = new Barcode();
             Codigo.IncludeLabel = true;
-            panel7.BackgroundImage = Codigo.Encode(BarcodeLib.TYPE.CODE128, "2503242523", Color.Black, Color.White, 131, 51);
-            this.label24.Text = Conexion.tipo; 
+            panel7.BackgroundImage = Codigo.Encode(BarcodeLib.TYPE.CODE128, "2503242523", Color.Black, Color.White, 190, 51);
+
             MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerClienteParaFactura", Conexion.generarArgumentos("_id_cliente"), id_cliente);
+
+            label24.Text = Conexion.tipo;
 
             reader.Read();
             if (reader.HasRows)
@@ -45,7 +49,6 @@ namespace Sesedublo_SLPL
                 if (reader.GetString(2) != "") { label14.Text = "TEL.: " + reader.GetString(2).ToUpper(); }
                 if (reader.GetString(4) != "") { cuilComprador.Text = "CUIL: " + reader.GetString(4).ToUpper(); }
                 if (reader.GetString(5) != "") { localidadLbl.Text = "LOCALIDAD: " + reader.GetString(5).ToUpper(); }
-                
             }
             reader.Close();
             Conexion.closeConnection();
@@ -99,6 +102,7 @@ namespace Sesedublo_SLPL
                     subTotalPrec.Visible = false;
                     IVA.Visible = false;
                     ivaCalculado.Visible = false;
+                    cuilComprador.Visible = false;
                 }
 
                 oriOdup.Text = "ORIGINAL";
@@ -174,7 +178,6 @@ namespace Sesedublo_SLPL
         {
             printButton.Visible = false;
             metroTile1.Visible = false;
-
             CaptureScreen();
             PrintPreviewDialog printPreviewDialog1;
             printPreviewDialog1 = new PrintPreviewDialog();
@@ -182,6 +185,10 @@ namespace Sesedublo_SLPL
             printPreviewDialog1.Show();
             printButton.Visible = true;
             metroTile1.Visible = true;
+        }
+
+        private void Ver_Factura_Load(object sender, EventArgs e)
+        {
 
         }
 
@@ -236,6 +243,11 @@ namespace Sesedublo_SLPL
                 var fileName = saveDialog.FileName;
                 bitmap.Save(fileName, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
+
+        }
+
+        private void subTotal_Click(object sender, EventArgs e)
+        {
 
         }
     }

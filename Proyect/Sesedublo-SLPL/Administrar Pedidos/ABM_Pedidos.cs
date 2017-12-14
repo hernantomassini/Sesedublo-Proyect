@@ -109,11 +109,11 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             decimal precioP = Convert.ToDecimal(filaDgv.Cells[8].Value);
             decimal debeP = Convert.ToDecimal(filaDgv.Cells[3].Value);
 
-            if (Decimal.Compare(debeP, precioP) != 0)
-            {
-                Funciones.imprimirMensajeDeError("No se puede modificar un pedido que ya ha sido empezado a pagarse, contacte a su administrador", this);
-                return;
-            }
+            //if (Decimal.Compare(debeP, precioP) != 0)
+            //{
+            //    Funciones.imprimirMensajeDeError("No se puede modificar un pedido que ya ha sido empezado a pagarse, contacte a su administrador", this);
+            //    return;
+            //}
 
             int id_pedido = Convert.ToInt32(filaDgv.Cells[0].Value);
 
@@ -260,11 +260,11 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             decimal precioP = Convert.ToDecimal(filaDgv.Cells[8].Value);
             decimal debeP = Convert.ToDecimal(filaDgv.Cells[3].Value);
 
-            if (Decimal.Compare(debeP, precioP) != 0)
-            {
-                Funciones.imprimirMensajeDeError("No se puede modificar un pedido que ya ha sido empezado a pagarse, contacte a su administrador", this);
-                return;
-            }
+            //if (Decimal.Compare(debeP, precioP) != 0)
+            //{
+            //    Funciones.imprimirMensajeDeError("No se puede modificar un pedido que ya ha sido empezado a pagarse, contacte a su administrador", this);
+            //    return;
+            //}
 
             int id_pedido = Convert.ToInt32(filaDgv.Cells[0].Value);
 

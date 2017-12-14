@@ -40,11 +40,13 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             Clean();
             cargarDGV();
             flag = accionesABM.Crear;
+
+            this.cantidadPagada.Enabled = true;
         }
 
         public void modificarPedido(int id_pedido)
         {
-  
+
 
             this.id_cliente = -1;
             this.id_pedido = id_pedido;
@@ -56,6 +58,8 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             flag = accionesABM.Modificar;
             CargarItems();
             cargarDGV();
+
+            this.cantidadPagada.Enabled = false;
         }
 
         private void CargarItems()
@@ -101,7 +105,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 decimal precio = registro.Value.getPrecioCobrado();
                 string precioString;
 
-                if(cantXBulto == 0)
+                if (cantXBulto == 0)
                 {
                     precioString = cantidad + " unidades";
 
@@ -122,7 +126,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         private void FinalizarTile_Click(object sender, EventArgs e)
         {
-            if(!validarFinalizar())
+            if (!validarFinalizar())
             {
                 return;
             }
@@ -134,6 +138,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             else
             {
                 MySqlDataReader reader;
+                int numero = 0;
 
                 if (flag == accionesABM.Modificar)
                 {
@@ -142,16 +147,17 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                         int id_stock = registro.Key;
                         int cantidad = registro.Value.getCantidad();
 
-                        Conexion.executeProcedure("updatearStock", Conexion.generarArgumentos("_id_stock", "_cantidad"), id_stock, cantidad );
+                        Conexion.executeProcedure("updatearStock", Conexion.generarArgumentos("_id_stock", "_cantidad"), id_stock, cantidad);
                         Conexion.closeConnection();
                     }
 
                     Conexion.executeProcedure("borrarPedido", Conexion.generarArgumentos("_id_pedido"), this.id_pedido);
                     Conexion.closeConnection();
+                    numero = 1;
                 }
 
                 //Crear pedido y actualizar Caja:
-                reader = Conexion.executeProcedureWithReader("crearPedido", Conexion.generarArgumentos("_id_comprador", "_pagadoHastaElMomento", "_precio"), id_cliente, Convert.ToDecimal(cantidadPagada.Text), Convert.ToDecimal(montoAPagarDelPedido.Text));
+                reader = Conexion.executeProcedureWithReader("crearPedido", Conexion.generarArgumentos("_id_comprador", "_pagadoHastaElMomento", "_precio", "_tipo"), id_cliente, Convert.ToDecimal(cantidadPagada.Text), Convert.ToDecimal(montoAPagarDelPedido.Text), numero);
                 reader.Read();
 
                 int id_pedido = reader.GetInt32(0);
@@ -165,7 +171,6 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                     Conexion.executeProcedure("agregarItemAPedido", Conexion.generarArgumentos("_id_pedido", "_id_producto", "_cantidad", "_valorDelItem"), id_pedido, registro.Key, registro.Value.getCantidad(), registro.Value.getPrecioCobrado());
                     Conexion.closeConnection();
                 }
-
 
                 Conexion.executeProcedure("registrarPedido", Conexion.generarArgumentos("_id_pedido", "_precio", "_id_comprador"), id_pedido, Convert.ToDecimal(montoAPagarDelPedido.Text), id_cliente);
                 Conexion.closeConnection();
@@ -217,7 +222,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
             reader.Close();
             Conexion.closeConnection();
-            montoAPagarDelPedido.Enabled = false;
+            this.montoAPagarDelPedido.Enabled = false;
         }
 
         private void AgregarTile_Click(object sender, EventArgs e)
@@ -317,7 +322,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             int large = cantidad.IndexOf(" ");
             return Convert.ToInt32(cantidad.Substring(0, large));
         }
-    
+
         private string obtenerCantidadEnString(int cantidad, string preCantidad)
         {
             int large = preCantidad.IndexOf(" ");
@@ -365,7 +370,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return false;
             }
 
-            if(cantidadPagada.Text == "")
+            if (cantidadPagada.Text == "")
             {
                 Funciones.imprimirMensajeDeError("Debe ingresar la cantidad que deja paga el cliente. (Puede ser 0)", this);
                 return false;
@@ -479,10 +484,10 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 productosAVender[id_stock].setCantidad(productosAVender[id_stock].getCantidad());
                 productosAVender[id_stock].setPrecioCobrado(precioUnitario);
 
-
             }
             MontoACobrarLabel.Text = "El valor del pedido es de " + sumatoriaMoney;
             montoAPagarDelPedido.Text = Convert.ToString(sumatoriaMoney);
         }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using BarcodeLib;
+using MySql.Data.MySqlClient;
 using Sesedublo_SLPL.Generales;
 using System;
 using System.Collections.Generic;
@@ -30,11 +31,12 @@ namespace Sesedublo_SLPL
 
         private void getData()
         {
-            BarcodeLib.Barcode Codigo = new BarcodeLib.Barcode();
+            Barcode Codigo = new Barcode();
             Codigo.IncludeLabel = true;
-            panel7.BackgroundImage = Codigo.Encode(BarcodeLib.TYPE.CODE128, "2503242523", Color.Black, Color.White, 131, 51);
-            this.label24.Text = Conexion.tipo; 
+            panel7.BackgroundImage = Codigo.Encode(BarcodeLib.TYPE.CODE128, "2503242523", Color.Black, Color.White, 190, 51);
+
             MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerClienteParaFactura", Conexion.generarArgumentos("_id_cliente"), id_cliente);
+            label24.Text = Conexion.tipo;
 
             reader.Read();
             if (reader.HasRows)
@@ -98,6 +100,7 @@ namespace Sesedublo_SLPL
                     subTotalPrec.Visible = false;
                     IVA.Visible = false;
                     ivaCalculado.Visible = false;
+                    cuilComprador.Visible = false;
                 }
 
                 oriOdup.Text = "DUPLICADO";
@@ -109,7 +112,7 @@ namespace Sesedublo_SLPL
             DataTable tablaDeFacturas = new DataTable("Factura");
             da.Fill(tablaDeFacturas);
 
-            int cantidad = 15 - tablaDeFacturas.Rows.Count;
+            int cantidad = 17 - tablaDeFacturas.Rows.Count;
             for (int i = 0; i <= cantidad; i++)
             {
                 DataRow fila = tablaDeFacturas.NewRow();
@@ -172,14 +175,12 @@ namespace Sesedublo_SLPL
         System.EventArgs e)
         {
             printButton.Visible = false;
-            metroTile1.Visible = false;
             CaptureScreen();
             PrintPreviewDialog printPreviewDialog1;
             printPreviewDialog1 = new PrintPreviewDialog();
             printPreviewDialog1.Document = printDocument1;
             printPreviewDialog1.Show();
             printButton.Visible = true;
-            metroTile1.Visible = true;
         }
 
         private void Ver_Factura_Load(object sender, EventArgs e)
@@ -197,18 +198,6 @@ namespace Sesedublo_SLPL
                 DataGridViewHeaderBorderStyle.Single;
             this.dgvVerFactura.ColumnHeadersBorderStyle =
                 DataGridViewHeaderBorderStyle.Single;
-        }
-
-        private void printButton_Click_1(object sender, EventArgs e)
-        {
-            printButton.Visible = false;
-            CaptureScreen();
-            PrintPreviewDialog printPreviewDialog1;
-            printPreviewDialog1 = new PrintPreviewDialog();
-            printPreviewDialog1.Document = printDocument1;
-            printPreviewDialog1.Show();
-            printButton.Visible = true;
-
         }
 
         public static Bitmap TakeDialogScreenshot(Form window)
@@ -237,19 +226,30 @@ namespace Sesedublo_SLPL
 
             Bitmap bitmap = TakeDialogScreenshot(this);
             SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.FileName = facturaID.Text + "-DUPLICADO";
 
             printButton.Visible = true;
             metroTile1.Visible = true;
 
-            saveDialog.FileName = facturaID.Text + "-DUPLICADO";
             saveDialog.DefaultExt = "jpg";
             saveDialog.Filter = "JPG images (*.jpg)|*.jpg";
 
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
                 var fileName = saveDialog.FileName;
-                bitmap.Save(fileName, System.Drawing.Imaging.ImageFormat.Jpeg);
+                if (!System.IO.Path.HasExtension(fileName) || System.IO.Path.GetExtension(fileName) != "jpg")
+
+                    bitmap.Save(fileName, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
+        }
+
+        private void metroPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

@@ -396,5 +396,18 @@ namespace Sesedublo_SLPL.Generales
             }
         }
 
+        private static Sesedublo_reloaded.Pedidos_de_Compra.Historial_de_Deudas_Compras Historial_de_Deudas_Compras_Form;
+        public static Sesedublo_reloaded.Pedidos_de_Compra.Historial_de_Deudas_Compras Historial_de_Deudas_Compras
+        {
+            get
+            {
+                if (Historial_de_Deudas_Compras_Form == null)
+                {
+                    Historial_de_Deudas_Compras_Form = new Sesedublo_reloaded.Pedidos_de_Compra.Historial_de_Deudas_Compras();
+                }
+                return Historial_de_Deudas_Compras_Form;
+            }
+        }
+
     }
 }

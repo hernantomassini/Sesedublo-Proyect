@@ -76,7 +76,6 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
 
         private void cantidadPagada_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
-            val.ingresarNumeroDecimal(e);
         }
     }
 }

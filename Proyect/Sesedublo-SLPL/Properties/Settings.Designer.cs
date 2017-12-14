@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sesedublo_SLPL.Properties {
+namespace Sesedublo_reloaded.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

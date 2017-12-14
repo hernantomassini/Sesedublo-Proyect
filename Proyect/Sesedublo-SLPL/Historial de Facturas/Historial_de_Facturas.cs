@@ -171,12 +171,23 @@ namespace Sesedublo_SLPL.Historial_de_Facturasns
         {
             foreach (DataGridViewRow Myrow in dgvFacturas.Rows)
             {            //Here 2 cell is target value and 1 cell is Volume
+
+                if (Convert.ToString(Myrow.Cells[8].Value) == "SI")// Or your condition 
+                {
+                    Myrow.Cells[8].Style.BackColor = System.Drawing.Color.Green;
+                }
+                else
+                {
+                    Myrow.Cells[8].Style.BackColor = System.Drawing.Color.Red;
+
+                }
+
+                Myrow.Cells[8].Style.ForeColor = System.Drawing.Color.White;
                 Myrow.Cells[0].Style.BackColor = System.Drawing.Color.OrangeRed;
                 Myrow.Cells[0].Style.ForeColor = System.Drawing.Color.White;
-                Myrow.Cells[7].Style.BackColor = System.Drawing.Color.Orchid;
+                Myrow.Cells[7].Style.BackColor = System.Drawing.Color.Violet;
                 Myrow.Cells[7].Style.ForeColor = System.Drawing.Color.White;
             }
-
         }
 
         private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e)

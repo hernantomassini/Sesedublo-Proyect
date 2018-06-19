@@ -39,7 +39,6 @@ namespace Sesedublo_SLPL
             MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerClienteParaFactura", Conexion.generarArgumentos("_id_cliente"), id_cliente);
 
             label24.Text = Conexion.tipo;
-
             reader.Read();
             if (reader.HasRows)
             {
@@ -47,7 +46,7 @@ namespace Sesedublo_SLPL
                 if (reader.GetString(1) != "") { direccionLabel.Text = "DIRECCION: " + reader.GetString(1).ToUpper(); }
                 if (reader.GetString(3) != "") { label12.Text = "CONTACTO: " + reader.GetString(3).ToUpper(); }
                 if (reader.GetString(2) != "") { label14.Text = "TEL.: " + reader.GetString(2).ToUpper(); }
-                if (reader.GetString(4) != "") { cuilComprador.Text = "CUIL: " + reader.GetString(4).ToUpper(); }
+                cuilComprador.Text = "CUIL: " + reader.GetString(4).ToUpper();
                 if (reader.GetString(5) != "") { localidadLbl.Text = "LOCALIDAD: " + reader.GetString(5).ToUpper(); }
             }
             reader.Close();
@@ -93,6 +92,7 @@ namespace Sesedublo_SLPL
                     IVA.Visible = true;
                     ivaCalculado.Visible = true;
                     label2.Visible = true;
+                    cuilComprador.Visible = true;
                 }
                 else
                 {
@@ -107,6 +107,17 @@ namespace Sesedublo_SLPL
 
                 oriOdup.Text = "ORIGINAL";
             }
+            reader.Close();
+            Conexion.closeConnection();
+
+            reader = Conexion.executeProcedureWithReader("obtenerVendedorDePedido", Conexion.generarArgumentos("_id_factura"), id_factura);
+
+            reader.Read();
+            if (reader.HasRows)
+            {
+                label13.Text = "OBSERVACIONES: " + reader.GetString(0);
+            }
+
             reader.Close();
             Conexion.closeConnection();
 

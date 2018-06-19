@@ -34,9 +34,8 @@ namespace Sesedublo_SLPL
             Barcode Codigo = new Barcode();
             Codigo.IncludeLabel = true;
             panel7.BackgroundImage = Codigo.Encode(BarcodeLib.TYPE.CODE128, "2503242523", Color.Black, Color.White, 190, 51);
-
-            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerClienteParaFactura", Conexion.generarArgumentos("_id_cliente"), id_cliente);
             label24.Text = Conexion.tipo;
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerClienteParaFactura", Conexion.generarArgumentos("_id_cliente"), id_cliente);
 
             reader.Read();
             if (reader.HasRows)
@@ -48,6 +47,8 @@ namespace Sesedublo_SLPL
                 if (reader.GetString(4) != "") { cuilComprador.Text = "CUIL: " + reader.GetString(4).ToUpper(); }
                 if (reader.GetString(5) != "") { localidadLbl.Text = "LOCALIDAD: " + reader.GetString(5).ToUpper(); }
             }
+            cuilComprador.Text = "asdddd";
+            cuilComprador.Text = "CUIL: " + reader.GetString(4).ToUpper();
             reader.Close();
             Conexion.closeConnection();
 
@@ -91,6 +92,7 @@ namespace Sesedublo_SLPL
                     IVA.Visible = true;
                     ivaCalculado.Visible = true;
                     label2.Visible = true;
+                    cuilComprador.Visible = true;
                 }
                 else
                 {
@@ -105,6 +107,17 @@ namespace Sesedublo_SLPL
 
                 oriOdup.Text = "DUPLICADO";
             }
+            reader.Close();
+            Conexion.closeConnection();
+
+            reader = Conexion.executeProcedureWithReader("obtenerVendedorDePedido", Conexion.generarArgumentos("_id_factura"), id_factura);
+
+            reader.Read();
+            if (reader.HasRows)
+            {
+                label13.Text = "OBSERVACIONES: " + reader.GetString(0);
+            }
+
             reader.Close();
             Conexion.closeConnection();
 
@@ -244,11 +257,6 @@ namespace Sesedublo_SLPL
         }
 
         private void metroPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel5_Paint(object sender, PaintEventArgs e)
         {
 
         }

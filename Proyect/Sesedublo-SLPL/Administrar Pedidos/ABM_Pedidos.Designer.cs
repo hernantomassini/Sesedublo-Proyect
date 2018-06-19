@@ -33,6 +33,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ABM_Pedidos));
             this.PedidosDGV = new MetroFramework.Controls.MetroGrid();
+            this.IDPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comprador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pagado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Debe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Productos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Facturada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pag = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroDeFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AtrasTile = new MetroFramework.Controls.MetroTile();
             this.AgregarPedidoTile = new MetroFramework.Controls.MetroTile();
             this.modificarPedidoTile = new MetroFramework.Controls.MetroTile();
@@ -47,15 +56,6 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
-            this.IDPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comprador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pagado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Debe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Productos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Facturada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pag = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroDeFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PedidosDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,6 +120,79 @@
             this.PedidosDGV.TabIndex = 0;
             this.PedidosDGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PedidosDGV_CellDoubleClick);
             this.PedidosDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.PedidosDGV_CellFormatting);
+            // 
+            // IDPedido
+            // 
+            this.IDPedido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.IDPedido.HeaderText = "Nro de Pedido";
+            this.IDPedido.Name = "IDPedido";
+            this.IDPedido.ReadOnly = true;
+            this.IDPedido.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IDPedido.Width = 95;
+            // 
+            // Comprador
+            // 
+            this.Comprador.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Comprador.HeaderText = "Comprador";
+            this.Comprador.Name = "Comprador";
+            this.Comprador.ReadOnly = true;
+            this.Comprador.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Comprador.Width = 88;
+            // 
+            // Pagado
+            // 
+            this.Pagado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Pagado.HeaderText = "Pagado";
+            this.Pagado.Name = "Pagado";
+            this.Pagado.ReadOnly = true;
+            this.Pagado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Pagado.Width = 69;
+            // 
+            // Debe
+            // 
+            this.Debe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Debe.HeaderText = "Debe";
+            this.Debe.Name = "Debe";
+            this.Debe.ReadOnly = true;
+            this.Debe.Width = 57;
+            // 
+            // Productos
+            // 
+            this.Productos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Productos.HeaderText = "Productos";
+            this.Productos.Name = "Productos";
+            this.Productos.ReadOnly = true;
+            this.Productos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Productos.Width = 82;
+            // 
+            // Facturada
+            // 
+            this.Facturada.HeaderText = "Facturada";
+            this.Facturada.Name = "Facturada";
+            this.Facturada.ReadOnly = true;
+            this.Facturada.Width = 81;
+            // 
+            // Pag
+            // 
+            this.Pag.HeaderText = "Pagado";
+            this.Pag.Name = "Pag";
+            this.Pag.ReadOnly = true;
+            this.Pag.Width = 69;
+            // 
+            // numeroDeFactura
+            // 
+            this.numeroDeFactura.HeaderText = "Nro de Factura";
+            this.numeroDeFactura.Name = "numeroDeFactura";
+            this.numeroDeFactura.ReadOnly = true;
+            this.numeroDeFactura.Width = 97;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            this.Precio.Visible = false;
+            this.Precio.Width = 61;
             // 
             // AtrasTile
             // 
@@ -337,7 +410,7 @@
             this.id_pedido.DisplayIcon = true;
             this.id_pedido.Icon = ((System.Drawing.Image)(resources.GetObject("id_pedido.Icon")));
             this.id_pedido.Lines = new string[0];
-            this.id_pedido.Location = new System.Drawing.Point(336, 48);
+            this.id_pedido.Location = new System.Drawing.Point(332, 48);
             this.id_pedido.MaxLength = 60;
             this.id_pedido.Name = "id_pedido";
             this.id_pedido.PasswordChar = '\0';
@@ -362,7 +435,7 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.Location = new System.Drawing.Point(421, 50);
+            this.metroLabel1.Location = new System.Drawing.Point(416, 50);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(103, 19);
             this.metroLabel1.TabIndex = 23;
@@ -372,9 +445,9 @@
             // 
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel2.Location = new System.Drawing.Point(233, 50);
+            this.metroLabel2.Location = new System.Drawing.Point(227, 50);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(100, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(99, 19);
             this.metroLabel2.TabIndex = 25;
             this.metroLabel2.Text = "Nro de Pedido:";
             // 
@@ -416,79 +489,6 @@
             this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.metroTextBox1.TextChanged += new System.EventHandler(this.metroTextBox1_TextChanged);
             this.metroTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.metroTextBox1_KeyPress);
-            // 
-            // IDPedido
-            // 
-            this.IDPedido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.IDPedido.HeaderText = "Nro de Pedido";
-            this.IDPedido.Name = "IDPedido";
-            this.IDPedido.ReadOnly = true;
-            this.IDPedido.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IDPedido.Width = 95;
-            // 
-            // Comprador
-            // 
-            this.Comprador.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Comprador.HeaderText = "Comprador";
-            this.Comprador.Name = "Comprador";
-            this.Comprador.ReadOnly = true;
-            this.Comprador.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Comprador.Width = 88;
-            // 
-            // Pagado
-            // 
-            this.Pagado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Pagado.HeaderText = "Pagado";
-            this.Pagado.Name = "Pagado";
-            this.Pagado.ReadOnly = true;
-            this.Pagado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Pagado.Width = 69;
-            // 
-            // Debe
-            // 
-            this.Debe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Debe.HeaderText = "Debe";
-            this.Debe.Name = "Debe";
-            this.Debe.ReadOnly = true;
-            this.Debe.Width = 57;
-            // 
-            // Productos
-            // 
-            this.Productos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Productos.HeaderText = "Productos";
-            this.Productos.Name = "Productos";
-            this.Productos.ReadOnly = true;
-            this.Productos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Productos.Width = 82;
-            // 
-            // Facturada
-            // 
-            this.Facturada.HeaderText = "Facturada";
-            this.Facturada.Name = "Facturada";
-            this.Facturada.ReadOnly = true;
-            this.Facturada.Width = 81;
-            // 
-            // Pag
-            // 
-            this.Pag.HeaderText = "Pagado";
-            this.Pag.Name = "Pag";
-            this.Pag.ReadOnly = true;
-            this.Pag.Width = 69;
-            // 
-            // numeroDeFactura
-            // 
-            this.numeroDeFactura.HeaderText = "Nro de Factura";
-            this.numeroDeFactura.Name = "numeroDeFactura";
-            this.numeroDeFactura.ReadOnly = true;
-            this.numeroDeFactura.Width = 97;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            this.Precio.Visible = false;
-            this.Precio.Width = 61;
             // 
             // ABM_Pedidos
             // 

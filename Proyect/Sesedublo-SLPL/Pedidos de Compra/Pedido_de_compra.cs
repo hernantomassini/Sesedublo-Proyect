@@ -99,14 +99,15 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
 
                 if (Convert.ToString(filaDgv.Cells[7].Value) == "SI")
                 {
-                    Funciones.imprimirMensajeDeError("No se puede modificar un pedido de compra que ya ha sido pasado a stock", this);
-                    return;
+                    Manejador_Formularios.MostrarPedidoCompra.mostrarPedido(id_pedido);
+                    Manejador_Formularios.MostrarPedidoCompra.Show();
+
                 }
 
                 if (Decimal.Compare(debeP, precioP) != 0)
                 {
-                    Funciones.imprimirMensajeDeError("No se puede modificar un pedido de compra que ya ha sido empezado a pagarse, contacte a su administrador", this);
-                    return;
+                    Manejador_Formularios.MostrarPedidoCompra.mostrarPedido(id_pedido);
+                    Manejador_Formularios.MostrarPedidoCompra.Show();
                 }
 
                 Manejador_Formularios.AddPedidoCompra.modificarPedido(id_pedido);

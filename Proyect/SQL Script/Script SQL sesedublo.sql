@@ -635,7 +635,8 @@ ALTER TABLE Pedidos ADD COLUMN deleted int DEFAULT 0;
 #Store Procedures
 DELIMITER //
 
-CREATE PROCEDURE actualizarPago (IN _id_pedido INT, IN _total_a_pagar DECIMAL(10,2), IN _cantidad_paga DECIMAL(10,2), _pagadoTot INT)
+DELIMITER ;;
+CREATE PROCEDURE `actualizarPago`(IN _id_pedido INT, IN _total_a_pagar DECIMAL(10,2), IN _cantidad_paga DECIMAL(10,2), _pagadoTot INT)
 BEGIN
 
 	SET @_cliente =	(SELECT CONCAT(nombre,", ",apellido) Vendedor FROM Pedidos p
@@ -658,9 +659,9 @@ WHERE
 		CALL agregarEfectivo(_cantidad_paga, CONCAT("El cliente ",@_cliente," pago un pedido nro # ", cast(_id_pedido as char(10))));
 	END IF;
     
-END //
+END ;;
 
-CREATE PROCEDURE actualizarPagoDeLea (IN _id_pedido INT, IN _total_a_pagar DECIMAL(10,2), IN _cantidad_paga DECIMAL(10,2), _pagadoTot INT)
+CREATE PROCEDURE `actualizarPagoDeLea`(IN _id_pedido INT, IN _total_a_pagar DECIMAL(10,2), IN _cantidad_paga DECIMAL(10,2), _pagadoTot INT)
 BEGIN
 
 	SET @_cliente =	(SELECT CONCAT(nombre,", ",apellido) Proveedor FROM PedidosDeLea p
@@ -683,35 +684,81 @@ WHERE
 		CALL restarEfectivo(_cantidad_paga, CONCAT("Se pago al proveedor ",@_cliente," al pedido de compra nro# ", CAST(_id_pedido as char(10))));
 	END IF;
     
-END //
+END ;;
 
+CREATE PROCEDURE `agregarCantidad`(IN _id_producto INT, _cantidad INT, _id_factura INT)
+BEGIN
+	SET @_cantidadVieja = (SELECT cantidad FROM Productos WHERE id_producto = _id_producto);
+	UPDATE Productos 
+SET 
+    cantidad = _cantidad + @_cantidadVieja
+WHERE
+    id_producto = _id_producto;
+    
+	SET @_cantidadDePrEdit = ( SELECT i.cantidadProductosEdit FROM Items i INNER JOIN Pedidos p ON i.pedido = p.id_pedido
+																 INNER JOIN Facturas f ON p.id_pedido = f.pedido 
+																 INNER JOIN Productos pr ON pr.id_producto = i.producto
+                                                                 WHERE f.id_factura = _id_factura AND pr.id_producto = _id_producto);
+    
+    UPDATE Items i
+    INNER JOIN Pedidos p ON i.pedido = p.id_pedido
+    INNER JOIN Facturas f ON p.id_pedido = f.pedido 
+    INNER JOIN Productos pr ON pr.id_producto = i.producto
+    SET i.cantidadProductosEdit = @_cantidadDePrEdit - _cantidad
+    WHERE f.id_factura = _id_factura AND pr.id_producto = _id_producto;
+    
+END;;
 
-CREATE PROCEDURE obtenerStock (IN _nombre VARCHAR(50)) 
+CREATE PROCEDURE `agregarCliente`(IN _nombre VARCHAR(255), _apellido VARCHAR(255), _mail VARCHAR(255),
+							   _direccion VARCHAR(50), _telefono VARCHAR(60), _localidad VARCHAR(60),
+                               _cuit VARCHAR(60), _razonSocial VARCHAR(60))
 BEGIN
 
-	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto, IF(p.cantidadXBulto = 0, p.costo, cast(p.costo / p.cantidadXBulto as decimal(10,2)))
-	FROM Stock s INNER JOIN Productos p 
-	ON p.id_producto = s.producto
-	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
-    AND s.deleted = 0 AND p.cantidad != 0
-    ORDER BY p.nombre;
-END //
+    INSERT INTO Clientes (nombre, apellido, email, telefono, direccion, localidad, cuit, razonSocial) VALUES (_nombre, _apellido, _mail, _telefono, _direccion, _localidad, _cuit, _razonSocial);
+END ;;
 
-
-
-CREATE PROCEDURE obtenerStockPedido (IN _nombre VARCHAR(50)) 
+CREATE PROCEDURE `agregarEfectivo`(IN _montoASumar DECIMAL(10,2), _descripcion VARCHAR(200))
 BEGIN
 
-	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto, lp.deleted
-	FROM Stock s 
-    INNER JOIN Productos p 	ON p.id_producto = s.producto
-	INNER JOIN ListaDeProductos lp ON p.nombre = lp.descripcion
-	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
-    AND s.deleted = 0 and lp.deleted = 0;
+SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
 
-END //
+UPDATE Caja 
+SET 
+    efectivoActual = (@_efectivo + _montoASumar)
+WHERE
+    id_caja = 1;
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Efectivo entrante", 
+    IF(_montoASumar > 0,CONCAT(_descripcion, " por el valor de $ ", _montoASumar), _descripcion));
 
-CREATE PROCEDURE agregarStock (IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL(10,2), IN _radioSelected INT, _tipo INT) 
+END ;;
+
+CREATE PROCEDURE `agregarItemAPedido`(IN _id_pedido INT, IN _id_producto INT, IN _cantidad INT, _valorDelItem decimal(10,2))
+BEGIN
+
+SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = _id_producto) - _cantidad;
+
+	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = _id_producto;
+	INSERT INTO Items (producto, pedido, cantidadProductos, cantidadProductosEdit, valorDelItem) VALUES (_id_producto, _id_pedido, _cantidad, _cantidad, _valorDelItem);
+
+END ;;
+
+CREATE PROCEDURE `agregarNotaDeCredito`(IN _id_factura INT, _cantidad DECIMAL(10 , 2), _motivo VARCHAR(50))
+BEGIN
+	  INSERT INTO NotasDeCredito (factura, importe, motivo, fecha) VALUES (_id_factura, _cantidad, _motivo, NOW());
+   
+   UPDATE Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido SET precio = (precio - _cantidad) 
+   WHERE id_factura = _id_factura ;
+   
+
+	
+END ;;
+
+CREATE PROCEDURE `agregarNuevoProducto`(IN _nombre VARCHAR(60))
+BEGIN
+	INSERT INTO ListaDeProductos(descripcion) VALUES (_nombre);
+END ;;
+
+CREATE PROCEDURE `agregarStock`(IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL(10,2), IN _radioSelected INT, _tipo INT)
 BEGIN
 
 SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AND cantidadXBulto = _cantidadXBulto AND cantidadXBulto != 0);
@@ -744,46 +791,73 @@ SET @_id_producto = (SELECT id_producto FROM Productos WHERE nombre = _nombre AN
 				UPDATE Productos SET cantidad = _cantidad + @_cantidadVieja, PVBulto = _PVBulto, PVUnitario = _PVUnitario WHERE id_producto = @_id_producto;
             END IF;
     END IF;
-END //
+END ;;
 
-CREATE PROCEDURE modificarStock (IN _id_stock INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL(10,2)) 
+CREATE PROCEDURE `borrarPedido`(IN _id_pedido INT)
 BEGIN
 
-SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
+UPDATE Pedidos SET deleted = 1 WHERE id_pedido = _id_pedido;
 
-	UPDATE Productos SET 
-	cantidad = _cantidad,
-    cantidadXBulto = _cantidadXBulto,
-    costo = _costo,
-    nombre = _nombre,
-    PVUnitario = _PVUnitario,
-    PVBulto = _PVBulto
-    WHERE id_producto = @_id_producto;
+END ;;
 
-END //
+CREATE PROCEDURE `borrarPedidoDeLea`(IN _id_pedidoLea INT)
+BEGIN
 
-CREATE PROCEDURE borrarStock (IN _id_stock INT) 
+	DELETE FROM ItemsDeLea WHERE id_pedido = _id_pedidoLea; 
+    DELETE FROM PedidosDeLea WHERE id_pedido = _id_pedidoLea;
+
+END ;;
+
+CREATE PROCEDURE `borrarStock`(IN _id_stock INT)
 BEGIN
 
 	UPDATE Stock SET deleted = 1 WHERE id_stock = _id_stock;
 
-END //
+END ;;
 
-CREATE PROCEDURE obtenerProducto (IN _id_stock INT) 
+CREATE PROCEDURE `cargarDatosActualizarPago`(IN _id_pedido INT)
 BEGIN
 
-SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
+	SELECT (precio - pagadoHastaElMomento),0 FROM Pedidos WHERE id_pedido = _id_pedido;
 
-	SELECT 
-    cantidad, cantidadXBulto, nombre, costo, PVUnitario, PVBulto, radioSelected
-FROM
-    Productos
-WHERE
-    id_producto = @_id_producto;
-    
-END //
+END ;;
 
-CREATE PROCEDURE cargarGrillaClientes (IN _nombre VARCHAR(255), _apellido VARCHAR(50), _direccion VARCHAR(255))
+CREATE PROCEDURE `cargarDatosActualizarPagoDeLea`(IN _id_pedido INT)
+BEGIN
+
+	SELECT (costo - pagadoHastaElMomento),0 FROM PedidosDeLea WHERE id_pedido = _id_pedido;
+
+END ;;
+
+CREATE PROCEDURE `cargarDeudas`(IN _nombre VARCHAR(50))
+BEGIN
+
+SELECT CONCAT(c.nombre, " ", c.apellido) as Cliente,SUM(pagadoHastaElMomento) as Pagado, SUM(precio) - SUM(pagadoHastaElMomento) as Debe,
+	 IF(SUM(precio) - SUM(pagadoHastaElMomento) > 0, 'NO', 'SI') as 'Esta todo pago?' 
+	  FROM Pedidos p
+INNER JOIN Clientes c ON c.id_cliente = p.comprador
+WHERE ((CONCAT(c.nombre, " ", c.apellido) LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+AND p.deleted = 0
+GROUP BY comprador
+ORDER BY Debe DESC;
+
+END ;;
+
+CREATE PROCEDURE `cargarDeudasDeCompra`(IN _nombre VARCHAR(50))
+BEGIN
+
+SELECT CONCAT(c.nombre, " ", c.apellido) as Cliente,SUM(pagadoHastaElMomento) as Pagado, SUM(costo) - SUM(pagadoHastaElMomento) as Debemos,
+	 IF(SUM(costo) - SUM(pagadoHastaElMomento) > 0, 'NO', 'SI') as 'Esta todo pago?' 
+	  FROM PedidosDeLea p
+INNER JOIN Clientes c ON c.id_cliente = p.vendedor
+WHERE ((CONCAT(c.nombre, " ", c.apellido) LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+and p.deleted = 0
+GROUP BY vendedor
+ORDER BY Debemos DESC;
+
+END ;;
+
+CREATE PROCEDURE `cargarGrillaClientes`(IN _nombre VARCHAR(255), _apellido VARCHAR(50), _direccion VARCHAR(255))
 BEGIN
 
 	SELECT c.id_cliente, c.nombre AS Nombre, c.apellido AS Apellido, c.email AS Mail, c.telefono AS Telefono, c.direccion AS Direccion, c.localidad AS Localidad, c.cuit as CUIT, c.razonSocial AS 'Razon Social' FROM Clientes c
@@ -791,43 +865,26 @@ BEGIN
 	AND ((c.apellido LIKE CONCAT("%", _apellido, "%") COLLATE utf8_general_ci ) OR (_apellido IS NULL OR _apellido = ""))
 	AND ((c.direccion LIKE CONCAT("%", _direccion, "%") COLLATE utf8_general_ci) OR (_direccion IS NULL OR _direccion = ""))
     ORDER BY c.nombre,c.apellido;
-END //
+END ;;
 
-CREATE PROCEDURE agregarCliente (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _mail VARCHAR(255),
-							   _direccion VARCHAR(50), _telefono VARCHAR(60), _localidad VARCHAR(60),
-                               _cuit VARCHAR(60), _razonSocial VARCHAR(60))
+CREATE PROCEDURE `cargarGrillaDeOperaciones`(IN  _operacion VARCHAR(255), _descripcion VARCHAR(50))
 BEGIN
+	SELECT fecha AS Fecha, operacion AS Operacion, descripcion AS Descripcion FROM Operaciones
+	WHERE ((descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
+	AND ((operacion LIKE CONCAT("%", _operacion, "%") COLLATE utf8_general_ci ) OR (_operacion IS NULL OR _operacion = ""))
+    ORDER BY id_operacion DESC
+    LIMIT 3000;
+END ;;
 
-    INSERT INTO Clientes (nombre, apellido, email, telefono, direccion, localidad, cuit, razonSocial) VALUES (_nombre, _apellido, _mail, _telefono, _direccion, _localidad, _cuit, _razonSocial);
-END //
-
-CREATE PROCEDURE modificarCliente (IN _id_cliente INT, _nombre VARCHAR(255), _apellido VARCHAR(255), _mail VARCHAR(255),
-										_direccion VARCHAR(50), _telefono VARCHAR(60), _localidad VARCHAR(60),
-                               _cuit VARCHAR(60), _razonSocial VARCHAR(60))
+CREATE PROCEDURE `cargarGrillaFacturas`(IN _nombre VARCHAR(255), _apellido VARCHAR(255), _descripcion VARCHAR(50), _fecha VARCHAR(50))
 BEGIN
-    UPDATE Clientes SET nombre = _nombre, email = _mail, telefono = _telefono, apellido = _apellido, direccion = _direccion, localidad = _localidad, cuit = _cuit, razonSocial = _razonSocial WHERE id_cliente = _id_cliente ;
-END //
-
-CREATE PROCEDURE obtenerCliente (IN _id_cliente INT) 
-BEGIN
-
-	SELECT nombre,apellido, email, telefono, direccion, localidad, cuit, razonSocial FROM Clientes WHERE id_cliente = _id_cliente;
-END //
-
-CREATE PROCEDURE obtenerClienteParaFactura (IN _id_cliente INT) 
-BEGIN
-
-	SELECT CONCAT(nombre," ",apellido), direccion, telefono, email, cuit, localidad FROM Clientes WHERE id_cliente = _id_cliente;
-END //
-
-CREATE PROCEDURE cargarGrillaFacturas (IN _nombre VARCHAR(255), _apellido VARCHAR(255), _descripcion VARCHAR(50), _fecha VARCHAR(50))
-BEGIN
-	SELECT f.id_factura as 'Nro de Factura', c.id_cliente, f.fecha AS 'Fecha de Factura', CONCAT(c.nombre, " ", c.apellido) AS Nombre, f.tipoDeFactura AS 'Tipo de factura', p.precio AS Precio, group_concat(pr.nombre) AS 'Productos de Factura', f.pedido AS 'Nro de pedido' FROM Facturas f
+	SELECT f.id_factura as 'Nro de Factura', c.id_cliente, f.fecha AS 'Fecha de Factura', CONCAT(c.nombre, " ", c.apellido) AS Nombre, f.tipoDeFactura AS 'Tipo de factura', p.precio AS Precio, group_concat(pr.nombre) AS 'Productos de Factura', f.pedido AS 'Nro de pedido',  IF(p.pagadoHastaElMomento = precio, 'SI', 'NO') as 'Pagado?' FROM Facturas f
 	INNER JOIN Pedidos p ON p.id_pedido = f.pedido
 	INNER JOIN Clientes c ON p.comprador = c.id_cliente
 	INNER JOIN Items i ON p.id_pedido = i.pedido
 	INNER JOIN Productos pr ON i.producto = pr.id_producto
-	WHERE ((CONCAT(c.nombre, " ", c.apellido) LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+	WHERE 
+    ((CONCAT(c.nombre, " ", c.apellido) LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci  ) OR (_nombre IS NULL OR _nombre = ""))
 	AND ((f.id_factura = CONVERT(_apellido,UNSIGNED INTEGER)) OR (_apellido IS NULL OR _apellido = ""))
     AND ((f.pedido = CONVERT(_descripcion,UNSIGNED INTEGER) ) OR (_descripcion IS NULL OR _descripcion = ""))
     AND ((DATE_FORMAT(CAST(fecha AS DATE) , '%d-%m-%Y') = _fecha) OR (_fecha IS NULL OR _fecha = ""))
@@ -835,340 +892,17 @@ BEGIN
     GROUP BY p.id_pedido
     ORDER BY f.id_factura DESC
     LIMIT 3000;
-END //
+END ;;
 
-CREATE PROCEDURE agregarEfectivo (IN _montoASumar DECIMAL(10,2), _descripcion VARCHAR(200)) 
+CREATE PROCEDURE `cargarNotasDeCredito`(IN _id_factura INT)
 BEGIN
 
-SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
-
-UPDATE Caja 
-SET 
-    efectivoActual = (@_efectivo + _montoASumar)
-WHERE
-    id_caja = 1;
-    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Efectivo entrante", 
-    IF(_montoASumar > 0,CONCAT(_descripcion, " por el valor de $ ", _montoASumar), _descripcion));
-
-END //
-
-CREATE PROCEDURE restarEfectivo (IN _montoARestar DECIMAL(10,2), _descripcion VARCHAR(200)) 
-BEGIN
-
-	SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
-
-    UPDATE Caja SET efectivoActual = (@_efectivo - _montoARestar) WHERE id_caja=1;
-    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Efectivo saliente",IF(_montoARestar > 0, CONCAT(_descripcion, " por el valor de $ ", _montoARestar), _descripcion));
-END //
-
-CREATE PROCEDURE obtenerMontoEnEfectivo () 
-BEGIN
-
-	SELECT efectivoActual FROM Caja WHERE id_caja = 1;
-
-END //
-
-
-CREATE PROCEDURE obtenerMontoEnDeudas()
-BEGIN
-
-	SELECT SUM(td.Debe) Deuda FROM (SELECT SUM(precio) - SUM(pagadoHastaElMomento) as Debe
-									FROM Pedidos p
-									INNER JOIN Clientes c ON c.id_cliente = p.comprador
-                                    GROUP BY comprador
-									ORDER BY Debe DESC) td;
-
-END //
-
-CREATE PROCEDURE obtenerMontoEnProductos () 
-BEGIN
-
-	SELECT SUM(p.costo * cast(p.cantidad as decimal(10,2))) FROM Stock s INNER JOIN Productos p
-	ON p.id_producto = s.producto
-    where p.cantidad > 0;
-
-END //
-
-CREATE PROCEDURE cargarGrillaDeOperaciones (IN  _operacion VARCHAR(255), _descripcion VARCHAR(50))
-BEGIN
-	SELECT fecha AS Fecha, operacion AS Operacion, descripcion AS Descripcion FROM Operaciones
-	WHERE ((descripcion LIKE CONCAT("%", _descripcion, "%") COLLATE utf8_general_ci ) OR (_descripcion IS NULL OR _descripcion = ""))
-	AND ((operacion LIKE CONCAT("%", _operacion, "%") COLLATE utf8_general_ci ) OR (_operacion IS NULL OR _operacion = ""))
-    ORDER BY id_operacion DESC
-    LIMIT 3000;
-END //
-
-CREATE PROCEDURE obtenerPedidos (IN _nombre VARCHAR(50),_id_pedido VARCHAR(50),_id_factura VARCHAR(50)) 
-BEGIN
-        SELECT p.id_pedido, CONCAT(c.nombre, " ", c.apellido), p.pagadoHastaElMomento, p.precio - p.pagadoHastaElMomento, group_concat(pr.nombre), p.facturada, f.id_factura, p.precio FROM Pedidos p 
-        LEFT JOIN Facturas f ON p.id_pedido = f.pedido
-        INNER JOIN Clientes c ON p.comprador = c.id_cliente
-        INNER JOIN Items i ON p.id_pedido = i.pedido
-        INNER JOIN Productos pr ON i.producto = pr.id_producto
-        WHERE ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
-		AND ((f.id_factura = CONVERT(_id_factura,UNSIGNED INTEGER)) OR (_id_factura IS NULL OR _id_factura = ""))
-		AND ((p.id_pedido = CONVERT(_id_pedido,UNSIGNED INTEGER) ) OR (_id_pedido IS NULL OR _id_pedido = ""))
-        AND i.cantidadProductos > 0
-        AND p.deleted = 0
-        GROUP BY p.id_pedido
-        ORDER BY p.id_pedido DESC
-		LIMIT 3000;
-END //
-
-CREATE PROCEDURE borrarPedido (IN _id_pedido INT)
-BEGIN
-
-UPDATE Pedidos SET deleted = 1 WHERE id_pedido = _id_pedido;
-
-END //
-
-CREATE PROCEDURE agregarNuevoProducto(IN _nombre VARCHAR(60))
-BEGIN
-	INSERT INTO ListaDeProductos(descripcion) VALUES (_nombre);
-END //
-
-CREATE PROCEDURE crearPedido (IN _id_comprador INT, IN _pagadoHastaElMomento DECIMAL(10,2), IN _precio DECIMAL(10,2))
-BEGIN
-
-	INSERT INTO Pedidos (comprador, pagadoHastaElMomento, precio) VALUES (_id_comprador, _pagadoHastaElMomento, _precio);
-	SELECT LAST_INSERT_ID();
-    
-	IF(_pagadoHastaElMomento > 0)
-    THEN
-		SET @_cliente = (SELECT CONCAT(nombre, ", ", apellido) FROM Clientes WHERE id_cliente = _id_comprador);
-		CALL agregarEfectivo(_pagadoHastaElMomento, CONCAT("El cliente ",@_cliente," pago un pedido nro # ",(SELECT LAST_INSERT_ID()) ));
-	END IF;
-    
-END //
-
-CREATE PROCEDURE registrarPedidoDeCompra (IN _id_pedidoLea INT, IN _costo DECIMAL(10,2), IN _id_vendedor INT)
-BEGIN
-	
-    SET @_cliente = (SELECT CONCAT(nombre, ", ", apellido) FROM Clientes WHERE id_cliente = _id_vendedor);
-    SET @_descripcion = (SELECT CONCAT("Se le hizo un pedido de compra nro # ", _id_pedidoLea ," al cliente ",@_cliente," por el costo de ", _costo));
-    
-    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Pedido de compra", @_descripcion);
-
-END //
-
-
-CREATE PROCEDURE registrarAgregadoDeStock (IN _cantidad INT, _nombre VARCHAR(50), _costo DECIMAL(10,2))
-BEGIN
-	
-    SET @_costo = (_cantidad * _costo);
-    
-    SET @_descripcion = (SELECT CONCAT("Se agrego manualmente stock del producto ", _nombre ," por la cantidad de ",_cantidad," por el costo de ", @_costo));
-    
-    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Agregado de Stock Manual", @_descripcion);
-
-END //
-
-
-CREATE PROCEDURE registrarPedido (IN _id_pedido INT, IN _precio DECIMAL(10,2), IN _id_comprador INT)
-BEGIN
-	
-    SET @_cliente = (SELECT CONCAT(nombre, ", ", apellido) FROM Clientes WHERE id_cliente = _id_comprador);
-    SET @_descripcion = (SELECT CONCAT("Se le hizo un pedido nro # ", _id_pedido ," al cliente ",@_cliente," por el precio de ", _precio));
-    
-    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Pedido", @_descripcion);
-
-END //
-
-CREATE PROCEDURE agregarItemAPedido (IN _id_pedido INT, IN _id_producto INT, IN _cantidad INT, _valorDelItem decimal(10,2))
-BEGIN
-
-SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = _id_producto) - _cantidad;
-
-	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = _id_producto;
-	INSERT INTO Items (producto, pedido, cantidadProductos, cantidadProductosEdit, valorDelItem) VALUES (_id_producto, _id_pedido, _cantidad, _cantidad, _valorDelItem);
-
-END //
-
-CREATE PROCEDURE generarFactura (IN _id_pedido INT, IN _tipoFactura VARCHAR(60))
-BEGIN
-
-	INSERT INTO Facturas (fecha, tipoDeFactura, pedido) VALUES (NOW(), _tipoFactura, _id_pedido);
-    UPDATE Pedidos SET facturada = 1 WHERE _id_pedido = id_pedido;
-END //
-
-CREATE PROCEDURE obtenerDatosDeUnPedido (IN _id_pedido INT)
-BEGIN
-
-	SELECT pagadoHastaElMomento, precio, comprador FROM Pedidos WHERE id_pedido = _id_pedido;
-    
-END //
-
-CREATE PROCEDURE obtenerItems (IN _id_pedido INT)
-BEGIN
-
-	SELECT s.id_stock, cantidadProductos, i.valorDelItem FROM Items i
-    INNER JOIN Stock s ON i.producto = s.producto 
-	INNER JOIN Pedidos p ON p.id_pedido = i.pedido
-    INNER JOIN Productos pr ON pr.id_producto = i.producto
-    WHERE i.pedido = _id_pedido AND cantidadProductos != 0;
-    
-END //
-
-CREATE PROCEDURE updatearStock (IN _id_stock INT, IN _cantidad INT)
-BEGIN
-
-SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
-SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = @_id_producto) + _cantidad;
-
-	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = @_id_producto;
-    
-END //
-
-CREATE PROCEDURE obtenerInfoItems (IN _id_producto INT)
-BEGIN
-
-	SELECT s.id_stock, p.nombre, p.PVUnitario, p.PVBulto, p.cantidadXBulto FROM Stock s
-    INNER JOIN Productos p ON s.producto = p.id_producto
-    WHERE s.producto = _id_producto;
-
-END //
-
-CREATE PROCEDURE obtenerFactura (IN _id_factura INT)
-BEGIN
-	SELECT f.tipoDeFactura, p.precio, f.fecha FROM Facturas f
-    INNER JOIN Pedidos p ON p.id_pedido = f.pedido
-    WHERE f.id_factura = _id_factura; 
-END //
-
-CREATE PROCEDURE obtenerItemsDeFactura (IN _id_factura INT)
-BEGIN
-
-CREATE TABLE ItemsDeFac(
-		nombre VARCHAR(50),
-        cantidadPr INT DEFAULT 0,
-        precioUnitario DECIMAL(18,2) DEFAULT 0,
-        precioBulto DECIMAL(18,2) DEFAULT 0,
-        precioTotal DECIMAL(18,2) DEFAULT 0
-	);
-	
-	INSERT INTO ItemsDeFac SELECT pr.nombre AS Nombre, i.cantidadProductos AS 'Cantidad Total',
-		   IF(PVBulto = 0, i.valorDelItem, Round(i.valorDelItem / cantidadXBulto, 2)) AS 'Precio Unitario',
-           IF(PVBulto = 0, 0, Round(i.valorDelItem, 2)) AS 'Precio Bulto',
-		   IF(PVBulto = 0, Round(i.valorDelItem * i.cantidadProductos, 2), Round(i.valorDelItem * i.cantidadProductos, 2)) AS 'Precio Total'
-	FROM Facturas f
-    INNER JOIN Pedidos p ON p.id_pedido = f.pedido
-    INNER JOIN Items i ON i.pedido = p.id_pedido
-    INNER JOIN Productos pr ON pr.id_producto = i.producto
-    WHERE f.id_factura = _id_factura AND i.cantidadProductos > 0
-    GROUP BY i.id_item;
-    
-    
-    INSERT INTO ItemsDeFac(nombre,precioTotal) 
-    SELECT "Nota de credito", importe FROM NotasDeCredito
+	SELECT fecha AS Fecha, importe AS Importe, motivo AS Motivo FROM NotasDeCredito
     WHERE factura = _id_factura;
-    
-	SELECT 
-    nombre AS 'DESCRIPCION',
-    IF(cantidadPr = 0, '-', cast(cantidadPr as char(10))) AS 'CANT. TOT.',
-    IF(precioUnitario = 0,
-        '-',
-        cast(precioUnitario as char(10))) AS 'PRECIO UNITARIO',
-    IF(precioBulto = 0, '-', cast(precioBulto as char(10))) AS 'PRECIO BULTO',
-    precioTotal AS 'PRECIO TOTAL'
-FROM
-    ItemsDeFac;
-    
-    DROP TABLE ItemsDeFac;
-    
-END //
+	
+END ;;
 
-CREATE PROCEDURE obtenerItemsDeFacturaSinNC (IN _id_factura INT)
-BEGIN
-SELECT pr.id_producto, pr.nombre AS Nombre, i.cantidadProductosEdit AS 'Cantidad Total',
-		   IF(PVBulto = 0, i.valorDelItem, Round(i.valorDelItem / cantidadXBulto, 2)) AS 'Precio Unitario',
-           IF(PVBulto = 0, 0, Round(i.valorDelItem, 2)) AS 'Precio Bulto',
-		   IF(PVBulto = 0, Round(i.valorDelItem * i.cantidadProductosEdit, 2), Round(i.valorDelItem * i.cantidadProductosEdit, 2)) AS 'Precio Total'
-	FROM Facturas f
-    INNER JOIN Pedidos p ON p.id_pedido = f.pedido
-    INNER JOIN Items i ON i.pedido = p.id_pedido
-    INNER JOIN Productos pr ON pr.id_producto = i.producto
-    WHERE f.id_factura = _id_factura
-    GROUP BY i.id_item;
-END //
-
-CREATE PROCEDURE agregarCantidad (IN _id_producto INT, _cantidad INT, _id_factura INT)
-BEGIN
-	SET @_cantidadVieja = (SELECT cantidad FROM Productos WHERE id_producto = _id_producto);
-	UPDATE Productos 
-SET 
-    cantidad = _cantidad + @_cantidadVieja
-WHERE
-    id_producto = _id_producto;
-    
-	SET @_cantidadDePrEdit = ( SELECT i.cantidadProductosEdit FROM Items i INNER JOIN Pedidos p ON i.pedido = p.id_pedido
-																 INNER JOIN Facturas f ON p.id_pedido = f.pedido 
-																 INNER JOIN Productos pr ON pr.id_producto = i.producto
-                                                                 WHERE f.id_factura = _id_factura AND pr.id_producto = _id_producto);
-    
-    UPDATE Items i
-    INNER JOIN Pedidos p ON i.pedido = p.id_pedido
-    INNER JOIN Facturas f ON p.id_pedido = f.pedido 
-    INNER JOIN Productos pr ON pr.id_producto = i.producto
-    SET i.cantidadProductosEdit = @_cantidadDePrEdit - _cantidad
-    WHERE f.id_factura = _id_factura AND pr.id_producto = _id_producto;
-    
-END//
-
-CREATE PROCEDURE obtenerLista (IN _nombre VARCHAR(60))
-BEGIN
-	#retorna id_producto (0), descripcion(1), tipo(2)(wut), 3 - costo, 	4 - precio unitario, 5- precio bulto, 6-radioSelected
-	SELECT lp.id_listPro,
-    descripcion AS Descripcion,
-    IF(PVunitario IS NULL,'N/E',IF(cantidadXBulto = 0, 'Individual',  cast(cantidadXBulto as char(10)))) AS 'Tipo',
-    IF(costo IS NULL,'N/E',cast(costo as char(10))) AS Costo, 
-    IF(PVunitario IS NULL,'N/E',cast(PVunitario as char(10))) AS 'Precio Unitario',
-    IF(PVBulto IS NULL, 'N/E', IF(PVBulto = 0,'-',cast(PVBulto as char(10)))) AS 'Precio Bulto',
-    radioSelected AS 'RadioSelected' FROM ListaDeProductos lp
-    LEFT JOIN Productos p ON lp.descripcion = p.nombre
-	WHERE ((descripcion LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
-    AND deleted = 0
-    ORDER BY descripcion;
-END //
-
-CREATE PROCEDURE crearPedidoDeLea (IN _costo DECIMAL(10,2), _id_vendedor INT)
-BEGIN
-
-	INSERT INTO PedidosDeLea (fecha, costo, vendedor) VALUES (NOW(), _costo, _id_vendedor);
-	SELECT LAST_INSERT_ID();
-    
-END //
-
-CREATE PROCEDURE crearItemDeLea (IN _id_pedidoLea INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL (10,2), IN _radioSelected INT)
-BEGIN
-    
-    INSERT INTO StockACargar (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto, radioSelected) VALUES (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto, _radioSelected);
-    SET @_id_stockACargar = LAST_INSERT_ID();
-
-    INSERT INTO ItemsDeLea (id_pedido, id_stockACargar) VALUES (_id_pedidoLea, @_id_stockACargar);
-
-END //
-
-CREATE PROCEDURE cobrarPedidoDeLea(IN _id_pedido INT)
-BEGIN
-	SET @_costo = (SELECT costo FROM PedidosDeLea WHERE id_pedido = _id_pedido);
-    SET @_proveedor = (SELECT CONCAT(nombre,", ",apellido) Vendedor FROM PedidosDeLea p
-				   inner join Clientes c on c.id_cliente = p.vendedor
-                   WHERE id_pedido = _id_pedido);
-    UPDATE PedidosDeLea SET pagado = 1 WHERE id_pedido = _id_pedido;
-	CALL restarEfectivo (@_costo , CONCAT("Se realizo un pedido de compra al proveedor ", @_proveedor));
-END //
-
-CREATE PROCEDURE obtenerItemsDeLea (IN _id_pedidoLea INT)
-BEGIN
-
-	SELECT sac.cantidadXBulto, sac.nombre, sac.costo, sac.PVUnitario, sac.PVBulto, sac.cantidad, sac.radioSelected FROM ItemsDeLea iLea
-    INNER JOIN StockACargar sac ON iLea.id_stockACargar = sac.id_stockACargar
-    INNER JOIN PedidosDeLea pdl ON pdl.id_pedido = iLea.id_pedido
-    WHERE pdl.id_pedido = _id_pedidoLea;
-
-END //
-
-CREATE PROCEDURE cargarPedidoCompras (IN _nombre VARCHAR(60))
+CREATE PROCEDURE `cargarPedidoCompras`(IN _nombre VARCHAR(60))
 BEGIN
 
 	SELECT p.id_pedido, CONCAT(c.nombre," ",c.apellido) AS Proveedor, p.fecha, group_concat(sac.nombre), p.costo, (p.costo - p.pagadoHastaElMomento) cantidad, IF(p.stockCargado = 1, 'SI', 'NO') FROM PedidosDeLea p 
@@ -1181,71 +915,9 @@ BEGIN
     ORDER BY p.id_pedido DESC
 	LIMIT 5000;
 
-END //
+END ;;
 
-CREATE PROCEDURE borrarPedidoDeLea (IN _id_pedidoLea INT)
-BEGIN
-
-	DELETE FROM ItemsDeLea WHERE id_pedido = _id_pedidoLea; 
-    DELETE FROM PedidosDeLea WHERE id_pedido = _id_pedidoLea;
-
-END //
-
-CREATE PROCEDURE cargarDatosActualizarPago (IN _id_pedido INT)
-BEGIN
-
-	SELECT (precio - pagadoHastaElMomento),0 FROM Pedidos WHERE id_pedido = _id_pedido;
-
-END //
-
-CREATE PROCEDURE cargarDatosActualizarPagoDeLea (IN _id_pedido INT)
-BEGIN
-
-	SELECT (costo - pagadoHastaElMomento),0 FROM PedidosDeLea WHERE id_pedido = _id_pedido;
-
-END //
-
-CREATE PROCEDURE agregarNotaDeCredito (IN _id_factura INT, _cantidad DECIMAL(10 , 2), _motivo VARCHAR(50))
-BEGIN
-	INSERT INTO NotasDeCredito (factura, importe, motivo, fecha) VALUES (_id_factura, _cantidad, _motivo, NOW());
-   
-   UPDATE Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido SET precio = (precio - _cantidad) 
-   WHERE id_factura = _id_factura ;
-   
-	SET @_pagadoHastaElMomento = ( SELECT pagadoHastaElMomento FROM Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido WHERE id_factura = _id_factura);
-	SET @_id_pedido = ( SELECT id_pedido FROM Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido WHERE id_factura = _id_factura);
-    SET @_precio = ( SELECT precio FROM Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido WHERE id_factura = _id_factura);
-    
-    IF(@_pagadoHastaElMomento > @_precio)
-    THEN
-		UPDATE Pedidos p INNER JOIN Facturas f on f.pedido = p.id_pedido SET pagadoHastaElMomento = ( @_pagadoHastaElMomento - (_cantidad)) 
-		WHERE id_factura = _id_factura ;
-        CALL restarEfectivo(((_cantidad)), CONCAT("Se hizo una NC al pedido nro# ", @_id_pedido));
-    END IF;
-	
-END //
-
-CREATE PROCEDURE cargarNotasDeCredito(IN _id_factura INT)
-BEGIN
-
-	SELECT fecha AS Fecha, importe AS Importe, motivo AS Motivo FROM NotasDeCredito
-    WHERE factura = _id_factura;
-	
-END //
-
-CREATE PROCEDURE obtenerItemsDeRemito(IN _id_factura INT)
-BEGIN
-	SELECT pr.nombre AS DESCRIPCION, IF(0 > i.cantidadProductosEdit, 0, i.cantidadProductosEdit) AS 'CANT.'
-	FROM Facturas f
-    INNER JOIN Pedidos p ON p.id_pedido = f.pedido
-    INNER JOIN Items i ON i.pedido = p.id_pedido
-    INNER JOIN Productos pr ON pr.id_producto = i.producto
-    WHERE f.id_factura = _id_factura
-    GROUP BY i.id_item;
-END //
-
-
-CREATE PROCEDURE cargarStockPedidoLea (IN _id_pedido INT, _tipo INT)
+CREATE PROCEDURE `cargarStockPedidoLea`(IN _id_pedido INT, _tipo INT)
 BEGIN
 
 	DECLARE finished INT DEFAULT 0;
@@ -1285,19 +957,379 @@ SET
     stockCargado = 1
 WHERE
     id_pedido = _id_pedido;
-END //
+END ;;
 
-CREATE PROCEDURE cargarDeudas (IN _nombre VARCHAR(50))
+CREATE PROCEDURE `cobrarPedidoDeLea`(IN _id_pedido INT)
+BEGIN
+	SET @_costo = (SELECT costo FROM PedidosDeLea WHERE id_pedido = _id_pedido);
+    SET @_proveedor = (SELECT CONCAT(nombre,", ",apellido) Vendedor FROM PedidosDeLea p
+				   inner join Clientes c on c.id_cliente = p.vendedor
+                   WHERE id_pedido = _id_pedido);
+    UPDATE PedidosDeLea SET pagado = 1 WHERE id_pedido = _id_pedido;
+	CALL restarEfectivo (@_costo , CONCAT("Se realizo un pedido de compra al proveedor ", @_proveedor));
+END ;;
+
+CREATE PROCEDURE `crearItemDeLea`(IN _id_pedidoLea INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(100), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL (10,2), IN _radioSelected INT)
+BEGIN
+    
+    INSERT INTO StockACargar (cantidad, cantidadXBulto, costo, nombre, PVUnitario, PVBulto, radioSelected) VALUES (_cantidad, _cantidadXBulto, _costo, _nombre, _PVUnitario, _PVBulto, _radioSelected);
+    SET @_id_stockACargar = LAST_INSERT_ID();
+
+    INSERT INTO ItemsDeLea (id_pedido, id_stockACargar) VALUES (_id_pedidoLea, @_id_stockACargar);
+
+END ;;
+
+CREATE PROCEDURE `crearPedido`(IN _id_comprador INT, IN _pagadoHastaElMomento DECIMAL(10,2), IN _precio DECIMAL(10,2), _tipo int, _vendedor varchar(100))
 BEGIN
 
-SELECT CONCAT(c.nombre, " ", c.apellido) as Cliente,SUM(pagadoHastaElMomento) as Pagado, SUM(precio) - SUM(pagadoHastaElMomento) as Debe,
-	 IF(SUM(precio) - SUM(pagadoHastaElMomento) > 0, 'NO', 'SI') as 'Esta todo pago?' 
-	  FROM Pedidos p
-INNER JOIN Clientes c ON c.id_cliente = p.comprador
-WHERE ((CONCAT(c.nombre, " ", c.apellido) LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
-GROUP BY comprador
-ORDER BY Debe DESC;
+	INSERT INTO Pedidos (comprador, pagadoHastaElMomento, precio, vendedor) VALUES (_id_comprador, _pagadoHastaElMomento, _precio, _vendedor);
+	SELECT LAST_INSERT_ID();
+    
+	IF(_pagadoHastaElMomento > 0 && _tipo = 0)
+    THEN
+		SET @_cliente = (SELECT CONCAT(nombre, ", ", apellido) FROM Clientes WHERE id_cliente = _id_comprador);
+		CALL agregarEfectivo(_pagadoHastaElMomento, CONCAT("El cliente ",@_cliente," pago un pedido nro # ",(SELECT LAST_INSERT_ID()) ));
+	END IF;
+    
+END ;;
 
-END //
+CREATE PROCEDURE `crearPedidoDeLea`(IN _costo DECIMAL(10,2), _id_vendedor INT)
+BEGIN
+
+	INSERT INTO PedidosDeLea (fecha, costo, vendedor) VALUES (NOW(), _costo, _id_vendedor);
+	SELECT LAST_INSERT_ID();
+    
+END ;;
+
+CREATE PROCEDURE `generarFactura`(IN _id_pedido INT, IN _tipoFactura VARCHAR(60))
+BEGIN
+
+	INSERT INTO Facturas (fecha, tipoDeFactura, pedido) VALUES (NOW(), _tipoFactura, _id_pedido);
+    UPDATE Pedidos SET facturada = 1 WHERE _id_pedido = id_pedido;
+END ;;
+
+CREATE PROCEDURE `modificarCliente`(IN _id_cliente INT, _nombre VARCHAR(255), _apellido VARCHAR(255), _mail VARCHAR(255),
+										_direccion VARCHAR(50), _telefono VARCHAR(60), _localidad VARCHAR(60),
+                               _cuit VARCHAR(60), _razonSocial VARCHAR(60))
+BEGIN
+    UPDATE Clientes SET nombre = _nombre, email = _mail, telefono = _telefono, apellido = _apellido, direccion = _direccion, localidad = _localidad, cuit = _cuit, razonSocial = _razonSocial WHERE id_cliente = _id_cliente ;
+END ;;
+
+CREATE PROCEDURE `modificarStock`(IN _id_stock INT, IN _cantidad INT, IN _cantidadXBulto INT, IN _costo DECIMAL(10,2), IN _nombre VARCHAR(50), IN _PVUnitario DECIMAL(10,2), IN _PVBulto DECIMAL(10,2))
+BEGIN
+
+SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
+
+	UPDATE Productos SET 
+	cantidad = _cantidad,
+    cantidadXBulto = _cantidadXBulto,
+    costo = _costo,
+    nombre = _nombre,
+    PVUnitario = _PVUnitario,
+    PVBulto = _PVBulto
+    WHERE id_producto = @_id_producto;
+
+END ;;
+
+CREATE PROCEDURE `obtenerCliente`(IN _id_cliente INT)
+BEGIN
+
+	SELECT nombre,apellido, email, telefono, direccion, localidad, cuit, razonSocial FROM Clientes WHERE id_cliente = _id_cliente;
+END ;;
+
+CREATE PROCEDURE `obtenerClienteParaFactura`(IN _id_cliente INT)
+BEGIN
+
+	SELECT CONCAT(nombre," ",apellido), direccion, telefono, email, cuit, localidad FROM Clientes WHERE id_cliente = _id_cliente;
+END ;;
+
+CREATE PROCEDURE `obtenerDatosDeUnPedido`(IN _id_pedido INT)
+BEGIN
+
+	SELECT pagadoHastaElMomento, precio, comprador, vendedor FROM Pedidos WHERE id_pedido = _id_pedido;
+    
+END ;;
+
+CREATE PROCEDURE `obtenerFactura`(IN _id_factura INT)
+BEGIN
+	SELECT f.tipoDeFactura, p.precio, f.fecha FROM Facturas f
+    INNER JOIN Pedidos p ON p.id_pedido = f.pedido
+    WHERE f.id_factura = _id_factura; 
+END ;;
+
+CREATE PROCEDURE `obtenerInfoItems`(IN _id_producto INT)
+BEGIN
+
+	SELECT s.id_stock, p.nombre, p.PVUnitario, p.PVBulto, p.cantidadXBulto FROM Stock s
+    INNER JOIN Productos p ON s.producto = p.id_producto
+    WHERE s.producto = _id_producto;
+
+END ;;
+
+CREATE PROCEDURE `obtenerItems`(IN _id_pedido INT)
+BEGIN
+
+	SELECT s.id_stock, cantidadProductos, i.valorDelItem FROM Items i
+    INNER JOIN Stock s ON i.producto = s.producto 
+	INNER JOIN Pedidos p ON p.id_pedido = i.pedido
+    INNER JOIN Productos pr ON pr.id_producto = i.producto
+    WHERE i.pedido = _id_pedido AND cantidadProductos != 0;
+    
+END ;;
+
+CREATE PROCEDURE `obtenerItemsDeFactura`(IN _id_factura INT)
+BEGIN
+
+CREATE TABLE ItemsDeFac(
+		nombre VARCHAR(50),
+        cantidadPr INT DEFAULT 0,
+        precioUnitario DECIMAL(18,2) DEFAULT 0,
+        precioBulto DECIMAL(18,2) DEFAULT 0,
+        precioTotal DECIMAL(18,2) DEFAULT 0
+	);
+	
+	INSERT INTO ItemsDeFac SELECT pr.nombre AS Nombre, i.cantidadProductos AS 'Cantidad Total',
+		   IF(PVBulto = 0, i.valorDelItem, Round(i.valorDelItem / cantidadXBulto, 2)) AS 'Precio Unitario',
+           IF(PVBulto = 0, 0, Round(i.valorDelItem, 2)) AS 'Precio Bulto',
+		   IF(PVBulto = 0, Round(i.valorDelItem * i.cantidadProductos, 2), Round(i.valorDelItem * i.cantidadProductos, 2)) AS 'Precio Total'
+	FROM Facturas f
+    INNER JOIN Pedidos p ON p.id_pedido = f.pedido
+    INNER JOIN Items i ON i.pedido = p.id_pedido
+    INNER JOIN Productos pr ON pr.id_producto = i.producto
+    WHERE f.id_factura = _id_factura AND i.cantidadProductos > 0
+    GROUP BY i.id_item;
+    
+    
+    INSERT INTO ItemsDeFac(nombre,precioTotal) 
+    SELECT "Nota de credito", importe FROM NotasDeCredito
+    WHERE factura = _id_factura;
+    
+	SELECT 
+    nombre AS 'DESCRIPCION',
+    IF(cantidadPr = 0, '-', cast(cantidadPr as char(10))) AS 'CANT. TOT.',
+    IF(precioUnitario = 0,
+        '-',
+        cast(precioUnitario as char(10))) AS 'PRECIO UNITARIO',
+    IF(precioBulto = 0, '-', cast(precioBulto as char(10))) AS 'PRECIO BULTO',
+    precioTotal AS 'PRECIO TOTAL'
+FROM
+    ItemsDeFac;
+    
+    DROP TABLE ItemsDeFac;
+    
+END ;;
+
+CREATE PROCEDURE `obtenerItemsDeFacturaSinNC`(IN _id_factura INT)
+BEGIN
+SELECT pr.id_producto, pr.nombre AS Nombre, i.cantidadProductosEdit AS 'Cantidad Total',
+		   IF(PVBulto = 0, i.valorDelItem, Round(i.valorDelItem / cantidadXBulto, 2)) AS 'Precio Unitario',
+           IF(PVBulto = 0, 0, Round(i.valorDelItem, 2)) AS 'Precio Bulto',
+		   IF(PVBulto = 0, Round(i.valorDelItem * i.cantidadProductosEdit, 2), Round(i.valorDelItem * i.cantidadProductosEdit, 2)) AS 'Precio Total'
+	FROM Facturas f
+    INNER JOIN Pedidos p ON p.id_pedido = f.pedido
+    INNER JOIN Items i ON i.pedido = p.id_pedido
+    INNER JOIN Productos pr ON pr.id_producto = i.producto
+    WHERE f.id_factura = _id_factura
+    GROUP BY i.id_item;
+END ;;
+
+CREATE PROCEDURE `obtenerItemsDeLea`(IN _id_pedidoLea INT)
+BEGIN
+
+	SELECT sac.cantidadXBulto, sac.nombre, sac.costo, sac.PVUnitario, sac.PVBulto, sac.cantidad, sac.radioSelected FROM ItemsDeLea iLea
+    INNER JOIN StockACargar sac ON iLea.id_stockACargar = sac.id_stockACargar
+    INNER JOIN PedidosDeLea pdl ON pdl.id_pedido = iLea.id_pedido
+    WHERE pdl.id_pedido = _id_pedidoLea;
+
+END ;;
+
+CREATE PROCEDURE `obtenerItemsDeRemito`(IN _id_factura INT)
+BEGIN
+	SELECT pr.nombre AS DESCRIPCION, IF(0 > i.cantidadProductosEdit, 0, i.cantidadProductosEdit) AS 'CANT.'
+	FROM Facturas f
+    INNER JOIN Pedidos p ON p.id_pedido = f.pedido
+    INNER JOIN Items i ON i.pedido = p.id_pedido
+    INNER JOIN Productos pr ON pr.id_producto = i.producto
+    WHERE f.id_factura = _id_factura
+    GROUP BY i.id_item;
+END ;;
+
+CREATE PROCEDURE `obtenerLista`(IN _nombre VARCHAR(60))
+BEGIN
+	#retorna id_producto (0), descripcion(1), tipo(2)(wut), 3 - costo, 	4 - precio unitario, 5- precio bulto, 6-radioSelected
+	SELECT lp.id_listPro,
+    descripcion AS Descripcion,
+    IF(PVunitario IS NULL,'N/E',IF(cantidadXBulto = 0, 'Individual',  cast(cantidadXBulto as char(10)))) AS 'Tipo',
+    IF(costo IS NULL,'N/E',cast(costo as char(10))) AS Costo, 
+    IF(PVunitario IS NULL,'N/E',cast(PVunitario as char(10))) AS 'Precio Unitario',
+    IF(PVBulto IS NULL, 'N/E', IF(PVBulto = 0,'-',cast(PVBulto as char(10)))) AS 'Precio Bulto',
+    radioSelected AS 'RadioSelected' FROM ListaDeProductos lp
+    LEFT JOIN Productos p ON lp.descripcion = p.nombre
+	WHERE ((descripcion LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+    AND deleted = 0
+    ORDER BY descripcion;
+END ;;
+
+CREATE PROCEDURE `obtenerListadoDePrecios`()
+BEGIN
+	SELECT p.nombre, p.PVUnitario, IF(p.cantidadXBulto <> 0, cast(p.cantidadXBulto as char(3)), '') uxv, IF(p.PVBulto > 0.00, cast(PVBulto as char(15)), '' ) upv ,p.cantidad
+	FROM Stock s INNER JOIN Productos p 
+	ON p.id_producto = s.producto
+    WHERE s.deleted = 0 AND p.cantidad >= 0
+    order by p.nombre;
+END ;;
+
+CREATE PROCEDURE `obtenerMontoEnDeudas`()
+BEGIN
+
+	SELECT SUM(td.Debe) Deuda FROM (SELECT SUM(precio) - SUM(pagadoHastaElMomento) as Debe
+									FROM Pedidos p
+									INNER JOIN Clientes c ON c.id_cliente = p.comprador
+                                    where p.deleted = 0
+                                    GROUP BY comprador
+									ORDER BY Debe DESC) td;
+
+END ;;
+
+CREATE PROCEDURE `obtenerMontoEnDeudasDeCompra`()
+BEGIN
+
+	SELECT SUM(td.Debe) Deuda FROM (SELECT SUM(costo) - SUM(pagadoHastaElMomento) as Debe
+									FROM PedidosDeLea p
+									INNER JOIN Clientes c ON c.id_cliente = p.vendedor
+                                    and p.deleted = 0
+                                    GROUP BY vendedor
+									ORDER BY Debe DESC) td;
+
+END ;;
+
+CREATE PROCEDURE `obtenerMontoEnEfectivo`()
+BEGIN
+
+	SELECT efectivoActual FROM Caja WHERE id_caja = 1;
+
+END ;;
+
+CREATE PROCEDURE `obtenerMontoEnProductos`()
+BEGIN
+
+	SELECT SUM(p.costo * cast(p.cantidad as decimal(10,2))) FROM Stock s INNER JOIN Productos p
+	ON p.id_producto = s.producto
+    where p.cantidad > 0;
+
+END ;;
+
+CREATE PROCEDURE `obtenerPedidos`(IN _nombre VARCHAR(50),_id_pedido VARCHAR(50),_id_factura VARCHAR(50))
+BEGIN
+        SELECT p.id_pedido, CONCAT(c.nombre, " ", c.apellido), p.pagadoHastaElMomento, p.precio - p.pagadoHastaElMomento, group_concat(pr.nombre), p.facturada, f.id_factura, p.precio FROM Pedidos p 
+        LEFT JOIN Facturas f ON p.id_pedido = f.pedido
+        INNER JOIN Clientes c ON p.comprador = c.id_cliente
+        INNER JOIN Items i ON p.id_pedido = i.pedido
+        INNER JOIN Productos pr ON i.producto = pr.id_producto
+        WHERE ((c.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+		AND ((f.id_factura = CONVERT(_id_factura,UNSIGNED INTEGER)) OR (_id_factura IS NULL OR _id_factura = ""))
+		AND ((p.id_pedido = CONVERT(_id_pedido,UNSIGNED INTEGER) ) OR (_id_pedido IS NULL OR _id_pedido = ""))
+        AND i.cantidadProductos > 0
+        AND p.deleted = 0
+        GROUP BY p.id_pedido
+        ORDER BY p.id_pedido DESC
+		LIMIT 700;
+END ;;
+
+CREATE PROCEDURE `obtenerProducto`(IN _id_stock INT)
+BEGIN
+
+SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
+
+	SELECT 
+    cantidad, cantidadXBulto, nombre, costo, PVUnitario, PVBulto, radioSelected
+FROM
+    Productos
+WHERE
+    id_producto = @_id_producto;
+    
+END ;;
+
+CREATE PROCEDURE `obtenerStock`(IN _nombre VARCHAR(50))
+BEGIN
+
+	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto, IF(p.cantidadXBulto = 0, p.costo, cast(p.costo / p.cantidadXBulto as decimal(10,2)))
+	FROM Stock s INNER JOIN Productos p 
+	ON p.id_producto = s.producto
+	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+    AND s.deleted = 0 AND p.cantidad != 0
+    ORDER BY p.nombre;
+END ;;
+
+CREATE PROCEDURE `obtenerStockPedido`(IN _nombre VARCHAR(50))
+BEGIN
+
+	SELECT s.id_stock, p.cantidad, p.cantidadXBulto, p.nombre, p.costo, p.PVUnitario, p.PVBulto, lp.deleted
+	FROM Stock s 
+    INNER JOIN Productos p 	ON p.id_producto = s.producto
+	INNER JOIN ListaDeProductos lp ON p.nombre = lp.descripcion
+	WHERE ((p.nombre LIKE CONCAT("%", _nombre, "%") COLLATE utf8_general_ci ) OR (_nombre IS NULL OR _nombre = ""))
+    AND s.deleted = 0 and lp.deleted = 0;
+
+END ;;
+
+CREATE PROCEDURE `obtenerVendedorDePedido`(IN _id_factura INT)
+BEGIN
+
+	SELECT UPPER(vendedor) FROM Facturas fa
+	JOIN Pedidos pe on pe.id_pedido = fa.pedido
+	where id_factura = _id_factura;
+    
+END ;;
+
+CREATE PROCEDURE `registrarAgregadoDeStock`(IN _cantidad INT, _nombre VARCHAR(50), _costo DECIMAL(10,2))
+BEGIN
+	
+    SET @_costo = (_cantidad * _costo);
+    
+    SET @_descripcion = (SELECT CONCAT("Se agrego manualmente stock del producto ", _nombre ," por la cantidad de ",_cantidad," por el costo de ", @_costo));
+    
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Agregado de Stock Manual", @_descripcion);
+
+END ;;
+
+CREATE PROCEDURE `registrarPedido`(IN _id_pedido INT, IN _precio DECIMAL(10,2), IN _id_comprador INT)
+BEGIN
+	
+    SET @_cliente = (SELECT CONCAT(nombre, ", ", apellido) FROM Clientes WHERE id_cliente = _id_comprador);
+    SET @_descripcion = (SELECT CONCAT("Se le hizo un pedido nro # ", _id_pedido ," al cliente ",@_cliente," por el precio de ", _precio));
+    
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Pedido", @_descripcion);
+
+END ;;
+
+CREATE PROCEDURE `registrarPedidoDeCompra`(IN _id_pedidoLea INT, IN _costo DECIMAL(10,2), IN _id_vendedor INT)
+BEGIN
+	
+    SET @_cliente = (SELECT CONCAT(nombre, ", ", apellido) FROM Clientes WHERE id_cliente = _id_vendedor);
+    SET @_descripcion = (SELECT CONCAT("Se le hizo un pedido de compra nro # ", _id_pedidoLea ," al cliente ",@_cliente," por el costo de ", _costo));
+    
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Pedido de compra", @_descripcion);
+
+END ;;
+
+CREATE PROCEDURE `restarEfectivo`(IN _montoARestar DECIMAL(10,2), _descripcion VARCHAR(200))
+BEGIN
+
+	SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
+
+    UPDATE Caja SET efectivoActual = (@_efectivo - _montoARestar) WHERE id_caja=1;
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Efectivo saliente",IF(_montoARestar > 0, CONCAT(_descripcion, " por el valor de $ ", _montoARestar), _descripcion));
+END ;;
+
+CREATE PROCEDURE `updatearStock`(IN _id_stock INT, IN _cantidad INT)
+BEGIN
+
+SET @_id_producto = (SELECT producto FROM Stock WHERE id_stock = _id_stock);
+SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = @_id_producto) + _cantidad;
+
+	UPDATE Productos SET cantidad = @_nuevaCantidad WHERE id_producto = @_id_producto;
+    
+END ;;
 
 DELIMITER ;

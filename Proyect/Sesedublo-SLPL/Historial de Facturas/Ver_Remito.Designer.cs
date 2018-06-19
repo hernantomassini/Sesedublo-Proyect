@@ -36,6 +36,13 @@
             this.dgvVerFactura = new MetroFramework.Controls.MetroGrid();
             this.panel6 = new System.Windows.Forms.Panel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.localidadLbl = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.codPostalComprador = new System.Windows.Forms.Label();
+            this.direccionLabel = new System.Windows.Forms.Label();
+            this.nombreLabel = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -66,13 +73,6 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.localidadLbl = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.codPostalComprador = new System.Windows.Forms.Label();
-            this.direccionLabel = new System.Windows.Forms.Label();
-            this.nombreLabel = new System.Windows.Forms.Label();
             this.metroPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVerFactura)).BeginInit();
             this.metroPanel1.SuspendLayout();
@@ -189,6 +189,70 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
+            // localidadLbl
+            // 
+            this.localidadLbl.AutoSize = true;
+            this.localidadLbl.Location = new System.Drawing.Point(248, 49);
+            this.localidadLbl.Name = "localidadLbl";
+            this.localidadLbl.Size = new System.Drawing.Size(73, 13);
+            this.localidadLbl.TabIndex = 41;
+            this.localidadLbl.Text = "LOCALIDAD: ";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(16, 64);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(69, 13);
+            this.label12.TabIndex = 40;
+            this.label12.Text = "CONTACTO:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(16, 88);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(104, 13);
+            this.label9.TabIndex = 39;
+            this.label9.Text = "OBSERVACIONES: ";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 48);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(33, 13);
+            this.label8.TabIndex = 38;
+            this.label8.Text = "TEL.:";
+            // 
+            // codPostalComprador
+            // 
+            this.codPostalComprador.AutoSize = true;
+            this.codPostalComprador.Location = new System.Drawing.Point(248, 32);
+            this.codPostalComprador.Name = "codPostalComprador";
+            this.codPostalComprador.Size = new System.Drawing.Size(34, 13);
+            this.codPostalComprador.TabIndex = 37;
+            this.codPostalComprador.Text = "CUIL:";
+            // 
+            // direccionLabel
+            // 
+            this.direccionLabel.AutoSize = true;
+            this.direccionLabel.Location = new System.Drawing.Point(16, 32);
+            this.direccionLabel.Name = "direccionLabel";
+            this.direccionLabel.Size = new System.Drawing.Size(69, 13);
+            this.direccionLabel.TabIndex = 36;
+            this.direccionLabel.Text = "DIRECCION:";
+            // 
+            // nombreLabel
+            // 
+            this.nombreLabel.AutoSize = true;
+            this.nombreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nombreLabel.Location = new System.Drawing.Point(14, 12);
+            this.nombreLabel.Name = "nombreLabel";
+            this.nombreLabel.Size = new System.Drawing.Size(105, 18);
+            this.nombreLabel.TabIndex = 35;
+            this.nombreLabel.Text = "nombreLabel";
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -204,9 +268,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(471, 60);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(72, 13);
+            this.label10.Size = new System.Drawing.Size(63, 13);
             this.label10.TabIndex = 31;
-            this.label10.Text = "Peso total: 50";
+            this.label10.Text = "Peso total: -";
             // 
             // panel2
             // 
@@ -230,9 +294,9 @@
             this.cuitV.AutoSize = true;
             this.cuitV.Location = new System.Drawing.Point(471, 79);
             this.cuitV.Name = "cuitV";
-            this.cuitV.Size = new System.Drawing.Size(63, 13);
+            this.cuitV.Size = new System.Drawing.Size(60, 13);
             this.cuitV.TabIndex = 20;
-            this.cuitV.Text = "Peso vol.: 5";
+            this.cuitV.Text = "Peso vol.: -";
             // 
             // panel1
             // 
@@ -321,9 +385,9 @@
             this.inicioActividad.AutoSize = true;
             this.inicioActividad.Location = new System.Drawing.Point(457, 144);
             this.inicioActividad.Name = "inicioActividad";
-            this.inicioActividad.Size = new System.Drawing.Size(157, 13);
+            this.inicioActividad.Size = new System.Drawing.Size(169, 13);
             this.inicioActividad.TabIndex = 29;
-            this.inicioActividad.Text = "Inicio de Actividades: 24/05/99";
+            this.inicioActividad.Text = "Inicio de Actividades: 25/06/2007";
             // 
             // ingresosBrutos
             // 
@@ -351,7 +415,7 @@
             this.CUITLea.Name = "CUITLea";
             this.CUITLea.Size = new System.Drawing.Size(110, 13);
             this.CUITLea.TabIndex = 26;
-            this.CUITLea.Text = "CUIT: 30-66182096-5";
+            this.CUITLea.Text = "CUIT: 20-22134765-7";
             // 
             // fechaAct
             // 
@@ -370,7 +434,7 @@
             this.TelLea.Name = "TelLea";
             this.TelLea.Size = new System.Drawing.Size(67, 13);
             this.TelLea.TabIndex = 24;
-            this.TelLea.Text = "1535682427";
+            this.TelLea.Text = "1565964639";
             // 
             // CPLea
             // 
@@ -379,16 +443,16 @@
             this.CPLea.Name = "CPLea";
             this.CPLea.Size = new System.Drawing.Size(110, 13);
             this.CPLea.TabIndex = 23;
-            this.CPLea.Text = "(1024) Capital Federal";
+            this.CPLea.Text = "Capital Federal (1407)";
             // 
             // direccionLea
             // 
             this.direccionLea.AutoSize = true;
             this.direccionLea.Location = new System.Drawing.Point(19, 53);
             this.direccionLea.Name = "direccionLea";
-            this.direccionLea.Size = new System.Drawing.Size(82, 13);
+            this.direccionLea.Size = new System.Drawing.Size(67, 13);
             this.direccionLea.TabIndex = 22;
-            this.direccionLea.Text = "Av. Callao 1651";
+            this.direccionLea.Text = "Cortina 1188";
             // 
             // facturaID
             // 
@@ -403,12 +467,12 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.Location = new System.Drawing.Point(0, 6);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(253, 31);
+            this.label24.Size = new System.Drawing.Size(196, 31);
             this.label24.TabIndex = 20;
-            this.label24.Text = "SESEDUBLO S.A.";
+            this.label24.Text = "VENTOX S.A.";
             // 
             // printButton
             // 
@@ -501,70 +565,6 @@
             this.label26.Size = new System.Drawing.Size(286, 13);
             this.label26.TabIndex = 2;
             this.label26.Text = "FIRMA: ________________________________________";
-            // 
-            // localidadLbl
-            // 
-            this.localidadLbl.AutoSize = true;
-            this.localidadLbl.Location = new System.Drawing.Point(248, 49);
-            this.localidadLbl.Name = "localidadLbl";
-            this.localidadLbl.Size = new System.Drawing.Size(70, 13);
-            this.localidadLbl.TabIndex = 41;
-            this.localidadLbl.Text = "LOCALIDAD:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(16, 64);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(69, 13);
-            this.label12.TabIndex = 40;
-            this.label12.Text = "CONTACTO:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(16, 88);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(104, 13);
-            this.label9.TabIndex = 39;
-            this.label9.Text = "OBSERVACIONES: ";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 48);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(33, 13);
-            this.label8.TabIndex = 38;
-            this.label8.Text = "TEL.:";
-            // 
-            // codPostalComprador
-            // 
-            this.codPostalComprador.AutoSize = true;
-            this.codPostalComprador.Location = new System.Drawing.Point(248, 32);
-            this.codPostalComprador.Name = "codPostalComprador";
-            this.codPostalComprador.Size = new System.Drawing.Size(34, 13);
-            this.codPostalComprador.TabIndex = 37;
-            this.codPostalComprador.Text = "CUIL:";
-            // 
-            // direccionLabel
-            // 
-            this.direccionLabel.AutoSize = true;
-            this.direccionLabel.Location = new System.Drawing.Point(16, 32);
-            this.direccionLabel.Name = "direccionLabel";
-            this.direccionLabel.Size = new System.Drawing.Size(69, 13);
-            this.direccionLabel.TabIndex = 36;
-            this.direccionLabel.Text = "DIRECCION:";
-            // 
-            // nombreLabel
-            // 
-            this.nombreLabel.AutoSize = true;
-            this.nombreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombreLabel.Location = new System.Drawing.Point(14, 12);
-            this.nombreLabel.Name = "nombreLabel";
-            this.nombreLabel.Size = new System.Drawing.Size(105, 18);
-            this.nombreLabel.TabIndex = 35;
-            this.nombreLabel.Text = "nombreLabel";
             // 
             // Ver_Remito
             // 

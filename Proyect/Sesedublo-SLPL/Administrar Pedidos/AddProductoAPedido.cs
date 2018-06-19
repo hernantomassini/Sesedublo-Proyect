@@ -72,6 +72,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             cantidadPagada.Text = reader.GetString(0);
             montoAPagarDelPedido.Text = reader.GetString(1);
             sumatoriaMoney = reader.GetDecimal(1);
+            vendedor.Text = reader.GetString(3);
             updateLabelMoney();
             this.id_cliente = reader.GetInt32(2);
 
@@ -157,7 +158,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 }
 
                 //Crear pedido y actualizar Caja:
-                reader = Conexion.executeProcedureWithReader("crearPedido", Conexion.generarArgumentos("_id_comprador", "_pagadoHastaElMomento", "_precio", "_tipo"), id_cliente, Convert.ToDecimal(cantidadPagada.Text), Convert.ToDecimal(montoAPagarDelPedido.Text), numero);
+                reader = Conexion.executeProcedureWithReader("crearPedido", Conexion.generarArgumentos("_id_comprador", "_pagadoHastaElMomento", "_precio", "_tipo", "_vendedor"), id_cliente, Convert.ToDecimal(cantidadPagada.Text), Convert.ToDecimal(montoAPagarDelPedido.Text), numero, Convert.ToString(vendedor.Text));
                 reader.Read();
 
                 int id_pedido = reader.GetInt32(0);

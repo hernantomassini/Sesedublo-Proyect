@@ -41,11 +41,10 @@ namespace Sesedublo_SLPL.Historial_de_Operacionesns
 
         public void getData()
         {
-            MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("cargarGrillaDeOperaciones", Conexion.generarArgumentos("_operacion", "_descripcion"), operacion.Text, descripcion.Text);
+            MySqlDataAdapter da = Conexion.executeProcedureWithAdapter("cargarGrillaDeOperaciones", Conexion.generarArgumentos("_operacion", "_descripcion", "_pedido", "_factura"), operacion.Text, descripcion.Text, metroTextBox1.Text, factura.Text);
             DataTable tablaDeUsuarios = new DataTable("Clientes");
             da.Fill(tablaDeUsuarios);
             dgvOperaciones.DataSource = tablaDeUsuarios.DefaultView;
-
             Conexion.closeConnection();
         }
 
@@ -62,13 +61,6 @@ namespace Sesedublo_SLPL.Historial_de_Operacionesns
         private void descripcion_TextChanged(object sender, EventArgs e)
         {
             this.getData();
-        }
-
-
-        Validaciones val = new Validaciones();
-        private void operacion_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            val.ingresarNombre(e);
         }
 
         private void metroTile3_Click(object sender, EventArgs e)
@@ -117,6 +109,16 @@ namespace Sesedublo_SLPL.Historial_de_Operacionesns
             dgvOperaciones.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvOperaciones.Columns[2].Width = 450;
             dgvOperaciones.Columns[1].Width = 150;
+        }
+
+        private void metroTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            this.getData();
+        }
+
+        private void factura_TextChanged(object sender, EventArgs e)
+        {
+            this.getData();
         }
     }
 }

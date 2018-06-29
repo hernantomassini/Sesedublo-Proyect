@@ -170,7 +170,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         public void cargarDGV()
         {
             Funciones.limpiarDGV(PedidosDGV);
-            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerPedidos", Conexion.generarArgumentos("_nombre", "_id_pedido", "_id_factura"), nombre.Text, id_pedido.Text, metroTextBox1.Text);
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerPedidos", Conexion.generarArgumentos("_nombre", "_id_pedido", "_id_factura", "_direccion_nombre"), nombre.Text, id_pedido.Text, metroTextBox1.Text,direccion_nombre.Text);
 
             while (reader.Read())
             {
@@ -186,7 +186,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                     id_pedido_valor = Convert.ToString(reader.GetInt32(6));
                 }
                 //ID Stock 0 - Nombre 1 - Costo 2 - Debe 3 - Lista strings 4 - facturada 5 - numero de factura 6
-                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetDecimal(3), reader.GetString(4), this.verSiONo(reader.GetInt32(5)), this.verSiONoDec(reader.GetInt32(3)), id_pedido_valor, reader.GetDecimal(7));
+                PedidosDGV.Rows.Add(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetDecimal(3), reader.GetString(4), this.verSiONo(reader.GetInt32(5)), this.verSiONoDec(reader.GetInt32(3)), id_pedido_valor, reader.GetDecimal(7), reader.GetString(8));
             }
             reader.Close();
             Conexion.closeConnection();
@@ -358,6 +358,11 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         }
 
         private void metroTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            this.cargarDGV();
+        }
+
+        private void direccion_nombre_TextChanged(object sender, EventArgs e)
         {
             this.cargarDGV();
         }

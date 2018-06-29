@@ -21,6 +21,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         public Actualizar_PedidoDeCompra()
         {
             InitializeComponent();
+            Caja.Checked = true;
             this.Closing += new CancelEventHandler(Avoid_Closing);
         }
 
@@ -47,10 +48,16 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
         private void titleAceptar_Click(object sender, EventArgs e)
         {
             int pagadoTot = 0;
+            int cajaOcc = 0;
             if (pagadoCheck.Checked)
             {
                 pagadoTot = 1;
             }
+
+            if (Caja.Checked)
+                cajaOcc = 0;
+            else
+                cajaOcc = 1;
 
             if (Convert.ToDecimal(cantidadPagada.Text) > Convert.ToDecimal(cantidadAPagar.Text))
             {
@@ -58,7 +65,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                 return;
             }
 
-            Conexion.executeProcedureWithReader("actualizarPagoDeLea", Conexion.generarArgumentos("_id_pedido", "_total_a_pagar", "_cantidad_paga", "_pagadoTot"), id_pedidoDeLea, Convert.ToDecimal(cantidadAPagar.Text), Convert.ToDecimal(cantidadPagada.Text), pagadoTot);
+            Conexion.executeProcedureWithReader("actualizarPagoDeLea", Conexion.generarArgumentos("_id_pedido", "_total_a_pagar", "_cantidad_paga", "_pagadoTot","_cajaOcc"), id_pedidoDeLea, Convert.ToDecimal(cantidadAPagar.Text), Convert.ToDecimal(cantidadPagada.Text), pagadoTot, cajaOcc);
             Conexion.closeConnection();
             Manejador_Formularios.Pedido_de_compra.cargarDGV();
             Close();

@@ -34,6 +34,7 @@ namespace Sesedublo_SLPL.Revisar_Cajans
         {
             updateMontoEfectivo();
             updateMontoProductos();
+            updateMontoCtaCorriente();
         }
 
         public void updateMontoEfectivo()
@@ -47,6 +48,19 @@ namespace Sesedublo_SLPL.Revisar_Cajans
             Conexion.closeConnection();
 
             EfectivoLabel.Text = "Usted posee " + montoEnEfectivo + "$ en efectivo.";
+        }
+
+        public void updateMontoCtaCorriente()
+        {
+            MySqlDataReader reader = Conexion.executeProcedureWithReader("obtenerMontoCtaCorriente", Conexion.generarArgumentos());
+            reader.Read();
+
+            decimal montoEnCuentaCorriente = decimal.Round(reader.GetDecimal(0), 2);
+
+            reader.Close();
+            Conexion.closeConnection();
+
+            metroLabel1.Text = "Usted posee " + montoEnCuentaCorriente + "$ en cta. corriente";
         }
 
         private void updateMontoProductos()
@@ -77,6 +91,13 @@ namespace Sesedublo_SLPL.Revisar_Cajans
         private void splitContainer1_Panel1_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
         {
 
+        }
+
+        private void ctaCorrienteTile_Click(object sender, EventArgs e)
+        {
+            Manejador_Formularios.ModifyCtaCorriente.Clean();
+            Manejador_Formularios.ModifyCtaCorriente.Show();
+            Close();
         }
     }
 }

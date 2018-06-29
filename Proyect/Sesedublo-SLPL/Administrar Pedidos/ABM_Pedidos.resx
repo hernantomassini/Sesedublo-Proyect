@@ -126,6 +126,9 @@
   <metadata name="Precio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="Direccion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="AtrasTile.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -603,6 +606,18 @@
 </value>
   </data>
   <data name="metroTextBox1.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAW9JREFUOE+V
+        kj1LA0EQhuMXWlloxCSXu0su9x1TKGgr+ANsLCxE7ETUoEYURO3EwhQKol2wSek/EAQrQQsbEURsbfRH
+        +GyYZvHg4gMvO/POzO6xe5k0zLI14lfDpbAWH6ItJ3BrUkonmIg2GXpl3S17lfmgGm2rHLUMq9gvbckw
+        tErjk+WUhsXqkC8WBvDbqCnWX3JGfoiG70roxWJpFExjkPq75dhjYunYldIsDc+SJkL91I/DRUl1Sq6z
+        QMOtpIlwsXV6GpLq8GkzFB8lTYT6DZssS6pj2GYvDV9e5Cc+GXcTUf8xy3ZWLB2KZ+gNfbiRXxW7A/kk
+        /ievtCKWDsULdMzn9bC+ILXRPWqhO/TgxcGctOtQbKIDFXPCDvG1innWUd7fHy/ktH9Cg+YjJRUzvE7c
+        ZrC3U0xD/roTiTfUcN40+jrFNCqBO83AlYpZ99Fl1ycruJA9htbQOafXxe6eom1m2aTh+O6UWP8gk/kF
+        BzZOd9cWo6IAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="direccion_nombre.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAW9JREFUOE+V
         kj1LA0EQhuMXWlloxCSXu0su9x1TKGgr+ANsLCxE7ETUoEYURO3EwhQKol2wSek/EAQrQQsbEURsbfRH

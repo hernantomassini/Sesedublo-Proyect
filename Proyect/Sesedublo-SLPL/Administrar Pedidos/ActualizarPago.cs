@@ -15,6 +15,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         public ActualizarPago()
         {
             InitializeComponent();
+            Caja.Checked = true;
             this.Closing += new CancelEventHandler(Avoid_Closing);
         }
 
@@ -48,9 +49,15 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
         private void AceptarTile_Click(object sender, EventArgs e)
         {
             int pagadoTot = 0;
+            int cajaOcc = 0;
             if(pagadoCheck.Checked){
                 pagadoTot = 1;
             }
+
+            if (Caja.Checked)
+                cajaOcc = 0;
+            else
+                cajaOcc = 1;
 
             if (Convert.ToDecimal(cantidadPagada.Text) > Convert.ToDecimal(cantidadAPagar.Text))
             {
@@ -58,7 +65,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
                 return;
             }
 
-            Conexion.executeProcedureWithReader("actualizarPago", Conexion.generarArgumentos("_id_pedido", "_total_a_pagar", "_cantidad_paga","_pagadoTot"), id_pedido, Convert.ToDecimal(cantidadAPagar.Text), Convert.ToDecimal(cantidadPagada.Text), pagadoTot);
+            Conexion.executeProcedureWithReader("actualizarPago", Conexion.generarArgumentos("_id_pedido", "_total_a_pagar", "_cantidad_paga","_pagadoTot","_cajaOcc"), id_pedido, Convert.ToDecimal(cantidadAPagar.Text), Convert.ToDecimal(cantidadPagada.Text), pagadoTot, cajaOcc);
             Conexion.closeConnection();
             Manejador_Formularios.ABM_Pedidos.cargarDGV();
             Close();

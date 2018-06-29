@@ -409,5 +409,18 @@ namespace Sesedublo_SLPL.Generales
             }
         }
 
+        private static Sesedublo_reloaded.Revisar_Caja.ModifyCtaCorriente ModifyCtaCorriente_Form;
+        public static Sesedublo_reloaded.Revisar_Caja.ModifyCtaCorriente ModifyCtaCorriente
+        {
+            get
+            {
+                if (ModifyCtaCorriente_Form == null)
+                {
+                    ModifyCtaCorriente_Form = new Sesedublo_reloaded.Revisar_Caja.ModifyCtaCorriente();
+                }
+                return ModifyCtaCorriente_Form;
+            }
+        }
+
     }
 }

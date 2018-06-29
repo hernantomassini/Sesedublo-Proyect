@@ -109,9 +109,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
                     Manejador_Formularios.MostrarPedidoCompra.mostrarPedido(id_pedido);
                     Manejador_Formularios.MostrarPedidoCompra.Show();
                 }
-
-                Manejador_Formularios.AddPedidoCompra.modificarPedido(id_pedido);
-                Manejador_Formularios.AddPedidoCompra.Show();
+            
             }
 
 

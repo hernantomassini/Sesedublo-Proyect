@@ -30,6 +30,7 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             this.id_pedido = id_pedido;
             cantidadAPagar.Enabled = false;
             pagadoCheck.Checked = false;
+            Caja.Checked = true;
 
             MySqlDataReader reader = Conexion.executeProcedureWithReader("cargarDatosActualizarPago", Conexion.generarArgumentos("_id_pedido"), id_pedido);
             reader.Read();

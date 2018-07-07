@@ -23,7 +23,7 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             InitializeComponent();
             Caja.Checked = true;
             this.Closing += new CancelEventHandler(Avoid_Closing);
-        }
+        } 
 
         void Avoid_Closing(object sender, CancelEventArgs e)
         {
@@ -76,8 +76,9 @@ namespace Sesedublo_SLPL.Pedidos_de_Compra
             id_pedidoDeLea = id_pedidoLea;
             cantidadAPagar.Enabled = false;
             pagadoCheck.Checked = false;
+            Caja.Checked = true;
 
-            MySqlDataReader reader = Conexion.executeProcedureWithReader("cargarDatosActualizarPagoDeLea", Conexion.generarArgumentos("_id_pedido"), id_pedidoDeLea);
+        MySqlDataReader reader = Conexion.executeProcedureWithReader("cargarDatosActualizarPagoDeLea", Conexion.generarArgumentos("_id_pedido"), id_pedidoDeLea);
             reader.Read();
 
             cantidadAPagar.Text = reader.GetString(0);

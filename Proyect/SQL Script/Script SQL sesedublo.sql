@@ -66,15 +66,19 @@ DROP PROCEDURE IF EXISTS registrarAgregadoDeStock;
 DROP PROCEDURE IF EXISTS obtenerMontoEnDeudas;
 DROP PROCEDURE IF EXISTS cargarDatosActualizarPagoDeLea;
 DROP PROCEDURE IF EXISTS actualizarPagoDeLea;
-
+DROP PROCEDURE IF EXISTS cargarDeudasDeCompra;
+DROP PROCEDURE IF EXISTS obtenerListadoDePrecios;
+DROP PROCEDURE IF EXISTS obtenerMontoEnDeudasDeCompra;
+DROP PROCEDURE IF EXISTS obtenerVendedorDePedido;
 
 CREATE TABLE Caja (
     id_caja INT AUTO_INCREMENT,
     efectivoActual DECIMAL(20 , 2 ),
+    ctaCorrienteActual DECIMAL(20, 2),
     PRIMARY KEY (id_caja)
 );
 
-INSERT INTO Caja (efectivoActual) VALUES (0);
+INSERT INTO Caja (efectivoActual,ctaCorrienteActual) VALUES (0,0);
 
 CREATE TABLE Productos (
     id_producto INT AUTO_INCREMENT,
@@ -148,6 +152,7 @@ CREATE TABLE Pedidos (
     id_pedido INT AUTO_INCREMENT,
     comprador INT,
     pagadoHastaElMomento DECIMAL(10 , 2 ),
+    vendedor varchar(100),
     precio DECIMAL(10 , 2 ),
     facturada INT DEFAULT 0,
     PRIMARY KEY (id_pedido),
@@ -979,7 +984,7 @@ BEGIN
 
 END ;;
 
-CREATE PROCEDURE `crearPedido`(IN _id_comprador INT, IN _pagadoHastaElMomento DECIMAL(10,2), IN _precio DECIMAL(10,2), _tipo int, _vendedor varchar(100))
+CREATE PROCEDURE `crearPedido`(IN _id_comprador INT, IN _pagadoHastaElMomento DECIMAL(10,2), IN _precio DECIMAL(10,2), IN _tipo int, IN _vendedor varchar(100))
 BEGIN
 
 	INSERT INTO Pedidos (comprador, pagadoHastaElMomento, precio, vendedor) VALUES (_id_comprador, _pagadoHastaElMomento, _precio, _vendedor);
@@ -1332,4 +1337,35 @@ SET @_nuevaCantidad = (SELECT cantidad FROM Productos WHERE id_producto = @_id_p
     
 END ;;
 
+
+CREATE PROCEDURE `obtenerMontoCtaCorriente`()
+BEGIN
+
+	SELECT ctaCorrienteActual FROM Caja WHERE id_caja = 1;
+    
+END ;;
+
+CREATE PROCEDURE `restarCtaCorriente`(IN _montoARestar DECIMAL(10,2), _descripcion VARCHAR(200))
+BEGIN
+
+	SET @_efectivo = (SELECT ctaCorrienteActual FROM Caja WHERE id_caja = 1);
+
+    UPDATE Caja SET ctaCorrienteActual = (@_efectivo - _montoARestar) WHERE id_caja=1;
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Efectivo saliente en cta corriente",IF(_montoARestar > 0, CONCAT(_descripcion, " por el valor de $ ", _montoARestar), _descripcion));
+END;;
+
+CREATE PROCEDURE `agregarCtaCorriente`(IN _montoASumar DECIMAL(10,2), _descripcion VARCHAR(200))
+BEGIN
+
+SET @_efectivo = (SELECT efectivoActual FROM Caja WHERE id_caja = 1);
+
+UPDATE Caja 
+SET 
+    ctaCorrienteActual = (@_efectivo + _montoASumar)
+WHERE
+    id_caja = 1;
+    INSERT INTO Operaciones (fecha, operacion, descripcion) VALUES (NOW(), "Efectivo entrante en cta corriente", 
+    IF(_montoASumar > 0,CONCAT(_descripcion, " por el valor de $ ", _montoASumar), _descripcion));
+
+END;;
 DELIMITER ;

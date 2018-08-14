@@ -1,16 +1,16 @@
 ﻿using BarcodeLib;
 using MySql.Data.MySqlClient;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
+using Sesedublo_reloaded.Generales;
 using Sesedublo_SLPL.Generales;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Sesedublo_SLPL
@@ -26,7 +26,7 @@ namespace Sesedublo_SLPL
 
             this.Controls.Add(printButton);
             InitializeComponent(); this.Closing += new CancelEventHandler(Avoid_Closing);
-            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+            //printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
             this.SetBorderAndGridlineStyles();
         }
 
@@ -62,6 +62,12 @@ namespace Sesedublo_SLPL
         {
             this.Hide();
             e.Cancel = true;
+
+            if (File.Exists("F:\\" + facturaID.Text + "-ORIGINAL.jpg"))
+            {
+                File.Delete("F:\\" + facturaID.Text + "-ORIGINAL.jpg");
+                File.Delete("F:\\" + facturaID.Text + "-ORIGINAL.pdf");
+            }
             Manejador_Formularios.Historial_de_Facturas.Show();
         }
 
@@ -156,6 +162,7 @@ namespace Sesedublo_SLPL
             facturaID.Text = "FAC. N° 0001-" + Convert.ToString(id_factura);
         }
 
+        
         [System.Runtime.InteropServices.DllImport("gdi32.dll")]
         public static extern long BitBlt(IntPtr hdcDest,
         int nXDest, int nYDest, int nWidth, int nHeight,
@@ -177,25 +184,73 @@ namespace Sesedublo_SLPL
             mygraphics.ReleaseHdc(dc1);
             memoryGraphics.ReleaseHdc(dc2);
         }
+        
+        /*
+        private void captureScreen()
+        {
+            try
+            {
+                // Call the CaptureAndSave method from the ScreenCapture class 
+                // And create a temporary file in C:\Temp
+                capScreen.CaptureAndSave
+                (@"C:\Temp\test.png", CaptureMode.Window, ImageFormat.Png);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+        }
+        */
 
+        private void captureScreen()
+        {
+            var frm = Form.ActiveForm;
+            using (var bmp = new Bitmap(frm.Width, frm.Height))
+            {
+                frm.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                bmp.Save(@"c:\temp\screenshot.png");
+            }
+        }
+
+        /*
         private void printDocument1_PrintPage(System.Object
         sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(memoryImage, 0, 0);
         }
+        */
 
         private void printButton_Click(System.Object sender,
         System.EventArgs e)
         {
             printButton.Visible = false;
             metroTile1.Visible = false;
-            CaptureScreen();
-            PrintPreviewDialog printPreviewDialog1;
-            printPreviewDialog1 = new PrintPreviewDialog();
-            printPreviewDialog1.Document = printDocument1;
-            printPreviewDialog1.Show();
+
+            Bitmap bitmap = TakeDialogScreenshot(this);
+
+ 
+            var fileName = facturaID.Text + "-ORIGINAL";
+            var fileName2 = "F:\\" + facturaID.Text + "-ORIGINAL.jpg";
+            bitmap.Save(fileName2, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            var doc = new PdfDocument();
+
+            var oPage = new PdfPage();
+            var path = "F:\\"+ fileName.ToString() + ".jpg";
+
+            doc.Pages.Add(oPage);
+            var xgr = XGraphics.FromPdfPage(oPage);
+            var img = XImage.FromFile(path);
+
+            xgr.DrawImage(img, 0, 0);
+
+            doc.Save("F:\\" +fileName.ToString() + ".pdf");
+            doc.Close();
+            
             printButton.Visible = true;
             metroTile1.Visible = true;
+
+            System.Diagnostics.Process.Start("F:\\" + fileName.ToString() + ".pdf");
         }
 
         private void Ver_Factura_Load(object sender, EventArgs e)

@@ -118,6 +118,7 @@
             this.ProductosDGV.Size = new System.Drawing.Size(591, 168);
             this.ProductosDGV.TabIndex = 0;
             this.ProductosDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductosDGV_CellClick);
+            this.ProductosDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductosDGV_CellEndEdit);
             this.ProductosDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ProductosDGV_CellFormatting);
             // 
             // IDStock

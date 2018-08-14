@@ -490,5 +490,12 @@ namespace Sesedublo_SLPL.Administrar_Pedidos
             montoAPagarDelPedido.Text = Convert.ToString(sumatoriaMoney);
         }
 
+        private void ProductosDGV_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            foreach (DataGridViewRow Myrow in ProductosDGV.Rows)
+            {
+                Myrow.Cells[3].Value = (Convert.ToDecimal(Myrow.Cells[3].Value) * 2).ToString();
+            }
+        }
     }
 }

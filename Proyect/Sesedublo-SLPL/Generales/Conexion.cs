@@ -8,7 +8,7 @@ namespace Sesedublo_SLPL
     sealed class Conexion
     {
         public static MySqlConnection connection = new MySqlConnection(Funciones.getStringConnection());
-        public static String tipo = "SESEDUBLO S.A.";
+        public static String tipo = "LA CANTINA BEBIDAS";
 
         //[Hernán]: Suelo usar cuando necesito ejecutar un store procedure que actualice la DB, o que realice alguna acción que no devuelva datos.
         public static void executeProcedure(string procedure, List<string> args, params object[] values)

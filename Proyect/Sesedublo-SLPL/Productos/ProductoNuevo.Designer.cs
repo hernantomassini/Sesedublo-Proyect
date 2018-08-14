@@ -64,7 +64,7 @@
             // Precio
             // 
             this.Precio.Location = new System.Drawing.Point(191, 246);
-            this.Precio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Precio.Margin = new System.Windows.Forms.Padding(4);
             this.Precio.MaxLength = 10;
             this.Precio.Name = "Precio";
             this.Precio.Size = new System.Drawing.Size(100, 20);
@@ -76,7 +76,7 @@
             this.titleCancelar.ActiveControl = null;
             this.titleCancelar.BackColor = System.Drawing.Color.DarkRed;
             this.titleCancelar.Location = new System.Drawing.Point(50, 341);
-            this.titleCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.titleCancelar.Name = "titleCancelar";
             this.titleCancelar.Size = new System.Drawing.Size(102, 41);
             this.titleCancelar.TabIndex = 10;
@@ -95,7 +95,7 @@
             this.titleAceptar.ActiveControl = null;
             this.titleAceptar.BackColor = System.Drawing.Color.Green;
             this.titleAceptar.Location = new System.Drawing.Point(207, 341);
-            this.titleAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.titleAceptar.Name = "titleAceptar";
             this.titleAceptar.Size = new System.Drawing.Size(99, 41);
             this.titleAceptar.TabIndex = 9;
@@ -114,11 +114,15 @@
             this.UnidadesXBulto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.UnidadesXBulto.FormattingEnabled = true;
             this.UnidadesXBulto.Items.AddRange(new object[] {
+            "2",
+            "3",
+            "4",
             "6",
             "12",
+            "16",
             "24"});
             this.UnidadesXBulto.Location = new System.Drawing.Point(191, 272);
-            this.UnidadesXBulto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UnidadesXBulto.Margin = new System.Windows.Forms.Padding(4);
             this.UnidadesXBulto.Name = "UnidadesXBulto";
             this.UnidadesXBulto.Size = new System.Drawing.Size(100, 21);
             this.UnidadesXBulto.TabIndex = 8;
@@ -136,7 +140,7 @@
             // Costo
             // 
             this.Costo.Location = new System.Drawing.Point(191, 195);
-            this.Costo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Costo.Margin = new System.Windows.Forms.Padding(4);
             this.Costo.MaxLength = 12;
             this.Costo.Name = "Costo";
             this.Costo.Size = new System.Drawing.Size(100, 20);
@@ -174,7 +178,7 @@
             // Utilidad
             // 
             this.Utilidad.Location = new System.Drawing.Point(191, 221);
-            this.Utilidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Utilidad.Margin = new System.Windows.Forms.Padding(4);
             this.Utilidad.MaxLength = 10;
             this.Utilidad.Name = "Utilidad";
             this.Utilidad.Size = new System.Drawing.Size(100, 20);
@@ -185,7 +189,7 @@
             // Nombre
             // 
             this.Nombre.Location = new System.Drawing.Point(151, 83);
-            this.Nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Nombre.Margin = new System.Windows.Forms.Padding(4);
             this.Nombre.MaxLength = 100;
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(192, 20);
@@ -194,7 +198,7 @@
             // costoIndividual
             // 
             this.costoIndividual.Location = new System.Drawing.Point(191, 167);
-            this.costoIndividual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.costoIndividual.Margin = new System.Windows.Forms.Padding(4);
             this.costoIndividual.MaxLength = 12;
             this.costoIndividual.Name = "costoIndividual";
             this.costoIndividual.Size = new System.Drawing.Size(100, 20);
@@ -247,7 +251,7 @@
             // 
             this.bultoxBotellaRadio.AutoSize = true;
             this.bultoxBotellaRadio.Location = new System.Drawing.Point(101, 123);
-            this.bultoxBotellaRadio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bultoxBotellaRadio.Margin = new System.Windows.Forms.Padding(2);
             this.bultoxBotellaRadio.Name = "bultoxBotellaRadio";
             this.bultoxBotellaRadio.Size = new System.Drawing.Size(132, 15);
             this.bultoxBotellaRadio.TabIndex = 2;
@@ -259,7 +263,7 @@
             // 
             this.individualRadio.AutoSize = true;
             this.individualRadio.Location = new System.Drawing.Point(22, 123);
-            this.individualRadio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.individualRadio.Margin = new System.Windows.Forms.Padding(2);
             this.individualRadio.Name = "individualRadio";
             this.individualRadio.Size = new System.Drawing.Size(75, 15);
             this.individualRadio.Style = MetroFramework.MetroColorStyle.Silver;

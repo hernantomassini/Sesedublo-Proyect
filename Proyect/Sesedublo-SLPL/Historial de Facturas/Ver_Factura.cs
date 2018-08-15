@@ -2,7 +2,6 @@
 using MySql.Data.MySqlClient;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
-using Sesedublo_reloaded.Generales;
 using Sesedublo_SLPL.Generales;
 using System;
 using System.ComponentModel;
@@ -63,10 +62,14 @@ namespace Sesedublo_SLPL
             this.Hide();
             e.Cancel = true;
 
-            if (File.Exists("F:\\" + facturaID.Text + "-ORIGINAL.jpg"))
+            if (File.Exists("C:\\Users\\Public\\" + facturaID.Text + "-ORIGINAL.jpg"))
             {
-                File.Delete("F:\\" + facturaID.Text + "-ORIGINAL.jpg");
-                File.Delete("F:\\" + facturaID.Text + "-ORIGINAL.pdf");
+                File.Delete("C:\\Users\\Public\\" + facturaID.Text + "-ORIGINAL.jpg");
+            }
+
+            if (File.Exists("C:\\Users\\Public\\" + facturaID.Text + "-ORIGINAL.pdf"))
+            {
+                File.Delete("C:\\Users\\Public\\" + facturaID.Text + "-ORIGINAL.pdf");
             }
             Manejador_Formularios.Historial_de_Facturas.Show();
         }
@@ -230,13 +233,13 @@ namespace Sesedublo_SLPL
 
  
             var fileName = facturaID.Text + "-ORIGINAL";
-            var fileName2 = "F:\\" + facturaID.Text + "-ORIGINAL.jpg";
+            var fileName2 = "C:\\Users\\Public\\" + facturaID.Text + "-ORIGINAL.jpg";
             bitmap.Save(fileName2, System.Drawing.Imaging.ImageFormat.Jpeg);
 
             var doc = new PdfDocument();
 
             var oPage = new PdfPage();
-            var path = "F:\\"+ fileName.ToString() + ".jpg";
+            var path = "C:\\Users\\Public\\" + fileName.ToString() + ".jpg";
 
             doc.Pages.Add(oPage);
             var xgr = XGraphics.FromPdfPage(oPage);
@@ -244,13 +247,13 @@ namespace Sesedublo_SLPL
 
             xgr.DrawImage(img, 0, 0);
 
-            doc.Save("F:\\" +fileName.ToString() + ".pdf");
+            doc.Save("C:\\Users\\Public\\" + fileName.ToString() + ".pdf");
             doc.Close();
             
             printButton.Visible = true;
             metroTile1.Visible = true;
 
-            System.Diagnostics.Process.Start("F:\\" + fileName.ToString() + ".pdf");
+            System.Diagnostics.Process.Start("C:\\Users\\Public\\" + fileName.ToString() + ".pdf");
         }
 
         private void Ver_Factura_Load(object sender, EventArgs e)

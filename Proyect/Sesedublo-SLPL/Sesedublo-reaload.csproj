@@ -172,7 +172,6 @@
     <Compile Include="Administrar Usuarios\Agregar_Cliente.Designer.cs">
       <DependentUpon>Agregar_Cliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generales\ScreenCapture.cs" />
     <Compile Include="Generales\Conexion.cs" />
     <Compile Include="Generales\Enums.cs" />
     <Compile Include="Generales\Funciones.cs" />

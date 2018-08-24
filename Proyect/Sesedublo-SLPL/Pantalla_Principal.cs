@@ -16,6 +16,7 @@ namespace Sesedublo_SLPL
         {
             InitializeComponent();
             Conexion.tipo = "LA CANTINA BEBIDAS";
+            this.radioButton1.Checked = true;
             this.Closing += new CancelEventHandler(Principal_Closing);
             timer1.Enabled = true;
         }
@@ -90,6 +91,37 @@ namespace Sesedublo_SLPL
         {
             Manejador_Formularios.Lista_de_Productos.getData();
             Manejador_Formularios.Lista_de_Productos.Show();
+        }
+
+        private void metroRadioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton2.Checked)
+            {
+                MySqlConnectionStringBuilder conexionBuilder = new MySqlConnectionStringBuilder();
+                conexionBuilder.Server = "200.110.156.81";
+                conexionBuilder.UserID = "admin_sesedublo";
+                conexionBuilder.Password = "sesedublo";
+                conexionBuilder.Database = "admin_sesedublo";
+
+                Conexion.connection = new MySqlConnection(conexionBuilder.ToString());
+                Conexion.tipo = "CAPRI";
+            }
+        }
+
+
+        private void metroRadioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                MySqlConnectionStringBuilder conexionBuilder = new MySqlConnectionStringBuilder();
+                conexionBuilder.Server = "200.110.156.81";
+                conexionBuilder.UserID = "admin_lacantina";
+                conexionBuilder.Password = "lacantina";
+                conexionBuilder.Database = "admin_lacantina";
+
+                Conexion.connection = new MySqlConnection(conexionBuilder.ToString());
+                Conexion.tipo = "LA CANTINA BEBIDAS";
+            }
         }
     }
 }
